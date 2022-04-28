@@ -1,0 +1,6 @@
+[submodule "xmonad"]
+	path = xmonad
+	url = https://github.com/p2d0/my-xmonad-config
+[submodule "rofi"]
+	path = rofi
+	url = https://github.com/p2d0/my-rofi-config
