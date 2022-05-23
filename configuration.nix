@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, ghcWithPackages, ... }:
 
 {
   imports =
@@ -44,8 +44,14 @@
   };
 
   # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-
+  services.xserver = {
+    enable = true;
+    windowManager.xmonad = {
+      enable = true;
+      enableContribAndExtras = true;
+    };
+    displayManager.defaultSession = "none+xmonad";
+  };
 
   
 
@@ -90,10 +96,17 @@ nixpkgs.config.allowUnfree = true;
 			  pkgs.tdesktop
 			  pkgs.rofi
 				pkgs.firefox
-pkgs.alacritty
-pkgs.dmenu
-pkgs.htop
-	  ];
+      pkgs.alacritty
+      pkgs.dmenu
+      pkgs.htop
+      (pkgs.haskellPackages.ghcWithPackages (self:
+        [
+          self.xmonad
+          self.xmonad-contrib
+          self.xmonad-extras
+        ]
+      ))
+    ];
 
 
 	  services.emacs.package = pkgs.emacsUnstable;
@@ -102,6 +115,16 @@ pkgs.htop
 		   (builtins.fetchTarball {
 		    url = "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
 		    }))
+      (self: super: {
+        haskellPackages = super.haskellPackages.override {
+          overrides = hself: hsuper: {
+            xmonad = hsuper.xmonad_0_17_0;
+            # xmonad-with-packages = hsuper.xmonad-with-packages_0_17_0;
+            xmonad-contrib = hsuper.xmonad-contrib_0_17_0;
+            xmonad-extras = hsuper.xmonad-extras_0_17_0;
+          };
+        };
+      })
 	  ];
 	  services.emacs.enable = true;
 	  programs.git = {
@@ -109,28 +132,29 @@ pkgs.htop
 		  userName = "patriot720";
 		  userEmail = "cerkin-3@yandex.ru";
 	  };
-	xsession = {
-		enable = true;
-    initExtra = ''
+
+    home.file = {
+      ".xmonad" = {
+         source = ./xmonad;
+         recursive = true;
+      };
+      ".config/rofi" = {
+        source = ./rofi;
+        recursive = true;
+      };
+    };
+    xsession = {
+      enable = true;
+      initExtra = ''
       feh --bg-fill /etc/nixos/bg.jpg
       '';
-    windowManager.xmonad =
-      {
-        enable = true;
-        enableContribAndExtras = true;
+      windowManager.xmonad =
+        {
+          enable = true;
+          enableContribAndExtras = true;
       };
 
     };
-	  home.file = {
-		  ".xmonad" = {
-			   source = ./xmonad;
-			   recursive = true;
-		  };
-		  ".config/rofi" = {
-			  source = ./rofi;
-			  recursive = true;
-		  };
-	  };
   };
 
 services = {
@@ -144,8 +168,8 @@ services = {
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     emacs
+    tmux
     git
-ghc
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
