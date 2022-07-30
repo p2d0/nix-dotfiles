@@ -4,3 +4,6 @@
 [submodule "rofi"]
 	path = rofi
 	url = https://github.com/p2d0/my-rofi-config
+[submodule "dotfiles"]
+	path = dotfiles
+	url = https://github.com/p2d0/dotfiles

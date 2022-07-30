@@ -18,9 +18,9 @@
       fsType = "ext4";
     };
 
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/b68c3998-c841-4044-ad0a-eaa60881b272"; }
-    ];
+  #swapDevices =
+    #[ { device = "/dev/disk/by-uuid/b68c3998-c841-4044-ad0a-eaa60881b272"; }
+    #];
 
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
