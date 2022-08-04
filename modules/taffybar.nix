@@ -1,9 +1,28 @@
-{ config, mkDerivation, lib, pkgs, ... }:
+{ mkDerivation, pkgs, haskellPackages, lib,  ... }:
 
+with haskellPackages;
+mkDerivation
+  {
+    pname = "my-taffybar";
+    version = "0.1.0.0";
+    src = /etc/nixos/taffybar;
+    isLibrary = true;
+    isExecutable = true;
+    doHaddock = false;
+    executableHaskellDepends = [
+      base bytestring
+      aeson http-client memory servant servant-client servant-client-core
+      containers directory filepath gi-gdk
+      (haskellPackages.callPackage ./taffy.nix { })
+      gi-gtk gtk-sni-tray gtk-strut haskell-gi-base hostname hslogger
+      http-types process simple-cmd split text time transformers
+      X11 xdg-basedir
+    ];
+    executablePkgconfigDepends = [ pkgs.gtk3
+                                   pkgs.noto-fonts];
 
-mkDerivation rec {
-  name = "my-taffybar";
-  paths = [pkgs.my-taffybar];
-  buildInputs = [(pkgs.haskellPackages.ghcWithPackages
-    (self: [ self.xmonad self.xmonad-contrib self.xmonad-extras ]))];
-}
+    testHaskellDepends = [ base HUnit ];
+    license = "unknown";
+    hydraPlatforms = lib.platforms.none;
+    broken = true;
+  }

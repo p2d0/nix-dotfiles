@@ -5,22 +5,36 @@
 
 {
   imports =
-    [ (modulesPath + "/profiles/qemu-guest.nix")
+    [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "ahci" "xhci_pci" "virtio_pci" "sr_mod" "virtio_blk" ];
+  boot.initrd.availableKernelModules = [ "ehci_pci" "ata_piix" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelParams = [ # "quiet" "vga=current" "udev.log_level=3" "rd.systemd.show_status=auto"
+                        "raid0.default_layout=2" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/f075f93f-e1f0-4d3d-886f-78073120831c";
+    { device = "/dev/disk/by-uuid/66e90d46-d031-4e40-ad33-c3f156316c20";
       fsType = "ext4";
     };
 
-  #swapDevices =
-    #[ { device = "/dev/disk/by-uuid/b68c3998-c841-4044-ad0a-eaa60881b272"; }
-    #];
+  # TODO fix permissions
+  # https://superuser.com/questions/174776/modify-fstab-entry-so-all-users-can-read-and-write-to-an-ext4-volume
+  fileSystems."/mnt/md127" =
+    { device = "/dev/md127";
+      fsType = "ext4";
+    };
+
+  swapDevices = [ ];
+
+  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
+  # (the default) this is the recommended approach. When using systemd-networkd it's
+  # still possible to use this option, but it's recommended to use it in conjunction
+  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
+  networking.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp3s0.useDHCP = lib.mkDefault true;
 
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

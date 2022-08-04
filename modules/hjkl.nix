@@ -38,15 +38,15 @@ in {
       key <AE04> { [ 4, dollar, End, End         ] };
       };'';
     };
-    services.xserver.layout = "us";
+    # services.xserver.layout = mkOverride 1 "us";
+    # TODO fix
     environment.sessionVariables = {
       XKB_CONFIG_ROOT = mkOverride 1 "${xkbrdz}/etc/X11/xkb";
     };
 
     services.xserver = {
       xkbDir = mkOverride 1 "${xkbrdz}/etc/X11/xkb";
-      exportConfiguration = config.services.xserver.displayManager.startx.enable ||
-                            config.services.xserver.displayManager.sx.enable;
+      exportConfiguration = mkOverride 1 true;
     };
   };
 }

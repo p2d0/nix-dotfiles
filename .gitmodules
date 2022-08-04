@@ -7,3 +7,6 @@
 [submodule "dotfiles"]
 	path = dotfiles
 	url = https://github.com/p2d0/dotfiles
+[submodule "taffybar"]
+	path = taffybar
+	url = https://github.com/p2d0/my-taffybar-config
