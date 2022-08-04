@@ -135,6 +135,10 @@
     #   source = ./dotfiles/.config/Trolltech.conf;
     # };
 
+    ".ssh" = {
+      source = /mnt/md127/backup_arch/.ssh;
+      recursive = true;
+    };
     ".config/dunst" = {
       source = ./dotfiles/.config/dunst;
       recursive = true;
