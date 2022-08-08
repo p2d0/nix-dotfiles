@@ -14,6 +14,7 @@
   boot.kernelParams = [ # "quiet" "vga=current" "udev.log_level=3" "rd.systemd.show_status=auto"
                         "raid0.default_layout=2" ];
   boot.extraModulePackages = [ ];
+  boot.loader.timeout = 0;
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/66e90d46-d031-4e40-ad33-c3f156316c20";

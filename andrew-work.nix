@@ -27,6 +27,7 @@
 
       home.packages = [
         pkgs.cabal2nix
+        pkgs.jupyter
       ];
 
       programs.git = {

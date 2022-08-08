@@ -31,7 +31,7 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.loader.grub.enable = true;
-  boot.loader.grub.default = "saved";
+  boot.loader.grub.default = 2;
   boot.loader.grub.version = 2;
 
   boot.loader.grub.device = "/dev/sda";
@@ -100,7 +100,6 @@
             (fetchTarball
               "${nixpkgs-tars}7cc979502c3dc5480ef3e4ffe1a05c897084d34b.tar.gz")
             { config = config.nixpkgs.config; };
-
         };
       };
 
@@ -119,6 +118,9 @@
     gnome.at-spi2-core.enable = true;
     dbus.enable = true;
   };
+  nix.settings.auto-optimise-store = true;
+  nix.gc.automatic = true;
+  # nix.gc.options = "--delete-older-than 8d";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -166,6 +168,8 @@
     wget
     emacsNativeComp
     pr181605.kdiskmark
+    flameshot
+    firefox
     (pkgs.haskellPackages.callPackage ./modules/taffybar.nix { })
     tmux
     git

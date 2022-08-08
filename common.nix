@@ -4,10 +4,17 @@
   home.packages = [
     pkgs.nixfmt
     pkgs.gimp
+    pkgs.mpv
+    pkgs.evince
     pkgs.pulseaudio
+    pkgs.tetex
     pkgs.btop
     pkgs.brave
     pkgs.peco
+    pkgs.ffmpeg
+    pkgs.slop
+    pkgs.libnotify
+    pkgs.xclip
     pkgs.xdotool
     pkgs.libsForQt5.breeze-gtk
     pkgs.libsForQt5.breeze-qt5
@@ -15,8 +22,8 @@
     pkgs.pavucontrol
     pkgs.paprefs
     (pkgs.callPackage ./pkgs/picom-animations.nix { })
-    (pkgs.callPackage ./pkgs/guake-latest.nix { })
     (pkgs.callPackage ./pkgs/lantern.nix { })
+    # (pkgs.callPackage ./pkgs/openhab.nix { })
     pkgs.speedcrunch
     pkgs.chatterino2
     pkgs.filelight
@@ -24,7 +31,6 @@
     pkgs.gnome.dconf-editor
     pkgs.gnome.gnome-characters
     pkgs.redshift
-    pkgs.flameshot
     pkgs.gnome.nautilus
     pkgs.dunst
     pkgs.tdesktop
@@ -35,6 +41,8 @@
     pkgs.gnome.gnome-disk-utility
     pkgs.cabal2nix
     pkgs.htop
+    # (pkgs.callPackage ./pkgs/get_current_screen_geometry.nix { })
+    (pkgs.callPackage ./pkgs/guake-latest.nix { })
   ];
 
   systemd.user.services.gtk-sni-tray = {
@@ -51,6 +59,7 @@
       enableContribAndExtras = true;
     };
   };
+  # services.flameshot.enable = true;
   programs.git = {
     enable = true;
     userName = "patriot720";
@@ -73,7 +82,7 @@
   programs.fish.shellInit = ''
         fish_vi_key_bindings
         fish_add_path  $HOME/.emacs.d/bin
-        fish_add_path  $HOME/.pythonbin
+        fish_add_path  /etc/nixos/dotfiles/.pythonbin
         function fish_user_key_bindings
             bind -M normal -m insert \cr 'peco_select_history (commandline -b)'
             bind -M insert \cr 'peco_select_history (commandline -b)'
@@ -114,6 +123,9 @@
 
   services.blueman-applet.enable = true;
   services.dropbox.enable = true;
+  home.keyboard = null;
+  # {layout = "us,ru"; options = [ "grp:alt_shift_toggle" ];};
+
   home.file = {
     ".xmonad/lib" = {
       source = ./dotfiles/.xmonad/lib;
@@ -198,6 +210,11 @@
     };
     ".config/taffybar/gotham.css" = {
       source = ./taffybar/gotham.css;
+    };
+
+    ".config/fish/conf.d" = {
+      source = ./dotfiles/.config/fish/conf.d;
+      recursive = true;
     };
 
     ".config/fish/functions" = {
