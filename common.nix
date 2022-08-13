@@ -7,6 +7,7 @@
     pkgs.mpv
     pkgs.evince
     pkgs.pulseaudio
+    pkgs.libusb
     pkgs.tetex
     pkgs.btop
     pkgs.brave
@@ -31,9 +32,18 @@
     pkgs.gnome.dconf-editor
     pkgs.gnome.gnome-characters
     pkgs.redshift
+    pkgs.gnome.gnome-boxes
+    pkgs.qbittorrent
+    pkgs.looking-glass-client
     pkgs.gnome.nautilus
+    pkgs.spice-vdagent
+    pkgs.nodejs
+    pkgs.wine
+    pkgs.libvirt
     pkgs.dunst
+    pkgs.android-tools
     pkgs.tdesktop
+    pkgs.python39Packages.yt-dlp
     pkgs.feh
     pkgs.rofi
     pkgs.alacritty
@@ -41,6 +51,7 @@
     pkgs.gnome.gnome-disk-utility
     pkgs.cabal2nix
     pkgs.htop
+    # (pkgs.callPackage ./pkgs/get_current_screen_geometry.nix { })
     # (pkgs.callPackage ./pkgs/get_current_screen_geometry.nix { })
     (pkgs.callPackage ./pkgs/guake-latest.nix { })
   ];
@@ -50,6 +61,13 @@
     Install.WantedBy = [ "default.target" ];
     Service = {
       ExecStart = "${pkgs.haskellPackages.status-notifier-item}/bin/status-notifier-watcher";
+    };
+  };
+  systemd.user.services.gnome-polkit = {
+    Unit.Description = "Gnome polkit gui";
+    Install.WantedBy = [ "graphical.target" ];
+    Service = {
+      ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
     };
   };
   xsession = {
@@ -69,7 +87,7 @@
   xdg.userDirs = {
     enable = true;
   };
-  services.emacs.enable = true;
+  # services.emacs.enable = true;
   services.lorri.enable = true;
   nixpkgs.overlays = [
     (import (builtins.fetchTarball {
@@ -146,7 +164,9 @@
     # ".config/Trolltech.conf" = {
     #   source = ./dotfiles/.config/Trolltech.conf;
     # };
-
+    ".config/brave-flags.conf" = {
+      source = ./dotfiles/.config/brave-flags.conf;
+    };
     ".ssh" = {
       source = /mnt/md127/backup_arch/.ssh;
       recursive = true;
@@ -164,10 +184,10 @@
       recursive = true;
     };
 
-    ".config/omf" = {
-      source = ./dotfiles/.config/omf;
-      recursive = true;
-    };
+    # ".config/omf" = {
+    #   source = ./dotfiles/.config/omf;
+    #   recursive = true;
+    # };
 
     ".config/psiphon" = {
       source = ./dotfiles/.config/psiphon;

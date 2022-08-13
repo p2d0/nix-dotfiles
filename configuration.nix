@@ -25,10 +25,10 @@
   user = "andrew";
 
   hardware.opengl.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
+    # boot.plymouth.enable = true;
 
-  # boot.plymouth.enable = true;
-
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+    boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.loader.grub.enable = true;
   boot.loader.grub.default = 2;
@@ -43,6 +43,10 @@
   virtualisation.docker.enable = true;
 
   i18n.defaultLocale = "en_US.UTF-8";
+
+  services.udev.extraRules = ''
+SUBSYSTEM=="usb", ACTION=="add", ATTR{idVendor}=="0e8d", ATTR{idProduct}=="201d" MODE="0777" GROUP="users"
+'';
 
   services.xserver = {
     enable = true;
@@ -170,6 +174,7 @@
     pr181605.kdiskmark
     flameshot
     firefox
+    (import (fetchTarball "https://github.com/nix-community/rnix-lsp/archive/master.tar.gz"))
     (pkgs.haskellPackages.callPackage ./modules/taffybar.nix { })
     tmux
     git
