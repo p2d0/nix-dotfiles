@@ -1,12 +1,6 @@
-[submodule "xmonad"]
-	path = xmonad
-	url = https://github.com/p2d0/my-xmonad-config
-[submodule "rofi"]
-	path = rofi
-	url = https://github.com/p2d0/my-rofi-config
-[submodule "dotfiles"]
-	path = dotfiles
-	url = https://github.com/p2d0/dotfiles
-[submodule "taffybar"]
+[submodule "modules/taffybar/build/taffybar"]
 	path = taffybar
-	url = https://github.com/p2d0/my-taffybar-config
+	url = git@github.com:p2d0/my-taffybar-config.git
+[submodule "configs/ideavim/.intellimacs"]
+	path = configs/ideavim/.intellimacs
+	url = https://github.com/MarcoIeni/intellimacs.git

@@ -1,0 +1,9 @@
+/** Basic config file **/
+
+configuration {
+  show-icons:         true;
+  icon-theme:         "Papirus";
+  me-select-entry: "MouseSecondary";
+  me-accept-entry: "MousePrimary";
+	hover-select: true;
+}

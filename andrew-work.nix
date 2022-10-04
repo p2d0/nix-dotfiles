@@ -9,10 +9,12 @@
       };
 
       networking.extraHosts = ''
-        127.0.0.1 youtube.com
-        127.0.0.1 www.youtube.com
-        # 127.0.0.1 reddit.com
-        # 127.0.0.1 www.reddit.com
+        # 127.0.0.1 youtube.com
+        # 127.0.0.1 www.youtube.com
+        127.0.0.1 reddit.com
+        127.0.0.1 www.reddit.com
+        127.0.0.1 www.osu.ppy.sh
+        127.0.0.1 osu.ppy.sh
       '';
 
     };
@@ -28,16 +30,17 @@
       home.packages = [
 
         # TODO localize
-        (pkgs.php74.buildEnv {
-          extensions = ({ enabled, all }: enabled ++ (with all; [
-            xdebug
-          ]));
-          extraConfig = ''
-      xdebug.mode=debug
-    '';
-        })
-        pkgs.php74.packages.composer
+    #     (pkgs.php74.buildEnv {
+    #       extensions = ({ enabled, all }: enabled ++ (with all; [
+    #         xdebug
+    #       ]));
+    #       extraConfig = ''
+    #   xdebug.mode=debug
+    # '';
+    #     })
+    #     pkgs.php74.packages.composer
         pkgs.cabal2nix
+        pkgs.dbeaver
         pkgs.jupyter
         pkgs.docker-compose
       ];
@@ -50,7 +53,7 @@
 
       programs.fish.shellInit = ''
             function rebuild
-              sudo nixos-rebuild switch
+              sudo nixos-rebuild switch -j6 --fast
               sudo /run/current-system/specialisation/work/activate
             end
             function activate-specialisation

@@ -4,7 +4,7 @@ with pkgs;
 stdenv.mkDerivation rec {
   pname = "get_current_screen_geometry";
   version = "1.0.0";
-  src = /etc/nixos/dotfiles/.pythonbin/get_current_screen_geometry;
+  src = /etc/nixos/.pythonbin/get_current_screen_geometry;
   unpackCmd = "";
   # dontUnpack = true;
 

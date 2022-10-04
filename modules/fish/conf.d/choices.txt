@@ -1,0 +1,5 @@
+Selection
+Current screen
+All screens
+Mouse region
+Mouse region (big)

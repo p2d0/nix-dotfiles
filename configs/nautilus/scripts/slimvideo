@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+IFS=$'\n'
+for f in $NAUTILUS_SCRIPT_SELECTED_FILE_PATHS ; do
+    ffmpeg -i $f -vcodec libx264 -crf 30 output.mp4 -y
+    # ffmpeg -vaapi_device /dev/dri/renderD128 -i $f -vf 'format=nv12,hwupload' -c:v hevc_vaapi -f mp4 -rc_mode 1 -qp 30 output.mp4
+
+    mv output.mp4 $f
+    notify-send "finished"
+done

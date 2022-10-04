@@ -7,14 +7,13 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./modules/hjkl.nix
+    ./modules/hjkl/hjkl.nix
     ./andrew.nix
     ./andrew-work.nix
     ./modules/options.nix
     ./modules/pipewire.nix
     <home-manager/nixos>
   ];
-
   nix = {
     package = pkgs.nixFlakes; # or versioned attributes like nixVersions.nix_2_8
     extraOptions = ''
@@ -24,15 +23,39 @@
 
   user = "andrew";
 
-  hardware.opengl.enable = true;
-  virtualisation.spiceUSBRedirection.enable = true;
-    # boot.plymouth.enable = true;
+  systemd.user.services.gtk-sni-tray = {
+    description = "Gtk sni tray";
+    wantedBy = [ "default.target" ];
+    serviceConfig = {
+      ExecStart =
+        "${pkgs.haskellPackages.status-notifier-item}/bin/status-notifier-watcher";
+    };
+  };
 
-    boot.kernelPackages = pkgs.linuxPackages_latest;
+  systemd.user.services.gnome-polkit = {
+    description = "Gnome polkit gui";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "graphical-session.target" ];
+    serviceConfig = {
+      ExecStart =
+        "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+    };
+  };
+
+  hardware.opengl.enable = true;
+  hardware.opengl.driSupport = true;
+  # hardware.opengl.extraPackages = [ pkgs.amdvlk ];
+  virtualisation.spiceUSBRedirection.enable = true;
+  # boot.plymouth.enable = true;
+
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.loader.grub.enable = true;
   boot.loader.grub.default = 2;
   boot.loader.grub.version = 2;
+  boot.blacklistedKernelModules = ["iTCO_wdt" "iTCO_vendor_support"];
+  boot.tmpOnTmpfs = true;
+  # boot.cleanTmpDir = true;
 
   boot.loader.grub.device = "/dev/sda";
 
@@ -44,21 +67,22 @@
 
   i18n.defaultLocale = "en_US.UTF-8";
 
+  services.gvfs.enable = true;
   services.udev.extraRules = ''
-SUBSYSTEM=="usb", ACTION=="add", ATTR{idVendor}=="0e8d", ATTR{idProduct}=="201d" MODE="0777" GROUP="users"
-'';
+    SUBSYSTEM=="usb", ACTION=="add", ATTR{idVendor}=="0e8d", ATTR{idProduct}=="201d" MODE="0777" GROUP="users"
+  '';
 
   services.xserver = {
     enable = true;
+    # videoDrivers = [ "amdgpu" ];
+
     # Doesnt work
     layout = "us,ru";
     xkbOptions = "grp:alt_shift_toggle";
 
     libinput = {
       enable = true;
-      mouse = {
-        accelProfile = "flat";
-      };
+      mouse = { accelProfile = "flat"; };
     };
     exportConfiguration = true;
     windowManager.xmonad = {
@@ -93,38 +117,31 @@ SUBSYSTEM=="usb", ACTION=="add", ATTR{idVendor}=="0e8d", ATTR{idProduct}=="201d"
   };
 
   nixpkgs.config =
-    let
-      nixpkgs-tars = "https://github.com/NixOS/nixpkgs/archive/";
-    in
-      {
-        allowUnfree = true;
-        allowBroken = true;
-        packageOverrides = pkgs: {
-          pr181605 = import
-            (fetchTarball
-              "${nixpkgs-tars}7cc979502c3dc5480ef3e4ffe1a05c897084d34b.tar.gz")
-            { config = config.nixpkgs.config; };
-        };
+    let nixpkgs-tars = "https://github.com/NixOS/nixpkgs/archive/";
+    in {
+      allowUnfree = true;
+      allowBroken = true;
+      packageOverrides = pkgs: {
+        pr181605 = import (fetchTarball
+          "${nixpkgs-tars}7cc979502c3dc5480ef3e4ffe1a05c897084d34b.tar.gz") {
+            config = config.nixpkgs.config;
+          };
       };
-
+    };
 
   services.blueman.enable = true;
   programs.dconf.enable = true;
 
-  services.udev.packages = with pkgs;
-    [
-      gnome.gnome-settings-daemon
-    ];
-
-
+  services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
+  programs.seahorse.enable = true;
   services = {
     gnome.gnome-keyring.enable = true;
     gnome.at-spi2-core.enable = true;
     dbus.enable = true;
   };
-  nix.settings.auto-optimise-store = true;
-  nix.gc.automatic = true;
-  # nix.gc.options = "--delete-older-than 8d";
+  # nix.settings.auto-optimise-store = true;
+  # nix.gc.automatic = true;
+  # nix.gc.options = "--delete-older-than 2d";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -152,12 +169,15 @@ SUBSYSTEM=="usb", ACTION=="add", ATTR{idVendor}=="0e8d", ATTR{idProduct}=="201d"
   ];
 
   environment.sessionVariables = {
-    GTK_DATA_PREFIX = [
-      "${config.system.path}"
-    ];
+    GTK_DATA_PREFIX = [ "${config.system.path}" ];
   };
 
   fonts.fontconfig = { enable = true; };
+  services.emacs.package = pkgs.emacsNativeComp;
+  services.emacs.install = true;
+  services.emacs.enable = true;
+  services.emacs.defaultEditor = true;
+  zramSwap.enable = true;
 
   fonts.fontconfig.defaultFonts = {
     monospace = [ "Noto Sans Mono" ];
@@ -170,25 +190,103 @@ SUBSYSTEM=="usb", ACTION=="add", ATTR{idVendor}=="0e8d", ATTR{idProduct}=="201d"
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
-    emacsNativeComp
+    clang
+    openssl
     pr181605.kdiskmark
     flameshot
     firefox
-    (import (fetchTarball "https://github.com/nix-community/rnix-lsp/archive/master.tar.gz"))
-    (pkgs.haskellPackages.callPackage ./modules/taffybar.nix { })
+    (import (fetchTarball
+      "https://github.com/aaronjanse/nix-eval-lsp/archive/master.tar.gz"))
+    (import (fetchTarball
+      "https://github.com/nix-community/rnix-lsp/archive/master.tar.gz"))
+    (callPackage ./pkgs/lantern.nix { })
+    (callPackage ./pkgs/psiphon.nix { })
+    (haskellPackages.callPackage ./modules/taffybar/build/taffybar.nix { })
     tmux
     git
     ripgrep
     fd
+    nixfmt
+    gimp
+    mpv
+    evince
+    xorg.xwininfo
+    pulseaudio
+    libusb
+    rocketchat-desktop
+    tetex
+    btop
+    brave
+    peco
+    ffmpeg
+    slop
+    libnotify
+    xclip
+    xdotool
+    libsForQt5.breeze-gtk
+    libsForQt5.breeze-qt5
+    pasystray
+    pavucontrol
+    paprefs
+    shotcut
+    jetbrains.idea-community
+    (callPackage ./pkgs/picom-animations.nix { })
+    (callPackage ./pkgs/puush-linux.nix { })
+    # (pkgs.callPackage /mnt/md127/nixpkgs/pkgs/applications/networking/instant-messengers/telegram/tdesktop { })
+    # (pkgs.qt6Packages.callPackage /mnt/md127/nixpkgs/pkgs/applications/networking/instant-messengers/telegram/tdesktop {
+    # abseil-cpp = pkgs.abseil-cpp_202111;
+    # })
+    #(pkgs.callPackage ./pkgs/tdesktop.nix { })
+    # (pkgs.callPackage ./pkgs/openhab.nix { })
+    #(callPackage ./pkgs/psiphon.nix { })
+    speedcrunch
+    discord
+    tdesktop
+    jpegoptim
+    chatterino2
+    filelight
+    haskellPackages.status-notifier-item
+    gnome.dconf-editor
+    gnome.gnome-characters
+    minidlna
+    ntfs3g
+    redshift
+    gnome.gnome-boxes
+    rustdesk
+    qbittorrent
+    looking-glass-client
+    gnome.nautilus
+    spice-vdagent
+    easyeffects
+    evolution
+    nodejs
+    libreoffice
+    vlc
+    wineWowPackages.stable
+    whatsapp-for-linux
+    libvirt
+    dunst
+    android-tools
+    python39Packages.yt-dlp
+    feh
+    alacritty
+    dmenu
+    gnome.gnome-disk-utility
+    cabal2nix
+    htop
+    # (pkgs.callPackage ./pkgs/get_current_screen_geometry.nix { })
+    # (pkgs.callPackage ./pkgs/get_current_screen_geometry.nix { })
+    (callPackage ./pkgs/guake-latest.nix { })
+    (callPackage ./pkgs/jetbrains-gateway.nix { })
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
 
   # List services that you want to enable:
   # Enable the OpenSSH daemon.
@@ -198,7 +296,7 @@ SUBSYSTEM=="usb", ACTION=="add", ATTR{idVendor}=="0e8d", ATTR{idProduct}=="201d"
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

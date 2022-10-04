@@ -28,7 +28,7 @@
 
       programs.fish.shellInit = ''
         function rebuild
-          sudo nixos-rebuild switch
+          sudo nixos-rebuild switch -j6 --fast
           sudo /run/current-system/specialisation/default/activate
         end
         function activate-specialisation
@@ -56,12 +56,12 @@
         };
       };
 
-      home.file = {
-        ".config/OpenTabletDriver" = {
-          source = ./dotfiles/.config/OpenTabletDriver;
-          recursive = true;
-        };
-      };
+      # home.file = {
+      #   ".config/OpenTabletDriver" = {
+      #     source = ./configs/OpenTabletDriver;
+      #     recursive = true;
+      #   };
+      # };
 
       xsession = {
         initExtra = ''

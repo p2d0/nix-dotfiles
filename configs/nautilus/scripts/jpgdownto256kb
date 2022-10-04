@@ -1,0 +1,4 @@
+IFS=$'\n'
+for f in $NAUTILUS_SCRIPT_SELECTED_FILE_PATHS ; do
+    jpegoptim -S 256 $f &
+done

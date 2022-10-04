@@ -1,81 +1,22 @@
 { config, lib, pkgs, ... }:
 
 {
-  home.packages = [
-    pkgs.nixfmt
-    pkgs.gimp
-    pkgs.mpv
-    pkgs.evince
-    pkgs.pulseaudio
-    pkgs.libusb
-    pkgs.tetex
-    pkgs.btop
-    pkgs.brave
-    pkgs.peco
-    pkgs.ffmpeg
-    pkgs.slop
-    pkgs.libnotify
-    pkgs.xclip
-    pkgs.xdotool
-    pkgs.libsForQt5.breeze-gtk
-    pkgs.libsForQt5.breeze-qt5
-    pkgs.pasystray
-    pkgs.pavucontrol
-    pkgs.paprefs
-    (pkgs.callPackage ./pkgs/picom-animations.nix { })
-    (pkgs.callPackage ./pkgs/lantern.nix { })
-    # (pkgs.callPackage ./pkgs/openhab.nix { })
-    pkgs.speedcrunch
-    pkgs.chatterino2
-    pkgs.filelight
-    pkgs.haskellPackages.status-notifier-item
-    pkgs.gnome.dconf-editor
-    pkgs.gnome.gnome-characters
-    pkgs.redshift
-    pkgs.gnome.gnome-boxes
-    pkgs.qbittorrent
-    pkgs.looking-glass-client
-    pkgs.gnome.nautilus
-    pkgs.spice-vdagent
-    pkgs.nodejs
-    pkgs.wine
-    pkgs.libvirt
-    pkgs.dunst
-    pkgs.android-tools
-    pkgs.tdesktop
-    pkgs.python39Packages.yt-dlp
-    pkgs.feh
-    pkgs.rofi
-    pkgs.alacritty
-    pkgs.dmenu
-    pkgs.gnome.gnome-disk-utility
-    pkgs.cabal2nix
-    pkgs.htop
-    # (pkgs.callPackage ./pkgs/get_current_screen_geometry.nix { })
-    # (pkgs.callPackage ./pkgs/get_current_screen_geometry.nix { })
-    (pkgs.callPackage ./pkgs/guake-latest.nix { })
+  imports = [
+    ./modules/xmonad/xmonad.nix
+    ./modules/ssh/ssh.nix
+    ./modules/fish/fish.nix
+    ./modules/taffybar/taffybar-home.nix
+    ./modules/rofi/rofi.nix
   ];
+  # home.packages = [
+  # ];
 
-  systemd.user.services.gtk-sni-tray = {
-    Unit.Description = "Gtk sni tray";
-    Install.WantedBy = [ "default.target" ];
-    Service = {
-      ExecStart = "${pkgs.haskellPackages.status-notifier-item}/bin/status-notifier-watcher";
-    };
-  };
-  systemd.user.services.gnome-polkit = {
-    Unit.Description = "Gnome polkit gui";
-    Install.WantedBy = [ "graphical.target" ];
-    Service = {
-      ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-    };
-  };
   xsession = {
     enable = true;
-    windowManager.xmonad = {
-      enable = true;
-      enableContribAndExtras = true;
-    };
+    # profileExtra = ''
+    #     eval $(/run/wrappers/bin/gnome-keyring-daemon --start --daemonize)
+    #     export SSH_AUTH_SOCK
+    #   '';
   };
   # services.flameshot.enable = true;
   programs.git = {
@@ -87,7 +28,9 @@
   xdg.userDirs = {
     enable = true;
   };
-  # services.emacs.enable = true;
+  services.emacs.enable = true;
+  services.emacs.package = pkgs.emacsNativeComp;
+  services.emacs.defaultEditor = true;
   services.lorri.enable = true;
   nixpkgs.overlays = [
     (import (builtins.fetchTarball {
@@ -95,17 +38,8 @@
         "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
     }))
   ];
-  services.emacs.package = pkgs.emacsUnstable;
+  #services.emacs.package = pkgs.emacsUnstable;
   manual.json.enable = true;
-  programs.fish.shellInit = ''
-        fish_vi_key_bindings
-        fish_add_path  $HOME/.emacs.d/bin
-        fish_add_path  /etc/nixos/dotfiles/.pythonbin
-        function fish_user_key_bindings
-            bind -M normal -m insert \cr 'peco_select_history (commandline -b)'
-            bind -M insert \cr 'peco_select_history (commandline -b)'
-        end'';
-  programs.fish.enable = true;
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowBroken = true;
   programs.direnv = {
@@ -118,133 +52,96 @@
     };
   };
 
-  programs.fish.plugins = [
-    {
-      name = "z";
-      src = pkgs.fetchFromGitHub {
-        owner = "jethrokuan";
-        repo = "z";
-        rev = "ddeb28a7b6a1f0ec6dae40c636e5ca4908ad160a";
-        sha256 = "0c5i7sdrsp0q3vbziqzdyqn4fmp235ax4mn4zslrswvn8g3fvdyh";
-      };
-    }
-    {
-      name = "peco";
-      src = pkgs.fetchFromGitHub {
-        owner = "oh-my-fish";
-        repo = "plugin-peco";
-        rev = "master";
-        sha256 = "sha256-EUoicPd+aUMlfCeo9BOuIiBlQSpPtMtMn5AUkZU3uQA=";
-      };
-    }
-  ];
 
   services.blueman-applet.enable = true;
   services.dropbox.enable = true;
   home.keyboard = null;
   # {layout = "us,ru"; options = [ "grp:alt_shift_toggle" ];};
-
   home.file = {
-    ".xmonad/lib" = {
-      source = ./dotfiles/.xmonad/lib;
-      recursive = true;
-    };
-
-    ".xmonad/xmonad.hs" = { source = ./dotfiles/.xmonad/xmonad.hs; };
-
-    ".config/rofi" = {
-      source = ./dotfiles/.config/rofi;
-      recursive = true;
-    };
     # ".config/GIMP" = {
-    #   source = ./dotfiles/.config/GIMP;
+    #   source = ./configs/GIMP;
     #   recursive = true;
     # };
 
     # ".config/Trolltech.conf" = {
-    #   source = ./dotfiles/.config/Trolltech.conf;
+    #   source = ./configs/Trolltech.conf;
     # };
-    ".config/brave-flags.conf" = {
-      source = ./dotfiles/.config/brave-flags.conf;
-    };
-    ".ssh" = {
-      source = /mnt/md127/backup_arch/.ssh;
-      recursive = true;
-    };
+    # ".config/brave-flags.conf" = {
+    #   source = ./configs/brave-flags.conf;
+    # };
+
     ".config/dunst" = {
-      source = ./dotfiles/.config/dunst;
+      source = ./configs/dunst;
       recursive = true;
     };
+
+    ".config/minidlna.conf".text = ''
+    network_interface=enp3s0
+    friendly_name=Pepega Server
+    inotify=yes
+    media_dir=/mnt/md127/Downloads/Brooklyn.Nine-Nine.S03.Season.3.Complete.1080p.WEB-DL.X264.10Bit-[maximersk]
+    '';
+
     ".config/albert" = {
-      source = ./dotfiles/.config/albert;
+      source = ./configs/albert;
       recursive = true;
     };
+
     ".config/fcitx5" = {
-      source = ./dotfiles/.config/fcitx5;
+      source = ./configs/fcitx5;
       recursive = true;
     };
 
     # ".config/omf" = {
-    #   source = ./dotfiles/.config/omf;
+    #   source = ./configs/omf;
     #   recursive = true;
     # };
 
     ".config/psiphon" = {
-      source = ./dotfiles/.config/psiphon;
+      source = ./configs/psiphon;
       recursive = true;
     };
 
     ".config/qt5ct" = {
-      source = ./dotfiles/.config/qt5ct;
+      source = ./configs/qt5ct;
       recursive = true;
     };
 
     ".config/slop" = {
-      source = ./dotfiles/.config/slop;
+      source = ./configs/slop;
       recursive = true;
     };
+
     ".config/swappy" = {
-      source = ./dotfiles/.config/swappy;
+      source = ./configs/swappy;
       recursive = true;
     };
+
     ".config/yay" = {
-      source = ./dotfiles/.config/yay;
+      source = ./configs/yay;
       recursive = true;
     };
-    # ".config/Trolltech.conf" = {
-    #   source = ./dotfiles/.config/Trolltech.conf;
-    # };
+
+    ".ideavimrc" = {
+      source = ./configs/ideavim/.ideavimrc;
+    };
+
+    ".intellimacs" = {
+      source = ./configs/ideavim/.intellimacs;
+      recursive = true;
+    };
+
     ".config/redshift.conf" = {
-      source = ./dotfiles/.config/redshift.conf;
+      source = ./configs/redshift.conf;
     };
+
     ".config/picom/picom.conf" = {
-      source = ./dotfiles/.config/picom/picom.conf;
+      source = ./configs/picom/picom.conf;
     };
+
     ".local/share/nautilus" = {
-      source = ./dotfiles/.local/share/nautilus;
+      source = ./configs/nautilus;
       recursive = true;
     };
-
-    ".config/taffybar/taffybar.css" = {
-      source = ./taffybar/taffybar.css;
-    };
-    ".config/taffybar/gotham.css" = {
-      source = ./taffybar/gotham.css;
-    };
-
-    ".config/fish/conf.d" = {
-      source = ./dotfiles/.config/fish/conf.d;
-      recursive = true;
-    };
-
-    ".config/fish/functions" = {
-      source = ./dotfiles/.config/fish/functions;
-      recursive = true;
-    };
-    ".config/fish/completions" = {
-      source = ./dotfiles/.config/fish/completions;
-      recursive = true;
-    };
-
   };
 }

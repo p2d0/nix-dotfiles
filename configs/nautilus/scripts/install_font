@@ -1,0 +1,5 @@
+IFS=$'\n'
+for f in $NAUTILUS_SCRIPT_SELECTED_FILE_PATHS ; do
+    cp $f ~/.local/share/fonts/
+done
+fc-cache

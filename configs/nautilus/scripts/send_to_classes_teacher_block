@@ -1,0 +1,2 @@
+IFS=$'\n'
+scp $NAUTILUS_SCRIPT_SELECTED_FILE_PATHS u0504861@favoka.art:~/www/favoka.art/modules/classes_teacher_block/img/
