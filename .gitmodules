@@ -1,5 +1,5 @@
 [submodule "modules/taffybar/build/taffybar"]
-	path = taffybar
+	path = modules/taffybar/build/taffybar
 	url = git@github.com:p2d0/my-taffybar-config.git
 [submodule "configs/ideavim/.intellimacs"]
 	path = configs/ideavim/.intellimacs
