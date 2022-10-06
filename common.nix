@@ -30,6 +30,7 @@
   };
   services.emacs.enable = true;
   services.emacs.package = pkgs.emacsNativeComp;
+  services.gnome-keyring.enable = true;
   services.emacs.defaultEditor = true;
   services.lorri.enable = true;
   nixpkgs.overlays = [
