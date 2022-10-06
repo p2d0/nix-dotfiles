@@ -126,6 +126,10 @@
           "${nixpkgs-tars}7cc979502c3dc5480ef3e4ffe1a05c897084d34b.tar.gz") {
             config = config.nixpkgs.config;
           };
+        master = import (fetchTarball
+          "${nixpkgs-tars}master.tar.gz") {
+            config = config.nixpkgs.config;
+          };
       };
     };
 
@@ -135,7 +139,7 @@
   services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
   programs.seahorse.enable = true;
   services = {
-    gnome.gnome-keyring.enable = true;
+    #gnome.gnome-keyring.enable = true;
     gnome.at-spi2-core.enable = true;
     dbus.enable = true;
   };
@@ -241,7 +245,7 @@
     #(callPackage ./pkgs/psiphon.nix { })
     speedcrunch
     discord
-    tdesktop
+    master.tdesktop
     jpegoptim
     chatterino2
     filelight
@@ -276,6 +280,7 @@
     htop
     # (pkgs.callPackage ./pkgs/get_current_screen_geometry.nix { })
     # (pkgs.callPackage ./pkgs/get_current_screen_geometry.nix { })
+    # NOTE https://nixos.wiki/wiki/Nixpkgs/Modifying_Packages
     (callPackage ./pkgs/guake-latest.nix { })
     (callPackage ./pkgs/jetbrains-gateway.nix { })
   ];
