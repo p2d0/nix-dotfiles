@@ -18,6 +18,7 @@ import XMonad.Hooks.ManageDocks (docks)
 import XMonad.Hooks.Minimize (minimizeEventHook)
 import XMonad.Hooks.TaffybarPagerHints (pagerHints)
 import qualified XMonad.StackSet as W
+import XMonad.Hooks.ManageHelpers
 
 -- instance Show (X ()) where
 --   show f = "Kekw"
@@ -35,7 +36,7 @@ myConfig =
       -- <+> dynamicPropertyChange
       --   "WM_CLASS"
       --   ( composeAll
-      --       [className =? "TelegramDesktop" --> doF W.shiftMaster
+      --       [title =? "Media viewer" --> doFullFloat
       --       ]
       --   ),
       manageHook = myManageHook

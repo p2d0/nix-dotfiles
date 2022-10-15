@@ -12,9 +12,13 @@ import XMonad.Hooks.Place (inBounds, placeHook, simpleSmart, underMouse, withGap
 import XMonad.Layout.NoBorders (hasBorder)
 import qualified XMonad.StackSet as W
 import XMonad.Util.NamedScratchpad
+import XMonad.Hooks.DynamicProperty
 
 contains :: (Eq a, Functor m, Show a) => m [a] -> [a] -> m Bool
 q `contains` x = fmap (\s -> Debug.Trace.trace (show x ++ " isInfixOf " ++ show s ++ " " ++ show (x `isInfixOf` s)) (x `isInfixOf` s)) q
+
+-- containz :: Query String -> String -> Query Bool
+-- q `containz` x = fmap (\s -> x `isInfixOf` s) q
 
 myPlacement = withGaps (16, 0, 16, 0) (underMouse (0, 0))
 
@@ -34,7 +38,8 @@ myManageHook =
         className =? "openhab-nativefier-9825c2" --> doShift "1_10"
       ]
     <+> composeOne -- https://bbs.archlinux.org/viewtopic.php?id=98695
-      [ className =? "Steam" -?> doFloat,
+      [
+        className =? "Steam" -?> doFloat,
         className =? "steam" -?> doFullFloat,
         className =? ".guake-wrapped" -?> doFloat,
         className =? "Guake" -?> doFloat,
