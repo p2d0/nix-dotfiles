@@ -1,5 +1,8 @@
 {pkgs ? import <nixpkgs> {} }:
 
+# RUNNING:
+# nix-instantiate --eval --strict . -A tests.config
+
 with pkgs;
 {
   tests = {

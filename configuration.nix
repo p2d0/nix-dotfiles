@@ -143,7 +143,7 @@
     gnome.at-spi2-core.enable = true;
     dbus.enable = true;
   };
-  # nix.settings.auto-optimise-store = true;
+  nix.settings.auto-optimise-store = true;
   # nix.gc.automatic = true;
   # nix.gc.options = "--delete-older-than 2d";
 
@@ -153,7 +153,9 @@
     pkgs.jetbrains-mono
     pkgs.font-awesome
     pkgs.freefont_ttf
-    pkgs.nerdfonts
+    (pkgs.nerdfonts.override {
+      fonts = [ "FiraCode" "DroidSansMono" ];
+    })
     pkgs.weather-icons
     pkgs.fantasque-sans-mono
     pkgs.comfortaa

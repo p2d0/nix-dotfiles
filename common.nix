@@ -13,10 +13,11 @@
 
   xsession = {
     enable = true;
-    # profileExtra = ''
-    #     eval $(/run/wrappers/bin/gnome-keyring-daemon --start --daemonize)
-    #     export SSH_AUTH_SOCK
-    #   '';
+    profileExtra = ''
+    dbus-update-activation-environment --systemd DISPLAY;'';
+      #     eval $(/run/wrappers/bin/gnome-keyring-daemon --start --daemonize)
+      #     export SSH_AUTH_SOCK
+      #   '';
   };
   # services.flameshot.enable = true;
   programs.git = {

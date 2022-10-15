@@ -83,7 +83,7 @@
 
       xsession = {
         initExtra = ''
-              feh --bg-fill /etc/nixos/work-bg.jpg;
+              feh --bg-fill /etc/nixos/motivational.jpg;
             '';
       };
 
