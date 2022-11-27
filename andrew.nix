@@ -28,7 +28,7 @@
 
       programs.fish.shellInit = ''
         function rebuild
-          sudo nixos-rebuild switch -j6 --fast
+          sudo nixos-rebuild switch -j4 --fast
           sudo /run/current-system/specialisation/default/activate
         end
         function activate-specialisation
@@ -65,7 +65,7 @@
 
       xsession = {
         initExtra = ''
-          feh --bg-fill /etc/nixos/motivational.jpg;
+          feh --bg-fill /etc/nixos/bg_old.png;
         '';
       };
 

@@ -7,6 +7,8 @@
     ./modules/fish/fish.nix
     ./modules/taffybar/taffybar-home.nix
     ./modules/rofi/rofi.nix
+    ./modules/editors/doom.nix
+    ./modules/gimp/gimp.nix
   ];
   # home.packages = [
   # ];
@@ -15,15 +17,18 @@
     enable = true;
     profileExtra = ''
     dbus-update-activation-environment --systemd DISPLAY;'';
-      #     eval $(/run/wrappers/bin/gnome-keyring-daemon --start --daemonize)
-      #     export SSH_AUTH_SOCK
-      #   '';
+    #     eval $(/run/wrappers/bin/gnome-keyring-daemon --start --daemonize)
+    #     export SSH_AUTH_SOCK
+    #   '';
   };
   # services.flameshot.enable = true;
   programs.git = {
     enable = true;
     userName = "patriot720";
     userEmail = "cerkin-3@yandex.ru";
+    aliases = {
+      coa = "!git add -A && git commit -m";
+    };
   };
 
   xdg.userDirs = {
@@ -44,6 +49,12 @@
   manual.json.enable = true;
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowBroken = true;
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      window.opacity = 0.7;
+    };
+  };
   programs.direnv = {
     enable = true;
   };
@@ -71,7 +82,7 @@
     # ".config/brave-flags.conf" = {
     #   source = ./configs/brave-flags.conf;
     # };
-
+    ".npmrc".text = "prefix = \${HOME}/.npm-packages";
     ".config/dunst" = {
       source = ./configs/dunst;
       recursive = true;

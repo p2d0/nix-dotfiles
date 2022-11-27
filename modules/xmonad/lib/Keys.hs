@@ -20,13 +20,13 @@ import XMonad.Actions.OnScreen (greedyViewOnScreen, viewOnScreen)
 import XMonad.Actions.Submap
 import XMonad.Config.Dmwit
 import qualified XMonad.Config.Prime as Xmonad.Config.Prime
+import qualified XMonad.Layout.BoringWindows as BW
 import XMonad.Layout.IndependentScreens
 import qualified XMonad.Prelude as L
 import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig
 import XMonad.Util.NamedScratchpad
 import XMonad.Util.Run
-import qualified XMonad.Layout.BoringWindows as BW
 
 sendMouseClickToWindow :: Window -> X ()
 sendMouseClickToWindow win =
@@ -82,18 +82,18 @@ functionKeys =
     ("<XF86AudioMicMute>", spawn "pactl set-source-mute @DEFAULT_SOURCE@ toggle"),
     ("<XF86MonBrightnessUp>", spawn "brightnessctl s +10%"),
     ("<XF86MonBrightnessDown>", spawn "brightnessctl s 10%-"),
-    ("<XF86AudioPlay>", spawn "--no-startup-id dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"),
-    ("<XF86AudioPause>", spawn "--no-startup-id dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause"),
-    ("<XF86AudioNext>", spawn "--no-startup-id dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"),
-    ("<XF86AudioPrev>", spawn "--no-startup-id dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous")
+    ("<XF86AudioPlay>", spawn "playerctl play-pause"),
+    ("<XF86AudioPause>", spawn "playerctl play-pause"),
+    ("<XF86AudioNext>", spawn "playerctl next"),
+    ("<XF86AudioPrev>", spawn "playerctl previous")
   ]
 
 screenshotAndRecordKeys =
-  [ ("C-<Print>", spawn "flameshot gui --delay=1000"),
-    -- ("C-<Print>", spawn "fish -c 'flameshot full -c'"),
+  [ ("<Print>", spawn "flameshot gui --delay=1000"),
+    ("C-<Print>", spawn "fish -c 'flameshot full -c'"),
     ("S-<Print>", spawn "fish -c 'flameshot_screen'"),
-    ("C-<Pause>", spawn "fish -c 'record'")
-    -- ("C-<Pause>", spawn "fish -c 'record_screen'")
+    ("<Pause>", spawn "fish -c 'record'"),
+    ("C-<Pause>", spawn "fish -c 'record_screen'")
   ]
 
 keysP =
@@ -103,7 +103,9 @@ keysP =
          ("M-c", namedScratchpadAction myScratchpads "calc"),
          ("M-M1-t", namedScratchpadAction myScratchpads "chat"),
          ("M-x", kill),
-         ("F12", spawn "guake-toggle"),
+         ("<F12>", namedScratchpadAction myScratchpads "term"),
+         -- ("F12", spawn "guake-toggle"),
+         -- ("F12", spawn "guake-toggle"),
          ("M-S-h", sendMessage Shrink),
          ("M-S-l", sendMessage Expand),
          ("M-z", withLastMinimized' toggleMaximization),
@@ -155,7 +157,9 @@ keys =
     ++ monitorsKeysForSwitchingAndMoving
     ++ windowSnappingKeys
     ++ [ ((mod4Mask .|. altMask, xK_j), windows W.swapDown),
-         ((mod4Mask .|. altMask, xK_k), windows W.swapUp)
+         ((mod4Mask .|. altMask, xK_k), windows W.swapUp),
+         ((mod4Mask, xK_Tab), nextWS),
+         ((mod4Mask .|. shiftMask, xK_Tab), prevWS)
          -- ((mod4Mask, xK_j), BW.focusUp),
          -- ((mod4Mask, xK_k), BW.focusDown)
        ]

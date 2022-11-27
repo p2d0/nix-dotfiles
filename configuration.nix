@@ -6,6 +6,7 @@
 
 {
   imports = [
+
     ./hardware-configuration.nix
     ./modules/hjkl/hjkl.nix
     ./andrew.nix
@@ -22,7 +23,7 @@
   };
 
   user = "andrew";
-
+  virtualisation.anbox.enable = true;
   systemd.user.services.gtk-sni-tray = {
     description = "Gtk sni tray";
     wantedBy = [ "default.target" ];
@@ -46,7 +47,7 @@
   hardware.opengl.driSupport = true;
   # hardware.opengl.extraPackages = [ pkgs.amdvlk ];
   virtualisation.spiceUSBRedirection.enable = true;
-  # boot.plymouth.enable = true;
+  #4boot.plymouth.enable = true;
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
@@ -63,7 +64,9 @@
 
   time.timeZone = "Europe/Moscow";
 
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+  };
 
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -121,20 +124,28 @@
     in {
       allowUnfree = true;
       allowBroken = true;
+      permittedInsecurePackages = [
+        "libdwarf-20181024"
+      ];
       packageOverrides = pkgs: {
-        pr181605 = import (fetchTarball
-          "${nixpkgs-tars}7cc979502c3dc5480ef3e4ffe1a05c897084d34b.tar.gz") {
-            config = config.nixpkgs.config;
-          };
-        master = import (fetchTarball
-          "${nixpkgs-tars}master.tar.gz") {
-            config = config.nixpkgs.config;
-          };
+        # pr181605 = import (fetchTarball
+        #   "${nixpkgs-tars}7cc979502c3dc5480ef3e4ffe1a05c897084d34b.tar.gz") {
+        #     config = config.nixpkgs.config;
+        #   };
+        # latest-commit = import (fetchTarball
+        #   "${nixpkgs-tars}683f25a6af6e5642cd426c69a4de1d434971a695.tar.gz") {
+        #     config = config.nixpkgs.config;
+        #   };
       };
     };
-
   services.blueman.enable = true;
   programs.dconf.enable = true;
+  services.cron = {
+    enable = true;
+    systemCronJobs = [
+      "30 21 * * * root sh -c 'shutdown now'"
+    ];
+  };
 
   services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
   programs.seahorse.enable = true;
@@ -157,6 +168,12 @@
       fonts = [ "FiraCode" "DroidSansMono" ];
     })
     pkgs.weather-icons
+    (callPackage ./fonts/bellandlamb.nix { })
+    (callPackage ./fonts/apex.nix { })
+    #corduoy https://www.behance.net/gallery/10761523/Corduroy-Slab-Free
+    # hamster script https://www.behance.net/gallery/24882765/Hamster-Script-(Free-Font)
+    # https://www.behance.net/gallery/77444055/APEX-MK3-FREE-ROBUST-DISPLAY-TYPEFACE
+    # FONTS https://visualcomposer.com/blog/free-fonts-for-commercial-use-to-download-in-2022/
     pkgs.fantasque-sans-mono
     pkgs.comfortaa
     pkgs.arphic-uming
@@ -165,6 +182,7 @@
     pkgs.ipafont
     pkgs.noto-fonts-cjk-sans
     pkgs.noto-fonts-emoji
+    pkgs.roboto
     pkgs.noto-fonts
     pkgs.noto-fonts-extra
     pkgs.fira-code
@@ -184,108 +202,135 @@
   services.emacs.enable = true;
   services.emacs.defaultEditor = true;
   zramSwap.enable = true;
+  services.journald.extraConfig = ''
+        SystemMaxUse=1G
+    '';
 
   fonts.fontconfig.defaultFonts = {
     monospace = [ "Noto Sans Mono" ];
     sansSerif = [ "Noto Sans" ];
     serif = [ "Noto Sans" ];
   };
-
+#   environment.etc = {
+#     "docker/daemon.json" = {
+#       text = ''
+# {
+#   "data-root": "/mnt/md127/docker"
+# }
+# '';
+#     };
+#   };
   fonts.fontDir.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    clang
-    openssl
-    pr181605.kdiskmark
-    flameshot
-    firefox
-    (import (fetchTarball
-      "https://github.com/aaronjanse/nix-eval-lsp/archive/master.tar.gz"))
-    (import (fetchTarball
-      "https://github.com/nix-community/rnix-lsp/archive/master.tar.gz"))
-    (callPackage ./pkgs/lantern.nix { })
-    (callPackage ./pkgs/psiphon.nix { })
-    (haskellPackages.callPackage ./modules/taffybar/build/taffybar.nix { })
-    tmux
-    git
-    ripgrep
-    fd
-    nixfmt
-    gimp
-    mpv
-    evince
-    xorg.xwininfo
-    pulseaudio
-    libusb
-    rocketchat-desktop
-    tetex
-    btop
-    brave
-    peco
-    ffmpeg
-    slop
-    libnotify
-    xclip
-    xdotool
-    libsForQt5.breeze-gtk
-    libsForQt5.breeze-qt5
-    pasystray
-    pavucontrol
-    paprefs
-    shotcut
-    jetbrains.idea-community
-    (callPackage ./pkgs/picom-animations.nix { })
-    (callPackage ./pkgs/puush-linux.nix { })
-    # (pkgs.callPackage /mnt/md127/nixpkgs/pkgs/applications/networking/instant-messengers/telegram/tdesktop { })
-    # (pkgs.qt6Packages.callPackage /mnt/md127/nixpkgs/pkgs/applications/networking/instant-messengers/telegram/tdesktop {
-    # abseil-cpp = pkgs.abseil-cpp_202111;
-    # })
-    #(pkgs.callPackage ./pkgs/tdesktop.nix { })
-    # (pkgs.callPackage ./pkgs/openhab.nix { })
-    #(callPackage ./pkgs/psiphon.nix { })
-    speedcrunch
-    discord
-    master.tdesktop
-    jpegoptim
-    chatterino2
-    filelight
-    haskellPackages.status-notifier-item
-    gnome.dconf-editor
-    gnome.gnome-characters
-    minidlna
-    ntfs3g
-    redshift
-    gnome.gnome-boxes
-    rustdesk
-    qbittorrent
-    looking-glass-client
-    gnome.nautilus
-    spice-vdagent
-    easyeffects
-    evolution
-    nodejs
-    libreoffice
-    vlc
-    wineWowPackages.stable
-    whatsapp-for-linux
-    libvirt
-    dunst
-    android-tools
-    python39Packages.yt-dlp
-    feh
-    alacritty
-    dmenu
-    gnome.gnome-disk-utility
-    cabal2nix
-    htop
-    # (pkgs.callPackage ./pkgs/get_current_screen_geometry.nix { })
-    # (pkgs.callPackage ./pkgs/get_current_screen_geometry.nix { })
-    # NOTE https://nixos.wiki/wiki/Nixpkgs/Modifying_Packages
-    (callPackage ./pkgs/guake-latest.nix { })
-    (callPackage ./pkgs/jetbrains-gateway.nix { })
-  ];
+  environment.systemPackages =
+    with pkgs;
+    let unstable = import <nixos-unstable> {}; # https://nixos.wiki/wiki/FAQ#How_can_I_install_a_package_from_unstable_while_remaining_on_the_stable_channel.3F
+    in [
+      vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+      wget
+      clang
+      openssl
+      flameshot
+      firefox
+      # (import (fetchTarball
+      #   "https://github.com/aaronjanse/nix-eval-lsp/archive/master.tar.gz"))
+      # (import (fetchTarball
+      #   "https://github.com/nix-community/rnix-lsp/archive/master.tar.gz"))
+      (callPackage ./pkgs/lantern.nix { })
+      (callPackage ./pkgs/psiphon.nix { })
+      (callPackage ./pkgs/warp.nix { })
+      #cloudflare-warp
+      (haskellPackages.callPackage ./modules/taffybar/build/taffybar.nix { })
+      tmux
+      # Config https://github.com/elken/tabbed/blob/master/config.h
+      # pkgs.tabbed.override {
+      # customConfig = builtins.readFile ../files/tabbed-config.h;
+      # };
+      (callPackage ./modules/tabbed/tabbed.nix { })
+      git
+      ripgrep
+      fd
+      nixfmt
+      gimp
+      mpv
+      inkscape
+      evince
+      xorg.xwininfo
+      pulseaudio
+      playerctl
+      libusb
+      rocketchat-desktop
+      tetex
+      btop
+      calibre
+      brave
+      peco
+      ffmpeg
+      slop
+      libnotify
+      xclip
+      xdotool
+      libsForQt5.breeze-gtk
+      libsForQt5.breeze-qt5
+      pasystray
+      pavucontrol
+      paprefs
+      shotcut
+      jetbrains.idea-community
+      (callPackage ./pkgs/picom-animations.nix { })
+      (callPackage ./pkgs/puush-linux.nix { })
+      # (pkgs.callPackage /mnt/md127/nixpkgs/pkgs/applications/networking/instant-messengers/telegram/tdesktop { })
+      # (pkgs.qt6Packages.callPackage /mnt/md127/nixpkgs/pkgs/applications/networking/instant-messengers/telegram/tdesktop {
+      # abseil-cpp = pkgs.abseil-cpp_202111;
+      # })
+      #(pkgs.callPackage ./pkgs/tdesktop.nix { })
+      # (pkgs.callPackage ./pkgs/openhab.nix { })
+      #(callPackage ./pkgs/psiphon.nix { })
+      speedcrunch
+      discord
+      unstable.tdesktop
+      jpegoptim
+      chatterino2
+      filelight
+      x11vnc
+      haskellPackages.status-notifier-item
+      gnome.dconf-editor
+      gnome.gnome-characters
+      minidlna
+      ntfs3g
+      redshift
+      gnome.gnome-boxes
+      rustdesk
+      qbittorrent
+      looking-glass-client
+      gnome.nautilus
+      spice-vdagent
+      easyeffects
+      evolution
+      nodejs
+      libreoffice
+      koreader
+      vlc
+      wineWowPackages.stable
+      whatsapp-for-linux
+      libvirt
+      dunst
+      android-tools
+      python39Packages.yt-dlp
+      anydesk
+      feh
+      alacritty
+      dmenu
+      gnome.gnome-disk-utility
+      cabal2nix
+      htop
+      unzip
+      (pkgs.callPackage ./pkgs/get_current_screen_geometry.nix { })
+      # (pkgs.callPackage ./pkgs/get_current_screen_geometry.nix { })
+      # NOTE https://nixos.wiki/wiki/Nixpkgs/Modifying_Packages
+      (callPackage ./pkgs/guake-latest.nix { })
+      (callPackage ./pkgs/jetbrains-gateway.nix { })
+    ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

@@ -55,8 +55,8 @@ myLayout =
 
     columns = multiCol [1] 1 0.01 0.5
 
-    tiled = limitWindows 3 $ magnifiercz' 1.4 $ Tall nmaster delta ratio
-    threeCol = magnifiercz' 1.4 $ ThreeColMid nmaster delta 0.5
+    tiled = limitWindows 3 $ Tall nmaster delta ratio
+    threeCol = ThreeColMid nmaster delta 0.5
 
     nmaster = 1
     ratio = 0.7

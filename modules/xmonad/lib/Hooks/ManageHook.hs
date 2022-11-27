@@ -28,7 +28,8 @@ myManageHook =
     <+> composeAll
       [ -- https://stackoverflow.com/questions/26028146/xmonad-open-a-window-into-a-particular-tile
         className =? "TelegramDesktop" --> doShift "1_10",
-        className =? "TelegramDesktop" --> hasBorder False,
+        className =? "TelegramDesktop" -->  hasBorder False,
+        className =? "tabbed" -->  hasBorder False,
         className =? "discord" --> doShift "1_8",
         className =? "qBittorrent" --> doShift "1_8",
         className =? ".guake-wrapped" --> hasBorder False,
@@ -39,6 +40,7 @@ myManageHook =
       ]
     <+> composeOne -- https://bbs.archlinux.org/viewtopic.php?id=98695
       [
+        title =? "Media viewer" -?> doIgnore,
         className =? "Steam" -?> doFloat,
         className =? "steam" -?> doFullFloat,
         className =? ".guake-wrapped" -?> doFloat,

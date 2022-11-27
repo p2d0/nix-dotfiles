@@ -11,8 +11,8 @@
       networking.extraHosts = ''
         # 127.0.0.1 youtube.com
         # 127.0.0.1 www.youtube.com
-        127.0.0.1 reddit.com
-        127.0.0.1 www.reddit.com
+        # 127.0.0.1 reddit.com
+        # 127.0.0.1 www.reddit.com
         127.0.0.1 www.osu.ppy.sh
         127.0.0.1 osu.ppy.sh
       '';
@@ -25,6 +25,7 @@
     { pkgs, guake, fetchFromGitHub, callPackage, ... }: {
       imports = [
         ./common.nix
+        ./modules/gnome-boxes.nix
       ];
 
       home.packages = [
@@ -41,6 +42,7 @@
     #     pkgs.php74.packages.composer
         pkgs.cabal2nix
         pkgs.dbeaver
+        pkgs.ccls
         pkgs.jupyter
         pkgs.docker-compose
       ];
@@ -53,7 +55,7 @@
 
       programs.fish.shellInit = ''
             function rebuild
-              sudo nixos-rebuild switch -j6 --fast
+              sudo nixos-rebuild switch --fast
               sudo /run/current-system/specialisation/work/activate
             end
             function activate-specialisation
@@ -83,7 +85,7 @@
 
       xsession = {
         initExtra = ''
-              feh --bg-fill /etc/nixos/motivational.jpg;
+              feh --bg-fill /etc/nixos/work-bg.jpg;
             '';
       };
 

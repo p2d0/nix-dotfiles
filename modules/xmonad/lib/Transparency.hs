@@ -7,7 +7,8 @@ import XMonad.Hooks.FadeWindows (fadeWindowsEventHook, fadeWindowsLogHook, trans
 myFadeHook =
   composeAll
     [ className =? "chatterino" --> transparency 0.2,
-      className =? "SpeedCrunch" --> transparency 0.2
+      className =? "SpeedCrunch" --> transparency 0.2,
+      className =? "tabbed" --> transparency 0.1
       -- isFloating --> transparency 0.1
     ]
 

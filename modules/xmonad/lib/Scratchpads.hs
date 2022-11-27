@@ -9,5 +9,6 @@ import qualified XMonad.StackSet as W
 myScratchpads =
   [ -- NS "calc" "gnome-calculator" (className =? "Gnome-calculator") defaultFloating
     NS "calc" "speedcrunch" (className =? "SpeedCrunch") (doRectFloat (W.RationalRect 0.8 0.20 0.2 0.6)),
-    NS "chat" "chatterino" (className =? "chatterino") (doRectFloat (W.RationalRect 0.85 0.20 0.15 0.6))
+    NS "chat" "chatterino" (className =? "chatterino") (doRectFloat (W.RationalRect 0.85 0.20 0.15 0.6)),
+    NS "term" "tabbed alacritty --embed" (className =? "tabbed") (doRectFloat (W.RationalRect 0 0 1 0.4))
   ]
