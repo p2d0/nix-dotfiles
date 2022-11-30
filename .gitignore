@@ -1,3 +1,4 @@
 hadrware-configuration.nix
 result
 Plugins/
+.emacs.d

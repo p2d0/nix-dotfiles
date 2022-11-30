@@ -7,7 +7,7 @@
     ./modules/fish/fish.nix
     ./modules/taffybar/taffybar-home.nix
     ./modules/rofi/rofi.nix
-    ./modules/editors/doom.nix
+    ./modules/editors/emacs.nix
     ./modules/gimp/gimp.nix
   ];
   # home.packages = [
@@ -29,6 +29,10 @@
     aliases = {
       coa = "!git add -A && git commit -m";
     };
+  };
+  modules.emacs-with-doom = {
+    enable = true;
+    emacs-dir = /etc/nixos/modules/editors/.emacs.d;
   };
 
   xdg.userDirs = {

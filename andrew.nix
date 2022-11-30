@@ -25,7 +25,6 @@
         pkgs.stremio
         pkgs.chatterino2
       ];
-
       programs.fish.shellInit = ''
         function rebuild
           sudo nixos-rebuild switch -j4 --fast
@@ -62,6 +61,8 @@
       #     recursive = true;
       #   };
       # };
+
+      # https://nixos.wiki/wiki/Flakes
 
       xsession = {
         initExtra = ''
