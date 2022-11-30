@@ -37,15 +37,7 @@
       source = ./conf.d;
       recursive = true;
     };
-
-    ".config/fish/functions" = {
-      source = ./functions;
-      recursive = true;
-    };
-
-    ".config/fish/completions" = {
-      source = ./completions;
-      recursive = true;
-    };
+    ".config/fish/functions".source = config.lib.file.mkOutOfStoreSymlink ./functions;
+    ".config/fish/completions".source = config.lib.file.mkOutOfStoreSymlink ./completions;
   };
 }

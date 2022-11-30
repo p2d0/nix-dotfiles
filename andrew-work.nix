@@ -40,11 +40,6 @@
     # '';
     #     })
     #     pkgs.php74.packages.composer
-        pkgs.cabal2nix
-        pkgs.dbeaver
-        pkgs.ccls
-        pkgs.jupyter
-        pkgs.docker-compose
       ];
 
       programs.git = {

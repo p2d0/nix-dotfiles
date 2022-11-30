@@ -111,6 +111,7 @@ keysP =
          ("M-z", withLastMinimized' toggleMaximization),
          ("M-t", withFocused toggleFloat),
          ("M-e", spawn "emacsclient --eval \"(emacs-everywhere)\""),
+         ("M-n", spawn "emacsclient --eval \"(emacs-everywhere-note)\""),
          ("M-a", windows copyToSecondScreen),
          ("M-S-a", killAllOtherCopies),
          ("M-S-t", spawn "pkill my-taffybar;my-taffybar"),

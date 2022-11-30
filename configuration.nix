@@ -257,6 +257,11 @@
       evince
       xorg.xwininfo
       pulseaudio
+      cabal2nix
+      dbeaver
+      ccls
+      jupyter
+      docker-compose
       playerctl
       libusb
       rocketchat-desktop

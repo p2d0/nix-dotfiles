@@ -51,6 +51,7 @@ myManageHook =
         className =? "Boxes" -?> doFloat,
         title =? "emacs-everywhere" -?> doFloat,
         title =? "org-roam-everywhere" -?> doFloat,
+        title =? "emacs-note" -?> doFloat,
         className =? "Blueman-manager" -?> doCenterFloat,
         className =? "blueman-manager-wrapped" -?> doFloat,
         isDialog -?> doFloat,

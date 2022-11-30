@@ -33,19 +33,16 @@ function make-youtube-clip -d "Download trim and copy to clipboard youtube video
     else
         echo "Auto generated subs"
         yt-dlp --write-auto-sub --no-continue $argv[1] -o tmp_vid.mp4 -f mp4
-        python3 $HOME/.zsh-scripts/clean_youtube_dl_auto_subs.py tmp_vid.en.vtt > tmp_vid.vtt;
+        clean_youtube_dl_auto_subs tmp_vid.en.vtt > tmp_vid.vtt;
     end
 
     if set -q _flag_start; and begin set -q _flag_length; or set -q _flag_end; end;
         if set -q _flag_length
-# (not set -q _flag_nosubs and subtitles=tmp_vid.vtt:force_style="FontSize=$fontsize")
             echo "Length based ffmpeg"
-# -vf -c:v libx264 -x264-params crf=22 -preset fast -profile:v high
-            ffmpeg -ss $_flag_start -i tmp_vid.mp4 -t $_flag_length  tmp_vid_out.mp4
+            ffmpeg -ss $_flag_start -i tmp_vid.mp4 -t $_flag_length -vf subtitles=tmp_vid.vtt:force_style="FontSize=$fontsize" -c:v libx264 -x264-params crf=22 -preset fast -profile:v high tmp_vid_out.mp4
         else if set -q _flag_end
             echo "Timestamp based ffmpeg"
-# -vf -c:v libx264 -x264-params crf=22 -preset fast -profile:v high
-            ffmpeg -i tmp_vid.mp4 -ss $_flag_start -to $_flag_end  tmp_vid_out.mp4
+            ffmpeg -i tmp_vid.mp4 -ss $_flag_start -to $_flag_end -vf subtitles=tmp_vid.vtt:force_style="FontSize=$fontsize" -c:v libx264 -x264-params crf=22 -preset fast -profile:v high tmp_vid_out.mp4
         end
         mv tmp_vid_out.mp4 tmp_vid.mp4
     end
