@@ -1,10 +1,10 @@
 { config, lib, pkgs, ... }:
 
 {
-  xsession.windowManager.xmonad = {
-    enable = true;
-    enableContribAndExtras = true;
-  };
+  # displayManager = {
+  #   defaultSession = "none+xmonad";
+  # };
+
   # systemd.user.tmpfiles.rules = [
   #   "L ${config.home.homeDirectory}/.xmonad/lib - - - - /etc/nixos/modules/xmonad/lib"
   # ];

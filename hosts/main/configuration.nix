@@ -6,14 +6,8 @@
 
 {
   imports = [
-
     ./hardware-configuration.nix
-    ./modules/hjkl/hjkl.nix
-    ./andrew.nix
-    ./andrew-work.nix
-    ./modules/options.nix
-    ./modules/pipewire.nix
-    <home-manager/nixos>
+    # <home-manager/nixos>
   ];
   nix = {
     package = pkgs.nixFlakes; # or versioned attributes like nixVersions.nix_2_8
@@ -160,42 +154,12 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  fonts.fonts = with pkgs; [
-    pkgs.jetbrains-mono
-    pkgs.font-awesome
-    pkgs.freefont_ttf
-    (pkgs.nerdfonts.override {
-      fonts = [ "FiraCode" "DroidSansMono" ];
-    })
-    pkgs.weather-icons
-    (callPackage ./fonts/bellandlamb.nix { })
-    (callPackage ./fonts/apex.nix { })
-    #corduoy https://www.behance.net/gallery/10761523/Corduroy-Slab-Free
-    # hamster script https://www.behance.net/gallery/24882765/Hamster-Script-(Free-Font)
-    # https://www.behance.net/gallery/77444055/APEX-MK3-FREE-ROBUST-DISPLAY-TYPEFACE
-    # FONTS https://visualcomposer.com/blog/free-fonts-for-commercial-use-to-download-in-2022/
-    pkgs.fantasque-sans-mono
-    pkgs.comfortaa
-    pkgs.arphic-uming
-    pkgs.source-han-code-jp
-    pkgs.baekmuk-ttf
-    pkgs.ipafont
-    pkgs.noto-fonts-cjk-sans
-    pkgs.noto-fonts-emoji
-    pkgs.roboto
-    pkgs.noto-fonts
-    pkgs.noto-fonts-extra
-    pkgs.fira-code
-    pkgs.hanazono
-    pkgs.dejavu_fonts
-    pkgs.material-design-icons
-    pkgs.material-icons
-  ];
 
   environment.sessionVariables = {
     GTK_DATA_PREFIX = [ "${config.system.path}" ];
   };
 
+  modules.fonts.enable = true;
   fonts.fontconfig = { enable = true; };
   services.emacs.package = pkgs.emacsNativeComp;
   services.emacs.install = true;
@@ -236,17 +200,17 @@
       #   "https://github.com/aaronjanse/nix-eval-lsp/archive/master.tar.gz"))
       # (import (fetchTarball
       #   "https://github.com/nix-community/rnix-lsp/archive/master.tar.gz"))
-      (callPackage ./pkgs/lantern.nix { })
-      (callPackage ./pkgs/psiphon.nix { })
-      (callPackage ./pkgs/warp.nix { })
+      (callPackage /etc/nixos/pkgs/lantern.nix { })
+      (callPackage /etc/nixos/pkgs/psiphon.nix { })
+      (callPackage /etc/nixos/pkgs/warp.nix { })
       #cloudflare-warp
-      (haskellPackages.callPackage ./modules/taffybar/build/taffybar.nix { })
+      (haskellPackages.callPackage /etc/nixos/modules/taffybar/build/taffybar.nix { })
       tmux
       # Config https://github.com/elken/tabbed/blob/master/config.h
       # pkgs.tabbed.override {
       # customConfig = builtins.readFile ../files/tabbed-config.h;
       # };
-      (callPackage ./modules/tabbed/tabbed.nix { })
+      (callPackage /etc/nixos/modules/tabbed/tabbed.nix { })
       git
       ripgrep
       fd
@@ -282,13 +246,13 @@
       paprefs
       shotcut
       jetbrains.idea-community
-      (callPackage ./pkgs/picom-animations.nix { })
-      (callPackage ./pkgs/puush-linux.nix { })
+      (callPackage /etc/nixos/pkgs/picom-animations.nix { })
+      (callPackage /etc/nixos/pkgs/puush-linux.nix { })
       # (pkgs.callPackage /mnt/md127/nixpkgs/pkgs/applications/networking/instant-messengers/telegram/tdesktop { })
       # (pkgs.qt6Packages.callPackage /mnt/md127/nixpkgs/pkgs/applications/networking/instant-messengers/telegram/tdesktop {
       # abseil-cpp = pkgs.abseil-cpp_202111;
       # })
-      #(pkgs.callPackage ./pkgs/tdesktop.nix { })
+      #(pkgs.callPackage /etc/nixos/pkgs/tdesktop.nix { })
       # (pkgs.callPackage ./pkgs/openhab.nix { })
       #(callPackage ./pkgs/psiphon.nix { })
       speedcrunch
@@ -330,11 +294,11 @@
       cabal2nix
       htop
       unzip
-      (pkgs.callPackage ./pkgs/get_current_screen_geometry.nix { })
-      # (pkgs.callPackage ./pkgs/get_current_screen_geometry.nix { })
+      (pkgs.callPackage /etc/nixos/pkgs/get_current_screen_geometry.nix { })
+      # (pkgs.callPackage /etc/nixos/pkgs/get_current_screen_geometry.nix { })
       # NOTE https://nixos.wiki/wiki/Nixpkgs/Modifying_Packages
-      (callPackage ./pkgs/guake-latest.nix { })
-      (callPackage ./pkgs/jetbrains-gateway.nix { })
+      (callPackage /etc/nixos/pkgs/guake-latest.nix { })
+      (callPackage /etc/nixos/pkgs/jetbrains-gateway.nix { })
     ];
 
   # Some programs need SUID wrappers, can be configured further or are

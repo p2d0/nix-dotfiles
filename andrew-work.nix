@@ -27,7 +27,7 @@
         ./common.nix
         ./modules/gnome-boxes.nix
       ];
-
+      home.stateVersion = "22.05";
       home.packages = [
 
         # TODO localize
@@ -50,7 +50,7 @@
 
       programs.fish.shellInit = ''
             function rebuild
-              sudo nixos-rebuild switch --fast
+              sudo nixos-rebuild switch --fast --no-flake
               sudo /run/current-system/specialisation/work/activate
             end
             function activate-specialisation

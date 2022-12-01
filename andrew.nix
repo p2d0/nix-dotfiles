@@ -19,6 +19,7 @@
       imports = [
         ./common.nix
       ];
+      home.stateVersion = "22.05";
       home.packages = [
         pkgs.obs-studio
         pkgs.lutris
@@ -27,7 +28,7 @@
       ];
       programs.fish.shellInit = ''
         function rebuild
-          sudo nixos-rebuild switch -j4 --fast
+          sudo nixos-rebuild switch -j4 --fast --no-flake
           sudo /run/current-system/specialisation/default/activate
         end
         function activate-specialisation

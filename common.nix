@@ -32,7 +32,6 @@
   };
   modules.emacs-with-doom = {
     enable = true;
-    emacs-dir = /etc/nixos/modules/editors/.emacs.d;
   };
 
   xdg.userDirs = {
@@ -47,6 +46,7 @@
     (import (builtins.fetchTarball {
       url =
         "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
+      sha256 = "sha256:11bk2xi4cxxvixff01ls51a0j2a5s8zyhxngvhpy4ig0966xw2lk";
     }))
   ];
   #services.emacs.package = pkgs.emacsUnstable;

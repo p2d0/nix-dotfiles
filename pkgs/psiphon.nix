@@ -6,8 +6,8 @@ buildGoPackage {
   src = fetchFromGitHub {
     owner = "Psiphon-Labs";
     repo = "psiphon-tunnel-core";
-    rev = "master";
-    sha256 = "SLwh+ComVcm+FiaE3I801tHqdVXEHQDah3XEKI4yCuk=";
+    rev = "87f8e6d118bdd57942a6902fedbf814225b0092d";
+    sha256 = "JIiupsNxNyvDH6zCjQ8VIilfo3LQkATixEX2Bl3XNnw=";
   } ;
 
   subPackages = [

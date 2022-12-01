@@ -18,8 +18,8 @@ in {
   };
   config = mkIf cfg.enable {
     home.file = {
-      ".doom.d".source = config.lib.file.mkOutOfStoreSymlink ./.doom.d;
-      ".emacs.d".source = config.lib.file.mkOutOfStoreSymlink cfg.emacs-dir;
+      "${config.home.homeDirectory}/.doom.d".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/modules/editors/.doom.d;
+      # ".emacs.d".source = config.lib.file.mkOutOfStoreSymlink cfg.emacs-dir;
     };
   };
 }
