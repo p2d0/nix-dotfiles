@@ -37,7 +37,7 @@
       source = ./conf.d;
       recursive = true;
     };
-    ".config/fish/functions".source = config.lib.file.mkOutOfStoreSymlink ./functions;
-    ".config/fish/completions".source = config.lib.file.mkOutOfStoreSymlink ./completions;
+    ".config/fish/functions".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/modules/fish/functions;
+    ".config/fish/completions".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/modules/fish/completions;
   };
 }

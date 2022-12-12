@@ -22,10 +22,28 @@
     #   '';
   };
   # services.flameshot.enable = true;
+  #  use of undeclared identifier 'wl_proxy_marshal_flags'
+  # programs.chromium =
+  #   let unstable = import <nixos-unstable> {};
+  #   in {
+  #     enable = true;
+  #     package = (unstable.ungoogled-chromium.mkDerivation (base: rec {
+  #       name = "dark-mode-chromium";
+  #       patches = [
+  #         (pkgs.fetchpatch {
+  #           url = "https://raw.githubusercontent.com/PF4Public/gentoo-overlay/84f77f55a09f6ce0523591d7c300bf9deb2a1c01/www-client/ungoogled-chromium/files/gtk-fix-prefers-color-scheme-query.diff";
+  #           sha256 = "sha256-y0v+ZArCsKVKGYSBChpugvPUmXiwnAxYHkVhAgT/aOk=";
+  #         })];
+  #     }));
+  #   };
+
   programs.git = {
     enable = true;
     userName = "patriot720";
     userEmail = "cerkin-3@yandex.ru";
+    extraConfig = {
+      core.autocrlf = false;
+    };
     aliases = {
       coa = "!git add -A && git commit -m";
     };
@@ -37,19 +55,8 @@
   xdg.userDirs = {
     enable = true;
   };
-  services.emacs.enable = true;
-  services.emacs.package = pkgs.emacsNativeComp;
   services.gnome-keyring.enable = true;
-  services.emacs.defaultEditor = true;
   services.lorri.enable = true;
-  nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
-      url =
-        "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
-      sha256 = "sha256:11bk2xi4cxxvixff01ls51a0j2a5s8zyhxngvhpy4ig0966xw2lk";
-    }))
-  ];
-  #services.emacs.package = pkgs.emacsUnstable;
   manual.json.enable = true;
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowBroken = true;
@@ -147,13 +154,13 @@
       source = ./configs/ideavim/.intellimacs;
       recursive = true;
     };
-
+    ".config/darkman".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/darkman;
     ".config/redshift.conf" = {
-      source = ./configs/redshift.conf;
+      source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/redshift.conf;
     };
 
     ".config/picom/picom.conf" = {
-      source = ./configs/picom/picom.conf;
+      source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/picom/picom.conf;
     };
 
     ".local/share/nautilus" = {

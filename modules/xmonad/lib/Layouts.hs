@@ -37,6 +37,8 @@ myTabConfig =
 --         (Decoration TabbedDecoration DefaultShrinker) Simplest)
 --      (ModifiedLayout LimitWindows (ModifiedLayout Magnifier ThreeCol)))
 -- Window -> b
+-- host specific
+-- https://hackage.haskell.org/package/xmonad-contrib-0.17.1/docs/XMonad-Layout-OnHost.html
 
 -- modifiers :: l -> ModifiedLayout m l a
 modifiers = lessBorders Screen . avoidStrutsOn [D] . (minimize . boringAuto) -- TODO generic type signature

@@ -1,0 +1,42 @@
+#!/usr/bin/env nix-shell
+#!nix-shell -i python3 -p "python3.withPackages(ps: [])"
+
+# Untested, just off the top of my head
+
+import dbus
+
+MY_INTERFACE = 'com.example.Foo'
+
+class Foo(dbus.service.object):
+    # …
+
+    @dbus.service.method(interface=dbus.PROPERTIES_IFACE,
+                         in_signature='ss', out_signature='v')
+    def Get(self, interface_name, property_name):
+        return self.GetAll(interface_name)[property_name]
+
+    @dbus.service.method(interface=dbus.PROPERTIES_IFACE,
+                         in_signature='s', out_signature='a{sv}')
+    def GetAll(self, interface_name):
+        if interface_name == MY_INTERFACE:
+            return { 'Blah': self.blah,
+                     # …
+                   }
+        else:
+            raise dbus.exceptions.DBusException(
+                'com.example.UnknownInterface',
+                'The Foo object does not implement the %s interface'
+                    % interface_name)
+
+    @dbus.service.method(interface=dbus.PROPERTIES_IFACE,
+                         in_signature='ssv'):
+    def Set(self, interface_name, property_name, new_value):
+        # validate the property name and value, update internal state…
+        self.PropertiesChanged(interface_name,
+            { property_name: new_value }, [])
+
+    @dbus.service.signal(interface=dbus.PROPERTIES_IFACE,
+                         signature='sa{sv}as')
+    def PropertiesChanged(self, interface_name, changed_properties,
+                          invalidated_properties):
+        pass

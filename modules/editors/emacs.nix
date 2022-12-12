@@ -11,15 +11,10 @@ in {
       description = ''
       '';
     };
-    emacs-dir = mkOption {
-      type = types.path;
-    };
-
   };
   config = mkIf cfg.enable {
     home.file = {
       "${config.home.homeDirectory}/.doom.d".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/modules/editors/.doom.d;
-      # ".emacs.d".source = config.lib.file.mkOutOfStoreSymlink cfg.emacs-dir;
     };
   };
 }

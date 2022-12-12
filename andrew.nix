@@ -28,33 +28,39 @@
       ];
       programs.fish.shellInit = ''
         function rebuild
-          sudo nixos-rebuild switch -j4 --fast --no-flake
+          sudo nixos-rebuild switch --fast --impure --flake '/etc/nixos/.?submodules=1#mysystem'
           sudo /run/current-system/specialisation/default/activate
         end
         function activate-specialisation
-          sudo /run/current-system/specialisation/work/activate
+          sudo /run/current-system/specialisation/default/activate
         end'';
 
+      xdg.systemDirs.data = [
+        "/etc/nixos/configs/darkman"
+      ];
+      services.xsettingsd = {
+        enable = true;
+      };
       qt = {
         enable = true;
-        platformTheme = "gnome";
-        style = {
-          name = "breeze-dark";
-          package = pkgs.breeze-qt5;
-        };
+        platformTheme = "gtk";
+        # style = {
+        #   name = "breeze";
+        #   package = pkgs.breeze-qt5;
+        # };
       };
 
-      gtk = {
-        enable = true;
-        theme = {
-          name = "Breeze-Dark";
-          package = pkgs.breeze-gtk;
-        };
-        iconTheme = {
-          name = "Obsidian";
-          package = pkgs.iconpack-obsidian;
-        };
-      };
+      # gtk = {
+      #   enable = true;
+      #   # theme = {
+      #   #   name = "Breeze";
+      #   #   package = pkgs.breeze-gtk;
+      #   # };
+      #   # iconTheme = {
+      #   #   name = "Obsidian";
+      #   #   package = pkgs.iconpack-obsidian;
+      #   # };
+      # };
 
       # home.file = {
       #   ".config/OpenTabletDriver" = {
@@ -65,11 +71,11 @@
 
       # https://nixos.wiki/wiki/Flakes
 
-      xsession = {
-        initExtra = ''
-          feh --bg-fill /etc/nixos/bg_old.png;
-        '';
-      };
+      # xsession = {
+      #   initExtra = ''
+      #     feh --bg-fill /etc/nixos/bg_old.png;
+      #   '';
+      # };
 
       # TODO is it a good way?
       systemd.user.tmpfiles.rules = [

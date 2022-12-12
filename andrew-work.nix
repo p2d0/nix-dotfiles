@@ -29,7 +29,9 @@
       ];
       home.stateVersion = "22.05";
       home.packages = [
-
+        pkgs.python-language-server
+        pkgs.postman
+        pkgs.python3
         # TODO localize
     #     (pkgs.php74.buildEnv {
     #       extensions = ({ enabled, all }: enabled ++ (with all; [
@@ -50,33 +52,38 @@
 
       programs.fish.shellInit = ''
             function rebuild
-              sudo nixos-rebuild switch --fast --no-flake
+              sudo nixos-rebuild switch --fast --impure --flake '/etc/nixos/.?submodules=1#mysystem'
               sudo /run/current-system/specialisation/work/activate
             end
             function activate-specialisation
               sudo /run/current-system/specialisation/work/activate
             end'';
-
+      xdg.systemDirs.data = [
+        "/etc/nixos/configs/darkman"
+      ];
+      services.xsettingsd = {
+        enable = true;
+      };
       qt = {
         enable = true;
-        platformTheme = "gnome";
-        style = {
-          name = "breeze-dark";
-          package = pkgs.breeze-qt5;
-        };
+        platformTheme = "gtk";
+        # style = {
+        #   name = "adwaita";
+        #   package = pkgs.breeze-qt5;
+        # };
       };
 
-      gtk = {
-        enable = true;
-        theme = {
-          name = "Breeze-Dark";
-          package = pkgs.breeze-gtk;
-        };
-        iconTheme = {
-          name = "Obsidian";
-          package = pkgs.iconpack-obsidian;
-        };
-      };
+      # gtk = {
+      #   enable = true;
+      #   theme = {
+      #     name = "Adwaita";
+      #     package = pkgs.breeze-gtk;
+      #   };
+      #   iconTheme = {
+      #     name = "Obsidian";
+      #     package = pkgs.iconpack-obsidian;
+      #   };
+      # };
 
       xsession = {
         initExtra = ''

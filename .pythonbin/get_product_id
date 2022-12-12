@@ -1,0 +1,17 @@
+#!/usr/bin/env nix-shell
+#!nix-shell -i python3 -p "python3.withPackages(ps: [ps.requests ps.pyperclip])"
+
+import sys
+import requests
+import pyperclip;
+
+def get_id_product(query):
+    result = requests.get("https://favoka.art/modules/appointments_module/ajax.php?action=findProduct&query=" + query)
+    json = result.json();
+    id_product = json[0]['id_product'] if len(json) else "NULL";
+    name = json[0]['name'] if len(json) else "NULL"
+    print(id_product)
+    print(name)
+    pyperclip.copy(id_product)
+
+get_id_product(sys.argv[1])

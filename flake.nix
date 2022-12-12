@@ -24,6 +24,21 @@
           ];
           specialArgs = { inherit inputs; };
         };
+
+        mysystem-light = inputs.nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            home-manager.nixosModules.home-manager
+            ./modules/hjkl/hjkl.nix
+            ./modules/fonts/fonts.nix
+            ./andrew-light.nix
+            ./andrew-work.nix
+            ./modules/options.nix
+            ./modules/pipewire.nix
+            ./hosts/main/configuration.nix
+          ];
+          specialArgs = { inherit inputs; };
+        };
       };
     };
 }

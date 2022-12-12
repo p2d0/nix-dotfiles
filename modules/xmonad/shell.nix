@@ -6,6 +6,7 @@ pkgs.mkShell {
     (pkgs.haskellPackages.ghcWithPackages (self: [
       self.haskell-language-server # TODO not system wide?
       self.xmonad
+      self.dbus
       self.xmonad-contrib
       self.xmonad-extras
     ]))

@@ -10,12 +10,10 @@
   # ];
 
   home.file = {
-    ".xmonad/lib" = {
-      source = config.lib.file.mkOutOfStoreSymlink ./lib;
-    };
+    ".xmonad/lib".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/modules/xmonad/lib;
 
     ".xmonad/xmonad.hs" = {
-      source = config.lib.file.mkOutOfStoreSymlink ./xmonad.hs;
+      source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/modules/xmonad/xmonad.hs;
     };
   };
 }

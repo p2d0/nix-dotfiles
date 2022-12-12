@@ -24,7 +24,7 @@ myStartupHook =
       "fcitx -d",
       "redshift-gtk"
     ]
-    <+> spawnAndDoOnce (doShift "1_10") "telegram-desktop"
+    -- <+> spawnAndDoOnce (doShift "1_10") "telegram-desktop"
     <+> spawnAndDoOnce (doShift "1_10") "sleep 5;/mnt/md126/Downloads/OpenHab-linux-x64/OpenHab"
 
 spawnAllOnce xs =
