@@ -13,8 +13,8 @@
         # 127.0.0.1 www.youtube.com
         # 127.0.0.1 reddit.com
         # 127.0.0.1 www.reddit.com
-        127.0.0.1 www.osu.ppy.sh
-        127.0.0.1 osu.ppy.sh
+        # 127.0.0.1 www.osu.ppy.sh
+        # 127.0.0.1 osu.ppy.sh
       '';
 
     };
@@ -25,7 +25,6 @@
     { pkgs, guake, fetchFromGitHub, callPackage, ... }: {
       imports = [
         ./common.nix
-        ./modules/gnome-boxes.nix
       ];
       home.stateVersion = "22.05";
       home.packages = [

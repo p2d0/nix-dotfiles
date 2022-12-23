@@ -8,10 +8,10 @@ let
   unstable = import <nixos-unstable>
     { }; # https://nixos.wiki/wiki/FAQ#How_can_I_install_a_package_from_unstable_while_remaining_on_the_stable_channel.3F
   darkman = (pkgs.callPackage /etc/nixos/pkgs/darkman.nix { });
+  warp = (pkgs.callPackage /etc/nixos/pkgs/warp.nix { });
 in {
   imports = [
     ./hardware-configuration.nix
-    # <home-manager/nixos>
   ];
   nix = {
     package = pkgs.nixFlakes; # or versioned attributes like nixVersions.nix_2_8
@@ -28,10 +28,33 @@ in {
         "${pkgs.haskellPackages.status-notifier-item}/bin/status-notifier-watcher";
     };
   };
-
-  xdg.portal = {
+  programs.gamemode = {
     enable = true;
-    extraPortals = [ darkman ];
+    settings = {
+      general = {
+        renice = 10;
+      };
+
+      # Warning: GPU optimisations have the potential to damage hardware
+      gpu = {
+        apply_gpu_optimisations = "accept-responsibility";
+        gpu_device = 0;
+        amd_performance_level = "high";
+      };
+    };
+  };
+
+  systemd.services.warp-svc = {
+    enable = true;
+    description = "Warp service";
+    wantedBy = [ "default.target" ];
+    serviceConfig = {
+      ExecStart = "${warp}/bin/warp-svc";
+    };
+  };
+  programs.corectrl ={
+    enable = true;
+    gpuOverclock.enable = true;
   };
 
   systemd.user.services.gnome-polkit = {
@@ -44,17 +67,26 @@ in {
     };
   };
 
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ darkman ];
+  };
+
   security.rtkit.enable = true;
+
   hardware.opengl.enable = true;
   hardware.opengl.driSupport = true;
   # hardware.opengl.extraPackages = [ pkgs.amdvlk ];
+
   virtualisation.spiceUSBRedirection.enable = true;
-  #4boot.plymouth.enable = true;
+
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.loader.grub.enable = true;
   boot.loader.grub.default = 2;
   boot.loader.grub.version = 2;
+
   boot.blacklistedKernelModules = [ "iTCO_wdt" "iTCO_vendor_support" ];
+
   # boot.tmpOnTmpfs = true;
   boot.cleanTmpDir = true;
 
@@ -80,9 +112,9 @@ in {
     # Doesnt work
     layout = "us,ru";
     xkbOptions = "grp:alt_shift_toggle";
-    deviceSection = ''
-        Option          "TearFree" "true"
-   '';
+   #  deviceSection = ''
+   #      Option          "TearFree" "true"
+   # '';
     libinput = {
       enable = true;
       mouse = { accelProfile = "flat"; };
@@ -107,9 +139,10 @@ in {
 
   users.defaultUserShell = pkgs.fish;
 
+  users.groups.gamemode = {};
   users.users.${config.user} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" "gamemode" ]; # Enable ‘sudo’ for the user.
   };
 
   users.users."${config.user}-work" = {
@@ -124,6 +157,7 @@ in {
       # sha256 = "sha256:195k5y6p2apy6bz3xm7vklsfm3h4vx2m412sinrzrjzxb3b5rgcj";
     }))
   ];
+
   services.emacs.install = true;
   services.emacs.enable = true;
   services.emacs.defaultEditor = true;
@@ -146,8 +180,10 @@ in {
           #   };
         };
     };
+
   services.blueman.enable = true;
   programs.dconf.enable = true;
+
   services.cron = {
     enable = true;
     systemCronJobs = [
@@ -155,7 +191,6 @@ in {
     ];
   };
 
-  services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
   programs.seahorse.enable = true;
   services = {
     #gnome.gnome-keyring.enable = true;
@@ -210,10 +245,9 @@ in {
     #   "https://github.com/aaronjanse/nix-eval-lsp/archive/master.tar.gz"))
     # (import (fetchTarball
     #   "https://github.com/nix-community/rnix-lsp/archive/master.tar.gz"))
-    (callPackage /etc/nixos/pkgs/lantern.nix { })
+    (callPackage /etc/nixos/pkgs/lantern.nix {})
     (callPackage /etc/nixos/pkgs/psiphon.nix { })
-    (callPackage /etc/nixos/pkgs/warp.nix { })
-    (callPackage /etc/nixos/pkgs/color-scheme-simulator/default.nix { })
+    warp
     #cloudflare-warp
     (haskellPackages.callPackage /etc/nixos/modules/taffybar/build/taffybar.nix
       { })
@@ -234,6 +268,8 @@ in {
     inkscape
     evince
     xorg.xwininfo
+    xboxdrv
+    mangohud
     pulseaudio
     cabal2nix
     dbeaver
@@ -244,6 +280,7 @@ in {
     libusb
     rocketchat-desktop
     tetex
+    gnumake
     btop
     calibre
     brave
@@ -293,6 +330,8 @@ in {
     gnome.nautilus
     darkman
     spice-vdagent
+    inetutils
+    zip
     xsettingsd
     easyeffects
     evolution
@@ -307,7 +346,11 @@ in {
     libvirt
     dunst
     android-tools
+    sublime
+    drawio
     python39Packages.yt-dlp
+    python39Packages.virtualenv
+    python39Packages.pip
     anydesk
     feh
     alacritty

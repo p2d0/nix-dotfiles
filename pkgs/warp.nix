@@ -10,11 +10,11 @@
 
 stdenv.mkDerivation rec {
   pname = "cloudflare-warp";
-  version = "2022.9.591";
+  version = "2022.10.116";
 
   src = fetchurl {
-    url = "https://pkg.cloudflareclient.com/uploads/cloudflare_warp_2022_9_591_1_amd64_3e650240f8.deb";
-    sha256 = "sha256-tZ4yMyg/NwQYZyQ+zALHzpOEmD/SL7Xmav77KED6NHU=";
+    url = "https://pkg.cloudflareclient.com/uploads/cloudflare_warp_2022_10_116_1_amd64_87fd53d338.deb";
+    sha256 = "sha256-L0NN5rfbp+2v9YUN3wE5pwEdlKr6YdEcNAJQX63HMDw=";
   };
 
   nativeBuildInputs = [
@@ -28,7 +28,7 @@ stdenv.mkDerivation rec {
   unpackPhase = ''
     dpkg-deb -x ${src} ./
   '';
-
+  # TODO fix systemctl service enabling
   installPhase = ''
     runHook preInstall
 

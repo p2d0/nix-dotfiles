@@ -9,9 +9,11 @@
     ./modules/rofi/rofi.nix
     ./modules/editors/emacs.nix
     ./modules/gimp/gimp.nix
+    ./modules/gnome-boxes.nix
   ];
-  # home.packages = [
-  # ];
+  home.packages = [
+    pkgs.cask
+  ];
 
   xsession = {
     enable = true;
@@ -58,6 +60,7 @@
   services.gnome-keyring.enable = true;
   services.lorri.enable = true;
   manual.json.enable = true;
+  services.kdeconnect.enable = true;
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowBroken = true;
   programs.alacritty = {

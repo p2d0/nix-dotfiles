@@ -9,10 +9,10 @@
     ];
 
   boot.initrd.availableKernelModules = [ "ehci_pci" "ata_piix" "usb_storage" "usbhid" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
+  boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.kernelParams = [ # "quiet" "vga=current" "udev.log_level=3" "rd.systemd.show_status=auto" "nowatchdog"
-    "raid0.default_layout=2" "mitigations=off" "nowatchdog" ];
+    "amdgpu.ppfeaturemask=0xffffffff"    "raid0.default_layout=2" "mitigations=off" "nowatchdog" ];
   boot.extraModulePackages = [ ];
   boot.loader.timeout = 1;
 
