@@ -16,16 +16,16 @@ myStartupHook =
       "my-taffybar",
       "flameshot",
       -- "emacs -nw --daemon",
-      "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1",
+      -- "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1",
       "blueman-applet",
-      "picom --experimental-backends",
+      -- "picom --experimental-backends",
       -- "xcompmgr",
       "guake",
-      "fcitx -d",
+      "fcitx5 -d",
       "redshift-gtk"
     ]
     -- <+> spawnAndDoOnce (doShift "1_10") "telegram-desktop"
-    <+> spawnAndDoOnce (doShift "1_10") "sleep 5;/mnt/md126/Downloads/OpenHab-linux-x64/OpenHab"
+    -- <+> spawnAndDoOnce (doShift "1_10") "sleep 5;/mnt/md126/Downloads/OpenHab-linux-x64/OpenHab"
 
 spawnAllOnce xs =
   forM_ xs spawnOnce

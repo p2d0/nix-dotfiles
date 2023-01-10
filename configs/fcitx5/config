@@ -65,5 +65,4 @@ EnabledAddons=
 # Force Disabled Addons
 DisabledAddons=
 # Preload input method to be used by default
-PreloadInputMethod=True
-
+PreloadInputMethod=False

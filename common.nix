@@ -83,7 +83,7 @@
   services.blueman-applet.enable = true;
   services.dropbox.enable = true;
   home.keyboard = null;
-  # {layout = "us,ru"; options = [ "grp:alt_shift_toggle" ];};
+    # {layout = "us,ru"; options = [ "grp:alt_shift_toggle" ];};
   home.file = {
     # ".config/GIMP" = {
     #   source = ./configs/GIMP;
@@ -114,10 +114,6 @@
       recursive = true;
     };
 
-    ".config/fcitx5" = {
-      source = ./configs/fcitx5;
-      recursive = true;
-    };
 
     # ".config/omf" = {
     #   source = ./configs/omf;

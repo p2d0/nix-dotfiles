@@ -15,7 +15,7 @@ import XMonad.Actions.CycleRecentWS
 import XMonad.Actions.CycleWS (nextWS, prevWS, shiftToNext, shiftToPrev)
 import XMonad.Actions.FloatSnap
 import XMonad.Actions.Minimize
-import XMonad.Actions.MouseGestures
+-- import XMonad.Actions.MouseGestures
 import XMonad.Actions.OnScreen (greedyViewOnScreen, viewOnScreen)
 import XMonad.Actions.Submap
 import XMonad.Config.Dmwit
@@ -35,18 +35,18 @@ sendMouseClickToWindow win =
     ["click", "--window", show win, show button2]
 
 -- https://stackoverflow.com/questions/18304191/keyboard-free-mouse-gestures-for-xmonad
-gestures =
-  M.fromList
-    [ ([], sendMouseClickToWindow),
-      ([U], toggleFloat),
-      ([D], const $ withLastMinimized' toggleMaximization),
-      ([L], const shiftToPrev),
-      ([R], const shiftToNext),
-      ([R, L], const kill),
-      ([L, D], \w -> screenWorkspace 0 >>= flip whenJust (windows . shiftThenView)),
-      ([R, D], \w -> screenWorkspace 1 >>= flip whenJust (windows . shiftThenView))
-      -- ([R, D], \_ -> sendMessage NextLayout)
-    ]
+-- gestures =
+--   M.fromList
+--     [ ([], sendMouseClickToWindow),
+--       ([U], toggleFloat),
+--       ([D], const $ withLastMinimized' toggleMaximization),
+--       ([L], const shiftToPrev),
+--       ([R], const shiftToNext),
+--       ([R, L], const kill),
+--       ([L, D], \w -> screenWorkspace 0 >>= flip whenJust (windows . shiftThenView)),
+--       ([R, D], \w -> screenWorkspace 1 >>= flip whenJust (windows . shiftThenView))
+--       -- ([R, D], \_ -> sendMessage NextLayout)
+--     ]
 
 myMouseBindings XConfig {XMonad.modMask = modm} =
   M.fromList
@@ -54,7 +54,7 @@ myMouseBindings XConfig {XMonad.modMask = modm} =
     [ ((modm, button1), \w -> focus w >> mouseMoveWindow w >> ifClick (snapMagicMove (Just 50) (Just 50) w)),
       -- ((modm .|. shiftMask, button1), \w -> focus w >> mouseMoveWindow w >> ifClick (snapMagicResize [L, R, U, D] (Just 50) (Just 50) w)),
       ((modm, button3), \w -> focus w >> mouseResizeWindow w >> ifClick (snapMagicResize [R, D] (Just 50) (Just 50) w)),
-      ((0, button2), mouseGesture gestures),
+      -- ((0, button2), mouseGesture gestures),
       -- ( (modm, button1),
       --   \w ->
       --     focus w >> mouseMoveWindow w
@@ -115,7 +115,7 @@ keysP =
          ("M-a", windows copyToSecondScreen),
          ("M-S-a", killAllOtherCopies),
          ("M-S-t", spawn "pkill my-taffybar;my-taffybar"),
-         ("M-S-p", spawn "pkill picom;picom --experimental-backends")
+         ("M-S-p", spawn "pkill xcompmgr;xcompmgr")
        ]
 
 shiftThenView i = W.view i . W.shift i

@@ -3,13 +3,15 @@
 with haskellPackages;
 mkDerivation {
   pname = "taffybar";
-  version = "3.3.0";
+  version = "3.3.03";
   src = ./taffybar/taffybar;
-  doHaddock = false;
+  doHaddock = true;
   # sha256 = "17ggcv1y3md11sccbb9mpss2qdanlkv7wy098qh28gra9kq4ibgm";
   isLibrary = true;
   isExecutable = true;
-  # enableSeparateDataOutput = true;
+  # enableSharedLibraries = true;
+  # enableSharedExecutables = true;
+  enableSeparateDataOutput = true;
   libraryHaskellDepends = [
     data-default http-conduit
     ansi-terminal base broadcast-chan bytestring ConfigFile containers

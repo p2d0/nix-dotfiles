@@ -16,6 +16,7 @@
             home-manager.nixosModules.home-manager
             ./modules/hjkl/hjkl.nix
             ./modules/fonts/fonts.nix
+            ./modules/fcitx.nix
             ./andrew.nix
             ./andrew-work.nix
             ./modules/options.nix
@@ -31,6 +32,7 @@
             home-manager.nixosModules.home-manager
             ./modules/hjkl/hjkl.nix
             ./modules/fonts/fonts.nix
+            ./modules/fcitx.nix
             ./andrew-light.nix
             ./andrew-work.nix
             ./modules/options.nix

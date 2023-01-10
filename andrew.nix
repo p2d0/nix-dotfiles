@@ -1,6 +1,8 @@
 { config, lib, pkgs, ... }:
 
-{
+let
+  unstable = import <nixos-unstable> { config.allowUnfree = true; };
+in {
   specialisation.default = {
     configuration = {
       programs.steam.enable = true;
@@ -9,6 +11,8 @@
         enable = true;
         user = config.user;
       };
+      environment.systemPackages = [
+      ];
 
     };
     inheritParentConfig = true;
@@ -24,6 +28,7 @@
         pkgs.obs-studio
         pkgs.lutris
         pkgs.stremio
+        # unstable.pkgs.osu-lazer
         pkgs.chatterino2
       ];
       programs.fish.shellInit = ''

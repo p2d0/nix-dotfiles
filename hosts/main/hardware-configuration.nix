@@ -18,6 +18,7 @@
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/66e90d46-d031-4e40-ad33-c3f156316c20";
+      options = [ "noatime" ];
       fsType = "ext4";
     };
 
@@ -25,6 +26,7 @@
   # https://superuser.com/questions/174776/modify-fstab-entry-so-all-users-can-read-and-write-to-an-ext4-volume
   fileSystems."/mnt/md127" =
     { device = "/dev/md127";
+      options = [ "noatime" ];
       fsType = "ext4";
     };
 
