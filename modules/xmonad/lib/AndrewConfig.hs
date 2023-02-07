@@ -46,6 +46,5 @@ mainConfig = do
   xmonad $
     docks $
       myEwmh $
-        enableTransparency $
           pagerHints $
             myKeys myConfig

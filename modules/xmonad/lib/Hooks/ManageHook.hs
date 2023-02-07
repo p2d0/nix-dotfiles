@@ -5,7 +5,6 @@ import Data.List
 import qualified Debug.Trace
 import Scratchpads
 import XMonad
-import XMonad.Config.Dmwit (floatAll)
 import XMonad.Hooks.DynamicProperty
 import XMonad.Hooks.InsertPosition
 import XMonad.Hooks.ManageHelpers
@@ -24,7 +23,7 @@ myPlacement = withGaps (16, 0, 16, 0) (underMouse (0, 0))
 
 myManageHook =
   namedScratchpadManageHook myScratchpads
-    <+> placeHook myPlacement
+    -- <+> placeHook myPlacement
     <+> composeAll
       [ -- https://stackoverflow.com/questions/26028146/xmonad-open-a-window-into-a-particular-tile
         className =? "TelegramDesktop" --> doShift "1_10",
@@ -39,7 +38,8 @@ myManageHook =
         className =? "openhab-nativefier-9825c2" --> doShift "1_10"
       ]
     <+> composeOne -- https://bbs.archlinux.org/viewtopic.php?id=98695
-      [ title =? "Media viewer" -?> doIgnore,
+      [
+        title =? "Media viewer" -?> doIgnore,
         className =? "Steam" -?> doFloat,
         className =? "steam" -?> doFullFloat,
         className =? ".guake-wrapped" -?> doFloat,
@@ -47,6 +47,7 @@ myManageHook =
         className =? "Pavucontrol" -?> doFloat,
         -- The rectangle to float the window in. 0 to 1; x, y, w, h.
         -- className =? "Org.gnome.Nautilus" -?> doRectFloat (W.RationalRect 0.7 0.6 0.3 0.4),
+        className =? "Wine" -?> doFloat,
         className =? "Gnome-boxes" -?> doFloat,
         className =? "gnome-boxes" -?> doFloat,
         className =? "Boxes" -?> doFloat,

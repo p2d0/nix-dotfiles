@@ -18,8 +18,6 @@ import XMonad.Actions.Minimize
 -- import XMonad.Actions.MouseGestures
 import XMonad.Actions.OnScreen (greedyViewOnScreen, viewOnScreen)
 import XMonad.Actions.Submap
-import XMonad.Config.Dmwit
-import qualified XMonad.Config.Prime as Xmonad.Config.Prime
 import qualified XMonad.Layout.BoringWindows as BW
 import XMonad.Layout.IndependentScreens
 import qualified XMonad.Prelude as L
@@ -70,8 +68,8 @@ myMouseBindings XConfig {XMonad.modMask = modm} =
       -- ),
       -- you may also bind events to the mouse scroll wheel (button4 and button5)
       ((modm, button4), \w -> focus w >> windows W.focusDown),
-      ((modm .|. altMask, button4), \w -> focus w >> windows W.swapDown),
-      ((modm .|. altMask, button5), \w -> focus w >> windows W.swapUp),
+      ((modm .|. mod1Mask, button4), \w -> focus w >> windows W.swapDown),
+      ((modm .|. mod1Mask, button5), \w -> focus w >> windows W.swapUp),
       ((modm, button5), \w -> focus w >> windows W.focusUp)
     ]
 
@@ -89,11 +87,12 @@ functionKeys =
   ]
 
 screenshotAndRecordKeys =
-  [ ("<Print>", spawn "flameshot gui --delay=1000"),
+  [
+    ("<Print>", spawn "flameshot gui --delay=1000"),
     ("C-<Print>", spawn "fish -c 'flameshot full -c'"),
-    ("S-<Print>", spawn "fish -c 'flameshot_screen'"),
-    ("<Pause>", spawn "fish -c 'record'"),
-    ("C-<Pause>", spawn "fish -c 'record_screen'")
+    ("S-<Print>", spawn "fish -c 'flameshot_screen'")
+    -- ("<Pause>", spawn "fish -c 'record'"),
+    -- ("C-<Pause>", spawn "fish -c 'record_screen'")
   ]
 
 keysP =
@@ -105,7 +104,7 @@ keysP =
          ("M-x", kill),
          -- ("<F12>", namedScratchpadAction myScratchpads "term"),
          -- ("F12", spawn "guake-toggle"),
-         ("<F12>", spawn "guake-toggle"),
+         -- ("<F12>", spawn "guake-toggle"),
          ("M-S-h", sendMessage Shrink),
          ("M-S-l", sendMessage Expand),
          ("M-z", withLastMinimized' toggleMaximization),
@@ -115,7 +114,7 @@ keysP =
          ("M-a", windows copyToSecondScreen),
          ("M-S-a", killAllOtherCopies),
          ("M-S-t", spawn "pkill my-taffybar;my-taffybar"),
-         ("M-S-p", spawn "pkill xcompmgr;xcompmgr")
+         ("M-S-p", spawn "pkill picom;picom -b")
        ]
 
 shiftThenView i = W.view i . W.shift i
@@ -135,7 +134,7 @@ windowsKeysForSwitchingAndMovingOnWorkspaces =
 monitorsKeysForSwitchingAndMoving =
   [ ((m .|. mod4Mask, key), screenWorkspace sc >>= flip whenJust (windows . f))
     | (key, sc) <- zip [xK_h, xK_l] [0 ..],
-      (f, m) <- [(W.view, 0), (shiftThenView, altMask)]
+      (f, m) <- [(W.view, 0), (shiftThenView, mod1Mask)]
   ]
 
 windowSnappingKeys =
@@ -157,15 +156,15 @@ keys =
   windowsKeysForSwitchingAndMovingOnWorkspaces
     ++ monitorsKeysForSwitchingAndMoving
     ++ windowSnappingKeys
-    ++ [ ((mod4Mask .|. altMask, xK_j), windows W.swapDown),
-         ((mod4Mask .|. altMask, xK_k), windows W.swapUp),
+    ++ [ ((mod4Mask .|. mod1Mask, xK_j), windows W.swapDown),
+         ((mod4Mask .|. mod1Mask, xK_k), windows W.swapUp),
          ((mod4Mask, xK_Tab), nextWS),
          ((mod4Mask .|. shiftMask, xK_Tab), prevWS)
          -- ((mod4Mask, xK_j), BW.focusUp),
          -- ((mod4Mask, xK_k), BW.focusDown)
        ]
 
-toggleMaximization :: Maybe Xmonad.Config.Prime.Window -> X ()
+toggleMaximization :: Maybe Window -> X ()
 toggleMaximization window =
   case window of
     Nothing -> withFocused minimizeWindow

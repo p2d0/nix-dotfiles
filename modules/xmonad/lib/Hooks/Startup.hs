@@ -10,8 +10,8 @@ import XMonad.Actions.SpawnOn
 myStartupHook =
   spawnAllOnce
     [ "pasystray",
-      "/usr/lib/kdeconnectd",
-      "~/.dropbox-dist/dropboxd",
+      -- "/usr/lib/kdeconnectd",
+      -- "~/.dropbox-dist/dropboxd",
       "dunst",
       "my-taffybar",
       "flameshot",
@@ -21,7 +21,7 @@ myStartupHook =
       -- "picom --experimental-backends",
       -- "xcompmgr",
       "guake",
-      "fcitx5 -d",
+      -- "fcitx5",
       "redshift-gtk"
     ]
     -- <+> spawnAndDoOnce (doShift "1_10") "telegram-desktop"

@@ -3,6 +3,7 @@
 {
   imports = [
     ./modules/xmonad/xmonad.nix
+    ./modules/i3/i3.nix
     ./modules/ssh/ssh.nix
     ./modules/fish/fish.nix
     ./modules/taffybar/taffybar-home.nix
@@ -79,11 +80,12 @@
     };
   };
 
+  home.stateVersion = "22.11";
 
   services.blueman-applet.enable = true;
   services.dropbox.enable = true;
   home.keyboard = null;
-    # {layout = "us,ru"; options = [ "grp:alt_shift_toggle" ];};
+  # {layout = "us,ru"; options = [ "grp:alt_shift_toggle" ];};
   home.file = {
     # ".config/GIMP" = {
     #   source = ./configs/GIMP;

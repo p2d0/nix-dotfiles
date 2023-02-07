@@ -15,6 +15,8 @@ import XMonad.Layout.Reflect (reflectHoriz)
 import XMonad.Layout.Tabbed
 import XMonad.Layout.ThreeColumns
 import XMonad.Layout.TwoPane
+import XMonad.Layout.SimpleFloat
+import XMonad.Layout.SimplestFloat (simplestFloat)
 
 myTabConfig =
   def
@@ -47,10 +49,12 @@ modifiers2 = lessBorders Screen . avoidStrutsOn [D] . (minimize . boringAuto) --
 
 modifiers3 = lessBorders Screen . avoidStrutsOn [D] . (minimize . boringAuto) -- ??????????????????
 
+
 myLayout =
   onWorkspace "1_10" (stackTile ||| Full) $
+  onWorkspace "1_6" (simplestFloat ||| Full) $
     onWorkspaces ["0_" ++ show b | b <- [1 .. 5]] (modifiers2 (reflectHoriz tiled ||| threeCol ||| tabbedBottom shrinkText myTabConfig)) $
-      modifiers (tiled ||| tabbedBottom shrinkText myTabConfig)
+      modifiers (tiled ||| tabbedBottom shrinkText myTabConfig ||| simplestFloat)
         ||| Full
   where
     stackTile = modifiers3 $ reflectHoriz (Tall 1 0.03 0.5)

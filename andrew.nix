@@ -23,12 +23,25 @@ in {
       imports = [
         ./common.nix
       ];
-      home.stateVersion = "22.05";
+      # home.stateVersion = "22.05";
       home.packages = [
         pkgs.obs-studio
         pkgs.lutris
         pkgs.stremio
-        # unstable.pkgs.osu-lazer
+        # unstable.pkgs.osu-lazer-bin
+        (unstable.pkgs.callPackage /etc/nixos/pkgs/games/osu-lazer/bin.nix { })
+        # (unstable.pkgs.callPackage /etc/nixos/pkgs/games/osu-lazer/default.nix { })
+        # (unstable.pkgs.osu-lazer.overrideAttrs(oldAttrs: rec {
+        #   version = "2023.123.0";
+        #   # dotnetFlags = [
+        #   #   "--runtime linux-x64;"
+        #   # ];
+        #   src = pkgs.fetchFromGitHub {
+        #     owner = "ppy";
+        #     repo = "osu";
+        #     rev = version;
+        #     sha256 = "10GfAOsrLgQeYmzjhC/L57BK9BoM7ZM1pZmRK4+GD5c=";};
+        # }))
         pkgs.chatterino2
       ];
       programs.fish.shellInit = ''

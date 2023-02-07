@@ -10,9 +10,9 @@
 
   boot.initrd.availableKernelModules = [ "ehci_pci" "ata_piix" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ "amdgpu" ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelModules = [ "kvm-intel" "vfio-pci" ];
   boot.kernelParams = [ # "quiet" "vga=current" "udev.log_level=3" "rd.systemd.show_status=auto" "nowatchdog"
-    "amdgpu.ppfeaturemask=0xffffffff"    "raid0.default_layout=2" "mitigations=off" "nowatchdog" ];
+    "amdgpu.ppfeaturemask=0xffffffff"   "intel_iommu=on" "raid0.default_layout=2" "mitigations=off" "nowatchdog" ];
   boot.extraModulePackages = [ ];
   boot.loader.timeout = 1;
 
@@ -41,8 +41,8 @@
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-  networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp3s0.useDHCP = lib.mkDefault true;
+  networking.useDHCP = false;
+  networking.interfaces.enp3s0.useDHCP = true;
 
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  # hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
