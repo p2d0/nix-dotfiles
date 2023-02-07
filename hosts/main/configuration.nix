@@ -136,7 +136,8 @@ in {
       enable = true;
       enableContribAndExtras = true;
     };
-    displayManager = { defaultSession = "none+xmonad"; };
+    windowManager.qtile.enable = true;
+    displayManager = { defaultSession = "none+qtile"; };
   };
 
   # Enable CUPS to print documents.
@@ -182,6 +183,11 @@ in {
       permittedInsecurePackages = [ "libdwarf-20181024" ];
       packageOverrides = pkgs:
         {
+          pr146290 = import (fetchTarball
+          "${nixpkgs-tars}0c98cf473fe15ada1fbfc965740af076c3cc2dcf.tar.gz") {
+            config = config.nixpkgs.config;
+          };
+
           # pr181605 = import (fetchTarball
           #   "${nixpkgs-tars}7cc979502c3dc5480ef3e4ffe1a05c897084d34b.tar.gz") {
           #     config = config.nixpkgs.config;
@@ -338,7 +344,7 @@ in {
     shotcut
     darktable
     jetbrains.idea-community
-    (callPackage /etc/nixos/pkgs/picom-animations.nix { })
+    # (callPackage /etc/nixos/pkgs/picom-animations.nix { })
     (callPackage /etc/nixos/pkgs/puush-linux.nix { })
     # (pkgs.callPackage /mnt/md127/nixpkgs/pkgs/applications/networking/instant-messengers/telegram/tdesktop { })
     # (pkgs.qt6Packages.callPackage /mnt/md127/nixpkgs/pkgs/applications/networking/instant-messengers/telegram/tdesktop {
