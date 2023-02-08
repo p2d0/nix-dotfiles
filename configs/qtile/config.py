@@ -24,10 +24,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from libqtile import bar, layout, widget
+from libqtile import qtile,bar, layout, widget, hook
+from libqtile.core.manager import Qtile
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
+import os
 
 mod = "mod4"
 terminal = guess_terminal()
@@ -36,8 +38,8 @@ keys = [
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
     # Switch between windows
-    Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
-    Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
+    Key([mod], "h", lazy.layout.previous(), desc="Move focus to left"),
+    Key([mod], "l", lazy.layout.next(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
     Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
@@ -70,10 +72,25 @@ keys = [
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "d", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    Key([mod], "d", lazy.spawn(os.path.expanduser("~/.config/rofi/launchers/colorful/launcher.sh")), desc="Spawn a command using a prompt widget"),
 ]
 
-groups = [Group(i) for i in "123456789"]
+groups = [Group(i) for i in "1234567890"]
+
+def go_to_group(name: str):
+    def _inner(qtile: Qtile) -> None:
+        if len(qtile.screens) == 1:
+            qtile.groups_map[name].cmd_toscreen()
+            return
+
+        if name in '12345':
+            qtile.focus_screen(0)
+            qtile.groups_map[name].cmd_toscreen()
+        else:
+            qtile.focus_screen(1)
+            qtile.groups_map[name].cmd_toscreen()
+
+    return _inner
 
 for i in groups:
     keys.extend(
@@ -82,7 +99,7 @@ for i in groups:
             Key(
                 [mod],
                 i.name,
-                lazy.group[i.name].toscreen(),
+                lazy.function(go_to_group(i.name)),
                 desc="Switch to group {}".format(i.name),
             ),
             # mod1 + shift + letter of group = switch to & move focused window to group
@@ -101,12 +118,12 @@ for i in groups:
 
 layouts = [
     layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
+    # layout.MonadTall(),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
-    # layout.MonadTall(),
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),
@@ -127,15 +144,15 @@ screens = [
         bottom=bar.Bar([
             widget.GroupBox(),
             widget.WindowName()
-            ], 30),
-        ),
+        ], 30),
+    ),
     Screen(
         bottom=bar.Bar([
             widget.GroupBox(),
             widget.WindowName()
-            ], 30),
-        )
-    ]
+        ], 30),
+    )
+]
 
 # Drag floating layouts.
 mouse = [
@@ -164,6 +181,17 @@ floating_layout = layout.Floating(
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True
+
+groupbox1 = widget.GroupBox(visible_groups=['1', '2', '3','4','5'])
+groupbox2 = widget.GroupBox(visible_groups=['6','7','8','9','10'])
+@hook.subscribe.screens_reconfigured
+async def _():
+    if len(qtile.screens) > 1:
+        groupbox1.visible_groups = ['1', '2', '3']
+    else:
+        groupbox1.visible_groups = ['1', '2', '3', 'q', 'w', 'e']
+    if hasattr(groupbox1, 'bar'):
+        groupbox1.bar.draw()
 
 # If things like steam games want to auto-minimize themselves when losing
 # focus, should we respect this or not?

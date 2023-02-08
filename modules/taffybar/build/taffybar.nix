@@ -1,5 +1,6 @@
 { mkDerivation, pkgs, haskellPackages, lib,  ... }:
 
+# with import <nixpkgs> { config.allowBroken = true;};
 with haskellPackages;
 mkDerivation
   {

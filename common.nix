@@ -2,11 +2,10 @@
 
 {
   imports = [
-    ./modules/xmonad/xmonad.nix
     ./modules/i3/i3.nix
+    ./modules/polybar/polybar.nix
     ./modules/ssh/ssh.nix
     ./modules/fish/fish.nix
-    ./modules/taffybar/taffybar-home.nix
     ./modules/rofi/rofi.nix
     ./modules/editors/emacs.nix
     ./modules/gimp/gimp.nix

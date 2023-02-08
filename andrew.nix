@@ -29,7 +29,7 @@ in {
         pkgs.lutris
         pkgs.stremio
         # unstable.pkgs.osu-lazer-bin
-        (unstable.pkgs.callPackage /etc/nixos/pkgs/games/osu-lazer/bin.nix { })
+        (unstable.pkgs.callPackage /etc/nixos/pkgs/osu-lazer-bin.nix { })
         # (unstable.pkgs.callPackage /etc/nixos/pkgs/games/osu-lazer/default.nix { })
         # (unstable.pkgs.osu-lazer.overrideAttrs(oldAttrs: rec {
         #   version = "2023.123.0";

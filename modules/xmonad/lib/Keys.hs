@@ -108,7 +108,8 @@ keysP =
          ("M-S-h", sendMessage Shrink),
          ("M-S-l", sendMessage Expand),
          ("M-z", withLastMinimized' toggleMaximization),
-         ("M-t", withFocused toggleFloat),
+         ("M-t", withFocused fullFloat),
+         ("M-f", withFocused fullFloat),
          ("M-e", spawn "emacsclient --eval \"(emacs-everywhere)\""),
          ("M-n", spawn "emacsclient --eval \"(emacs-everywhere-note)\""),
          ("M-a", windows copyToSecondScreen),
@@ -176,6 +177,14 @@ toggleFloat w =
         if M.member w (W.floating s)
           then W.sink w s
           else W.float w (W.RationalRect 0.15 0.15 0.65 0.65) s
+    )
+
+fullFloat w =
+  windows
+    ( \s ->
+        if M.member w (W.floating s)
+          then W.sink w s
+          else W.float w (W.RationalRect 0 0 1 1) s
     )
 
 -- copyToSecondScreen ::  a -> a

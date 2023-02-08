@@ -28,9 +28,9 @@ default_floating_border normal
 # Hide borders
 hide_edge_borders smart
 
-bar {
- status_command i3status
-}
+# bar {
+#  status_command i3status
+# }
 
 # xprop
 # Font for window titles. Will also be used by the bar unless a different font

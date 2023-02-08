@@ -12,6 +12,7 @@ import XMonad.Hooks.Place (inBounds, placeHook, simpleSmart, underMouse, withGap
 import XMonad.Layout.NoBorders (hasBorder)
 import qualified XMonad.StackSet as W
 import XMonad.Util.NamedScratchpad
+import XMonad.Actions.SpawnOn
 
 contains :: (Eq a, Functor m, Show a) => m [a] -> [a] -> m Bool
 q `contains` x = fmap (\s -> Debug.Trace.trace (show x ++ " isInfixOf " ++ show s ++ " " ++ show (x `isInfixOf` s)) (x `isInfixOf` s)) q
@@ -23,7 +24,7 @@ myPlacement = withGaps (16, 0, 16, 0) (underMouse (0, 0))
 
 myManageHook =
   namedScratchpadManageHook myScratchpads
-    -- <+> placeHook myPlacement
+    <+> placeHook myPlacement
     <+> composeAll
       [ -- https://stackoverflow.com/questions/26028146/xmonad-open-a-window-into-a-particular-tile
         className =? "TelegramDesktop" --> doShift "1_10",
@@ -45,6 +46,7 @@ myManageHook =
         className =? ".guake-wrapped" -?> doFloat,
         className =? "Guake" -?> doFloat,
         className =? "Pavucontrol" -?> doFloat,
+        className `contains` "photoshop" -?> doFullFloat,
         -- The rectangle to float the window in. 0 to 1; x, y, w, h.
         -- className =? "Org.gnome.Nautilus" -?> doRectFloat (W.RationalRect 0.7 0.6 0.3 0.4),
         className =? "Wine" -?> doFloat,

@@ -36,9 +36,10 @@ myConfig =
       -- <+> dynamicPropertyChange
       --   "WM_CLASS"
       --   ( composeAll
-      --       [title =? "Media viewer" --> doFullFloat
+      --       [title =? "photoshop.exe" --> doFullFloat
       --       ]
       --   ),
+      borderWidth = 0,
       manageHook = myManageHook
     }
 
