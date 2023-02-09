@@ -190,7 +190,7 @@ in {
     enable = true;
     systemCronJobs = [
       "30 21 * * * root sh -c 'shutdown now'"
-      "00 20 * * * root sh -c 'cd /etc/nixos;git coa 'update';git push origin master;'"
+      "00 20 * * * root fish -c 'sync_repos'"
     ];
   };
 
