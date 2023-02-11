@@ -189,8 +189,8 @@ in {
   services.cron = {
     enable = true;
     systemCronJobs = [
-      "20 21 * * * andrew fish -c 'sync_repos'"
-      # "30 21 * * * root sh -c 'shutdown now'"
+      "00 20 * * * andrew fish -c 'sync_repos'"
+      "30 21 * * * root sh -c 'shutdown now'"
     ];
   };
 
@@ -214,7 +214,7 @@ in {
   environment.sessionVariables = {
     GTK_DATA_PREFIX = [ "${config.system.path}" ];
   };
-
+  programs.java = { enable = true; package = pkgs.oraclejre8; };
   modules.fonts.enable = true;
   zramSwap.enable = true;
   # services.journald.extraConfig = ''
@@ -271,6 +271,7 @@ in {
     xboxdrv
     mangohud
     lua
+
     pulseaudio
     gnome.gnome-system-monitor
     cabal2nix
