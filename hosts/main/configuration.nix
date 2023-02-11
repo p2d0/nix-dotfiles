@@ -189,8 +189,8 @@ in {
   services.cron = {
     enable = true;
     systemCronJobs = [
-      "30 21 * * * root sh -c 'shutdown now'"
-      "00 20 * * * root fish -c 'sync_repos'"
+      "20 21 * * * andrew fish -c 'sync_repos'"
+      # "30 21 * * * root sh -c 'shutdown now'"
     ];
   };
 
@@ -245,6 +245,7 @@ in {
     # (import (fetchTarball
     #   "https://github.com/nix-community/rnix-lsp/archive/master.tar.gz"))
     (callPackage /etc/nixos/pkgs/lantern.nix {})
+    (callPackage /etc/nixos/pkgs/tlala.nix {})
     # (callPackage /etc/nixos/pkgs/psiphon.nix { })
     warp
     #cloudflare-warp

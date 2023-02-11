@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 ### AUTHOR:         Johann Birnick (github: jbirnick)
 ### PROJECT REPO:   https://github.com/jbirnick/polybar-timer
@@ -15,7 +15,7 @@ timerLabel () { cat /tmp/polybar-timer/label ; }
 timerAction () { cat /tmp/polybar-timer/action ; }
 
 secondsLeft () { echo $(( $(timerExpiry) - $(now) )) ; }
-minutesLeft () { echo $(( ( $(secondsLeft)  + 59 ) / 60 )) ; }
+minutesLeft () { echo $(( ( $(secondsLeft) ) / 60 )) ; }
 secondsInAMinuteLeft () { echo $(( $(secondsLeft) % 60)); }
 
 printExpiryTime () { dunstify -u low -r -12345 "Timer expires at $( date -d "$(secondsLeft) sec" +%H:%M)" ;}
@@ -23,7 +23,7 @@ printExpiryTime () { dunstify -u low -r -12345 "Timer expires at $( date -d "$(s
 deleteExpiryTime () { dunstify -C -12345 ; }
 
 updateTail () {
-  if timerRunning && [ $(minutesLeft) -le 0 ]
+  if timerRunning && [ $(secondsLeft) -le 0 ]
   then
     eval $(timerAction)
     killTimer

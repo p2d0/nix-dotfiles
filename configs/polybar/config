@@ -82,7 +82,7 @@ font-8 = FontAwesome:size=12;5
 
 modules-left = i3
 modules-center = popup-calendar text
-modules-right = weather xbacklight bluetooth wireguard pulseaudio
+modules-right = timer weather xbacklight bluetooth wireguard pulseaudio
 ; scratchpad-indicator
 tray-position = none
 tray-padding = 1
@@ -239,7 +239,7 @@ tail = true
 click-left = ~/.config/polybar/polybar-timer.sh new 10 '祥' 'notify-send "Session finished"' ; ~/.config/polybar/polybar-timer.sh update %pid%
 click-middle = ~/.config/polybar/polybar-timer.sh kill ; ~/.config/polybar/polybar-timer.sh update %pid%
 click-right = ~/.config/polybar/polybar-timer.sh new 5 '祥' 'notify-send "Break finished"' ; ~/.config/polybar/polybar-timer.sh update %pid%
-scroll-up = ~/.config/polybar/polybar-timer.sh increase 60 || ~/.config/polybar/polybar-timer.sh new 1 'TIMER:' 'notify-send -u critical "Timer expired."' ; ~/.config/polybar/polybar-timer.sh update %pid%
+scroll-up = ~/.config/polybar/polybar-timer.sh increase 60 || ~/.config/polybar/polybar-timer.sh new 1 'TIMER:' 'paplay ~/.config/polybar/bell.wav;notify-send -u critical "Timer expired."' ; ~/.config/polybar/polybar-timer.sh update %pid%
 scroll-down = ~/.config/polybar/polybar-timer.sh increase -60 ; ~/.config/polybar/polybar-timer.sh update %pid%
 
 [module/xkeyboard]
