@@ -267,6 +267,7 @@ in {
     mpv
     inkscape
     evince
+    sidequest
     xorg.xwininfo
     xboxdrv
     mangohud
