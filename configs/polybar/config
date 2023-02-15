@@ -81,7 +81,7 @@ font-7 = NotoEmoji:fontformat=truetype:scale=7;4
 font-8 = FontAwesome:size=12;5
 
 modules-left = i3
-modules-center = popup-calendar
+modules-center = popup-calendar text
 modules-right = timer weather xbacklight bluetooth wireguard pulseaudio
 ; scratchpad-indicator
 tray-position = none
@@ -111,7 +111,7 @@ cursor-click = pointer
 
 [module/texto]
 type = custom/text
-content = "DONT FORGET WEBCAM"
+content = "Apnea exercises. Neck exercises."
 content-padding = 1
 content-background = ${colors.foreground}
 content-foreground = #000
