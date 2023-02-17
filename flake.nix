@@ -14,6 +14,7 @@
           inherit system;
           config.allowBroken = true;
           config.allowUnfree = true;  # forgive me Stallman senpai
+          config.permittedInsecurePackages = [ "xrdp-0.9.9" "libdwarf-20181024"];
           overlays = [(self: super: {inherit lib;})];
         };
         pkgs  = mkPkgs nixpkgs [ self.overlay ];

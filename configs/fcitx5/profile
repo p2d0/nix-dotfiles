@@ -18,17 +18,11 @@ Name="Group 1"
 # Layout
 Default Layout=us
 # Default Input Method
-DefaultIM=mozc
+DefaultIM=keyboard-us
 
 [Groups/1/Items/0]
 # Name
 Name=keyboard-us
-# Layout
-Layout=
-
-[Groups/1/Items/1]
-# Name
-Name=mozc
 # Layout
 Layout=
 

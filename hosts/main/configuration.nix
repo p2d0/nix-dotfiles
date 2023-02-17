@@ -170,7 +170,7 @@ in {
     in {
       allowUnfree = true;
       allowBroken = true;
-      permittedInsecurePackages = [ "libdwarf-20181024" ];
+      permittedInsecurePackages = [ "xrdp-0.9.9" "libdwarf-20181024"];
       packageOverrides = pkgs: {
         qtile = (pkgs.callPackage /etc/nixos/pkgs/qtile.nix {});
           # pr181605 = import (fetchTarball
@@ -202,6 +202,8 @@ in {
       enable = true;
       packages = [darkman];
     };
+    # xrdp.enable = true;
+    # xrdp.defaultWindowManager = "dbus-launch --exit-with-session;i3;";
   };
 
   # nix.settings.auto-optimise-store = true;
@@ -275,6 +277,7 @@ in {
 
     pulseaudio
     gnome.gnome-system-monitor
+    tigervnc
     cabal2nix
     dbeaver
     yad
@@ -330,6 +333,7 @@ in {
     gnome.dconf-editor
     gnome.gnome-characters
     minidlna
+    gnome.gedit
     ntfs3g
     redshift
     gnome.gnome-boxes
