@@ -190,7 +190,7 @@ in {
     enable = true;
     systemCronJobs = [
       "00 20 * * * andrew fish -c 'sync_repos'"
-      "30 21 * * * root sh -c 'shutdown now'"
+      # "30 21 * * * root sh -c 'shutdown now'"
     ];
   };
 
