@@ -5,7 +5,7 @@
 { config, pkgs, ghcWithPackages, ... }:
 
 let
-  unstable = import <nixos-unstable> { }; # https://nixos.wiki/wiki/FAQ#How_can_I_install_a_package_from_unstable_while_remaining_on_the_stable_channel.3F
+  unstable = import <nixos-unstable> { config.allowBroken = true; }; # https://nixos.wiki/wiki/FAQ#How_can_I_install_a_package_from_unstable_while_remaining_on_the_stable_channel.3F
   darkman = (pkgs.callPackage /etc/nixos/pkgs/darkman.nix { });
   warp = (pkgs.callPackage /etc/nixos/pkgs/warp.nix { });
 in {
@@ -190,7 +190,7 @@ in {
     enable = true;
     systemCronJobs = [
       "00 20 * * * andrew fish -c 'sync_repos'"
-      # "30 21 * * * root sh -c 'shutdown now'"
+      "30 21 * * * andrew paplay ~/.config/polybar/bell.wav;notify-send -u critical 'WEBCAM!WEBCAM! AND GET OFF THE PC'"
     ];
   };
 
@@ -250,6 +250,7 @@ in {
     (callPackage /etc/nixos/pkgs/tlala.nix {})
     # (callPackage /etc/nixos/pkgs/psiphon.nix { })
     warp
+    # unstable.elementary-planner
     #cloudflare-warp
     (haskellPackages.callPackage /etc/nixos/modules/taffybar/build/taffybar.nix
       { })
