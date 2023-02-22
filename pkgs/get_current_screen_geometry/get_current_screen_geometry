@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+## nix-shell -i python3 -p gobject-introspection vte "python3.withPackages(ps: [ ps.pygobject3 ])"
+import gi
+import sys
+gi.require_version("Gdk", "3.0")
+from gi.repository import Gdk
+import warnings
+warnings.filterwarnings("ignore")
+
+disp = Gdk.Display.get_default()
+scr = disp.get_default_screen()
+win_pos = scr.get_active_window().get_origin()
+# print("win: %d x %d" % (win_pos.x, win_pos.y))
+monitor = disp.get_monitor_at_point(win_pos.x, win_pos.y)
+rect = monitor.get_geometry()
+is_primary = monitor.is_primary();
+screen = 0 if is_primary else 1
+x = rect.x
+y = rect.y
+width = rect.width
+height = rect.height
+if len(sys.argv) > 1:
+    print(sys.argv[1].format(**locals()))
+else:
+    print("monitor: {width} x {height} {x} {y}".format(**locals()))

@@ -247,6 +247,7 @@ in {
     # (import (fetchTarball
     #   "https://github.com/nix-community/rnix-lsp/archive/master.tar.gz"))
     (callPackage /etc/nixos/pkgs/lantern.nix {})
+    (callPackage /etc/nixos/pkgs/pythonbin.nix {})
     (callPackage /etc/nixos/pkgs/tlala.nix {})
     # (callPackage /etc/nixos/pkgs/psiphon.nix { })
     warp
@@ -364,6 +365,7 @@ in {
     android-tools
     sublime
     drawio
+    # (python3.withPackages(ps: [ ps.pygobject3 ]))
     python39Packages.yt-dlp
     python39Packages.virtualenv
     python39Packages.pip
@@ -375,7 +377,7 @@ in {
     cabal2nix
     htop
     unzip
-    (pkgs.callPackage /etc/nixos/pkgs/get_current_screen_geometry.nix { })
+    # (pkgs.callPackage /etc/nixos/pkgs/get_current_screen_geometry.nix { })
     # (pkgs.callPackage /etc/nixos/pkgs/get_current_screen_geometry.nix { })
     # NOTE https://nixos.wiki/wiki/Nixpkgs/Modifying_Packages
     (callPackage /etc/nixos/pkgs/guake-latest.nix { })

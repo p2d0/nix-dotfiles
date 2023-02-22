@@ -6,7 +6,8 @@ pkgs.mkShell {
     pkgs.gobject-introspection
     pkgs.vte
     pkgs.python-language-server
-    (pkgs.python2.withPackages(ps: [ ps.pygtk ps.requests ]))
+    # (pkgs.python2.withPackages(ps: [ ps.pygtk ps.requests ]))
+    (pkgs.python3.withPackages(ps: [ ps.pygobject3 ps.i3-py]))
     pkgs.gtk2
     pkgs.gtk2-x11
     pkgs.pipenv

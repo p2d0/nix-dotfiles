@@ -25,7 +25,6 @@
   programs.fish.shellInit = ''
         fish_vi_key_bindings
         fish_add_path  $HOME/.emacs.d/bin
-        fish_add_path  /etc/nixos/.pythonbin
         fish_add_path  $HOME/.npm-packages/bin
         fish_add_path  $HOME/.npm-packages/lib/node_modules
         function fish_user_key_bindings
