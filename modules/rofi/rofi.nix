@@ -6,8 +6,7 @@
   ];
   home.file = {
     ".config/rofi" = {
-      source = ./rofi;
-      recursive = true;
+      source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/modules/rofi/rofi;
     };
   };
 }

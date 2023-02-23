@@ -25,8 +25,8 @@ in {
       ExecStart =
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
     };
-    wantedBy = [ "default.target" ];
-    enable = true;
+    wantedBy = [ "multiuser.target" ];
+    enable = false;
   };
 
 
@@ -62,7 +62,8 @@ in {
 
   xdg.portal = {
     enable = true;
-    extraPortals = [ darkman ];
+    wlr.enable = true;
+    extraPortals = [ darkman pkgs.xdg-desktop-portal-gtk ];
   };
 
   security.rtkit.enable = true;
@@ -110,6 +111,15 @@ in {
   #   plasma-browser-integration
   #   print-manager
   # ];
+  # programs.hyprland = {
+  #   enable = true;
+  # };
+  # programs.sway = {
+  #   enable = true;
+  #   wrapperFeatures.gtk = true;
+  # };
+
+
   services.xserver = {
     enable = true;
     videoDrivers = [ "amdgpu" ];
@@ -232,7 +242,7 @@ in {
   # '';
   #     };
   #   };
-
+  modules.taffybar.enable = true;
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
@@ -312,6 +322,7 @@ in {
     shotcut
     darktable
     jetbrains.idea-community
+    picom
     # (callPackage /etc/nixos/pkgs/picom-animations.nix { })
     (callPackage /etc/nixos/pkgs/puush-linux.nix { })
     # (pkgs.callPackage /mnt/md127/nixpkgs/pkgs/applications/networking/instant-messengers/telegram/tdesktop { })

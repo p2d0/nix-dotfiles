@@ -146,6 +146,10 @@
       recursive = true;
     };
 
+    ".config/sway" = {
+      source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/sway;
+    };
+
     ".ideavimrc" = {
       source = ./configs/ideavim/.ideavimrc;
     };

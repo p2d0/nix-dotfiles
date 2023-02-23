@@ -14,7 +14,7 @@ in {
   };
   config = mkIf cfg.enable {
     systemd.user.services.gtk-sni-tray = {
-      enable = false;
+      enable = true;
       description = "Gtk sni tray";
       wantedBy = [ "default.target" ];
       serviceConfig = {
