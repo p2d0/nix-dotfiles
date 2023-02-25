@@ -1,0 +1,3 @@
+{
+    "python.autoComplete.extraPaths": ["/nix/store/hdjw69s5k2i0ilkxa77ajbv696yz73ww-gimp-2.10.32/lib/gimp/2.0/python"],
+}
