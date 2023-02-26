@@ -1,10 +1,9 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 
 from gimpfu import *
 
 def python_blobify(img, layer, blur) :
     pdb.gimp_undo_push_group_start(img)
-
     # Alpha to selection:
     pdb.gimp_selection_layer_alpha(layer)
     # Invert the selection:
@@ -12,7 +11,6 @@ def python_blobify(img, layer, blur) :
     # Make a dropshadow from the inverted selection
     pdb.script_fu_drop_shadow(img, layer, -3, -3, blur,
                               (0, 0, 0), 80.0, False)
-
     # Clean up
     pdb.gimp_selection_none(img)
     pdb.gimp_undo_push_group_end(img)

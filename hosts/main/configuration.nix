@@ -388,6 +388,7 @@ in {
     cabal2nix
     htop
     unzip
+    audacity
     (pkgs.callPackage /etc/nixos/pkgs/get_current_screen_geometry { })
     # (pkgs.callPackage /etc/nixos/pkgs/get_current_screen_geometry.nix { })
     # NOTE https://nixos.wiki/wiki/Nixpkgs/Modifying_Packages
