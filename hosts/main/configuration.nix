@@ -31,7 +31,7 @@ in {
 
 
   programs.gamemode = {
-    enable = true;
+    enable = false;
     settings = {
       general = {
         renice = 10;
@@ -54,16 +54,16 @@ in {
       ExecStart = "${warp}/bin/warp-svc";
     };
   };
+
   programs.corectrl ={
-    enable = true;
+    enable = false;
     gpuOverclock.enable = true;
   };
 
 
   xdg.portal = {
     enable = true;
-    wlr.enable = true;
-    extraPortals = [ darkman pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = [ darkman ];
   };
 
   security.rtkit.enable = true;
@@ -101,6 +101,7 @@ in {
   services.udev.extraRules = ''
     SUBSYSTEM=="usb", ACTION=="add", ATTR{idVendor}=="0e8d", ATTR{idProduct}=="201d" MODE="0777" GROUP="users"
   '';
+
   # services.xserver.desktopManager.plasma5.excludePackages = with pkgs.libsForQt5; [
   #   elisa
   #   gwenview
@@ -127,9 +128,9 @@ in {
     # Doesnt work
     layout = "us,ru";
     xkbOptions = "grp:alt_shift_toggle";
-     deviceSection = ''
-         Option          "TearFree" "true"
-    '';
+    #  deviceSection = ''
+    #      Option          "TearFree" "true"
+    # '';
     libinput = {
       enable = true;
       mouse = { accelProfile = "flat"; };
@@ -304,6 +305,7 @@ in {
     btop
     calibre
     python-language-server
+    xorg.xdpyinfo
     brave
     peco
     ffmpeg
