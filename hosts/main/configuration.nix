@@ -306,6 +306,7 @@ in {
     calibre
     python-language-server
     xorg.xdpyinfo
+    postman
     brave
     peco
     ffmpeg
