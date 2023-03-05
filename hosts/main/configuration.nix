@@ -70,7 +70,8 @@ in {
 
   hardware.opengl.enable = true;
   hardware.opengl.driSupport = true;
-  # hardware.opengl.extraPackages = [ pkgs.amdvlk ];
+  hardware.opengl.extraPackages = with pkgs; [ vaapiIntel vaapiVdpau libvdpau-va-gl ];
+  hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ vaapiIntel ];
 
   virtualisation.spiceUSBRedirection.enable = true;
 
@@ -280,6 +281,8 @@ in {
     nixfmt
     gimp
     mpv
+    libva
+    libva-utils
     inkscape
     evince
     sidequest

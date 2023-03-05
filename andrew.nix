@@ -25,7 +25,13 @@ in {
       ];
       # home.stateVersion = "22.05";
       home.packages = [
-        pkgs.obs-studio
+        (pkgs.wrapOBS {
+          plugins = with pkgs.obs-studio-plugins; [
+            obs-gstreamer
+            obs-vkcapture
+          ];
+        })
+        # pkgs.obs-studio
         pkgs.lutris
         pkgs.stremio
         # unstable.pkgs.osu-lazer-bin
