@@ -244,7 +244,7 @@ in {
   # '';
   #     };
   #   };
-  modules.taffybar.enable = true;
+  modules.taffybar.enable = false;
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
@@ -258,6 +258,7 @@ in {
     #   "https://github.com/aaronjanse/nix-eval-lsp/archive/master.tar.gz"))
     # (import (fetchTarball
     #   "https://github.com/nix-community/rnix-lsp/archive/master.tar.gz"))
+    my.shell_gpt
     (callPackage /etc/nixos/pkgs/lantern.nix {})
     (callPackage /etc/nixos/pkgs/pythonbin.nix {})
     (callPackage /etc/nixos/pkgs/tlala.nix {})

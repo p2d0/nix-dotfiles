@@ -1,9 +1,9 @@
-{ lib }:
+{ pkgs, lib }:
 
-let my = import ../lib/multiuser.nix { };
+let my = import ../lib/util.nix { inherit lib; };
 in
 lib.runTests {
-  testEasy = {
+  xtestEasy = {
     expr = (my.allUsers ({}: {
       home.file = {
         ".xmonad/lib".source = "pepega";
@@ -14,5 +14,9 @@ lib.runTests {
       };
     }));
     expected = { kek = "y";};
+  };
+  testMapModules = {
+    expr  = (my.mapModules /etc/nixos/pkgs (p: lib.id p));
+    expected = [];
   };
 }

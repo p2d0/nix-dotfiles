@@ -7,6 +7,6 @@ with pkgs;
 {
   tests = {
     config = callPackage ./config.nix { };
-    multiple_users = callPackage ./test_multiple_users.nix { };
+    util = callPackage ./test_util.nix { };
   };
 }

@@ -9,19 +9,28 @@
   };
 
   outputs = inputs @ { self, nixpkgs, hyprland, home-manager, ... }:
-    let lib = nixpkgs.lib.extend (self: super: { my = import /etc/nixos/lib/multiuser.nix { }; });
+    let lib = nixpkgs.lib.extend (self: super: { my = import /etc/nixos/lib/util.nix { lib = nixpkgs.lib; }; });
         system =  "x86_64-linux";
         mkPkgs = pkgs: extraOverlays: import pkgs {
           inherit system;
           config.allowBroken = true;
           config.allowUnfree = true;  # forgive me Stallman senpai
           config.permittedInsecurePackages = [ "xrdp-0.9.9" "libdwarf-20181024"];
-          overlays = [(self: super: {inherit lib;})];
+          overlays = [(self: super: {
+            inherit lib;
+            my = lib.my.mapModules /etc/nixos/pkgs (p: self.callPackage p {});
+          })];
         };
         pkgs  = mkPkgs nixpkgs [ self.overlay ];
     in
       {
         inherit lib;
+
+        # overlay =
+        #   final: prev: {
+        #     my = lib.mapModules ./pkgs (p: pkgs.callPackage p {});
+        #   };
+
         nixosConfigurations = {
           mysystem = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
