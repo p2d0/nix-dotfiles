@@ -27,6 +27,7 @@
           flags = [ "ifexists" "nofail" ];
         }
         { name = "libpipewire-module-protocol-native"; }
+        { name = "libpipewire-module-pulse-tunnel";}
         { name = "libpipewire-module-client-node"; }
         { name = "libpipewire-module-adapter"; }
         { name = "libpipewire-module-metadata"; }

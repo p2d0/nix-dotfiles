@@ -251,7 +251,7 @@ in {
     clang
     openssl
     flameshot
-    firefox
+    unstable.firefox
     xcompmgr
     killall
     # (import (fetchTarball
@@ -385,6 +385,8 @@ in {
     drawio
     # (python3.withPackages(ps: [ ps.pygobject3 ]))
     python39Packages.yt-dlp
+    python39Packages.pytest
+    libpulseaudio
     python39Packages.virtualenv
     python39Packages.pip
     anydesk
