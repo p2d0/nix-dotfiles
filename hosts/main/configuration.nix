@@ -291,6 +291,8 @@ in {
     xboxdrv
     mangohud
     lua
+    apktool
+    apksigner
 
     pulseaudio
     gnome.gnome-system-monitor

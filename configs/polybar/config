@@ -82,7 +82,7 @@ font-8 = FontAwesome:size=12;5
 
 modules-left = i3
 modules-center = popup-calendar
-modules-right = timer weather xbacklight bluetooth pulseaudio
+modules-right = pulse timer weather xbacklight bluetooth pulseaudio
 ; scratchpad-indicator
 ; text
 tray-position = none
@@ -109,6 +109,12 @@ scroll-down = i3wm-wsnext
 
 cursor-click = pointer
 ; cursor-scroll = ns-resize
+
+[module/pulse]
+type = custom/script
+exec = cat '/mnt/md127/MiBand2/text.txt'
+interval = 1
+format-prefix = "  "
 
 [module/texto]
 type = custom/text
