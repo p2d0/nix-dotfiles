@@ -2,11 +2,11 @@
 
 appimageTools.wrapType2 rec {
   pname = "osu-lazer-bin";
-  version = "2023.301.0";
+  version = "2023.305.0";
 
   src = fetchurl {
     url = "https://github.com/ppy/osu/releases/download/${version}/osu.AppImage";
-    sha256 = "sha256-0c74bGOY9f2K52xE7CZy/i3OfyCC+a6XGI30c6hI7jM=";
+    sha256 = "sha256-W3XJ7HtJM5iFI8OOTTu8IBHMerZSCETHMemkoTislK8=";
   };
 
   extraPkgs = pkgs: with pkgs; [ icu ];
