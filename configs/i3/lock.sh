@@ -9,16 +9,16 @@ V='#bb00bbbb'  # verifying
 White='#ffffffff'
 Black='#000000FF'
 
-i3lock \
---timecolor=$White        \
---datecolor=$White        \
---screen 1            \
---color $Black             \
---clock               \
---indicator           \
---timestr="%H:%M:%S"  \
---datestr="%A, %m %Y" \
---keylayout 1
+i3lock  --color="000000"
+# --timecolor=$White        \
+# --datecolor=$White        \
+# --screen 1            \
+# --color $Black             \
+# --clock               \
+# --indicator           \
+# --timestr="%H:%M:%S"  \
+# --datestr="%A, %m %Y" \
+# --keylayout 1
 # --insidevercolor=$C   \
 # --ringvercolor=$V     \
 # \
