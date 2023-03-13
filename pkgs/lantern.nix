@@ -9,11 +9,11 @@ let libpcap =
 in stdenv.mkDerivation rec {
 
   pname = "lantern";
-  version = "6.10.5";
+  version = "7.3.6";
 
   src = fetchurl {
     url = "https://s3.amazonaws.com/lantern/lantern-installer-${version}-64-bit.deb";
-    sha256 = "sha256-6fxk6ltCYqWH6yW9XaqQl8kB1kYxp1qMyn1+Zh6t4Bs=";
+    sha256 = "sha256-uIgd2kxuq/t4ddiegKUbTKG6XRG3Uw1i4UvqGDm6WBI=";
   };
 
   unpackCmd = "${dpkg}/bin/dpkg-deb -x $curSrc .";
