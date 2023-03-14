@@ -32,7 +32,16 @@ in {
           ];
         })
         # pkgs.obs-studio
-        pkgs.lutris
+        (pkgs.lutris.override {
+          extraPkgs = pkgs: [
+            pkgs.winetricks
+            pkgs.gtk3-x11
+            pkgs.pango
+            pkgs.gdk-pixbuf
+            pkgs.shared-mime-info
+            pkgs.libxcrypt
+          ];
+        })
         pkgs.stremio
         # unstable.pkgs.osu-lazer-bin
         (unstable.pkgs.callPackage /etc/nixos/pkgs/osu-lazer-bin.nix { })
