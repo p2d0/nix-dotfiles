@@ -10,6 +10,7 @@
 
   outputs = inputs @ { self, nixpkgs, hyprland, home-manager, ... }:
     let lib = nixpkgs.lib.extend (self: super: { my = import /etc/nixos/lib/util.nix { lib = nixpkgs.lib; }; });
+        nixpkgs-tars = "https://github.com/NixOS/nixpkgs/archive/";
         system =  "x86_64-linux";
         mkPkgs = pkgs: extraOverlays: import pkgs {
           inherit system;
@@ -18,6 +19,10 @@
           config.permittedInsecurePackages = [ "xrdp-0.9.9" "libdwarf-20181024"];
           overlays = [(self: super: {
             inherit lib;
+            pr218037 = import (fetchTarball
+              "${nixpkgs-tars}84963237b438319092a352a7d375878d82beb1ca.tar.gz") {
+                config = self.config;
+              };
             my = lib.my.mapModules /etc/nixos/pkgs (p: self.callPackage p {});
           })];
         };

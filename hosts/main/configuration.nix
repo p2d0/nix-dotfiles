@@ -185,15 +185,19 @@ in {
       permittedInsecurePackages = [ "xrdp-0.9.9" "libdwarf-20181024"];
       packageOverrides = pkgs: {
         qtile = (pkgs.callPackage /etc/nixos/pkgs/qtile.nix {});
-          # pr181605 = import (fetchTarball
-          #   "${nixpkgs-tars}7cc979502c3dc5480ef3e4ffe1a05c897084d34b.tar.gz") {
-          #     config = config.nixpkgs.config;
-          #   };
-          # latest-commit = import (fetchTarball
-          #   "${nixpkgs-tars}683f25a6af6e5642cd426c69a4de1d434971a695.tar.gz") {
-          #     config = config.nixpkgs.config;
-          #   };
-        };
+        # pr218037 = import (fetchTarball
+        #   "${nixpkgs-tars}84963237b438319092a352a7d375878d82beb1ca.tar.gz") {
+        #     config = config.nixpkgs.config;
+        #   };
+        # pr181605 = import (fetchTarball
+        #   "${nixpkgs-tars}7cc979502c3dc5480ef3e4ffe1a05c897084d34b.tar.gz") {
+        #     config = config.nixpkgs.config;
+        #   };
+        # latest-commit = import (fetchTarball
+        #   "${nixpkgs-tars}683f25a6af6e5642cd426c69a4de1d434971a695.tar.gz") {
+        #     config = config.nixpkgs.config;
+        #   };
+      };
     };
 
   services.blueman.enable = true;
@@ -250,6 +254,17 @@ in {
     wget
     clang
     openssl
+    pr218037.microsoft-edge-dev
+    # (microsoft-edge-dev.overrideAttrs(oldAttrs: rec {
+    #   name = "edge-dev";
+    #   version = "110.0.1587.1";
+    #   src = builtins.fetchurl {
+    #     url = "https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-dev/microsoft-edge-dev_110.0.1587.1-1_amd64.deb";
+    #     sha256 = "sha256:1p39llchnb2b6zbjpn0fk7hp7yhfp03b00s539hhgaliqmq9z93g";
+    #   };
+
+    # }))
+
     flameshot
     unstable.firefox
     xcompmgr
@@ -340,7 +355,7 @@ in {
     # })
     #(pkgs.callPackage /etc/nixos/pkgs/tdesktop.nix { })
     # (pkgs.callPackage ./pkgs/openhab.nix { })
-    #(callPackage ./pkgs/psiphon.nix { })
+    # (callPackage ./pkgs/psiphon.nix { })
     speedcrunch
     discord
     unstable.tdesktop
