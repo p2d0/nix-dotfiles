@@ -277,6 +277,7 @@ in {
     (callPackage /etc/nixos/pkgs/lantern.nix {})
     (callPackage /etc/nixos/pkgs/pythonbin.nix {})
     (callPackage /etc/nixos/pkgs/tlala.nix {})
+    protonvpn-gui
     # (callPackage /etc/nixos/pkgs/psiphon.nix { })
     warp
     # unstable.elementary-planner
