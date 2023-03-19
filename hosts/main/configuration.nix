@@ -402,7 +402,7 @@ in {
     sublime
     drawio
     # (python3.withPackages(ps: [ ps.pygobject3 ]))
-    python39Packages.yt-dlp
+    unstable.python39Packages.yt-dlp
     python39Packages.pytest
     libpulseaudio
     python39Packages.virtualenv
