@@ -56,16 +56,16 @@ underline-size = 0
 
 background = ${colors.background}
 foreground = ${colors.foreground}
-spacing = 0
+spacing = 1
 
 line-size =  0
 line-color = #f00
 
 border-size = 0px
 border-color = #00000000
-padding-top = 0
+padding-top = 1
 padding-left = 0
-padding-right = 1
+padding-right = 0
 
 module-margin-left = 1
 module-margin-right = 1
@@ -82,12 +82,12 @@ font-8 = FontAwesome:size=12;5
 
 modules-left = i3
 modules-center = popup-calendar
-modules-right = pulse timer weather xbacklight bluetooth pulseaudio
+modules-right = timer weather bluetooth pulseaudio
 ; scratchpad-indicator
 ; text
 tray-position = none
-tray-padding = 1
-tray-maxsize = 100
+tray-padding = 5
+tray-maxsize = 1000
 tray-transparent = false
 tray-background = #000
 tray-scale = 1.0
@@ -104,8 +104,8 @@ override-redirect = false
 ; scroll-down = "#workspaces-xmonad.next"
 wrapping-scroll = false
 
-scroll-up = i3wm-wsprev
-scroll-down = i3wm-wsnext
+scroll-up = #i3.prev
+scroll-down = #i3.next
 
 cursor-click = pointer
 ; cursor-scroll = ns-resize
