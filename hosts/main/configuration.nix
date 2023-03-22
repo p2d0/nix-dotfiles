@@ -5,7 +5,7 @@
 { config, pkgs, ghcWithPackages, ... }:
 
 let
-  unstable = import <nixos-unstable> { config.allowBroken = true; }; # https://nixos.wiki/wiki/FAQ#How_can_I_install_a_package_from_unstable_while_remaining_on_the_stable_channel.3F
+  unstable = import <nixos-unstable> { config.allowBroken = true; config.allowUnfree = true; }; # https://nixos.wiki/wiki/FAQ#How_can_I_install_a_package_from_unstable_while_remaining_on_the_stable_channel.3F
   darkman = (pkgs.callPackage /etc/nixos/pkgs/darkman.nix { });
   warp = (pkgs.callPackage /etc/nixos/pkgs/warp.nix { });
 in {
@@ -185,6 +185,7 @@ in {
       permittedInsecurePackages = [ "xrdp-0.9.9" "libdwarf-20181024"];
       packageOverrides = pkgs: {
         qtile = (pkgs.callPackage /etc/nixos/pkgs/qtile.nix {});
+        # get-pr-override 218037
         # pr218037 = import (fetchTarball
         #   "${nixpkgs-tars}84963237b438319092a352a7d375878d82beb1ca.tar.gz") {
         #     config = config.nixpkgs.config;
@@ -222,9 +223,9 @@ in {
     # xrdp.defaultWindowManager = "dbus-launch --exit-with-session;i3;";
   };
 
-  # nix.settings.auto-optimise-store = true;
-  # nix.gc.automatic = true;
-  # nix.gc.options = "--delete-older-than 2d";
+  nix.settings.auto-optimise-store = true;
+  nix.gc.automatic = true;
+  nix.gc.options = "--delete-older-than 2d";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -274,9 +275,9 @@ in {
     # (import (fetchTarball
     #   "https://github.com/nix-community/rnix-lsp/archive/master.tar.gz"))
     my.shell_gpt
-    (callPackage /etc/nixos/pkgs/lantern.nix {})
-    (callPackage /etc/nixos/pkgs/pythonbin.nix {})
-    (callPackage /etc/nixos/pkgs/tlala.nix {})
+    my.lantern
+    my.pythonbin
+    my.tlala
     protonvpn-gui
     # (callPackage /etc/nixos/pkgs/psiphon.nix { })
     warp
@@ -346,10 +347,10 @@ in {
     paprefs
     shotcut
     darktable
-    jetbrains.idea-community
+    unstable.jetbrains.idea-community
     picom
     # (callPackage /etc/nixos/pkgs/picom-animations.nix { })
-    (callPackage /etc/nixos/pkgs/puush-linux.nix { })
+    my.puush-linux
     # (pkgs.callPackage /mnt/md127/nixpkgs/pkgs/applications/networking/instant-messengers/telegram/tdesktop { })
     # (pkgs.qt6Packages.callPackage /mnt/md127/nixpkgs/pkgs/applications/networking/instant-messengers/telegram/tdesktop {
     # abseil-cpp = pkgs.abseil-cpp_202111;
@@ -401,7 +402,7 @@ in {
     android-tools
     sublime
     drawio
-    # (python3.withPackages(ps: [ ps.pygobject3 ]))
+    (python3.withPackages(ps: [ ps.requests ps.epc ]))
     unstable.python39Packages.yt-dlp
     python39Packages.pytest
     libpulseaudio
@@ -416,10 +417,11 @@ in {
     htop
     unzip
     audacity
-    (pkgs.callPackage /etc/nixos/pkgs/get_current_screen_geometry { })
+    my.get_current_screen_geometry
     # (pkgs.callPackage /etc/nixos/pkgs/get_current_screen_geometry.nix { })
     # NOTE https://nixos.wiki/wiki/Nixpkgs/Modifying_Packages
-    (callPackage /etc/nixos/pkgs/guake-latest.nix { })
+    # guake
+    my.guake-latest
     # (callPackage /etc/nixos/pkgs/jetbrains-gateway.nix { })
   ];
 

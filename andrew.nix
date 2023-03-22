@@ -61,7 +61,7 @@ in {
       ];
       programs.fish.shellInit = ''
         function rebuild
-          sudo nixos-rebuild switch --fast --impure --flake '/etc/nixos/.?submodules=1#mysystem'
+          sudo nixos-rebuild switch --impure --flake '/etc/nixos/.?submodules=1#mysystem'
           sudo /run/current-system/specialisation/default/activate
         end
         function activate-specialisation

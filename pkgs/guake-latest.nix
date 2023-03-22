@@ -49,6 +49,7 @@ python3.pkgs.buildPythonApplication rec {
 
   makeWrapperArgs = [ "--set LOCALE_ARCHIVE ${glibcLocales}/lib/locale/locale-archive" ];
 
+  # NOTE TODO Bleeds python into environment
   propagatedBuildInputs = with python3.pkgs; [
     dbus-python
     pbr

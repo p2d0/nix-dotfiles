@@ -30,7 +30,7 @@
       home.packages = [
         pkgs.python-language-server
         pkgs.postman
-        pkgs.python3
+        # pkgs.python3
         # TODO localize
     #     (pkgs.php74.buildEnv {
     #       extensions = ({ enabled, all }: enabled ++ (with all; [
@@ -51,7 +51,7 @@
 
       programs.fish.shellInit = ''
             function rebuild
-              sudo nixos-rebuild switch --fast --impure --flake '/etc/nixos/.?submodules=1#mysystem'
+              sudo nixos-rebuild switch --impure --flake '/etc/nixos/.?submodules=1#mysystem'
               sudo /run/current-system/specialisation/work/activate
             end
             function activate-specialisation
