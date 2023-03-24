@@ -6,15 +6,16 @@ buildGoPackage {
   src = fetchFromGitHub {
     owner = "Psiphon-Labs";
     repo = "psiphon-tunnel-core";
-    rev = "87f8e6d118bdd57942a6902fedbf814225b0092d";
-    sha256 = "JIiupsNxNyvDH6zCjQ8VIilfo3LQkATixEX2Bl3XNnw=";
+    rev = "df9b786ba0f473c914d3db902c8b1f94a79020c2";
+    sha256 = "sha256-JI63CeG7pxdUOOjWyhKSsjvkkpiNM2caqI7NeS4HtdQ=";
   } ;
+
 
   subPackages = [
     #"ClientLibrary"
     "ConsoleClient"
   ];
-
+  tags = ["PSIPHON_DISABLE_QUIC"];
   goPackagePath = "github.com/Psiphon-Labs/psiphon-tunnel-core";
   #goDeps = ./deps.nix;
   postInstall = ''

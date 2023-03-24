@@ -1,0 +1,15 @@
+[2023-03-24][16:06:03][chatgpt::app::setup][INFO] stepup
+[2023-03-24][16:06:03][chatgpt::app::setup][INFO] global_shortcut_unregister
+[2023-03-24][16:06:03][chatgpt::app::setup][INFO] run_check_update
+[2023-03-24][16:06:03][chatgpt::utils][INFO] run_check_update: silent=false has_msg=None
+[2023-03-24][16:06:03][chatgpt::app::setup][INFO] stepup_tray
+[2023-03-24][16:06:03][chatgpt::app::setup][INFO] main_window: https://chat.openai.com
+[2023-03-24][16:06:03][attohttpc][DEBUG] trying to connect to lencx.github.io:443
+[2023-03-24][16:06:03][attohttpc][DEBUG] trying to connect to [2606:50c0:8000::153]:443
+[2023-03-24][16:06:03][attohttpc][DEBUG] failed to connect to [2606:50c0:8000::153]:443: Cannot assign requested address (os error 99)
+[2023-03-24][16:06:03][attohttpc][DEBUG] trying to connect to 185.199.108.153:443
+[2023-03-24][16:06:03][attohttpc][DEBUG] successfully connected to 185.199.108.153:443, took 21ms
+[2023-03-24][16:06:03][attohttpc][DEBUG] GET /ChatGPT/install.json HTTP/1.1
+[2023-03-24][16:06:03][attohttpc][DEBUG] creating a length body reader
+[2023-03-24][16:06:03][attohttpc][DEBUG] creating gzip decoder
+[2023-03-24][16:06:03][attohttpc][DEBUG] status code 200

@@ -131,13 +131,18 @@ in {
         output = "DisplayPort-0";
         primary = true;
         monitorConfig = ''
-Option "Primary" "true"
-Modeline "1080@75"  228.25  2560 2608 2640 2720  1080 1083 1093 1119 +hsync -vsync
-Option "PreferredMode" "1080@75"
+Modeline "2560x1080@75"  228.25  2560 2608 2640 2720  1080 1083 1093 1119 +hsync -vsync
+Option "PreferredMode" "2560x1080@75"
 
 '';
       }
- ];
+      {
+        output = "DVI-D-0";
+        monitorConfig = ''
+Option "Position" "2560 0"
+'';
+      }
+    ];
     # Doesnt work
     layout = "us,ru";
     xkbOptions = "grp:alt_shift_toggle";
@@ -302,7 +307,9 @@ Option "PreferredMode" "1080@75"
       my.lantern
       my.pythonbin
       my.tlala
+      my.chatgpt
       protonvpn-gui
+      my.psiphon
       # (callPackage /etc/nixos/pkgs/psiphon.nix { })
       warp
       # unstable.elementary-planner
