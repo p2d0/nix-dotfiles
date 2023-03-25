@@ -226,6 +226,7 @@ Option "Position" "2560 0"
   services.cron = {
     enable = true;
     systemCronJobs = [
+      "00 22 * * * root sh -c 'shutdown now'"
       "00 20 * * * andrew fish -c 'sync_repos'"
       "30 21 * * * andrew paplay ~/.config/polybar/bell.wav;notify-send -u critical 'WEBCAM!WEBCAM! AND GET OFF THE PC'"
     ];
@@ -309,6 +310,7 @@ Option "Position" "2560 0"
       my.tlala
       my.chatgpt
       protonvpn-gui
+      shadowsocks-rust
       my.psiphon
       # (callPackage /etc/nixos/pkgs/psiphon.nix { })
       warp
