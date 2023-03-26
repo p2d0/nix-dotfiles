@@ -223,12 +223,24 @@ Option "Position" "2560 0"
 
   services.blueman.enable = true;
   programs.dconf.enable = true;
+
+  systemd.services.shutdown = {
+    description = "Shutdown service";
+    serviceConfig.Type = "oneshot";
+    script = "shutdown now";
+  };
+
+  systemd.timers.shutdown = {
+    description = "Shutdown timer";
+    wantedBy = [ "timers.target" ];
+    timerConfig.OnCalendar = "*-*-* 22:00:00";
+    timerConfig.Unit = "shutdown.service";
+  };
+
   services.cron = {
     enable = true;
     systemCronJobs = [
-      "00 22 * * * root sh -c 'shutdown now'"
       "00 20 * * * andrew fish -c 'sync_repos'"
-      "30 21 * * * andrew paplay ~/.config/polybar/bell.wav;notify-send -u critical 'WEBCAM!WEBCAM! AND GET OFF THE PC'"
     ];
   };
 
@@ -270,7 +282,7 @@ Option "Position" "2560 0"
   # '';
   #     };
   #   };
-  modules.taffybar.enable = true;
+  modules.taffybar.enable = false;
   environment.systemPackages = with pkgs;
     (if config.programs.hyprland.enable
      then [
@@ -286,6 +298,7 @@ Option "Position" "2560 0"
       clang
       openssl
       pr218037.microsoft-edge-dev
+      # microsoft-edge
       # (microsoft-edge-dev.overrideAttrs(oldAttrs: rec {
       #   name = "edge-dev";
       #   version = "110.0.1587.1";
