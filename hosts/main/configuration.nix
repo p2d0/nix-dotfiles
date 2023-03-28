@@ -26,7 +26,7 @@ in {
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
     };
     wantedBy = [ "multiuser.target" ];
-    enable = false;
+    enable = true;
   };
 
 
@@ -191,7 +191,7 @@ Option "Position" "2560 0"
   ];
 
   services.emacs.install = true;
-  services.emacs.enable = true;
+  services.emacs.enable = false;
   services.emacs.defaultEditor = true;
   # services.emacs.package = pkgs.emacsUnstable.override {
   #   withGTK3 = true;
@@ -298,6 +298,7 @@ Option "Position" "2560 0"
       clang
       openssl
       pr218037.microsoft-edge-dev
+
       # microsoft-edge
       # (microsoft-edge-dev.overrideAttrs(oldAttrs: rec {
       #   name = "edge-dev";
@@ -357,9 +358,12 @@ Option "Position" "2560 0"
       lua
       apktool
       apksigner
+      my.alvr
 
       pulseaudio
       gnome.gnome-system-monitor
+      gnome.zenity
+      gnome.gnome-sound-recorder
       tigervnc
       cabal2nix
       dbeaver
