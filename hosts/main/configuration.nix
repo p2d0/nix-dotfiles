@@ -360,6 +360,7 @@ Option "Position" "2560 0"
       apksigner
       my.alvr
 
+
       pulseaudio
       gnome.gnome-system-monitor
       gnome.zenity
