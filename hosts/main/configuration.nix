@@ -361,6 +361,7 @@ Option "Position" "2560 0"
       my.alvr
 
 
+      jq
       pulseaudio
       gnome.gnome-system-monitor
       gnome.zenity

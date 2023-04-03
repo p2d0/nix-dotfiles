@@ -1,0 +1,25 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "pixel",
+    "current_border_width": 5,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 650,
+       "width": 658,
+       "x": 0,
+       "y": 0
+    },
+    "marks": [],
+    "name": "*WoMan 1 i3* – Doom Emacs",
+    "percent": 1,
+    "swallows": [
+       {
+       // "class": "^Emacs$",
+       // "instance": "^emacs$",
+       // "machine": "^andrew$",
+       // "title": "^\\*WoMan\\ 1\\ i3\\*\\ \\–\\ Doom\\ Emacs$"
+       }
+    ],
+    "type": "con"
+}
+
