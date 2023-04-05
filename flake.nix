@@ -4,11 +4,12 @@
   inputs = {
     nixpkgs = { url = "github:nixos/nixpkgs/nixos-22.11"; };
     home-manager.url = "github:nix-community/home-manager/release-22.11";
+    nixgl.url = "github:guibou/nixGL";
     hyprland.url = "github:hyprwm/Hyprland";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs @ { self, nixpkgs, hyprland, home-manager, ... }:
+  outputs = inputs @ { self, nixgl, nixpkgs, hyprland, home-manager, ... }:
     let lib = nixpkgs.lib.extend (self: super: { my = import /etc/nixos/lib/util.nix { lib = nixpkgs.lib; }; });
         nixpkgs-tars = "https://github.com/NixOS/nixpkgs/archive/";
         system =  "x86_64-linux";
@@ -25,7 +26,8 @@
                 config = self.config;
               };
             my = lib.my.mapModules /etc/nixos/pkgs (p: self.callPackage p {});
-          })];
+          })
+                      nixgl.overlay];
         };
         pkgs  = mkPkgs nixpkgs [ self.overlay ];
     in

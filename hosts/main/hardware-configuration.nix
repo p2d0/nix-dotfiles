@@ -43,7 +43,7 @@
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = false;
   networking.interfaces.enp3s0.useDHCP = true;
-  networking.enableIPv6 = false;
+  # networking.enableIPv6 = false;
 
   # hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

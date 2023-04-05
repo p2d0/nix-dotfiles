@@ -155,6 +155,16 @@ Option "Position" "2560 0"
     };
     exportConfiguration = true;
     windowManager.i3.enable = true;
+    # windowManager.i3.package = (pkgs.i3.overrideAttrs(oldAttrs: rec {
+    #   patches = [
+    #     (pkgs.fetchpatch {
+    #       url = "https://raw.githubusercontent.com/mishurov/applets/master/i3patch/files/add_zoom_i3_4.10.4.patch";
+    #       sha256 = "sha256-gOS2bRJQEGRqjkYK0IZ/oMapdUWwvFKNLEp3XBWzZC8=";
+    #     })
+    #   ];
+
+    # }));
+
     # windowManager.qtile.enable = true;
     displayManager = { defaultSession = "none+i3"; };
   };
@@ -233,7 +243,7 @@ Option "Position" "2560 0"
   systemd.timers.shutdown = {
     description = "Shutdown timer";
     wantedBy = [ "timers.target" ];
-    timerConfig.OnCalendar = "*-*-* 22:00:00";
+    timerConfig.OnCalendar = "*-*-* 21:30:00";
     timerConfig.Unit = "shutdown.service";
   };
 
@@ -309,11 +319,12 @@ Option "Position" "2560 0"
       #   };
 
       # }))
-
+      nixgl.nixGLMesa
       flameshot
       unstable.firefox
       xcompmgr
       killall
+      xdo
       # (import (fetchTarball
       #   "https://github.com/aaronjanse/nix-eval-lsp/archive/master.tar.gz"))
       # (import (fetchTarball
