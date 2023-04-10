@@ -243,7 +243,7 @@ Option "Position" "2560 0"
   systemd.timers.shutdown = {
     description = "Shutdown timer";
     wantedBy = [ "timers.target" ];
-    timerConfig.OnCalendar = "*-*-* 21:30:00";
+    timerConfig.OnCalendar = "*-*-* 23:30:00";
     timerConfig.Unit = "shutdown.service";
   };
 
