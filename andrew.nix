@@ -32,8 +32,8 @@ in {
           ];
         })
         # pkgs.obs-studio
-        (pkgs.lutris.override {
-          extraPkgs = pkgs: [
+        (unstable.lutris.override {
+          extraPkgs = pkgs: with pkgs;[
             pkgs.winetricks
             pkgs.gtk3-x11
             pkgs.pango

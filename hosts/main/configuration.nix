@@ -243,7 +243,7 @@ Option "Position" "2560 0"
   systemd.timers.shutdown = {
     description = "Shutdown timer";
     wantedBy = [ "timers.target" ];
-    timerConfig.OnCalendar = "*-*-* 23:30:00";
+    timerConfig.OnCalendar = "*-*-* 21:00:00";
     timerConfig.Unit = "shutdown.service";
   };
 
@@ -275,6 +275,12 @@ Option "Position" "2560 0"
 
   environment.sessionVariables = {
     GTK_DATA_PREFIX = [ "${config.system.path}" ];
+    GST_PLUGIN_SYSTEM_PATH_1_0 = pkgs.lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" [
+      pkgs.gst_all_1.gst-plugins-good
+      pkgs.gst_all_1.gst-plugins-bad
+      pkgs.gst_all_1.gst-plugins-ugly
+      pkgs.gst_all_1.gst-libav
+    ];
   };
   programs.java = { enable = true; package = pkgs.oraclejre8; };
   modules.fonts.enable = true;
@@ -322,9 +328,12 @@ Option "Position" "2560 0"
       nixgl.nixGLMesa
       flameshot
       unstable.firefox
+      unstable.librewolf
       xcompmgr
       killall
       xdo
+      v2ray
+      inotify-tools
       # (import (fetchTarball
       #   "https://github.com/aaronjanse/nix-eval-lsp/archive/master.tar.gz"))
       # (import (fetchTarball
