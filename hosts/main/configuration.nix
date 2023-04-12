@@ -314,7 +314,12 @@ Option "Position" "2560 0"
       clang
       openssl
       pr218037.microsoft-edge-dev
-
+      libgcc
+      glibc
+      sumneko-lua-language-server
+      luarocks
+      neovide
+      lazygit
       # microsoft-edge
       # (microsoft-edge-dev.overrideAttrs(oldAttrs: rec {
       #   name = "edge-dev";
@@ -345,6 +350,7 @@ Option "Position" "2560 0"
       my.chatgpt
       protonvpn-gui
       shadowsocks-rust
+      neovim
       my.psiphon
       # (callPackage /etc/nixos/pkgs/psiphon.nix { })
       warp

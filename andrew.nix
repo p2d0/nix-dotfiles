@@ -32,8 +32,10 @@ in {
           ];
         })
         # pkgs.obs-studio
-        (unstable.lutris.override {
+        (pkgs.lutris.override {
           extraPkgs = pkgs: with pkgs;[
+            pkgs.pkgsi686Linux.alsa-lib
+            pkgs.pkgsi686Linux.libpulseaudio
             pkgs.winetricks
             pkgs.gtk3-x11
             pkgs.pango
