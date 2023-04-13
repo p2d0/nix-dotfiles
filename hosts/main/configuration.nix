@@ -203,33 +203,42 @@ Option "Position" "2560 0"
   services.emacs.install = true;
   services.emacs.enable = false;
   services.emacs.defaultEditor = true;
-  # services.emacs.package = pkgs.emacsUnstable.override {
-  #   withGTK3 = true;
-  # };
-
-  nixpkgs.config =
-    let nixpkgs-tars = "https://github.com/NixOS/nixpkgs/archive/";
-    in {
-      allowUnfree = true;
-      allowBroken = true;
-      permittedInsecurePackages = [ "xrdp-0.9.9" "libdwarf-20181024"];
-      packageOverrides = pkgs: {
-        qtile = (pkgs.callPackage /etc/nixos/pkgs/qtile.nix {});
-        # get-pr-override 218037
-        # pr218037 = import (fetchTarball
-        #   "${nixpkgs-tars}84963237b438319092a352a7d375878d82beb1ca.tar.gz") {
-        #     config = config.nixpkgs.config;
-        #   };
-        # pr181605 = import (fetchTarball
-        #   "${nixpkgs-tars}7cc979502c3dc5480ef3e4ffe1a05c897084d34b.tar.gz") {
-        #     config = config.nixpkgs.config;
-        #   };
-        # latest-commit = import (fetchTarball
-        #   "${nixpkgs-tars}683f25a6af6e5642cd426c69a4de1d434971a695.tar.gz") {
-        #     config = config.nixpkgs.config;
-        #   };
-      };
+  services.emacs.package = pkgs.emacsUnstable.overrideAttrs(oldAttrs: rec {
+    src = pkgs.fetchFromGitHub {
+      owner = "emacs-lsp";
+      repo = "emacs";
+      rev = "json-rpc";
+      sha256 = "sha256-mnSG1MqUapaXyHHJRHv40cWUx1zRIwTM1O810ZJgRgc=";
     };
+  });
+
+    # services.emacs.package = pkgs.emacsUnstable.override {
+    #   withGTK3 = true;
+    # };
+
+    nixpkgs.config =
+                             let nixpkgs-tars = "https://github.com/NixOS/nixpkgs/archive/";
+                             in {
+                               allowUnfree = true;
+                               allowBroken = true;
+                               permittedInsecurePackages = [ "xrdp-0.9.9" "libdwarf-20181024"];
+                               packageOverrides = pkgs: {
+                                 qtile = (pkgs.callPackage /etc/nixos/pkgs/qtile.nix {});
+                                 # get-pr-override 218037
+                                 # pr218037 = import (fetchTarball
+                                 #   "${nixpkgs-tars}84963237b438319092a352a7d375878d82beb1ca.tar.gz") {
+                                 #     config = config.nixpkgs.config;
+                                 #   };
+                                 # pr181605 = import (fetchTarball
+                                 #   "${nixpkgs-tars}7cc979502c3dc5480ef3e4ffe1a05c897084d34b.tar.gz") {
+                                 #     config = config.nixpkgs.config;
+                                 #   };
+                                 # latest-commit = import (fetchTarball
+                                 #   "${nixpkgs-tars}683f25a6af6e5642cd426c69a4de1d434971a695.tar.gz") {
+                                 #     config = config.nixpkgs.config;
+                                 #   };
+                               };
+                             };
 
   services.blueman.enable = true;
   programs.dconf.enable = true;
