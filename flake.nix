@@ -49,6 +49,7 @@
               ./modules/hjkl/hjkl.nix
               ./modules/fonts/fonts.nix
               ./modules/fcitx.nix
+              ./modules/printing3d
               ./andrew.nix
               ./andrew-work.nix
               ./modules/options.nix

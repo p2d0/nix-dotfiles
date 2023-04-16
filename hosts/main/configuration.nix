@@ -178,6 +178,7 @@ Option "Position" "2560 0"
   # Define a user account. Don't forget to set a password with ‘passwd’.
   # TODO Move to home manager user config?
   modules.hjkl.enable = true;
+  modules.printing3d.enable = true;
 
   users.defaultUserShell = pkgs.fish;
 
@@ -321,6 +322,7 @@ Option "Position" "2560 0"
       vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
       wget
       clang
+      file
       openssl
       pr218037.microsoft-edge-dev
       libgcc

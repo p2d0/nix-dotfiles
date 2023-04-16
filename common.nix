@@ -38,7 +38,12 @@
   #         })];
   #     }));
   #   };
-
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "text/plain" = "gedit.desktop";
+    };
+  };
   programs.git = {
     enable = true;
     userName = "patriot720";
