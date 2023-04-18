@@ -329,6 +329,7 @@ Option "Position" "2560 0"
       glibc
       sumneko-lua-language-server
       luarocks
+      skypeforlinux
       neovide
       lazygit
       # microsoft-edge
