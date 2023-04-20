@@ -5,6 +5,17 @@ rec {
     home-manager.users."andrew" = items;
     home-manager.users."andrew-work" = items;
   };
+  withHomeVars = homeVars: items: items //
+                    (if builtins.typeOf homeVars == "lambda"
+                     then {
+                       home-manager.users."andrew" = homeVars;
+                       home-manager.users."andrew-work" = homeVars;
+                     }
+                     else {
+                       home-manager.users."andrew" = ({...}:homeVars);
+                       home-manager.users."andrew-work" = ({...}:homeVars);
+                     } )
+  ;
 
   # mapFilterAttrs ::
   #   (name -> value -> bool)

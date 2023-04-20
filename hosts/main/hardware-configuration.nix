@@ -15,6 +15,8 @@
     "amdgpu.ppfeaturemask=0xffffffff"   "intel_iommu=on" "raid0.default_layout=2" "mitigations=off" ];
   boot.extraModulePackages = [ ];
   boot.loader.timeout = 1;
+  services.fstrim.enable = lib.mkDefault true;
+  # hardware.hidpi.enable = true;
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/66e90d46-d031-4e40-ad33-c3f156316c20";

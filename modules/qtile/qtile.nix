@@ -16,10 +16,9 @@ in {
     nixpkgs.config.packageOverrides = pkgs: {
       qtile = (pkgs.callPackage /etc/nixos/pkgs/qtile.nix {});
     };
-    (my.allUsers ({}: {
-      home.file = {
-        ".config/qtile".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/qtile;
-      };
-    }));
-  };
+  } // (my.allUsers ({}: {
+    home.file = {
+      ".config/qtile".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/qtile;
+    };
+  }));
 }

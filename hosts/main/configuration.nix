@@ -27,8 +27,14 @@ in {
 
   hardware.opengl.enable = true;
   hardware.opengl.driSupport = true;
-  hardware.opengl.extraPackages = with pkgs; [ vaapiIntel vaapiVdpau libvdpau-va-gl ];
+  hardware.opengl.extraPackages = with pkgs; [ vaapiIntel vaapiVdpau libvdpau-va-gl amdvlk
+   rocm-opencl-icd
+   rocm-opencl-runtime ];
   hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ vaapiIntel ];
+
+  systemd.tmpfiles.rules = [
+    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"
+  ];
 
   virtualisation.spiceUSBRedirection.enable = true;
 
@@ -145,9 +151,9 @@ in {
     extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
   };
 
-  modules.emacs-with-doom = {
-    enable = true;
-  };
+  users.defaultUserShell = pkgs.fish;
+
+  modules.emacs-with-doom.enable = true;
 
   nixpkgs.config =
     let nixpkgs-tars = "https://github.com/NixOS/nixpkgs/archive/";
@@ -279,6 +285,7 @@ in {
       # unstable.elementary-planner
       (haskellPackages.callPackage /etc/nixos/modules/taffybar/build/taffybar.nix
         { })
+      kdiskmark
       tmux
       # Config https://github.com/elken/tabbed/blob/master/config.h
       # pkgs.tabbed.override {

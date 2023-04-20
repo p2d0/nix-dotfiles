@@ -13,7 +13,6 @@ in {
     };
   };
   config = mkIf cfg.enable {
-    users.defaultUserShell = pkgs.fish;
     programs.fish.enable = true;
     programs.fish.plugins = [
       {

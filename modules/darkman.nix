@@ -1,7 +1,6 @@
 { config, lib, pkgs, ... }:
 
 with lib;
-with pkgs.my;
 let cfg = config.modules.darkman;
 in {
   options.modules.darkman = {
@@ -13,24 +12,23 @@ in {
       '';
     };
   };
-  config = mkIf cfg.enable {
+  config = mkIf cfg.enable ({
     xdg.portal = {
       enable = true;
-      extraPortals = [ darkman ];
+      extraPortals = [ pkgs.my.darkman ];
     };
     services = {
       dbus = {
         enable = true;
-        packages = [darkman];
+        packages = [pkgs.my.darkman];
       };
     };
-    (my.allUsers ({}: {
-      xdg.systemDirs.data = [
-        "/etc/nixos/configs/darkman"
-      ];
-    }));
     environment.systemPackages = [
-      darkman
+      pkgs.my.darkman
     ];
-  };
+  } // (my.allUsers ({...}: { # TODO could be a better function
+    xdg.systemDirs.data = [
+      "/etc/nixos/configs/darkman"
+    ];
+  })));
 }
