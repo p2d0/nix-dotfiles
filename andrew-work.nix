@@ -57,12 +57,7 @@
             function activate-specialisation
               sudo /run/current-system/specialisation/work/activate
             end'';
-      xdg.systemDirs.data = [
-        "/etc/nixos/configs/darkman"
-      ];
-      services.xsettingsd = {
-        enable = true;
-      };
+
       qt = {
         enable = true;
         platformTheme = "gtk";

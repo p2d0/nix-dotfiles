@@ -12,9 +12,14 @@ in {
       '';
     };
   };
-  config = mkIf cfg.enable (my.allUsers ({}: {
-    home.file = {
-      ".config/qtile".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/qtile;
+  config = mkIf cfg.enable {
+    nixpkgs.config.packageOverrides = pkgs: {
+      qtile = (pkgs.callPackage /etc/nixos/pkgs/qtile.nix {});
     };
-  }));
+    (my.allUsers ({}: {
+      home.file = {
+        ".config/qtile".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/qtile;
+      };
+    }));
+  };
 }

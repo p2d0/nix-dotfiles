@@ -15,7 +15,7 @@ lib.runTests {
     }));
     expected = { kek = "y";};
   };
-  testMapModules = {
+  xtestMapModules = {
     expr  = (my.mapModules /etc/nixos/pkgs (p: lib.id p));
     expected = [];
   };

@@ -70,12 +70,6 @@ in {
           sudo /run/current-system/specialisation/default/activate
         end'';
 
-      xdg.systemDirs.data = [
-        "/etc/nixos/configs/darkman"
-      ];
-      services.xsettingsd = {
-        enable = true;
-      };
       qt = {
         enable = true;
         platformTheme = "gtk";

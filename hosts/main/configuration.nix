@@ -7,7 +7,6 @@
 let
   unstable = import <nixos-unstable> { config.allowBroken = true; config.allowUnfree = true; }; # https://nixos.wiki/wiki/FAQ#How_can_I_install_a_package_from_unstable_while_remaining_on_the_stable_channel.3F
   darkman = (pkgs.callPackage /etc/nixos/pkgs/darkman.nix { });
-  warp = (pkgs.callPackage /etc/nixos/pkgs/warp.nix { });
 in {
   imports = [
     ./hardware-configuration.nix
@@ -19,51 +18,9 @@ in {
     '';
   };
   user = "andrew";
-  systemd.user.services.gnomo-polkit = {
-    description = "Gnome polkit gui";
-    serviceConfig = {
-      ExecStart =
-        "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-    };
-    wantedBy = [ "multiuser.target" ];
-    enable = true;
-  };
-
-
-  programs.gamemode = {
-    enable = false;
-    settings = {
-      general = {
-        renice = 10;
-      };
-
-      # Warning: GPU optimisations have the potential to damage hardware
-      gpu = {
-        apply_gpu_optimisations = "accept-responsibility";
-        gpu_device = 0;
-        amd_performance_level = "high";
-      };
-    };
-  };
-
-  systemd.services.warp-svc = {
-    enable = true;
-    description = "Warp service";
-    wantedBy = [ "default.target" ];
-    serviceConfig = {
-      ExecStart = "${warp}/bin/warp-svc";
-    };
-  };
-
-  programs.corectrl ={
-    enable = false;
-    gpuOverclock.enable = true;
-  };
-
 
   xdg.portal = {
     enable = true;
-    extraPortals = [ darkman ];
   };
 
   security.rtkit.enable = true;
@@ -131,18 +88,15 @@ in {
         output = "DisplayPort-0";
         primary = true;
         monitorConfig = ''
-Modeline "2560x1080@75"  228.25  2560 2608 2640 2720  1080 1083 1093 1119 +hsync -vsync
-Option "PreferredMode" "2560x1080@75"
-
-'';
+        Modeline "2560x1080@75"  228.25  2560 2608 2640 2720  1080 1083 1093 1119 +hsync -vsync
+        Option "PreferredMode" "2560x1080@75"'';
       }
       {
         output = "DVI-D-0";
-        monitorConfig = ''
-Option "Position" "2560 0"
-'';
+        monitorConfig = ''Option "Position" "2560 0"'';
       }
     ];
+
     # Doesnt work
     layout = "us,ru";
     xkbOptions = "grp:alt_shift_toggle";
@@ -172,20 +126,18 @@ Option "Position" "2560 0"
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
-  sound.enable = true;
   hardware.bluetooth.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   # TODO Move to home manager user config?
   modules.hjkl.enable = true;
   modules.printing3d.enable = true;
+  modules.warp.enable = false;
+  modules.keyrings.enable = true;
 
-  users.defaultUserShell = pkgs.fish;
-
-  users.groups.gamemode = {};
   users.users.${config.user} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" "gamemode" "corectrl" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
   };
 
   users.users."${config.user}-work" = {
@@ -193,69 +145,35 @@ Option "Position" "2560 0"
     extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
   };
 
-  nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
-      url =
-        "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
-      # sha256 = "sha256:195k5y6p2apy6bz3xm7vklsfm3h4vx2m412sinrzrjzxb3b5rgcj";
-    }))
-  ];
+  modules.emacs-with-doom = {
+    enable = true;
+  };
 
-  services.emacs.install = true;
-  services.emacs.enable = false;
-  services.emacs.defaultEditor = true;
-  services.emacs.package = pkgs.emacsUnstable.overrideAttrs(oldAttrs: rec {
-    src = pkgs.fetchFromGitHub {
-      owner = "emacs-lsp";
-      repo = "emacs";
-      rev = "json-rpc";
-      sha256 = "sha256-mnSG1MqUapaXyHHJRHv40cWUx1zRIwTM1O810ZJgRgc=";
+  nixpkgs.config =
+    let nixpkgs-tars = "https://github.com/NixOS/nixpkgs/archive/";
+    in {
+      allowUnfree = true;
+      allowBroken = true;
+      permittedInsecurePackages = [ "xrdp-0.9.9" "libdwarf-20181024"];
+      packageOverrides = pkgs: {
+        # get-pr-override 218037
+        # pr218037 = import (fetchTarball
+        #   "${nixpkgs-tars}84963237b438319092a352a7d375878d82beb1ca.tar.gz") {
+        #     config = config.nixpkgs.config;
+        #   };
+        # pr181605 = import (fetchTarball
+        #   "${nixpkgs-tars}7cc979502c3dc5480ef3e4ffe1a05c897084d34b.tar.gz") {
+        #     config = config.nixpkgs.config;
+        #   };
+        # latest-commit = import (fetchTarball
+        #   "${nixpkgs-tars}683f25a6af6e5642cd426c69a4de1d434971a695.tar.gz") {
+        #     config = config.nixpkgs.config;
+        #   };
+      };
     };
-  });
-
-    # services.emacs.package = pkgs.emacsUnstable.override {
-    #   withGTK3 = true;
-    # };
-
-    nixpkgs.config =
-                             let nixpkgs-tars = "https://github.com/NixOS/nixpkgs/archive/";
-                             in {
-                               allowUnfree = true;
-                               allowBroken = true;
-                               permittedInsecurePackages = [ "xrdp-0.9.9" "libdwarf-20181024"];
-                               packageOverrides = pkgs: {
-                                 qtile = (pkgs.callPackage /etc/nixos/pkgs/qtile.nix {});
-                                 # get-pr-override 218037
-                                 # pr218037 = import (fetchTarball
-                                 #   "${nixpkgs-tars}84963237b438319092a352a7d375878d82beb1ca.tar.gz") {
-                                 #     config = config.nixpkgs.config;
-                                 #   };
-                                 # pr181605 = import (fetchTarball
-                                 #   "${nixpkgs-tars}7cc979502c3dc5480ef3e4ffe1a05c897084d34b.tar.gz") {
-                                 #     config = config.nixpkgs.config;
-                                 #   };
-                                 # latest-commit = import (fetchTarball
-                                 #   "${nixpkgs-tars}683f25a6af6e5642cd426c69a4de1d434971a695.tar.gz") {
-                                 #     config = config.nixpkgs.config;
-                                 #   };
-                               };
-                             };
 
   services.blueman.enable = true;
   programs.dconf.enable = true;
-
-  systemd.services.shutdown = {
-    description = "Shutdown service";
-    serviceConfig.Type = "oneshot";
-    script = "shutdown now";
-  };
-
-  systemd.timers.shutdown = {
-    description = "Shutdown timer";
-    wantedBy = [ "timers.target" ];
-    timerConfig.OnCalendar = "*-*-* 21:00:00";
-    timerConfig.Unit = "shutdown.service";
-  };
 
   services.cron = {
     enable = true;
@@ -264,13 +182,10 @@ Option "Position" "2560 0"
     ];
   };
 
-  programs.seahorse.enable = true;
   services = {
     #gnome.gnome-keyring.enable = true;
-    gnome.at-spi2-core.enable = true;
     dbus = {
       enable = true;
-      packages = [darkman];
     };
     # xrdp.enable = true;
     # xrdp.defaultWindowManager = "dbus-launch --exit-with-session;i3;";
@@ -278,22 +193,18 @@ Option "Position" "2560 0"
 
   nix.settings.auto-optimise-store = true;
   nix.gc.automatic = true;
-  nix.gc.options = "--delete-older-than 2d";
+  nix.gc.options = "--delete-older-than 1d";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
 
   environment.sessionVariables = {
     GTK_DATA_PREFIX = [ "${config.system.path}" ];
-    GST_PLUGIN_SYSTEM_PATH_1_0 = pkgs.lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" [
-      pkgs.gst_all_1.gst-plugins-good
-      pkgs.gst_all_1.gst-plugins-bad
-      pkgs.gst_all_1.gst-plugins-ugly
-      pkgs.gst_all_1.gst-libav
-    ];
   };
+
   programs.java = { enable = true; package = pkgs.oraclejre8; };
   modules.fonts.enable = true;
+  modules.darkman.enable = true;
   zramSwap.enable = true;
   # services.journald.extraConfig = ''
   #   SystemMaxUse=1G
@@ -340,10 +251,10 @@ Option "Position" "2560 0"
       #     url = "https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-dev/microsoft-edge-dev_110.0.1587.1-1_amd64.deb";
       #     sha256 = "sha256:1p39llchnb2b6zbjpn0fk7hp7yhfp03b00s539hhgaliqmq9z93g";
       #   };
-
       # }))
       nixgl.nixGLMesa
       flameshot
+      davinci-resolve
       unstable.firefox
       unstable.librewolf
       xcompmgr
@@ -365,9 +276,7 @@ Option "Position" "2560 0"
       neovim
       my.psiphon
       # (callPackage /etc/nixos/pkgs/psiphon.nix { })
-      warp
       # unstable.elementary-planner
-      #cloudflare-warp
       (haskellPackages.callPackage /etc/nixos/modules/taffybar/build/taffybar.nix
         { })
       tmux
@@ -519,10 +428,6 @@ Option "Position" "2560 0"
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
 
   # List services that you want to enable:
   # Enable the OpenSSH daemon.

@@ -7,7 +7,6 @@
     ./modules/ssh/ssh.nix
     ./modules/fish/fish.nix
     ./modules/rofi/rofi.nix
-    ./modules/editors/emacs.nix
     ./modules/gimp/gimp.nix
     ./modules/gnome-boxes.nix
   ];
@@ -55,9 +54,10 @@
       coa = "!git add -A && git commit -m";
     };
   };
-  modules.emacs-with-doom = {
+  services.xsettingsd = {
     enable = true;
   };
+  modules.fish.enable = true;
 
   xdg.userDirs = {
     enable = true;

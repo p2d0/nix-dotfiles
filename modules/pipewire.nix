@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
+  sound.enable = true;
   hardware.pulseaudio.enable = false;
   hardware.pulseaudio.support32Bit = true;
   services.pipewire = {

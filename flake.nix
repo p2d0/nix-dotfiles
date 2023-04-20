@@ -50,6 +50,11 @@
               ./modules/fonts/fonts.nix
               ./modules/fcitx.nix
               ./modules/printing3d
+              ./modules/keyrings.nix
+              ./modules/warp.nix
+              ./modules/darkman.nix
+              ./modules/timed-shutdown
+              ./modules/editors/emacs.nix
               ./andrew.nix
               ./andrew-work.nix
               ./modules/options.nix
