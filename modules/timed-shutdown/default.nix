@@ -12,7 +12,7 @@ in {
       '';
     };
     time = mkOption {
-      type = types.string;
+      type = types.str;
       default = "21:00:00";
       example = "21:00:00";
       description = ''

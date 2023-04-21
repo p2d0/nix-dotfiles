@@ -51,7 +51,7 @@
       "application/xhtml+xml" = "firefox.desktop";
       "application/x-extension-xhtml" = "firefox.desktop";
       "application/x-extension-xht" = "firefox.desktop";
-
+      "x-scheme-handler/sidequest" ="SideQuest.desktop";
     };
     # associations.added = {
     #   "x-scheme-handler/http" = "firefox.desktop";
@@ -176,6 +176,9 @@
 
     ".config/sway" = {
       source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/sway;
+    };
+    ".config/waybar" = {
+      source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/waybar;
     };
 
     ".ideavimrc" = {

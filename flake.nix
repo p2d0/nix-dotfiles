@@ -46,6 +46,7 @@
               {nixpkgs.pkgs = pkgs;}
               home-manager.nixosModules.home-manager
               hyprland.nixosModules.default
+              ./modules/sway
               ./modules/hjkl/hjkl.nix
               ./modules/fonts/fonts.nix
               ./modules/fcitx.nix
@@ -56,7 +57,6 @@
               ./modules/timed-shutdown
               ./modules/editors/emacs.nix
               ./andrew.nix
-              ./andrew-work.nix
               ./modules/options.nix
               ./modules/pipewire.nix
               ./modules/xmonad/xmonad.nix
@@ -66,23 +66,6 @@
               ./hosts/main/configuration.nix
             ];
             specialArgs = { inherit inputs lib; };
-          };
-
-          mysystem-light = inputs.nixpkgs.lib.nixosSystem {
-            inherit system;
-            modules = [
-              {nixpkgs.pkgs = pkgs;}
-              home-manager.nixosModules.home-manager
-              ./modules/hjkl/hjkl.nix
-              ./modules/fonts/fonts.nix
-              ./modules/fcitx.nix
-              ./andrew-light.nix
-              ./andrew-work.nix
-              ./modules/options.nix
-              ./modules/pipewire.nix
-              ./hosts/main/configuration.nix
-            ];
-            specialArgs = { inherit inputs; };
           };
         };
       };

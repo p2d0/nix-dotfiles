@@ -28,8 +28,8 @@ in {
   hardware.opengl.enable = true;
   hardware.opengl.driSupport = true;
   hardware.opengl.extraPackages = with pkgs; [ vaapiIntel vaapiVdpau libvdpau-va-gl amdvlk
-   rocm-opencl-icd
-   rocm-opencl-runtime ];
+                                               rocm-opencl-icd
+                                               rocm-opencl-runtime ];
   hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ vaapiIntel ];
 
   systemd.tmpfiles.rules = [
@@ -126,7 +126,13 @@ in {
     # }));
 
     # windowManager.qtile.enable = true;
-    displayManager = { defaultSession = "none+i3"; };
+    displayManager = {
+      defaultSession = "sway";
+      autoLogin = {
+        enable = true;
+        user = config.user;
+      };
+    };
   };
 
   # Enable CUPS to print documents.
@@ -136,17 +142,13 @@ in {
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   # TODO Move to home manager user config?
+  modules.sway.enable = true;
   modules.hjkl.enable = true;
   modules.printing3d.enable = true;
   modules.warp.enable = false;
   modules.keyrings.enable = true;
 
   users.users.${config.user} = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
-  };
-
-  users.users."${config.user}-work" = {
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
   };
@@ -208,8 +210,12 @@ in {
     GTK_DATA_PREFIX = [ "${config.system.path}" ];
   };
 
-  programs.java = { enable = true; package = pkgs.oraclejre8; };
+  programs.java = {
+    enable = true;
+    package = pkgs.oraclejre8;
+  };
   modules.fonts.enable = true;
+  modules.timed-shutdown.enable = true;
   modules.darkman.enable = true;
   zramSwap.enable = true;
   # services.journald.extraConfig = ''
@@ -225,7 +231,7 @@ in {
   # '';
   #     };
   #   };
-  modules.taffybar.enable = false;
+  modules.taffybar.enable = true;
   environment.systemPackages = with pkgs;
     (if config.programs.hyprland.enable
      then [
@@ -239,6 +245,8 @@ in {
       vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
       wget
       clang
+      webkitgtk_4_1
+      webkitgtk
       file
       openssl
       pr218037.microsoft-edge-dev

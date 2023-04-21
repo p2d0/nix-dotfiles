@@ -12,19 +12,6 @@ in {
         user = config.user;
       };
       environment.systemPackages = [
-      ];
-
-    };
-    inheritParentConfig = true;
-  };
-
-  home-manager.users.${config.user} =
-    { pkgs, guake, fetchFromGitHub, callPackage, ... }: {
-      imports = [
-        ./common.nix
-      ];
-      # home.stateVersion = "22.05";
-      home.packages = [
         (pkgs.wrapOBS {
           plugins = with pkgs.obs-studio-plugins; [
             obs-gstreamer
@@ -45,66 +32,60 @@ in {
           ];
         })
         pkgs.stremio
-        # unstable.pkgs.osu-lazer-bin
-        (unstable.pkgs.callPackage /etc/nixos/pkgs/osu-lazer-bin.nix { })
-        # (unstable.pkgs.callPackage /etc/nixos/pkgs/games/osu-lazer/default.nix { })
-        # (unstable.pkgs.osu-lazer.overrideAttrs(oldAttrs: rec {
-        #   version = "2023.123.0";
-        #   # dotnetFlags = [
-        #   #   "--runtime linux-x64;"
-        #   # ];
-        #   src = pkgs.fetchFromGitHub {
-        #     owner = "ppy";
-        #     repo = "osu";
-        #     rev = version;
-        #     sha256 = "10GfAOsrLgQeYmzjhC/L57BK9BoM7ZM1pZmRK4+GD5c=";};
-        # }))
+        pkgs.my.osu-lazer-bin
         pkgs.chatterino2
       ];
+    };
+    inheritParentConfig = true;
+  };
+
+  specialisation.work = {
+    configuration = {
+
+      networking.extraHosts = ''
+        # 127.0.0.1 youtube.com
+        # 127.0.0.1 www.youtube.com
+        # 127.0.0.1 reddit.com
+        # 127.0.0.1 www.reddit.com
+        # 127.0.0.1 www.osu.ppy.sh
+        # 127.0.0.1 osu.ppy.sh
+      '';
+      environment.systemPackages = [
+      ];
+    };
+    inheritParentConfig = true;
+  };
+
+
+  home-manager.users.${config.user} =
+    { pkgs, guake, fetchFromGitHub, callPackage, ... }: {
+      imports = [
+        ./common.nix
+      ];
+home.packages = [
+      ];
+
       programs.fish.shellInit = ''
-        function rebuild
-          sudo nixos-rebuild switch --impure  --flake '/etc/nixos/.?submodules=1#mysystem'
+        function rebuild-work
+          sudo nixos-rebuild switch --impure  --flake '/etc/nixos/.?submodules=1#mysystem' -j6 $argv
+          sudo /run/current-system/specialisation/work/activate
+        end
+        function activate-specialisation-work
+          sudo /run/current-system/specialisation/work/activate
+        end
+
+        function rebuild-default
+          sudo nixos-rebuild switch --impure  --flake '/etc/nixos/.?submodules=1#mysystem' -j6 $argv
           sudo /run/current-system/specialisation/default/activate
         end
-        function activate-specialisation
+        function activate-specialisation-default
           sudo /run/current-system/specialisation/default/activate
         end'';
 
       qt = {
         enable = true;
         platformTheme = "gtk";
-        # style = {
-        #   name = "breeze";
-        #   package = pkgs.breeze-qt5;
-        # };
       };
-
-      # gtk = {
-      #   enable = true;
-      #   # theme = {
-      #   #   name = "Breeze";
-      #   #   package = pkgs.breeze-gtk;
-      #   # };
-      #   # iconTheme = {
-      #   #   name = "Obsidian";
-      #   #   package = pkgs.iconpack-obsidian;
-      #   # };
-      # };
-
-      # home.file = {
-      #   ".config/OpenTabletDriver" = {
-      #     source = ./configs/OpenTabletDriver;
-      #     recursive = true;
-      #   };
-      # };
-
-      # https://nixos.wiki/wiki/Flakes
-
-      # xsession = {
-      #   initExtra = ''
-      #     feh --bg-fill /etc/nixos/bg_old.png;
-      #   '';
-      # };
 
       # TODO is it a good way?
       systemd.user.tmpfiles.rules = [

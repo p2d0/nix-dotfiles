@@ -16,13 +16,4 @@
         };
       };
     };
-
-  home-manager.users."${config.user}-work" =
-    { pkgs, config, fetchFromGitHub, callPackage, ... }: {
-      home.file = {
-        ".config/fcitx5" = {
-          source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/fcitx5;
-        };
-      };
-    };
 }
