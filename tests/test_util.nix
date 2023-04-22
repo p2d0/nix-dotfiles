@@ -18,7 +18,7 @@ lib.runTests {
       expected = true;
     };
   testModified =
-    let result = (my.withHomeVars
+    let result = (my.withHome
       ({...}:{
         home.file = {
           ".xmonad/lib".source = "pepega";
@@ -35,7 +35,7 @@ lib.runTests {
       expected = true;
     };
   testJustAttrSet =
-    let result = (my.withHomeVars
+    let result = (my.withHome
       {
         home.file = {
           ".xmonad/lib".source = "pepega";

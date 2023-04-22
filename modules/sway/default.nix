@@ -24,7 +24,8 @@ let cfg = config.modules.sway;
       in ''
         export XDG_DATA_DIRS=${datadir}:$XDG_DATA_DIRS
         gnome_schema=org.gnome.desktop.interface
-        gsettings set $gnome_schema gtk-theme 'Dracula'
+        gsettings set $gnome_schema gtk-theme 'Adwaita'
+        gsettings set $gnome_schema icon-theme 'Obsidian'
         '';
     };
 in {
@@ -64,6 +65,8 @@ in {
       wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
       bemenu # wayland clone of dmenu
       gammastep
+      wf-recorder
+      waybar
       # mako # notification system developed by swaywm maintainer
       wdisplays # tool to configure displays
     ];

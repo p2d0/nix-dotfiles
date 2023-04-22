@@ -6,7 +6,6 @@
 
 let
   unstable = import <nixos-unstable> { config.allowBroken = true; config.allowUnfree = true; }; # https://nixos.wiki/wiki/FAQ#How_can_I_install_a_package_from_unstable_while_remaining_on_the_stable_channel.3F
-  darkman = (pkgs.callPackage /etc/nixos/pkgs/darkman.nix { });
 in {
   imports = [
     ./hardware-configuration.nix
@@ -17,10 +16,13 @@ in {
       experimental-features = nix-command flakes
     '';
   };
+
   user = "andrew";
 
   xdg.portal = {
     enable = true;
+    extraPortals = [ # pkgs.xdg-dbus-proxy pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-gnome pkgs.xdg-desktop-portal-kde
+    ];
   };
 
   security.rtkit.enable = true;
@@ -32,13 +34,13 @@ in {
                                                rocm-opencl-runtime ];
   hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ vaapiIntel ];
 
-  systemd.tmpfiles.rules = [
-    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"
-  ];
+  # systemd.tmpfiles.rules = [
+  #   "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"
+  # ];
 
   virtualisation.spiceUSBRedirection.enable = true;
 
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  # boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.loader.grub.enable = true;
   boot.loader.grub.default = 2;
   boot.loader.grub.version = 2;
@@ -66,19 +68,9 @@ in {
     SUBSYSTEM=="usb", ACTION=="add", ATTR{idVendor}=="0e8d", ATTR{idProduct}=="201d" MODE="0777" GROUP="users"
   '';
 
-  # services.xserver.desktopManager.plasma5.excludePackages = with pkgs.libsForQt5; [
-  #   elisa
-  #   gwenview
-  #   okular
-  #   oxygen
-  #   khelpcenter
-  #   konsole
-  #   plasma-browser-integration
-  #   print-manager
-  # ];
-  # programs.hyprland = {
-  #   enable = true;
-  # };
+  #  programs.hyprland = {
+  #    enable = true;
+  #  };
   # programs.sway = {
   #   enable = true;
   #   wrapperFeatures.gtk = true;
@@ -86,7 +78,7 @@ in {
 
 
   services.xserver = {
-    enable = true;
+    enable = false;
     videoDrivers = [ "amdgpu" ];
 
     xrandrHeads = [
@@ -124,6 +116,20 @@ in {
     #   ];
 
     # }));
+    # displayManager.gdm.enable = true;
+    # desktopManager.gnome.enable = true;
+    # displayManager.sddm.enable = true;
+    # desktopManager.plasma5.enable = true;
+    # desktopManager.plasma5.excludePackages = with pkgs.libsForQt5; [
+    #   elisa
+    #   gwenview
+    #   okular
+    #   oxygen
+    #   khelpcenter
+    #   konsole
+    #   plasma-browser-integration
+    #   print-manager
+    # ];
 
     # windowManager.qtile.enable = true;
     displayManager = {
@@ -194,6 +200,7 @@ in {
     #gnome.gnome-keyring.enable = true;
     dbus = {
       enable = true;
+      packages = [unstable.tdesktop];
     };
     # xrdp.enable = true;
     # xrdp.defaultWindowManager = "dbus-launch --exit-with-session;i3;";
@@ -205,6 +212,10 @@ in {
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
+  services.getty.autologinUser = config.user;
+  systemd.coredump.extraConfig = ''
+    Storage=none
+  '';
 
   environment.sessionVariables = {
     GTK_DATA_PREFIX = [ "${config.system.path}" ];
@@ -214,9 +225,11 @@ in {
     enable = true;
     package = pkgs.oraclejre8;
   };
+
   modules.fonts.enable = true;
   modules.timed-shutdown.enable = true;
   modules.darkman.enable = true;
+  modules.vpn.enable = true;
   zramSwap.enable = true;
   # services.journald.extraConfig = ''
   #   SystemMaxUse=1G
@@ -231,7 +244,7 @@ in {
   # '';
   #     };
   #   };
-  modules.taffybar.enable = true;
+  modules.taffybar.enable = false;
   environment.systemPackages = with pkgs;
     (if config.programs.hyprland.enable
      then [
@@ -245,8 +258,6 @@ in {
       vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
       wget
       clang
-      webkitgtk_4_1
-      webkitgtk
       file
       openssl
       pr218037.microsoft-edge-dev
@@ -268,27 +279,30 @@ in {
       # }))
       nixgl.nixGLMesa
       flameshot
+      # .overrideAttrs(oldAttrs: rec {
+      #   NIX_CFLAGS_COMPILE = "-DUSE_WAYLAND_CLIPBOARD";
+      #   CFLAGS = ["-DUSE_WAYLAND_CLIPBOARD"];
+      #   # configureFlags = [
+      #   #   "CPPFLAGS=-DUSE_WAYLAND_CLIPBOARD";
+      #   # ];
+      # })
+      pciutils
       davinci-resolve
       unstable.firefox
       unstable.librewolf
       xcompmgr
       killall
       xdo
-      v2ray
       inotify-tools
       # (import (fetchTarball
       #   "https://github.com/aaronjanse/nix-eval-lsp/archive/master.tar.gz"))
       # (import (fetchTarball
       #   "https://github.com/nix-community/rnix-lsp/archive/master.tar.gz"))
       my.shell_gpt
-      my.lantern
       my.pythonbin
       my.tlala
       my.chatgpt
-      protonvpn-gui
-      shadowsocks-rust
       neovim
-      my.psiphon
       # (callPackage /etc/nixos/pkgs/psiphon.nix { })
       # unstable.elementary-planner
       (haskellPackages.callPackage /etc/nixos/modules/taffybar/build/taffybar.nix
@@ -299,7 +313,7 @@ in {
       # pkgs.tabbed.override {
       # customConfig = builtins.readFile ../files/tabbed-config.h;
       # };
-      (callPackage /etc/nixos/modules/tabbed/tabbed.nix { })
+      # (callPackage /etc/nixos/modules/tabbed/tabbed.nix { })
       git
       ripgrep
       wmctrl
@@ -320,7 +334,7 @@ in {
       lua
       apktool
       apksigner
-      my.alvr
+      # my.alvr
 
 
       jq
@@ -338,7 +352,7 @@ in {
       docker-compose
       playerctl
       libusb
-      rocketchat-desktop
+      # rocketchat-desktop
       tetex
       gnumake
       btop
@@ -363,7 +377,6 @@ in {
       paprefs
       shotcut
       darktable
-      unstable.jetbrains.idea-community
       picom
       # (callPackage /etc/nixos/pkgs/picom-animations.nix { })
       my.puush-linux
@@ -377,12 +390,12 @@ in {
       speedcrunch
       discord
       unstable.tdesktop
+      # my.tdesktop
       unstable.nil
       jpegoptim
       chatterino2
       filelight
       x11vnc
-      haskellPackages.status-notifier-item
       polkit_gnome
       glib
       gnome.dconf-editor
@@ -394,16 +407,15 @@ in {
       rustdesk
       qbittorrent
       tor-browser-bundle-bin
-      looking-glass-client
+      # looking-glass-client
       unstable.tg
       gnome.nautilus
-      darkman
       spice-vdagent
       inetutils
       zip
       xsettingsd
       easyeffects
-      evolution
+      # evolution
       nodejs
       iconpack-obsidian
       libreoffice
@@ -411,16 +423,16 @@ in {
       vlc
       gsettings-desktop-schemas
       wineWowPackages.stable
-      whatsapp-for-linux
+      # whatsapp-for-linux
       libvirt
       dunst
       android-tools
-      sublime
+      # sublime
       drawio
       (unstable.python3.withPackages(ps: [ ps.requests ps.epc ps.lxml ps.tld ps.sexpdata ps.pyqt6 ps.pyqt6-sip ps.pyqt6-webengine ps.pygetwindow ]))
       unstable.python39Packages.yt-dlp
       python39Packages.pytest
-      libpulseaudio
+      # libpulseaudio
       python39Packages.virtualenv
       python39Packages.pip
       anydesk
@@ -447,6 +459,7 @@ in {
   # List services that you want to enable:
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+  services.openssh.startWhenNeeded = false;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

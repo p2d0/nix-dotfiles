@@ -13,7 +13,7 @@ in {
     };
   };
   config = mkIf cfg.enable {
-    programs.seahorse.enable = true;
+    programs.seahorse.enable = false;
     services = {
       gnome.at-spi2-core.enable = true;
     };

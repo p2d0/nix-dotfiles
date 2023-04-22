@@ -54,6 +54,8 @@
               ./modules/keyrings.nix
               ./modules/warp.nix
               ./modules/darkman.nix
+              ./modules/vpn
+              ./modules/jetbrains
               ./modules/timed-shutdown
               ./modules/editors/emacs.nix
               ./andrew.nix

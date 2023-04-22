@@ -1,17 +1,20 @@
 {
     "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 25, // Waybar height (to be removed for auto height)
+    "height": 15, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/mode","idle_inhibitor", "custom/media"],
-    "modules-center": ["sway/window"],
-    "modules-right": ["clock",  "pulseaudio","custom/wireguard", "backlight","keyboard-state", "sway/language", "battery", "battery#bat2",  "custom/bluetoothapplet" ,"tray", "custom/powerapplet"],
+    "modules-left": ["sway/workspaces", "sway/mode","idle_inhibitor"],
+    "modules-center": ["clock"],
+    "modules-right": [ "custom/timer", "custom/weather", "pulseaudio","backlight","keyboard-state", "sway/language", "battery", "battery#bat2", "tray"],
     "keyboard-state": {
         "format": "{name} {icon}",
         "format-icons": {
             "locked": "",
             "unlocked": "",
         }
+    },
+    "sway/workspaces": {
+    "enable-bar-scroll": true
     },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
@@ -48,12 +51,12 @@
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "",
+            "activated": " ",
             "deactivated": ""
         }
     },
     "tray": {
-        // "icon-size": 21,
+        "icon-size": 18,
         "spacing": 10
     },
     "clock": {
@@ -107,10 +110,24 @@
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
+    "custom/timer": {
+        "exec": "~/.config/polybar/polybar-timer.sh tail '祥 TIMER' 1",
+        "on-click": "~/.config/polybar/polybar-timer.sh new 10 '祥' 'notify-send \"Session finished\"' ; ~/.config/polybar/polybar-timer.sh update %pid%",
+        "on-click-middle": "~/.config/polybar/polybar-timer.sh kill ; ~/.config/polybar/polybar-timer.sh update %pid%",
+        "on-click-right": "~/.config/polybar/polybar-timer.sh new 5 '祥' 'notify-send \"Break finished\"' ; ~/.config/polybar/polybar-timer.sh update %pid%",
+        "on-scroll-up": "~/.config/polybar/polybar-timer.sh increase 60 || ~/.config/polybar/polybar-timer.sh new 1 'TIMER:'; ~/.config/polybar/polybar-timer.sh update %pid%",
+        "on-scroll-down": "~/.config/polybar/polybar-timer.sh increase -60 ; ~/.config/polybar/polybar-timer.sh update %pid%",
+        "format": "{}  "
+    },
     "custom/powerapplet":{
         "format": "",
         "on-click": "~/.config/rofi/applets/applets/powermenu.sh",
         "tooltip": false
+    },
+    "custom/weather":{
+        "on-click": "~/.config/waybar/wg-status.sh",
+        "interval": 6000,
+        "exec": "curl -s 'https://wttr.in/?format=%c%20%t%20(%f)'"
     },
     "custom/wireguard":{
         "on-click": "~/.config/waybar/wg-status.sh",
@@ -125,7 +142,7 @@
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} {format_source}",
+        "format": "{volume}% {icon}   {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": " {format_source}",

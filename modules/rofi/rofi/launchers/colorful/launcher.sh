@@ -28,7 +28,7 @@ SELECT="#101010ff"
 
 # accent colors
 COLORS=('#EC7875' '#61C766' '#FDD835' '#42A5F5' '#BA68C8' '#4DD0E1' '#00B19F' \
-		'#FBC02D' '#E57C46' '#AC8476' '#6D8895' '#EC407A' '#B9C244' '#6C77BB')
+	'#FBC02D' '#E57C46' '#AC8476' '#6D8895' '#EC407A' '#B9C244' '#6C77BB')
 ACCENT="${COLORS[5]}ff"
 
 # overwrite colors file
@@ -47,5 +47,8 @@ EOF
 # comment these lines to disable random style
 # themes=($(ls -p --hide="launcher.sh" --hide="colors.rasi" $dir))
 # theme="${themes[$(( $RANDOM % 12 ))]}"
-
-rofi -no-lazy-grab -show drun -modi run,drun -theme $dir/"$theme"
+if [ $XDG_SESSION_TYPE == "wayland" ]; then
+	rofi  -monitor $(swaymsg -t get_outputs | jq 'map(.focused) | index(false)') -no-lazy-grab -show drun -modi run,drun -theme $dir/"$theme"
+else
+	rofi -no-lazy-grab -show drun -modi run,drun -theme $dir/"$theme"
+fi

@@ -1,18 +1,19 @@
 { config, lib, pkgs, ... }:
 
 with lib;
+with lib.my;
 let cfg = config.modules.emacs-with-doom;
 in {
   options.modules.emacs-with-doom = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-      example = "";
-      description = ''
-      '';
+    enable = mkBoolOpt false;
+    doom = rec {
+      enable = mkBoolOpt true;
+      forgeUrl = mkOpt types.str "https://github.com";
+      repoUrl = mkOpt types.str "${forgeUrl}/doomemacs/doomemacs";
+      configRepoUrl = mkOpt types.str "${forgeUrl}/p2d0/.doom.d";
     };
   };
-  config = mkIf cfg.enable (lib.my.withHomeVars
+  config = mkIf cfg.enable (lib.my.withHome
     ({config,...}: {
       home.file = {
         ".doom.d".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/modules/editors/.doom.d;
@@ -39,6 +40,14 @@ in {
           sha256 = "sha256-mnSG1MqUapaXyHHJRHv40cWUx1zRIwTM1O810ZJgRgc=";
         };
       });
+      system.userActivationScripts = mkIf cfg.doom.enable {
+        installDoomEmacs = ''
+        if [ ! -d "$XDG_CONFIG_HOME/emacs" ]; then
+           git clone --depth=1 --single-branch "${cfg.doom.repoUrl}" "$XDG_CONFIG_HOME/emacs"
+           git clone "${cfg.doom.configRepoUrl}" "$XDG_CONFIG_HOME/doom"
+        fi
+      '';
+      };
     });
 
 }

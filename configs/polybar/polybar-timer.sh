@@ -25,6 +25,7 @@ deleteExpiryTime () { dunstify -C -12345 ; }
 updateTail () {
   if timerRunning && [ $(secondsLeft) -le 0 ]
   then
+    paplay ~/.config/polybar/bell.wav;notify-send -u critical \"Timer expired.\"
     eval $(timerAction)
     killTimer
   fi

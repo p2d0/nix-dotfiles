@@ -193,6 +193,9 @@
     ".config/redshift.conf" = {
       source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/redshift.conf;
     };
+    ".config/gammastep.conf" = {
+      source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/redshift.conf;
+    };
 
     ".config/picom/picom.conf" = {
       source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/picom/picom.conf;

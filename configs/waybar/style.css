@@ -1,19 +1,20 @@
 * {
     border: none;
-    border-radius: 10px;
+    border-radius: 2px;
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: Roboto, Helvetica, Arial, sans-serif;
-    font-size: 14px;
+    font-family: ShureTechMono Nerd Font, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
     min-height: 0;
-    padding: 2px 5px;
+    padding: 0px 0px;
 }
 
 window#waybar {
     /* background-color: rgba(43, 48, 59, 0.6); */
+    background-color: rgba(0, 0, 0, 0.5);
     /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
-    border-radius: 10px;
+    border-radius: 0px;
     color: #ffffff;
-    background: transparent;
+    /* background: transparent; */
     /* padding: 15px; */
     transition-property: background-color;
     transition-duration: .5s;
@@ -42,7 +43,7 @@ window#waybar.chromium {
 }
 
 #workspaces{
-    background-color: #2a2e38;
+    /* background-color: #2a2e38; */
     padding: 0px 0;
 }
 
@@ -116,7 +117,7 @@ window#waybar.chromium {
 }
 
 #clock {
-    background-color: #003333;
+    /* background-color: #003333; */
 }
 
 #battery {
@@ -176,8 +177,8 @@ label:focus {
 }
 
 #pulseaudio {
-    background-color: #ee9500;
-    color: #000000;
+    /* background-color: #ee9500; */
+    /* color: #000000; */
 }
 
 #pulseaudio.muted {
@@ -237,16 +238,16 @@ label:focus {
 }
 
 #tray > .passive {
-    -gtk-icon-effect: dim;
+    /* -gtk-icon-effect: dim; */
 }
 
 #tray > .needs-attention {
-    -gtk-icon-effect: highlight;
+    /* -gtk-icon-effect: highlight; */
     background-color: #eb4d4b;
 }
 
 #idle_inhibitor {
-    background-color: #2d3436;
+    /* background-color: #2d3436; */
 }
 
 #idle_inhibitor.activated {
@@ -272,7 +273,8 @@ label:focus {
 }
 
 #language {
-    background: @theme_bg_color;
+    /* background-color: #66cc99; */
+    /* background: @theme_fg_color; */
     /* color: #740864; */
     min-width: 16px;
 }

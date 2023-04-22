@@ -1,20 +1,23 @@
 { lib, ... }:
 
+let
+  inherit (lib) mkOption types;
+in
 rec {
   allUsers = items: {
     home-manager.users."andrew" = items;
     # home-manager.users."andrew-work" = items;
   };
-  withHomeVars = homeVars: items: items //
-                    (if builtins.typeOf homeVars == "lambda"
-                     then {
-                       home-manager.users."andrew" = homeVars;
-                       # home-manager.users."andrew-work" = homeVars;
-                     }
-                     else {
-                       home-manager.users."andrew" = ({...}:homeVars);
-                       # home-manager.users."andrew-work" = ({...}:homeVars);
-                     } )
+  withHome = homeVars: items: items //
+                              (if builtins.typeOf homeVars == "lambda"
+                               then {
+                                 home-manager.users."andrew" = homeVars;
+                                 # home-manager.users."andrew-work" = homeVars;
+                               }
+                               else {
+                                 home-manager.users."andrew" = ({...}:homeVars);
+                                 # home-manager.users."andrew-work" = ({...}:homeVars);
+                               } )
   ;
 
   # mapFilterAttrs ::
@@ -38,4 +41,16 @@ rec {
         then lib.nameValuePair (lib.removeSuffix ".nix" n) (fn path)
         else lib.nameValuePair "" null)
       (builtins.readDir dir);
+
+  mkOpt  = type: default:
+    mkOption { inherit type default; };
+
+  mkOpt' = type: default: description:
+    mkOption { inherit type default description; };
+
+  mkBoolOpt = default: mkOption {
+    inherit default;
+    type = types.bool;
+    example = true;
+  };
 }

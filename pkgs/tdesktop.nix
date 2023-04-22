@@ -9,7 +9,7 @@
 
 stdenv.mkDerivation rec {
   pname = "tdesktop";
-  version = "4.2.0";
+  version = "4.7.1";
 
   src = builtins.fetchurl {
     url = "https://telegram.org/dl/desktop/linux";
