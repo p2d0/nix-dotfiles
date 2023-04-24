@@ -1,0 +1,4 @@
+# -*- mode: snippet -*-
+# name: python package
+# --
+(pkgs.python${1:$$(yas-choose-value '("2" "3"))}.withPackages(ps: [ $0 ]))

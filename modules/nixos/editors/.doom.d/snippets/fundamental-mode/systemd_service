@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# --
+[Unit]
+Description=`(+yas/filename)`
+
+[Service]
+ExecStart=$0
+
+[Install]
+WantedBy=${1:$$(yas-choose-value '("graphical-session" "default"))}.target

@@ -1,0 +1,54 @@
+# -*- mode: snippet -*-
+# name: React request reducer
+# key: reactrequestreducer
+# --
+import { Reducer, REQUEST_STATUSES } from 'globaltypes';
+
+export interface `(s-upper-camel-case (+yas/filename))`StoreState extends Reducer {
+data: ResponseData;
+}
+
+export enum ${1:$$(+yas/to_upper_underscore_case (+yas/filename))} {
+REQ = '$1_REQ',
+GOT = '$1_GOT',
+ERR = '$1_ERR'
+}
+
+export const initialState: `(s-upper-camel-case (+yas/filename))`StoreState = {
+status: REQUEST_STATUSES.NONE,
+data: [],
+error: {}
+};
+
+const `(+yas/filename)` = (
+state: `(s-upper-camel-case (+yas/filename) )`StoreState = initialState,
+action: {
+type: string;
+data: ResponseData;
+error: {};
+}
+): `(s-upper-camel-case (+yas/filename) )`StoreState => {
+switch (action.type) {
+case $1.REQ:
+return {
+...state,
+status: REQUEST_STATUSES.REQUEST
+};
+case $1.GOT:
+return {
+...state,
+status: REQUEST_STATUSES.GOT,
+data: action.data
+};
+case $1.ERR:
+return {
+...state,
+status: REQUEST_STATUSES.ERROR,
+error: action.error
+};
+default:
+return state;
+}
+};
+
+export default `(+yas/filename)`;

@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: @function doc
+# key: function-doc
+# --
+/**
+* @param ${1:string} \$${2:email}
+* @return $0
+*/

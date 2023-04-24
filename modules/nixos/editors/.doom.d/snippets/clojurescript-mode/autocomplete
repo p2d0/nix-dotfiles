@@ -1,0 +1,94 @@
+# -*- mode: snippet -*-
+# name: autocomplete
+# key: autocomplete
+# --
+
+(ns `(flet ((try-src-prefix
+             (path src-pfx)
+             (let ((parts (split-string path src-pfx)))
+               (if (= 2 (length parts))
+                 (second parts)
+                 nil))))
+           (let* ((p (buffer-file-name))
+                  (p2 (first
+                       (remove-if-not '(lambda (x) x)
+                                      (mapcar
+                                       '(lambda (pfx)
+                                                (try-src-prefix p pfx))
+                                       '("/src/cljs/" "/src/clj/" "/src/")))))
+                  (p3 (file-name-sans-extension p2))
+                  (p4 (mapconcat '(lambda (x) x)
+                                 (split-string p3 "/")
+                                 ".")))
+             (replace-regexp-in-string "_" "-" p4)))`
+  (:require ["antd" :as antd :refer [AutoComplete]]
+            [re-frame.core :refer [subscribe dispatch]]
+            [cljs.test :refer-macros [deftest testing is]]
+            [appointments-frontend.strings :as strings]
+            [reagent.core :as r]
+            [oops.core :refer [oget+ oget oset!]]))
+
+(defn reset-caret-fix-wrap
+  [reset-func item]
+  (let [element (oget item "target")
+        caret (.-selectionStart (oget item "target"))]
+    (reset-func item)
+    (.requestAnimationFrame
+     js/window (fn []
+                 (oset! element "selectionStart" caret)
+                 (oset! element "selectionEnd" caret)))))
+
+
+(defn- autocomplete-input [title]
+  [:> antd/Input {:placeholder ${2:"Placeholder"}
+                  :on-change update-suggestions
+                  :on-input (partial
+                             reset-caret-fix-wrap
+                             #(reset! title (oget % "target.value")))
+                  :value @title}])
+
+(defn update-suggestions [event]
+  (dispatch [${1:"reframe key for getting suggestions based on query"}
+             (oget event "target.value")]))
+
+(def suggestions (subscribe [$1]))
+
+;; START Rendering suggestions
+
+(defn- render-suggestions-elements
+  "render items with id as value"
+  [{:keys [title id] :as item}]
+  ^{:key id}
+  [:> (.-Option Autocomplete) (merge item {:value (str id)})
+   title])
+
+(defn- render-suggestions-groups
+  "render categories of items
+  key = title and should be unique"
+  [{:keys [title items]}]
+  (r/as-element
+   [:> (.-OptGroup Autocomplete) {:key title :value title}
+    (map render-suggestions-elements items)]))
+
+;; END 
+
+(defn- datasource->views [datasource]
+  {:pre [(is (coll? datasource))]}
+  (map render-suggestions-groups datasource))
+
+
+(defn autocomplete
+  "title: reagent atom
+   datasource example:
+  [{
+    :title \"some-title\"
+    :items [{
+      :title \"item-title\"
+      :id \"item-id\"}]}]
+  "
+  [title]
+  [:> antd/AutoComplete {:value @title
+                         :on-select #(reset! title %)
+                         :dataSource
+                         (datasource->views @suggestions)}
+   [autocomplete-input title]])

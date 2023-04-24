@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: @media max-width
+# --
+@media(max-width: $1px) {
+$0
+}

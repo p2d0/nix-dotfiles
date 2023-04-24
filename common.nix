@@ -1,15 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [
-    ./modules/i3/i3.nix
-    ./modules/polybar/polybar.nix
-    ./modules/ssh/ssh.nix
-    ./modules/fish/fish.nix
-    ./modules/rofi/rofi.nix
-    ./modules/gimp/gimp.nix
-    ./modules/gnome-boxes.nix
-  ];
+  imports = lib.my.findAllModulePathsIn /etc/nixos/modules/home-manager;
   home.packages = [
     pkgs.cask
   ];
@@ -52,6 +44,7 @@
       "application/x-extension-xhtml" = "firefox.desktop";
       "application/x-extension-xht" = "firefox.desktop";
       "x-scheme-handler/sidequest" ="SideQuest.desktop";
+       "x-scheme-handler/discord-529050037532098580"="discord-529050037532098580.desktop";
     };
     # associations.added = {
     #   "x-scheme-handler/http" = "firefox.desktop";
@@ -80,7 +73,7 @@
   services.xsettingsd = {
     enable = true;
   };
-  modules.fish.enable = true;
+  modules.shell.fish.enable = true;
 
   xdg.userDirs = {
     enable = true;
@@ -89,6 +82,16 @@
   services.lorri.enable = true;
   manual.json.enable = true;
   services.kdeconnect.enable = true;
+
+  systemd.user.services.kdeconnect = {
+    Unit = {
+      After = lib.mkForce [ "default.target" ];
+      PartOf = lib.mkForce [ "default.target" ];
+    };
+    Service = {
+      Environment = lib.mkForce ["QT_QPA_PLATFORM=wayland" "PATH=${config.home.profileDirectory}/bin"];
+    };
+  };
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowBroken = true;
   programs.alacritty = {

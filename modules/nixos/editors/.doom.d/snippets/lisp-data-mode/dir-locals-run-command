@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: dir-locals run-command
+# --
+((nil . ((run-command-recipe-dir-locals-fn
+          . (lambda ()
+              (list
+               (list
+                     :command-name "$2"
+                     :display "$1"
+                     :command-line "$2"
+                     ${4::working-dir "$5"})
+               )))
+         )))

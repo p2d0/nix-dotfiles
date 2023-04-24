@@ -1,0 +1,6 @@
+[submodule "hygen_templates"]
+	path = hygen_templates
+	url = git@github.com:p2d0/my-hygen-templates.git
+[submodule "consult-taskrunner"]
+	path = packages/consult-taskrunner
+	url = git@github.com:p2d0/consult-taskrunner.git

@@ -1,0 +1,17 @@
+# -*- mode: snippet -*-
+# name: Prestashop Hook function
+# --
+public function hook${1:$$(yas-choose-value '(
+"DisplayProductSchedule"
+"Header"
+"DisplayCartAfterProduct"
+"DisplayFooterProduct"
+"DisplayAdminProductsOptionsStepBottom"
+"ActionObjectProductInCartDeleteBefore"
+"ActionOrderStatusPostUpdate"
+"ActionCartSave"
+"DisplayAdminAfterHeader"
+"ModuleRoutes"
+))}(\$params)
+{
+}

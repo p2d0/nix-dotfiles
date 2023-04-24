@@ -1,0 +1,51 @@
+# -*- mode: snippet -*-
+# name: Application Type Repository
+# key: applicationTypeRepository
+# --
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+using FinFactory.StockApplications.Db.Context;
+using FinFactory.StockApplications.Domain.Applications.CreditParams.`(s-replace "Repository" "" (+yas/filename))`;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
+
+namespace `(+yas-csharp/namespace)`
+{
+public interface I`(+yas/filename)`
+{
+Task<`(s-replace "Repository" "" (+yas/filename))`Entity> Add`(s-replace "Repository" "" (+yas/filename))`Async(`(s-replace "Repository" "" (+yas/filename))`Entity entity);
+Task<`(s-replace "Repository" "" (+yas/filename))`Entity> Get`(s-replace "Repository" "" (+yas/filename))`EntityByApplicationId(int id);
+`(s-replace "Repository" "" (+yas/filename))`Entity Update`(s-replace "Repository" "" (+yas/filename))`(`(s-replace "Repository" "" (+yas/filename))`Entity entity);
+}
+
+public class `(+yas/filename)` : I`(+yas/filename)`
+{
+private readonly StockApplicationsContext _context;
+
+// TODO extract to base StockApplicationsRepository
+public `(+yas/filename)`(StockApplicationsContext context)
+{
+_context = context;
+}
+
+public async Task<`(s-replace "Repository" "" (+yas/filename))`Entity> Add`(s-replace "Repository" "" (+yas/filename))`Async(`(s-replace "Repository" "" (+yas/filename))`Entity entity)
+{
+var template = await _context.Set<`(s-replace "Repository" "" (+yas/filename))`Entity>().AddAsync(entity);
+return template.Entity;
+}
+
+public async Task<`(s-replace "Repository" "" (+yas/filename))`Entity> Get`(s-replace "Repository" "" (+yas/filename))`EntityByApplicationId(int id)
+{
+return await _context.Set<`(s-replace "Repository" "" (+yas/filename))`Entity>().Where(e => e.ApplicationId == id).SingleOrDefaultAsync();
+}
+
+public `(s-replace "Repository" "" (+yas/filename))`Entity Update`(s-replace "Repository" "" (+yas/filename))`(`(s-replace "Repository" "" (+yas/filename))`Entity entity)
+{
+entity.ModifiedDateTime = DateTime.Now;
+EntityEntry dbEntityEntry = _context.Entry(entity);
+dbEntityEntry.State = EntityState.Modified;
+return (`(s-replace "Repository" "" (+yas/filename))`Entity)dbEntityEntry.Entity;
+}
+}
+}

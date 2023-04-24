@@ -1,0 +1,4 @@
+<locatingRules xmlns="http://thaiopensource.com/ns/locating-rules/1.0">
+  <uri pattern="*.csproj" typeId="CSproj"/>
+  <typeId id="CSproj" uri="csproj/Microsoft.Build.Core.rnc"/>
+</locatingRules>

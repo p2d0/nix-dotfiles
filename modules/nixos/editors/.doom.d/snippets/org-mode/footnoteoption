@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Footnote option
+# key: footnoteoption
+# --
+#+OPTIONS: f:t

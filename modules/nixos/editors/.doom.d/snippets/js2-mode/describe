@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: jasmine describe
+# key: describe
+# --
+describe("$1",function(){
+it("$2",function(){
+$0
+})
+})

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: bot handler
+# --
+def $1(update: Update, context: CallbackContext):
+    $2

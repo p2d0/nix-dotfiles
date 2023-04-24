@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: Test Smiple
+# key: testSimple
+# --
+(require 'test-simple)
+(test-simple-start)
+
+(assert-t (load-file "../$1.el")
+"Cant load $1");
+(note "test 1")
+
+(assert-equal 1 1)
+
+
+(end-tests)

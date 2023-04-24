@@ -34,11 +34,14 @@
       {
         inherit lib;
 
+        user = "andrew";
+
         # overlay =
         #   final: prev: {
         #     my = lib.mapModules ./pkgs (p: pkgs.callPackage p {});
         #   };
-
+        # homeManagerModules = lib.my.mapModulesRec /etc/nixos/modules/home-manager import;
+        # nixosModules = lib.
         nixosConfigurations = {
           mysystem = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
@@ -46,28 +49,10 @@
               {nixpkgs.pkgs = pkgs;}
               home-manager.nixosModules.home-manager
               hyprland.nixosModules.default
-              ./modules/sway
-              ./modules/hjkl/hjkl.nix
-              ./modules/fonts/fonts.nix
-              ./modules/fcitx.nix
-              ./modules/printing3d
-              ./modules/keyrings.nix
-              ./modules/warp.nix
-              ./modules/darkman.nix
-              ./modules/vpn
-              ./modules/jetbrains
-              ./modules/timed-shutdown
-              ./modules/editors/emacs.nix
-              ./andrew.nix
-              ./modules/options.nix
-              ./modules/pipewire.nix
-              ./modules/xmonad/xmonad.nix
-              ./modules/jira/jira.nix
-              ./modules/qtile/qtile.nix
-              ./modules/taffybar/taffybar-home.nix
+              ./home.nix
               ./hosts/main/configuration.nix
-            ];
-            specialArgs = { inherit inputs lib; };
+            ] ++ (lib.my.findAllModulePathsIn /etc/nixos/modules/nixos);
+            specialArgs = { inherit self inputs lib; };
           };
         };
       };

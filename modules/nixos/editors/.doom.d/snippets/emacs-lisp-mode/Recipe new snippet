@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Recipe new snippet
+# key: recipe
+# --
+(package! $1 :recipe (:host github :repo "Patriot720/$1" :branch "master"))

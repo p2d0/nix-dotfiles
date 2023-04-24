@@ -1,0 +1,28 @@
+# -*- mode: snippet -*-
+# name: Redux Saga
+# key: reduxSaga
+# --
+import { call, put, takeLatest } from 'redux-saga/effects';
+import { got, err } from '../actions/`(+yas/filename)`';
+
+import {
+${1:$$(+yas/to_upper_underscore_case (+yas/filename))},
+} from '../reducers/`(+yas/filename)`';
+
+function* `(+yas/filename)`(action: {
+type: $1;
+}): Generator {
+try {
+
+const res = yield call();
+
+yield put(got(res));
+
+} catch (e) {
+yield put(err(e));
+}
+}
+
+export default function* `(+yas/filename)`Saga(): Generator {
+yield takeLatest($1.REQ, `(+yas/filename)`);
+}

@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: Override attrs
+# --
+.overrideAttrs(oldAttrs: rec {
+pname = "$1"
+version = "$2";
+src = fetchFromGitHub {
+owner = "$3";
+repo = "$4";
+rev = "$5";
+sha256 = "0";}
+$0
+})

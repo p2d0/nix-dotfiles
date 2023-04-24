@@ -1,0 +1,33 @@
+# -*- mode: snippet -*-
+# name: wrap binary app
+# --
+{ lib
+, stdenv
+, autoPatchelfHook
+, makeWrapper
+}:
+
+stdenv.mkDerivation rec {
+  pname = "$1";
+  version = "$2";
+
+  src = builtins.fetchurl {
+    url = "$3";
+  };
+
+  nativeBuildInputs = [ autoPatchelfHook makeWrapper ];
+  buildInputs = [
+  ];
+  $0
+  installPhase = ''
+    ${4:mkdir -p $out/share
+    cp -r . $out/share
+    rm -r $out/share/jbr
+
+    makeWrapper \
+      $out/share/bin/gateway.sh \
+      $out/bin/jetbrains-gateway \
+      --prefix LD_LIBRARY_PATH : $out/lib \
+      --set GATEWAY_JDK "${jdk}"}
+  '';
+}

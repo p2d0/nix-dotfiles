@@ -1,0 +1,22 @@
+# -*- mode: snippet -*-
+# name: Prestashop front controller
+# key: pres_controller
+# --
+
+require_once __DIR__ . '/../../vendor/autoload.php';
+
+class `(projectile-project-name)``(file-name-base buffer-file-name)`ModuleFrontController extends ModuleFrontController
+{
+
+    public function __construct()
+    {
+
+      parent::__construct();
+    }
+    public function initContent()
+    {
+        parent::initContent();
+        \$this->setTemplate('module:`(projectile-project-name)`${2:/path/to/.tpl}');
+        $0
+    }
+}

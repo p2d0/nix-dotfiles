@@ -1,0 +1,26 @@
+packages:
+- '.'
+extra-deps:
+
+resolver: nightly-2020-04-30
+
+nix:
+  packages:
+    - cairo
+    - gcc
+    - gnome2.pango
+    - gobjectIntrospection
+    - gtk3
+    - hicolor-icon-theme
+    - libdbusmenu-glib
+    - libdbusmenu-gtk3
+    - libxml2
+    - pkgconfig
+    - x11
+    - xorg.libX11
+    - xorg.libXScrnSaver
+    - xorg.libXext
+    - xorg.libXinerama
+    - xorg.libXrandr
+    - xorg.libXrender
+    - zlib

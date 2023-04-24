@@ -1,0 +1,35 @@
+# -*- mode: snippet -*-
+# name: Menu huge dropdown
+# --
+<div id="kekw" class="menu-huge-dropdown-wrap">
+<div class="menu-huge-dropdown">
+<div class="columns">
+<div class="column is-4">
+<div class="left-column">
+<div class="text-wrap">
+<h2>Кредитные продукты для бизнеса</h2>
+<a class="consultation-button ask-expert-button">
+<div>
+Спросить у эксперта
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="column is-8">
+<div class="right-column">
+<a class="circle-close-btn" for="#kekw" aria-label="close"></a>
+<ul class="dropdown-menu-list">
+<li><a href="">Оборотное кредитование</a></li>
+<li><a href="">Факторинг</a></li>
+<li><a href="">Финансирование под залог недвижимости</a></li>
+<li><a href="">Финансирование исполнения контракта</a></li>
+<li><a href="">Банковские гарантии</a></li>
+<li><a href="">Проектное финансирование</a></li>
+<li><a href="">Страхование дебиторской задолженности</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>

@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: form input group
+# key: form-input-group                       
+# --
+<div class="form-group">
+<label for="${1:some-form}">$1</label>
+<input type="$2" name="$3" placeholder="$4" class="form-control" id="$1" >
+<small class="form-text text-muted">$0</small>
+</div>

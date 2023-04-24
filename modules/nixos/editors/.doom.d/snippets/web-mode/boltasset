@@ -1,0 +1,4 @@
+# -*- mode: snippet -*-
+# name: Bolt Symfony Asset,image, url
+# --
+{{ asset('$1')}}

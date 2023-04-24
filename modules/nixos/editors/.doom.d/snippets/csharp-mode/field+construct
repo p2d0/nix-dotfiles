@@ -1,0 +1,10 @@
+# -*- mode: snippett  -*-
+# name: field+construct
+# key: field
+# --
+$1
+
+public `(+yas/filename)`(${1:$(+yas-csharp/->constructorArguments yas-text)})
+{
+    ${1:$(+yas-csharp/->assignment yas-text)};
+}

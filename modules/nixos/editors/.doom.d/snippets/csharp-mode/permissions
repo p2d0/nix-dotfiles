@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: permissions
+# key: permissions
+# --
+var permissions = await _jwtTokenService.GetUserPermissionsFromJwtAuthToken(jwt);

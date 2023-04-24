@@ -1,0 +1,21 @@
+# -*- mode: snippet -*-
+# name: testcase,unittest
+# key: unittest
+# --
+
+use PHPUnit\Framework\TestCase;
+
+class `(file-name-base buffer-file-name)` extends TestCase
+{
+    public function setUp() {
+    }
+
+    public function tearDown(){
+    }
+
+    function test_$1()
+    {
+        $0
+    }
+
+}

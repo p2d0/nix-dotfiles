@@ -1,0 +1,24 @@
+# -*- mode: snippet -*-
+# name: Prestashop seo link short hook function
+# key: pres_seo
+# --
+
+public function hookModuleRoutes(\$params)
+{
+    \$my_link = array(
+        '${1:`(projectile-project-name)`}' => array(
+            'controller' => '${2:controller php name only}',
+            'rule' => '${3:pages{/:${4:var_1}}{/:${5:var_2}}.html }', # link regex match to _GET variable
+            #example link pages/14/raspisanie2020.html
+            'keywords' => array( # keywords  should not be removed!!! at least empty array
+                '$4' => array('regexp' => '[0-9]+', 'param' => '$4'),
+                '$5' => array('regexp' => '[\w-]+', 'param' => '$5'),
+            ),
+            'params' => array(
+                'fc' => 'module',
+                'module' => '$1'
+            )
+        )
+    );
+    return \$my_link;
+}

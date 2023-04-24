@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: Prompt multiselect
+# --
+{
+type: 'multiselect',
+name: 'value',
+message: '${1:What's your message}',
+limit: 7,
+choices: [
+{ name: '$2', value: '$3' },
+$0
+]
+}

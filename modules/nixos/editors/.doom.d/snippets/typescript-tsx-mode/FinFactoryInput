@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: FinFactory input
+# key: fininput
+# --
+<Input
+value={$1}
+label="$2"
+name="$1"
+placeholder={$3}
+${4:required={true}}
+error={errors.$1}
+onChange={${5:this.onChange}}
+/>

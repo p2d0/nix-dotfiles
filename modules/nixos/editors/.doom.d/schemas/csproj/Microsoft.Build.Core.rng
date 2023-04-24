@@ -1,0 +1,1104 @@
+<rng:grammar xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" ns="http://schemas.microsoft.com/developer/msbuild/2003" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <!-- ======================================================================================= -->
+    <rng:start combine="choice">
+<rng:ref name="Project"/>
+</rng:start>
+<rng:define name="Project">
+<rng:element name="Project">
+         <a:documentation>
+            <!-- _locID_text="Project" _locComment="" -->An MSBuild Project
+        </a:documentation>
+
+
+                <rng:zeroOrMore>
+<rng:ref name="ProjectLevelTagExceptTargetOrImportType"/>
+</rng:zeroOrMore>
+                <!-- must be at least one Target or Import tag-->
+                <rng:ref name="TargetOrImportType"/>
+                <rng:zeroOrMore>
+<rng:ref name="ProjectLevelTagType"/>
+</rng:zeroOrMore>
+
+            <rng:optional>
+<rng:attribute name="DefaultTargets">
+<rng:data type="string">
+                <a:documentation>
+                    <!-- _locID_text="Project_DefaultTargets" _locComment="" -->Optional semi-colon separated list of one or more targets that will be built if no targets are otherwise specified
+                </a:documentation>
+            </rng:data>
+</rng:attribute>
+</rng:optional>
+            <rng:optional>
+<rng:attribute name="InitialTargets">
+<rng:data type="string">
+                <a:documentation>
+                    <!-- _locID_text="Project_InitialTargets" _locComment="" -->Optional semi-colon separated list of targets that should always be built before any other targets
+                </a:documentation>
+            </rng:data>
+</rng:attribute>
+</rng:optional>
+            <rng:optional>
+<rng:attribute name="Sdk">
+<rng:data type="string">
+                <a:documentation>
+                    <!-- _locID_text="Project_Sdk" _locComment="" -->Optional string describing the MSBuild SDK(s) this project should be built with
+                </a:documentation>
+            </rng:data>
+</rng:attribute>
+</rng:optional>
+            <rng:optional>
+<rng:attribute name="ToolsVersion">
+<rng:data type="string">
+                <a:documentation>
+                    <!-- _locID_text="Project_ToolsVersion" _locComment="" -->Optional string describing the toolset version this project should normally be built with
+                </a:documentation>
+            </rng:data>
+</rng:attribute>
+</rng:optional>
+
+    </rng:element>
+</rng:define>
+    <!-- ======================================================================================= -->
+    <rng:define name="ProjectLevelTagExceptTargetOrImportType">
+        <rng:choice>
+            <rng:element name="PropertyGroup">
+<rng:ref name="PropertyGroupType"/>
+</rng:element>
+            <rng:element name="ItemGroup">
+<rng:ref name="ItemGroupType"/>
+</rng:element>
+            <rng:element name="ItemDefinitionGroup">
+<rng:ref name="ItemDefinitionGroupType"/>
+</rng:element>
+            <rng:element name="Choose">
+<rng:ref name="ChooseType"/>
+</rng:element>
+            <rng:element name="UsingTask">
+<rng:ref name="UsingTaskType"/>
+</rng:element>
+            <rng:element name="ProjectExtensions">
+<rng:ref name="ProjectExtensionsType"/>
+</rng:element>
+        </rng:choice>
+    </rng:define>
+    <!-- ======================================================================================= -->
+    <rng:define name="ProjectLevelTagType">
+        <rng:choice>
+            <rng:element name="PropertyGroup">
+<rng:ref name="PropertyGroupType"/>
+</rng:element>
+            <rng:element name="ItemGroup">
+<rng:ref name="ItemGroupType"/>
+</rng:element>
+            <rng:element name="ItemDefinitionGroup">
+<rng:ref name="ItemDefinitionGroupType"/>
+</rng:element>
+            <rng:element name="Choose">
+<rng:ref name="ChooseType"/>
+</rng:element>
+            <rng:element name="UsingTask">
+<rng:ref name="UsingTaskType"/>
+</rng:element>
+            <rng:element name="Target">
+<rng:ref name="TargetType"/>
+</rng:element>
+            <rng:element name="Import">
+<rng:ref name="ImportType"/>
+</rng:element>
+            <rng:element name="ImportGroup">
+<rng:ref name="ImportGroupType"/>
+</rng:element>
+            <rng:element name="ProjectExtensions">
+<rng:ref name="ProjectExtensionsType"/>
+</rng:element>
+        </rng:choice>
+    </rng:define>
+    <!-- ======================================================================================= -->
+    <rng:define name="TargetOrImportType">
+        <rng:choice>
+            <rng:element name="Target">
+<rng:ref name="TargetType"/>
+</rng:element>
+            <rng:element name="Import">
+<rng:ref name="ImportType"/>
+</rng:element>
+            <rng:element name="ImportGroup">
+<rng:ref name="ImportGroupType"/>
+</rng:element>
+        </rng:choice>
+    </rng:define>
+    <!-- ======================================================================================= -->
+    <rng:define name="TargetType">
+        <a:documentation>
+            <!-- _locID_text="TargetType" _locComment="" -->Groups tasks into a section of the build process
+        </a:documentation>
+
+
+                <rng:zeroOrMore>
+<rng:choice>
+                    <rng:ref name="Task"/>
+                    <rng:element name="PropertyGroup">
+<rng:ref name="PropertyGroupType"/>
+</rng:element>
+                    <rng:element name="ItemGroup">
+<rng:ref name="ItemGroupType"/>
+</rng:element>
+                </rng:choice>
+</rng:zeroOrMore>
+
+            <rng:zeroOrMore>
+<rng:element name="OnError">
+<rng:ref name="OnErrorType"/>
+</rng:element>
+</rng:zeroOrMore>
+            <!-- no elements are allowed under Target after an OnError element-->
+
+        <rng:attribute name="Name">
+<rng:ref name="non_empty_string"/>
+            <a:documentation>
+                <!-- _locID_text="TargetType_Name" _locComment="" -->Name of the target
+            </a:documentation>
+        </rng:attribute>
+        <rng:optional>
+<rng:attribute name="DependsOnTargets">
+<rng:data type="string">
+            <a:documentation>
+                <!-- _locID_text="TargetType_DependsOnTargets" _locComment="" -->Optional semi-colon separated list of targets that should be run before this target
+            </a:documentation>
+        </rng:data>
+</rng:attribute>
+</rng:optional>
+        <rng:optional>
+<rng:attribute name="Inputs">
+<rng:data type="string">
+            <a:documentation>
+                <!-- _locID_text="TargetType_Inputs" _locComment="" -->Optional semi-colon separated list of files that form inputs into this target. Their timestamps will be compared with the timestamps of files in Outputs to determine whether the Target is up to date
+            </a:documentation>
+        </rng:data>
+</rng:attribute>
+</rng:optional>
+        <rng:optional>
+<rng:attribute name="Outputs">
+<rng:data type="string">
+            <a:documentation>
+                <!-- _locID_text="TargetType_Outputs" _locComment="" -->Optional semi-colon separated list of files that form outputs into this target. Their timestamps will be compared with the timestamps of files in Inputs to determine whether the Target is up to date
+            </a:documentation>
+        </rng:data>
+</rng:attribute>
+</rng:optional>
+        <rng:optional>
+<rng:attribute name="Condition">
+<rng:data type="string">
+            <a:documentation>
+                <!-- _locID_text="TargetType_Condition" _locComment="" -->Optional expression evaluated to determine whether the Target and the targets it depends on should be run
+            </a:documentation>
+        </rng:data>
+</rng:attribute>
+</rng:optional>
+        <rng:optional>
+<rng:attribute name="KeepDuplicateOutputs">
+<rng:data type="string">
+            <a:documentation>
+                <!-- _locID_text="TargetType_KeepDuplicateOutputs" _locComment="" -->Optional expression evaluated to determine whether duplicate items in the Target's Returns should be removed before returning them. The default is not to eliminate duplicates.
+            </a:documentation>
+        </rng:data>
+</rng:attribute>
+</rng:optional>
+        <rng:optional>
+<rng:attribute name="Returns">
+<rng:data type="string">
+            <a:documentation>
+                <!-- _locID_text="TargetType_Returns" _locComment="" -->Optional expression evaluated to determine which items generated by the target should be returned by the target. If there are no Returns attributes on Targets in the file, the Outputs attributes are used instead for this purpose.
+            </a:documentation>
+        </rng:data>
+</rng:attribute>
+</rng:optional>
+        <rng:optional>
+<rng:attribute name="BeforeTargets">
+<rng:data type="string">
+            <a:documentation>
+                <!-- _locID_text="TargetType_BeforeTargets" _locComment="" -->Optional semi-colon separated list of targets that this target should run before.
+            </a:documentation>
+        </rng:data>
+</rng:attribute>
+</rng:optional>
+        <rng:optional>
+<rng:attribute name="AfterTargets">
+<rng:data type="string">
+            <a:documentation>
+                <!-- _locID_text="TargetType_AfterTargets" _locComment="" -->Optional semi-colon separated list of targets that this target should run after.
+            </a:documentation>
+        </rng:data>
+</rng:attribute>
+</rng:optional>
+        <rng:optional>
+<rng:attribute name="Label">
+<rng:data type="string">
+            <a:documentation>
+                <!-- _locID_text="ImportType_Label" _locComment="" -->Optional expression. Used to identify or order system and user elements
+            </a:documentation>
+        </rng:data>
+</rng:attribute>
+</rng:optional>
+    </rng:define>
+    <!-- ======================================================================================= -->
+    <rng:define name="PropertyGroupType">
+        <a:documentation>
+            <!-- _locID_text="PropertyGroupType" _locComment="" -->Groups property definitions
+        </a:documentation>
+
+            <rng:ref name="Property"/>
+
+        <rng:optional>
+<rng:attribute name="Condition">
+<rng:data type="string">
+            <a:documentation>
+                <!-- _locID_text="PropertyGroupType_Condition" _locComment="" -->Optional expression evaluated to determine whether the PropertyGroup should be used
+            </a:documentation>
+        </rng:data>
+</rng:attribute>
+</rng:optional>
+        <rng:optional>
+<rng:attribute name="Label">
+<rng:data type="string">
+            <a:documentation>
+                <!-- _locID_text="PropertyGroupType_Label" _locComment="" -->Optional expression. Used to identify or order system and user elements
+            </a:documentation>
+        </rng:data>
+</rng:attribute>
+</rng:optional>
+    </rng:define>
+    <!-- ======================================================================================= -->
+    <rng:define name="ImportGroupType">
+        <a:documentation>
+            <!-- _locID_text="ImportGroupType" _locComment="" -->Groups import definitions
+        </a:documentation>
+
+          <rng:element name="Import">
+<rng:ref name="ImportType"/>
+</rng:element>
+
+        <rng:optional>
+<rng:attribute name="Condition">
+<rng:data type="string">
+            <a:documentation>
+                <!-- _locID_text="ImportGroupType_Condition" _locComment="" -->Optional expression evaluated to determine whether the ImportGroup should be used
+            </a:documentation>
+        </rng:data>
+</rng:attribute>
+</rng:optional>
+        <rng:optional>
+<rng:attribute name="Label">
+<rng:data type="string">
+            <a:documentation>
+                <!-- _locID_text="ImportGroupType_Label" _locComment="" -->Optional expression. Used to identify or order system and user elements
+            </a:documentation>
+        </rng:data>
+</rng:attribute>
+</rng:optional>
+    </rng:define>
+    <!-- ======================================================================================= -->
+    <rng:define name="ItemGroupType">
+        <a:documentation>
+            <!-- _locID_text="ItemGroupType" _locComment="" -->Groups item list definitions
+        </a:documentation>
+        <rng:zeroOrMore>
+<rng:choice>
+            <rng:ref name="Item"/>
+            <rng:element name="Link">
+<rng:ref name="LinkItem"/>
+</rng:element>
+            <rng:element name="ResourceCompile">
+<rng:ref name="ResourceCompile"/>
+</rng:element>
+            <rng:element name="PreBuildEvent">
+<rng:ref name="PreBuildEventItem"/>
+</rng:element>
+            <rng:element name="PostBuildEvent">
+<rng:ref name="PostBuildEventItem"/>
+</rng:element>
+        </rng:choice>
+</rng:zeroOrMore>
+        <rng:optional>
+<rng:attribute name="Condition">
+<rng:data type="string">
+            <a:documentation>
+                <!-- _locID_text="ItemGroupType_Condition" _locComment="" -->Optional expression evaluated to determine whether the ItemGroup should be used
+            </a:documentation>
+        </rng:data>
+</rng:attribute>
+</rng:optional>
+        <rng:optional>
+<rng:attribute name="Label">
+<rng:data type="string">
+            <a:documentation>
+                <!-- _locID_text="ItemGroupType_Label" _locComment="" -->Optional expression. Used to identify or order system and user elements
+            </a:documentation>
+        </rng:data>
+</rng:attribute>
+</rng:optional>
+    </rng:define>
+    <!-- ======================================================================================= -->
+    <rng:define name="ItemDefinitionGroupType">
+        <a:documentation>
+            <!-- _locID_text="ItemDefinitionGroupType" _locComment="" -->Groups item metadata definitions
+        </a:documentation>
+        <rng:zeroOrMore>
+<rng:choice>
+            <rng:ref name="Item"/>
+            <rng:element name="Link">
+<rng:ref name="LinkItem"/>
+</rng:element>
+            <rng:element name="ResourceCompile">
+<rng:ref name="ResourceCompile"/>
+</rng:element>
+            <rng:element name="PreBuildEvent">
+<rng:ref name="PreBuildEventItem"/>
+</rng:element>
+            <rng:element name="PostBuildEvent">
+<rng:ref name="PostBuildEventItem"/>
+</rng:element>
+        </rng:choice>
+</rng:zeroOrMore>
+        <rng:optional>
+<rng:attribute name="Condition">
+<rng:data type="string">
+          <a:documentation>
+             <!-- _locID_text="ItemDefinitionGroupType_Condition" _locComment="" -->Optional expression evaluated to determine whether the ItemDefinitionGroup should be used
+          </a:documentation>
+        </rng:data>
+</rng:attribute>
+</rng:optional>
+        <rng:optional>
+<rng:attribute name="Label">
+<rng:data type="string">
+            <a:documentation>
+                <!-- _locID_text="ItemDefinitionGroupType_Label" _locComment="" -->Optional expression. Used to identify or order system and user elements
+            </a:documentation>
+        </rng:data>
+</rng:attribute>
+</rng:optional>
+    </rng:define>
+    <!-- ======================================================================================= -->
+    <rng:define name="ChooseType">
+        <a:documentation>
+            <!-- _locID_text="ChooseType" _locComment="" -->Groups When and Otherwise elements
+        </a:documentation>
+
+            <rng:oneOrMore>
+<rng:element name="When">
+<rng:ref name="WhenType"/>
+</rng:element>
+</rng:oneOrMore>
+            <rng:optional>
+<rng:element name="Otherwise">
+<rng:ref name="OtherwiseType"/>
+</rng:element>
+</rng:optional>
+
+        <rng:optional>
+<rng:attribute name="Label">
+<rng:data type="string">
+            <a:documentation>
+                <!-- _locID_text="ChooseType_Label" _locComment="" -->Optional expression. Used to identify or order system and user elements
+            </a:documentation>
+        </rng:data>
+</rng:attribute>
+</rng:optional>
+    </rng:define>
+    <!-- ======================================================================================= -->
+    <rng:define name="WhenType">
+        <a:documentation>
+            <!-- _locID_text="WhenType" _locComment="" -->Groups PropertyGroup and/or ItemGroup elements
+        </a:documentation>
+
+            <rng:choice>
+                <rng:element name="PropertyGroup">
+<rng:ref name="PropertyGroupType"/>
+</rng:element>
+                <rng:element name="ItemGroup">
+<rng:ref name="ItemGroupType"/>
+</rng:element>
+                <rng:element name="Choose">
+<rng:ref name="ChooseType"/>
+</rng:element>
+            </rng:choice>
+
+        <rng:attribute name="Condition">
+<rng:data type="string">
+            <a:documentation>
+                <!-- _locID_text="WhenType_Condition" _locComment="" -->Optional expression evaluated to determine whether the child PropertyGroups and/or ItemGroups should be used
+            </a:documentation>
+        </rng:data>
+</rng:attribute>
+    </rng:define>
+    <!-- ======================================================================================= -->
+    <rng:define name="OtherwiseType">
+        <a:documentation>
+            <!-- _locID_text="OtherwiseType" _locComment="" -->Groups PropertyGroup and/or ItemGroup elements that are used if no Conditions on sibling When elements evaluate to true
+        </a:documentation>
+
+            <rng:choice>
+                <rng:element name="PropertyGroup">
+<rng:ref name="PropertyGroupType"/>
+</rng:element>
+                <rng:element name="ItemGroup">
+<rng:ref name="ItemGroupType"/>
+</rng:element>
+                <rng:element name="Choose">
+<rng:ref name="ChooseType"/>
+</rng:element>
+            </rng:choice>
+
+    </rng:define>
+    <!-- ======================================================================================= -->
+    <rng:define name="OnErrorType">
+        <a:documentation>
+            <!-- _locID_text="OnErrorType" _locComment="" -->Specifies targets to execute in the event of a recoverable error
+        </a:documentation>
+        <rng:optional>
+<rng:attribute name="Condition">
+<rng:data type="string">
+            <a:documentation>
+                <!-- _locID_text="OnErrorType_Condition" _locComment="" -->Optional expression evaluated to determine whether the targets should be executed
+            </a:documentation>
+        </rng:data>
+</rng:attribute>
+</rng:optional>
+        <rng:attribute name="ExecuteTargets">
+<rng:ref name="non_empty_string"/>
+            <a:documentation>
+                <!-- _locID_text="OnErrorType_ExecuteTargets" _locComment="" -->Semi-colon separated list of targets to execute
+            </a:documentation>
+        </rng:attribute>
+        <rng:optional>
+<rng:attribute name="Label">
+<rng:data type="string">
+            <a:documentation>
+                <!-- _locID_text="ImportType_Label" _locComment="" -->Optional expression. Used to identify or order system and user elements
+            </a:documentation>
+        </rng:data>
+</rng:attribute>
+</rng:optional>
+    </rng:define>
+    <!-- ======================================================================================= -->
+    <rng:define name="UsingTaskType">
+      <a:documentation>
+        <!-- _locID_text="UsingTaskType" _locComment="" -->Defines the assembly containing a task's implementation, or contains the implementation itself.
+      </a:documentation>
+
+        <rng:optional>
+<rng:element name="ParameterGroup">
+<rng:ref name="ParameterGroupType"/>
+</rng:element>
+</rng:optional>
+        <rng:optional>
+<rng:element name="Task">
+<rng:ref name="UsingTaskBodyType"/>
+</rng:element>
+</rng:optional>
+
+        <rng:optional>
+<rng:attribute name="Condition">
+<rng:data type="string">
+            <a:documentation>
+                <!-- _locID_text="UsingTaskType_Condition" _locComment="" -->Optional expression evaluated to determine whether the declaration should be evaluated
+            </a:documentation>
+        </rng:data>
+</rng:attribute>
+</rng:optional>
+        <rng:optional>
+<rng:attribute name="AssemblyName">
+<rng:ref name="non_empty_string"/>
+            <a:documentation>
+                <!-- _locID_text="UsingTaskType_AssemblyName" _locComment="" -->Optional name of assembly containing the task. Either AssemblyName or AssemblyFile must be used
+            </a:documentation>
+        </rng:attribute>
+</rng:optional>
+        <rng:optional>
+<rng:attribute name="AssemblyFile">
+<rng:ref name="non_empty_string"/>
+            <a:documentation>
+                <!-- _locID_text="UsingTaskType_AssemblyFile" _locComment="" -->Optional path to assembly containing the task. Either AssemblyName or AssemblyFile must be used
+            </a:documentation>
+        </rng:attribute>
+</rng:optional>
+        <rng:attribute name="TaskName">
+<rng:ref name="non_empty_string"/>
+            <a:documentation>
+                <!-- _locID_text="UsingTaskType_TaskName" _locComment="" -->Name of task class in the assembly
+            </a:documentation>
+        </rng:attribute>
+        <rng:optional>
+<rng:attribute name="TaskFactory">
+<rng:ref name="non_empty_string"/>
+          <a:documentation>
+            <!-- _locID_text="UsingTaskType_TaskFactory" _locComment="" -->Name of the task factory class in the assembly
+          </a:documentation>
+        </rng:attribute>
+</rng:optional>
+        <rng:optional>
+<rng:attribute name="Architecture">
+<rng:ref name="architecture"/>
+          <a:documentation>
+
+              <!-- _locID_text="UsingTaskType_Architecture" _locComment="" -->Defines the architecture of the task host that this task should be run in.  Currently supported values:  x86, x64, CurrentArchitecture, and * (any).  If Architecture is not specified, either the task will be run within the MSBuild process, or the task host will be launched using the architecture of the parent MSBuild process
+
+          </a:documentation>
+        </rng:attribute>
+</rng:optional>
+        <rng:optional>
+<rng:attribute name="Runtime">
+<rng:ref name="runtime"/>
+          <a:documentation>
+
+              <!-- _locID_text="UsingTaskType_Runtime" _locComment="" -->Defines the .NET runtime version of the task host that this task should be run in.  Currently supported values:  CLR2, CLR4, CurrentRuntime, and * (any).  If Runtime is not specified, either the task will be run within the MSBuild process, or the task host will be launched using the runtime of the parent MSBuild process
+
+          </a:documentation>
+        </rng:attribute>
+</rng:optional>
+    </rng:define>
+    <!-- ======================================================================================= -->
+    <rng:define name="ParameterGroupType">
+        <a:documentation>
+            <!-- _locID_text="ParameterGroupType" _locComment="" -->Groups parameters that are part of an inline task definition.
+        </a:documentation>
+        <!-- ParameterGroup contains parameter elements whose element names are the parameter names.
+             Attributes are:
+                  * ParameterType. Optional string. Type of the task parameter. Defaults to string type.
+                  * Output. Optional bool. Whether this task parameter can be retrieved as an output. Defaults to false.
+                  * Required. Optional bool. Whether this task parameter is required to be passed a value. Defaults to false.
+             It is not possible to validate attributes on elements with undefined names using XSD.
+          -->
+
+           <rng:element>
+<rng:anyName/>
+<rng:text/>
+</rng:element>
+
+    </rng:define>
+    <!-- ======================================================================================= -->
+    <rng:define name="UsingTaskBodyType">
+        <a:documentation>
+            <!-- _locID_text="UsingTaskBodyType" _locComment="" -->Contains the inline task implementation. Content is opaque to MSBuild.
+        </a:documentation>
+
+            <rng:element>
+<rng:anyName/>
+<rng:text/>
+</rng:element>
+
+        <rng:optional>
+<rng:attribute name="Evaluate">
+<rng:ref name="boolean"/>
+            <a:documentation>
+                <!-- _locID_text="UsingTaskBodyType_Evaluate" _locComment="" -->Whether the body should have properties expanded before use. Defaults to false.
+            </a:documentation>
+        </rng:attribute>
+</rng:optional>
+    </rng:define>
+    <!-- ======================================================================================= -->
+    <rng:define name="ImportType">
+        <a:documentation>
+            <!-- _locID_text="ImportType" _locComment="" -->Declares that the contents of another project file should be inserted at this location
+        </a:documentation>
+        <rng:optional>
+<rng:attribute name="Condition">
+<rng:data type="string">
+            <a:documentation>
+                <!-- _locID_text="ImportType_Condition" _locComment="" -->Optional expression evaluated to determine whether the import should occur
+            </a:documentation>
+        </rng:data>
+</rng:attribute>
+</rng:optional>
+        <rng:attribute name="Project">
+<rng:ref name="non_empty_string"/>
+            <a:documentation>
+                <!-- _locID_text="ImportType_Project" _locComment="" -->Project file to import
+            </a:documentation>
+        </rng:attribute>
+        <rng:optional>
+<rng:attribute name="Label">
+<rng:data type="string">
+            <a:documentation>
+                <!-- _locID_text="ImportType_Label" _locComment="" -->Optional expression. Used to identify or order system and user elements
+            </a:documentation>
+        </rng:data>
+</rng:attribute>
+</rng:optional>
+        <rng:optional>
+<rng:attribute name="Sdk">
+<rng:data type="string">
+            <a:documentation>
+
+                    <!-- _locID_text="ImportType_Sdk" _locComment="" -->Name of the SDK which contains the project file to import
+            </a:documentation>
+        </rng:data>
+</rng:attribute>
+</rng:optional>
+        <rng:optional>
+<rng:attribute name="Version">
+<rng:data type="string">
+            <a:documentation>
+
+                    <!-- _locID_text="ImportType_Version" _locComment="" -->Optional expression used to specify the version of the SDK referenced by this import
+            </a:documentation>
+        </rng:data>
+</rng:attribute>
+</rng:optional>
+        <rng:optional>
+<rng:attribute name="MinimumVersion">
+<rng:data type="string">
+            <a:documentation>
+
+                    <!-- _locID_text="ImportType_MinimumVersion" _locComment="" -->Optional expression used to specify the minimum SDK version required by the referring import
+            </a:documentation>
+        </rng:data>
+</rng:attribute>
+</rng:optional>
+    </rng:define>
+    <!-- ======================================================================================= -->
+    <rng:define name="ProjectExtensionsType">
+        <a:documentation>
+            <!-- _locID_text="ProjectExtensionsType" _locComment="" -->Optional section used by MSBuild hosts, that may contain arbitrary XML content that is ignored by MSBuild itself
+        </a:documentation>
+
+            <rng:element>
+<rng:anyName/>
+<rng:text/>
+</rng:element>
+
+    </rng:define>
+    <!-- ======================================================================================= -->
+    <rng:start combine="choice">
+<rng:ref name="Item"/>
+</rng:start>
+<rng:define name="Item">
+<rng:element name="Item">
+<rng:ref name="SimpleItemType"/>
+</rng:element>
+</rng:define>
+    <!-- ======================================================================================= -->
+    <!-- convenience type for items that have no meta-data-->
+    <!-- note this allows Remove or no attribute instead of Include, which is too lax outside of Targets at present, but
+         it's the best we can reasonably do with an XSD -->
+    <rng:define name="SimpleItemType">
+        <rng:optional>
+<rng:attribute name="Condition">
+<rng:data type="string">
+            <a:documentation>
+                <!-- _locID_text="SimpleItemType_Condition" _locComment="" -->Optional expression evaluated to determine whether the items should be evaluated
+            </a:documentation>
+        </rng:data>
+</rng:attribute>
+</rng:optional>
+        <rng:optional>
+<rng:attribute name="Include">
+<rng:data type="string">
+            <a:documentation>
+                <!-- _locID_text="SimpleItemType_Include" _locComment="" -->Semi-colon separated list of files (wildcards are allowed) or other item names to include in this item list
+            </a:documentation>
+        </rng:data>
+</rng:attribute>
+</rng:optional>
+        <rng:optional>
+<rng:attribute name="Exclude">
+<rng:data type="string">
+            <a:documentation>
+                <!-- _locID_text="SimpleItemType_Exclude" _locComment="" -->Semi-colon separated list of files (wildcards are allowed) or other item names to exclude from the Include list
+            </a:documentation>
+        </rng:data>
+</rng:attribute>
+</rng:optional>
+        <rng:optional>
+<rng:attribute name="Remove">
+<rng:data type="string">
+            <a:documentation>
+                <!-- _locID_text="SimpleItemType_Remove" _locComment="" -->Semi-colon separated list of files (wildcards are allowed) or other item names to remove from the existing list contents
+            </a:documentation>
+        </rng:data>
+</rng:attribute>
+</rng:optional>
+        <rng:optional>
+<rng:attribute name="Update">
+<rng:data type="string">
+            <a:documentation>
+                <!-- _locID_text="SimpleItemType_Remove" _locComment="" -->Semi-colon separated list of files (wildcards are allowed) or other item names to be updated with the metadata from contained in this xml element
+            </a:documentation>
+        </rng:data>
+</rng:attribute>
+</rng:optional>
+        <rng:optional>
+<rng:attribute name="Label">
+<rng:data type="string">
+          <a:documentation>
+
+              <!-- _locID_text="ImportGroupType_Label" _locComment="" -->Optional expression. Used to identify or order system and user elements
+
+          </a:documentation>
+        </rng:data>
+</rng:attribute>
+</rng:optional>
+    </rng:define>
+    <!-- ======================================================================================= -->
+    <!-- general utility type allowing an item type to be defined but not its child meta-data-->
+    <rng:define name="GenericItemType">
+
+            <rng:ref name="SimpleItemType"/>
+
+                    <rng:element>
+<rng:anyName/>
+<rng:text/>
+</rng:element>
+
+
+
+    </rng:define>
+    <!-- ======================================================================================= -->
+    <!-- no type declared on this abstract element, so either a simple or complex type can be substituted for it.-->
+    <rng:start combine="choice">
+<rng:ref name="Property"/>
+</rng:start>
+<rng:define name="Property">
+<rng:element name="Property"/>
+</rng:define>
+    <!-- ======================================================================================= -->
+    <!-- convenience type for properties that just want to allow text and no elements in them-->
+    <rng:define name="StringPropertyType">
+
+
+                <rng:attribute name="Condition">
+<rng:data type="string">
+                    <a:documentation>
+                        <!-- _locID_text="StringPropertyType_Condition" _locComment="" -->Optional expression evaluated to determine whether the property should be evaluated
+                    </a:documentation>
+                </rng:data>
+</rng:attribute>
+                <rng:attribute name="Label">
+<rng:data type="string">
+                  <a:documentation>
+
+                      <!-- _locID_text="ImportGroupType_Label" _locComment="" -->Optional expression. Used to identify or order system and user elements
+
+                  </a:documentation>
+                </rng:data>
+</rng:attribute>
+
+
+    </rng:define>
+    <!-- ======================================================================================= -->
+    <!-- general utility type allowing text and/or elements inside-->
+    <rng:define name="GenericPropertyType">
+
+            <rng:element>
+<rng:anyName/>
+<rng:text/>
+</rng:element>
+
+        <rng:optional>
+<rng:attribute name="Condition">
+<rng:data type="string">
+            <a:documentation>
+                <!-- _locID_text="GenericPropertyType_Condition" _locComment="" -->Optional expression evaluated to determine whether the property should be evaluated
+            </a:documentation>
+        </rng:data>
+</rng:attribute>
+</rng:optional>
+        <rng:optional>
+<rng:attribute name="Label">
+<rng:data type="string">
+          <a:documentation>
+
+              <!-- _locID_text="ImportGroupType_Label" _locComment="" -->Optional expression. Used to identify or order system and user elements
+
+          </a:documentation>
+        </rng:data>
+</rng:attribute>
+</rng:optional>
+    </rng:define>
+    <!-- ======================================================================================= -->
+    <rng:start combine="choice">
+<rng:ref name="Task"/>
+</rng:start>
+<rng:define name="Task">
+<rng:element name="Task">
+<rng:ref name="TaskType"/>
+</rng:element>
+</rng:define>
+    <!-- ======================================================================================= -->
+    <rng:define name="TaskType">
+
+            <rng:element name="Output">
+                <a:documentation>
+                    <!-- _locID_text="TaskType_Output" _locComment="" -->Optional element specifying a specific task output to be gathered
+                </a:documentation>
+
+                    <rng:attribute name="TaskParameter">
+<rng:ref name="non_empty_string"/>
+                        <a:documentation>
+                            <!-- _locID_text="TaskType_Output_TaskParameter" _locComment="" -->Task parameter to gather. Matches the name of a .NET Property on the task class that has an [Output] attribute
+                        </a:documentation>
+                    </rng:attribute>
+                    <rng:optional>
+<rng:attribute name="ItemName">
+<rng:ref name="non_empty_string"/>
+                        <a:documentation>
+                            <!-- _locID_text="TaskType_Output_ItemName" _locComment="" -->Optional name of an item list to put the gathered outputs into. Either ItemName or PropertyName must be specified
+                        </a:documentation>
+                    </rng:attribute>
+</rng:optional>
+                    <rng:optional>
+<rng:attribute name="PropertyName">
+<rng:ref name="non_empty_string"/>
+                        <a:documentation>
+                            <!-- _locID_text="TaskType_Output_PropertyName" _locComment="" -->Optional name of a property to put the gathered output into. Either PropertyName or ItemName must be specified
+                        </a:documentation>
+                    </rng:attribute>
+</rng:optional>
+                    <rng:optional>
+<rng:attribute name="Condition">
+<rng:data type="string">
+                        <a:documentation>
+                            <!-- _locID_text="TaskType_Output_Condition" _locComment="" -->Optional expression evaluated to determine whether the output should be gathered
+                        </a:documentation>
+                    </rng:data>
+</rng:attribute>
+</rng:optional>
+
+            </rng:element>
+
+        <rng:optional>
+<rng:attribute name="Condition">
+<rng:data type="string">
+            <a:documentation>
+                <!-- _locID_text="TaskType_Condition" _locComment="" -->Optional expression evaluated to determine whether the task should be executed
+            </a:documentation>
+        </rng:data>
+</rng:attribute>
+</rng:optional>
+        <rng:optional>
+<rng:attribute name="ContinueOnError">
+<rng:ref name="boolean"/>
+            <a:documentation>
+                <!-- _locID_text="TaskType_ContinueOnError" _locComment="" -->Optional boolean indicating whether a recoverable task error should be ignored. Default false
+            </a:documentation>
+        </rng:attribute>
+</rng:optional>
+        <rng:optional>
+<rng:attribute name="Architecture">
+<rng:ref name="architecture"/>
+          <a:documentation>
+
+              <!-- _locID_text="TaskType_Architecture" _locComment="" -->Defines the bitness of the task if it must be run specifically in a 32bit or 64bit process. If not specified, it will run with the bitness of the build process.  If there are multiple tasks defined in UsingTask with the same name but with different Architecture attribute values, the value of the Architecture attribute specified here will be used to match and select the correct task
+
+          </a:documentation>
+        </rng:attribute>
+</rng:optional>
+        <rng:optional>
+<rng:attribute name="Runtime">
+<rng:ref name="runtime"/>
+          <a:documentation>
+
+              <!-- _locID_text="TaskType_Runtime" _locComment="" -->Defines the .NET runtime of the task. This must be specified if the task must run on a specific version of the .NET runtime. If not specified, the task will run on the runtime being used by the build process. If there are multiple tasks defined in UsingTask with the same name but with different Runtime attribute values, the value of the Runtime attribute specified here will be used to match and select the correct task
+
+          </a:documentation>
+        </rng:attribute>
+</rng:optional>
+        <!-- We don't need the anyAttribute here because other types deriving from this type will add the right attributes.-->
+    </rng:define>
+    <!-- ======================================================================================= -->
+    <!-- XSD considers an empty-valued attribute to satisfy use="required", but we want it to have a non-empty value in most cases, hence this utility type. -->
+    <rng:define name="non_empty_string">
+        <rng:data type="string">
+            <rng:param name="minLength">1</rng:param>
+        </rng:data>
+    </rng:define>
+    <!-- This type causes intellisense to suggest "true" or "false", but doesn't actually constrain the value beyond msb:non_empty_string.
+    We can't constrain the value, because the project author might want to pass a property or item instead of a literal value.
+    Besides, MSBuild will accept other literal values, like "on" and "off", just as well. -->
+    <rng:define name="boolean">
+        <rng:choice>
+<rng:ref name="non_empty_string"/>msb:non_empty_string
+
+                <rng:choice>
+                    <rng:value>true</rng:value>
+                    <rng:value>false</rng:value>
+                </rng:choice>
+
+        </rng:choice>
+    </rng:define>
+    <!-- Similar trick for Importance -->
+    <rng:define name="importance">
+        <rng:choice>
+<rng:ref name="non_empty_string"/>msb:non_empty_string
+
+                <rng:choice>
+                    <rng:value>high</rng:value>
+                    <rng:value>normal</rng:value>
+                    <rng:value>low</rng:value>
+                </rng:choice>
+
+        </rng:choice>
+    </rng:define>
+    <!-- Similar trick for Architecture -->
+    <rng:define name="architecture">
+      <rng:choice>
+<rng:ref name="non_empty_string"/>msb:non_empty_string
+
+          <rng:choice>
+            <rng:value>*</rng:value>
+            <rng:value>CurrentArchitecture</rng:value>
+            <rng:value>x86</rng:value>
+            <rng:value>x64</rng:value>
+          </rng:choice>
+
+      </rng:choice>
+    </rng:define>
+    <!-- Similar trick for Runtime -->
+    <rng:define name="runtime">
+      <rng:choice>
+<rng:ref name="non_empty_string"/>msb:non_empty_string
+
+          <rng:choice>
+            <rng:value>*</rng:value>
+            <rng:value>CurrentRuntime</rng:value>
+            <rng:value>CLR2</rng:value>
+            <rng:value>CLR4</rng:value>
+          </rng:choice>
+
+      </rng:choice>
+    </rng:define>
+    <!-- ======================================================================================= -->
+    <!-- These types are used to enable Tasks and TaskItems global elements to exist in the schema.
+         They cannot both be declared as "Link" Elements of differing types in global scope. -->
+    <rng:define name="LinkItem">
+
+        <rng:ref name="SimpleItemType"/>
+          <rng:zeroOrMore>
+<rng:choice>
+            <rng:element name="AdditionalDependencies"/>
+            <rng:element name="OutputFile"/>
+            <rng:element name="AssemblyDebug"/>
+            <rng:element name="SubSystem"/>
+            <rng:element name="ShowProgress"/>
+            <rng:element name="GenerateDebugInformation"/>
+            <rng:element name="EnableCOMDATFolding"/>
+            <rng:element name="OptimizeReferences"/>
+            <rng:element name="Version"/>
+            <rng:element name="Driver"/>
+            <rng:element name="RandomizedBaseAddress"/>
+            <rng:element name="SuppressStartupBanner"/>
+            <rng:element name="AdditionalLibraryDirectories"/>
+            <rng:element name="Profile"/>
+            <rng:element name="LinkStatus"/>
+            <rng:element name="FixedBaseAddress"/>
+            <rng:element name="DataExecutionPrevention"/>
+            <rng:element name="SwapRunFromCD"/>
+            <rng:element name="SwapRunFromNET"/>
+            <rng:element name="RegisterOutput"/>
+            <rng:element name="AllowIsolation"/>
+            <rng:element name="EnableUAC"/>
+            <rng:element name="UACExecutionLevel"/>
+            <rng:element name="UACUIAccess"/>
+            <rng:element name="PreventDllBinding"/>
+            <rng:element name="IgnoreStandardIncludePath"/>
+            <rng:element name="GenerateMapFile"/>
+            <rng:element name="IgnoreEmbeddedIDL"/>
+            <rng:element name="TypeLibraryResourceID"/>
+            <rng:element name="LinkErrorReporting"/>
+            <rng:element name="MapExports"/>
+            <rng:element name="TargetMachine"/>
+            <rng:element name="TreatLinkerWarningAsErrors"/>
+            <rng:element name="ForceFileOutput"/>
+            <rng:element name="CreateHotPatchableImage"/>
+            <rng:element name="SpecifySectionAttributes"/>
+            <rng:element name="MSDOSStubFileName"/>
+            <rng:element name="IgnoreAllDefaultLibraries"/>
+            <rng:element name="IgnoreSpecificDefaultLibraries"/>
+            <rng:element name="ModuleDefinitionFile"/>
+            <rng:element name="AddModuleNamesToAssembly"/>
+            <rng:element name="EmbedManagedResourceFile"/>
+            <rng:element name="ForceSymbolReferences"/>
+            <rng:element name="DelayLoadDLLs"/>
+            <rng:element name="AssemblyLinkResource"/>
+            <rng:element name="AdditionalManifestDependencies"/>
+            <rng:element name="StripPrivateSymbols"/>
+            <rng:element name="MapFileName"/>
+            <rng:element name="MinimumRequiredVersion"/>
+            <rng:element name="HeapReserveSize"/>
+            <rng:element name="HeapCommitSize"/>
+            <rng:element name="StackReserveSize"/>
+            <rng:element name="StackCommitSize"/>
+            <rng:element name="LargeAddressAware"/>
+            <rng:element name="TerminalServerAware"/>
+            <rng:element name="FunctionOrder"/>
+            <rng:element name="ProfileGuidedDatabase"/>
+            <rng:element name="LinkTimeCodeGeneration"/>
+            <rng:element name="MidlCommandFile"/>
+            <rng:element name="MergedIDLBaseFileName"/>
+            <rng:element name="TypeLibraryFile"/>
+            <rng:element name="EntryPointSymbol"/>
+            <rng:element name="BaseAddress"/>
+            <rng:element name="ProgramDatabaseFile"/>
+            <rng:element name="SupportUnloadOfDelayLoadedDLL"/>
+            <rng:element name="SupportNobindOfDelayLoadedDLL"/>
+            <rng:element name="ImportLibrary"/>
+            <rng:element name="MergeSections"/>
+            <rng:element name="CLRThreadAttribute"/>
+            <rng:element name="CLRImageType"/>
+            <rng:element name="KeyFile"/>
+            <rng:element name="KeyContainer"/>
+            <rng:element name="DelaySign"/>
+            <rng:element name="CLRUnmanagedCodeCheck"/>
+            <rng:element name="SectionAlignment"/>
+            <rng:element name="CLRSupportLastError"/>
+            <rng:element name="ImageHasSafeExceptionHandlers"/>
+          </rng:choice>
+</rng:zeroOrMore>
+
+
+    </rng:define>
+    <rng:define name="ResourceCompile">
+
+        <rng:ref name="SimpleItemType"/>
+          <rng:zeroOrMore>
+<rng:choice>
+            <rng:element name="Culture"/>
+            <rng:element name="PreprocessorDefinitions"/>
+            <rng:element name="UndefinePreprocessorDefinitions"/>
+            <rng:element name="AdditionalIncludeDirectories"/>
+            <rng:element name="IgnoreStandardIncludePath"/>
+            <rng:element name="ShowProgress"/>
+            <rng:element name="NullTerminateStrings"/>
+            <rng:element name="SuppressStartupBanner"/>
+            <rng:element name="ResourceOutputFileName"/>
+          </rng:choice>
+</rng:zeroOrMore>
+
+
+    </rng:define>
+    <rng:define name="PreBuildEventItem">
+
+        <rng:ref name="SimpleItemType"/>
+            <rng:zeroOrMore>
+<rng:choice>
+              <rng:element name="Message"/>
+              <rng:element name="Command"/>
+            </rng:choice>
+</rng:zeroOrMore>
+
+
+    </rng:define>
+    <rng:define name="PostBuildEventItem">
+
+        <rng:ref name="SimpleItemType"/>
+            <rng:zeroOrMore>
+<rng:choice>
+              <rng:element name="Message"/>
+              <rng:element name="Command"/>
+            </rng:choice>
+</rng:zeroOrMore>
+
+
+    </rng:define>
+</rng:grammar>

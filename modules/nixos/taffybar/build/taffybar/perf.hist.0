@@ -1,0 +1,5 @@
+  30.08%  my-taffybar:w  [unknown]         [k] 0xffffffff9300015c
+   1.42%  my-taffybar:w  [unknown]         [k] 0xffffffff9300181c
+   0.00%  my-taffybar:w  my-taffybar       [.] base_GHCziEventziManager_zdwstep_info
+   0.00%  my-taffybar:w  libc.so.6         [.] 0x000000000008c280
+   0.00%  my-taffybar:w  my-taffybar       [.] base_GHCziEventziEPoll_new9_info

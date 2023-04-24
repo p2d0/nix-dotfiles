@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ghcWithPackages, ... }:
+{ config, pkgs, ghcWithPackages, self, ... }:
 
 let
   unstable = import <nixos-unstable> { config.allowBroken = true; config.allowUnfree = true; }; # https://nixos.wiki/wiki/FAQ#How_can_I_install_a_package_from_unstable_while_remaining_on_the_stable_channel.3F
@@ -17,7 +17,7 @@ in {
     '';
   };
 
-  user = "andrew";
+  user = self.user;
 
   xdg.portal = {
     enable = true;
@@ -78,7 +78,7 @@ in {
 
 
   services.xserver = {
-    enable = false;
+    enable = true;
     videoDrivers = [ "amdgpu" ];
 
     xrandrHeads = [
@@ -212,13 +212,19 @@ in {
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  services.getty.autologinUser = config.user;
+
+  # services.getty.autologinUser = config.user;
+
   systemd.coredump.extraConfig = ''
     Storage=none
   '';
 
   environment.sessionVariables = {
     GTK_DATA_PREFIX = [ "${config.system.path}" ];
+    XDG_CACHE_HOME  = "$HOME/.cache";
+    XDG_CONFIG_HOME = "$HOME/.config";
+    XDG_DATA_HOME   = "$HOME/.local/share";
+    XDG_STATE_HOME  = "$HOME/.local/state";
   };
 
   programs.java = {
@@ -305,8 +311,8 @@ in {
       neovim
       # (callPackage /etc/nixos/pkgs/psiphon.nix { })
       # unstable.elementary-planner
-      (haskellPackages.callPackage /etc/nixos/modules/taffybar/build/taffybar.nix
-        { })
+      # (haskellPackages.callPackage /etc/nixos/modules/nixos/taffybar/build/taffybar.nix
+      #   { })
       kdiskmark
       tmux
       # Config https://github.com/elken/tabbed/blob/master/config.h

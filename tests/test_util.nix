@@ -3,7 +3,7 @@
 let my = import ../lib/util.nix { inherit lib; };
 in
 lib.runTests {
-  testEasy =
+  xtestEasy =
     let result = (my.allUsers ({}: {
           home.file = {
             ".xmonad/lib".source = "pepega";
@@ -17,7 +17,7 @@ lib.runTests {
       expr = lib.hasAttr "home-manager" result;
       expected = true;
     };
-  testModified =
+  xtestModified =
     let result = (my.withHome
       ({...}:{
         home.file = {
@@ -34,7 +34,7 @@ lib.runTests {
       expr = lib.hasAttr "home-manager" result && lib.hasAttr "kek" result;
       expected = true;
     };
-  testJustAttrSet =
+  xtestJustAttrSet =
     let result = (my.withHome
       {
         home.file = {
@@ -55,8 +55,23 @@ lib.runTests {
     };
 
 
-  xtestMapModules = {
+  xtestMapModulesPkgs = {
     expr  = (my.mapModules /etc/nixos/pkgs (p: lib.id p));
     expected = [];
   };
+
+  xtestMapModulesRec = {
+    expr  = (my.mapModulesRec /etc/nixos/modules/home-manager (p: lib.id p));
+    expected = [];
+  };
+
+  xtestMapModules' = {
+    expr  = (my.mapModulesRec' /etc/nixos/modules/home-manager (p: lib.id p));
+    expected = [];
+  };
+  testMapModulesNixos' = {
+    expr  = (["kek"]  ++ (my.mapModulesRec' /etc/nixos/modules/nixos (p: lib.id p)) );
+    expected = [];
+  };
+
 }

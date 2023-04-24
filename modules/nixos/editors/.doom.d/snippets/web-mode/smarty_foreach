@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: smarty foreach
+# key: foreach
+# --
+{foreach  from=$1 item=$2 }
+$0
+{/foreach}

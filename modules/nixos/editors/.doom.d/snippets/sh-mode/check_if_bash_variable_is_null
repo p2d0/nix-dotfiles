@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: Check if bash variable is null
+# --
+if [ -n "\\\$1" ]; then
+    $0
+fi

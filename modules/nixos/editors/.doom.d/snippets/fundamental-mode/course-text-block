@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: course-text-block
+# --
+<div class="course-text-block">
+`(string-trim (yas/selected-text))`
+</div>

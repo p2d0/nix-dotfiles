@@ -1,0 +1,122 @@
+
+(my-taffybar:390374): Gtk-CRITICAL **: 18:56:56.160: gtk_widget_set_accel_path: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:390374): Gtk-CRITICAL **: 18:56:56.161: gtk_widget_add_accelerator: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:390374): Gtk-CRITICAL **: 18:56:56.161: gtk_widget_set_accel_path: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:390374): Gtk-CRITICAL **: 18:56:56.161: gtk_widget_add_accelerator: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:390374): Gtk-CRITICAL **: 18:56:56.162: gtk_widget_set_accel_path: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:390374): Gtk-CRITICAL **: 18:56:56.162: gtk_widget_add_accelerator: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:390374): Gtk-CRITICAL **: 18:56:56.162: gtk_widget_set_accel_path: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:390374): Gtk-CRITICAL **: 18:56:56.162: gtk_widget_add_accelerator: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:390374): Gtk-CRITICAL **: 18:56:56.162: gtk_widget_set_accel_path: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:390374): Gtk-CRITICAL **: 18:56:56.162: gtk_widget_add_accelerator: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:390374): Gtk-CRITICAL **: 18:56:56.181: gtk_widget_set_accel_path: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:390374): Gtk-CRITICAL **: 18:56:56.181: gtk_widget_add_accelerator: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:390374): Gtk-CRITICAL **: 18:56:56.181: gtk_widget_set_accel_path: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:390374): Gtk-CRITICAL **: 18:56:56.181: gtk_widget_add_accelerator: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:390374): Gtk-CRITICAL **: 18:56:56.182: gtk_widget_set_accel_path: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:390374): Gtk-CRITICAL **: 18:56:56.182: gtk_widget_add_accelerator: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:390374): Gtk-CRITICAL **: 18:56:56.182: gtk_widget_set_accel_path: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:390374): Gtk-CRITICAL **: 18:56:56.182: gtk_widget_add_accelerator: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:390374): Gtk-CRITICAL **: 18:56:56.182: gtk_widget_set_accel_path: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:390374): Gtk-CRITICAL **: 18:56:56.182: gtk_widget_add_accelerator: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:390374): LIBDBUSMENU-GLIB-WARNING **: 18:57:59.328: Unable to replace properties on 0: Error getting properties for ID
+
+(my-taffybar:390374): LIBDBUSMENU-GLIB-WARNING **: 18:57:59.337: Unable to replace properties on 0: Error getting properties for ID
+
+(my-taffybar:390374): LIBDBUSMENU-GLIB-WARNING **: 18:58:07.126: Unable to replace properties on 0: Error getting properties for ID
+
+(my-taffybar:390374): LIBDBUSMENU-GLIB-WARNING **: 18:58:07.138: Unable to replace properties on 0: Error getting properties for ID
+
+(my-taffybar:390374): LIBDBUSMENU-GTK-WARNING **: 19:01:22.250: The child-display variable is set to '(null)' but there's a menu, odd?
+
+(my-taffybar:390374): LIBDBUSMENU-GTK-WARNING **: 19:01:22.252: The child-display variable is set to '(null)' but there's a menu, odd?
+
+(my-taffybar:390374): LIBDBUSMENU-GTK-WARNING **: 19:01:55.733: The child-display variable is set to '(null)' but there's a menu, odd?
+
+(my-taffybar:390374): LIBDBUSMENU-GTK-WARNING **: 19:01:55.733: The child-display variable is set to '(null)' but there's a menu, odd?
+
+(my-taffybar:390374): LIBDBUSMENU-GTK-WARNING **: 19:11:53.341: The child-display variable is set to '(null)' but there's a menu, odd?
+
+(my-taffybar:390374): LIBDBUSMENU-GTK-WARNING **: 19:11:53.344: The child-display variable is set to '(null)' but there's a menu, odd?
+[93m[WARNING][0m [92mSystem.Taffybar.Information.SafeX11[0m - Handling X11 error with error handler: ErrorEvent {ev_type = 0, ev_display = Display 0x0000000009ff8c00, ev_serialnum = 241421, ev_error_code = 3, ev_request_code = 20, ev_minor_code = 0, ev_resourceid = 123731980}
+[93m[WARNING][0m [92mSystem.Taffybar.Information.SafeX11[0m - Handling X11 error with error handler: ErrorEvent {ev_type = 0, ev_display = Display 0x0000000009ff8c00, ev_serialnum = 241429, ev_error_code = 3, ev_request_code = 20, ev_minor_code = 0, ev_resourceid = 123731980}
+
+(my-taffybar:390374): LIBDBUSMENU-GTK-WARNING **: 19:12:39.791: The child-display variable is set to '(null)' but there's a menu, odd?
+
+(my-taffybar:390374): LIBDBUSMENU-GTK-WARNING **: 19:12:39.791: The child-display variable is set to '(null)' but there's a menu, odd?
+
+(my-taffybar:390374): LIBDBUSMENU-GLIB-WARNING **: 19:12:51.412: Unable to replace properties on 0: Error getting properties for ID
+
+(my-taffybar:390374): LIBDBUSMENU-GLIB-WARNING **: 19:12:51.425: Unable to replace properties on 0: Error getting properties for ID
+
+(my-taffybar:390374): LIBDBUSMENU-GLIB-WARNING **: 19:12:51.958: Unable to replace properties on 0: Error getting properties for ID
+
+(my-taffybar:390374): LIBDBUSMENU-GLIB-WARNING **: 19:12:51.981: Unable to replace properties on 0: Error getting properties for ID
+
+(my-taffybar:390374): LIBDBUSMENU-GTK-WARNING **: 19:15:15.495: The child-display variable is set to '(null)' but there's a menu, odd?
+
+(my-taffybar:390374): LIBDBUSMENU-GTK-WARNING **: 19:15:15.495: The child-display variable is set to '(null)' but there's a menu, odd?
+[93m[WARNING][0m [92mStatusNotifier.Tray[0m - Got null pixbuf for info ItemInfo {itemServiceName = BusName ":1.744", itemServicePath = ObjectPath "/org/ayatana/NotificationItem/systray", itemId = Just "systray", itemStatus = Just "Active", itemCategory = Just "ApplicationStatus", itemToolTip = Nothing, iconTitle = "lantern", iconName = "", overlayIconName = Nothing, iconThemePath = Just "", iconPixmaps = [], overlayIconPixmaps = [], menuPath = Just (ObjectPath "/org/ayatana/NotificationItem/systray/Menu"), itemIsMenu = False}
+[93m[WARNING][0m [92mStatusNotifier.Tray[0m - Got null pixbuf for info ItemInfo {itemServiceName = BusName ":1.744", itemServicePath = ObjectPath "/org/ayatana/NotificationItem/systray", itemId = Just "systray", itemStatus = Just "Active", itemCategory = Just "ApplicationStatus", itemToolTip = Nothing, iconTitle = "lantern", iconName = "", overlayIconName = Nothing, iconThemePath = Just "", iconPixmaps = [], overlayIconPixmaps = [], menuPath = Just (ObjectPath "/org/ayatana/NotificationItem/systray/Menu"), itemIsMenu = False}
+[93m[WARNING][0m [92mStatusNotifier.Tray[0m - Got null pixbuf for info ItemInfo {itemServiceName = BusName ":1.744", itemServicePath = ObjectPath "/org/ayatana/NotificationItem/systray", itemId = Just "systray", itemStatus = Just "Active", itemCategory = Just "ApplicationStatus", itemToolTip = Nothing, iconTitle = "lantern", iconName = "", overlayIconName = Nothing, iconThemePath = Just "", iconPixmaps = [], overlayIconPixmaps = [], menuPath = Just (ObjectPath "/org/ayatana/NotificationItem/systray/Menu"), itemIsMenu = False}
+[93m[WARNING][0m [92mStatusNotifier.Tray[0m - Got null pixbuf for info ItemInfo {itemServiceName = BusName ":1.744", itemServicePath = ObjectPath "/org/ayatana/NotificationItem/systray", itemId = Just "systray", itemStatus = Just "Active", itemCategory = Just "ApplicationStatus", itemToolTip = Nothing, iconTitle = "lantern", iconName = "", overlayIconName = Nothing, iconThemePath = Just "", iconPixmaps = [], overlayIconPixmaps = [], menuPath = Just (ObjectPath "/org/ayatana/NotificationItem/systray/Menu"), itemIsMenu = False}
+
+(my-taffybar:422357): Gtk-CRITICAL **: 19:56:31.744: gtk_widget_set_accel_path: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:422357): Gtk-CRITICAL **: 19:56:31.744: gtk_widget_add_accelerator: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:422357): Gtk-CRITICAL **: 19:56:31.745: gtk_widget_set_accel_path: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:422357): Gtk-CRITICAL **: 19:56:31.745: gtk_widget_add_accelerator: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:422357): Gtk-CRITICAL **: 19:56:31.745: gtk_widget_set_accel_path: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:422357): Gtk-CRITICAL **: 19:56:31.745: gtk_widget_add_accelerator: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:422357): Gtk-CRITICAL **: 19:56:31.746: gtk_widget_set_accel_path: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:422357): Gtk-CRITICAL **: 19:56:31.746: gtk_widget_add_accelerator: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:422357): Gtk-CRITICAL **: 19:56:31.746: gtk_widget_set_accel_path: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:422357): Gtk-CRITICAL **: 19:56:31.746: gtk_widget_add_accelerator: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:422357): Gtk-CRITICAL **: 19:56:31.754: gtk_widget_set_accel_path: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:422357): Gtk-CRITICAL **: 19:56:31.754: gtk_widget_add_accelerator: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:422357): Gtk-CRITICAL **: 19:56:31.754: gtk_widget_set_accel_path: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:422357): Gtk-CRITICAL **: 19:56:31.754: gtk_widget_add_accelerator: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:422357): Gtk-CRITICAL **: 19:56:31.755: gtk_widget_set_accel_path: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:422357): Gtk-CRITICAL **: 19:56:31.755: gtk_widget_add_accelerator: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:422357): Gtk-CRITICAL **: 19:56:31.755: gtk_widget_set_accel_path: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:422357): Gtk-CRITICAL **: 19:56:31.755: gtk_widget_add_accelerator: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:422357): Gtk-CRITICAL **: 19:56:31.756: gtk_widget_set_accel_path: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed
+
+(my-taffybar:422357): Gtk-CRITICAL **: 19:56:31.756: gtk_widget_add_accelerator: assertion 'GTK_IS_ACCEL_GROUP (accel_group)' failed

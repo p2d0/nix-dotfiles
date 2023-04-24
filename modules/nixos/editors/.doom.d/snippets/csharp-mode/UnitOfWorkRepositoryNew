@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: UnitOfWork New Repository
+# key: newUnitOfWorkRepository
+# --
+private I$1 _${1:$(s-lower-camel-case yas-text)};
+public I$1 $1
+{
+get
+{
+if (_${1:$(s-lower-camel-case yas-text)} != null) return _${1:$(s-lower-camel-case yas-text)};
+_${1:$(s-lower-camel-case yas-text)} = new $1(_context);
+return _${1:$(s-lower-camel-case yas-text)};
+}
+}

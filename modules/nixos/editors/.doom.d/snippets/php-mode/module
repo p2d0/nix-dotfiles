@@ -1,0 +1,30 @@
+# -*- mode: snippet -*-
+# name: prestashop module
+# key: module
+# --
+
+class `(file-name-base buffer-file-name)` extends Module{
+    public function __construct(){
+        \$this->name = '`(file-name-base buffer-file-name)`';
+        \$this->tab = 'seo';
+        \$this->version = '1.0.0';
+        \$this->author = 'Alarma Dev';
+        \$this->need_instance = 0;
+        \$this->ps_versions_compliancy = array('min' => '1.7', 'max' => _PS_VERSION_);
+        \$this->bootstrap = true;
+
+        parent::__construct();
+        \$this->displayName = \$this->l('${1:`(file-name-base buffer-file-name)`}');
+        \$this->description = \$this->l('${2:`(file-name-base buffer-file-name)`}');
+
+        \$this->confirmUninstall = \$this->l('Are you sure you want to uninstall?');
+    }
+
+    public function install(){
+        return parent::install(); // && + other methods
+    }
+    public function uninstall(){
+        // parent unistall should be last && method
+        return parent::uninstall();
+    }
+}

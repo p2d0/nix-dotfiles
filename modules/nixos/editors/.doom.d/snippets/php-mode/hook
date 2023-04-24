@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: prestashop register hook
+# key: hook
+# --
+\$this->registerHook('${1:$$(yas-choose-value '(
+"displayProductSchedule"
+"header"
+"displayCartAfterProduct"
+"displayAdminProductsOptionsStepBottom"
+"actionObjectProductInCartDeleteBefore"
+"actionOrderStatusPostUpdate"
+"actionCartSave"
+"displayAdminAfterHeader"
+"moduleRoutes"
+))}');
+$0

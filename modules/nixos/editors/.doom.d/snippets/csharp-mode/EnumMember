@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: Enum member
+# key: enummember
+# --
+[EnumMember(Value = "$1")]
+$1,

@@ -1,0 +1,27 @@
+# -*- mode: snippet -*-
+# name: Test saga
+# key: testSaga
+# --
+import { rootSaga, mergedReducers } from 'src/store';
+import {req as signInAction} from 'User/actions/signIn';
+import {req as getUserData} from 'User/actions/getUserData';
+import { expectSaga } from 'redux-saga-test-plan';
+import { SIGNIN_ACTIONS } from 'src/features/User/reducers/signIn';
+import { combineReducers } from 'redux';
+import { STORE } from 'src/globaltypes';
+
+it('$1', () => {
+return expectSaga(rootSaga)
+.withReducer(combineReducers(mergedReducers))
+.put({type: SIGNIN_ACTIONS.GOT})
+.dispatch(signInAction({email:'az@financier.team',password:'Pass_1111'}))
+.delay(250)
+.dispatch(getUserData())
+.delay(250)
+$2
+.run({timeout: 500}).then((state) =>{
+const storeState: STORE = state.storeState;
+console.log(storeState);
+$0
+});
+})

@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: policy
+# key: policy
+# --
+public static AuthorizationPolicy $1Policy()
+{
+return new AuthorizationPolicyBuilder()
+.BuildFor(Permissions.$1);
+}

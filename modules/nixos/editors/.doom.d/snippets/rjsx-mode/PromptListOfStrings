@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: Prompt list of strings
+# --
+{
+type: 'list',
+name: '${1:keywords}',
+message: '${2:List things:}',
+},
