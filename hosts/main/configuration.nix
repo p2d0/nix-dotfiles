@@ -4,9 +4,7 @@
 
 { config, pkgs, ghcWithPackages, self, ... }:
 
-let
-  unstable = import <nixos-unstable> { config.allowBroken = true; config.allowUnfree = true; }; # https://nixos.wiki/wiki/FAQ#How_can_I_install_a_package_from_unstable_while_remaining_on_the_stable_channel.3F
-in {
+{
   imports = [
     ./hardware-configuration.nix
   ];
@@ -71,6 +69,7 @@ in {
   #  programs.hyprland = {
   #    enable = true;
   #  };
+
   # programs.sway = {
   #   enable = true;
   #   wrapperFeatures.gtk = true;
@@ -200,7 +199,7 @@ in {
     #gnome.gnome-keyring.enable = true;
     dbus = {
       enable = true;
-      packages = [unstable.tdesktop];
+      packages = [];
     };
     # xrdp.enable = true;
     # xrdp.defaultWindowManager = "dbus-launch --exit-with-session;i3;";
@@ -283,7 +282,6 @@ in {
       #     sha256 = "sha256:1p39llchnb2b6zbjpn0fk7hp7yhfp03b00s539hhgaliqmq9z93g";
       #   };
       # }))
-      nixgl.nixGLMesa
       flameshot
       # .overrideAttrs(oldAttrs: rec {
       #   NIX_CFLAGS_COMPILE = "-DUSE_WAYLAND_CLIPBOARD";
@@ -395,8 +393,11 @@ in {
       # (callPackage ./pkgs/psiphon.nix { })
       speedcrunch
       discord
-      unstable.tdesktop
-      # my.tdesktop
+      # unstable.tdesktop
+      # (unstable.qt6Packages.callPackage /etc/nixos/pkgs/tdesktop/tdesktop.nix {
+      #   abseil-cpp = unstable.abseil-cpp_202111;
+      # })
+      unstable-small.tdesktop
       unstable.nil
       jpegoptim
       chatterino2

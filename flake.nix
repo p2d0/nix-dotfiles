@@ -3,17 +3,19 @@
 
   inputs = {
     nixpkgs = { url = "github:nixos/nixpkgs/nixos-22.11"; };
+    nixos-unstable.url = "nixpkgs/nixos-unstable";
+    nixos-unstable-small.url = "nixpkgs/nixos-unstable-small";
     home-manager.url = "github:nix-community/home-manager/release-22.11";
-    nixgl.url = "github:guibou/nixGL";
     hyprland.url = "github:hyprwm/Hyprland";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs @ { self, nixgl, nixpkgs, hyprland, home-manager, ... }:
+  outputs = inputs @ { self,  nixpkgs, nixos-unstable, nixos-unstable-small, hyprland, home-manager, ... }:
     let lib = nixpkgs.lib.extend (self: super: { my = import /etc/nixos/lib/util.nix { lib = nixpkgs.lib; }; });
         nixpkgs-tars = "https://github.com/NixOS/nixpkgs/archive/";
         system =  "x86_64-linux";
         mkPkgs = pkgs: extraOverlays: import pkgs {
+          # TODO convert to pkg-sets https://github.com/nix-community/home-manager/issues/1538#issuecomment-706627100
           inherit system;
           config.allowBroken = true;
           config.allowUnfree = true;  # forgive me Stallman senpai
@@ -25,9 +27,10 @@
               "${nixpkgs-tars}84963237b438319092a352a7d375878d82beb1ca.tar.gz") {
                 config = self.config;
               };
+            unstable = import nixos-unstable { config = self.config; };
+            unstable-small = import nixos-unstable-small { config = self.config; };
             my = lib.my.mapModules /etc/nixos/pkgs (p: self.callPackage p {});
-          })
-                      nixgl.overlay];
+          })];
         };
         pkgs  = mkPkgs nixpkgs [ self.overlay ];
     in
@@ -52,7 +55,7 @@
               ./home.nix
               ./hosts/main/configuration.nix
             ] ++ (lib.my.findAllModulePathsIn /etc/nixos/modules/nixos);
-            specialArgs = { inherit self inputs lib; };
+            specialArgs = { inherit self inputs lib;};
           };
         };
       };
