@@ -2,8 +2,8 @@
 #!nix-shell -p sway
 if [ $XDG_SESSION_TYPE = "wayland" ]
 then
-    export SWAYSOCK="/run/user//1000/sway-ipc.1000.1992.sock"
-    swaymsg "output * bg /etc/nixos/bg.jpg fill"
+    export SWAYSOCK="/run/user/$(id -u)/sway-ipc.$(id -u).$(pidof sway).sock"
+    swaymsg "output * bg /etc/nixos/bg_old.png fill"
 else
     feh --bg-fill /etc/nixos/bg_old.png;
     touch $HOME/.xsettingsd

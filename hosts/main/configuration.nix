@@ -132,7 +132,7 @@
 
     # windowManager.qtile.enable = true;
     displayManager = {
-      defaultSession = "sway";
+      defaultSession = "none+i3";
       autoLogin = {
         enable = true;
         user = config.user;

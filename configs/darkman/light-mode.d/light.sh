@@ -2,7 +2,7 @@
 #!nix-shell -p feh
 if [ $XDG_SESSION_TYPE = "wayland" ]
 then
-    export SWAYSOCK="/run/user//1000/sway-ipc.1000.1992.sock"
+    export SWAYSOCK="/run/user/$(id -u)/sway-ipc.$(id -u).$(pidof sway).sock"
     swaymsg "output * bg /etc/nixos/light.jpg fill"
 else
     feh --bg-fill /etc/nixos/light.jpg;
