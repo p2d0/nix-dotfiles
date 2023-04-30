@@ -265,7 +265,7 @@
       clang
       file
       openssl
-      pr218037.microsoft-edge-dev
+      # pr218037.microsoft-edge-dev
       libgcc
       glibc
       sumneko-lua-language-server
@@ -273,7 +273,7 @@
       skypeforlinux
       neovide
       lazygit
-      # microsoft-edge
+      unstable.microsoft-edge
       # (microsoft-edge-dev.overrideAttrs(oldAttrs: rec {
       #   name = "edge-dev";
       #   version = "110.0.1587.1";
