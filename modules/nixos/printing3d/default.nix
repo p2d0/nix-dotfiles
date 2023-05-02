@@ -16,7 +16,27 @@ in {
     environment.systemPackages = with pkgs;[
       blender
       cura
-      freecad
+      # Wrapping without rebuilding
+      # https://stackoverflow.com/questions/68523367/in-nixpkgs-how-do-i-override-files-of-a-package-without-recompilation/68523368#68523368
+      # https://discourse.nixos.org/t/overriding-a-package-without-rebuilding-it/13898/6
+      (pkgs.symlinkJoin {
+        name = "freecad-wrapped";
+        paths = [ pkgs.freecad ];
+        nativeBuildInputs = [ pkgs.makeBinaryWrapper ];
+        buildInputs = [pkgs.gmsh];
+        runtimeDependencies = [pkgs.gmsh];
+        postBuild = ''
+        wrapProgram "$out/bin/freecad" \
+                    --prefix PATH : ${lib.makeBinPath [pkgs.gmsh]}
+        '';
+
+
+      })
+      # (freecad.overrideAttrs(oldAttrs: rec {
+      #     qtWrapperArgs = oldAttrs.qtWrapperArgs ++ [
+      #       "--prefix PATH : ${pkgs.gmsh}/bin"
+      #     ];
+      #   }))
     ];
   };
 }

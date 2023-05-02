@@ -273,6 +273,7 @@
       skypeforlinux
       neovide
       lazygit
+      gmsh
       unstable.microsoft-edge
       # (microsoft-edge-dev.overrideAttrs(oldAttrs: rec {
       #   name = "edge-dev";
