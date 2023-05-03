@@ -275,6 +275,7 @@
       lazygit
       gmsh
       unstable.microsoft-edge
+      calculix
       # (microsoft-edge-dev.overrideAttrs(oldAttrs: rec {
       #   name = "edge-dev";
       #   version = "110.0.1587.1";

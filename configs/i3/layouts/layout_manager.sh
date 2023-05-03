@@ -65,6 +65,8 @@ if [ -z $1 ]; then
 SAVE LAYOUT
 DELETE LAYOUT" | rofi -i -dmenu -no-custom -p "Select action")
 
+# ACTION="LOAD LAYOUT"
+
   if [ -z "$ACTION" ]; then
     exit
   fi
@@ -175,6 +177,15 @@ if [[ "$ACTION" = "LOAD LAYOUT" ]]; then
 
   # then we can apply to chosen layout
   i3-msg "append_layout $LAYOUT_FILE" >> "$LOG_FILE" 2>&1
+
+  #Shell companion file
+  LAYOUT_FILE_SH="${LAYOUT_FILE%.json}.sh"
+  echo $LAYOUT_FILE_SH;
+  if [ -f "$LAYOUT_FILE_SH" ]; then
+    i3-msg "exec $LAYOUT_FILE_SH" >> "$LOG_FILE" 2>&1
+  fi
+
+
 
   echo "" >> "$LOG_FILE"
   echo "About to bring all windows back" >> "$LOG_FILE"
