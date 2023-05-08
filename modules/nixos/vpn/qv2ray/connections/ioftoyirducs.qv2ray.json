@@ -1,0 +1,23 @@
+{
+    "outbounds": [
+        {
+            "mux": {
+            },
+            "protocol": "shadowsocks",
+            "sendThrough": "0.0.0.0",
+            "settings": {
+                "servers": [
+                    {
+                        "address": "ak1485.free.www.outline.network",
+                        "method": "aes-256-gcm",
+                        "password": "cdBIDV42DCwnfIN",
+                        "port": 8119
+                    }
+                ]
+            },
+            "streamSettings": {
+            },
+            "tag": "PROXY"
+        }
+    ]
+}

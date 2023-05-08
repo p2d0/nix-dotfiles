@@ -6,12 +6,15 @@
 (map! :leader "od" #'dired-jump)
 
 (map!
- :map dired-mode-map
- :n "q" nil)
+	:map dired-mode-map
+	:n "q" nil)
 (map!
- (:map web-mode-map
-  (:i "TAB" #'+web/indent-or-yas-or-emmet-expand))
- )
+	(:map web-mode-map
+		(:i "TAB" #'+web/indent-or-yas-or-emmet-expand))
+	)
+(map!
+	(:i "C-c C-s" #'yas-insert-snippet)
+	)
 
 ;; Expand variants
 (global-set-key (kbd "M-/") 'hippie-expand)
@@ -37,56 +40,56 @@
 
 
 (map!
- :leader
- "bB" #'+vertico/switch-workspace-buffer
- "bb" #'consult-buffer
- )
+	:leader
+	"bB" #'+vertico/switch-workspace-buffer
+	"bb" #'consult-buffer
+	)
 
 (map!
- :leader
- "c=" #'+format/region-or-buffer)
+	:leader
+	"c=" #'+format/region-or-buffer)
 
 
 (map!
- :leader
- "pR" #'projectile-replace)
+	:leader
+	"pR" #'projectile-replace)
 
 (after! python
   (map!
-   :map python-mode-map
-   :localleader
-   "tt" #'python-pytest))
+		:map python-mode-map
+		:localleader
+		"tt" #'python-pytest))
 
 (map!
- "C-c C-c" #'string-inflection-lower-camelcase
- "C-c C-l" #'string-inflection-lisp
- "C-c C-a" #'string-inflection-all-cycle)
+	"C-c C-c" #'string-inflection-lower-camelcase
+	"C-c C-l" #'string-inflection-lisp
+	"C-c C-a" #'string-inflection-all-cycle)
 
 (map!
- :leader
- :desc "Switch to previous buffer" "TAB" #'evil-switch-to-windows-last-buffer
- "`" nil)
+	:leader
+	:desc "Switch to previous buffer" "TAB" #'evil-switch-to-windows-last-buffer
+	"`" nil)
 
 (map!
 	:after treemacs
- :map treemacs-mode-map
- (:localleader
-  "a" #'treemacs-run-hygen-on-directory))
+	:map treemacs-mode-map
+	(:localleader
+		"a" #'treemacs-run-hygen-on-directory))
 
 (map!
 	:after evil
- :map evil-normal-state-map
- "gs" #'avy-goto-char)
+	:map evil-normal-state-map
+	"gs" #'avy-goto-char)
 
 (map!
- :after evil-states
- :map evil-visual-state-map
- "gs" #'avy-goto-char)
+	:after evil-states
+	:map evil-visual-state-map
+	"gs" #'avy-goto-char)
 
 (map!
- :leader
- :desc "Git time machine"
- "gt" #'git-timemachine)
+	:leader
+	:desc "Git time machine"
+	"gt" #'git-timemachine)
 
 (map!
 	:after evil
@@ -96,7 +99,7 @@
   "ediff the current `init.el' with the example in doom-emacs-dir"
   (interactive)
   (ediff-files (concat doom-user-dir "init.el")
-	       (concat doom-emacs-dir "templates/init.example.el")))
+	  (concat doom-emacs-dir "templates/init.example.el")))
 
 (define-key! help-map
   "di"   #'doom/ediff-init-and-example)

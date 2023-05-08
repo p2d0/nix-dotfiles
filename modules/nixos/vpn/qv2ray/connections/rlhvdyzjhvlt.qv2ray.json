@@ -1,0 +1,23 @@
+{
+    "outbounds": [
+        {
+            "mux": {
+            },
+            "protocol": "shadowsocks",
+            "sendThrough": "0.0.0.0",
+            "settings": {
+                "servers": [
+                    {
+                        "address": "51.77.53.200",
+                        "method": "aes-256-gcm",
+                        "password": "e4FCWrgpkji3QY",
+                        "port": 9101
+                    }
+                ]
+            },
+            "streamSettings": {
+            },
+            "tag": "PROXY"
+        }
+    ]
+}

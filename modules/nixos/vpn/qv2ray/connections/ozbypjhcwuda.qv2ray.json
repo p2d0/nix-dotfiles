@@ -1,0 +1,38 @@
+{
+    "outbounds": [
+        {
+            "mux": {
+            },
+            "protocol": "vmess",
+            "sendThrough": "0.0.0.0",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "194.61.121.15",
+                        "port": 21835,
+                        "users": [
+                            {
+                                "id": "e33feeb6-5255-48f4-9994-685c12e4e2ef",
+                                "security": "aes-128-gcm"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "tcpSettings": {
+                    "header": {
+                        "type": "http"
+                    }
+                },
+                "tlsSettings": {
+                    "disableSystemRoot": false
+                },
+                "xtlsSettings": {
+                    "disableSystemRoot": false
+                }
+            },
+            "tag": "PROXY"
+        }
+    ]
+}

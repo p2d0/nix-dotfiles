@@ -1,0 +1,39 @@
+{
+    "outbounds": [
+        {
+            "mux": {
+            },
+            "protocol": "vmess",
+            "sendThrough": "0.0.0.0",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "51.83.185.94",
+                        "port": 80,
+                        "users": [
+                            {
+                                "id": "0b35cd9c-6c93-4c4e-9525-68da7b36f98b"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "ws",
+                "tlsSettings": {
+                    "disableSystemRoot": false
+                },
+                "wsSettings": {
+                    "headers": {
+                        "Host": "Vipmahsa"
+                    },
+                    "path": "/vmess"
+                },
+                "xtlsSettings": {
+                    "disableSystemRoot": false
+                }
+            },
+            "tag": "PROXY"
+        }
+    ]
+}

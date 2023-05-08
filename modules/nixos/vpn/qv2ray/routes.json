@@ -1,0 +1,12 @@
+{
+    "etkndntejuxp": {
+        "routeConfig": {
+            "domainMatcher": "mph",
+            "domainStrategy": "AsIs",
+            "domains": {
+            },
+            "ips": {
+            }
+        }
+    }
+}

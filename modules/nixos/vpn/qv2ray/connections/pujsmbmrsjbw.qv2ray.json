@@ -1,0 +1,23 @@
+{
+    "outbounds": [
+        {
+            "mux": {
+            },
+            "protocol": "shadowsocks",
+            "sendThrough": "0.0.0.0",
+            "settings": {
+                "servers": [
+                    {
+                        "address": "34.64.248.62",
+                        "method": "chacha20-ietf-poly1305",
+                        "password": "2f1831cc-4c25-4adc-b340-e3e5de09a7d3",
+                        "port": 9002
+                    }
+                ]
+            },
+            "streamSettings": {
+            },
+            "tag": "PROXY"
+        }
+    ]
+}

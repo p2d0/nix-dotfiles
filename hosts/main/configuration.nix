@@ -274,6 +274,7 @@
       neovide
       lazygit
       gmsh
+      qv2ray
       unstable.microsoft-edge
       calculix
       # (microsoft-edge-dev.overrideAttrs(oldAttrs: rec {

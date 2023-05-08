@@ -1,0 +1,329 @@
+{
+    "browserForwarder": null,
+    "dns": {
+        "servers": [
+        ]
+    },
+    "fakedns": {
+        "ipPool": "198.18.0.0/15",
+        "poolSize": 65535
+    },
+    "inbounds": [
+        {
+            "listen": "127.0.0.1",
+            "port": 8092,
+            "protocol": "http",
+            "streamSettings": {
+                "security": "utls",
+                "securitySettings": {
+                    "imitate": "firefox_auto"
+                },
+                "transport": "websocket"
+            },
+            "tag": ""
+        },
+        {
+            "listen": "127.0.0.1",
+            "port": 8091,
+            "protocol": "socks",
+            "settings": {
+                "udp": true
+            },
+            "tag": "_hycid"
+        }
+    ],
+    "observatory": {
+        "subjectSelector": [
+        ]
+    },
+    "outbounds": [
+        {
+            "QV2RAY_OUTBOUND_METADATA": {
+            },
+            "protocol": "shadowsocks",
+            "settings": {
+                "servers": [
+                    {
+                        "address": "217.70.188.60",
+                        "method": "chacha20-ietf-poly1305",
+                        "password": "gyXDW22Dbcfyqpl1qJDC7o",
+                        "port": 855
+                    }
+                ]
+            },
+            "streamSettings": {
+                "security": "utls",
+                "securitySettings": {
+                    "imitate": "firefox_auto"
+                },
+                "transport": "websocket"
+            },
+            "tag": "paris"
+        },
+        {
+            "QV2RAY_OUTBOUND_METADATA": {
+            },
+            "protocol": "shadowsocks",
+            "settings": {
+                "servers": [
+                    {
+                        "address": "195.245.113.200",
+                        "method": "chacha20-ietf-poly1305",
+                        "password": "95K2ifXG1b96",
+                        "port": 8388
+                    }
+                ]
+            },
+            "streamSettings": {
+                "security": "utls",
+                "securitySettings": {
+                    "imitate": "firefox_auto"
+                },
+                "transport": "websocket"
+            },
+            "tag": "ahmet"
+        },
+        {
+            "QV2RAY_OUTBOUND_METADATA": {
+            },
+            "_QV2RAY_USE_GLOBAL_FORWARD_PROXY_": null,
+            "protocol": "freedom",
+            "settings": null,
+            "streamSettings": null,
+            "tag": "direct"
+        },
+        {
+            "QV2RAY_OUTBOUND_METADATA": {
+            },
+            "mux": {
+            },
+            "protocol": "shadowsocks",
+            "sendThrough": "0.0.0.0",
+            "settings": {
+                "servers": [
+                    {
+                        "address": "212.24.103.3",
+                        "method": "chacha20-ietf-poly1305",
+                        "password": "ZDhjY",
+                        "port": 8388
+                    }
+                ]
+            },
+            "streamSettings": {
+            },
+            "tag": "lithuania"
+        },
+        {
+            "QV2RAY_OUTBOUND_METADATA": {
+            },
+            "mux": {
+            },
+            "protocol": "shadowsocks",
+            "sendThrough": "0.0.0.0",
+            "settings": {
+                "servers": [
+                    {
+                        "address": "203.198.116.251",
+                        "method": "aes-256-gcm",
+                        "password": "59b6b2c1-5ef6-4545-b95e-52be572523fc",
+                        "port": 15402
+                    }
+                ]
+            },
+            "streamSettings": {
+            },
+            "tag": "pepegaz"
+        },
+        {
+            "QV2RAY_OUTBOUND_METADATA": {
+            },
+            "mux": {
+            },
+            "protocol": "vmess",
+            "sendThrough": "0.0.0.0",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "51.83.185.94",
+                        "port": 80,
+                        "users": [
+                            {
+                                "id": "0b35cd9c-6c93-4c4e-9525-68da7b36f98b"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "ws",
+                "tlsSettings": {
+                    "disableSystemRoot": false
+                },
+                "wsSettings": {
+                    "headers": {
+                        "Host": "Vipmahsa"
+                    },
+                    "path": "/vmess"
+                },
+                "xtlsSettings": {
+                    "disableSystemRoot": false
+                }
+            },
+            "tag": "poland"
+        },
+        {
+            "QV2RAY_OUTBOUND_METADATA": {
+                "displayName": "shadowsocks/195.245.113.200:8388-eyxzl"
+            },
+            "mux": {
+            },
+            "protocol": "shadowsocks",
+            "sendThrough": "0.0.0.0",
+            "settings": {
+                "servers": [
+                    {
+                        "address": "195.245.113.200",
+                        "method": "chacha20-ietf-poly1305",
+                        "password": "95K2ifXG1b96",
+                        "port": 8388
+                    }
+                ]
+            },
+            "streamSettings": {
+            },
+            "tag": "shadowsocks/195.245.113.200:8388-eyxzl"
+        },
+        {
+            "QV2RAY_OUTBOUND_METADATA": {
+            },
+            "mux": {
+            },
+            "protocol": "vmess",
+            "sendThrough": "0.0.0.0",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "168.138.206.141",
+                        "port": 80,
+                        "users": [
+                            {
+                                "id": "ad05e01f-c2c0-41da-e79c-ff68237317f7"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "tcpSettings": {
+                    "header": {
+                        "type": "http"
+                    }
+                },
+                "tlsSettings": {
+                    "disableSystemRoot": false
+                },
+                "xtlsSettings": {
+                    "disableSystemRoot": false
+                }
+            },
+            "tag": "tokyo"
+        },
+        {
+            "QV2RAY_OUTBOUND_METADATA": {
+            },
+            "mux": {
+            },
+            "protocol": "trojan",
+            "settings": {
+                "servers": [
+                    {
+                        "address": "35.178.235.172",
+                        "alpn": "http/1.1",
+                        "headerType": "none",
+                        "password": "telegram-id-privatevpns",
+                        "port": 22222,
+                        "security": "tls",
+                        "sni": "trj.rollingnext.co.uk#(S277)🇬🇧t.me/PrivateVPNs",
+                        "type": "tcp"
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "utls",
+                "securitySettings": {
+                    "imitate": "firefox_auto"
+                },
+                "transport": "websocket"
+            },
+            "tag": "trojan"
+        },
+        {
+            "QV2RAY_OUTBOUND_METADATA": {
+            },
+            "mux": {
+            },
+            "protocol": "vmess",
+            "sendThrough": "0.0.0.0",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "kian.ranginkamaan.de",
+                        "port": 80,
+                        "users": [
+                            {
+                                "id": "b831381d-6324-4d53-ad4f-8cda48b30811",
+                                "security": "chacha20-poly1305"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "tlsSettings": {
+                    "disableSystemRoot": false
+                },
+                "transport": "websocket",
+                "wsSettings": {
+                    "headers": {
+                        "Host": "kian.ranginkamaan.de"
+                    },
+                    "path": "/graphql"
+                },
+                "xtlsSettings": {
+                    "disableSystemRoot": false
+                }
+            },
+            "tag": "vmess"
+        }
+    ],
+    "routing": {
+        "balancers": [
+        ],
+        "domainStrategy": "IPOnDemand",
+        "rules": [
+            {
+                "QV2RAY_RULE_ENABLED": true,
+                "QV2RAY_RULE_TAG": "New Rule",
+                "outboundTag": "shadowsocks/195.245.113.200:8388-eyxzl",
+                "type": "field"
+            },
+            {
+                "QV2RAY_RULE_ENABLED": true,
+                "QV2RAY_RULE_TAG": "New Rule_xoixm",
+                "network": "tcp,udp",
+                "outboundTag": "direct",
+                "type": "field"
+            },
+            {
+                "QV2RAY_RULE_ENABLED": true,
+                "QV2RAY_RULE_TAG": "New Rule_tgzue",
+                "ip": [
+                    "geoip:private"
+                ],
+                "outboundTag": "direct",
+                "type": "field"
+            }
+        ]
+    }
+}

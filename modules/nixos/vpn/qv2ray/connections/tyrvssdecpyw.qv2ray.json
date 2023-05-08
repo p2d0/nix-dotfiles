@@ -1,0 +1,186 @@
+{
+    "browserForwarder": null,
+    "dns": {
+        "servers": [
+        ]
+    },
+    "fakedns": {
+        "ipPool": "198.18.0.0/15",
+        "poolSize": 65535
+    },
+    "inbounds": [
+        {
+            "listen": "127.0.0.1",
+            "port": 8092,
+            "protocol": "http",
+            "settings": {
+                "allowTransparent": true,
+                "timeout": 300
+            },
+            "sniffing": {
+                "enabled": false
+            },
+            "streamSettings": null,
+            "tag": "GlobalConfig-HTTP"
+        },
+        {
+            "allocate": {
+                "concurrency": null,
+                "refresh": null,
+                "strategy": "always"
+            },
+            "listen": "127.0.0.1",
+            "port": 8091,
+            "protocol": "socks",
+            "settings": {
+                "auth": "noauth",
+                "ip": "127.0.0.1",
+                "udp": true
+            },
+            "sniffing": {
+                "destOverride": [
+                    "http",
+                    "tls"
+                ],
+                "enabled": true,
+                "metadataOnly": null
+            },
+            "streamSettings": {
+                "security": "xtls"
+            },
+            "tag": "GlobalConfig-Socks"
+        }
+    ],
+    "observatory": {
+        "subjectSelector": [
+        ]
+    },
+    "outbounds": [
+        {
+            "QV2RAY_OUTBOUND_METADATA": {
+                "displayName": "shadowsocks/195.245.113.200:8388-eyxzl"
+            },
+            "mux": {
+            },
+            "protocol": "shadowsocks",
+            "sendThrough": "0.0.0.0",
+            "settings": {
+                "servers": [
+                    {
+                        "address": "195.245.113.200",
+                        "method": "chacha20-ietf-poly1305",
+                        "password": "95K2ifXG1b96",
+                        "port": 8388
+                    }
+                ]
+            },
+            "streamSettings": {
+            },
+            "tag": "Ahmet"
+        },
+        {
+            "QV2RAY_OUTBOUND_METADATA": {
+                "displayName": "Freedom_52454303"
+            },
+            "mux": {
+            },
+            "protocol": "freedom",
+            "sendThrough": "0.0.0.0",
+            "settings": {
+                "domainStrategy": "AsIs",
+                "redirect": ""
+            },
+            "streamSettings": {
+            },
+            "tag": "Freedom_52454303"
+        },
+        {
+            "QV2RAY_OUTBOUND_METADATA": {
+                "displayName": "🇪🇪237@shadowsockskeys"
+            },
+            "mux": {
+            },
+            "protocol": "shadowsocks",
+            "sendThrough": "0.0.0.0",
+            "settings": {
+                "servers": [
+                    {
+                        "address": "87.236.146.237",
+                        "method": "chacha20-ietf-poly1305",
+                        "password": "iimzkm36cJA1dD9tARucxyU90SZAD7SLOgogSiRBbHQA",
+                        "port": 800
+                    }
+                ]
+            },
+            "streamSettings": {
+            },
+            "tag": "🇪🇪237@shadowsockskeys"
+        }
+    ],
+    "routing": {
+        "balancers": [
+        ],
+        "domainStrategy": "IPOnDemand",
+        "rules": [
+            {
+                "QV2RAY_RULE_ENABLED": true,
+                "QV2RAY_RULE_TAG": "New Rule",
+                "domain": [
+                    "all3dp.com",
+                    "bing.com",
+                    "cgscomputer.com",
+                    "crunchbase.com",
+                    "fbcdn.net",
+                    "gambody.com",
+                    "geosite:facebook",
+                    "healthline.com",
+                    "instagram.com",
+                    "linked.in",
+                    "linkedin.com",
+                    "medium.com",
+                    "meduza.io",
+                    "oculus.com",
+                    "openai.com",
+                    "organizing.tv",
+                    "pixiv.net",
+                    "premierleague.com",
+                    "quora.com",
+                    "rutracker.org",
+                    "t.co",
+                    "thepiratebay.org",
+                    "thepiratebay.party",
+                    "twimg.co",
+                    "twitter.com",
+                    "whatismyip.com",
+                    "whatismyipaddress.com",
+                    "yeggi.com"
+                ],
+                "inboundTag": [
+                    "GlobalConfig-Socks"
+                ],
+                "outboundTag": "🇪🇪237@shadowsockskeys",
+                "type": "field"
+            },
+            {
+                "QV2RAY_RULE_ENABLED": true,
+                "QV2RAY_RULE_TAG": "New Rule_wzqse",
+                "inboundTag": [
+                    "GlobalConfig-Socks"
+                ],
+                "network": "udp,tcp",
+                "outboundTag": "Freedom_52454303",
+                "type": "field"
+            },
+            {
+                "QV2RAY_RULE_ENABLED": true,
+                "QV2RAY_RULE_TAG": "http proxy",
+                "inboundTag": [
+                    "GlobalConfig-HTTP"
+                ],
+                "network": "udp,tcp",
+                "outboundTag": "🇪🇪237@shadowsockskeys",
+                "type": "field"
+            }
+        ]
+    }
+}
