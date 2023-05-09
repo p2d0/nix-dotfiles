@@ -34,7 +34,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ makeWrapper autoPatchelfHook wrapGAppsHook ];
   runtimeDependencies = [
-    gtk3
+  http  gtk3
     cairo
     gdk-pixbuf
     gobject-introspection
