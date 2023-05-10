@@ -1,4 +1,0 @@
-# -*- mode: snippet -*-
-# name: (current time small)
-# --
-`(format-time-string "%H:%M")`

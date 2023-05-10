@@ -1,4 +1,0 @@
-# -*- mode: snippet -*-
-# name: Dump into string
-# --
-print_r($1,true)

@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name: Hygen prompt confirm
-# --
-{
-type: 'confirm',
-name: "${1:test}",
-message: "${2:Message}"
-}

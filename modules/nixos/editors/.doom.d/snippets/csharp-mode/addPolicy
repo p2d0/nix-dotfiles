@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: addPolicy
-# key: addPolicy
-# --
-options.AddPolicy(Permissions.$1,
-Permissions.$1Policy());

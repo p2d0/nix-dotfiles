@@ -1,4 +1,0 @@
-# -*- mode: snippet -*-
-# name: YAS select choose value
-# --
-\${1:\$\$(yas-choose-value '("$1"))}

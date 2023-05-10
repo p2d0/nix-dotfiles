@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: smarty assign in controller
-# key: assign
-# --
-\$this->context->smarty->assign([
-$0
-]);

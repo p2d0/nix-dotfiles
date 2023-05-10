@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: Python bot handler
-# --
-def $1(update: Update, context: CallbackContext):
-    ${2:pass}

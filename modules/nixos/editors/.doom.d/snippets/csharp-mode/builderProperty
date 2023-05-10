@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: builderProperty
-# key: builderProperty
-# --
-builder.Property(p => p.$1).HasColumnName("${1:$(s-snake-case yas-text)}").IsRequired();

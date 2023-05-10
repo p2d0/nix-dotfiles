@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: Function with past
-# key: fun
-# --
-function $1($2){
-`(car kill-ring)`$0
-}
