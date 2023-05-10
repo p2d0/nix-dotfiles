@@ -179,16 +179,16 @@
         "latency": 41,
         "stats": [
             {
-                "downLinkData": 8594615956,
-                "upLinkData": 48040775
+                "downLinkData": 9722495649,
+                "upLinkData": 61858691
             },
             {
-                "downLinkData": 147708436,
-                "upLinkData": 9405378
+                "downLinkData": 165889325,
+                "upLinkData": 15195868
             },
             {
-                "downLinkData": 8449082467,
-                "upLinkData": 39110274
+                "downLinkData": 9559307398,
+                "upLinkData": 47355631
             }
         ]
     },
