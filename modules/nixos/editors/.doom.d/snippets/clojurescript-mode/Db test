@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name: Db test
-# --
-(deftest test-spec
-(u/is-valid-spec? ::$1
-{$0
-})
-)

@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: pkgs.fetchpatch
-# --
-(pkgs.fetchpatch {
-url = "${1:$$(current-kill 0 t)}";
-sha256 = "";
-})

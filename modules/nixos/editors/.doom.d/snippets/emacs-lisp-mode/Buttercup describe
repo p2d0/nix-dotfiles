@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: Buttercup describe test
-# key: describe
-# --
-(describe "$1"
-(it "$2"
-(expect true :to-be-truthy$0)))

@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: Hygen header
-# --
----
-to: $1
----

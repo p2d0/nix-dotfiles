@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name: Prompt input
-# --
-{
-type: 'input',
-name: '${1:name}',
-message: "${2:Filename: }"
-},

@@ -1,5 +1,0 @@
-# -*- mode: snippet  -*-
-# expand-env: ((require-final-newline nil) )
-# name: ${n:default} field
-# --
-\${${1:n}:${2:`(yas-selected-text)`}}

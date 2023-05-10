@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: haskellPackages
-# --
-(pkgs.haskellPackages.ghcWithPackages (self: [
-self.${1:haskell-language-server}
-$0
-]))
