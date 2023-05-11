@@ -176,6 +176,7 @@
                     "organizing.tv",
                     "pixiv.net",
                     "premierleague.com",
+                    "qualcomm.com",
                     "quora.com",
                     "rutracker.org",
                     "t.co",
@@ -195,12 +196,15 @@
             },
             {
                 "QV2RAY_RULE_ENABLED": true,
-                "QV2RAY_RULE_TAG": "New Rule_wzqse",
+                "QV2RAY_RULE_TAG": "az",
+                "domain": [
+                    "bard.google.com",
+                    "iplocation.net"
+                ],
                 "inboundTag": [
                     "GlobalConfig-Socks"
                 ],
-                "network": "udp,tcp",
-                "outboundTag": "Freedom_52454303",
+                "outboundTag": "Ahmet",
                 "type": "field"
             },
             {
@@ -211,6 +215,16 @@
                 ],
                 "network": "udp,tcp",
                 "outboundTag": "🇪🇪237@shadowsockskeys",
+                "type": "field"
+            },
+            {
+                "QV2RAY_RULE_ENABLED": true,
+                "QV2RAY_RULE_TAG": "New Rule_wzqse",
+                "inboundTag": [
+                    "GlobalConfig-Socks"
+                ],
+                "network": "udp,tcp",
+                "outboundTag": "Freedom_52454303",
                 "type": "field"
             }
         ]

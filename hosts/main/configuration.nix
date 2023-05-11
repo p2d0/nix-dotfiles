@@ -233,6 +233,7 @@
 
   modules.fonts.enable = true;
   modules.timed-shutdown.enable = true;
+  modules.timed-shutdown.time = "23:00:00";
   modules.darkman.enable = true;
   modules.vpn.enable = true;
   zramSwap.enable = true;
@@ -447,6 +448,7 @@
       python39Packages.pip
       anydesk
       feh
+      gnome.eog
       alacritty
       dmenu
       gnome.gnome-disk-utility

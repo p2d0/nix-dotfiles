@@ -33,6 +33,25 @@
     enable = true;
     defaultApplications = {
       "text/plain" = "gedit.desktop";
+      # "image/jpeg" = "feh.desktop";
+      "image/bmp"= "org.gnome.eog.desktop";
+      "image/gif"= "org.gnome.eog.desktop";
+      "image/jpeg"= "org.gnome.eog.desktop";
+      "image/jpg"= "org.gnome.eog.desktop";
+      "image/pjpeg"= "org.gnome.eog.desktop";
+      "image/png"= "org.gnome.eog.desktop";
+      "image/tiff"= "org.gnome.eog.desktop";
+      "image/webp"= "org.gnome.eog.desktop";
+      "image/x-bmp"= "org.gnome.eog.desktop";
+      "image/x-pcx"= "org.gnome.eog.desktop";
+      "image/x-png"= "org.gnome.eog.desktop";
+      "image/x-portable-anymap"= "org.gnome.eog.desktop";
+      "image/x-portable-bitmap"= "org.gnome.eog.desktop";
+      "image/x-portable-graymap"= "org.gnome.eog.desktop";
+      "image/x-portable-pixmap"= "org.gnome.eog.desktop";
+      "image/x-tga"= "org.gnome.eog.desktop";
+      "image/x-xbitmap"= "org.gnome.eog.desktop";
+      "image/heic"= "org.gnome.eog.desktop";
       "x-scheme-handler/http" = "firefox.desktop";
       "x-scheme-handler/https" = "firefox.desktop";
       "x-scheme-handler/chrome" = "firefox.desktop";
@@ -44,7 +63,7 @@
       "application/x-extension-xhtml" = "firefox.desktop";
       "application/x-extension-xht" = "firefox.desktop";
       "x-scheme-handler/sidequest" ="SideQuest.desktop";
-       "x-scheme-handler/discord-529050037532098580"="discord-529050037532098580.desktop";
+      "x-scheme-handler/discord-529050037532098580"="discord-529050037532098580.desktop";
     };
     # associations.added = {
     #   "x-scheme-handler/http" = "firefox.desktop";
