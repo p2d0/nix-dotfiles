@@ -174,21 +174,21 @@
     "tyrvssdecpyw": {
         "creationDate": 1683545186,
         "displayName": "MAIN CONFIG",
-        "lastConnected": 1683791361,
+        "lastConnected": 1683880313,
         "lastUpdatedDate": 1683545186,
         "latency": 41,
         "stats": [
             {
-                "downLinkData": 12387757945,
-                "upLinkData": 96729428
+                "downLinkData": 13318902809,
+                "upLinkData": 108097378
             },
             {
-                "downLinkData": 383360860,
-                "upLinkData": 25893267
+                "downLinkData": 399262185,
+                "upLinkData": 26966147
             },
             {
-                "downLinkData": 12010127589,
-                "upLinkData": 72071516
+                "downLinkData": 12925878887,
+                "upLinkData": 82428898
             }
         ]
     },
@@ -275,5 +275,26 @@
         "lastConnected": 0,
         "lastUpdatedDate": 1682266086,
         "latency": 99999
+    },
+    "zxowirdthkeq": {
+        "creationDate": 1683880238,
+        "displayName": "🇺🇸 США  04.05.2023/@free1ss",
+        "lastConnected": 1683880246,
+        "lastUpdatedDate": 1683880238,
+        "latency": 117,
+        "stats": [
+            {
+                "downLinkData": 3890046,
+                "upLinkData": 125865
+            },
+            {
+                "downLinkData": 3949805,
+                "upLinkData": 142773
+            },
+            {
+            },
+            {
+            }
+        ]
     }
 }

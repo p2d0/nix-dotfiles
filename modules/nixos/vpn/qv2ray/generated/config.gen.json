@@ -132,6 +132,26 @@
             "streamSettings": {
             },
             "tag": "🇪🇪237@shadowsockskeys"
+        },
+        {
+            "QV2RAY_OUTBOUND_METADATA": {
+                "displayName": "🇺🇸 США  04.05.2023/@free1ss"
+            },
+            "protocol": "shadowsocks",
+            "sendThrough": "0.0.0.0",
+            "settings": {
+                "servers": [
+                    {
+                        "address": "138.124.180.132",
+                        "method": "chacha20-ietf-poly1305",
+                        "password": "MhScwfLBkrPEoCbpn5m1fu",
+                        "port": 45405
+                    }
+                ]
+            },
+            "streamSettings": {
+            },
+            "tag": "🇺🇸 США  04.05.2023/@free1ss"
         }
     ],
     "policy": {
@@ -196,7 +216,7 @@
             },
             {
                 "QV2RAY_RULE_ENABLED": true,
-                "QV2RAY_RULE_TAG": "az",
+                "QV2RAY_RULE_TAG": "bard",
                 "domain": [
                     "bard.google.com",
                     "iplocation.net"
@@ -204,7 +224,7 @@
                 "inboundTag": [
                     "GlobalConfig-Socks"
                 ],
-                "outboundTag": "Ahmet",
+                "outboundTag": "🇺🇸 США  04.05.2023/@free1ss",
                 "type": "field"
             },
             {
