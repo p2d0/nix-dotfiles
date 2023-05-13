@@ -36,8 +36,6 @@
   #   "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"
   # ];
 
-  virtualisation.spiceUSBRedirection.enable = true;
-
   # boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.loader.grub.enable = true;
   boot.loader.grub.default = 2;
@@ -236,6 +234,7 @@
   modules.timed-shutdown.time = "23:00:00";
   modules.darkman.enable = true;
   modules.vpn.enable = true;
+  modules.vm.enable = false;
   zramSwap.enable = true;
   # services.journald.extraConfig = ''
   #   SystemMaxUse=1G
