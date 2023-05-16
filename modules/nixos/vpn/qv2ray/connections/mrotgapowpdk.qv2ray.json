@@ -1,0 +1,29 @@
+{
+    "outbounds": [
+        {
+            "protocol": "vless",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "91.107.242.115",
+                        "port": 11536,
+                        "users": [
+                            {
+                                "encryption": "none",
+                                "id": "73cb95af-b63e-4683-fc31-74cfc0f34308"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "tlsSettings": {
+                    "disableSystemRoot": false
+                },
+                "xtlsSettings": {
+                    "disableSystemRoot": false
+                }
+            }
+        }
+    ]
+}

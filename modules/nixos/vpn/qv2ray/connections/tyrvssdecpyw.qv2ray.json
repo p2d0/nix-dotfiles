@@ -60,6 +60,7 @@
             "QV2RAY_OUTBOUND_METADATA": {
                 "displayName": "shadowsocks/195.245.113.200:8388-eyxzl"
             },
+            "_QV2RAY_USE_GLOBAL_FORWARD_PROXY_": null,
             "mux": {
             },
             "protocol": "shadowsocks",
@@ -93,28 +94,6 @@
             "streamSettings": {
             },
             "tag": "Freedom_52454303"
-        },
-        {
-            "QV2RAY_OUTBOUND_METADATA": {
-                "displayName": "🇪🇪237@shadowsockskeys"
-            },
-            "mux": {
-            },
-            "protocol": "shadowsocks",
-            "sendThrough": "0.0.0.0",
-            "settings": {
-                "servers": [
-                    {
-                        "address": "87.236.146.237",
-                        "method": "chacha20-ietf-poly1305",
-                        "password": "iimzkm36cJA1dD9tARucxyU90SZAD7SLOgogSiRBbHQA",
-                        "port": 800
-                    }
-                ]
-            },
-            "streamSettings": {
-            },
-            "tag": "🇪🇪237@shadowsockskeys"
         },
         {
             "QV2RAY_OUTBOUND_METADATA": {
@@ -182,7 +161,7 @@
                 "inboundTag": [
                     "GlobalConfig-Socks"
                 ],
-                "outboundTag": "🇪🇪237@shadowsockskeys",
+                "outboundTag": "🇺🇸 США  04.05.2023/@free1ss",
                 "type": "field"
             },
             {
@@ -205,7 +184,7 @@
                     "GlobalConfig-HTTP"
                 ],
                 "network": "udp,tcp",
-                "outboundTag": "🇪🇪237@shadowsockskeys",
+                "outboundTag": "🇺🇸 США  04.05.2023/@free1ss",
                 "type": "field"
             },
             {

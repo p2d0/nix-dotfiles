@@ -1,0 +1,39 @@
+{
+    "outbounds": [
+        {
+            "mux": {
+            },
+            "protocol": "vmess",
+            "sendThrough": "0.0.0.0",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "88.99.123.246",
+                        "port": 8080,
+                        "users": [
+                            {
+                                "id": "478e32ed-4d35-429a-d5cc-4276debce584"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "ws",
+                "tlsSettings": {
+                    "disableSystemRoot": false
+                },
+                "wsSettings": {
+                    "headers": {
+                        "Host": "Google.com"
+                    },
+                    "path": "/@hashmakvpn 🇩🇪"
+                },
+                "xtlsSettings": {
+                    "disableSystemRoot": false
+                }
+            },
+            "tag": "PROXY"
+        }
+    ]
+}

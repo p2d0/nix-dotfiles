@@ -1,0 +1,41 @@
+{
+    "outbounds": [
+        {
+            "mux": {
+            },
+            "protocol": "vmess",
+            "sendThrough": "0.0.0.0",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "45.85.119.48",
+                        "port": 443,
+                        "users": [
+                            {
+                                "id": "23C8E984-8234-4000-A162-6F3D490F50C7"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "ws",
+                "security": "tls",
+                "tlsSettings": {
+                    "disableSystemRoot": false,
+                    "serverName": "Lille.kotick.site"
+                },
+                "wsSettings": {
+                    "headers": {
+                        "Host": "Lille.kotick.site"
+                    },
+                    "path": "/speedtest"
+                },
+                "xtlsSettings": {
+                    "disableSystemRoot": false
+                }
+            },
+            "tag": "PROXY"
+        }
+    ]
+}
