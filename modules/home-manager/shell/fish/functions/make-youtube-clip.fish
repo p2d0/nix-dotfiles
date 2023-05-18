@@ -42,15 +42,18 @@ function make-youtube-clip -d "Download trim and copy to clipboard youtube video
             ffmpeg -ss $_flag_start -i tmp_vid.mp4 -t $_flag_length -vf subtitles=tmp_vid.vtt:force_style="FontSize=$fontsize" -c:v libx264 -x264-params crf=22 -preset fast -profile:v high tmp_vid_out.mp4
         else if set -q _flag_end
             echo "Timestamp based ffmpeg"
-            ffmpeg -i tmp_vid.mp4 -ss $_flag_start -to $_flag_end -vf subtitles=tmp_vid.vtt:force_style="FontSize=$fontsize" -c:v libx264 -x264-params crf=22 -preset fast -profile:v high tmp_vid_out.mp4
+            ffmpeg -i tmp_vid.mp4 -ss $_flag_start -to $_flag_end -c:v libx264 -x264-params crf=22 -preset fast -profile:v high tmp_vid_out.mp4
+
+            # ffmpeg -i tmp_vid.mp4 -ss $_flag_start -to $_flag_end -vf subtitles=tmp_vid.vtt:force_style="FontSize=$fontsize" -c:v libx264 -x264-params crf=22 -preset fast -profile:v high tmp_vid_out.mp4
         end
         mv tmp_vid_out.mp4 tmp_vid.mp4
     end
-    if not set -q _flag_nosubs
-        echo "Full video subs"
-        ffmpeg -i tmp_vid.mp4 -vf subtitles=tmp_vid.vtt:force_style="FontSize=$fontsize" -c:v libx264 -x264-params crf=22 -preset fast -profile:v high tmp_vid_out.mp4
-        mv tmp_vid_out.mp4 tmp_vid.mp4
-    end
+
+    # if not set -q _flag_nosubs
+    #     echo "Full video subs"
+    #     ffmpeg -i tmp_vid.mp4 -vf subtitles=tmp_vid.vtt:force_style="FontSize=$fontsize" -c:v libx264 -x264-params crf=22 -preset fast -profile:v high tmp_vid_out.mp4
+    #     mv tmp_vid_out.mp4 tmp_vid.mp4
+    # end
 
     clip-files-in-current-dir tmp_vid.mp4
     notify-send "Youtube clip created"
