@@ -82,7 +82,8 @@ font-8 = FontAwesome:size=12;5
 
 modules-left = i3
 modules-center = popup-calendar
-modules-right = timer weather bluetooth pulseaudio
+modules-right = timer weather
+; bluetooth pulseaudio
 ; scratchpad-indicator
 ; text
 tray-position = none
