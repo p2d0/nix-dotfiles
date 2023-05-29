@@ -102,15 +102,15 @@
   manual.json.enable = true;
   services.kdeconnect.enable = true;
 
-  systemd.user.services.kdeconnect = {
-    Unit = {
-      After = lib.mkForce [ "default.target" ];
-      PartOf = lib.mkForce [ "default.target" ];
-    };
-    Service = {
-      Environment = lib.mkForce ["QT_QPA_PLATFORM=wayland" "PATH=${config.home.profileDirectory}/bin"];
-    };
-  };
+  # systemd.user.services.kdeconnect = {
+  #   Unit = {
+  #     After = lib.mkForce [ "default.target" ];
+  #     PartOf = lib.mkForce [ "default.target" ];
+  #   };
+  #   Service = {
+  #     Environment = lib.mkForce ["QT_QPA_PLATFORM=wayland" "PATH=${config.home.profileDirectory}/bin"];
+  #   };
+  # };
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowBroken = true;
   programs.alacritty = {
