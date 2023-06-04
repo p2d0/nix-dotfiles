@@ -230,7 +230,7 @@
   };
 
   modules.fonts.enable = true;
-  modules.timed-shutdown.enable = true;
+  modules.timed-shutdown.enable = false;
   modules.timed-shutdown.time = "23:00:00";
   modules.darkman.enable = true;
   modules.vpn.enable = true;
