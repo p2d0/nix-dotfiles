@@ -97,7 +97,7 @@
         },
         {
             "QV2RAY_OUTBOUND_METADATA": {
-                "displayName": "🇺🇸 США  04.05.2023/@free1ss"
+                "displayName": "www.outline.network (FR)"
             },
             "mux": {
             },
@@ -106,16 +106,16 @@
             "settings": {
                 "servers": [
                     {
-                        "address": "138.124.180.132",
+                        "address": "ak1772.www.outline.network.fr8678825324247b8176d59f83c30bd94d23d2e3ac5cd4a743bkwqeikvdyufr.cyou",
                         "method": "chacha20-ietf-poly1305",
-                        "password": "MhScwfLBkrPEoCbpn5m1fu",
-                        "port": 45405
+                        "password": "G!yBwPWH3Vao",
+                        "port": 810
                     }
                 ]
             },
             "streamSettings": {
             },
-            "tag": "🇺🇸 США  04.05.2023/@free1ss"
+            "tag": "www.outline.network (FR)"
         }
     ],
     "routing": {
@@ -131,6 +131,7 @@
                     "archiveofourown.org",
                     "bing.com",
                     "cgscomputer.com",
+                    "clevelandclinic.org",
                     "crunchbase.com",
                     "dell.com",
                     "fbcdn.net",
@@ -162,7 +163,7 @@
                 "inboundTag": [
                     "GlobalConfig-Socks"
                 ],
-                "outboundTag": "🇺🇸 США  04.05.2023/@free1ss",
+                "outboundTag": "www.outline.network (FR)",
                 "type": "field"
             },
             {
@@ -175,7 +176,7 @@
                 "inboundTag": [
                     "GlobalConfig-Socks"
                 ],
-                "outboundTag": "🇺🇸 США  04.05.2023/@free1ss",
+                "outboundTag": "www.outline.network (FR)",
                 "type": "field"
             },
             {
@@ -185,7 +186,7 @@
                     "GlobalConfig-HTTP"
                 ],
                 "network": "udp,tcp",
-                "outboundTag": "🇺🇸 США  04.05.2023/@free1ss",
+                "outboundTag": "www.outline.network (FR)",
                 "type": "field"
             },
             {

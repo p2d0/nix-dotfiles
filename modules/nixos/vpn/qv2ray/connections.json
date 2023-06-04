@@ -128,13 +128,13 @@
     "iperfhptdikj": {
         "creationDate": 1684224980,
         "displayName": "%40Foruvpn",
-        "lastConnected": 1684224983,
+        "lastConnected": 1685868975,
         "lastUpdatedDate": 1684224980,
-        "latency": 1,
+        "latency": 2,
         "stats": [
             {
-                "downLinkData": 84,
-                "upLinkData": 3824
+                "downLinkData": 216,
+                "upLinkData": 10302
             },
             {
             },
@@ -308,6 +308,13 @@
         "lastUpdatedDate": 1684224857,
         "latency": 99999
     },
+    "rfdsgetucred": {
+        "creationDate": 1685868998,
+        "displayName": "www.outline.network (FR)",
+        "lastConnected": 0,
+        "lastUpdatedDate": 1685868998,
+        "latency": 48
+    },
     "rlhvdyzjhvlt": {
         "creationDate": 1682266015,
         "displayName": "🇵🇱01@shadowsockskeys",
@@ -357,21 +364,21 @@
     "tyrvssdecpyw": {
         "creationDate": 1683545186,
         "displayName": "MAIN CONFIG",
-        "lastConnected": 1685795109,
+        "lastConnected": 1685881330,
         "lastUpdatedDate": 1683545186,
         "latency": 42,
         "stats": [
             {
-                "downLinkData": 130113855160,
-                "upLinkData": 827474557
+                "downLinkData": 149244569710,
+                "upLinkData": 879117181
             },
             {
-                "downLinkData": 5545169854,
-                "upLinkData": 196497287
+                "downLinkData": 5589901967,
+                "upLinkData": 196920090
             },
             {
-                "downLinkData": 124634540029,
-                "upLinkData": 639056552
+                "downLinkData": 143723240319,
+                "upLinkData": 690240226
             }
         ]
     },
