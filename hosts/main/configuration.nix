@@ -62,6 +62,7 @@
   services.gvfs.enable = true;
   services.udev.extraRules = ''
     SUBSYSTEM=="usb", ACTION=="add", ATTR{idVendor}=="0e8d", ATTR{idProduct}=="201d" MODE="0777" GROUP="users"
+    KERNEL=="ttyUSB*", MODE="0666"
   '';
 
   #  programs.hyprland = {
