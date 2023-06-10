@@ -313,7 +313,7 @@
         "displayName": "www.outline.network (FR)",
         "lastConnected": 0,
         "lastUpdatedDate": 1685868998,
-        "latency": 48
+        "latency": 61
     },
     "rlhvdyzjhvlt": {
         "creationDate": 1682266015,
@@ -364,21 +364,21 @@
     "tyrvssdecpyw": {
         "creationDate": 1683545186,
         "displayName": "MAIN CONFIG",
-        "lastConnected": 1686294689,
+        "lastConnected": 1686379592,
         "lastUpdatedDate": 1683545186,
         "latency": 42,
         "stats": [
             {
-                "downLinkData": 195058331341,
-                "upLinkData": 1103310610
+                "downLinkData": 201489974197,
+                "upLinkData": 1199216684
             },
             {
-                "downLinkData": 5671947095,
-                "upLinkData": 198591388
+                "downLinkData": 5723119239,
+                "upLinkData": 199358902
             },
             {
-                "downLinkData": 189457399029,
-                "upLinkData": 912379296
+                "downLinkData": 195838536611,
+                "upLinkData": 1007449077
             }
         ]
     },
