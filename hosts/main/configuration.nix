@@ -8,12 +8,7 @@
   imports = [
     ./hardware-configuration.nix
   ];
-  nix = {
-    package = pkgs.nixFlakes; # or versioned attributes like nixVersions.nix_2_8
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-  };
+  modules.flakes.enable = true;
 
   user = self.user;
 
@@ -187,12 +182,6 @@
   services.blueman.enable = true;
   programs.dconf.enable = true;
 
-  services.cron = {
-    enable = true;
-    systemCronJobs = [
-      "00 20 * * * andrew fish -c 'sync_repos'"
-    ];
-  };
 
   services = {
     #gnome.gnome-keyring.enable = true;
@@ -202,6 +191,12 @@
     };
     # xrdp.enable = true;
     # xrdp.defaultWindowManager = "dbus-launch --exit-with-session;i3;";
+    cron = {
+      enable = true;
+      systemCronJobs = [
+        "00 20 * * * andrew fish -c 'sync_repos'"
+      ];
+    };
   };
 
   nix.settings.auto-optimise-store = true;
@@ -217,14 +212,7 @@
     Storage=none
   '';
 
-  environment.sessionVariables = {
-    GTK_DATA_PREFIX = [ "${config.system.path}" ];
-    XDG_CACHE_HOME  = "$HOME/.cache";
-    XDG_CONFIG_HOME = "$HOME/.config";
-    XDG_DATA_HOME   = "$HOME/.local/share";
-    XDG_STATE_HOME  = "$HOME/.local/state";
-  };
-
+  modules.xdg.sessionVariables = true;
   programs.java = {
     enable = true;
     package = pkgs.oraclejre8;
@@ -275,7 +263,6 @@
       neovide
       lazygit
       gmsh
-      qv2ray
       unstable.microsoft-edge
       calculix
       # (microsoft-edge-dev.overrideAttrs(oldAttrs: rec {

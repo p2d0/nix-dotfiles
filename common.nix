@@ -157,7 +157,7 @@
     network_interface=enp3s0
     friendly_name=Pepega Server
     inotify=yes
-    media_dir=/mnt/md127/Downloads/Brooklyn.Nine-Nine.S03.Season.3.Complete.1080p.WEB-DL.X264.10Bit-[maximersk]
+    media_dir=/mnt/md127/Downloads/stuff
     '';
 
     ".config/albert" = {
