@@ -1,0 +1,24 @@
+diff --git a/kms/client/kms_client.c b/kms/client/kms_client.c
+index 587dda3..a017ea7 100644
+--- a/kms/client/kms_client.c
++++ b/kms/client/kms_client.c
+@@ -122,14 +122,14 @@ int gsr_kms_client_init(gsr_kms_client *self, const char *card_path) {
+     // on a path that only root can modify. If we use "gsr-kms-server" instead then $PATH can be modified in ~/.bashrc for example
+     // which will overwrite the path to gsr-kms-server and the user can end up running a malicious program that pretends to be gsr-kms-server.
+     // If there is a safe way to do this on nixos, then please tell me; or use gpu-screen-recorder flatpak instead.
+-    const char *server_filepath = "/usr/bin/gsr-kms-server";
++    const char *server_filepath = getenv("KMS_SERVER");
+     bool has_perm = 0;
+     const bool inside_flatpak = getenv("FLATPAK_ID") != NULL;
+     if(!inside_flatpak) {
+-        if(access("/usr/bin/gsr-kms-server", F_OK) != 0) {
+-            fprintf(stderr, "gsr error: gsr_kms_client_init: /usr/bin/gsr-kms-server not found, please install gpu-screen-recorder first\n");
+-            return -1;
+-        }
++        /* if(access("/usr/bin/gsr-kms-server", F_OK) != 0) { */
++        /*     fprintf(stderr, "gsr error: gsr_kms_client_init: /usr/bin/gsr-kms-server not found, please install gpu-screen-recorder first\n"); */
++        /*     return -1; */
++        /* } */
+ 
+         if(geteuid() == 0) {
+             has_perm = true;

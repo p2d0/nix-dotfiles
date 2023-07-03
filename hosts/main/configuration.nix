@@ -151,7 +151,8 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
   };
-
+  # TODO Extract to fish module
+  programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;
 
   modules.emacs-with-doom.enable = true;
@@ -216,6 +217,8 @@
   programs.java = {
     enable = true;
     package = pkgs.oraclejre8;
+    # https://javadl.oracle.com/webapps/download/GetFile/1.8.0_281-b09/89d678f2be164786b292527658ca1605/linux-i586/jdk-8u281-linux-x64.tar.gz
+    # TODO direct link
   };
 
   modules.fonts.enable = true;
@@ -293,15 +296,16 @@
       #   "https://github.com/aaronjanse/nix-eval-lsp/archive/master.tar.gz"))
       # (import (fetchTarball
       #   "https://github.com/nix-community/rnix-lsp/archive/master.tar.gz"))
-      my.shell_gpt
+      # my.shell_gpt
       my.pythonbin
-      my.tlala
+      # my.tlala
       my.chatgpt
       neovim
       # (callPackage /etc/nixos/pkgs/psiphon.nix { })
       # unstable.elementary-planner
       # (haskellPackages.callPackage /etc/nixos/modules/nixos/taffybar/build/taffybar.nix
       #   { })
+      unstable-small.video-trimmer
       kdiskmark
       tmux
       # Config https://github.com/elken/tabbed/blob/master/config.h

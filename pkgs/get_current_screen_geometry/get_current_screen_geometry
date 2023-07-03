@@ -12,6 +12,7 @@ scr = disp.get_default_screen()
 win_pos = scr.get_active_window().get_origin()
 # print("win: %d x %d" % (win_pos.x, win_pos.y))
 monitor = disp.get_monitor_at_point(win_pos.x, win_pos.y)
+model = monitor.get_model()
 rect = monitor.get_geometry()
 is_primary = monitor.is_primary();
 screen = 0 if is_primary else 1
@@ -22,4 +23,4 @@ height = rect.height
 if len(sys.argv) > 1:
     print(sys.argv[1].format(**locals()))
 else:
-    print("monitor: {width} x {height} {x} {y}".format(**locals()))
+    print("monitor {model}: {width} x {height} {x} {y}".format(**locals()))

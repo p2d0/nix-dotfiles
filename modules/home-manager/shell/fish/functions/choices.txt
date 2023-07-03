@@ -3,3 +3,6 @@ Current screen
 All screens
 Mouse region
 Mouse region (big)
+Current screen (Sound)
+Start replay
+Clip replay

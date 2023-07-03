@@ -5,7 +5,7 @@ in
 with pkgs;
 stdenv.mkDerivation rec {
   pname = "get_current_screen_geometry";
-  version = "1.0.0";
+  version = "1.0.1";
   src = /etc/nixos/pkgs/get_current_screen_geometry/get_current_screen_geometry;
   #   unpackCmd = ''
   # '';
