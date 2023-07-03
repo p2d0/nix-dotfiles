@@ -24,10 +24,10 @@ in {
                   pkgs.jetbrains-mono
                   pkgs.font-awesome
                   pkgs.freefont_ttf
-                  pkgs.nerdfonts
-                  # (pkgs.nerdfonts.override {
-                  #   fonts = [ "FiraCode" "DroidSansMono" ];
-                  # })
+                  # pkgs.nerdfonts
+                  (pkgs.nerdfonts.override {
+                    fonts = [ "FiraCode" "DroidSansMono" "ShareTechMono" "Noto" "JetBrainsMono" ];
+                  })
                   pkgs.weather-icons
                   (callPackage ./fonts/bellandlamb.nix { })
                   (callPackage ./fonts/apex.nix { })

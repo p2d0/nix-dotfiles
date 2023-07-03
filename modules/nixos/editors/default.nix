@@ -6,7 +6,7 @@ let cfg = config.modules.emacs-with-doom;
 in{
   options.modules.emacs-with-doom = {
     enable = mkBoolOpt false;
-    package = mkOpt types.package (pkgs.emacsUnstable.overrideAttrs(oldAttrs: rec {
+    package = mkOpt types.package (pkgs.emacs-unstable.overrideAttrs(oldAttrs: rec {
       src = pkgs.fetchFromGitHub {
         owner = "emacs-lsp";
         repo = "emacs";
@@ -37,7 +37,7 @@ in{
       services.emacs.install = true;
       services.emacs.enable = false;
       services.emacs.defaultEditor = true;
-      # services.emacs.package = pkgs.emacsUnstable.override {
+      # services.emacs.package = pkgs.emacs-unstable.override {
       #   withGTK3 = true;
       # };
       services.emacs.package = cfg.package;

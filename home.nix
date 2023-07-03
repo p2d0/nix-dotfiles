@@ -18,6 +18,8 @@ in {
             obs-vkcapture
           ];
         })
+        (unstable.callPackage /etc/nixos/pkgs/gpu-screen-recorder.nix { })
+
         # pkgs.obs-studio
         (pkgs.lutris.override {
           extraPkgs = pkgs: with pkgs;[
