@@ -1,0 +1,41 @@
+{
+    "outbounds": [
+        {
+            "mux": {
+            },
+            "protocol": "vmess",
+            "sendThrough": "0.0.0.0",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "172.67.184.184",
+                        "port": 443,
+                        "users": [
+                            {
+                                "id": "7ff31eb9-cca4-4410-d379-2d78bed14f15"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "ws",
+                "security": "tls",
+                "tlsSettings": {
+                    "disableSystemRoot": false,
+                    "serverName": "best1.wanwusheng.tk"
+                },
+                "wsSettings": {
+                    "headers": {
+                        "Host": "best1.wanwusheng.tk"
+                    },
+                    "path": "/123"
+                },
+                "xtlsSettings": {
+                    "disableSystemRoot": false
+                }
+            },
+            "tag": "PROXY"
+        }
+    ]
+}

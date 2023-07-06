@@ -97,6 +97,40 @@
         },
         {
             "QV2RAY_OUTBOUND_METADATA": {
+                "displayName": "direct-runtu.nl.org"
+            },
+            "protocol": "vless",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "youshengdd.tk",
+                        "port": 443,
+                        "users": [
+                            {
+                                "encryption": "none",
+                                "id": "538193f3-8f09-483f-9a0c-4ee2b2af9d0e"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "ws",
+                "security": "tls",
+                "tlsSettings": {
+                    "disableSystemRoot": false
+                },
+                "wsSettings": {
+                    "path": "/l33tLhx0SFASG4l9FERJ1g"
+                },
+                "xtlsSettings": {
+                    "disableSystemRoot": false
+                }
+            },
+            "tag": "direct-runtu.nl.org"
+        },
+        {
+            "QV2RAY_OUTBOUND_METADATA": {
                 "displayName": "www.outline.network (FR)"
             },
             "mux": {
@@ -130,6 +164,7 @@
                     "all3dp.com",
                     "archiveofourown.org",
                     "bing.com",
+                    "cdninstagram",
                     "cgscomputer.com",
                     "clevelandclinic.org",
                     "crunchbase.com",
@@ -137,6 +172,7 @@
                     "facebook.com",
                     "fbcdn.net",
                     "gambody.com",
+                    "geosite:facebook",
                     "healthline.com",
                     "instagram.com",
                     "linked.in",
@@ -157,6 +193,7 @@
                     "rutracker.org",
                     "thepiratebay.org",
                     "thepiratebay.party",
+                    "threads.net",
                     "twimg.co",
                     "twitter.com",
                     "unl.edu",
@@ -168,7 +205,7 @@
                 "inboundTag": [
                     "GlobalConfig-Socks"
                 ],
-                "outboundTag": "www.outline.network (FR)",
+                "outboundTag": "direct-runtu.nl.org",
                 "type": "field"
             },
             {
@@ -191,7 +228,7 @@
                     "GlobalConfig-HTTP"
                 ],
                 "network": "udp,tcp",
-                "outboundTag": "www.outline.network (FR)",
+                "outboundTag": "direct-runtu.nl.org",
                 "type": "field"
             },
             {
