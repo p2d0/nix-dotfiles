@@ -1,4 +1,4 @@
-function record_screen_replay_sound
+function record_replay_recsink
     if test $XDG_SESSION_TYPE = "wayland"
     else
         notify-send "Started replay recording"
