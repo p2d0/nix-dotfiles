@@ -24,6 +24,8 @@ in {
         (pkgs.lutris.override {
           extraPkgs = pkgs: with pkgs;[
             pkgs.pkgsi686Linux.alsa-lib
+            pkgs.SDL2
+            pkgs.libpulseaudio
             pkgs.pkgsi686Linux.libpulseaudio
             pkgs.winetricks
             pkgs.gtk3-x11
