@@ -219,6 +219,7 @@
                     "openai.com",
                     "organizing.tv",
                     "pixiv.net",
+                    "poe.com",
                     "polygraph.info",
                     "premierleague.com",
                     "qelectrotech.org",
@@ -253,7 +254,7 @@
                 "inboundTag": [
                     "GlobalConfig-Socks"
                 ],
-                "outboundTag": "www.outline.network (FR)",
+                "outboundTag": "Ahmet",
                 "type": "field"
             },
             {

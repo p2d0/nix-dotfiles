@@ -194,13 +194,13 @@
     "lmoamdnjhazr": {
         "creationDate": 1688655299,
         "displayName": "3607(@Outline_Vpn)",
-        "lastConnected": 1688655302,
+        "lastConnected": 1689099459,
         "lastUpdatedDate": 1688655299,
         "latency": 39,
         "stats": [
             {
-                "downLinkData": 108,
-                "upLinkData": 5175
+                "downLinkData": 180,
+                "upLinkData": 8474
             },
             {
             },
@@ -209,6 +209,13 @@
             {
             }
         ]
+    },
+    "loczprcmosky": {
+        "creationDate": 1689099483,
+        "displayName": "کانال : @V2rayNGvpni",
+        "lastConnected": 0,
+        "lastUpdatedDate": 1689099483,
+        "latency": 99999
     },
     "mrotgapowpdk": {
         "creationDate": 1684224888,
@@ -415,6 +422,27 @@
             }
         ]
     },
+    "sijvymdmwnmp": {
+        "creationDate": 1689099469,
+        "displayName": "کانال : @V2rayNGvpni",
+        "lastConnected": 1689099473,
+        "lastUpdatedDate": 1689099469,
+        "latency": 37,
+        "stats": [
+            {
+                "downLinkData": 52653945,
+                "upLinkData": 3241878
+            },
+            {
+                "downLinkData": 54875167,
+                "upLinkData": 3965153
+            },
+            {
+            },
+            {
+            }
+        ]
+    },
     "snphjcfzsxpb": {
         "creationDate": 1688655279,
         "displayName": "🏁RELAY-173.245.58.240-13002",
@@ -437,21 +465,21 @@
     "tyrvssdecpyw": {
         "creationDate": 1683545186,
         "displayName": "MAIN CONFIG",
-        "lastConnected": 1689091696,
+        "lastConnected": 1689148662,
         "lastUpdatedDate": 1683545186,
         "latency": 41,
         "stats": [
             {
-                "downLinkData": 327014176882,
-                "upLinkData": 2455832160
+                "downLinkData": 329894450690,
+                "upLinkData": 2484989450
             },
             {
-                "downLinkData": 15834502091,
-                "upLinkData": 235485010
+                "downLinkData": 15902904413,
+                "upLinkData": 236863303
             },
             {
-                "downLinkData": 311291237968,
-                "upLinkData": 2227184464
+                "downLinkData": 314103277699,
+                "upLinkData": 2254886568
             }
         ]
     },
@@ -472,13 +500,13 @@
     "umfgtduefqfh": {
         "creationDate": 1684224705,
         "displayName": "ForUvpn",
-        "lastConnected": 1688655230,
+        "lastConnected": 1689099450,
         "lastUpdatedDate": 1684224705,
         "latency": 214,
         "stats": [
             {
-                "downLinkData": 96,
-                "upLinkData": 4795
+                "downLinkData": 144,
+                "upLinkData": 7147
             },
             {
                 "upLinkData": 4899
@@ -508,6 +536,13 @@
         "displayName": "@ForUvpn",
         "lastConnected": 0,
         "lastUpdatedDate": 1684224896,
+        "latency": 99999
+    },
+    "xrtkaolyyksr": {
+        "creationDate": 1689099491,
+        "displayName": "کانال : @V2rayNGvpni",
+        "lastConnected": 0,
+        "lastUpdatedDate": 1689099491,
         "latency": 99999
     },
     "xsmmniuallnx": {
@@ -553,13 +588,13 @@
     "ybepuugvlmtc": {
         "creationDate": 1683546144,
         "displayName": "🇪🇪237@shadowsockskeys",
-        "lastConnected": 1684224234,
+        "lastConnected": 1689099433,
         "lastUpdatedDate": 1683546144,
         "latency": 48,
         "stats": [
             {
-                "downLinkData": 4825308,
-                "upLinkData": 381549
+                "downLinkData": 4825368,
+                "upLinkData": 384565
             },
             {
                 "downLinkData": 3444244,
@@ -636,13 +671,13 @@
     "zxowirdthkeq": {
         "creationDate": 1683880238,
         "displayName": "🇺🇸 США  04.05.2023/@free1ss",
-        "lastConnected": 1688655220,
+        "lastConnected": 1689099440,
         "lastUpdatedDate": 1683880238,
         "latency": 117,
         "stats": [
             {
-                "downLinkData": 46864084,
-                "upLinkData": 226071
+                "downLinkData": 46864168,
+                "upLinkData": 230451
             },
             {
                 "downLinkData": 47190761,
