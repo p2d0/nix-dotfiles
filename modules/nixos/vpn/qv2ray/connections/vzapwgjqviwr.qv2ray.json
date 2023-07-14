@@ -1,0 +1,34 @@
+{
+    "outbounds": [
+        {
+            "protocol": "vless",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "youshengdd.tk",
+                        "port": 443,
+                        "users": [
+                            {
+                                "encryption": "none",
+                                "id": "4a471796-7c30-42b7-af97-637630bd04de"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "ws",
+                "security": "tls",
+                "tlsSettings": {
+                    "disableSystemRoot": false
+                },
+                "wsSettings": {
+                    "path": "/anonLhx0SFASG4l9FERJ1g"
+                },
+                "xtlsSettings": {
+                    "disableSystemRoot": false
+                }
+            }
+        }
+    ]
+}

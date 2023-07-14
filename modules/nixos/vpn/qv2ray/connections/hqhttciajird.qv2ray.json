@@ -1,0 +1,41 @@
+{
+    "outbounds": [
+        {
+            "mux": {
+            },
+            "protocol": "vmess",
+            "sendThrough": "0.0.0.0",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "cloudconebbb.gorgorchicken.one",
+                        "port": 8443,
+                        "users": [
+                            {
+                                "id": "aa0c4744-9568-4bee-a08b-73668a9b2a42"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "ws",
+                "security": "tls",
+                "tlsSettings": {
+                    "disableSystemRoot": false,
+                    "serverName": "cloudconebbb.gorgorchicken.one"
+                },
+                "wsSettings": {
+                    "headers": {
+                        "Host": "cloudconebbb.gorgorchicken.one"
+                    },
+                    "path": "/cloudconebbb"
+                },
+                "xtlsSettings": {
+                    "disableSystemRoot": false
+                }
+            },
+            "tag": "PROXY"
+        }
+    ]
+}
