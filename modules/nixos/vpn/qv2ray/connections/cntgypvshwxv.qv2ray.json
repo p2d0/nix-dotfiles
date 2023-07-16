@@ -1,0 +1,35 @@
+{
+    "outbounds": [
+        {
+            "protocol": "vless",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "freev.foxclop.site",
+                        "port": 443,
+                        "users": [
+                            {
+                                "encryption": "none",
+                                "id": "3832a296-a0de-47fa-b924-6230198e2946"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "ws",
+                "security": "tls",
+                "tlsSettings": {
+                    "disableSystemRoot": false,
+                    "serverName": "he.v2v2secvp.uk"
+                },
+                "wsSettings": {
+                    "path": "/lw"
+                },
+                "xtlsSettings": {
+                    "disableSystemRoot": false
+                }
+            }
+        }
+    ]
+}

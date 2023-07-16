@@ -1,0 +1,35 @@
+{
+    "outbounds": [
+        {
+            "protocol": "vless",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "turbotel.foxclop.site",
+                        "port": 80,
+                        "users": [
+                            {
+                                "encryption": "none",
+                                "id": "9fa17499-e242-4b9c-833d-3df5dccf106b"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "ws",
+                "tlsSettings": {
+                    "disableSystemRoot": false
+                },
+                "wsSettings": {
+                    "headers": {
+                        "Host": "f.xbestspeed.site"
+                    }
+                },
+                "xtlsSettings": {
+                    "disableSystemRoot": false
+                }
+            }
+        }
+    ]
+}

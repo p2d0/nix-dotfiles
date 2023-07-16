@@ -171,6 +171,40 @@
         },
         {
             "QV2RAY_OUTBOUND_METADATA": {
+                "displayName": "p2d0-vpnjantit.com"
+            },
+            "protocol": "vless",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "gr1.vpnjantit.com",
+                        "port": 10002,
+                        "users": [
+                            {
+                                "encryption": "none",
+                                "id": "fddf5b2c-23f0-11ee-ab58-27f1a013f6f5"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "ws",
+                "security": "tls",
+                "tlsSettings": {
+                    "disableSystemRoot": false
+                },
+                "wsSettings": {
+                    "path": "/vpnjantit"
+                },
+                "xtlsSettings": {
+                    "disableSystemRoot": false
+                }
+            },
+            "tag": "p2d0-vpnjantit.com"
+        },
+        {
+            "QV2RAY_OUTBOUND_METADATA": {
                 "displayName": "www.outline.network (FR)"
             },
             "mux": {
@@ -235,6 +269,7 @@
                     "quora.com",
                     "robotcache.com",
                     "rutracker.org",
+                    "soundcloud.com",
                     "t.co",
                     "t.co$",
                     "t.co/",
@@ -288,7 +323,7 @@
                     "GlobalConfig-HTTP"
                 ],
                 "network": "udp,tcp",
-                "outboundTag": "direct-runtu.nl.org",
+                "outboundTag": "p2d0-vpnjantit.com",
                 "type": "field"
             },
             {
