@@ -239,6 +239,26 @@
             "streamSettings": {
             },
             "tag": "www.outline.network (FR)"
+        },
+        {
+            "QV2RAY_OUTBOUND_METADATA": {
+                "displayName": "🇺🇸 США 03.07.2023/@free1ss"
+            },
+            "protocol": "shadowsocks",
+            "sendThrough": "0.0.0.0",
+            "settings": {
+                "servers": [
+                    {
+                        "address": "92.38.149.110",
+                        "method": "chacha20-ietf-poly1305",
+                        "password": "tFDsR8HG6GHhkpY7yEqJ",
+                        "port": 51348
+                    }
+                ]
+            },
+            "streamSettings": {
+            },
+            "tag": "🇺🇸 США 03.07.2023/@free1ss"
         }
     ],
     "policy": {
@@ -265,6 +285,7 @@
                 "QV2RAY_RULE_ENABLED": true,
                 "QV2RAY_RULE_TAG": "New Rule",
                 "domain": [
+                    "1377x.to",
                     "all3dp.com",
                     "archiveofourown.org",
                     "bing.com",
@@ -284,6 +305,7 @@
                     "healthline.com",
                     "i.kym-cdn.com",
                     "instagram.com",
+                    "kickasstorrents.to",
                     "knowyourmeme.com",
                     "linked.in",
                     "linkedin.com",
@@ -349,7 +371,7 @@
                 "inboundTag": [
                     "GlobalConfig-Socks"
                 ],
-                "outboundTag": "United States Multacom",
+                "outboundTag": "🇺🇸 США 03.07.2023/@free1ss",
                 "type": "field"
             },
             {
