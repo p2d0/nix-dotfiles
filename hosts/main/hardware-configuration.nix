@@ -12,7 +12,7 @@
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelModules = [ "kvm-intel" "vfio-pci" ];
   boot.kernelParams = [ # "quiet" "vga=current" "udev.log_level=3" "rd.systemd.show_status=auto" "nowatchdog"
-    "amdgpu.ppfeaturemask=0xffffffff"   "intel_iommu=on" "raid0.default_layout=2" "mitigations=off" ];
+    "amdgpu.ppfeaturemask=0xffffffff" "usbhid.mousepoll=1"   "intel_iommu=on" "raid0.default_layout=2" "mitigations=off" ];
   boot.extraModulePackages = [ ];
   boot.loader.timeout = 1;
   services.fstrim.enable = lib.mkDefault true;

@@ -46,6 +46,9 @@
   networking.hostName = config.user;
 
   time.timeZone = "Europe/Moscow";
+  boot.extraModprobeConfig = ''
+    options usbhid mousepoll=1
+  '';
 
   virtualisation.docker = {
     enable = true;

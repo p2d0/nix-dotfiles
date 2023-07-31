@@ -158,6 +158,26 @@
         "lastUpdatedDate": 1684224831,
         "latency": 99999
     },
+    "jcuokjyugyoe": {
+        "creationDate": 1690789485,
+        "displayName": "🇷🇺 Россия 03.07.2023/@free1ss",
+        "lastConnected": 1690789488,
+        "lastUpdatedDate": 1690789485,
+        "stats": [
+            {
+                "downLinkData": 9719847,
+                "upLinkData": 531386
+            },
+            {
+                "downLinkData": 9816233,
+                "upLinkData": 573040
+            },
+            {
+            },
+            {
+            }
+        ]
+    },
     "kdxvinlnyswl": {
         "creationDate": 1684224757,
         "displayName": "@ForUvpn hamrah",
@@ -500,21 +520,21 @@
     "tyrvssdecpyw": {
         "creationDate": 1683545186,
         "displayName": "MAIN CONFIG",
-        "lastConnected": 1690699640,
+        "lastConnected": 1690811657,
         "lastUpdatedDate": 1683545186,
         "latency": 41,
         "stats": [
             {
-                "downLinkData": 434950401749,
-                "upLinkData": 3445095171
+                "downLinkData": 443685457124,
+                "upLinkData": 3491955725
             },
             {
-                "downLinkData": 22779271916,
-                "upLinkData": 445792588
+                "downLinkData": 22936954374,
+                "upLinkData": 452217653
             },
             {
-                "downLinkData": 412300469290,
-                "upLinkData": 3004556838
+                "downLinkData": 420878218745,
+                "upLinkData": 3044928735
             }
         ]
     },
