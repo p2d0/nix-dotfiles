@@ -466,7 +466,10 @@
 
   # List services that you want to enable:
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    settings.PasswordAuthentication = false;
+  };
   services.openssh.startWhenNeeded = false;
 
   # Open ports in the firewall.
