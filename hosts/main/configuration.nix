@@ -468,9 +468,9 @@
   # Enable the OpenSSH daemon.
   services.openssh = {
     enable = true;
-    settings.PasswordAuthentication = false;
+    startWhenNeeded = false;
+    passwordAuthentication = false;
   };
-  services.openssh.startWhenNeeded = false;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

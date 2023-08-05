@@ -292,6 +292,13 @@
         "lastUpdatedDate": 1684224973,
         "latency": 99999
     },
+    "oogcopbaksnu": {
+        "creationDate": 1691239819,
+        "displayName": "🇪🇦 Испания 03.07.2023/@free1ss",
+        "lastConnected": 0,
+        "lastUpdatedDate": 1691239819,
+        "latency": 69
+    },
     "oopufldybenz": {
         "creationDate": 1684224850,
         "displayName": "@ForUvpn",
@@ -520,21 +527,21 @@
     "tyrvssdecpyw": {
         "creationDate": 1683545186,
         "displayName": "MAIN CONFIG",
-        "lastConnected": 1691165597,
+        "lastConnected": 1691246073,
         "lastUpdatedDate": 1683545186,
         "latency": 41,
         "stats": [
             {
-                "downLinkData": 479547680485,
-                "upLinkData": 3690292032
+                "downLinkData": 504506362286,
+                "upLinkData": 3736452798
             },
             {
-                "downLinkData": 31518253449,
-                "upLinkData": 535714292
+                "downLinkData": 49380767207,
+                "upLinkData": 568748665
             },
             {
-                "downLinkData": 448161167610,
-                "upLinkData": 3159454122
+                "downLinkData": 455259653111,
+                "upLinkData": 3172621174
             }
         ]
     },

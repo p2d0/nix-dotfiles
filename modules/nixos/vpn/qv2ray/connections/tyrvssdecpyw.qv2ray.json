@@ -227,6 +227,28 @@
         },
         {
             "QV2RAY_OUTBOUND_METADATA": {
+                "displayName": "🇪🇦 Испания 03.07.2023/@free1ss"
+            },
+            "mux": {
+            },
+            "protocol": "shadowsocks",
+            "sendThrough": "0.0.0.0",
+            "settings": {
+                "servers": [
+                    {
+                        "address": "212.227.146.33",
+                        "method": "chacha20-ietf-poly1305",
+                        "password": "GvsjQ0OZ5nGQXDGfzfWZf5",
+                        "port": 443
+                    }
+                ]
+            },
+            "streamSettings": {
+            },
+            "tag": "🇪🇦 Испания 03.07.2023/@free1ss"
+        },
+        {
+            "QV2RAY_OUTBOUND_METADATA": {
                 "displayName": "🇺🇸 США 03.07.2023/@free1ss"
             },
             "mux": {
@@ -302,9 +324,6 @@
                     "robotcache.com",
                     "rutracker.org",
                     "soundcloud.com",
-                    "t.co",
-                    "t.co$",
-                    "t.co/",
                     "telegramcatalog.com",
                     "thepiratebay.org",
                     "thepiratebay.party",
@@ -356,7 +375,7 @@
                     "GlobalConfig-HTTP"
                 ],
                 "network": "udp,tcp",
-                "outboundTag": "p2d0-vpnjantit.com",
+                "outboundTag": "🇪🇦 Испания 03.07.2023/@free1ss",
                 "type": "field"
             },
             {
