@@ -308,6 +308,7 @@
                     "mangadex.org",
                     "medium.com",
                     "meduza.io",
+                    "national.com",
                     "oculus.com",
                     "openai.com",
                     "opensea.io",
@@ -324,10 +325,12 @@
                     "robotcache.com",
                     "rustdesk.com",
                     "rutracker.org",
+                    "seagate.com",
                     "soundcloud.com",
                     "telegramcatalog.com",
                     "thepiratebay.org",
                     "thepiratebay.party",
+                    "thingiverse.com",
                     "threads.net",
                     "twimg.co",
                     "twitter.com",
@@ -340,7 +343,7 @@
                 "inboundTag": [
                     "GlobalConfig-Socks"
                 ],
-                "outboundTag": "direct-runtu.nl.org",
+                "outboundTag": "www.outline.network (FR)",
                 "type": "field"
             },
             {

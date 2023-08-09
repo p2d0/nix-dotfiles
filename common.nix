@@ -32,7 +32,7 @@
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
-      "text/plain" = "gedit.desktop";
+      "text/plain" = "org.gnome.gedit.desktop";
       # "image/jpeg" = "feh.desktop";
       "image/bmp"= "org.gnome.eog.desktop";
       "image/gif"= "org.gnome.eog.desktop";

@@ -26,6 +26,7 @@
                                                rocm-opencl-icd
                                                rocm-opencl-runtime ];
   hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ vaapiIntel ];
+  services.ratbagd.enable = true;
 
   # systemd.tmpfiles.rules = [
   #   "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"
@@ -60,6 +61,8 @@
   services.gvfs.enable = true;
   services.udev.extraRules = ''
     SUBSYSTEM=="usb", ACTION=="add", ATTR{idVendor}=="0e8d", ATTR{idProduct}=="201d" MODE="0777" GROUP="users"
+    KERNEL=="hidraw*", MODE="0666"
+    KERNEL=="hiddev*", MODE="0666"
     KERNEL=="ttyUSB*", MODE="0666"
   '';
 
@@ -290,6 +293,7 @@
       #   # ];
       # })
       pciutils
+      usbutils
       davinci-resolve
       unstable.firefox
       unstable.librewolf
@@ -356,6 +360,8 @@
       docker-compose
       playerctl
       libusb
+      solaar
+      piper
       # rocketchat-desktop
       tetex
       gnumake

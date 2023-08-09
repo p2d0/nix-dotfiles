@@ -128,7 +128,7 @@
     "hxajtrdwmtkb": {
         "creationDate": 1683545541,
         "displayName": "shadowsocks/217.70.188.60:855-jybwr",
-        "lastConnected": 1683545636,
+        "lastConnected": 1691514721,
         "lastUpdatedDate": 1683545541,
         "latency": 99999
     },
@@ -527,21 +527,21 @@
     "tyrvssdecpyw": {
         "creationDate": 1683545186,
         "displayName": "MAIN CONFIG",
-        "lastConnected": 1691478279,
+        "lastConnected": 1691593919,
         "lastUpdatedDate": 1683545186,
         "latency": 41,
         "stats": [
             {
-                "downLinkData": 533736392063,
-                "upLinkData": 3843143786
+                "downLinkData": 544496591080,
+                "upLinkData": 3891571961
             },
             {
-                "downLinkData": 50136688566,
-                "upLinkData": 576128700
+                "downLinkData": 55634718960,
+                "upLinkData": 597227647
             },
             {
-                "downLinkData": 483735508275,
-                "upLinkData": 3271786585
+                "downLinkData": 489001162279,
+                "upLinkData": 3299144751
             }
         ]
     },
