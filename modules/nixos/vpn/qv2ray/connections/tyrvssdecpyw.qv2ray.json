@@ -343,7 +343,7 @@
                 "inboundTag": [
                     "GlobalConfig-Socks"
                 ],
-                "outboundTag": "www.outline.network (FR)",
+                "outboundTag": "direct-runtu.nl.org",
                 "type": "field"
             },
             {
