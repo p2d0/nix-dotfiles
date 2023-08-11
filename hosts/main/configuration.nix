@@ -267,6 +267,7 @@
       openssl
       # pr218037.microsoft-edge-dev
       libgcc
+      unstable.signal-desktop
       glibc
       sumneko-lua-language-server
       luarocks
