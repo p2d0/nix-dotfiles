@@ -299,6 +299,7 @@
       unstable.firefox
       unstable.librewolf
       xcompmgr
+      unstable.heroic
       killall
       xdo
       inotify-tools
