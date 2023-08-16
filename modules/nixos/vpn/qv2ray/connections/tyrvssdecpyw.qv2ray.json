@@ -379,7 +379,7 @@
                     "GlobalConfig-HTTP"
                 ],
                 "network": "udp,tcp",
-                "outboundTag": "🇪🇦 Испания 03.07.2023/@free1ss",
+                "outboundTag": "direct-runtu.nl.org",
                 "type": "field"
             },
             {
@@ -389,7 +389,7 @@
                     "GlobalConfig-Socks"
                 ],
                 "network": "udp,tcp",
-                "outboundTag": "Freedom_52454303",
+                "outboundTag": "direct-runtu.nl.org",
                 "type": "field"
             }
         ]
