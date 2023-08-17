@@ -327,6 +327,7 @@
                     "rutracker.org",
                     "seagate.com",
                     "soundcloud.com",
+                    "spotify.com",
                     "telegramcatalog.com",
                     "thepiratebay.org",
                     "thepiratebay.party",
@@ -389,7 +390,7 @@
                     "GlobalConfig-Socks"
                 ],
                 "network": "udp,tcp",
-                "outboundTag": "direct-runtu.nl.org",
+                "outboundTag": "Freedom_52454303",
                 "type": "field"
             }
         ]
