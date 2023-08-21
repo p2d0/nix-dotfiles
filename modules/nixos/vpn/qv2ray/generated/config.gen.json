@@ -370,7 +370,7 @@
                 "inboundTag": [
                     "GlobalConfig-Socks"
                 ],
-                "outboundTag": "Freedom_52454303",
+                "outboundTag": "direct-runtu.nl.org",
                 "type": "field"
             },
             {
