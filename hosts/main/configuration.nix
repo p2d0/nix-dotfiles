@@ -69,7 +69,7 @@
   #  programs.hyprland = {
   #    enable = true;
   #  };
-
+  programs.droidcam.enable = true;
   # programs.sway = {
   #   enable = true;
   #   wrapperFeatures.gtk = true;
