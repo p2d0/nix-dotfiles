@@ -39,8 +39,8 @@
 
   boot.blacklistedKernelModules = [ "iTCO_wdt" "iTCO_vendor_support" ];
 
-  boot.tmpOnTmpfs = true;
-  # boot.cleanTmpDir = true;
+  # boot.tmpOnTmpfs = true;
+  boot.cleanTmpDir = true;
 
   boot.loader.grub.device = "/dev/sda";
 
@@ -78,7 +78,7 @@
 
   services.xserver = {
     enable = true;
-    videoDrivers = [ "amdgpu" ];
+    videoDrivers = [ "amdgpu-pro" ];
 
     xrandrHeads = [
       {
