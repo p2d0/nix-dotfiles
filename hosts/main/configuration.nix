@@ -78,7 +78,7 @@
 
   services.xserver = {
     enable = true;
-    videoDrivers = [ "amdgpu-pro" ];
+    videoDrivers = [ "amdgpu" ];
 
     xrandrHeads = [
       {
@@ -268,6 +268,11 @@
       # pr218037.microsoft-edge-dev
       libgcc
       unstable.signal-desktop
+      # pr229886.amdgpu-pro-libs.amf
+      # pr229886.amdgpu-pro-libs.vulkan
+      # pr229886.amdgpu-pro-libs.opengl
+      # pr229886.amdgpu-pro-libs.prefixes
+      unstable.amf-headers
       glibc
       sumneko-lua-language-server
       luarocks
@@ -277,6 +282,8 @@
       gmsh
       unstable.microsoft-edge
       calculix
+      # pr229886.amdgpu-pro-libs.amf
+      # pr229886.amdgpu-pro-libs.prefixes
       # (microsoft-edge-dev.overrideAttrs(oldAttrs: rec {
       #   name = "edge-dev";
       #   version = "110.0.1587.1";

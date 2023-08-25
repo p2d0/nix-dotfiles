@@ -27,6 +27,10 @@
               "${nixpkgs-tars}84963237b438319092a352a7d375878d82beb1ca.tar.gz") {
                 config = self.config;
               };
+            pr229886 = import (fetchTarball
+              "https://github.com/NixOS/nixpkgs/archive/pull/229886/head.tar.gz") {
+                config = self.config;
+              };
             unstable = import nixos-unstable { config = self.config; };
             unstable-small = import nixos-unstable-small { config = self.config; };
             my = lib.my.mapModules /etc/nixos/pkgs (p: self.callPackage p {});
