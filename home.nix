@@ -12,10 +12,19 @@ in {
         user = config.user;
       };
       environment.systemPackages = [
-        (pkgs.wrapOBS {
-          plugins = with pkgs.obs-studio-plugins; [
+        # (unstable.obs-studio.overrideAttrs(oldAttrs: rec {
+        #   patches = [
+        #     (pkgs.fetchpatch {
+        #       url = "https://pastebin.com/raw/aPDNZWJK";
+        #       sha256 = "sha256-20SfLfUuo8h5sKyWQAAhc1X8qgF35+8zMRjE3+o8oHU=";
+        #     })];
+        # }))
+        (unstable.wrapOBS {
+          plugins = with unstable.obs-studio-plugins; [
             obs-gstreamer
             obs-vkcapture
+            obs-vaapi
+            unstable.obs-studio-plugins.droidcam-obs
           ];
         })
         (unstable.callPackage /etc/nixos/pkgs/gpu-screen-recorder.nix { })
@@ -66,7 +75,7 @@ in {
       imports = [
         ./common.nix
       ];
-home.packages = [
+      home.packages = [
       ];
 
       programs.fish.shellInit = ''
