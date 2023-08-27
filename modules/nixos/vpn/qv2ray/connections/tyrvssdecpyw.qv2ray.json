@@ -10,7 +10,12 @@
     },
     "inbounds": [
         {
-            "listen": "127.0.0.1",
+            "allocate": {
+                "concurrency": null,
+                "refresh": null,
+                "strategy": "always"
+            },
+            "listen": "192.168.31.27",
             "port": 8092,
             "protocol": "http",
             "settings": {
@@ -18,9 +23,12 @@
                 "timeout": 300
             },
             "sniffing": {
-                "enabled": false
+                "destOverride": null,
+                "enabled": false,
+                "metadataOnly": null
             },
-            "streamSettings": null,
+            "streamSettings": {
+            },
             "tag": "GlobalConfig-HTTP"
         },
         {
