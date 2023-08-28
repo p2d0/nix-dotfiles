@@ -297,7 +297,7 @@
         "displayName": "🇪🇦 Испания 03.07.2023/@free1ss",
         "lastConnected": 0,
         "lastUpdatedDate": 1691239819,
-        "latency": 69
+        "latency": 99999
     },
     "oopufldybenz": {
         "creationDate": 1684224850,
@@ -311,7 +311,7 @@
         "displayName": "direct-runtu.nl.org",
         "lastConnected": 1689522718,
         "lastUpdatedDate": 1688655341,
-        "latency": 40,
+        "latency": 39,
         "stats": [
             {
                 "downLinkData": 40496696,
@@ -527,17 +527,17 @@
     "tyrvssdecpyw": {
         "creationDate": 1683545186,
         "displayName": "MAIN CONFIG",
-        "lastConnected": 1693144215,
+        "lastConnected": 1693213373,
         "lastUpdatedDate": 1683545186,
         "latency": 41,
         "stats": [
             {
-                "downLinkData": 690532114534,
-                "upLinkData": 4412332316
+                "downLinkData": 708665305785,
+                "upLinkData": 4446045310
             },
             {
-                "downLinkData": 125382201934,
-                "upLinkData": 835990397
+                "downLinkData": 143516140968,
+                "upLinkData": 869553050
             },
             {
                 "downLinkData": 565302798793,
