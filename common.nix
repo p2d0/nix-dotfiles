@@ -33,6 +33,7 @@
     enable = true;
     defaultApplications = {
       "text/plain" = "org.gnome.gedit.desktop";
+      "application/pdf" = "koreader.desktop";
       # "image/jpeg" = "feh.desktop";
       "image/bmp"= "org.gnome.eog.desktop";
       "image/gif"= "org.gnome.eog.desktop";
