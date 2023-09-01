@@ -398,7 +398,7 @@
                     "GlobalConfig-Socks"
                 ],
                 "network": "udp,tcp",
-                "outboundTag": "direct-runtu.nl.org",
+                "outboundTag": "Freedom_52454303",
                 "type": "field"
             }
         ]
