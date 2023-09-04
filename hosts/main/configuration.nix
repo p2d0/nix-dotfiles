@@ -272,7 +272,7 @@
       # pr229886.amdgpu-pro-libs.vulkan
       # pr229886.amdgpu-pro-libs.opengl
       # pr229886.amdgpu-pro-libs.prefixes
-      unstable.amf-headers
+      # unstable.amf-headers
       glibc
       sumneko-lua-language-server
       luarocks
