@@ -19,7 +19,7 @@ function record_screen_replay_sound
         else
             notify-send "Started replay recording"
             set sink (pactl get-default-sink)
-            gpu-screen-recorder (get_current_screen_geometry "-w {model} -c mp4 -q medium -f 60 -a $sink.monitor -v no -r 60 -o $HOME/Videos" | string split -n " ")
+            gpu-screen-recorder (get_current_screen_geometry "-w {model} -c mp4 -q medium -k h264 -f 60 -a $sink.monitor -v no -r 60 -o $HOME/Videos" | string split -n " ")
         end
     end
 end
