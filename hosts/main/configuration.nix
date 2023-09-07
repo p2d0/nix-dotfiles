@@ -282,7 +282,6 @@
       skypeforlinux
       neovide
       lazygit
-      vscode
       gmsh
       unstable.microsoft-edge
       calculix
