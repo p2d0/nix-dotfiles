@@ -205,7 +205,7 @@
       enable = true;
       systemCronJobs = [
         "00 20 * * * andrew fish -c 'sync_repos'"
-        "4,9,14,19,24,29,34,39,44,49,54,59 * * * * sleep 29 ; wget --no-check-certificate -O - https://freedns.afraid.org/dynamic/update.php?RnBTMHFiQlhHWnVmUXpNYmtLWlQ0ZXB5OjIxNjg5NzI5 >> /tmp/freedns_ug_kyrgyzstan_kg.log 2>&1 &"
+        "00 19 * * * andrew wget --no-check-certificate -O - https://freedns.afraid.org/dynamic/update.php?RnBTMHFiQlhHWnVmUXpNYmtLWlQ0ZXB5OjIxNjg5NzI5 >> /tmp/freedns_ug_kyrgyzstan_kg.log 2>&1 &"
       ];
     };
   };

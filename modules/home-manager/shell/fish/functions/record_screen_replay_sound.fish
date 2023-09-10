@@ -19,7 +19,11 @@ function record_screen_replay_sound
         else
             notify-send "Started replay recording"
             set sink (pactl get-default-sink)
-            gpu-screen-recorder (get_current_screen_geometry "-w {model} -c mp4 -q medium -k h264 -f 60 -a $sink.monitor -v no -r 60 -o $HOME/Videos" | string split -n " ")
+            set src (pactl get-default-source)
+            # pactl load-module module-null-sink sink_name=IOMix sink_properties=device.description="input and output mixed"
+            # pactl load-module module-loopback source=$(pactl get-default-source) sink=IOMix
+            # pactl load-module module-loopback source=$(pactl get-default-sink).monitor sink=IOMix
+            gpu-screen-recorder (get_current_screen_geometry "-w {model} -c mp4 -ac aac -q medium -k h264 -f 60 -a $sink.monitor|$src -v no -r 60 -o $HOME/Videos" | string split -n " ")
         end
     end
 end
