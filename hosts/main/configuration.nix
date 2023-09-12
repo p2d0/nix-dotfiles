@@ -32,7 +32,7 @@
   #   "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"
   # ];
 
-  # boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.loader.grub.enable = true;
   boot.loader.grub.default = 2;
   boot.loader.grub.version = 2;
