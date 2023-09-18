@@ -31,9 +31,12 @@
   #   };
   xdg.mimeApps = {
     enable = true;
+    # use mimeapps application/x-bittorrent
+    # to list mimetypes
     defaultApplications = {
       "text/plain" = "org.gnome.gedit.desktop";
       "application/pdf" = "koreader.desktop";
+      "application/x-bittorrent" = "org.qbittorrent.qBittorrent.desktop";
       # "image/jpeg" = "feh.desktop";
       "image/bmp"= "org.gnome.eog.desktop";
       "image/gif"= "org.gnome.eog.desktop";

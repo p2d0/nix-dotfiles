@@ -105,6 +105,26 @@
         },
         {
             "QV2RAY_OUTBOUND_METADATA": {
+                "displayName": "Freedom_59421500"
+            },
+            "_QV2RAY_USE_GLOBAL_FORWARD_PROXY_": false,
+            "mux": {
+                "concurrency": 1,
+                "enabled": null
+            },
+            "protocol": "blackhole",
+            "sendThrough": "0.0.0.0",
+            "settings": {
+                "response": {
+                    "type": "http"
+                }
+            },
+            "streamSettings": {
+            },
+            "tag": "Freedom_59421500"
+        },
+        {
+            "QV2RAY_OUTBOUND_METADATA": {
                 "displayName": "United States Multacom"
             },
             "mux": {
@@ -299,6 +319,7 @@
                     "chesscomfiles.com",
                     "clevelandclinic.org",
                     "crunchbase.com",
+                    "deepstatemap.live",
                     "dell.com",
                     "facebook.com",
                     "fbcdn.net",
@@ -344,7 +365,6 @@
                     "thingiverse.com",
                     "threads.net",
                     "twimg.co",
-                    "twitter.com",
                     "unl.edu",
                     "verstka.media",
                     "whatismyip.com",
@@ -355,6 +375,18 @@
                     "GlobalConfig-Socks"
                 ],
                 "outboundTag": "direct-runtu.nl.org",
+                "type": "field"
+            },
+            {
+                "QV2RAY_RULE_ENABLED": true,
+                "QV2RAY_RULE_TAG": "redirects",
+                "domain": [
+                    "twitter.com"
+                ],
+                "inboundTag": [
+                    "GlobalConfig-Socks"
+                ],
+                "outboundTag": "Freedom_59421500",
                 "type": "field"
             },
             {
