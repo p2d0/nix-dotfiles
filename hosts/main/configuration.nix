@@ -271,6 +271,8 @@
       # pr218037.microsoft-edge-dev
       libgcc
       unstable.signal-desktop
+      megasync
+      yandex-disk
       # pr229886.amdgpu-pro-libs.amf
       # pr229886.amdgpu-pro-libs.vulkan
       # pr229886.amdgpu-pro-libs.opengl
@@ -309,7 +311,7 @@
       unstable.firefox
       unstable.librewolf
       xcompmgr
-      unstable.heroic
+      heroic
       killall
       xdo
       inotify-tools
