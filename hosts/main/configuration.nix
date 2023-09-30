@@ -273,6 +273,7 @@
       unstable.signal-desktop
       megasync
       yandex-disk
+      shared-mime-info
       # pr229886.amdgpu-pro-libs.amf
       # pr229886.amdgpu-pro-libs.vulkan
       # pr229886.amdgpu-pro-libs.opengl
