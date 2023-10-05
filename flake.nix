@@ -34,9 +34,9 @@
             unstable = import nixos-unstable { config = self.config; };
             unstable-small = import nixos-unstable-small { config = self.config; };
             my = lib.my.mapModules /etc/nixos/pkgs (p: self.callPackage p {});
-          })];
+          })] ++ extraOverlays;
         };
-        pkgs  = mkPkgs nixpkgs [ self.overlay ];
+        pkgs  = mkPkgs nixpkgs [ ];
     in
       {
         inherit lib;

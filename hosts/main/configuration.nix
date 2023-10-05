@@ -24,13 +24,15 @@
   hardware.opengl.driSupport = true;
   hardware.opengl.extraPackages = with pkgs; [ vaapiIntel vaapiVdpau libvdpau-va-gl amdvlk
                                                rocm-opencl-icd
-                                               rocm-opencl-runtime ];
+                                               rocm-opencl-runtime
+                                             ];
+  # rocmTargets = ["gfx803"];
   hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ vaapiIntel ];
   services.ratbagd.enable = true;
 
-  # systemd.tmpfiles.rules = [
-  #   "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"
-  # ];
+  systemd.tmpfiles.rules = [
+    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"
+  ];
 
   boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.loader.grub.enable = true;
@@ -275,6 +277,7 @@
       megasync
       yandex-disk
       shared-mime-info
+      clinfo
       qrencode
       # pr229886.amdgpu-pro-libs.amf
       # pr229886.amdgpu-pro-libs.vulkan
