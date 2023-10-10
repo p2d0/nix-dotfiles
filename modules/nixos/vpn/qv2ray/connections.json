@@ -527,21 +527,21 @@
     "tyrvssdecpyw": {
         "creationDate": 1683545186,
         "displayName": "MAIN CONFIG",
-        "lastConnected": 1696835315,
+        "lastConnected": 1696931575,
         "lastUpdatedDate": 1683545186,
         "latency": 41,
         "stats": [
             {
-                "downLinkData": 964972065037,
-                "upLinkData": 7964639120
+                "downLinkData": 973710727400,
+                "upLinkData": 8010659106
             },
             {
-                "downLinkData": 199840379895,
-                "upLinkData": 1565989030
+                "downLinkData": 201243978672,
+                "upLinkData": 1573255408
             },
             {
-                "downLinkData": 765306404005,
-                "upLinkData": 6397322388
+                "downLinkData": 772642968161,
+                "upLinkData": 6435887385
             },
             {
             }
