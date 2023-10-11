@@ -326,6 +326,20 @@
       # (import (fetchTarball
       #   "https://github.com/nix-community/rnix-lsp/archive/master.tar.gz"))
       # my.shell_gpt
+      # unstable.tgpt
+      my.tgpt
+      # (unstable.tgpt.overrideAttrs(oldAttrs: rec {
+      #   version = "2.0.3";
+
+      #   src = fetchFromGitHub {
+      #     owner = "aandrew-me";
+      #     repo = "tgpt";
+      #     rev = "refs/tags/v${version}";
+      #     hash = "sha256-4zm2dsYhN5itGto39p2Aq+9vF4iqqjCGwMWACuKSMs0=";
+      #   };
+      #   vendorHash = "";
+      # }))
+
       my.pythonbin
       # my.tlala
       my.chatgpt

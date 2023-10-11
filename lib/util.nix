@@ -43,6 +43,23 @@ rec {
         else lib.nameValuePair "" null)
       (builtins.readDir dir);
 
+  mapTests = dir: fn:
+    mapFilterAttrs
+      (n: v:
+        v != null &&
+        !(lib.hasPrefix "_" n))
+      (n: v:
+        let path = "${toString dir}/${n}"; in
+        if v == "directory" && lib.pathExists "${path}/default.nix"
+        then lib.nameValuePair n (fn path)
+        else if v == "regular" &&
+                n != "default.nix" &&
+                lib.hasInfix "test" (builtins.baseNameOf n) &&
+                lib.hasSuffix ".nix" n
+        then lib.nameValuePair (lib.removeSuffix ".nix" n) (fn path)
+        else lib.nameValuePair "" null)
+      (builtins.readDir dir);
+
   mapModulesRec = dir: fn:
     mapFilterAttrs
       (n: v:
