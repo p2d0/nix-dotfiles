@@ -57,12 +57,18 @@ case $1 in
     kill -USR1 $(pgrep --oldest --parent ${2})
     ;;
   new)
-    killTimer
-    mkdir /tmp/polybar-timer
-    echo "$(( $(now) + 60*${2} ))" > /tmp/polybar-timer/expiry
-    echo "${3}" > /tmp/polybar-timer/label
-    echo "${4}" > /tmp/polybar-timer/action
-    printExpiryTime
+    if timerRunning
+    then
+      killTimer
+      deleteExpiryTime
+    else
+      killTimer
+      mkdir /tmp/polybar-timer
+      echo "$(( $(now) + 60*${2} ))" > /tmp/polybar-timer/expiry
+      echo "${3}" > /tmp/polybar-timer/label
+      echo "${4}" > /tmp/polybar-timer/action
+      printExpiryTime
+    fi
     ;;
   increase)
     if timerRunning

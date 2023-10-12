@@ -241,6 +241,7 @@
   modules.vpn.enable = true;
   modules.vm.enable = false;
   zramSwap.enable = true;
+  # zramSwap.writebackDevice = "/dev/sdd1";
   # services.journald.extraConfig = ''
   #   SystemMaxUse=1G
   # '';
