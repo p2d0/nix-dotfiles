@@ -19,7 +19,7 @@
           inherit system;
           config.allowBroken = true;
           config.allowUnfree = true;  # forgive me Stallman senpai
-          config.permittedInsecurePackages = [ "xrdp-0.9.9" "libdwarf-20181024"];
+          config.permittedInsecurePackages = [ "xrdp-0.9.9" "libdwarf-20181024" "python-2.7.18.6" ];
           overlays = [(self: super: {
             inherit lib;
             # get-pr-override 218037

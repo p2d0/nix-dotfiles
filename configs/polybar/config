@@ -129,6 +129,12 @@ content-foreground = #000
 type = internal/xwindow
 label = %title:0:30:...%
 
+[module/uair]
+type = custom/script
+exec = uair
+label = %output%
+tail = true
+
 [module/workspaces-xmonad]
 type = internal/xworkspaces
 
@@ -248,6 +254,7 @@ tail = true
 click-middle = ~/.config/polybar/polybar-timer.sh new 15 ' Long rest' 'notify-send "Session finished"' ; ~/.config/polybar/polybar-timer.sh update %pid%
 click-left = ~/.config/polybar/polybar-timer.sh new 25 ' Work' 'notify-send "Session finished"' ; ~/.config/polybar/polybar-timer.sh update %pid%
 click-right = ~/.config/polybar/polybar-timer.sh new 5 ' Short rest' 'notify-send "Break finished"' ; ~/.config/polybar/polybar-timer.sh update %pid%
+double-click-right = ~/.config/polybar/polybar-timer.sh reset_count
 scroll-up = ~/.config/polybar/polybar-timer.sh increase 300 || ~/.config/polybar/polybar-timer.sh new 5 'TIMER:' 'paplay ~/.config/polybar/bell.wav;notify-send -u critical "Timer expired."' ; ~/.config/polybar/polybar-timer.sh update %pid%
 scroll-down = ~/.config/polybar/polybar-timer.sh increase -300 ; ~/.config/polybar/polybar-timer.sh update %pid%
 

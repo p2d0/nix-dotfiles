@@ -35,7 +35,7 @@
 
   swapDevices = [
     {
-      device = "/dev/sdd1";
+      device = "/dev/sdb1";
       # size = 8*1024;
     }
   ];

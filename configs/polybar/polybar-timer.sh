@@ -7,8 +7,26 @@
 
 now () { date --utc +%s; }
 
-killTimer () { rm -rf /tmp/polybar-timer ; }
-timerRunning () { [ -e /tmp/polybar-timer/ ] ; }
+killTimer () {
+  rm /tmp/polybar-timer/expiry ;
+  rm /tmp/polybar-timer/label ;
+  rm /tmp/polybar-timer/action ;
+}
+
+resetCount (){
+  cat "" > /tmp/polybar-timer/count;
+}
+
+timerRunning () { [ -e /tmp/polybar-timer/expiry ] ; }
+
+timerCount () { cat /tmp/polybar-timer/count ; }
+incrementPomoCount() {
+  if [ "${1}" -gt 15 ]; then
+    current_count=$(cat /tmp/polybar-timer/count)
+    new_count=$((current_count + 1))
+    echo "$new_count" > /tmp/polybar-timer/count
+  fi
+}
 
 timerExpiry () { cat /tmp/polybar-timer/expiry ; }
 timerLabel () { cat /tmp/polybar-timer/label ; }
@@ -32,9 +50,9 @@ updateTail () {
 
   if timerRunning
   then
-    echo "$(timerLabel) $(minutesLeft):$(secondsInAMinuteLeft)"
+    echo "$(timerCount) $(timerLabel) $(minutesLeft):$(secondsInAMinuteLeft)"
   else
-    echo "${STANDBY_LABEL}"
+    echo "$(timerCount) ${STANDBY_LABEL}"
   fi
 }
 
@@ -67,6 +85,7 @@ case $1 in
       echo "$(( $(now) + 60*${2} ))" > /tmp/polybar-timer/expiry
       echo "${3}" > /tmp/polybar-timer/label
       echo "${4}" > /tmp/polybar-timer/action
+      incrementPomoCount ${2}
       printExpiryTime
     fi
     ;;
@@ -78,6 +97,9 @@ case $1 in
       exit 1
     fi
     printExpiryTime
+    ;;
+  reset_count)
+    resetCount
     ;;
   cancel)
     killTimer

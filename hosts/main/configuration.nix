@@ -37,12 +37,11 @@
   boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.loader.grub.enable = true;
   boot.loader.grub.default = 2;
-  boot.loader.grub.version = 2;
 
   boot.blacklistedKernelModules = [ "iTCO_wdt" "iTCO_vendor_support" ];
 
   # boot.tmpOnTmpfs = true;
-  boot.cleanTmpDir = true;
+  boot.tmp.cleanOnBoot = true;
 
   boot.loader.grub.device = "/dev/sda";
 
@@ -173,7 +172,7 @@
     in {
       allowUnfree = true;
       allowBroken = true;
-      permittedInsecurePackages = [ "xrdp-0.9.9" "libdwarf-20181024"];
+      permittedInsecurePackages = [ "xrdp-0.9.9" "libdwarf-20181024" "python-2.7.18.6"];
       packageOverrides = pkgs: {
         # get-pr-override 218037
         # pr218037 = import (fetchTarball
@@ -240,8 +239,8 @@
   modules.darkman.enable = true;
   modules.vpn.enable = true;
   modules.vm.enable = false;
-  zramSwap.enable = true;
-  # zramSwap.writebackDevice = "/dev/sdd1";
+  # zramSwap.enable = true;
+  # zramSwap.writebackDevice = "/dev/sdb1";
   # services.journald.extraConfig = ''
   #   SystemMaxUse=1G
   # '';
@@ -273,7 +272,7 @@
       kdenlive
       openssl
       # pr218037.microsoft-edge-dev
-      libgcc
+      gcc.cc.libgcc
       unstable.signal-desktop
       megasync
       yandex-disk
@@ -314,7 +313,7 @@
       # })
       pciutils
       usbutils
-      davinci-resolve
+      # davinci-resolve
       unstable.firefox
       unstable.librewolf
       xcompmgr
@@ -402,9 +401,8 @@
       gnumake
       btop
       calibre
-      python-language-server
       xorg.xdpyinfo
-      postman
+      # postman
       brave
       peco
       ffmpeg
@@ -477,7 +475,7 @@
       android-tools
       # sublime
       drawio
-      (unstable.python3.withPackages(ps: [ ps.requests ps.epc ps.lxml ps.tld ps.sexpdata ps.pyqt6 ps.pyqt6-sip ps.pyqt6-webengine ps.pygetwindow ]))
+      (unstable.python3.withPackages(ps: [ ps.python-lsp-server  ps.requests ps.epc ps.lxml ps.tld ps.sexpdata ps.pyqt6 ps.pyqt6-sip ps.pyqt6-webengine ps.pygetwindow ]))
       unstable.python39Packages.yt-dlp
       python39Packages.pytest
       # libpulseaudio
@@ -496,8 +494,8 @@
       my.get_current_screen_geometry
       # (pkgs.callPackage /etc/nixos/pkgs/get_current_screen_geometry.nix { })
       # NOTE https://nixos.wiki/wiki/Nixpkgs/Modifying_Packages
-      # guake
-      my.guake-latest
+      guake
+      # my.guake-latest
       # (callPackage /etc/nixos/pkgs/jetbrains-gateway.nix { })
     ];
 
@@ -510,7 +508,7 @@
   services.openssh = {
     enable = true;
     startWhenNeeded = false;
-    passwordAuthentication = false;
+    settings.PasswordAuthentication = false;
   };
 
   # Open ports in the firewall.
