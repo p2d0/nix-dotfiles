@@ -1,0 +1,20 @@
+[defaults]
+format = "{time}\n"
+
+[[sessions]]
+id = "work"
+name = "Work"
+duration = "30m"
+command = "notify-send 'Work Done!'"
+
+[[sessions]]
+id = "rest"
+name = "Rest"
+duration = "5m"
+command = "notify-send 'Rest Done!'"
+
+[[sessions]]
+id = "longrest"
+name = "Long rest"
+duration = "20m"
+command = "notify-send 'Long rest done'"

@@ -25,7 +25,7 @@ in {
     {
       environment.systemPackages = with pkgs;
         [
-          oldPkgs.v2ray
+          pkgs.v2ray
           pkgs.qv2ray
 
           # my.psiphon
