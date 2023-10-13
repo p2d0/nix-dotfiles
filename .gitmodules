@@ -7,6 +7,3 @@
 [submodule "modules/nixos/editors/.doom.d"]
 	path = modules/nixos/editors/.doom.d
 	url = git@github.com:p2d0/.doom.d
-[submodule "configs/polybar/polypomo"]
-	path = configs/polybar/polypomo
-	url = https://github.com/unode/polypomo.git
