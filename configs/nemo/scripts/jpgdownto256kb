@@ -1,0 +1,4 @@
+IFS=$'\n'
+for f in $NEMO_SCRIPT_SELECTED_FILE_PATHS ; do
+    jpegoptim -S 256 $f &
+done

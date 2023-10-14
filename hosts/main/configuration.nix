@@ -107,6 +107,9 @@
     };
     exportConfiguration = true;
     windowManager.i3.enable = true;
+    # windowManager.i3.package = (import (builtins.fetchTarball {
+    #     url = "https://github.com/NixOS/nixpkgs/archive/79b3d4bcae8c7007c9fd51c279a8a67acfa73a2a.tar.gz";
+    # }) {}).i3;
     # windowManager.i3.package = (pkgs.i3.overrideAttrs(oldAttrs: rec {
     #   patches = [
     #     (pkgs.fetchpatch {
@@ -205,7 +208,7 @@
     cron = {
       enable = true;
       systemCronJobs = [
-        "30 22 * * * root sh -c 'shutdown now'"
+        "00 22 * * * root sh -c 'shutdown now'"
         "00 20 * * * andrew fish -c 'sync_repos'"
         "00 19 * * * andrew wget --no-check-certificate -O - https://freedns.afraid.org/dynamic/update.php?RnBTMHFiQlhHWnVmUXpNYmtLWlQ0ZXB5OjIxNjg5NzI5 >> /tmp/freedns_ug_kyrgyzstan_kg.log 2>&1 &"
       ];
@@ -455,7 +458,16 @@
       tor-browser-bundle-bin
       # looking-glass-client
       unstable.tg
-      gnome.nautilus
+      pkgs.cinnamon.nemo
+      # 41.2
+      (import (builtins.fetchTarball {
+        url = "https://github.com/NixOS/nixpkgs/archive/d1c3fea7ecbed758168787fe4e4a3157e52bc808.tar.gz";
+    }) {}).gnome.nautilus
+      # 40.1
+    #   (import (builtins.fetchTarball {
+    #     url = "https://github.com/NixOS/nixpkgs/archive/23c10dbe320e6957f2607d8a22f9e0e36f56a235.tar.gz";
+    # }) {}).gnome.nautilus
+      # gnome.nautilus
       spice-vdagent
       inetutils
       zip

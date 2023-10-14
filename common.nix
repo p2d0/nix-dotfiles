@@ -220,5 +220,9 @@
       source = ./configs/nautilus;
       recursive = true;
     };
+    ".local/share/nemo" = {
+      source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/nemo;
+    };
+
   };
 }
