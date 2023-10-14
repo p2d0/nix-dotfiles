@@ -5,6 +5,8 @@
 
 ## FUNCTIONS
 
+script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
 now () { date --utc +%s; }
 
 killTimer () {
@@ -14,17 +16,17 @@ killTimer () {
 }
 
 resetCount (){
-  cat "" > /tmp/polybar-timer/count;
+  cat "" > $script_dir/count;
 }
 
 timerRunning () { [ -e /tmp/polybar-timer/expiry ] ; }
 
-timerCount () { cat /tmp/polybar-timer/count ; }
+timerCount () { cat $script_dir/count ; }
 incrementPomoCount() {
   if [ "${1}" -gt 15 ]; then
-    current_count=$(cat /tmp/polybar-timer/count)
+    current_count=$(cat $script_dir/count)
     new_count=$((current_count + 1))
-    echo "$new_count" > /tmp/polybar-timer/count
+    echo "$new_count" > $script_dir/count
   fi
 }
 

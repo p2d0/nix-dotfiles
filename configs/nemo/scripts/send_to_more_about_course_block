@@ -1,0 +1,2 @@
+IFS=$'\n'
+scp $NEMO_SCRIPT_SELECTED_FILE_PATHS u0504861@favoka.art:~/www/favoka.art/modules/more_about_course_block/img/
