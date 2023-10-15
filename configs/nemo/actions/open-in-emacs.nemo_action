@@ -1,0 +1,9 @@
+[Nemo Action]
+Name=Open in Emacs
+Comment=Open in Emacs
+Exec=emacsclient -n %F
+Icon-Name=emacs
+Selection=any
+Extensions=any;
+Quote=double
+EscapeSpaces=true
