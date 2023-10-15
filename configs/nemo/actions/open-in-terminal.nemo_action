@@ -1,0 +1,9 @@
+[Nemo Action]
+Name=Open in Guake
+Comment=Open folder in Guake
+Exec=guake -n "%F" --show
+Icon-Name=guake
+Selection=any
+Extensions=dir;
+Quote=double
+EscapeSpaces=true

@@ -439,7 +439,7 @@
       # (unstable.qt6Packages.callPackage /etc/nixos/pkgs/tdesktop/tdesktop.nix {
       #   abseil-cpp = unstable.abseil-cpp_202111;
       # })
-      unstable-small.tdesktop
+      unstable.tdesktop
       unstable.nil
       jpegoptim
       chatterino2
@@ -458,7 +458,11 @@
       tor-browser-bundle-bin
       # looking-glass-client
       unstable.tg
-      pkgs.cinnamon.nemo
+      pkgs.cinnamon.nemo-with-extensions
+      pkgs.cinnamon.nemo-fileroller
+      pkgs.cinnamon.nemo-python
+      (unstable.callPackage /etc/nixos/pkgs/nemo-preview.nix {})
+      # my.nemo-preview
       # 41.2
       (import (builtins.fetchTarball {
         url = "https://github.com/NixOS/nixpkgs/archive/d1c3fea7ecbed758168787fe4e4a3157e52bc808.tar.gz";

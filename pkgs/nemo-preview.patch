@@ -1,0 +1,40 @@
+From 9bfae4ffa69a237e32db34e28e9b4f2cd42b11ab Mon Sep 17 00:00:00 2001
+From: patriot720 <cerkin-3@yandex.ru>
+Date: Sun, 15 Oct 2023 17:41:00 +0300
+Subject: [PATCH] fix
+
+---
+ nemo-preview/meson.build                     | 3 +++
+ nemo-preview/src/libnemo-preview/meson.build | 2 +-
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index df7d1c2..af7f8bd 100644
+--- a/meson.build
++++ b/meson.build
+@@ -28,6 +28,9 @@ bindir = join_paths(get_option('prefix'), get_option('bindir'))
+ datadir = join_paths(get_option('prefix'), get_option('datadir'))
+ libdir = join_paths(get_option('prefix'), get_option('libdir'))
+ libexecdir = join_paths(get_option('prefix'), get_option('libexecdir'))
++libnemo = dependency('libnemo-extension', version: '>=2.0.0')
++libnemo_extension_dir = libnemo.get_pkgconfig_variable('extensiondir')
++
+ 
+ add_project_arguments(
+   '-DNEMO_PREVIEW_PKGDATADIR="' + join_paths(datadir, 'nemo-preview') + '"',
+diff --git a/src/libnemo-preview/meson.build b/src/libnemo-preview/meson.build
+index c758e0f..a297fa2 100644
+--- a/src/libnemo-preview/meson.build
++++ b/src/libnemo-preview/meson.build
+@@ -36,7 +36,7 @@ libnemo_preview = shared_library(
+     libnemo_preview_headers,
+   ],
+   install: true,
+-  install_dir: join_paths(libdir, 'nemo-preview'),
++  install_dir: join_paths(libdir, libnemo_extension_dir),
+   include_directories: include_dirs,
+ )
+ 
+-- 
+2.40.1
+
