@@ -461,12 +461,12 @@
       pkgs.cinnamon.nemo-with-extensions
       pkgs.cinnamon.nemo-fileroller
       pkgs.cinnamon.nemo-python
-      (unstable.callPackage /etc/nixos/pkgs/nemo-preview.nix {})
+      # (unstable.callPackage /etc/nixos/pkgs/nemo-preview.nix {})
       # my.nemo-preview
       # 41.2
-      (import (builtins.fetchTarball {
-        url = "https://github.com/NixOS/nixpkgs/archive/d1c3fea7ecbed758168787fe4e4a3157e52bc808.tar.gz";
-    }) {}).gnome.nautilus
+    #   (import (builtins.fetchTarball {
+    #     url = "https://github.com/NixOS/nixpkgs/archive/d1c3fea7ecbed758168787fe4e4a3157e52bc808.tar.gz";
+    # }) {}).gnome.nautilus
       # 40.1
     #   (import (builtins.fetchTarball {
     #     url = "https://github.com/NixOS/nixpkgs/archive/23c10dbe320e6957f2607d8a22f9e0e36f56a235.tar.gz";
