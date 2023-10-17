@@ -22,6 +22,15 @@ resetCount (){
 timerRunning () { [ -e /tmp/polybar-timer/expiry ] ; }
 
 timerCount () { cat $script_dir/count ; }
+
+decrementPomoCount() {
+  if [ "$(timerLength)" -gt 15 ]; then
+    current_count=$(cat $script_dir/count)
+    new_count=$((current_count - 1))
+    echo "$new_count" > $script_dir/count
+  fi
+}
+
 incrementPomoCount() {
   if [ "${1}" -gt 15 ]; then
     current_count=$(cat $script_dir/count)
@@ -33,6 +42,7 @@ incrementPomoCount() {
 timerExpiry () { cat /tmp/polybar-timer/expiry ; }
 timerLabel () { cat /tmp/polybar-timer/label ; }
 timerAction () { cat /tmp/polybar-timer/action ; }
+timerLength () { cat /tmp/polybar-timer/length ; }
 
 secondsLeft () { echo $(( $(timerExpiry) - $(now) )) ; }
 minutesLeft () { echo $(( ( $(secondsLeft) ) / 60 )) ; }
@@ -80,10 +90,12 @@ case $1 in
     if timerRunning
     then
       killTimer
+      decrementPomoCount
       deleteExpiryTime
     else
       killTimer
       mkdir /tmp/polybar-timer
+      echo "${2}" > /tmp/polybar-timer/length
       echo "$(( $(now) + 60*${2} ))" > /tmp/polybar-timer/expiry
       echo "${3}" > /tmp/polybar-timer/label
       echo "${4}" > /tmp/polybar-timer/action
