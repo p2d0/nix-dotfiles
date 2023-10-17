@@ -1,25 +1,25 @@
-# { stdenv
-# , lib
-# , fetchFromGitHub
-# , meson
-# , pkg-config
-# , ninja
-# , glib
-# , gtk3
-# , callPackage
-# , gnome
-# , gobject-introspection
-# , wrapGAppsHook
-# , clutter
-# , clutter-gtk
-# , clutter-gst
-# , cinnamon
-# , gtksourceview4
-# , libmusicbrainz5
-# , webkitgtk_4_1
-# }:
+{ stdenv
+, lib
+, fetchFromGitHub
+, meson
+, pkg-config
+, ninja
+, glib
+, gtk3
+, callPackage
+, gnome
+, gobject-introspection
+, wrapGAppsHook
+, clutter
+, clutter-gtk
+, clutter-gst
+, cinnamon
+, gtksourceview4
+, libmusicbrainz5
+, webkitgtk_4_1
+}:
 
-with import <nixos-unstable> {};
+# with import <nixos-unstable> {};
 with cinnamon;
 let
   xreader = callPackage ./xreader.nix { };
