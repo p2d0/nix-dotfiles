@@ -359,6 +359,7 @@
                     "quora.com",
                     "robotcache.com",
                     "rustdesk.com",
+                    "rutracker.org",
                     "seagate.com",
                     "soundcloud.com",
                     "spotify.com",
@@ -374,7 +375,8 @@
                     "verstka.media",
                     "whatismyip.com",
                     "whatismyipaddress.com",
-                    "yeggi.com"
+                    "yeggi.com",
+                    "zedge.net"
                 ],
                 "inboundTag": [
                     "GlobalConfig-Socks"
