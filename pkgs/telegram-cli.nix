@@ -1,8 +1,8 @@
-# { stdenv, fetchFromGitHub, fetchpatch, jansson, lib, libconfig, libevent, libgcrypt, lua, lua53Packages
-# , makeWrapper, openssl, pkg-config, python3, readline, zlib
-# }:
+{ stdenv, fetchFromGitHub, fetchpatch, jansson, lib, libconfig, libevent, libgcrypt, lua, lua53Packages
+, makeWrapper, openssl, pkg-config, python3, readline, zlib
+}:
 
-with import <nixos-unstable> {};
+# with import <nixos-unstable> {};
 stdenv.mkDerivation rec {
   pname = "telegram-cli";
   version = "20200106";

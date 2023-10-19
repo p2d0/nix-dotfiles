@@ -25,6 +25,7 @@
   hardware.opengl.extraPackages = with pkgs; [ vaapiIntel vaapiVdpau libvdpau-va-gl amdvlk
                                                rocm-opencl-icd
                                                rocm-opencl-runtime
+                                               intel-ocl
                                              ];
   # rocmTargets = ["gfx803"];
   hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ vaapiIntel ];
@@ -208,7 +209,7 @@
     cron = {
       enable = true;
       systemCronJobs = [
-        "00 22 * * * root sh -c 'shutdown now'"
+        # "00 22 * * * root sh -c 'shutdown now'"
         "00 20 * * * andrew fish -c 'sync_repos'"
         "00 19 * * * andrew wget --no-check-certificate -O - https://freedns.afraid.org/dynamic/update.php?RnBTMHFiQlhHWnVmUXpNYmtLWlQ0ZXB5OjIxNjg5NzI5 >> /tmp/freedns_ug_kyrgyzstan_kg.log 2>&1 &"
       ];
@@ -316,7 +317,7 @@
       # })
       pciutils
       usbutils
-      # davinci-resolve
+      unstable.davinci-resolve
       unstable.firefox
       unstable.librewolf
       xcompmgr
@@ -461,7 +462,7 @@
       pkgs.cinnamon.nemo-with-extensions
       pkgs.cinnamon.nemo-fileroller
       pkgs.cinnamon.nemo-python
-      unstable.telegram-cli
+      # unstable.telegram-cli
       # (unstable.callPackage /etc/nixos/pkgs/nemo-preview.nix {})
       # my.nemo-preview
       # 41.2
@@ -492,6 +493,7 @@
       android-tools
       # sublime
       drawio
+      pipenv
       (unstable.python3.withPackages(ps: [ ps.python-lsp-server  ps.requests ps.epc ps.lxml ps.tld ps.sexpdata ps.pyqt6 ps.pyqt6-sip ps.pyqt6-webengine ps.pygetwindow ]))
       unstable.python39Packages.yt-dlp
       python39Packages.pytest
