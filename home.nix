@@ -65,6 +65,12 @@ in {
       '';
       environment.systemPackages = [
       ];
+      environment.variables = {
+        WORK_MODE = "1";
+      };
+      # environment.sessionVariables = {
+      #   WORK_MODE = "1";
+      # };
     };
     inheritParentConfig = true;
   };

@@ -1,11 +1,16 @@
 #/usr/bin/env nix-shell
 #!nix-shell -p feh
-if [ $XDG_SESSION_TYPE = "wayland" ]
-then
+source /etc/set-environment;
+
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
     export SWAYSOCK="/run/user/$(id -u)/sway-ipc.$(id -u).$(pidof sway).sock"
     swaymsg "output * bg /etc/nixos/light.jpg fill"
 else
-    feh --bg-fill /etc/nixos/light.jpg;
+    if [ "$WORK_MODE" = "1" ]; then
+        feh --bg-fill /etc/nixos/work-bg.jpg;
+    else
+        feh --bg-fill /etc/nixos/light.jpg;
+    fi
 
     touch $HOME/.xsettingsd
     cat > $HOME/.xsettingsd <<-EOF
