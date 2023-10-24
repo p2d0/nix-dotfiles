@@ -30,7 +30,7 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #A000000000
+background = #80
 background-alt = #444
 ;foreground = ${xrdb:color7:#222}
 foreground = #fff
@@ -60,7 +60,7 @@ spacing = 1
 
 line-size =  0
 line-color = #f00
-
+colors-accent = #FF9800
 border-size = 0px
 border-color = #00000000
 padding-top = 1
@@ -155,7 +155,7 @@ fuzzy-match = true
 format = <label-state>
 
 label-active = %name% %icon%
-label-active-background = ${colors.accent}
+label-active-background = ${root.colors-accent}
 label-active-underline = ${color.background}
 label-active-foreground = ${color.background}
 label-active-padding = 2
@@ -243,6 +243,9 @@ click-left = ~/.config/rofi/applets/applets/powermenu.sh
 [module/text]
 type = custom/text
 content = "WORKMODE"
+content-background = ${root.colors-accent}
+content-padding = 1
+; content-foreground = ${root.colors-accent}
 
 [module/timer]
 
@@ -288,7 +291,7 @@ label-unmounted-foreground = ${colors.foreground-alt}
 type = internal/bspwm
 
 label-focused = %index%
-label-focused-background = ${colors.accent}
+label-focused-background = ${root.colors-accent}
 label-focused-underline= ${colors.background}
 label-focused-padding = 2
 
@@ -317,19 +320,19 @@ wrapping-scroll = true
 pin-workspaces = true
 
 label-mode-padding = 2
-label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
 label-focused = %name%
-label-focused-background = ${colors.accent}
+label-focused-background = ${root.colors-accent}
 label-focused-underline= ${colors.background}
-label-focused-foreground= ${colors.background}
+; label-focused-foreground= ${colors.background-alt}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %name%
 label-unfocused-padding = 2
+label-unfocused-foreground = ${colors.background}
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %name%
@@ -367,13 +370,13 @@ format = <label> <bar>
 label = 
 
 bar-width = 10
-bar-foreground = ${colors.accent}
+bar-foreground = ${root.colors-accent}
 bar-gradient = false
 bar-indicator = ⏽
 bar-indicator-font = 2
 bar-fill = ⏽
 bar-fill-font = 2
-bar-fill-foreground = ${colors.accent}
+bar-fill-foreground = ${root.colors-accent}
 bar-empty = ⏽
 bar-empty-font = 2
 bar-empty-foreground = ${colors.foreground-alt}
@@ -388,7 +391,7 @@ type = internal/cpu
 interval = 2
 format-prefix = ﬙
 format-prefix-font = 4
-format-prefix-foreground = ${colors.accent}
+format-prefix-foreground = ${root.colors-accent}
 format-underline = #f90000
 label = %percentage:2%%
 
@@ -416,7 +419,7 @@ format-disconnected = 睊
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
 ramp-signal-0 = 直
-ramp-signal-foreground = ${colors.accent}
+ramp-signal-foreground = ${root.colors-accent}
 
 [module/eth]
 type = internal/network
@@ -446,7 +449,7 @@ time = " %H:%M"
 time-alt = %H:%M:%S
 
 format-prefix = 
-format-prefix-foreground = ${colors.accent}
+format-prefix-foreground = ${root.colors-accent}
 format-prefix-font = 5
 format-underline = #0a6cf5
 
@@ -488,14 +491,14 @@ click-right = pavucontrol
 ; format-volume-padding = 3
 
 ; bar-volume-width = 10
-; bar-volume-foreground = ${colors.accent}
+; bar-volume-foreground = ${root.colors-accent}
 
 ; bar-volume-gradient = false
 ; bar-volume-indicator = ⏽
 ; bar-volume-indicator-font = 2
 ; bar-volume-fill = ⏽
 ; bar-volume-fill-font = 2
-; bar-volume-fill-foreground = ${colors.accent}
+; bar-volume-fill-foreground = ${root.colors-accent}
 ; bar-volume-empty = ⏽
 ; bar-volume-empty-font = 2
 ; bar-volume-empty-foreground = ${colors.foreground-alt}
@@ -556,7 +559,7 @@ ramp-capacity-6 = 
 ramp-capacity-7 = 
 ramp-capacity-8 = 
 ramp-capacity-9 = 
-ramp-capacity-foreground = ${colors.accent}
+ramp-capacity-foreground = ${root.colors-accent}
 ramp-capacity-font = 5
 
 animation-charging-0 = 
@@ -564,14 +567,14 @@ animation-charging-1 = 
 animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-4 = 
-animation-charging-foreground = ${colors.accent}
+animation-charging-foreground = ${root.colors-accent}
 animation-charging-font = 5
 animation-charging-framerate = 750
 
 animation-discharging-0 = 
 animation-discharging-1 = 
 animation-discharging-2 = 
-animation-discharging-foreground = ${colors.accent}
+animation-discharging-foreground = ${root.colors-accent}
 animation-discharging-framerate = 750
 
 [module/temperature]
@@ -584,11 +587,11 @@ format-underline = #f50a4d
 format-warn = <ramp><label-warn>
 format-warn-prefix = 
 format-warn-prefix-font = 5
-format-warn-prefix-foreground = ${colors.accent}
+format-warn-prefix-foreground = ${root.colors-accent}
 
 format-prefix = " "
 format-prefix-font = 5
-format-prefix-foreground = ${colors.accent}
+format-prefix-foreground = ${root.colors-accent}
 
 label = %temperature-c%
 label-warn = %temperature-c%
@@ -608,9 +611,9 @@ expand-right = true
 format-spacing = 1
 
 label-open = 
-label-open-foreground = ${colors.accent}
+label-open-foreground = ${root.colors-accent}
 label-close =  cancel
-label-close-foreground = ${colors.accent}
+label-close-foreground = ${root.colors-accent}
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
 
@@ -683,7 +686,7 @@ screenchange-reload = true
 ;compositing-background = screen
 ;compositing-foreground = source
 ;compositing-border = over
-; pseudo-transparency = false
+pseudo-transparency = true
 
 [global/wm]
 margin-top = 0
@@ -706,10 +709,12 @@ width = 100%
 height = 22px
 offset-x = 0%
 offset-y = 0%
-radius = 5
+radius = 0
 fixed-center = true
 bottom = true
 underline-size = 0
+
+colors-accent = #2196F3
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -738,7 +743,7 @@ font-7 = NotoEmoji:fontformat=truetype:scale=7;4
 font-8 = FontAwesome:size=12;5
 
 modules-left = i3
-modules-center = popup-calendar
+modules-center = text popup-calendar
 modules-right = timer weather
 ; bluetooth pulseaudio
 ; scratchpad-indicator
