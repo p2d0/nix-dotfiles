@@ -1,0 +1,112 @@
+[colors]
+# Polar night
+nord0=#2E3440
+nord1=#3B4252
+nord2=#434C5E
+nord3=#4C566A
+
+# Snow storm
+nord4=#D8DEE9
+nord5=#E5E9F0
+nord6=#ECEFF4
+
+# Frost
+nord7=#8FBCBB
+nord8=#88C0D0
+nord9=#81A1C1
+nord10=#5E81AC
+
+# Aurora
+nord11=#BF616A
+nord12=#D08770
+nord13=#EBCB8B
+nord14=#A3BE8C
+nord15=#B48EAD
+
+
+back=#2e3440
+fore=#d8dee6
+
+red=#bf616a
+yellow=#e3be8c
+orange=#d08770
+purple=#b48ead
+green=#a3be8c
+
+[bar/bar]
+
+background = #A0000000
+foreground = ${colors.nord4}
+
+width = 100%
+height = 22
+radius = 0
+line-size = 1
+bottom = true
+border-bottom-size = 0
+padding-left = 3
+padding-right = 3
+
+fixed-center = true
+
+font-0 = "Roboto Mono:style=Regular:size=11;2"
+font-1 = "Roboto Mono:style=Bold:size=11;2"
+
+wm-restack = i3
+
+modules-left = wm
+modules-center = date
+module-margin = 2
+
+tray-position = right
+tray-maxsize = 16
+tray-detached = false
+tray-padding = 0
+# tray-scale = 0.0
+tray-background = #3d3c3b
+# tray-transparent = true;
+
+override-redirect = false
+offset-x = 0
+offset-y = 0
+pseudo-transparency = true
+
+padding = 0
+
+wm-name = bar
+
+[bar/DVI]
+inherit = bar/bar
+monitor = DVI-D-0
+
+
+[module/wm]
+type= internal/i3
+
+pin-workspaces = true
+
+label-empty = 
+
+label-focused-underline = ${colors.nord4}
+
+label-focused = %index%
+label-focused-padding = 2
+
+label-unfocused = %index%
+label-unfocused-padding = 2
+
+label-urgent = %index%
+label-urgent-padding = 2
+label-urgent-foreground = ${colors.nord11}
+label-urgent-underline = ${colors.nord11}
+label-urgent-font = 2
+
+[module/date]
+type = internal/date
+label-active-font = 2
+interval = 5 
+date = %a %d %b
+time = %l:%M %p
+label = " %{A1:urxvt -geometry 20x10 -e sh -c "cal;read":}%{A3:urxvt -geometry 20x25 -e sh -c "cal -3;read":}%{A2:urxvt -geometry 66x35 -e sh -c "cal -y;read":}%date%%{A}%{A}%{A} - %time% "
+format-padding = 1
+label-foreground=${colors.nord4}
