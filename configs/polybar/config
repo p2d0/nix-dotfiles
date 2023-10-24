@@ -89,8 +89,8 @@ modules-right = timer weather
 tray-position = none
 tray-padding = 5
 tray-maxsize = 1000
-tray-transparent = false
-tray-background = #000
+tray-transparent = true
+; tray-background = #000
 tray-scale = 1.0
 
 ; wm-restack = bspwm
@@ -751,8 +751,8 @@ modules-right = timer weather
 tray-position = none
 tray-padding = 5
 tray-maxsize = 1000
-tray-transparent = false
-tray-background = #000
+tray-transparent = true
+; tray-background = #000
 tray-scale = 1.0
 
 ; wm-restack = bspwm

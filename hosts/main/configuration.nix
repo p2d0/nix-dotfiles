@@ -406,7 +406,7 @@
       btop
       calibre
       xorg.xdpyinfo
-      # postman
+      postman
       brave
       peco
       ffmpeg
