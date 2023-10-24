@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-
+WORK_MODE=0
+source /etc/set-environment
 # Terminate already running bar instances
 killall -q polybar
 pkill polybar
