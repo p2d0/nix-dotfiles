@@ -409,7 +409,7 @@
       postman
       brave
       peco
-      ffmpeg
+      ffmpeg-full
       dfeet
       slop
       libnotify
@@ -466,13 +466,13 @@
       # (unstable.callPackage /etc/nixos/pkgs/nemo-preview.nix {})
       # my.nemo-preview
       # 41.2
-    #   (import (builtins.fetchTarball {
-    #     url = "https://github.com/NixOS/nixpkgs/archive/d1c3fea7ecbed758168787fe4e4a3157e52bc808.tar.gz";
-    # }) {}).gnome.nautilus
+      #   (import (builtins.fetchTarball {
+      #     url = "https://github.com/NixOS/nixpkgs/archive/d1c3fea7ecbed758168787fe4e4a3157e52bc808.tar.gz";
+      # }) {}).gnome.nautilus
       # 40.1
-    #   (import (builtins.fetchTarball {
-    #     url = "https://github.com/NixOS/nixpkgs/archive/23c10dbe320e6957f2607d8a22f9e0e36f56a235.tar.gz";
-    # }) {}).gnome.nautilus
+      #   (import (builtins.fetchTarball {
+      #     url = "https://github.com/NixOS/nixpkgs/archive/23c10dbe320e6957f2607d8a22f9e0e36f56a235.tar.gz";
+      # }) {}).gnome.nautilus
       # gnome.nautilus
       spice-vdagent
       inetutils
@@ -495,6 +495,25 @@
       drawio
       pipenv
       my.immersed-vr
+      # (import (builtins.fetchTarball {
+      #   url = "https://github.com/NixOS/nixpkgs/archive/23c10dbe320e6957f2607d8a22f9e0e36f56a235.tar.gz";
+      # }) {config.allowBroken = true;
+      #     config.permittedInsecurePackages = [
+      #       "python-2.7.18.6"
+      #       "ffmpeg-3.4.8"
+      #     ];
+      #    }).natron
+      # (import (builtins.fetchTarball {
+      #   url = "https://github.com/NixOS/nixpkgs/archive/5c1ffb7a9fc96f2d64ed3523c2bdd379bdb7b471.tar.gz";
+      # }) {config.allowBroken = true;
+      #     config.permittedInsecurePackages = [
+      #       "python-2.7.18.6"
+      #       "ffmpeg-3.4.8"
+      #     ];}).natron
+      # unstable.natron
+      my.natron-bin
+      unstable.openimageio
+      unstable-small.openfx
       unstable.scrcpy
       (unstable.python3.withPackages(ps: [ ps.python-lsp-server  ps.requests ps.epc ps.lxml ps.tld ps.sexpdata ps.pyqt6 ps.pyqt6-sip ps.pyqt6-webengine ps.pygetwindow ]))
       unstable.python39Packages.yt-dlp
