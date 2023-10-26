@@ -88,9 +88,6 @@ in {
         function rebuild-work
           sudo nixos-rebuild switch --impure  --flake '/etc/nixos/.?submodules=1#mysystem' -j6 $argv
           sudo /run/current-system/specialisation/work/activate
-          i3-msg restart
-          /etc/nixos/configs/darkman/light-mode.d/light.sh
-
         end
         function activate-specialisation-work
           sudo /run/current-system/specialisation/work/activate
@@ -99,8 +96,6 @@ in {
         function rebuild-default
           sudo nixos-rebuild switch --impure  --flake '/etc/nixos/.?submodules=1#mysystem' -j6 $argv
           sudo /run/current-system/specialisation/default/activate
-          i3-msg restart
-          /etc/nixos/configs/darkman/light-mode.d/light.sh
         end
         function activate-specialisation-default
           sudo /run/current-system/specialisation/default/activate

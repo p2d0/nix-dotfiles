@@ -7,12 +7,13 @@ stdenv.mkDerivation rec {
   src = fetchgit {
     url = "https://repo.dec05eba.com/gpu-screen-recorder";
     name = "gpu-screen-recorder";
-    sha256 = "sha256-lN9rZy9ntkaNRZ8xixXRCNZ5weyzQCVYJK6lSa8wk6E=";
+    rev = "e0b2f0c";
+    sha256 = "sha256-7kfG/M3TsVQYc+WEMuqWsZo4yQo3aLtXxfXSHMbMNp4=";
   };
 
-  patches = [
-    /etc/nixos/pkgs/gpu-screen-recorder.patch
-  ];
+  # patches = [
+  #   /etc/nixos/pkgs/gpu-screen-recorder.patch
+  # ];
 
   nativeBuildInputs = [makeWrapper wrapGAppsHook ];
   buildInputs = [
