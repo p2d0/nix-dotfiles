@@ -385,7 +385,6 @@
                     "rutracker.org",
                     "seagate.com",
                     "soundcloud.com",
-                    "spotify.com",
                     "telegramcatalog.com",
                     "thepiratebay.org",
                     "thepiratebay.party",
@@ -424,12 +423,13 @@
                 "QV2RAY_RULE_TAG": "bard",
                 "domain": [
                     "bard.google.com",
-                    "iplocation.net"
+                    "iplocation.net",
+                    "spotify.com"
                 ],
                 "inboundTag": [
                     "GlobalConfig-Socks"
                 ],
-                "outboundTag": "Ahmet",
+                "outboundTag": "Freedom_52454303",
                 "type": "field"
             },
             {

@@ -512,8 +512,6 @@
       #     ];}).natron
       # unstable.natron
       my.natron-bin
-      unstable.openimageio
-      unstable-small.openfx
       unstable.scrcpy
       (unstable.python3.withPackages(ps: [ ps.python-lsp-server  ps.requests ps.epc ps.lxml ps.tld ps.sexpdata ps.pyqt6 ps.pyqt6-sip ps.pyqt6-webengine ps.pygetwindow ]))
       unstable.python39Packages.yt-dlp

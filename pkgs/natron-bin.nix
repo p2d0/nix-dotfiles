@@ -40,7 +40,8 @@ stdenv.mkDerivation rec {
   };
   # unpackCmd = "tar -xf $curSrc -C .";
 
-  nativeBuildInputs = [ autoPatchelfHook makeWrapper ];
+  nativeBuildInputs = [ makeWrapper ];
+
   buildInputs = [
     ffmpeg-full
     openfx
@@ -66,6 +67,7 @@ stdenv.mkDerivation rec {
     ncurses
     readline
   ];
+  libpath = lib.makeLibraryPath buildInputs;
 
   installPhase = ''
     mkdir -p $out/bin
@@ -73,8 +75,9 @@ stdenv.mkDerivation rec {
     # #cp $out/Telegram $out/share/telegram
     # ls -al bin/
     # chmod +x Natron
-    # wrapProgram \
-    #   $out/Natron
+    wrapProgram \
+      $out/Natron \
+      --prefix LD_LIBRARY_PATH : "${libpath}"
   '';
 }
 
