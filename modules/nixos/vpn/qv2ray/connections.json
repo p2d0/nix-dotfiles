@@ -420,7 +420,7 @@
     "rugueyflisni": {
         "creationDate": 1683541159,
         "displayName": "🇭🇰2@shadowsockskeys",
-        "lastConnected": 1683546092,
+        "lastConnected": 1698498130,
         "lastUpdatedDate": 1683541159,
         "latency": 99999,
         "stats": [
@@ -527,21 +527,21 @@
     "tyrvssdecpyw": {
         "creationDate": 1683545186,
         "displayName": "MAIN CONFIG",
-        "lastConnected": 1698399560,
+        "lastConnected": 1698498131,
         "lastUpdatedDate": 1683545186,
         "latency": 41,
         "stats": [
             {
-                "downLinkData": 1045790050577,
-                "upLinkData": 9658081906
+                "downLinkData": 1047277911469,
+                "upLinkData": 9678502203
             },
             {
-                "downLinkData": 216482460146,
-                "upLinkData": 1935847344
+                "downLinkData": 217543067753,
+                "upLinkData": 1947922180
             },
             {
-                "downLinkData": 829491499027,
-                "upLinkData": 7714576683
+                "downLinkData": 829919004351,
+                "upLinkData": 7722549119
             },
             {
             }
