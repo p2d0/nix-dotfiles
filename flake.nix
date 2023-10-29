@@ -7,10 +7,11 @@
     nixos-unstable-small.url = "nixpkgs/nixos-unstable-small";
     home-manager.url = "github:nix-community/home-manager/release-23.05";
     hyprland.url = "github:hyprwm/Hyprland";
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs @ { self,  nixpkgs, nixos-unstable, nixos-unstable-small, hyprland, home-manager, ... }:
+  outputs = inputs @ { self,  nixpkgs, chaotic, nixos-unstable, nixos-unstable-small, hyprland, home-manager, ... }:
     let lib = nixpkgs.lib.extend (self: super: { my = import /etc/nixos/lib/util.nix { lib = nixpkgs.lib; }; });
         nixpkgs-tars = "https://github.com/NixOS/nixpkgs/archive/";
         system =  "x86_64-linux";
@@ -55,6 +56,7 @@
             modules = [
               {nixpkgs.pkgs = pkgs;}
               home-manager.nixosModules.home-manager
+              chaotic.nixosModules.default
               hyprland.nixosModules.default
               ./home.nix
               ./hosts/main/configuration.nix
