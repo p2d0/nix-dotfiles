@@ -440,7 +440,8 @@
       # (unstable.qt6Packages.callPackage /etc/nixos/pkgs/tdesktop/tdesktop.nix {
       #   abseil-cpp = unstable.abseil-cpp_202111;
       # })
-      unstable.tdesktop
+      # unstable.tdesktop
+      telegram-desktop-git
       unstable.nil
       jpegoptim
       chatterino2
