@@ -6,7 +6,7 @@ appimageTools.wrapType2 rec {
 
   src = fetchurl {
     url = "https://github.com/ppy/osu/releases/download/${version}/osu.AppImage";
-    sha256 = "sha256-oEfH6ctsiMrV6p8p7OdwNUBzGK7AERlmuAL1MXc0o4w=";
+    sha256 = "sha256-yr7PtBUBE0tB0giAE8aQCNJvxS/tMzlLWpJ3NyosQZk=";
   };
 
   extraPkgs = pkgs: with pkgs; [ icu ];
