@@ -140,6 +140,10 @@
     #   source = ./configs/brave-flags.conf;
     # };
     ".npmrc".text = "prefix = \${HOME}/.npm-packages";
+
+    # telegram-desktop audio problems fix tdesktop
+    ".alsoftrc".text = "drivers=pulse";
+
     ".config/dunst" = {
       source = ./configs/dunst;
       recursive = true;
