@@ -441,7 +441,7 @@
       #   abseil-cpp = unstable.abseil-cpp_202111;
       # })
       # unstable.tdesktop
-      telegram-desktop-git
+      telegram-desktop_git
       unstable.nil
       jpegoptim
       chatterino2
