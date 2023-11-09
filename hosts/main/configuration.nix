@@ -289,6 +289,7 @@
       # pr229886.amdgpu-pro-libs.prefixes
       # unstable.amf-headers
       glibc
+      xmrig
       sumneko-lua-language-server
       luarocks
       skypeforlinux
