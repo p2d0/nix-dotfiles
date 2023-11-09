@@ -340,7 +340,7 @@
                     "cdninstagram",
                     "cgscomputer.com",
                     "chess.com",
-                    "chesscomfiles.com",
+                    "chesscomfiles.com\t",
                     "clevelandclinic.org",
                     "crunchbase.com",
                     "deepstatemap.live",
@@ -431,7 +431,7 @@
                 "inboundTag": [
                     "GlobalConfig-Socks"
                 ],
-                "outboundTag": "Freedom_52454303",
+                "outboundTag": "United States Multacom",
                 "type": "field"
             },
             {
@@ -444,7 +444,7 @@
                 "inboundTag": [
                     "GlobalConfig-Socks"
                 ],
-                "outboundTag": "🇺🇸 США 03.07.2023/@free1ss",
+                "outboundTag": "direct-runtu.nl.org",
                 "type": "field"
             },
             {
