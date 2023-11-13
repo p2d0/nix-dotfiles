@@ -21,6 +21,7 @@ in {
       # https://discourse.nixos.org/t/overriding-a-package-without-rebuilding-it/13898/6
 
       freecad
+      openscad
 
       # (pkgs.symlinkJoin {
       #   name = "freecad-wrapped";

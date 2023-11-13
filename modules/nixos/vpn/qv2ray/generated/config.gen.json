@@ -35,8 +35,8 @@
                 "refresh": null,
                 "strategy": "always"
             },
-            "listen": "192.168.31.27",
-            "port": 8092,
+            "listen": "localhost",
+            "port": "8095",
             "protocol": "http",
             "settings": {
                 "allowTransparent": true,
@@ -450,9 +450,6 @@
             {
                 "QV2RAY_RULE_ENABLED": true,
                 "QV2RAY_RULE_TAG": "http proxy",
-                "inboundTag": [
-                    "GlobalConfig-HTTP"
-                ],
                 "network": "udp,tcp",
                 "outboundTag": "direct-runtu.nl.org",
                 "type": "field"
