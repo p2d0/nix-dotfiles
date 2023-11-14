@@ -36,7 +36,7 @@
                 "strategy": "always"
             },
             "listen": "localhost",
-            "port": "8095",
+            "port": "8092",
             "protocol": "http",
             "settings": {
                 "allowTransparent": true,
@@ -345,6 +345,7 @@
                     "crunchbase.com",
                     "deepstatemap.live",
                     "dell.com",
+                    "echofm.online",
                     "facebook.com",
                     "fbcdn.net",
                     "forefront.ai",
@@ -417,7 +418,7 @@
                 "inboundTag": [
                     "GlobalConfig-Socks"
                 ],
-                "outboundTag": "Freedom_59421500",
+                "outboundTag": "direct-runtu.nl.org",
                 "type": "field"
             },
             {
@@ -444,12 +445,15 @@
                 "inboundTag": [
                     "GlobalConfig-Socks"
                 ],
-                "outboundTag": "direct-runtu.nl.org",
+                "outboundTag": "United States Multacom",
                 "type": "field"
             },
             {
                 "QV2RAY_RULE_ENABLED": true,
                 "QV2RAY_RULE_TAG": "http proxy",
+                "inboundTag": [
+                    "GlobalConfig-HTTP"
+                ],
                 "network": "udp,tcp",
                 "outboundTag": "direct-runtu.nl.org",
                 "type": "field"
