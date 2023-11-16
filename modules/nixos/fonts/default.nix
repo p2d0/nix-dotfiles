@@ -30,6 +30,7 @@ in {
                   })
                   pkgs.weather-icons
                   (callPackage ./fonts/bellandlamb.nix { })
+                  (callPackage ./fonts/icomoon.nix { })
                   (callPackage ./fonts/apex.nix { })
                   #corduoy https://www.behance.net/gallery/10761523/Corduroy-Slab-Free
                   # hamster script https://www.behance.net/gallery/24882765/Hamster-Script-(Free-Font)
