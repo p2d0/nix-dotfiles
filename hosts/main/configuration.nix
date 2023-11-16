@@ -209,7 +209,8 @@
     cron = {
       enable = true;
       systemCronJobs = [
-        # "00 22 * * * root sh -c 'shutdown now'"
+        "30 22 * * * root bash /etc/nixos/ask_for_shutdown.sh"
+        "00 23 * * * root bash /etc/nixos/ask_for_shutdown.sh"
         "00 20 * * * andrew fish -c 'sync_repos'"
         "00 19 * * * andrew wget --no-check-certificate -O - https://freedns.afraid.org/dynamic/update.php?RnBTMHFiQlhHWnVmUXpNYmtLWlQ0ZXB5OjIxNjg5NzI5 >> /tmp/freedns_ug_kyrgyzstan_kg.log 2>&1 &"
       ];
@@ -296,7 +297,7 @@
       neovide
       lazygit
       gmsh
-      unstable.microsoft-edge
+      # unstable.microsoft-edge
       calculix
       # pr229886.amdgpu-pro-libs.amf
       # pr229886.amdgpu-pro-libs.prefixes
@@ -318,9 +319,9 @@
       # })
       pciutils
       usbutils
-      unstable.davinci-resolve
-      unstable.firefox
-      unstable.librewolf
+      # unstable.davinci-resolve
+      # unstable.firefox
+      # unstable.librewolf
       xcompmgr
       heroic
       killall
@@ -395,7 +396,7 @@
       yad
       ccls
       wofi
-      jupyter
+      # jupyter
       docker-compose
       playerctl
       libusb
@@ -442,7 +443,8 @@
       #   abseil-cpp = unstable.abseil-cpp_202111;
       # })
       # unstable.tdesktop
-      telegram-desktop_git
+      # telegram-desktop_git
+      unstable.telegram-desktop
       unstable.nil
       jpegoptim
       chatterino2
