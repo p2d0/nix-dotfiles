@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # This script asks the user yes or no and shuts down the system if the user answers yes
 
 # Display a dialog box with yes and no buttons
