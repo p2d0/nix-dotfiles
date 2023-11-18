@@ -233,7 +233,7 @@
   modules.xdg.sessionVariables = true;
   programs.java = {
     enable = true;
-    package = pkgs.oraclejre8;
+    package = pkgs.openjdk8;
     # https://javadl.oracle.com/webapps/download/GetFile/1.8.0_281-b09/89d678f2be164786b292527658ca1605/linux-i586/jdk-8u281-linux-x64.tar.gz
     # TODO direct link
   };
@@ -515,7 +515,8 @@
       #       "ffmpeg-3.4.8"
       #     ];}).natron
       # unstable.natron
-      my.natron-bin
+      # my.natron-bin
+      unstable.natron
       unstable.scrcpy
       (unstable.python3.withPackages(ps: [ ps.python-lsp-server  ps.requests ps.epc ps.lxml ps.tld ps.sexpdata ps.pyqt6 ps.pyqt6-sip ps.pyqt6-webengine ps.pygetwindow ]))
       unstable.python39Packages.yt-dlp
