@@ -167,7 +167,9 @@
   };
   # TODO Extract to fish module
   programs.fish.enable = true;
-  users.defaultUserShell = pkgs.fish;
+  programs.fish.interactiveShellInit = ''
+'';
+    users.defaultUserShell = pkgs.fish;
 
   modules.emacs-with-doom.enable = true;
 
@@ -209,8 +211,8 @@
     cron = {
       enable = true;
       systemCronJobs = [
-        "30 22 * * * root bash /etc/nixos/ask_for_shutdown.sh"
-        "00 23 * * * root bash /etc/nixos/ask_for_shutdown.sh"
+        "00 23 * * * root sh -c 'shutdown now'"
+        "30 22 * * * root sh -c 'shutdown now'"
         "00 20 * * * andrew fish -c 'sync_repos'"
         "00 19 * * * andrew wget --no-check-certificate -O - https://freedns.afraid.org/dynamic/update.php?RnBTMHFiQlhHWnVmUXpNYmtLWlQ0ZXB5OjIxNjg5NzI5 >> /tmp/freedns_ug_kyrgyzstan_kg.log 2>&1 &"
       ];
