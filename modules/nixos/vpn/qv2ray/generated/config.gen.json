@@ -35,7 +35,7 @@
                 "refresh": null,
                 "strategy": "always"
             },
-            "listen": "localhost",
+            "listen": "0.0.0.0",
             "port": "8092",
             "protocol": "http",
             "settings": {
@@ -390,6 +390,7 @@
                     "rustdesk.com",
                     "rutracker.org",
                     "seagate.com",
+                    "singular.net",
                     "soundcloud.com",
                     "stripe.com",
                     "telegramcatalog.com",
@@ -460,7 +461,7 @@
                     "GlobalConfig-HTTP"
                 ],
                 "network": "udp,tcp",
-                "outboundTag": "direct-runtu.nl.org",
+                "outboundTag": "United States Multacom",
                 "type": "field"
             },
             {
