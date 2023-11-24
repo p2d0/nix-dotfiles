@@ -166,10 +166,27 @@
     ];
   };
   # TODO Extract to fish module
+  security.sudo = {
+    enable = true;
+    extraRules = [{
+      commands = [
+        {
+          command = "/run/current-system/sw/bin/nixos-rebuild";
+          options = [ "NOPASSWD" ];
+        }
+        {
+          command = "/run/current-system/specialisation/work/activate";
+          options = [ "NOPASSWD" ];
+        }
+        {
+          command = "/run/current-system/specialisation/default/activate";
+          options = [ "NOPASSWD" ];
+        }];
+      groups = [ "wheel" ];
+    }];
+  };
   programs.fish.enable = true;
-  programs.fish.interactiveShellInit = ''
-'';
-    users.defaultUserShell = pkgs.fish;
+  users.defaultUserShell = pkgs.fish;
 
   modules.emacs-with-doom.enable = true;
 
@@ -212,7 +229,7 @@
       enable = true;
       systemCronJobs = [
         "00 23 * * * root sh -c 'shutdown now'"
-        "30 22 * * * root sh -c 'shutdown now'"
+        "20 22 * * * root sh -c 'shutdown now'"
         "00 20 * * * andrew fish -c 'sync_repos'"
         "00 19 * * * andrew wget --no-check-certificate -O - https://freedns.afraid.org/dynamic/update.php?RnBTMHFiQlhHWnVmUXpNYmtLWlQ0ZXB5OjIxNjg5NzI5 >> /tmp/freedns_ug_kyrgyzstan_kg.log 2>&1 &"
       ];
