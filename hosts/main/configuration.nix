@@ -229,7 +229,7 @@
       enable = true;
       systemCronJobs = [
         "00 23 * * * root sh -c 'shutdown now'"
-        "20 22 * * * root sh -c 'shutdown now'"
+        "00 22 * * * root sh -c 'shutdown now'"
         "00 20 * * * andrew fish -c 'sync_repos'"
         "3,8,13,18,23,28,33,38,43,48,53,58 * * * * andrew sleep 50 ; wget --no-check-certificate -O - https://freedns.afraid.org/dynamic/update.php?RnBTMHFiQlhHWnVmUXpNYmtLWlQ0ZXB5OjIxNjg5NzI5 >> /tmp/freedns_ug_kyrgyzstan_kg.log 2>&1 &"
       ];
@@ -538,7 +538,8 @@
       # my.natron-bin
       unstable.natron
       unstable.scrcpy
-      (unstable.python3.withPackages(ps: [ ps.python-lsp-server  ps.requests ps.epc ps.lxml ps.tld ps.sexpdata ps.pyqt6 ps.pyqt6-sip ps.pyqt6-webengine ps.pygetwindow ]))
+      (unstable.python3.withPackages(ps: [ # ps.python-miio
+                                           ps.requests ps.epc ps.lxml ps.tld ps.sexpdata ps.pyqt6 ps.pyqt6-sip ps.pyqt6-webengine ps.pygetwindow ]))
       unstable.python39Packages.yt-dlp
       python39Packages.pytest
       # libpulseaudio
