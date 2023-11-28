@@ -155,7 +155,7 @@
   modules.sway.enable = true;
   modules.hjkl.enable = true;
   modules.printing3d.enable = true;
-  modules.warp.enable = false;
+  modules.warp.enable = true;
   modules.keyrings.enable = true;
 
   users.users.${config.user} = {
@@ -312,6 +312,7 @@
       xmrig
       sumneko-lua-language-server
       luarocks
+      cloudflare-warp
       skypeforlinux
       neovide
       lazygit
@@ -538,8 +539,7 @@
       # my.natron-bin
       unstable.natron
       unstable.scrcpy
-      (unstable.python3.withPackages(ps: [ # ps.python-miio
-                                           ps.requests ps.epc ps.lxml ps.tld ps.sexpdata ps.pyqt6 ps.pyqt6-sip ps.pyqt6-webengine ps.pygetwindow ]))
+      (unstable.python3.withPackages(ps: [ ps.python-lsp-server  ps.requests ps.epc ps.lxml ps.tld ps.sexpdata ps.pyqt6 ps.pyqt6-sip ps.pyqt6-webengine ps.pygetwindow ]))
       unstable.python39Packages.yt-dlp
       python39Packages.pytest
       # libpulseaudio

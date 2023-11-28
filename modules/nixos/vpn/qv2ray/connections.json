@@ -309,7 +309,7 @@
     "oyrwejswsjqe": {
         "creationDate": 1688655341,
         "displayName": "direct-runtu.nl.org",
-        "lastConnected": 1689522718,
+        "lastConnected": 1701178740,
         "lastUpdatedDate": 1688655341,
         "latency": 39,
         "stats": [
@@ -506,9 +506,9 @@
     "tvrtypfnoitz": {
         "creationDate": 1689522865,
         "displayName": "p2d0-vpnjantit.com",
-        "lastConnected": 1689522871,
+        "lastConnected": 1701178733,
         "lastUpdatedDate": 1689522865,
-        "latency": 39,
+        "latency": 48,
         "stats": [
             {
                 "downLinkData": 325985,
@@ -527,21 +527,21 @@
     "tyrvssdecpyw": {
         "creationDate": 1683545186,
         "displayName": "MAIN CONFIG",
-        "lastConnected": 1701067336,
+        "lastConnected": 1701185776,
         "lastUpdatedDate": 1683545186,
         "latency": 41,
         "stats": [
             {
-                "downLinkData": 1192886081096,
-                "upLinkData": 10964767258
+                "downLinkData": 1193288066992,
+                "upLinkData": 10981772706
             },
             {
-                "downLinkData": 256761793179,
-                "upLinkData": 2346835779
+                "downLinkData": 256770711056,
+                "upLinkData": 2349169182
             },
             {
-                "downLinkData": 936359861300,
-                "upLinkData": 8604449724
+                "downLinkData": 936753517852,
+                "upLinkData": 8615435279
             },
             {
             }
@@ -620,7 +620,7 @@
         "displayName": "🇺🇸 США 03.07.2023/@free1ss",
         "lastConnected": 0,
         "lastUpdatedDate": 1690360815,
-        "latency": 176
+        "latency": 99999
     },
     "xdxqzjmgrfow": {
         "creationDate": 1684224896,

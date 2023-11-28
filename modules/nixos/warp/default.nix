@@ -13,16 +13,19 @@ in {
     };
   };
   config = mkIf cfg.enable {
-    systemd.services.warp-svc = {
-      enable = true;
-      description = "Warp service";
-      wantedBy = [ "default.target" ];
-      serviceConfig = {
-        ExecStart = "${pkgs.my.warp}/bin/warp-svc";
-      };
-    };
+    # systemd.services.warp-svc = {
+    #   enable = true;
+    #   description = "Warp service";
+    #   wantedBy = [ "default.target" ];
+    #   serviceConfig = {
+    #     ExecStart = "${pkgs.cloudflare-warp}/bin/warp-svc";
+    #   };
+    # };
+    systemd.packages = [
+      pkgs.cloudflare-warp
+    ];
     environment.systemPackages = [
-      pkgs.my.warp
+      pkgs.cloudflare-warp
     ];
   };
 }

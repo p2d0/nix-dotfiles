@@ -105,26 +105,6 @@
         },
         {
             "QV2RAY_OUTBOUND_METADATA": {
-                "displayName": "Freedom_59421500"
-            },
-            "_QV2RAY_USE_GLOBAL_FORWARD_PROXY_": false,
-            "mux": {
-                "concurrency": 1,
-                "enabled": null
-            },
-            "protocol": "blackhole",
-            "sendThrough": "0.0.0.0",
-            "settings": {
-                "response": {
-                    "type": "http"
-                }
-            },
-            "streamSettings": {
-            },
-            "tag": "Freedom_59421500"
-        },
-        {
-            "QV2RAY_OUTBOUND_METADATA": {
                 "displayName": "United States Multacom"
             },
             "mux": {
@@ -165,137 +145,26 @@
         },
         {
             "QV2RAY_OUTBOUND_METADATA": {
-                "displayName": "direct-runtu.nl.org"
+                "displayName": "BlackHole-59542493"
             },
-            "protocol": "vless",
-            "settings": {
-                "vnext": [
-                    {
-                        "address": "youshengdd.tk",
-                        "port": 443,
-                        "users": [
-                            {
-                                "encryption": "none",
-                                "id": "538193f3-8f09-483f-9a0c-4ee2b2af9d0e"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "streamSettings": {
-                "network": "ws",
-                "security": "tls",
-                "tlsSettings": {
-                    "disableSystemRoot": false
-                },
-                "wsSettings": {
-                    "path": "/l33tLhx0SFASG4l9FERJ1g"
-                },
-                "xtlsSettings": {
-                    "disableSystemRoot": false
-                }
-            },
-            "tag": "direct-runtu.nl.org"
-        },
-        {
-            "QV2RAY_OUTBOUND_METADATA": {
-                "displayName": "p2d0-vpnjantit.com"
-            },
-            "protocol": "vless",
-            "settings": {
-                "vnext": [
-                    {
-                        "address": "gr1.vpnjantit.com",
-                        "port": 10002,
-                        "users": [
-                            {
-                                "encryption": "none",
-                                "id": "fddf5b2c-23f0-11ee-ab58-27f1a013f6f5"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "streamSettings": {
-                "network": "ws",
-                "security": "tls",
-                "tlsSettings": {
-                    "disableSystemRoot": false
-                },
-                "wsSettings": {
-                    "path": "/vpnjantit"
-                },
-                "xtlsSettings": {
-                    "disableSystemRoot": false
-                }
-            },
-            "tag": "p2d0-vpnjantit.com"
-        },
-        {
-            "QV2RAY_OUTBOUND_METADATA": {
-                "displayName": "www.outline.network (FR)"
-            },
+            "_QV2RAY_USE_GLOBAL_FORWARD_PROXY_": false,
             "mux": {
+                "concurrency": 1,
+                "enabled": null
             },
-            "protocol": "shadowsocks",
+            "protocol": "http",
             "sendThrough": "0.0.0.0",
             "settings": {
                 "servers": [
                     {
-                        "address": "ak1772.www.outline.network.fr8678825324247b8176d59f83c30bd94d23d2e3ac5cd4a743bkwqeikvdyufr.cyou",
-                        "method": "chacha20-ietf-poly1305",
-                        "password": "G!yBwPWH3Vao",
-                        "port": 810
+                        "address": "localhost",
+                        "port": 9054
                     }
                 ]
             },
             "streamSettings": {
             },
-            "tag": "www.outline.network (FR)"
-        },
-        {
-            "QV2RAY_OUTBOUND_METADATA": {
-                "displayName": "🇪🇦 Испания 03.07.2023/@free1ss"
-            },
-            "mux": {
-            },
-            "protocol": "shadowsocks",
-            "sendThrough": "0.0.0.0",
-            "settings": {
-                "servers": [
-                    {
-                        "address": "212.227.146.33",
-                        "method": "chacha20-ietf-poly1305",
-                        "password": "GvsjQ0OZ5nGQXDGfzfWZf5",
-                        "port": 443
-                    }
-                ]
-            },
-            "streamSettings": {
-            },
-            "tag": "🇪🇦 Испания 03.07.2023/@free1ss"
-        },
-        {
-            "QV2RAY_OUTBOUND_METADATA": {
-                "displayName": "🇺🇸 США 03.07.2023/@free1ss"
-            },
-            "mux": {
-            },
-            "protocol": "shadowsocks",
-            "sendThrough": "0.0.0.0",
-            "settings": {
-                "servers": [
-                    {
-                        "address": "92.38.149.110",
-                        "method": "chacha20-ietf-poly1305",
-                        "password": "tFDsR8HG6GHhkpY7yEqJ",
-                        "port": 51348
-                    }
-                ]
-            },
-            "streamSettings": {
-            },
-            "tag": "🇺🇸 США 03.07.2023/@free1ss"
+            "tag": "WARP"
         }
     ],
     "routing": {
@@ -305,14 +174,13 @@
         "rules": [
             {
                 "QV2RAY_RULE_ENABLED": true,
-                "QV2RAY_RULE_TAG": "New Rule",
+                "QV2RAY_RULE_TAG": "WARP",
                 "domain": [
                     "1377x.to",
                     "7tv.app",
                     "all3dp.com",
                     "archiveofourown.org",
                     "beekeeb.com",
-                    "bing.com",
                     "bleachbubble.com",
                     "botostore.com",
                     "capcut.com",
@@ -352,7 +220,6 @@
                     "nnmclub.to",
                     "oaistatic.com",
                     "oculus.com",
-                    "openai.com",
                     "opensea.io",
                     "organizing.tv",
                     "ovdinfo.org",
@@ -392,41 +259,18 @@
                 "inboundTag": [
                     "GlobalConfig-Socks"
                 ],
-                "outboundTag": "United States Multacom",
+                "outboundTag": "WARP",
                 "type": "field"
             },
             {
                 "QV2RAY_RULE_ENABLED": true,
-                "QV2RAY_RULE_TAG": "redirects",
-                "domain": [
-                    "twitter.com"
-                ],
-                "inboundTag": [
-                    "GlobalConfig-Socks"
-                ],
-                "outboundTag": "direct-runtu.nl.org",
-                "type": "field"
-            },
-            {
-                "QV2RAY_RULE_ENABLED": true,
-                "QV2RAY_RULE_TAG": "bard",
-                "domain": [
-                    "bard.google.com",
-                    "iplocation.net",
-                    "spotify.com"
-                ],
-                "inboundTag": [
-                    "GlobalConfig-Socks"
-                ],
-                "outboundTag": "United States Multacom",
-                "type": "field"
-            },
-            {
-                "QV2RAY_RULE_ENABLED": true,
-                "QV2RAY_RULE_TAG": "Claude",
+                "QV2RAY_RULE_TAG": "US",
                 "domain": [
                     "anthropic.com",
-                    "claude.ai"
+                    "bard.google.com",
+                    "claude.ai",
+                    "iplocation.net",
+                    "spotify.com"
                 ],
                 "inboundTag": [
                     "GlobalConfig-Socks"
@@ -441,16 +285,29 @@
                     "GlobalConfig-HTTP"
                 ],
                 "network": "udp,tcp",
+                "outboundTag": "WARP",
+                "type": "field"
+            },
+            {
+                "QV2RAY_RULE_ENABLED": true,
+                "QV2RAY_RULE_TAG": "OtherVPN",
+                "domain": [
+                    "bing.com",
+                    "openai.com"
+                ],
+                "inboundTag": [
+                    "GlobalConfig-Socks"
+                ],
+                "network": "udp,tcp",
                 "outboundTag": "United States Multacom",
                 "type": "field"
             },
             {
                 "QV2RAY_RULE_ENABLED": true,
-                "QV2RAY_RULE_TAG": "New Rule_wzqse",
+                "QV2RAY_RULE_TAG": "Default",
                 "inboundTag": [
                     "GlobalConfig-Socks"
                 ],
-                "network": "udp,tcp",
                 "outboundTag": "Freedom_52454303",
                 "type": "field"
             }

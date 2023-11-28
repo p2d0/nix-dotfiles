@@ -32,7 +32,8 @@ in {
         # pkgs.obs-studio
         (pkgs.lutris.override {
           extraPkgs = pkgs: with pkgs;[
-            pkgs.pkgsi686Linux.alsa-lib
+            pkgs.alsa-lib
+            # pkgs.pkgsi686Linux.alsa-lib
             pkgs.SDL2
             pkgs.libpulseaudio
             pkgs.pkgsi686Linux.libpulseaudio
