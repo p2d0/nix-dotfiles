@@ -246,7 +246,6 @@
                     "metacritic.com",
                     "national.com",
                     "nnmclub.to",
-                    "oaistatic.com",
                     "oculus.com",
                     "opensea.io",
                     "organizing.tv",
@@ -272,6 +271,7 @@
                     "thepiratebay.party",
                     "theseasonedmom.com",
                     "thingiverse.com",
+                    "threadreaderapp.com",
                     "threads.net",
                     "tiktok.com",
                     "twimg.co",
@@ -321,6 +321,11 @@
                 "QV2RAY_RULE_TAG": "OtherVPN",
                 "domain": [
                     "bing.com",
+                    "bingapis.com",
+                    "live.com",
+                    "microsoftonline.com",
+                    "msftauth.net",
+                    "oaistatic.com",
                     "openai.com"
                 ],
                 "inboundTag": [

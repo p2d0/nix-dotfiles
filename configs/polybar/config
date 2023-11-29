@@ -82,7 +82,7 @@ font-8 = FontAwesome:size=12;5
 
 modules-left = i3
 modules-center = popup-calendar
-modules-right = timer weather
+modules-right = light_temp light timer weather
 ; bluetooth pulseaudio
 ; scratchpad-indicator
 ; text
@@ -679,6 +679,26 @@ content-background = ${color.background-alt}
 content-foreground = ${color.background-alt}
 content-overline = ${color.background}
 content-underline = ${color.background}
+
+[module/light]
+type = custom/script
+exec = ~/.config/polybar/xiaomi_light_control.py display_brightness
+click-left = ~/.config/polybar/xiaomi_light_control.py toggle
+click-right = ~/.config/polybar/xiaomi_light_control.py set_brightness 50
+scroll-up = ~/.config/polybar/xiaomi_light_control.py change 10
+scroll-down = ~/.config/polybar/xiaomi_light_control.py change -10
+interval = 10
+format = <label>
+format-prefix = " "
+
+[module/light_temp]
+type = custom/script
+exec = ~/.config/polybar/xiaomi_light_control.py display_temp
+scroll-up = ~/.config/polybar/xiaomi_light_control.py temperature 1000
+scroll-down = ~/.config/polybar/xiaomi_light_control.py temperature -1000
+interval = 10
+format = <label>
+format-prefix = "󰏈 "
 
 [settings]
 screenchange-reload = true
