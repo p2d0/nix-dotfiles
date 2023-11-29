@@ -12,62 +12,111 @@ yeelights = [
 
 # Define a function to get the brightness of a lightbulb
 def get_brightness(lightbulb):
-    # Create a Yeelight object with the given ip, token and model
     yeelight = Yeelight(lightbulb["ip"], lightbulb["token"], model=lightbulb["model"])
-    # Get the brightness of the lightbulb as an integer
     brightness = yeelight.get_properties(["bright"])[0]
-    # Return the brightness value
     return int(brightness)
 
 # Define a function to set the brightness of a lightbulb
 def set_brightness(lightbulb, brightness):
-    # Create a Yeelight object with the given ip, token and model
     yeelight = Yeelight(lightbulb["ip"], lightbulb["token"], model=lightbulb["model"])
-    # Set the brightness of the lightbulb to the given value
     yeelight.set_brightness(brightness)
+
+# Define a function to set the color temperature of a lightbulb
+def set_temperature(lightbulb, temperature):
+    yeelight = Yeelight(lightbulb["ip"], lightbulb["token"], model=lightbulb["model"])
+    yeelight.set_color_temp(temperature)
+
+# Define a function to get the power status of a lightbulb
+def get_power_status(lightbulb):
+    yeelight = Yeelight(lightbulb["ip"], lightbulb["token"], model=lightbulb["model"])
+    power_status = yeelight.get_properties(["power"])[0]
+    return power_status
+
+# Define a function to toggle a lightbulb on and off
+def toggle_light(lightbulb):
+    yeelight = Yeelight(lightbulb["ip"], lightbulb["token"], model=lightbulb["model"])
+    current_state = yeelight.get_properties(["power"])[0]
+    yeelight.toggle()  # Toggle the light state
+    new_state = yeelight.get_properties(["power"])[0]
+    return current_state, new_state
 
 # Define a function to display the brightness of the lightbulbs
 def display_brightness():
-    # Initialize an empty string to store the output
     output = ""
-    # Loop through the lightbulbs and get their brightness
-    lightbulb  = yeelights[0]
-    brightness = get_brightness(lightbulb)
-    # Append the brightness value to the output string
-    output += f"{brightness}% "
-    # Print the output string
+    lightbulb = yeelights[0]
+    power_status = get_power_status(lightbulb)
+
+    if power_status == "on":
+        brightness = get_brightness(lightbulb)
+        output += f"{brightness}%"
+    else:
+        output += "off"
+
+    print(output)
+
+# Define a function to display the temperature of the lightbulbs
+def display_temperature():
+    output = ""
+    lightbulb = yeelights[0]
+    power_status = get_power_status(lightbulb)
+
+    if power_status == "on":
+        yeelight = Yeelight(lightbulb["ip"], lightbulb["token"], model=lightbulb["model"])
+        temperature = yeelight.get_properties(["ct"])[0]
+        output += f"{temperature}K"
+    else:
+        output += "off"
+
     print(output)
 
 # Define a function to change the brightness of the lightbulbs by a given amount
 def change_brightness(amount):
-    # Loop through the lightbulbs and get their brightness
     for lightbulb in yeelights:
         brightness = get_brightness(lightbulb)
-        # Add the amount to the brightness value and clamp it to the range [1, 100]
         brightness = min(max(brightness + amount, 1), 100)
-        # Set the brightness of the lightbulb to the new value
         set_brightness(lightbulb, brightness)
-    # Print a message to indicate the operation is done
     print(f"Brightness changed by {amount}%")
 
-# Check if the script is run with two arguments
+def set_brightness_for_all(brightness):
+    for lightbulb in yeelights:
+        set_brightness(lightbulb, brightness)
+    print(f"Brightness changed by {amount}%")
 
+# Define a function to change the temperature of the lightbulbs
+def change_temperature(amount):
+    for lightbulb in yeelights:
+        yeelight = Yeelight(lightbulb["ip"], lightbulb["token"], model=lightbulb["model"])
+        current_temperature = int(yeelight.get_properties(["ct"])[0])
+        new_temperature = min(max(current_temperature + amount, 1000), 6500)
+        set_temperature(lightbulb, new_temperature)
+    print(f"Temperature changed by {amount}K")
+
+# Define a function to toggle all lightbulbs
+def toggle_lights():
+    states = [toggle_light(lightbulb) for lightbulb in yeelights]
+    for i, (current_state, new_state) in enumerate(states):
+        print(f"Light {i + 1} toggled: {current_state} -> {new_state}")
+
+# Check if the script is run with the correct number of arguments
 if len(argv) > 2:
-    # Get the first argument value
     arg1 = argv[1]
-    # Get the second argument value as an integer
     arg2 = int(argv[2])
-    # If the first argument is "display", call the display_brightness function
-    if arg1 == "display":
-        display_brightness()
-    # If the first argument is "change", call the change_brightness function with the second argument as the amount
-    elif arg1 == "change":
+
+    if arg1 == "change":
         change_brightness(arg2)
-    # Otherwise, print a message to indicate the usage of the script
+    if arg1 == "set_brightness":
+        set_brightness_for_all(arg2)
+    elif arg1 == "temperature":
+        change_temperature(arg2)
+    else:
+        print("Invalid command")
 elif len(argv) > 1:
     arg1 = argv[1]
-    if arg1 == "display":
+    if arg1 == "display_brightness":
         display_brightness()
+    elif arg1 == "display_temp":
+        display_temperature()
+    elif arg1 == "toggle":
+        toggle_lights()
 else:
-    # Print a message to indicate the usage of the script
-    print("Usage: python polybar_yeelight.py <display|change> <amount>")
+    print("Usage: python polybar_yeelight.py <display_brightness|display_temp|change|temperature|toggle> <amount|temperature>")
