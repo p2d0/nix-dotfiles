@@ -331,6 +331,7 @@
       #   };
       # }))
       flameshot
+      unstable.flyctl
       # .overrideAttrs(oldAttrs: rec {
       #   NIX_CFLAGS_COMPILE = "-DUSE_WAYLAND_CLIPBOARD";
       #   CFLAGS = ["-DUSE_WAYLAND_CLIPBOARD"];
