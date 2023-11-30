@@ -105,6 +105,36 @@
         },
         {
             "QV2RAY_OUTBOUND_METADATA": {
+                "displayName": "test"
+            },
+            "_QV2RAY_USE_GLOBAL_FORWARD_PROXY_": false,
+            "mux": {
+                "concurrency": 1,
+                "enabled": false
+            },
+            "protocol": "shadowsocks",
+            "sendThrough": "0.0.0.0",
+            "settings": {
+                "servers": [
+                    {
+                        "address": "pogpogvpnvpnpogpog.fly.dev",
+                        "method": "chacha20-ietf-poly1305",
+                        "password": "barbus007",
+                        "port": 443
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "ws",
+                "security": "tls",
+                "wsSettings": {
+                    "path": "/v2"
+                }
+            },
+            "tag": "Personal"
+        },
+        {
+            "QV2RAY_OUTBOUND_METADATA": {
                 "displayName": "United States Multacom"
             },
             "mux": {
@@ -251,7 +281,6 @@
                     "typing.com",
                     "unl.edu",
                     "verstka.media",
-                    "whatismyip.com",
                     "whatismyipaddress.com",
                     "yeggi.com",
                     "zedge.net"
@@ -269,8 +298,7 @@
                     "anthropic.com",
                     "bard.google.com",
                     "claude.ai",
-                    "iplocation.net",
-                    "spotify.com"
+                    "iplocation.net"
                 ],
                 "inboundTag": [
                     "GlobalConfig-Socks"
@@ -298,13 +326,27 @@
                     "microsoftonline.com",
                     "msftauth.net",
                     "oaistatic.com",
-                    "openai.com"
+                    "openai.com",
+                    "spotify.com"
                 ],
                 "inboundTag": [
                     "GlobalConfig-Socks"
                 ],
                 "network": "udp,tcp",
-                "outboundTag": "United States Multacom",
+                "outboundTag": "Ahmet",
+                "type": "field"
+            },
+            {
+                "QV2RAY_RULE_ENABLED": true,
+                "QV2RAY_RULE_TAG": "Personal",
+                "domain": [
+                    "whatismyip.com"
+                ],
+                "inboundTag": [
+                    "GlobalConfig-Socks"
+                ],
+                "network": "udp,tcp",
+                "outboundTag": "Personal",
                 "type": "field"
             },
             {

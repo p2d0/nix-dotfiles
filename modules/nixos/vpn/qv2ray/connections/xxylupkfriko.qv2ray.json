@@ -1,0 +1,31 @@
+{
+    "outbounds": [
+        {
+            "_QV2RAY_USE_GLOBAL_FORWARD_PROXY_": false,
+            "mux": {
+                "concurrency": 1,
+                "enabled": true
+            },
+            "protocol": "shadowsocks",
+            "sendThrough": "0.0.0.0",
+            "settings": {
+                "servers": [
+                    {
+                        "address": "pogpogvpnvpnpogpog.fly.dev",
+                        "method": "chacha20-ietf-poly1305",
+                        "password": "barbus007",
+                        "port": 80
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "ws",
+                "security": "tls",
+                "wsSettings": {
+                    "path": "/v2"
+                }
+            },
+            "tag": "Personal"
+        }
+    ]
+}

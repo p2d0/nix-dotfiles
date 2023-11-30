@@ -527,21 +527,21 @@
     "tyrvssdecpyw": {
         "creationDate": 1683545186,
         "displayName": "MAIN CONFIG",
-        "lastConnected": 1701238534,
+        "lastConnected": 1701355718,
         "lastUpdatedDate": 1683545186,
         "latency": 41,
         "stats": [
             {
-                "downLinkData": 1194096237260,
-                "upLinkData": 11007022352
+                "downLinkData": 1196751073745,
+                "upLinkData": 11076083455
             },
             {
-                "downLinkData": 257223124276,
-                "upLinkData": 2357579453
+                "downLinkData": 257403234263,
+                "upLinkData": 2392548548
             },
             {
-                "downLinkData": 937110034745,
-                "upLinkData": 8632370369
+                "downLinkData": 939586239315,
+                "upLinkData": 8666599675
             },
             {
             }
@@ -649,6 +649,23 @@
             },
             {
                 "upLinkData": 34552
+            },
+            {
+            },
+            {
+            }
+        ]
+    },
+    "xxylupkfriko": {
+        "creationDate": 1701340546,
+        "displayName": "test",
+        "lastConnected": 1701341101,
+        "lastUpdatedDate": 1701340546,
+        "latency": 33,
+        "stats": [
+            {
+            },
+            {
             },
             {
             },
