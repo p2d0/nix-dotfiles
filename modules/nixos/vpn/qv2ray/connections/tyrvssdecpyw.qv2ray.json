@@ -262,13 +262,13 @@
                     "qualcomm.com",
                     "quora.com",
                     "robotcache.com",
-                    "rustdesk.com",
                     "rutracker.org",
                     "seagate.com",
                     "singular.net",
                     "soundcloud.com",
                     "stripe.com",
                     "telegramcatalog.com",
+                    "theins.ru",
                     "thepiratebay.org",
                     "thepiratebay.party",
                     "theseasonedmom.com",
@@ -327,6 +327,7 @@
                     "msftauth.net",
                     "oaistatic.com",
                     "openai.com",
+                    "rustdesk.com",
                     "spotify.com"
                 ],
                 "inboundTag": [
