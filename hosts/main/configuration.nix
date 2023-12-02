@@ -481,7 +481,7 @@
       gnome.gedit
       ntfs3g
       gnome.gnome-boxes
-      rustdesk
+      unstable.rustdesk
       qbittorrent
       tor-browser-bundle-bin
       # looking-glass-client
@@ -541,11 +541,11 @@
       # my.natron-bin
       unstable.natron
       unstable.scrcpy
-      # unstable.python39Packages.yt-dlp
-      # python39Packages.pytest
+      unstable.python39Packages.yt-dlp
+      python39Packages.pytest
       # libpulseaudio
-      # python39Packages.virtualenv
-      # python39Packages.pip
+      python39Packages.virtualenv
+      python39Packages.pip
       anydesk
       feh
       gnome.eog
