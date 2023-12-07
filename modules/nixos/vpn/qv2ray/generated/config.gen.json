@@ -337,7 +337,7 @@
                     "GlobalConfig-HTTP"
                 ],
                 "network": "udp,tcp",
-                "outboundTag": "WARP",
+                "outboundTag": "United States Multacom",
                 "type": "field"
             },
             {
