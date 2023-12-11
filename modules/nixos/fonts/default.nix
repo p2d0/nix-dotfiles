@@ -20,7 +20,7 @@ in {
                   serif = [ "Noto Sans" ];
             };
             fonts.fontDir.enable = true;
-            fonts.fonts = with pkgs; [
+            fonts.packages = with pkgs; [
                   pkgs.jetbrains-mono
                   pkgs.font-awesome
                   pkgs.freefont_ttf

@@ -6,7 +6,7 @@ let cfg = config.modules.hjkl;
       layouts = config.services.xserver.extraLayouts;
     };
     xkbrdz = xkeyboard.overrideAttrs(oldAttrs: {
-      postPatch = ''sed -i '3a include "us-hjkl(us-hjkl)"' symbols/us;
+      postPatch = ''sed -i '0,/{/ {s/{/&\n    include "us-hjkl(us-hjkl)"/}' symbols/us;
                   '' + oldAttrs.postPatch;
     });
 in {
