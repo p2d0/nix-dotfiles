@@ -6,14 +6,7 @@ let cfg = config.modules.emacs-with-doom;
 in{
   options.modules.emacs-with-doom = {
     enable = mkBoolOpt false;
-    package = mkOpt types.package (pkgs.emacs-unstable.overrideAttrs(oldAttrs: rec {
-      src = pkgs.fetchFromGitHub {
-        owner = "emacs-lsp";
-        repo = "emacs";
-        rev = "json-rpc";
-        sha256 = "sha256-mnSG1MqUapaXyHHJRHv40cWUx1zRIwTM1O810ZJgRgc=";
-      };
-    }));
+    package = mkOpt types.package (pkgs.emacs);
     doom = {
       enable = mkBoolOpt true;
       forgeUrl = mkOpt types.str "https://github.com";

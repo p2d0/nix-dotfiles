@@ -76,6 +76,7 @@ in {
     inheritParentConfig = true;
   };
 
+  home-manager.useGlobalPkgs = true;
 
   home-manager.users.${config.user} =
     { pkgs, guake, fetchFromGitHub, callPackage, ... }: {

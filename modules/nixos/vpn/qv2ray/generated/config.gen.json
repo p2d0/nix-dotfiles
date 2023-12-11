@@ -250,6 +250,7 @@
                     "echofm.online",
                     "facebook.com",
                     "fbcdn.net",
+                    "findbook.in.ua",
                     "forefront.ai",
                     "gambody.com",
                     "geosite:facebook",
@@ -337,7 +338,7 @@
                     "GlobalConfig-HTTP"
                 ],
                 "network": "udp,tcp",
-                "outboundTag": "United States Multacom",
+                "outboundTag": "WARP",
                 "type": "field"
             },
             {
@@ -352,7 +353,8 @@
                     "oaistatic.com",
                     "openai.com",
                     "rustdesk.com",
-                    "spotify.com"
+                    "spotify.com",
+                    "thenextweb.com"
                 ],
                 "inboundTag": [
                     "GlobalConfig-Socks"

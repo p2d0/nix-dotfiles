@@ -103,8 +103,8 @@
   #     Environment = lib.mkForce ["QT_QPA_PLATFORM=wayland" "PATH=${config.home.profileDirectory}/bin"];
   #   };
   # };
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.allowBroken = true;
+  # nixpkgs.config.allowUnfree = true;
+  # nixpkgs.config.allowBroken = true;
   programs.alacritty = {
     enable = true;
     settings = {
