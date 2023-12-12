@@ -8,10 +8,11 @@
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     hyprland.url = "github:hyprwm/Hyprland";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    poetry2nix.url = "github:nix-community/poetry2nix";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs @ { self,  nixpkgs, chaotic, nixos-unstable, nixos-unstable-small, hyprland, home-manager, ... }:
+  outputs = inputs @ { self,  nixpkgs, poetry2nix, chaotic, nixos-unstable, nixos-unstable-small, hyprland, home-manager, ... }:
     let lib = nixpkgs.lib.extend (self: super: { my = import /etc/nixos/lib/util.nix { lib = nixpkgs.lib; }; });
         nixpkgs-tars = "https://github.com/NixOS/nixpkgs/archive/";
         system =  "x86_64-linux";
@@ -37,13 +38,16 @@
             my = lib.my.mapModules /etc/nixos/pkgs (p: self.callPackage p {});
           })] ++ extraOverlays;
         };
-        pkgs  = mkPkgs nixpkgs [ ];
+        pkgs  = mkPkgs nixpkgs [ poetry2nix.overlays.default ];
     in
       {
         inherit lib;
 
         user = "andrew";
-
+        # TODO
+        # buildSpecific = path: {
+        #   pkgs.
+        # }
         # overlay =
         #   final: prev: {
         #     my = lib.mapModules ./pkgs (p: pkgs.callPackage p {});
