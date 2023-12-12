@@ -124,7 +124,7 @@
   home.stateVersion = "22.11";
 
   services.blueman-applet.enable = true;
-  services.dropbox.enable = true;
+  # services.dropbox.enable = true;
   home.keyboard = null;
   # {layout = "us,ru"; options = [ "grp:alt_shift_toggle" ];};
   home.file = {

@@ -9,6 +9,7 @@
     ./hardware-configuration.nix
   ];
   modules.flakes.enable = true;
+  modules.maestral.enable = true;
 
   user = self.user;
 
