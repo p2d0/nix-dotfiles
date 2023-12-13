@@ -225,6 +225,7 @@
     cron = {
       enable = true;
       systemCronJobs = [
+        "0/10 20-21 * * * andrew notify-send 'Update daily'"
         "00 23 * * * root sh -c 'shutdown now'"
         "00 22 * * * root sh -c 'shutdown now'"
         "00 20 * * * andrew fish -c 'sync_repos'"
