@@ -300,7 +300,8 @@
                     "anthropic.com",
                     "bard.google.com",
                     "claude.ai",
-                    "iplocation.net"
+                    "iplocation.net",
+                    "upgrade.com"
                 ],
                 "inboundTag": [
                     "GlobalConfig-Socks"

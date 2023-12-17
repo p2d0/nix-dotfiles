@@ -234,9 +234,9 @@
     };
   };
 
-  nix.settings.auto-optimise-store = true;
-  nix.gc.automatic = true;
-  nix.gc.options = "--delete-older-than 1d";
+  # nix.settings.auto-optimise-store = true;
+  # nix.gc.automatic = true;
+  # nix.gc.options = "--delete-older-than 1d";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
