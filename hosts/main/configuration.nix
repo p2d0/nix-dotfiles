@@ -541,6 +541,7 @@
       unstable.natron
       unstable.scrcpy
       unstable.python39Packages.yt-dlp
+      thunderbird
       python39Packages.pytest
       # libpulseaudio
       python39Packages.virtualenv
