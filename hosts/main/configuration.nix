@@ -393,7 +393,8 @@
       nixfmt
       gimp
       mpv
-      libva
+      # libva
+      libva1
       libva-utils
       inkscape
       evince
