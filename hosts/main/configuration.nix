@@ -23,7 +23,11 @@
 
   hardware.opengl.enable = true;
   hardware.opengl.driSupport = true;
-  hardware.opengl.extraPackages = with pkgs; [ vaapiIntel vaapiVdpau libvdpau-va-gl amdvlk
+  hardware.opengl.extraPackages = with pkgs; [ vaapiIntel
+                                               vaapiVdpau libvdpau-va-gl
+                                               amdvlk
+                                               # libva1
+                                               # libva
                                                rocm-opencl-icd
                                                rocm-opencl-runtime
                                                intel-ocl
@@ -393,8 +397,6 @@
       nixfmt
       gimp
       mpv
-      # libva
-      libva1
       libva-utils
       inkscape
       evince
@@ -521,7 +523,7 @@
       # sublime
       drawio
       pipenv
-      my.immersed-vr
+      # my.immersed-vr
       # (import (builtins.fetchTarball {
       #   url = "https://github.com/NixOS/nixpkgs/archive/23c10dbe320e6957f2607d8a22f9e0e36f56a235.tar.gz";
       # }) {config.allowBroken = true;
