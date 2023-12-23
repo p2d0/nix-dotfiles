@@ -19,12 +19,12 @@ in {
         #       sha256 = "sha256-20SfLfUuo8h5sKyWQAAhc1X8qgF35+8zMRjE3+o8oHU=";
         #     })];
         # }))
-        (unstable.wrapOBS {
-          plugins = with unstable.obs-studio-plugins; [
+        (pkgs.wrapOBS {
+          plugins = with pkgs.obs-studio-plugins; [
             obs-gstreamer
             obs-vkcapture
             obs-vaapi
-            unstable.obs-studio-plugins.droidcam-obs
+            droidcam-obs
           ];
         })
         (unstable.callPackage /etc/nixos/pkgs/gpu-screen-recorder.nix { })
