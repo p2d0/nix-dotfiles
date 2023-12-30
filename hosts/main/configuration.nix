@@ -511,7 +511,8 @@
       # evolution
       nodejs
       iconpack-obsidian
-      libreoffice
+      # libreoffice
+      pkgs.onlyoffice-bin
       koreader
       vlc
       gsettings-desktop-schemas
