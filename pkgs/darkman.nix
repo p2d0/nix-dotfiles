@@ -17,8 +17,7 @@ buildGoModule rec {
 
   postPatch = ''
     substituteInPlace darkman.service \
-      --replace "/usr/bin/darkman" "$out/bin/darkman" \
-      --replace "PartOf=graphical-session.target" "After=graphical-session.target"
+      --replace "/usr/bin/darkman" "$out/bin/darkman"
     substituteInPlace contrib/dbus/nl.whynothugo.darkman.service \
       --replace "/usr/bin/darkman" "$out/bin/darkman"
     substituteInPlace contrib/dbus/org.freedesktop.impl.portal.desktop.darkman.service \
