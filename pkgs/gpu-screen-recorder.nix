@@ -7,8 +7,8 @@ stdenv.mkDerivation rec {
   src = fetchgit {
     url = "https://repo.dec05eba.com/gpu-screen-recorder";
     name = "gpu-screen-recorder";
-    rev = "e0b2f0c";
-    sha256 = "sha256-7kfG/M3TsVQYc+WEMuqWsZo4yQo3aLtXxfXSHMbMNp4=";
+    rev = "0af35ae6df";
+    sha256 = "sha256-yKF+EXhtsqHzGud+mK9h6J10EybFDHtDYTNSDo3xA5A=";
   };
 
   # patches = [
