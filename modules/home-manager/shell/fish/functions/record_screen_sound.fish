@@ -18,7 +18,12 @@ function record_screen_sound
         else
             notify-send "Started recording"
             set sink (pactl get-default-sink)
-            gpu-screen-recorder (get_current_screen_geometry "-w {model} -c mp4 -f 60 -a $sink.monitor -v no -o /tmp/output.mp4" | string split -n " ")
+            if get_current_screen_geometry "{screen}" == "0"
+                set screen "DP-1"
+            else
+                set screen "DVI-D-1"
+            end
+            gpu-screen-recorder (get_current_screen_geometry "-w DP-1 -c mp4 -f 60 -a $sink.monitor -v no -o /tmp/output.mp4" | string split -n " ")
         end
     end
 end
