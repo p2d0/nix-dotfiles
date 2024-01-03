@@ -10,6 +10,7 @@
   ];
   modules.flakes.enable = true;
   modules.maestral.enable = true;
+  modules.gpu-screen-recorder.enable = true;
 
   user = self.user;
 
@@ -20,6 +21,14 @@
   };
 
   security.rtkit.enable = true;
+  security.pki.certificateFiles = [
+    (builtins.fetchurl {
+      url = "https://gu-st.ru/content/lending/russian_trusted_root_ca_pem.crt";
+    })
+    (builtins.fetchurl {
+      url = "https://gu-st.ru/content/lending/russian_trusted_sub_ca_pem.crt";
+    })
+  ];
 
   hardware.opengl.enable = true;
   hardware.opengl.driSupport = true;
@@ -545,6 +554,7 @@
       unstable.natron
       unstable.scrcpy
       unstable.python39Packages.yt-dlp
+      imagemagick
       thunderbird
       python39Packages.pytest
       # libpulseaudio

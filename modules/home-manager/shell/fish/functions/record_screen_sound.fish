@@ -23,7 +23,8 @@ function record_screen_sound
             else
                 set screen "DVI-D-1"
             end
-            gpu-screen-recorder (get_current_screen_geometry "-w DP-1 -c mp4 -f 60 -a $sink.monitor -v no -o /tmp/output.mp4" | string split -n " ")
+            set params (get_current_screen_geometry "-w $screen -c mp4 -f 60 -a $sink.monitor -v no -o /tmp/output.mp4" | string split -n " ")
+            gpu-screen-recorder $params
         end
     end
 end
