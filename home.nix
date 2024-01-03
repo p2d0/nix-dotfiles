@@ -27,7 +27,7 @@ in {
             droidcam-obs
           ];
         })
-        (pkgs.callPackage /etc/nixos/pkgs/gpu-screen-recorder.nix { })
+
 
         # pkgs.obs-studio
         (pkgs.lutris.override {
