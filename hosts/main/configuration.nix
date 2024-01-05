@@ -551,7 +551,7 @@
       #     ];}).natron
       # unstable.natron
       # my.natron-bin
-      unstable.natron
+      natron
       unstable.scrcpy
       unstable.python39Packages.yt-dlp
       imagemagick
