@@ -2,6 +2,7 @@
 # Import the necessary modules
 from miio import Yeelight
 from sys import argv
+from time import sleep
 
 # Define the lightbulbs data as a list of dictionaries
 yeelights = [
@@ -80,6 +81,7 @@ def change_brightness(amount):
 def set_brightness_for_all(brightness):
     for lightbulb in yeelights:
         set_brightness(lightbulb, brightness)
+        sleep(0.5)
     print(f"Brightness changed by {amount}%")
 
 # Define a function to change the temperature of the lightbulbs
@@ -89,6 +91,7 @@ def change_temperature(amount):
         current_temperature = int(yeelight.get_properties(["ct"])[0])
         new_temperature = min(max(current_temperature + amount, 1000), 6500)
         set_temperature(lightbulb, new_temperature)
+        sleep(0.5)
     print(f"Temperature changed by {amount}K")
 
 # Define a function to toggle all lightbulbs
