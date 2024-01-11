@@ -101,6 +101,13 @@
         "lastUpdatedDate": 1684224881,
         "latency": 99999
     },
+    "fxfdebfnsjjr": {
+        "creationDate": 1704965614,
+        "displayName": "🇺🇲 США 14.12.23/@free1ss",
+        "lastConnected": 0,
+        "lastUpdatedDate": 1704965614,
+        "latency": 112
+    },
     "habxtepbnycz": {
         "creationDate": 1682266075,
         "displayName": "🇵🇱 Польша/@free1ss",
@@ -292,6 +299,23 @@
         "lastUpdatedDate": 1684224973,
         "latency": 99999
     },
+    "ooauzhbgcpsj": {
+        "creationDate": 1704965348,
+        "displayName": "@v2rayng_vpnn ارسلان",
+        "lastConnected": 1704965354,
+        "lastUpdatedDate": 1704965348,
+        "latency": 39,
+        "stats": [
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            }
+        ]
+    },
     "oogcopbaksnu": {
         "creationDate": 1691239819,
         "displayName": "🇪🇦 Испания 03.07.2023/@free1ss",
@@ -311,7 +335,7 @@
         "displayName": "direct-runtu.nl.org",
         "lastConnected": 1701178740,
         "lastUpdatedDate": 1688655341,
-        "latency": 39,
+        "latency": 99999,
         "stats": [
             {
                 "downLinkData": 40496696,
@@ -527,21 +551,21 @@
     "tyrvssdecpyw": {
         "creationDate": 1683545186,
         "displayName": "MAIN CONFIG",
-        "lastConnected": 1704900654,
+        "lastConnected": 1704978895,
         "lastUpdatedDate": 1683545186,
         "latency": 41,
         "stats": [
             {
-                "downLinkData": 1306433114402,
-                "upLinkData": 12855517635
+                "downLinkData": 1307862860484,
+                "upLinkData": 12937906916
             },
             {
-                "downLinkData": 305228216617,
-                "upLinkData": 3014648789
+                "downLinkData": 305309486775,
+                "upLinkData": 3033148631
             },
             {
-                "downLinkData": 1001481623476,
-                "upLinkData": 9802300780
+                "downLinkData": 1002830987009,
+                "upLinkData": 9866621871
             },
             {
             }
@@ -586,6 +610,13 @@
         "displayName": "Poland+OVH",
         "lastConnected": 140347884993256,
         "lastUpdatedDate": 1682265924,
+        "latency": 99999
+    },
+    "wdnjzytfizvf": {
+        "creationDate": 1704965207,
+        "displayName": "-za4m7e3y",
+        "lastConnected": 0,
+        "lastUpdatedDate": 1704965207,
         "latency": 99999
     },
     "wlnffauvzeof": {

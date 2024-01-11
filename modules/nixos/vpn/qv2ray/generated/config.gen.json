@@ -150,44 +150,6 @@
         },
         {
             "QV2RAY_OUTBOUND_METADATA": {
-                "displayName": "United States Multacom"
-            },
-            "protocol": "vmess",
-            "sendThrough": "0.0.0.0",
-            "settings": {
-                "vnext": [
-                    {
-                        "address": "cloudconebbb.gorgorchicken.one",
-                        "port": 8443,
-                        "users": [
-                            {
-                                "id": "aa0c4744-9568-4bee-a08b-73668a9b2a42"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "streamSettings": {
-                "network": "ws",
-                "security": "tls",
-                "tlsSettings": {
-                    "disableSystemRoot": false,
-                    "serverName": "cloudconebbb.gorgorchicken.one"
-                },
-                "wsSettings": {
-                    "headers": {
-                        "Host": "cloudconebbb.gorgorchicken.one"
-                    },
-                    "path": "/cloudconebbb"
-                },
-                "xtlsSettings": {
-                    "disableSystemRoot": false
-                }
-            },
-            "tag": "United States Multacom"
-        },
-        {
-            "QV2RAY_OUTBOUND_METADATA": {
                 "displayName": "BlackHole-59542493"
             },
             "_QV2RAY_USE_GLOBAL_FORWARD_PROXY_": false,
@@ -204,6 +166,26 @@
             "streamSettings": {
             },
             "tag": "WARP"
+        },
+        {
+            "QV2RAY_OUTBOUND_METADATA": {
+                "displayName": "🇺🇲 США 14.12.23/@free1ss"
+            },
+            "protocol": "shadowsocks",
+            "sendThrough": "0.0.0.0",
+            "settings": {
+                "servers": [
+                    {
+                        "address": "169.197.141.186",
+                        "method": "chacha20-ietf-poly1305",
+                        "password": "tvX1v#NSFP_LG_bJ",
+                        "port": 800
+                    }
+                ]
+            },
+            "streamSettings": {
+            },
+            "tag": "🇺🇲 США 14.12.23/@free1ss"
         }
     ],
     "policy": {
@@ -323,6 +305,7 @@
                     "anthropic.com",
                     "bard.google.com",
                     "claude.ai",
+                    "docs.google.com",
                     "healthline.com",
                     "iplocation.net",
                     "meta.com\t",
@@ -333,7 +316,7 @@
                 "inboundTag": [
                     "GlobalConfig-Socks"
                 ],
-                "outboundTag": "United States Multacom",
+                "outboundTag": "🇺🇲 США 14.12.23/@free1ss",
                 "type": "field"
             },
             {
@@ -352,6 +335,7 @@
                 "domain": [
                     "bing.com",
                     "bingapis.com",
+                    "files.oaiusercontent.com",
                     "live.com",
                     "microsoftonline.com",
                     "msftauth.net",
