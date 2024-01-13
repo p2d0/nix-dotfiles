@@ -104,7 +104,6 @@
     "fxfdebfnsjjr": {
         "creationDate": 1704965614,
         "displayName": "🇺🇲 США 14.12.23/@free1ss",
-        "lastConnected": 0,
         "lastUpdatedDate": 1704965614,
         "latency": 112
     },
@@ -551,21 +550,21 @@
     "tyrvssdecpyw": {
         "creationDate": 1683545186,
         "displayName": "MAIN CONFIG",
-        "lastConnected": 1705049444,
+        "lastConnected": 1705131888,
         "lastUpdatedDate": 1683545186,
         "latency": 41,
         "stats": [
             {
-                "downLinkData": 1321340631740,
-                "upLinkData": 12980175954
+                "downLinkData": 1322585190928,
+                "upLinkData": 13098240688
             },
             {
-                "downLinkData": 316574687362,
-                "upLinkData": 3058340532
+                "downLinkData": 316591280982,
+                "upLinkData": 3060787677
             },
             {
-                "downLinkData": 1005055435720,
-                "upLinkData": 9883487869
+                "downLinkData": 1006283805329,
+                "upLinkData": 9999156036
             },
             {
             }
@@ -615,7 +614,6 @@
     "wdnjzytfizvf": {
         "creationDate": 1704965207,
         "displayName": "-za4m7e3y",
-        "lastConnected": 0,
         "lastUpdatedDate": 1704965207,
         "latency": 99999
     },
