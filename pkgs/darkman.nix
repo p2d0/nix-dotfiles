@@ -22,7 +22,7 @@ buildGoModule rec {
       --replace "/usr/bin/darkman" "$out/bin/darkman"
     substituteInPlace contrib/dbus/org.freedesktop.impl.portal.desktop.darkman.service \
       --replace "/usr/bin/darkman" "$out/bin/darkman"
-    sed -i '21s/.+/WantedBy=graphical.target' darkman.service
+    sed -i '21s/.+/WantedBy=graphical.target/' darkman.service
     sed -i '19a Environment=PATH=/run/current-system/sw/bin' darkman.service
   ''; # NOTE HACK TODO FIX
 
