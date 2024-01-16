@@ -51,8 +51,8 @@
 
   boot.blacklistedKernelModules = [ "iTCO_wdt" "iTCO_vendor_support" ];
 
-  # boot.tmpOnTmpfs = true;
-  boot.tmp.cleanOnBoot = true;
+  boot.tmpOnTmpfs = true;
+  # boot.tmp.cleanOnBoot = true;
 
   boot.loader.grub.device = "/dev/disk/by-id/ata-BRAVEEAGLE_SSD_240GB_AA00000000540";
 
@@ -162,7 +162,7 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   # TODO Move to home manager user config?
-  modules.sway.enable = true;
+  modules.sway.enable = false;
   modules.hjkl.enable = true;
   modules.printing3d.enable = true;
   modules.warp.enable = true;
@@ -247,8 +247,8 @@
     };
   };
 
-  # nix.settings.auto-optimise-store = true;
-  # nix.gc.automatic = true;
+  nix.settings.auto-optimise-store = true;
+  nix.gc.automatic = true;
   # nix.gc.options = "--delete-older-than 1d";
 
   # List packages installed in system profile. To search, run:
@@ -261,12 +261,12 @@
   '';
 
   modules.xdg.sessionVariables = true;
-  programs.java = {
-    enable = true;
-    package = pkgs.openjdk8;
-    # https://javadl.oracle.com/webapps/download/GetFile/1.8.0_281-b09/89d678f2be164786b292527658ca1605/linux-i586/jdk-8u281-linux-x64.tar.gz
-    # TODO direct link
-  };
+  # programs.java = {
+  #   enable = true;
+  #   package = pkgs.openjdk8;
+  #   # https://javadl.oracle.com/webapps/download/GetFile/1.8.0_281-b09/89d678f2be164786b292527658ca1605/linux-i586/jdk-8u281-linux-x64.tar.gz
+  #   # TODO direct link
+  # };
 
   modules.fonts.enable = true;
   modules.timed-shutdown.enable = false;
@@ -300,7 +300,7 @@
        redshift
      ])
     ++ [
-      (unstable.python3.withPackages(ps: [ ps.python-lsp-server ps.python-miio ps.requests ps.epc ps.lxml ps.tld ps.sexpdata ps.pyqt6 ps.pyqt6-sip ps.pyqt6-webengine ps.pygetwindow ]))
+      (pkgs.python3.withPackages(ps: [ ps.python-lsp-server ps.python-miio ps.requests ps.epc ps.lxml ps.tld ps.sexpdata ps.pyqt6 ps.pyqt6-sip ps.pyqt6-webengine ps.pygetwindow ]))
       my.hbctool
       vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
       wget
@@ -310,8 +310,8 @@
       openssl
       # pr218037.microsoft-edge-dev
       gcc.cc.libgcc
-      unstable.signal-desktop
       megasync
+      unstable.gamescope
       yandex-disk
       shared-mime-info
       clinfo
@@ -383,13 +383,13 @@
 
       my.pythonbin
       # my.tlala
-      my.chatgpt
+      # my.chatgpt
       neovim
       # (callPackage /etc/nixos/pkgs/psiphon.nix { })
       # unstable.elementary-planner
       # (haskellPackages.callPackage /etc/nixos/modules/nixos/taffybar/build/taffybar.nix
       #   { })
-      unstable-small.video-trimmer
+      unstable.video-trimmer
       kdiskmark
       tmux
       # Config https://github.com/elken/tabbed/blob/master/config.h
@@ -403,7 +403,7 @@
       fd
       breeze-gtk
       breeze-qt5
-      nixfmt
+      # nixfmt
       gimp
       mpv
       libva-utils
@@ -423,8 +423,10 @@
       pulseaudio
       gnome.gnome-system-monitor
       gnome.zenity
+      nix-tree
       gnome.gnome-sound-recorder
-      tigervnc
+      # tigervnc
+      # x11vnc
       cabal2nix
       dbeaver
       yad
@@ -458,7 +460,7 @@
       pasystray
       pavucontrol
       paprefs
-      shotcut
+      # shotcut
       darktable
       picom
       # (callPackage /etc/nixos/pkgs/picom-animations.nix { })
@@ -483,7 +485,6 @@
       jpegoptim
       chatterino2
       filelight
-      x11vnc
       polkit_gnome
       glib
       gnome.dconf-editor
@@ -491,12 +492,12 @@
       minidlna
       gnome.gedit
       ntfs3g
-      gnome.gnome-boxes
-      unstable.rustdesk
+      # gnome.gnome-boxes
+      rustdesk
       qbittorrent
-      tor-browser-bundle-bin
+      # tor-browser-bundle-bin
       # looking-glass-client
-      unstable.tg
+      # unstable.tg
       pkgs.cinnamon.nemo-with-extensions
       pkgs.cinnamon.nemo-fileroller
       pkgs.cinnamon.nemo-python
@@ -516,22 +517,22 @@
       inetutils
       zip
       xsettingsd
-      easyeffects
+      # easyeffects
       # evolution
       nodejs
       iconpack-obsidian
       # libreoffice
       pkgs.onlyoffice-bin
       koreader
-      vlc
+      # vlc
       gsettings-desktop-schemas
-      wineWowPackages.stable
+      # wineWowPackages.stable
       # whatsapp-for-linux
       libvirt
       dunst
       android-tools
       # sublime
-      drawio
+      # drawio
       pipenv
       # my.immersed-vr
       # (import (builtins.fetchTarball {
@@ -553,9 +554,9 @@
       # my.natron-bin
       natron
       unstable.scrcpy
-      unstable.python39Packages.yt-dlp
+      python39Packages.yt-dlp
       imagemagick
-      thunderbird
+      # thunderbird
       python39Packages.pytest
       # libpulseaudio
       python39Packages.virtualenv
