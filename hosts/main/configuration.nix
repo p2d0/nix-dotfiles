@@ -19,6 +19,7 @@
     extraPortals = [ # pkgs.xdg-dbus-proxy pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-gnome pkgs.xdg-desktop-portal-kde
     ];
   };
+  xdg.portal.config.common.default = "*";
 
   security.rtkit.enable = true;
   security.pki.certificateFiles = [
@@ -51,7 +52,7 @@
 
   boot.blacklistedKernelModules = [ "iTCO_wdt" "iTCO_vendor_support" ];
 
-  boot.tmpOnTmpfs = true;
+  boot.tmp.useTmpfs = true;
   # boot.tmp.cleanOnBoot = true;
 
   boot.loader.grub.device = "/dev/disk/by-id/ata-BRAVEEAGLE_SSD_240GB_AA00000000540";
