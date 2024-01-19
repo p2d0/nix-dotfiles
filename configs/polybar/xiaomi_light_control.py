@@ -3,6 +3,15 @@
 from miio import Yeelight
 from sys import argv
 from time import sleep
+import os
+
+def ping(host):
+    response = os.system("ping -c 1 " + host + " > /dev/null 2>&1")
+
+    if response == 0:
+        return True
+    else:
+        return False
 
 # Define the lightbulbs data as a list of dictionaries
 yeelights = [
@@ -11,34 +20,52 @@ yeelights = [
     {"ip": "192.168.31.144", "token": "80e52c76c607d227190857502638ca6e", "model": "yeelink.light.color5"}
 ]
 
+def create_yeelight(lightbulb):
+    ping(lightbulb["ip"])
+    yeelight = Yeelight(lightbulb["ip"], lightbulb["token"], model=lightbulb["model"])
+    yeelight.timeout = 50;
+    return yeelight
+
 # Define a function to get the brightness of a lightbulb
 def get_brightness(lightbulb):
-    yeelight = Yeelight(lightbulb["ip"], lightbulb["token"], model=lightbulb["model"])
+    yeelight = create_yeelight(lightbulb)
     brightness = yeelight.get_properties(["bright"])[0]
     return int(brightness)
 
 # Define a function to set the brightness of a lightbulb
 def set_brightness(lightbulb, brightness):
-    yeelight = Yeelight(lightbulb["ip"], lightbulb["token"], model=lightbulb["model"])
+    yeelight = create_yeelight(lightbulb)
     yeelight.set_brightness(brightness)
+    updated_brightness = get_brightness(lightbulb)
+    if(updated_brightness != brightness):
+        sleep(0.5)
+        set_brightness(lightbulb, brightness)
 
 # Define a function to set the color temperature of a lightbulb
 def set_temperature(lightbulb, temperature):
-    yeelight = Yeelight(lightbulb["ip"], lightbulb["token"], model=lightbulb["model"])
+    yeelight = create_yeelight(lightbulb)
     yeelight.set_color_temp(temperature)
+    updated_temperature = int(yeelight.get_properties(["ct"])[0])
+    if(updated_temperature != temperature):
+        sleep(0.5)
+        set_temperature(lightbulb, temperature)
 
 # Define a function to get the power status of a lightbulb
 def get_power_status(lightbulb):
-    yeelight = Yeelight(lightbulb["ip"], lightbulb["token"], model=lightbulb["model"])
+    yeelight = create_yeelight(lightbulb)
     power_status = yeelight.get_properties(["power"])[0]
     return power_status
 
 # Define a function to toggle a lightbulb on and off
 def toggle_light(lightbulb):
-    yeelight = Yeelight(lightbulb["ip"], lightbulb["token"], model=lightbulb["model"])
+    yeelight = create_yeelight(lightbulb)
     current_state = yeelight.get_properties(["power"])[0]
     yeelight.toggle()  # Toggle the light state
     new_state = yeelight.get_properties(["power"])[0]
+    print(new_state,current_state);
+    if(current_state == new_state):
+        sleep(0.5);
+        toggle_light(lightbulb)
     return current_state, new_state
 
 # Define a function to display the brightness of the lightbulbs
@@ -62,7 +89,7 @@ def display_temperature():
     power_status = get_power_status(lightbulb)
 
     if power_status == "on":
-        yeelight = Yeelight(lightbulb["ip"], lightbulb["token"], model=lightbulb["model"])
+        yeelight = create_yeelight(lightbulb)
         temperature = yeelight.get_properties(["ct"])[0]
         output += f"{temperature}K"
     else:
@@ -81,17 +108,15 @@ def change_brightness(amount):
 def set_brightness_for_all(brightness):
     for lightbulb in yeelights:
         set_brightness(lightbulb, brightness)
-        sleep(0.5)
     print(f"Brightness changed by {amount}%")
 
 # Define a function to change the temperature of the lightbulbs
 def change_temperature(amount):
     for lightbulb in yeelights:
-        yeelight = Yeelight(lightbulb["ip"], lightbulb["token"], model=lightbulb["model"])
+        yeelight = create_yeelight(lightbulb)
         current_temperature = int(yeelight.get_properties(["ct"])[0])
         new_temperature = min(max(current_temperature + amount, 1000), 6500)
         set_temperature(lightbulb, new_temperature)
-        sleep(0.5)
     print(f"Temperature changed by {amount}K")
 
 # Define a function to toggle all lightbulbs

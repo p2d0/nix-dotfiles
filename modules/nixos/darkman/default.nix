@@ -23,9 +23,9 @@ in {
         packages = [pkgs.my.darkman];
       };
     };
-    systemd.packages = [
-      pkgs.my.darkman
-    ];
+    # systemd.packages = [
+    #   pkgs.my.darkman
+    # ];
     environment.systemPackages = [
       pkgs.my.darkman
     ];
