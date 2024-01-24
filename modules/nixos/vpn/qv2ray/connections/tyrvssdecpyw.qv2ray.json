@@ -158,6 +158,40 @@
         },
         {
             "QV2RAY_OUTBOUND_METADATA": {
+                "displayName": "atatata-vpnjantit.com"
+            },
+            "protocol": "vless",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "ar1.vpnjantit.com",
+                        "port": 10002,
+                        "users": [
+                            {
+                                "encryption": "none",
+                                "id": "a14aecaa-b8f6-11ee-bb38-5254d416deef"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "ws",
+                "security": "tls",
+                "tlsSettings": {
+                    "disableSystemRoot": false
+                },
+                "wsSettings": {
+                    "path": "/vpnjantit"
+                },
+                "xtlsSettings": {
+                    "disableSystemRoot": false
+                }
+            },
+            "tag": "atatata-vpnjantit.com"
+        },
+        {
+            "QV2RAY_OUTBOUND_METADATA": {
                 "displayName": "🇺🇲 США 14.12.23/@free1ss"
             },
             "mux": {
@@ -207,6 +241,7 @@
                     "currenttime.tv",
                     "deepstatemap.live",
                     "dell.com",
+                    "dw.com",
                     "echofm.online",
                     "facebook.com",
                     "fbcdn.net",
@@ -252,6 +287,7 @@
                     "singular.net",
                     "soundcloud.com",
                     "stripe.com",
+                    "svoboda.org",
                     "telegramcatalog.com",
                     "theins.ru",
                     "thepiratebay.org",
@@ -305,7 +341,7 @@
                     "GlobalConfig-HTTP"
                 ],
                 "network": "udp,tcp",
-                "outboundTag": "WARP",
+                "outboundTag": "Personal",
                 "type": "field"
             },
             {
@@ -335,6 +371,7 @@
                 "QV2RAY_RULE_ENABLED": true,
                 "QV2RAY_RULE_TAG": "Personal",
                 "domain": [
+                    "microsoft.com",
                     "whatismyip.com"
                 ],
                 "inboundTag": [

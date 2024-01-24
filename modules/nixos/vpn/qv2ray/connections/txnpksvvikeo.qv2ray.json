@@ -1,0 +1,34 @@
+{
+    "outbounds": [
+        {
+            "protocol": "vless",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "ar1.vpnjantit.com",
+                        "port": 10002,
+                        "users": [
+                            {
+                                "encryption": "none",
+                                "id": "a14aecaa-b8f6-11ee-bb38-5254d416deef"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "ws",
+                "security": "tls",
+                "tlsSettings": {
+                    "disableSystemRoot": false
+                },
+                "wsSettings": {
+                    "path": "/vpnjantit"
+                },
+                "xtlsSettings": {
+                    "disableSystemRoot": false
+                }
+            }
+        }
+    ]
+}

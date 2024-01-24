@@ -406,6 +406,23 @@
         "lastUpdatedDate": 1682266024,
         "latency": 99999
     },
+    "qtmpxnuztsvl": {
+        "creationDate": 1705908026,
+        "displayName": "atatata-vpnjantit.com",
+        "lastConnected": 1705908030,
+        "lastUpdatedDate": 1705908026,
+        "latency": 255,
+        "stats": [
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            }
+        ]
+    },
     "qymjhuhysjjr": {
         "creationDate": 1684224857,
         "displayName": "@ForUvpn",
@@ -548,24 +565,41 @@
             }
         ]
     },
+    "txnpksvvikeo": {
+        "creationDate": 1705908007,
+        "displayName": "atatata-vpnjantit.com",
+        "lastConnected": 1705908013,
+        "lastUpdatedDate": 1705908007,
+        "latency": 254,
+        "stats": [
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            }
+        ]
+    },
     "tyrvssdecpyw": {
         "creationDate": 1683545186,
         "displayName": "MAIN CONFIG",
-        "lastConnected": 1705823144,
+        "lastConnected": 1706112906,
         "lastUpdatedDate": 1683545186,
         "latency": 41,
         "stats": [
             {
-                "downLinkData": 1343120417828,
-                "upLinkData": 13530945601
+                "downLinkData": 1348653422301,
+                "upLinkData": 13592826809
             },
             {
-                "downLinkData": 318229418622,
-                "upLinkData": 3246981096
+                "downLinkData": 318335054671,
+                "upLinkData": 3257174881
             },
             {
-                "downLinkData": 1025189730023,
-                "upLinkData": 10245787842
+                "downLinkData": 1030619180302,
+                "upLinkData": 10297451607
             },
             {
             }
