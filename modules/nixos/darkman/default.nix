@@ -2,6 +2,10 @@
 
 with lib;
 let cfg = config.modules.darkman;
+    darkman = pkgs.unstable.darkman.overrideAttrs(oldAttrs: rec {
+      postPatch = oldAttrs.postPatch + ''
+    sed -i '16a Environment=PATH=/run/current-system/sw/bin' darkman.service'';
+    });
 in {
   options.modules.darkman = {
     enable = mkOption {
@@ -15,21 +19,42 @@ in {
   config = mkIf cfg.enable ({
     xdg.portal = {
       enable = true;
-      extraPortals = [ pkgs.my.darkman ];
+      extraPortals = [ darkman ];
     };
     services = {
       dbus = {
         enable = true;
-        packages = [pkgs.my.darkman];
+        packages = [darkman];
       };
     };
-    systemd.packages = [
-      pkgs.my.darkman
-    ];
+
     environment.systemPackages = [
-      pkgs.my.darkman
+      darkman
     ];
   } // (my.allUsers ({...}: { # TODO could be a better function
+
+    systemd.user.services.darkman = {
+      Unit = {
+        Description = "Darkman system service";
+        Documentation = "man:darkman(1)";
+        PartOf = [ "graphical-session.target" ];
+        BindsTo = [ "graphical-session.target" ];
+        # X-Restart-Triggers =
+        #   [ "${config.xdg.configFile."darkman/config.yaml".source}" ];
+      };
+
+      Service = {
+        Type = "dbus";
+        BusName = "nl.whynothugo.darkman";
+        Environment = "PATH=/run/current-system/sw/bin";
+        ExecStart = "${pkgs.darkman}/bin/darkman run";
+        Restart = "on-failure";
+        TimeoutStopSec = 15;
+        Slice = "background.slice";
+      };
+
+      Install.WantedBy = [ "graphical-session.target" ];
+    };
     xdg.systemDirs.data = [
       "/etc/nixos/configs/darkman"
     ];
