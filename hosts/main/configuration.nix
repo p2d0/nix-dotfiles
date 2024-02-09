@@ -251,7 +251,7 @@
 
   nix.settings.auto-optimise-store = true;
   nix.gc.automatic = true;
-  # nix.gc.options = "--delete-older-than 1d";
+  nix.gc.options = "--delete-older-than 1d";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -305,6 +305,7 @@
       (pkgs.python3.withPackages(ps: [ ps.python-lsp-server ps.python-miio ps.requests ps.epc ps.lxml ps.tld ps.sexpdata ps.pyqt6 ps.pyqt6-sip ps.pyqt6-webengine ps.pygetwindow ]))
       my.hbctool
       vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+      unstable.lapce
       wget
       clang
       file
@@ -312,6 +313,7 @@
       openssl
       # pr218037.microsoft-edge-dev
       gcc.cc.libgcc
+      conda
       megasync
       unstable.gamescope
       yandex-disk
