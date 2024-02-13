@@ -287,6 +287,7 @@
                     "robotcache.com",
                     "rutracker.org",
                     "seagate.com",
+                    "sibreal.org",
                     "singular.net",
                     "soundcloud.com",
                     "stripe.com",
@@ -369,7 +370,7 @@
                     "GlobalConfig-Socks"
                 ],
                 "network": "udp,tcp",
-                "outboundTag": "Ahmet",
+                "outboundTag": "WARP",
                 "type": "field"
             },
             {
@@ -392,7 +393,7 @@
                 "inboundTag": [
                     "GlobalConfig-Socks"
                 ],
-                "outboundTag": "Freedom_52454303",
+                "outboundTag": "WARP",
                 "type": "field"
             }
         ]
