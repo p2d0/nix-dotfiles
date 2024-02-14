@@ -370,7 +370,7 @@
                     "GlobalConfig-Socks"
                 ],
                 "network": "udp,tcp",
-                "outboundTag": "WARP",
+                "outboundTag": "Ahmet",
                 "type": "field"
             },
             {
@@ -393,7 +393,7 @@
                 "inboundTag": [
                     "GlobalConfig-Socks"
                 ],
-                "outboundTag": "WARP",
+                "outboundTag": "Freedom_52454303",
                 "type": "field"
             }
         ]
