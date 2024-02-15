@@ -102,7 +102,8 @@ in {
         end
         function update-system
           nix flake update /etc/nixos
-          rebuild-default
+          set -x NIX_BUILD_CORES 1
+          sudo nixos-rebuild boot --impure  --flake '/etc/nixos/.?submodules=1#mysystem' -j1 $argv
         end
         function activate-specialisation-default
           sudo /run/current-system/specialisation/default/activate

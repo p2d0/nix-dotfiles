@@ -243,6 +243,7 @@
         "30 20 * * * andrew fish -c 'update-system'"
         "00 23 * * * root sh -c 'shutdown now'"
         "00 22 * * * root sh -c 'shutdown now'"
+        "00 21 * * * root sh -c 'shutdown now'"
         "00 20 * * * andrew fish -c 'sync_repos'"
         "3,8,13,18,23,28,33,38,43,48,53,58 * * * * andrew sleep 50 ; wget --no-check-certificate -O - https://freedns.afraid.org/dynamic/update.php?RnBTMHFiQlhHWnVmUXpNYmtLWlQ0ZXB5OjIxNjg5NzI5 >> /tmp/freedns_ug_kyrgyzstan_kg.log 2>&1 &"
       ];
