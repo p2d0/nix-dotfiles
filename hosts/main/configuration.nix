@@ -485,7 +485,7 @@
       # })
       # unstable.tdesktop
       # telegram-desktop_git
-      unstable.telegram-desktop
+      telegram-desktop
       unstable.nil
       jpegoptim
       chatterino2
