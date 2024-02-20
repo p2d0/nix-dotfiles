@@ -325,7 +325,6 @@
                     "thingiverse.com",
                     "threadreaderapp.com",
                     "threads.net",
-                    "tiktok.com",
                     "twimg.co",
                     "twitter.com",
                     "typing.com",
@@ -402,6 +401,7 @@
                 "QV2RAY_RULE_TAG": "Personal",
                 "domain": [
                     "microsoft.com",
+                    "tiktok.com",
                     "whatismyip.com"
                 ],
                 "inboundTag": [

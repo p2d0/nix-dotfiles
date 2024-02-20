@@ -2,7 +2,7 @@
 
 appimageTools.wrapType2 rec {
   pname = "osu-lazer-bin";
-  version = "2024.131.0";
+  version = "2024.219.0";
 
   src = fetchurl {
     url = "https://github.com/ppy/osu/releases/download/${version}/osu.AppImage";
