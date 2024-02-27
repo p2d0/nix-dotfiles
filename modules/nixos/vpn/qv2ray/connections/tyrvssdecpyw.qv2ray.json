@@ -223,6 +223,7 @@
                 "QV2RAY_RULE_TAG": "WARP",
                 "domain": [
                     "1377x.to",
+                    "2ip.ru",
                     "4chan.org",
                     "7tv.app",
                     "all3dp.com",
@@ -328,6 +329,7 @@
                     "healthline.com",
                     "iplocation.net",
                     "meta.com\t",
+                    "mistral.ai",
                     "pimeyes.com",
                     "routenote.com",
                     "steamidfinder.com",
@@ -337,7 +339,7 @@
                 "inboundTag": [
                     "GlobalConfig-Socks"
                 ],
-                "outboundTag": "🇺🇲 США 14.12.23/@free1ss",
+                "outboundTag": "Personal",
                 "type": "field"
             },
             {
