@@ -7,7 +7,7 @@ function record_allscreens
             notify-send "Clipped"
         else
             notify-send "Started recording"
-            echo "Y\n" | wf-recorder -c hevc_vaapi -d /dev/dri/renderD128 -x yuv420p -f /tmp/output.mp4
+            echo "Y\n" | wf-recorder -c h264_vaapi -d /dev/dri/renderD128  -f /tmp/output.mp4
         end
     else
         if pgrep -x ffmpeg > /dev/null
