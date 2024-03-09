@@ -7,7 +7,7 @@ function record_region
             notify-send "Clipped"
         else
             notify-send "Started recording"
-            echo "Y\n" | wf-recorder -g (slurp) -c hevc_vaapi -d /dev/dri/renderD128 -x yuv420p -f /tmp/output.mp4
+            echo "Y\n" | wf-recorder -g (slurp) -c h264_vaapi -F 'hwupload,scale_vaapi=format=yuv420p' -d /dev/dri/renderD128 -f /tmp/output.mp4
         end
     else
         if pgrep -x ffmpeg > /dev/null

@@ -7,7 +7,7 @@ function record_screen_replay_sound
         #     notify-send "Clipped"
         # else
         #     notify-send "Started recording"
-        #     echo "Y\n" | wf-recorder -g (swaymsg -t get_outputs | jq -r '.[] | select(.focused == true) | "\(.rect.x),\(.rect.y) \(.rect.width)x\(.rect.height)"') -c hevc_vaapi -d /dev/dri/renderD128 -x yuv420p -f /tmp/output.mp4
+        #     echo "Y\n" | wf-recorder -g (swaymsg -t get_outputs | jq -r '.[] | select(.focused == true) | "\(.rect.x),\(.rect.y) \(.rect.width)x\(.rect.height)"') -c h264_vaapi -d /dev/dri/renderD128  -f /tmp/output.mp4
         # end
     else
         if pgrep -f gpu-screen-recorder > /dev/null
