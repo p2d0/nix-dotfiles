@@ -111,12 +111,12 @@
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "custom/timer": {
-        "exec": "~/.config/polybar/polybar-timer.sh tail '祥 TIMER' 1",
+        "exec": "~/.config/polybar/polybar-timer.sh tail ' POMOTIMER' 1",
         "on-click": "~/.config/polybar/polybar-timer.sh new 10 '祥' 'notify-send \"Session finished\"' ; ~/.config/polybar/polybar-timer.sh update %pid%",
-        "on-click-middle": "~/.config/polybar/polybar-timer.sh kill ; ~/.config/polybar/polybar-timer.sh update %pid%",
-        "on-click-right": "~/.config/polybar/polybar-timer.sh new 5 '祥' 'notify-send \"Break finished\"' ; ~/.config/polybar/polybar-timer.sh update %pid%",
-        "on-scroll-up": "~/.config/polybar/polybar-timer.sh increase 60 || ~/.config/polybar/polybar-timer.sh new 1 'TIMER:'; ~/.config/polybar/polybar-timer.sh update %pid%",
-        "on-scroll-down": "~/.config/polybar/polybar-timer.sh increase -60 ; ~/.config/polybar/polybar-timer.sh update %pid%",
+        "on-click-middle": "~/.config/polybar/polybar-timer.sh new 15 ' Long rest' 'notify-send \"Session finished\"'; ~/.config/polybar/polybar-timer.sh update %pid%",
+        "on-click-right": "~/.config/polybar/polybar-timer.sh new 5 ' Short rest' 'notify-send \"Break finished\"' ; ~/.config/polybar/polybar-timer.sh update %pid%",
+        "on-scroll-up": "~/.config/polybar/polybar-timer.sh increase 300 || ~/.config/polybar/polybar-timer.sh new 5 'TIMER:' 'paplay ~/.config/polybar/mixkit-achievement-bell-600.wav;notify-send -u critical \"Timer expired.\"'; ~/.config/polybar/polybar-timer.sh update %pid%",
+        "on-scroll-down": "~/.config/polybar/polybar-timer.sh increase -300 ; ~/.config/polybar/polybar-timer.sh update %pid%",
         "format": "{}  "
     },
     "custom/powerapplet":{
