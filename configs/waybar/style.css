@@ -2,7 +2,8 @@
     border: none;
     border-radius: 2px;
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: ShureTechMono Nerd Font, Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'ShureTechMono Nerd Font';
+    font-weight: 600;
     font-size: 13px;
     min-height: 0;
     padding: 0px 0px;

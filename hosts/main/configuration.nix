@@ -46,14 +46,14 @@
   hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ vaapiIntel ];
   services.ratbagd.enable = true;
 
-  # boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.loader.grub.enable = true;
   boot.loader.grub.default = 2;
 
   boot.blacklistedKernelModules = [ "iTCO_wdt" "iTCO_vendor_support" ];
 
-  boot.tmp.useTmpfs = true;
-  # boot.tmp.cleanOnBoot = true;
+  # boot.tmp.useTmpfs = true;
+  boot.tmp.cleanOnBoot = true;
 
   boot.loader.grub.device = "/dev/disk/by-id/ata-BRAVEEAGLE_SSD_240GB_AA00000000540";
 
@@ -89,72 +89,72 @@
   # };
 
 
-  # services.xserver = {
-  #   enable = true;
-  #   videoDrivers = [ "amdgpu" ];
+  services.xserver = {
+    enable = true;
+    videoDrivers = [ "amdgpu" ];
 
-  #   xrandrHeads = [
-  #     {
-  #       output = "DisplayPort-0";
-  #       primary = true;
-  #       monitorConfig = ''
-  #       Modeline "2560x1080@75"  228.25  2560 2608 2640 2720  1080 1083 1093 1119 +hsync -vsync
-  #       Option "PreferredMode" "2560x1080@75"'';
-  #     }
-  #     {
-  #       output = "DVI-D-0";
-  #       monitorConfig = ''Option "Position" "2560 0"'';
-  #     }
-  #   ];
+    xrandrHeads = [
+      {
+        output = "DisplayPort-0";
+        primary = true;
+        monitorConfig = ''
+        Modeline "2560x1080@75"  228.25  2560 2608 2640 2720  1080 1083 1093 1119 +hsync -vsync
+        Option "PreferredMode" "2560x1080@75"'';
+      }
+      {
+        output = "DVI-D-0";
+        monitorConfig = ''Option "Position" "2560 0"'';
+      }
+    ];
 
-  #   # Doesnt work
-  #   layout = "us,ru";
-  #   xkbOptions = "grp:alt_shift_toggle";
-  #   #  deviceSection = ''
-  #   #      Option          "TearFree" "true"
-  #   # '';
-  #   libinput = {
-  #     enable = true;
-  #     mouse = { accelProfile = "flat"; };
-  #   };
-  #   exportConfiguration = true;
-  #   windowManager.i3.enable = true;
-  #   # windowManager.i3.package = (import (builtins.fetchTarball {
-  #   #     url = "https://github.com/NixOS/nixpkgs/archive/79b3d4bcae8c7007c9fd51c279a8a67acfa73a2a.tar.gz";
-  #   # }) {}).i3;
-  #   # windowManager.i3.package = (pkgs.i3.overrideAttrs(oldAttrs: rec {
-  #   #   patches = [
-  #   #     (pkgs.fetchpatch {
-  #   #       url = "https://raw.githubusercontent.com/mishurov/applets/master/i3patch/files/add_zoom_i3_4.10.4.patch";
-  #   #       sha256 = "sha256-gOS2bRJQEGRqjkYK0IZ/oMapdUWwvFKNLEp3XBWzZC8=";
-  #   #     })
-  #   #   ];
+    # Doesnt work
+    layout = "us,ru";
+    xkbOptions = "grp:alt_shift_toggle";
+    #  deviceSection = ''
+    #      Option          "TearFree" "true"
+    # '';
+    libinput = {
+      enable = true;
+      mouse = { accelProfile = "flat"; };
+    };
+    exportConfiguration = true;
+    windowManager.i3.enable = true;
+    # windowManager.i3.package = (import (builtins.fetchTarball {
+    #     url = "https://github.com/NixOS/nixpkgs/archive/79b3d4bcae8c7007c9fd51c279a8a67acfa73a2a.tar.gz";
+    # }) {}).i3;
+    # windowManager.i3.package = (pkgs.i3.overrideAttrs(oldAttrs: rec {
+    #   patches = [
+    #     (pkgs.fetchpatch {
+    #       url = "https://raw.githubusercontent.com/mishurov/applets/master/i3patch/files/add_zoom_i3_4.10.4.patch";
+    #       sha256 = "sha256-gOS2bRJQEGRqjkYK0IZ/oMapdUWwvFKNLEp3XBWzZC8=";
+    #     })
+    #   ];
 
-  #   # }));
-  #   # displayManager.gdm.enable = true;
-  #   # desktopManager.gnome.enable = true;
-  #   # displayManager.sddm.enable = true;
-  #   # desktopManager.plasma5.enable = true;
-  #   # desktopManager.plasma5.excludePackages = with pkgs.libsForQt5; [
-  #   #   elisa
-  #   #   gwenview
-  #   #   okular
-  #   #   oxygen
-  #   #   khelpcenter
-  #   #   konsole
-  #   #   plasma-browser-integration
-  #   #   print-manager
-  #   # ];
+    # }));
+    # displayManager.gdm.enable = true;
+    # desktopManager.gnome.enable = true;
+    # displayManager.sddm.enable = true;
+    # desktopManager.plasma5.enable = true;
+    # desktopManager.plasma5.excludePackages = with pkgs.libsForQt5; [
+    #   elisa
+    #   gwenview
+    #   okular
+    #   oxygen
+    #   khelpcenter
+    #   konsole
+    #   plasma-browser-integration
+    #   print-manager
+    # ];
 
-  #   # windowManager.qtile.enable = true;
-  #   displayManager = {
-  #     defaultSession = "sway";
-  #     autoLogin = {
-  #       enable = true;
-  #       user = config.user;
-  #     };
-  #   };
-  # };
+    # windowManager.qtile.enable = true;
+    displayManager = {
+      defaultSession = "none+i3";
+      autoLogin = {
+        enable = true;
+        user = config.user;
+      };
+    };
+  };
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
@@ -163,7 +163,7 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   # TODO Move to home manager user config?
-  modules.sway.enable = true;
+  modules.sway.enable = false;
   modules.hjkl.enable = true;
   modules.printing3d.enable = true;
   modules.warp.enable = true;
@@ -259,9 +259,9 @@
 
   # services.getty.autologinUser = config.user;
 
-  systemd.coredump.extraConfig = ''
-    Storage=none
-  '';
+  # systemd.coredump.extraConfig = ''
+  #   Storage=none
+  # '';
 
   modules.xdg.sessionVariables = true;
   # programs.java = {
@@ -277,7 +277,7 @@
   modules.darkman.enable = true;
   modules.vpn.enable = true;
   modules.vm.enable = false;
-  # zramSwap.enable = true;
+  zramSwap.enable = true;
   # zramSwap.writebackDevice = "/dev/sdb1";
   # services.journald.extraConfig = ''
   #   SystemMaxUse=1G
@@ -349,21 +349,7 @@
       #     sha256 = "sha256:1p39llchnb2b6zbjpn0fk7hp7yhfp03b00s539hhgaliqmq9z93g";
       #   };
       # }))
-      # unstable.flameshot
-
-      (pkgs.flameshot.overrideAttrs (oldAttrs: {
-        src = pkgs.fetchFromGitHub {
-          owner = "flameshot-org";
-          repo = "flameshot";
-          rev = "3d21e4967b68e9ce80fb2238857aa1bf12c7b905";
-          sha256 = "sha256-OLRtF/yjHDN+sIbgilBZ6sBZ3FO6K533kFC1L2peugc=";
-        };
-        cmakeFlags = [
-          "-DUSE_WAYLAND_CLIPBOARD=1"
-          "-DUSE_WAYLAND_GRIM=1"
-        ];
-        buildInputs = oldAttrs.buildInputs ++ [ pkgs.libsForQt5.kguiaddons ];
-      }))
+      flameshot
       unstable.flyctl
       # .overrideAttrs(oldAttrs: rec {
       #   NIX_CFLAGS_COMPILE = "-DUSE_WAYLAND_CLIPBOARD";
@@ -514,7 +500,7 @@
       gnome.gedit
       ntfs3g
       # gnome.gnome-boxes
-      rustdesk
+      # rustdesk
       qbittorrent
       # tor-browser-bundle-bin
       # looking-glass-client
