@@ -10,7 +10,7 @@
   ];
   modules.flakes.enable = true;
   modules.maestral.enable = true;
-  modules.gpu-screen-recorder.enable = true;
+  modules.gpu-screen-recorder.enable = false;
 
   user = self.user;
 
