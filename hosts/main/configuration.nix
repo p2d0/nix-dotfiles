@@ -33,6 +33,7 @@
 
   hardware.opengl.enable = true;
   hardware.opengl.driSupport = true;
+  hardware.opengl.driSupport32Bit = true;
   hardware.opengl.extraPackages = with pkgs; [ vaapiIntel
                                                vaapiVdpau libvdpau-va-gl
                                                amdvlk
@@ -70,7 +71,6 @@
   };
 
   i18n.defaultLocale = "en_US.UTF-8";
-
   services.gvfs.enable = true;
   services.udev.extraRules = ''
     SUBSYSTEM=="usb", ACTION=="add", ATTR{idVendor}=="0e8d", ATTR{idProduct}=="201d" MODE="0777" GROUP="users"
