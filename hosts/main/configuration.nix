@@ -304,7 +304,7 @@
        redshift
      ])
     ++ [
-      (pkgs.python3.withPackages(ps: [ ps.python-lsp-server ps.python-miio ps.requests ps.epc ps.lxml ps.tld ps.sexpdata ps.pyqt6 ps.pyqt6-sip ps.pyqt6-webengine ps.pygetwindow ]))
+      (pkgs.python3.withPackages(ps: [ ps.python-lsp-server ps.pytest ps.python-miio ps.requests ps.epc ps.lxml ps.tld ps.sexpdata ps.pyqt6 ps.pyqt6-sip ps.pyqt6-webengine ps.pygetwindow ]))
       my.hbctool
       vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
       unstable.lapce
@@ -566,7 +566,6 @@
       python39Packages.yt-dlp
       imagemagick
       # thunderbird
-      python39Packages.pytest
       # libpulseaudio
       python39Packages.virtualenv
       python39Packages.pip
