@@ -118,6 +118,11 @@ def display_temperature():
 
     print(output)
 
+def display_brightness_and_temperature():
+    yeelight = create_yeelight(yeelights[0])
+    values = yeelight.get_properties(["bright","ct"])
+    print("{}% {}K".format(values[0],values[1]))
+
 # Define a function to change the brightness of the lightbulbs by a given amount
 def change_brightness(amount):
     for lightbulb in yeelights:
@@ -152,27 +157,30 @@ def enable_lights():
     #     print(f"Light {i + 1} toggled: {current_state} -> {new_state}")
 
 # Check if the script is run with the correct number of arguments
-if len(argv) > 2:
-    arg1 = argv[1]
-    arg2 = int(argv[2])
+if __name__ == '__main__':
+    if len(argv) > 2:
+        arg1 = argv[1]
+        arg2 = int(argv[2])
 
-    if arg1 == "change":
-        change_brightness(arg2)
-    if arg1 == "set_brightness":
-        set_brightness_for_all(arg2)
-    elif arg1 == "temperature":
-        change_temperature(arg2)
+        if arg1 == "change":
+            change_brightness(arg2)
+        if arg1 == "set_brightness":
+            set_brightness_for_all(arg2)
+        elif arg1 == "temperature":
+            change_temperature(arg2)
+        else:
+            print("Invalid command")
+    elif len(argv) > 1:
+        arg1 = argv[1]
+        if arg1 == "display_brightness":
+            display_brightness()
+        if arg1 == "display_both":
+            display_brightness_and_temperature()
+        elif arg1 == "display_temp":
+            display_temperature()
+        elif arg1 == "toggle":
+            toggle_lights()
+        elif arg1 == "enable":
+            enable_lights()
     else:
-        print("Invalid command")
-elif len(argv) > 1:
-    arg1 = argv[1]
-    if arg1 == "display_brightness":
-        display_brightness()
-    elif arg1 == "display_temp":
-        display_temperature()
-    elif arg1 == "toggle":
-        toggle_lights()
-    elif arg1 == "enable":
-        enable_lights()
-else:
-    print("Usage: python polybar_yeelight.py <display_brightness|display_temp|change|temperature|toggle> <amount|temperature>")
+        print("Usage: python polybar_yeelight.py <display_brightness|display_temp|change|temperature|toggle> <amount|temperature>")
