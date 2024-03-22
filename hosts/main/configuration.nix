@@ -97,9 +97,9 @@
       {
         output = "DisplayPort-0";
         primary = true;
-        monitorConfig = ''
-        Modeline "2560x1080@75"  228.25  2560 2608 2640 2720  1080 1083 1093 1119 +hsync -vsync
-        Option "PreferredMode" "2560x1080@75"'';
+        # monitorConfig = ''
+        # Modeline "2560x1080@75"  228.25  2560 2608 2640 2720  1080 1083 1093 1119 +hsync -vsync
+        # Option "PreferredMode" "2560x1080@75"'';
       }
       {
         output = "DVI-D-0";

@@ -347,9 +347,15 @@
                 "QV2RAY_RULE_ENABLED": true,
                 "QV2RAY_RULE_TAG": "US",
                 "domain": [
+                    "ai.google.dev",
+                    "aistudio.google.com",
+                    "alkalilogexporter-pa.clients6.google.com",
                     "anthropic.com",
                     "bard.google.com",
                     "claude.ai",
+                    "clients6.google.com",
+                    "content-developerprofiles-pa.googleapis.com",
+                    "developers.google.com",
                     "docs.google.com",
                     "healthline.com",
                     "importgenius.com",
@@ -362,7 +368,8 @@
                     "steamidfinder.com",
                     "store.epicgames.com",
                     "tsn.ua",
-                    "upgrade.com"
+                    "upgrade.com",
+                    "waa-pa.clients6.google.com"
                 ],
                 "inboundTag": [
                     "GlobalConfig-Socks"
