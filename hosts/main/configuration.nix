@@ -284,15 +284,18 @@
   #   SystemMaxUse=1G
   # '';
 
-  #   environment.etc = {
-  #     "docker/daemon.json" = {
-  #       text = ''
+  environment.etc = {
+    "wireplumber/policy.lua.d/11-bluetooth-policy.lua".text = ''
+      bluetooth_policy.policy["media-role.use-headset-profile"] = false
+  '';
+  #   "docker/daemon.json" = {
+  #     text = ''
   # {
   #   "data-root": "/mnt/md127/docker"
   # }
   # '';
-  #     };
-  #   };
+    # };
+  };
   modules.taffybar.enable = false;
   environment.systemPackages = with pkgs;
     (if config.programs.hyprland.enable
@@ -488,8 +491,8 @@
       #   abseil-cpp = unstable.abseil-cpp_202111;
       # })
       # unstable.tdesktop
-      # telegram-desktop_git
-      telegram-desktop
+      telegram-desktop_git
+      # unstable.telegram-desktop
       unstable.nil
       jpegoptim
       chatterino2
