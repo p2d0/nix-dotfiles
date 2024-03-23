@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # Import the necessary modules
 from miio import Yeelight
+import argparse
 from miio.exceptions import DeviceException
 from sys import argv
 from time import sleep
@@ -136,6 +137,12 @@ def set_brightness_for_all(brightness):
         set_brightness(lightbulb, brightness)
     print(f"Brightness changed by {amount}%")
 
+def set_both(brightness,temperature):
+    for lightbulb in yeelights:
+        set_brightness(lightbulb, brightness)
+        set_temperature(lightbulb, temperature)
+    print(f"Brightness set to {brightness}%\nTemperature set to {temperature}K")
+
 # Define a function to change the temperature of the lightbulbs
 def change_temperature(amount):
     for lightbulb in yeelights:
@@ -156,31 +163,65 @@ def enable_lights():
     # for i in enumerate(states):
     #     print(f"Light {i + 1} toggled: {current_state} -> {new_state}")
 
-# Check if the script is run with the correct number of arguments
-if __name__ == '__main__':
-    if len(argv) > 2:
-        arg1 = argv[1]
-        arg2 = int(argv[2])
+def main():
+    parser = argparse.ArgumentParser(description='Control Yeelight settings.')
 
-        if arg1 == "change":
-            change_brightness(arg2)
-        if arg1 == "set_brightness":
-            set_brightness_for_all(arg2)
-        elif arg1 == "temperature":
-            change_temperature(arg2)
-        else:
-            print("Invalid command")
-    elif len(argv) > 1:
-        arg1 = argv[1]
-        if arg1 == "display_brightness":
-            display_brightness()
-        if arg1 == "display_both":
-            display_brightness_and_temperature()
-        elif arg1 == "display_temp":
-            display_temperature()
-        elif arg1 == "toggle":
-            toggle_lights()
-        elif arg1 == "enable":
-            enable_lights()
+    subparsers = parser.add_subparsers(dest='command')
+
+    # display_brightness command
+    parser_display_brightness = subparsers.add_parser('display_brightness', help='Display brightness')
+
+    # display_temp command
+    parser_display_temp = subparsers.add_parser('display_temp', help='Display temperature')
+
+    # change command
+    parser_change = subparsers.add_parser('change', help='Change brightness')
+    parser_change.add_argument('amount', type=int, help='Amount to change brightness')
+
+    # temperature command
+    parser_temperature = subparsers.add_parser('temperature', help='Change temperature')
+    parser_temperature.add_argument('temperature', type=int, help='Temperature to set')
+
+    # toggle command
+    parser_toggle = subparsers.add_parser('toggle', help='Toggle lights')
+
+    # enable command
+    parser_enable = subparsers.add_parser('enable', help='Enable lights')
+
+    # set_brightness command
+    parser_set_brightness = subparsers.add_parser('set_brightness', help='Set brightness for all')
+    parser_set_brightness.add_argument('brightness', type=int, help='Brightness to set')
+
+    # both command
+    parser_both = subparsers.add_parser('both', help='Set both brightness and temperature')
+    parser_both.add_argument('brightness', type=int, help='Brightness to set')
+    parser_both.add_argument('temperature', type=int, help='Temperature to set')
+
+    # display_both command
+    parser_display_both = subparsers.add_parser('display_both', help='Display brightness and temperature')
+
+    args = parser.parse_args()
+
+    if args.command == 'display_brightness':
+        display_brightness()
+    elif args.command == 'display_temp':
+        display_temperature()
+    elif args.command == 'change':
+        change_brightness(args.amount)
+    elif args.command == 'temperature':
+        change_temperature(args.temperature)
+    elif args.command == 'toggle':
+        toggle_lights()
+    elif args.command == 'enable':
+        enable_lights()
+    elif args.command == 'set_brightness':
+        set_brightness_for_all(args.brightness)
+    elif args.command == 'both':
+        set_both(args.brightness, args.temperature)
+    elif args.command == 'display_both':
+        display_brightness_and_temperature()
     else:
-        print("Usage: python polybar_yeelight.py <display_brightness|display_temp|change|temperature|toggle> <amount|temperature>")
+        print("Invalid command")
+
+if __name__ == '__main__':
+    main()

@@ -108,10 +108,17 @@ in {
         function activate-specialisation-default
           sudo /run/current-system/specialisation/default/activate
         end'';
-
+      programs = {
+        direnv = {
+          enable = true;
+          enableFishIntegration = true; # see note on other shells below
+          nix-direnv.enable = true;
+        };
+      };
       qt = {
         enable = true;
-        platformTheme = "gtk";
+        # TODO Doesnt work with telegram?
+        # platformTheme = "gtk";
       };
 
       # TODO is it a good way?
