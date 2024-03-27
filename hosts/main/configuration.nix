@@ -316,6 +316,7 @@
       wget
       clang
       file
+      clojure
       kdenlive
       openssl
       # pr218037.microsoft-edge-dev
