@@ -530,7 +530,7 @@
       inetutils
       zip
       xsettingsd
-      # easyeffects
+      easyeffects
       # evolution
       nodejs
       iconpack-obsidian
