@@ -13,14 +13,30 @@ in {
     };
   };
   config = mkIf cfg.enable {
-    virtualisation.oci-containers = {
-      backend = "docker";
-      containers = {
-        ilzabot = {
-          autoStart = true;
-          image = "ilza";
-        };
+    systemd.user.services.ilzabot =
+      let dir = /mnt/md127/ilzabot/
+      {
+      Unit = {
+        After = lib.mkForce [ "default.target" ];
+        PartOf = lib.mkForce [ "default.target" ];
       };
+      environment = {
+        https_proxy = "http://localhost:8092";
+      };
+      serviceConfig = {
+        WorkingDirectory="${dir}"
+        ExecStart = "${dir}/.venv/bin/python ${dir}/iLzabot.py"
+      }
     };
+
+    # virtualisation.oci-containers = {
+    #   backend = "docker";
+    #   containers = {
+    #     ilzabot = {
+    #       autoStart = true;
+    #       image = "ilza";
+    #     };
+    #   };
+    # };
   };
 }
