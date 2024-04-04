@@ -13,3 +13,4 @@ function clip-files-in-current-dir -d "Copy file[s] to clipboard to paste to tel
     # wl-copy -t text/uri-list if wayland
     # TODO check if wayland
 end
+
