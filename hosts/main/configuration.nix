@@ -266,7 +266,28 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-
+  services.nginx = {
+      enable = true;
+      recommendedProxySettings = true;
+      recommendedTlsSettings = true;
+      # other Nginx options
+      virtualHosts."ug.kyrgyzstan.kg" =  {
+        listen = [{addr = "*";port = 9898;}];
+        enableACME = false;
+        forceSSL = false;
+        locations."/" = {
+          proxyPass = "http://192.168.31.27:80";
+          proxyWebsockets = true; # needed if you need to use WebSocket
+          extraConfig =
+            "proxy_set_header Host $host;" +
+            # required when the target is also TLS server with multiple hosts
+            "proxy_ssl_server_name on;" +
+            # required when the server wants to use HTTP Authentication
+            "proxy_pass_header Authorization;"
+            ;
+        };
+      };
+  };
   # services.getty.autologinUser = config.user;
 
   # systemd.coredump.extraConfig = ''
