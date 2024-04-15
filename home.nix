@@ -88,22 +88,22 @@ in {
 
       programs.fish.shellInit = ''
         function rebuild-work
-          set -x NIX_BUILD_CORES 1
-          sudo nixos-rebuild switch --impure  --flake '/etc/nixos/.?submodules=1#mysystem' -j1 $argv
+          set -x NIX_BUILD_CORES 10
+          sudo nixos-rebuild switch --impure  --flake '/etc/nixos/.?submodules=1#mysystem' -j10 $argv
           sudo /run/current-system/specialisation/work/activate
         end
         function activate-specialisation-work
           sudo /run/current-system/specialisation/work/activate
         end
         function rebuild-default
-          set -x NIX_BUILD_CORES 1
-          sudo nixos-rebuild switch --impure  --flake '/etc/nixos/.?submodules=1#mysystem' -j1 $argv
+          set -x NIX_BUILD_CORES 10
+          sudo nixos-rebuild switch --impure  --flake '/etc/nixos/.?submodules=1#mysystem' -j10 $argv
           sudo /run/current-system/specialisation/default/activate
         end
         function update-system
           nix flake update /etc/nixos
-          set -x NIX_BUILD_CORES 1
-          sudo nixos-rebuild boot --impure  --flake '/etc/nixos/.?submodules=1#mysystem' -j1 $argv
+          set -x NIX_BUILD_CORES 10
+          sudo nixos-rebuild boot --impure  --flake '/etc/nixos/.?submodules=1#mysystem' -j10 $argv
         end
         function activate-specialisation-default
           sudo /run/current-system/specialisation/default/activate

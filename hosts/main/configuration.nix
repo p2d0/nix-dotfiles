@@ -350,6 +350,7 @@
       file
       clojure
       kdenlive
+      lm_sensors
       openssl
       # pr218037.microsoft-edge-dev
       gcc.cc.libgcc

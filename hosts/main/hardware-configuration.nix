@@ -10,10 +10,10 @@
 
   boot.initrd.availableKernelModules = [ "ehci_pci" "ata_piix" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" "vfio-pci" ];
+  boot.kernelModules = [ "vfio-pci" ];
   boot.kernelParams = [ # "quiet" "vga=current" "udev.log_level=3" "rd.systemd.show_status=auto" "nowatchdog"
     # "amdgpu.ppfeaturemask=0xffffffff"
-    "usbhid.mousepoll=1"   "intel_iommu=on" "raid0.default_layout=2" "mitigations=off" ];
+    "usbhid.mousepoll=1"   "raid0.default_layout=2" ];
   boot.extraModulePackages = [ ];
   boot.loader.timeout = 1;
   services.fstrim.enable = lib.mkDefault true;
