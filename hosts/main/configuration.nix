@@ -352,6 +352,7 @@
       kdenlive
       lm_sensors
       openssl
+      nodePackages.localtunnel
       # pr218037.microsoft-edge-dev
       gcc.cc.libgcc
       conda
@@ -490,7 +491,7 @@
       btop
       calibre
       xorg.xdpyinfo
-      # postman
+      unstable.postman
       brave
       peco
       ffmpeg-full
