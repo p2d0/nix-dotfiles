@@ -1,1 +1,1 @@
-alias cfic='clip-files-in-current-dir'
+# alias cfic='clip-files-in-current-dir'
