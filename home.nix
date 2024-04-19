@@ -1,11 +1,10 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs ... }:
 
-let
-  unstable = import <nixos-unstable> { config.allowUnfree = true; };
-in {
+{
   specialisation.default = {
     configuration = {
       programs.steam.enable = true;
+      programs.steam.package = unstable.steam;
       hardware.opentabletdriver.enable = true;
       services.xserver.displayManager.autoLogin = {
         enable = true;
