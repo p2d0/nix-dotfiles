@@ -1,10 +1,10 @@
-{ config, lib, pkgs ... }:
+{ config, lib, pkgs, ... }:
 
 {
   specialisation.default = {
     configuration = {
       programs.steam.enable = true;
-      programs.steam.package = unstable.steam;
+      programs.steam.package = pkgs.unstable.steam;
       hardware.opentabletdriver.enable = true;
       services.xserver.displayManager.autoLogin = {
         enable = true;
@@ -44,7 +44,7 @@
             pkgs.libxcrypt
           ];
         })
-        unstable.stremio
+        pkgs.unstable.stremio
         pkgs.my.osu-lazer-bin
         pkgs.chatterino2
       ];
