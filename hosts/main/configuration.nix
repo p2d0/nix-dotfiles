@@ -43,17 +43,15 @@
   hardware.opengl.enable = true;
   hardware.opengl.driSupport = true;
   hardware.opengl.driSupport32Bit = true;
-  hardware.opengl.extraPackages = with pkgs; [ vaapiIntel
-                                               vaapiVdpau libvdpau-va-gl
+  hardware.opengl.extraPackages = with pkgs; [vaapiVdpau libvdpau-va-gl
                                                amdvlk
                                                # libva1
                                                # libva
                                                rocm-opencl-icd
                                                rocm-opencl-runtime
-                                               intel-ocl
                                              ];
   # rocmTargets = ["gfx803"];
-  hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ vaapiIntel ];
+  # hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ vaapiIntel ];
   services.ratbagd.enable = true;
 
   boot.kernelPackages = pkgs.linuxPackages_zen;

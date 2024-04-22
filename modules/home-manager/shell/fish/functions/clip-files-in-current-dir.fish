@@ -1,4 +1,4 @@
-function cfic -d "Copy file[s] to clipboard to paste to telegram,nautilus etc..."
+function clip-files-in-current-dir -d "Copy file[s] to clipboard to paste to telegram,nautilus etc..."
     set -l list ();
     for file in $argv
         set -a list "file://$PWD/$file\n"
