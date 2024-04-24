@@ -579,6 +579,7 @@
       # sublime
       # drawio
       pipenv
+      spotify
       # my.immersed-vr
       # (import (builtins.fetchTarball {
       #   url = "https://github.com/NixOS/nixpkgs/archive/23c10dbe320e6957f2607d8a22f9e0e36f56a235.tar.gz";
