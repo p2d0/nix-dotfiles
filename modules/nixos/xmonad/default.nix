@@ -32,15 +32,3 @@ in {
     };
   }));
 }
-
-
-  # {
-  #   # displayManager = {
-  #   #   defaultSession = "none+xmonad";
-  #   # };
-
-  #   # systemd.user.tmpfiles.rules = [
-  #   #   "L ${config.home.homeDirectory}/.xmonad/lib - - - - /etc/nixos/modules/nixos/xmonad/lib"
-  #   # ];
-
-  # }

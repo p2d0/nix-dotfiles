@@ -266,39 +266,70 @@
   # $ nix search wget
   services.nginx = {
       enable = true;
-      recommendedProxySettings = true;
+      recommendedGzipSettings = true;
+      recommendedOptimisation = true;
+      # recommendedProxySettings = true;
       recommendedTlsSettings = true;
-      # other Nginx options
+    # other Nginx options
       virtualHosts."ug.kyrgyzstan.kg" =  {
-        listen = [{addr = "*";port = 9898;}];
-        enableACME = false;
-        forceSSL = false;
+        # sslCertificate = "/etc/letsencrypt/live/ug.kyrgyzstan.kg/fullchain.pem";
+        # sslCertificateKey = "/etc/letsencrypt/live/ug.kyrgyzstan.kg/privkey.pem";
+        enableACME = true;
+        forceSSL = true;
+        # locations."/.well-known/acme-challenge" = {
+        #   root = "/var/lib/acme/.challenges";
+        # };
         locations."/" = {
-          proxyPass = "http://192.168.31.27:80";
+          proxyPass = "http://localhost:8989/";
           proxyWebsockets = true; # needed if you need to use WebSocket
+          # extraConfig =
+          #   "proxy_set_header Host $host;" +
+          #   # required when the target is also TLS server with multiple hosts
+          #   "proxy_ssl_server_name on;" +
+          #   # required when the server wants to use HTTP Authentication
+          #   "proxy_pass_header Authorization;";
           extraConfig =
-            "proxy_set_header Host $host;" +
-            # required when the target is also TLS server with multiple hosts
-            "proxy_ssl_server_name on;" +
-            # required when the server wants to use HTTP Authentication
-            "proxy_pass_header Authorization;"
-            ;
+            "proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;"+
+            "proxy_set_header Host $host;"+
+            "proxy_set_header X-Forwarded-Proto https;"+
+            "proxy_redirect off;";
         };
       };
   };
+  # security.acme.certs."ug.kyrgyzstan.kg" = {
+  #   webroot = "/var/lib/acme/.challenges";
+  #   email = "cerkin-3@yandex.ru";
+  #   # Ensure that the web server you use can read the generated certs
+  #   # Take a look at the group option for the web server you choose.
+  #   group = "nginx";
+  #   # Since we have a wildcard vhost to handle port 80,
+  #   # we can generate certs for anything!
+  #   # Just make sure your DNS resolves them.
+  #   # extraDomainNames = [ "mail.example.com" ];
+  # };
+
+  users.users.nginx.extraGroups = [ "acme" ];
+
   # services.getty.autologinUser = config.user;
 
   # systemd.coredump.extraConfig = ''
   #   Storage=none
   # '';
 
-  modules.xdg.sessionVariables = true;
+  # modules.xdg-variables.sessionVariables = true;
+
   # programs.java = {
   #   enable = true;
   #   package = pkgs.openjdk8;
   #   # https://javadl.oracle.com/webapps/download/GetFile/1.8.0_281-b09/89d678f2be164786b292527658ca1605/linux-i586/jdk-8u281-linux-x64.tar.gz
   #   # TODO direct link
   # };
+security.acme = {
+  acceptTerms = true;
+  defaults.email = "cerkin-3@yandex.ru";
+  # certs."mx1.example.org" = {
+  # };
+};
 
   modules.fonts.enable = true;
   modules.timed-shutdown.enable = false;
@@ -606,7 +637,7 @@
       # libpulseaudio
       python39Packages.virtualenv
       python39Packages.pip
-      anydesk
+      # unstable.anydesk
       feh
       gnome.eog
       alacritty

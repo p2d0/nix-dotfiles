@@ -4,7 +4,6 @@
   inputs = {
     nixpkgs = { url = "github:nixos/nixpkgs/nixos-23.11"; };
     nixos-unstable.url = "nixpkgs/nixos-unstable";
-    nixos-unstable-small.url = "nixpkgs/nixos-unstable-small";
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     hyprland.url = "github:hyprwm/Hyprland";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
@@ -12,7 +11,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs @ { self,  nixpkgs, poetry2nix, chaotic, nixos-unstable, nixos-unstable-small, hyprland, home-manager, ... }:
+  outputs = inputs @ { self,  nixpkgs, poetry2nix, chaotic, nixos-unstable, hyprland, home-manager, ... }:
     let lib = nixpkgs.lib.extend (self: super: { my = import /etc/nixos/lib/util.nix { lib = nixpkgs.lib; }; });
         nixpkgs-tars = "https://github.com/NixOS/nixpkgs/archive/";
         system =  "x86_64-linux";
@@ -34,11 +33,10 @@
                 config = self.config;
               };
             unstable = import nixos-unstable { config = self.config; };
-            unstable-small = import nixos-unstable-small { config = self.config; };
             my = lib.my.mapModules /etc/nixos/pkgs (p: self.callPackage p {});
           })] ++ extraOverlays;
         };
-        pkgs  = mkPkgs nixpkgs [ poetry2nix.overlays.default ];
+        pkgs  = mkPkgs nixpkgs [ poetry2nix.overlays.default chaotic.overlays.default ];
     in
       {
         inherit lib;
@@ -60,7 +58,6 @@
             modules = [
               {nixpkgs.pkgs = pkgs;}
               home-manager.nixosModules.home-manager
-              chaotic.nixosModules.default
               hyprland.nixosModules.default
               ./home.nix
               ./hosts/main/configuration.nix
