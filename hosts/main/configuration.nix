@@ -12,6 +12,8 @@
   modules.maestral.enable = true;
   modules.gpu-screen-recorder.enable = true;
 
+# TODO Agenix
+# https://nixos.wiki/wiki/Agenix
   user = self.user;
 
   xdg.portal = {
@@ -590,13 +592,14 @@ security.acme = {
       # gnome.gnome-boxes
       # rustdesk
       qbittorrent
+      epiphany
       # tor-browser-bundle-bin
       # looking-glass-client
       # unstable.tg
       pkgs.cinnamon.nemo-with-extensions
       pkgs.cinnamon.nemo-fileroller
       pkgs.cinnamon.nemo-python
-      # unstable.telegram-cli
+      unstable.telegram-cli
       # (unstable.callPackage /etc/nixos/pkgs/nemo-preview.nix {})
       # my.nemo-preview
       # 41.2
