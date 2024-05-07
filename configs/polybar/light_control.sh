@@ -11,7 +11,7 @@ brightness_and_temp=$(python3 xiaomi_light_control.py display_both)
 rofi_prompt="Yeelight Controls $brightness_and_temp"
 
 # Options to be displayed in rofi
-options=("Change Brightness" "Change Temperature" "Toggle Lights" "50% 3000K")
+options=("Change Brightness" "Change Temperature" "Toggle Lights" "50% 3000K" "100% 5000K" "50% 4000K")
 
 # Use rofi to select an option
 selected_option=$(printf "%s\n" "${options[@]}" | rofi -dmenu -i -p "$rofi_prompt")
@@ -35,5 +35,13 @@ case $selected_option in
     "50% 3000K")
         # Pass toggle command to the python script
         python3 xiaomi_light_control.py both 50 3000
+        ;;
+    "50% 4000K")
+        # Pass toggle command to the python script
+        python3 xiaomi_light_control.py both 50 4000
+        ;;
+    "100% 5000K")
+        # Pass toggle command to the python script
+        python3 xiaomi_light_control.py both 100 5000
         ;;
 esac

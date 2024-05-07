@@ -18,7 +18,7 @@ in {
       in
         {
           enable = true;
-          wantedBy = ["default.target"];
+          wantedBy = ["timers.target"];
           environment = {
             https_proxy = "http://localhost:8092";
             LD_LIBRARY_PATH = lib.makeLibraryPath [

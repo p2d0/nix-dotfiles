@@ -23,7 +23,7 @@ function record_screen_replay_sound
             # pactl load-module module-null-sink sink_name=IOMix sink_properties=device.description="input and output mixed"
             # pactl load-module module-loopback source=$(pactl get-default-source) sink=IOMix
             # pactl load-module module-loopback source=$(pactl get-default-sink).monitor sink=IOMix
-            gpu-screen-recorder (get_current_screen_geometry "-w {model} -c mp4 -ac aac -q medium -k h264 -f 60 -a $sink.monitor|$src -v no -r 60 -o $HOME/Videos" | string split -n " ")
+            gpu-screen-recorder (get_current_screen_geometry "-w DP-1 -c mp4 -ac aac -q medium -k h264 -f 60 -a $sink.monitor|$src -v no -r 60 -o $HOME/Videos" | string split -n " ")
         end
     end
 end

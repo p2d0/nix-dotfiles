@@ -10,7 +10,7 @@
   ];
   modules.flakes.enable = true;
   modules.maestral.enable = true;
-  modules.gpu-screen-recorder.enable = false;
+  modules.gpu-screen-recorder.enable = true;
 
   user = self.user;
 
@@ -251,7 +251,7 @@
         # "30 20 * * * andrew fish -c 'update-system'"
         "00 23 * * * root sh -c 'shutdown now'"
         "00 22 * * * root sh -c 'shutdown now'"
-        # "00 21 * * * root sh -c 'shutdown now'"
+        "00 21 * * * root sh -c 'shutdown now'"
         "00 20 * * * andrew fish -c 'sync_repos'"
         "3,8,13,18,23,28,33,38,43,48,53,58 * * * * andrew sleep 50 ; wget --no-check-certificate -O - https://freedns.afraid.org/dynamic/update.php?RnBTMHFiQlhHWnVmUXpNYmtLWlQ0ZXB5OjIxNjg5NzI5 >> /tmp/freedns_ug_kyrgyzstan_kg.log 2>&1 &"
       ];
@@ -279,6 +279,10 @@
         # locations."/.well-known/acme-challenge" = {
         #   root = "/var/lib/acme/.challenges";
         # };
+        locations."/landing/" = {
+          alias = "/mnt/md127/upgrade/website2";
+          tryFiles = "$uri $uri/ /index.html";
+        };
         locations."/" = {
           proxyPass = "http://localhost:8989/";
           proxyWebsockets = true; # needed if you need to use WebSocket
@@ -288,6 +292,19 @@
           #   "proxy_ssl_server_name on;" +
           #   # required when the server wants to use HTTP Authentication
           #   "proxy_pass_header Authorization;";
+          extraConfig =
+            "proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;"+
+            "proxy_set_header Host $host;"+
+            "proxy_set_header X-Forwarded-Proto https;"+
+            "proxy_redirect off;";
+        };
+      };
+      virtualHosts."upgradegamma.ru" =  {
+        enableACME = true;
+        forceSSL = true;
+        locations."/" = {
+          proxyPass = "http://localhost:8001/";
+          proxyWebsockets = true;
           extraConfig =
             "proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;"+
             "proxy_set_header Host $host;"+
@@ -386,8 +403,10 @@ security.acme = {
       gcc.cc.libgcc
       conda
       megasync
+      unstable.jetbrains.idea-community
       unstable.gamescope
       yandex-disk
+      gpu-screen-recorder
       shared-mime-info
       clinfo
       qrencode
@@ -405,7 +424,7 @@ security.acme = {
       neovide
       lazygit
       gmsh
-      # unstable.microsoft-edge
+      unstable.microsoft-edge
       calculix
       # pr229886.amdgpu-pro-libs.amf
       # pr229886.amdgpu-pro-libs.prefixes
@@ -555,8 +574,8 @@ security.acme = {
       #   abseil-cpp = unstable.abseil-cpp_202111;
       # })
       # unstable.tdesktop
-      telegram-desktop_git
-      # unstable.telegram-desktop
+      # telegram-desktop_git
+      unstable.telegram-desktop
       unstable.nil
       jpegoptim
       chatterino2
@@ -610,7 +629,7 @@ security.acme = {
       # sublime
       # drawio
       pipenv
-      spotify-qt
+      spotify
       # my.immersed-vr
       # (import (builtins.fetchTarball {
       #   url = "https://github.com/NixOS/nixpkgs/archive/23c10dbe320e6957f2607d8a22f9e0e36f56a235.tar.gz";
@@ -637,7 +656,7 @@ security.acme = {
       # libpulseaudio
       python39Packages.virtualenv
       python39Packages.pip
-      # unstable.anydesk
+      unstable.anydesk
       feh
       gnome.eog
       alacritty
