@@ -106,13 +106,15 @@
       {
         output = "DisplayPort-0";
         primary = true;
-        # monitorConfig = ''
-        # Modeline "2560x1080@75"  228.25  2560 2608 2640 2720  1080 1083 1093 1119 +hsync -vsync
-        # Option "PreferredMode" "2560x1080@75"'';
-      }
+        monitorConfig = ''
+        Modeline "2560x1080 74.99"
+        Option "PreferredMode" "2560x1080@75"'';
+      # }
       {
         output = "DVI-D-0";
-        monitorConfig = ''Option "Position" "2560 0"'';
+        monitorConfig = ''
+         Option "Position" "2560 0"'
+         Option          "TearFree" "true"'';
       }
     ];
 
@@ -559,7 +561,8 @@ security.acme = {
       paprefs
       # shotcut
       darktable
-      picom
+      compfy
+      # picom
       # (callPackage /etc/nixos/pkgs/picom-animations.nix { })
       my.puush-linux
       # (pkgs.callPackage /mnt/md127/nixpkgs/pkgs/applications/networking/instant-messengers/telegram/tdesktop { })
@@ -599,7 +602,8 @@ security.acme = {
       pkgs.cinnamon.nemo-with-extensions
       pkgs.cinnamon.nemo-fileroller
       pkgs.cinnamon.nemo-python
-      unstable.telegram-cli
+      # unstable.telegram-cli
+      soundux
       # (unstable.callPackage /etc/nixos/pkgs/nemo-preview.nix {})
       # my.nemo-preview
       # 41.2

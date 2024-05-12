@@ -9,9 +9,10 @@
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     poetry2nix.url = "github:nix-community/poetry2nix";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    compfy.url = "github:allusive-dev/compfy";
   };
 
-  outputs = inputs @ { self,  nixpkgs, poetry2nix, chaotic, nixos-unstable, hyprland, home-manager, ... }:
+  outputs = inputs @ { self,  nixpkgs, poetry2nix, chaotic, compfy, nixos-unstable, hyprland, home-manager, ... }:
     let lib = nixpkgs.lib.extend (self: super: { my = import /etc/nixos/lib/util.nix { lib = nixpkgs.lib; }; });
         nixpkgs-tars = "https://github.com/NixOS/nixpkgs/archive/";
         system =  "x86_64-linux";
@@ -33,6 +34,7 @@
                 config = self.config;
               };
             unstable = import nixos-unstable { config = self.config; };
+            compfy = compfy.packages.${system}.compfy;
             my = lib.my.mapModules /etc/nixos/pkgs (p: self.callPackage p {});
           })] ++ extraOverlays;
         };
@@ -52,6 +54,12 @@
         #   };
         # homeManagerModules = lib.my.mapModulesRec /etc/nixos/modules/home-manager import;
         # nixosModules = lib.
+
+        overlays = {
+          default = pkgs.my;
+          compfy = compfy;
+        };
+
         nixosConfigurations = {
           mysystem = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
