@@ -107,14 +107,17 @@
         output = "DisplayPort-0";
         primary = true;
         monitorConfig = ''
-        Modeline "2560x1080 74.99"
+        Modeline "2560x1080_75.00"  294.00  2560 2744 3016 3472  1080 1083 1093 1130 -hsync +vsync
+        Modeline "2560x1080_74.99"  294.00  2560 2744 3016 3472  1080 1083 1093 1130 -hsync +vsync
+        Modeline "2560x1080@75"  228.25  2560 2608 2640 2720  1080 1083 1093 1119 +hsync -vsync
         Option "PreferredMode" "2560x1080@75"'';
-      # }
+      }
       {
         output = "DVI-D-0";
         monitorConfig = ''
-         Option "Position" "2560 0"'
-         Option          "TearFree" "true"'';
+         Option "Position" "2560 0"
+         Option          "TearFree" "true"
+'';
       }
     ];
 
