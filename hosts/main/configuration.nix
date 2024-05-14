@@ -178,7 +178,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   # TODO Move to home manager user config?
   modules.sway.enable = false;
-  modules.ilzabot.enable = true;
+  modules.ilzabot.enable = false;
   modules.hjkl.enable = true;
   modules.printing3d.enable = true;
   modules.warp.enable = true;
