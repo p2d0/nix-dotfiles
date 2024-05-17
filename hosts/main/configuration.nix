@@ -393,7 +393,6 @@ security.acme = {
       (pkgs.python3.withPackages(ps: [ ps.python-lsp-server ps.pytest ps.python-miio ps.requests ps.epc ps.lxml ps.tld ps.sexpdata ps.pyqt6 ps.pyqt6-sip ps.pyqt6-webengine ps.pygetwindow ]))
       my.hbctool
       vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-      unstable.lapce
       OSCAR
       poetry
       nix-index
@@ -631,7 +630,7 @@ security.acme = {
       koreader
       # vlc
       gsettings-desktop-schemas
-      # wineWowPackages.stable
+      wineWowPackages.stable
       whatsapp-for-linux
       libvirt
       dunst
