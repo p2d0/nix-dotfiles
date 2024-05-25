@@ -421,6 +421,7 @@ security.acme = {
       # pr229886.amdgpu-pro-libs.opengl
       # pr229886.amdgpu-pro-libs.prefixes
       # unstable.amf-headers
+      pr314293.tdlib
       glibc
       xmrig
       sumneko-lua-language-server

@@ -24,11 +24,14 @@
           config.permittedInsecurePackages = [ "xrdp-0.9.9" "libdwarf-20181024" "python-2.7.18.6" ];
           overlays = [(self: super: {
             inherit lib;
-            # get-pr-override 218037
+            # fish get-pr-override 218037
             pr218037 = import (fetchTarball
               "${nixpkgs-tars}84963237b438319092a352a7d375878d82beb1ca.tar.gz") {
                 config = self.config;
               };
+            pr314293 = import (fetchTarball
+              "${nixpkgs-tars}dd0629f12ebf19510a682ff132265253b7728ccc.tar.gz")
+              { config = self.config; };
             pr229886 = import (fetchTarball
               "https://github.com/NixOS/nixpkgs/archive/pull/229886/head.tar.gz") {
                 config = self.config;

@@ -44,7 +44,7 @@
             pkgs.libxcrypt
           ];
         })
-        pkgs.unstable.stremio
+        # pkgs.unstable.stremio
         # pkgs.my.osu-lazer-bin
         pkgs.unstable.osu-lazer-bin
         pkgs.chatterino2
