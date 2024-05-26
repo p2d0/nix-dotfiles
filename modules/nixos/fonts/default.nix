@@ -44,6 +44,7 @@ in {
                   pkgs.ipafont
                   pkgs.noto-fonts-cjk-sans
                   pkgs.noto-fonts-emoji
+                  pkgs.noto-fonts-color-emoji
                   pkgs.roboto
                   pkgs.noto-fonts
                   pkgs.noto-fonts-extra
