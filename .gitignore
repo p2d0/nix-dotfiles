@@ -1,4 +1,14 @@
 hadrware-configuration.nix
 result
+.envrc
 Plugins/
 .emacs.d
+.DS_Store
+.idea
+*.log
+tmp/
+
+*.py[cod]
+*.egg
+build
+htmlcov
