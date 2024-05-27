@@ -18,9 +18,9 @@ in {
   };
 
   config = mkIf cfg.enable (lib.my.withHome
-    ({config,...}: {
+    (args: {
       home.file = {
-        ".config/qv2ray".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/modules/nixos/vpn/qv2ray;
+        ".config/qv2ray".source = args.config.lib.file.mkOutOfStoreSymlink /home/${config.user}/Dropbox/qv2ray;
       };})
     {
       environment.systemPackages = with pkgs;

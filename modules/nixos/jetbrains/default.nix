@@ -2,7 +2,7 @@
 
 with lib;
 let cfg = config.modules.jetrbains;
-    unstable = import <nixos-unstable> { config.allowBroken = true; config.allowUnfree = true; };
+    # unstable = import <nixos-unstable> { config.allowBroken = true; config.allowUnfree = true; };
 in {
   options.modules.jetrbains = {
     enable = mkOption {

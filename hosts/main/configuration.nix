@@ -215,7 +215,6 @@
   users.defaultUserShell = pkgs.fish;
 
   modules.emacs-with-doom.enable = true;
-  modules.emacs-with-doom.package = pkgs.emacs29;
 
   # nixpkgs.config =
   #   let nixpkgs-tars = "https://github.com/NixOS/nixpkgs/archive/";

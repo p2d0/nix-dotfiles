@@ -1,6 +1,6 @@
-{ ... }:
+{ pkgs, ... }:
 
-with import <nixos-unstable> {};
+# with import <nixos-unstable> {};
 with pkgs;
 let pygments = (pkgs.python310Packages.pygments.overrideAttrs(oldAttrs: rec {
       pname = "pygments";

@@ -26,7 +26,7 @@ in {
                   pkgs.freefont_ttf
                   # pkgs.nerdfonts
                   (pkgs.nerdfonts.override {
-                    fonts = [ "FiraCode" "DroidSansMono" "ShareTechMono" "Noto" "JetBrainsMono" ];
+                        fonts = [ "FiraCode" "DroidSansMono" "ShareTechMono" "Noto" "JetBrainsMono" ];
                   })
                   pkgs.weather-icons
                   (callPackage ./fonts/bellandlamb.nix { })
@@ -43,8 +43,18 @@ in {
                   pkgs.baekmuk-ttf
                   pkgs.ipafont
                   pkgs.noto-fonts-cjk-sans
-                  pkgs.noto-fonts-emoji
-                  pkgs.noto-fonts-color-emoji
+                  unstable.noto-fonts-color-emoji
+                  # pkgs.noto-fonts-emoji
+#                   (unstable.noto-fonts-color-emoji.overrideAttrs(oldAttrs: rec {
+#                         installPhase = ''
+#         runHook preInstall
+#         mkdir -p $out/share/fonts/noto
+#         cp NotoColorEmoji.ttf $out/share/fonts/noto
+#         cp NotoColorEmoji-emojicompat.ttf $out/share/fonts/noto
+#         runHook postInstall
+# '';
+#                   }))
+
                   pkgs.roboto
                   pkgs.noto-fonts
                   pkgs.noto-fonts-extra
