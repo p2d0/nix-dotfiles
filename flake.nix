@@ -72,8 +72,8 @@
             # nixosModules = lib.
 
             overlays = {
-              default = pkgs.my;
-              compfy = compfy;
+              default = final: prev: pkgs.my;
+              # compfy = compfy;
             };
 
             nixosConfigurations = {
