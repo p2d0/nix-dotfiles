@@ -583,8 +583,8 @@ security.acme = {
       #   abseil-cpp = unstable.abseil-cpp_202111;
       # })
       # unstable.tdesktop
-      # telegram-desktop_git
-      unstable.telegram-desktop
+      telegram-desktop_git
+      # unstable.telegram-desktop
       unstable.nil
       jpegoptim
       chatterino2
