@@ -12,8 +12,8 @@
   modules.maestral.enable = true;
   modules.gpu-screen-recorder.enable = true;
 
-# TODO Agenix
-# https://nixos.wiki/wiki/Agenix
+  # TODO Agenix
+  # https://nixos.wiki/wiki/Agenix
   user = self.user;
 
   xdg.portal = {
@@ -46,11 +46,11 @@
   hardware.opengl.driSupport = true;
   hardware.opengl.driSupport32Bit = true;
   hardware.opengl.extraPackages = with pkgs; [vaapiVdpau libvdpau-va-gl
-                                               amdvlk
-                                               # libva1
-                                               # libva
-                                               rocm-opencl-icd
-                                               rocm-opencl-runtime
+                                              amdvlk
+                                              # libva1
+                                              # libva
+                                              rocm-opencl-icd
+                                              rocm-opencl-runtime
                                              ];
   # rocmTargets = ["gfx803"];
   # hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ vaapiIntel ];
@@ -119,6 +119,14 @@
          Option          "TearFree" "true"
 '';
       }
+      # {
+      #         output = "HDMI-A-0";
+      #         monitorConfig = ''
+      #          Modeline "2000x1000_60.00"  166.25  2000 2128 2336 2672  1000 1003 1013 1038 -hsync +vsync
+      #          Option "PreferredMode" "2000x1000_60.00"
+      #          Option "Position" "0 1080"
+      # '';
+      #       }
     ];
 
     # Doesnt work
@@ -272,53 +280,53 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   services.nginx = {
-      enable = true;
-      recommendedGzipSettings = true;
-      recommendedOptimisation = true;
-      # recommendedProxySettings = true;
-      recommendedTlsSettings = true;
+    enable = true;
+    recommendedGzipSettings = true;
+    recommendedOptimisation = true;
+    # recommendedProxySettings = true;
+    recommendedTlsSettings = true;
     # other Nginx options
-      virtualHosts."ug.kyrgyzstan.kg" =  {
-        # sslCertificate = "/etc/letsencrypt/live/ug.kyrgyzstan.kg/fullchain.pem";
-        # sslCertificateKey = "/etc/letsencrypt/live/ug.kyrgyzstan.kg/privkey.pem";
-        enableACME = true;
-        forceSSL = true;
-        # locations."/.well-known/acme-challenge" = {
-        #   root = "/var/lib/acme/.challenges";
-        # };
-        locations."/landing/" = {
-          alias = "/mnt/md127/upgrade/website2";
-          tryFiles = "$uri $uri/ /index.html";
-        };
-        locations."/" = {
-          proxyPass = "http://localhost:8989/";
-          proxyWebsockets = true; # needed if you need to use WebSocket
-          # extraConfig =
-          #   "proxy_set_header Host $host;" +
-          #   # required when the target is also TLS server with multiple hosts
-          #   "proxy_ssl_server_name on;" +
-          #   # required when the server wants to use HTTP Authentication
-          #   "proxy_pass_header Authorization;";
-          extraConfig =
-            "proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;"+
-            "proxy_set_header Host $host;"+
-            "proxy_set_header X-Forwarded-Proto https;"+
-            "proxy_redirect off;";
-        };
+    virtualHosts."ug.kyrgyzstan.kg" =  {
+      # sslCertificate = "/etc/letsencrypt/live/ug.kyrgyzstan.kg/fullchain.pem";
+      # sslCertificateKey = "/etc/letsencrypt/live/ug.kyrgyzstan.kg/privkey.pem";
+      enableACME = true;
+      forceSSL = true;
+      # locations."/.well-known/acme-challenge" = {
+      #   root = "/var/lib/acme/.challenges";
+      # };
+      locations."/landing/" = {
+        alias = "/mnt/md127/upgrade/website2";
+        tryFiles = "$uri $uri/ /index.html";
       };
-      virtualHosts."upgradegamma.ru" =  {
-        enableACME = true;
-        forceSSL = true;
-        locations."/" = {
-          proxyPass = "http://localhost:8001/";
-          proxyWebsockets = true;
-          extraConfig =
-            "proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;"+
-            "proxy_set_header Host $host;"+
-            "proxy_set_header X-Forwarded-Proto https;"+
-            "proxy_redirect off;";
-        };
+      locations."/" = {
+        proxyPass = "http://localhost:8989/";
+        proxyWebsockets = true; # needed if you need to use WebSocket
+        # extraConfig =
+        #   "proxy_set_header Host $host;" +
+        #   # required when the target is also TLS server with multiple hosts
+        #   "proxy_ssl_server_name on;" +
+        #   # required when the server wants to use HTTP Authentication
+        #   "proxy_pass_header Authorization;";
+        extraConfig =
+          "proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;"+
+          "proxy_set_header Host $host;"+
+          "proxy_set_header X-Forwarded-Proto https;"+
+          "proxy_redirect off;";
       };
+    };
+    virtualHosts."upgradegamma.ru" =  {
+      enableACME = true;
+      forceSSL = true;
+      locations."/" = {
+        proxyPass = "http://localhost:8001/";
+        proxyWebsockets = true;
+        extraConfig =
+          "proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;"+
+          "proxy_set_header Host $host;"+
+          "proxy_set_header X-Forwarded-Proto https;"+
+          "proxy_redirect off;";
+      };
+    };
   };
   # security.acme.certs."ug.kyrgyzstan.kg" = {
   #   webroot = "/var/lib/acme/.challenges";
@@ -348,12 +356,12 @@
   #   # https://javadl.oracle.com/webapps/download/GetFile/1.8.0_281-b09/89d678f2be164786b292527658ca1605/linux-i586/jdk-8u281-linux-x64.tar.gz
   #   # TODO direct link
   # };
-security.acme = {
-  acceptTerms = true;
-  defaults.email = "cerkin-3@yandex.ru";
-  # certs."mx1.example.org" = {
-  # };
-};
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = "cerkin-3@yandex.ru";
+    # certs."mx1.example.org" = {
+    # };
+  };
 
   modules.fonts.enable = true;
   modules.timed-shutdown.enable = false;
@@ -371,13 +379,14 @@ security.acme = {
     "wireplumber/policy.lua.d/11-bluetooth-policy.lua".text = ''
       bluetooth_policy.policy["media-role.use-headset-profile"] = false
   '';
-  #   "docker/daemon.json" = {
-  #     text = ''
-  # {
-  #   "data-root": "/mnt/md127/docker"
-  # }
-  # '';
-    # };
+    "docker/daemon.json" = {
+      text = ''
+  {
+  "log-driver": "json-file",
+  "log-opts": {"max-size": "10m", "max-file": "3"}
+  }
+  '';
+    };
   };
   modules.taffybar.enable = false;
   environment.systemPackages = with pkgs;
