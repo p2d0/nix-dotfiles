@@ -764,7 +764,7 @@ font-8 = FontAwesome:size=12;5
 
 modules-left = i3
 modules-center = text popup-calendar
-modules-right = light_temp light timer weather
+modules-right = timer weather
 ; bluetooth pulseaudio
 ; scratchpad-indicator
 ; text
