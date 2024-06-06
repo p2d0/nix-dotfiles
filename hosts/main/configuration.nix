@@ -52,9 +52,16 @@
                                               rocm-opencl-icd
                                               rocm-opencl-runtime
                                              ];
+  systemd.tmpfiles.rules = [
+    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
+  ];
   # rocmTargets = ["gfx803"];
   # hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ vaapiIntel ];
   services.ratbagd.enable = true;
+
+  environment.variables = {
+    ROC_ENABLE_PRE_VEGA = "1";
+  };
 
   boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.loader.grub.enable = true;

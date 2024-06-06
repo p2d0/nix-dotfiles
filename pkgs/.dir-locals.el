@@ -7,7 +7,7 @@
                 :cache-variables `(:name ,(file-relative-name (buffer-file-name) ))
                 :command-line (lambda ()
                                 "test"
-                                (format "nix-build %s" (plist-get cache-variables :name)))
+                                (format "NIXPKGS_ALLOW_BROKEN=1 nix-build --impure %s" (plist-get cache-variables :name)))
                 ;; (lambda ()
                 ;;   (format "nix-build %s" (file-relative-name (buffer-file-name) ))
                 ;;   "pwd"

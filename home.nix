@@ -68,6 +68,7 @@
       ];
       environment.variables = {
         WORK_MODE = "1";
+        ROC_ENABLE_PRE_VEGA = "1";
       };
       # environment.sessionVariables = {
       #   WORK_MODE = "1";
