@@ -42,7 +42,7 @@ stdenv.mkDerivation (finalAttrs: {
   nativeBuildInputs = [
     cmake
     rocm-cmake
-    (python39.withPackages(ps: [ps.pyyaml ps.setuptools]))
+    (python3.withPackages(ps: [ps.pyyaml ps.setuptools]))
     clr
     git
     gfortran
