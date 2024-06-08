@@ -281,7 +281,7 @@
   };
 
   nix.settings.auto-optimise-store = true;
-  nix.gc.automatic = true;
+  nix.gc.automatic = false;
   nix.gc.options = "--delete-older-than 1d";
 
   # List packages installed in system profile. To search, run:
@@ -524,6 +524,7 @@
       breeze-qt5
       # nixfmt
       gimp
+      krita
       mpv
       libva-utils
       inkscape
