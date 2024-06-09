@@ -83,17 +83,21 @@
               default = final: prev: pkgs.my;
               # compfy = compfy;
             };
+            # user-modules = (lib.my.mapModulesRec' ./modules/nixos (p: pkgs.callPackage p {}));
+
+            # nix eval .#tests --impure
+            tests = pkgs.callPackage ./tests/default.nix {};
 
             nixosConfigurations = {
               mysystem = nixpkgs.lib.nixosSystem {
                 system = "x86_64-linux";
-                modules = [
+                modules = (lib.my.findAllModulePathsIn ./modules/nixos) ++ [
                   {nixpkgs.pkgs = pkgs;}
                   home-manager.nixosModules.home-manager
                   hyprland.nixosModules.default
                   ./home.nix
                   ./hosts/main/configuration.nix
-                ] ++ (lib.my.findAllModulePathsIn ./modules/nixos);
+                ];
                 specialArgs = { inherit self inputs lib;};
               };
             };

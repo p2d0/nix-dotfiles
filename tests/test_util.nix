@@ -70,7 +70,7 @@ lib.runTests {
     expected = [];
   };
   testMapModulesNixos' = {
-    expr  = (["kek"]  ++ (my.mapModulesRec' /etc/nixos/modules/nixos (p: lib.id p)) );
+    expr  = (my.mapModulesRec' /etc/nixos/modules/nixos (p: lib.id p));
     expected = [];
   };
 

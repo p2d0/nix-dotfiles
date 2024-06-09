@@ -78,6 +78,7 @@
   };
 
   home-manager.useGlobalPkgs = true;
+  home-manager.backupFileExtension = "backup";
 
   home-manager.users.${config.user} =
     { pkgs, guake, fetchFromGitHub, callPackage, ... }: {

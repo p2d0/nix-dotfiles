@@ -20,6 +20,18 @@
   # hardware.hidpi.enable = true;
 
   fileSystems."/" =
+    { device = "/dev/nvme0n1p2";
+      options = [ "noatime" ];
+      fsType = "ext4";
+    };
+
+  fileSystems."/boot/efi" =
+    { device = "/dev/nvme0n1p1";
+      fsType = "fat";
+      options = [ "defaults,noauto" ];
+    };
+
+  fileSystems."/mnt/old" =
     { device = "/dev/disk/by-uuid/66e90d46-d031-4e40-ad33-c3f156316c20";
       options = [ "noatime" ];
       fsType = "ext4";
@@ -34,6 +46,10 @@
     };
 
   swapDevices = [
+    {
+      device = "/swapfile";
+      size = 16 * 1024;
+    }
     # {
     #   device = "/dev/disk/by-uuid/6245f513-526f-453d-b9ef-2c9870f48529";
     #   # size = 8*1024;

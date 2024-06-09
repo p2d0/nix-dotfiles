@@ -36,7 +36,7 @@ in {
     ];
     programs.fish.shellInit = ''
         fish_vi_key_bindings
-        fish_add_path  $HOME/.emacs.d/bin
+        fish_add_path  $HOME/config/emacs/bin
         fish_add_path  $HOME/.npm-packages/bin
         fish_add_path  $HOME/.npm-packages/lib/node_modules
         alias s="sgpt -se"

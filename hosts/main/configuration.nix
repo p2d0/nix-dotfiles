@@ -72,7 +72,12 @@
   # boot.tmp.useTmpfs = true;
   boot.tmp.cleanOnBoot = true;
 
-  boot.loader.grub.device = "/dev/disk/by-id/ata-BRAVEEAGLE_SSD_240GB_AA00000000540";
+  boot.loader.efi = {
+    canTouchEfiVariables = true;
+    efiSysMountPoint = "/boot/efi";
+  };
+  boot.loader.grub.efiSupport = true;
+  boot.loader.grub.device = "nodev";
 
   networking.hostName = config.user;
 
@@ -321,19 +326,19 @@
           "proxy_redirect off;";
       };
     };
-    virtualHosts."upgradegamma.ru" =  {
-      enableACME = true;
-      forceSSL = true;
-      locations."/" = {
-        proxyPass = "http://localhost:8001/";
-        proxyWebsockets = true;
-        extraConfig =
-          "proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;"+
-          "proxy_set_header Host $host;"+
-          "proxy_set_header X-Forwarded-Proto https;"+
-          "proxy_redirect off;";
-      };
-    };
+    # virtualHosts."upgradegamma.ru" =  {
+    #   enableACME = true;
+    #   forceSSL = true;
+    #   locations."/" = {
+    #     proxyPass = "http://localhost:8001/";
+    #     proxyWebsockets = true;
+    #     extraConfig =
+    #       "proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;"+
+    #       "proxy_set_header Host $host;"+
+    #       "proxy_set_header X-Forwarded-Proto https;"+
+    #       "proxy_redirect off;";
+    #   };
+    # };
   };
   # security.acme.certs."ug.kyrgyzstan.kg" = {
   #   webroot = "/var/lib/acme/.challenges";
@@ -371,6 +376,7 @@
   };
 
   modules.fonts.enable = true;
+  modules.guake.enable = true;
   modules.timed-shutdown.enable = false;
   modules.timed-shutdown.time = "23:00:00";
   modules.darkman.enable = true;
@@ -438,12 +444,13 @@
       # pr229886.amdgpu-pro-libs.prefixes
       # unstable.amf-headers
       pr314293.tdlib
+      nixfmt
       glibc
       xmrig
       sumneko-lua-language-server
       tgs2png
       luarocks
-      cloudflare-warp
+      unstable.cloudflare-warp
       skypeforlinux
       neovide
       lazygit
@@ -470,6 +477,7 @@
       #   # ];
       # })
       pciutils
+      musescore
       deluge
       usbutils
       unstable.pmbootstrap
@@ -676,7 +684,7 @@
       #     ];}).natron
       # unstable.natron
       # my.natron-bin
-      natron
+      unstable.natron
       unstable.scrcpy
       python39Packages.yt-dlp
       imagemagick

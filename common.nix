@@ -232,10 +232,10 @@
       source = ./configs/ideavim/.ideavimrc;
     };
 
-    ".intellimacs" = {
-      source = ./configs/ideavim/.intellimacs;
-      recursive = true;
-    };
+    # ".intellimacs" = {
+    #   source = ./configs/ideavim/.intellimacs;
+    #   recursive = true;
+    # };
     ".config/darkman".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/darkman;
     ".config/uair".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/uair;
     ".config/redshift.conf" = {

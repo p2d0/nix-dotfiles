@@ -34,14 +34,14 @@ in{
       #   withGTK3 = true;
       # };
       services.emacs.package = cfg.package;
-      system.userActivationScripts = mkIf cfg.doom.enable {
-        installDoomEmacs = ''
-        if [ ! -d "$HOME/.emacs.d" ]; then
-           ${pkgs.git} clone --depth=1 --single-branch "${cfg.doom.repoUrl}" "$HOME/.emacs.d"
-           ${pkgs.git} clone "${cfg.doom.configRepoUrl}" "$HOME/.doom.d"
-        fi
-      '';
-      };
+#      system.userActivationScripts = mkIf cfg.doom.enable {
+#        installDoomEmacs = ''
+#        if [ ! -d "$HOME/.emacs.d" ]; then
+#           ${pkgs.git} clone --depth=1 --single-branch "${cfg.doom.repoUrl}" "$HOME/.emacs.d"
+#           ${pkgs.git} clone "${cfg.doom.configRepoUrl}" "$HOME/.doom.d"
+#        fi
+#      '';
+#      };
     });
 
 }

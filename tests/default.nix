@@ -7,10 +7,11 @@ let
   my = import ../lib/util.nix { lib =  pkgs.lib; };
 in
 with pkgs;
-{
-  tests = (my.mapTests /etc/nixos/tests (p: callPackage p {}));
-    # tests = {
-    #   config = callPackage ./config.nix { };
-    #   util = callPackage ./test_util.nix { };
-    # };
-}
+(my.mapTests /etc/nixos/tests (p: callPackage p {}))
+# {
+#   tests = ;
+#     # tests = {
+#     #   config = callPackage ./config.nix { };
+#     #   util = callPackage ./test_util.nix { };
+#     # };
+# }
