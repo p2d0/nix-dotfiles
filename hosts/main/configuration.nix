@@ -420,6 +420,7 @@
       nix-index
       charles
       wget
+      rnnoise-plugin
       clang
       file
       clojure
@@ -450,6 +451,7 @@
       sumneko-lua-language-server
       tgs2png
       luarocks
+      helvum
       unstable.cloudflare-warp
       skypeforlinux
       neovide
