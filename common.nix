@@ -34,6 +34,8 @@
     # use mimeapps application/x-bittorrent
     # to list mimetypes
     defaultApplications = {
+      "inode/directory" = "nemo.desktop";
+      "x-directory/normal"= "nemo.desktop";
       "text/plain" = "org.gnome.gedit.desktop";
       "application/pdf" = "koreader.desktop";
       "application/x-bittorrent" = "org.qbittorrent.qBittorrent.desktop";

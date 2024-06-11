@@ -51,7 +51,7 @@
       size = 64 * 1024;
     }
     {
-      device = "/dev/disk/by-uuid/ad803512-219a-445d-a7f5-ea34cfb127e5";
+      device = "/dev/disk/by-uuid/6461bae0-3f65-4d32-9a2f-696b57250ab2";
       # size = 96*1024;
     }
   ];

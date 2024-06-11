@@ -19,7 +19,14 @@
   xdg.portal = {
     enable = true;
     extraPortals = [ # pkgs.xdg-dbus-proxy pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-gnome pkgs.xdg-desktop-portal-kde
+      # https://superuser.com/questions/944119/replace-gtk-file-dialog-with-alternative
+      # Custom file dialog for browsers, etc.
+      pkgs.xdg-desktop-portal-kde
     ];
+    # gtkUsePortal = true;
+    # https://github.com/NixOS/nixpkgs/pull/179204
+    # environment.sessionVariables.GTK_USE_PORTAL
+    xdgOpenUsePortal = true;
   };
   xdg.portal.config.common.default = "*";
 
@@ -633,6 +640,7 @@
       pkgs.cinnamon.nemo-with-extensions
       pkgs.cinnamon.nemo-fileroller
       pkgs.cinnamon.nemo-python
+      # pkgs.kdePackages.dolphin
       # unstable.telegram-cli
       soundux
       # (unstable.callPackage /etc/nixos/pkgs/nemo-preview.nix {})
