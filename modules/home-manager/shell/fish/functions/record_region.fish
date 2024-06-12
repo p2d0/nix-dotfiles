@@ -17,7 +17,7 @@ function record_region
             notify-send "Clipped"
         else
             notify-send "Started recording"
-            ffmpeg (slop -r boxzoom -f "-y -video_size %wx%h -framerate 60 -f x11grab -i :0.0+%x,%y /tmp/output.mp4 -pix_fmt yuv420p -c:v hevc_v4l2m2" | string split -n " ")
+            ffmpeg (slop -r boxzoom -f "-y -video_size %wx%h -framerate 60 -f x11grab -i :0.0+%x,%y /tmp/output.mp4 -pix_fmt yuv420p -c:v hevc_v4l2m2 -movflags +faststart" | string split -n " ")
             # available codecs:
             # vp9
         end

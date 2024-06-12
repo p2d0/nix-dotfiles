@@ -93,6 +93,13 @@
                 system = "x86_64-linux";
                 modules = (lib.my.findAllModulePathsIn ./modules/nixos) ++ [
                   {nixpkgs.pkgs = pkgs;}
+                  {
+                    # pin system nixpkgs to the same version as the flake input
+                    # (don't see a way to declaratively set channels but this seems to work fine?)
+                    nix.nixPath = [
+                      "nixpkgs=${nixpkgs}"
+                    ];
+                  }
                   home-manager.nixosModules.home-manager
                   hyprland.nixosModules.default
                   ./home.nix
