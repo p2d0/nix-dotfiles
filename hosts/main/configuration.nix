@@ -21,12 +21,12 @@
     extraPortals = [ # pkgs.xdg-dbus-proxy pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-gnome pkgs.xdg-desktop-portal-kde
       # https://superuser.com/questions/944119/replace-gtk-file-dialog-with-alternative
       # Custom file dialog for browsers, etc.
-      pkgs.xdg-desktop-portal-kde
+      # pkgs.xdg-desktop-portal-kde
     ];
     # gtkUsePortal = true;
     # https://github.com/NixOS/nixpkgs/pull/179204
     # environment.sessionVariables.GTK_USE_PORTAL
-    xdgOpenUsePortal = true;
+    # xdgOpenUsePortal = true;
   };
   xdg.portal.config.common.default = "*";
 
@@ -331,6 +331,11 @@
           "proxy_set_header Host $host;"+
           "proxy_set_header X-Forwarded-Proto https;"+
           "proxy_redirect off;";
+      };
+
+      locations."/wb/" = {
+        alias = "/mnt/md127/wbcourier/";
+        tryFiles = "$uri $uri/ /index.html";
       };
     };
     # virtualHosts."upgradegamma.ru" =  {
@@ -640,7 +645,7 @@
       pkgs.cinnamon.nemo-with-extensions
       pkgs.cinnamon.nemo-fileroller
       pkgs.cinnamon.nemo-python
-      # pkgs.kdePackages.dolphin
+      # pkgs.libsForQt5.dolphin
       # unstable.telegram-cli
       soundux
       # (unstable.callPackage /etc/nixos/pkgs/nemo-preview.nix {})
