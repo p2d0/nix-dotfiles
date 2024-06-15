@@ -337,20 +337,44 @@
         alias = "/mnt/md127/wbcourier/";
         tryFiles = "$uri $uri/ /index.html";
       };
+      locations."/dostavista/" = {
+        proxyPass = "http://localhost:3000/";
+        # proxyWebsockets = true; # needed if you need to use WebSocket
+        # extraConfig =
+        #   "proxy_set_header Host $host;" +
+        #   # required when the target is also TLS server with multiple hosts
+        #   "proxy_ssl_server_name on;" +
+        #   # required when the server wants to use HTTP Authentication
+        #   "proxy_pass_header Authorization;";
+        extraConfig =
+          ''
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-Host $host;
+        proxy_set_header X-Forwarded-Port $server_port;
+        proxy_redirect off;
+        rewrite /dostavista/(.*) /$1 break;
+        '';
+      };
     };
-    # virtualHosts."upgradegamma.ru" =  {
-    #   enableACME = true;
-    #   forceSSL = true;
-    #   locations."/" = {
-    #     proxyPass = "http://localhost:8001/";
-    #     proxyWebsockets = true;
-    #     extraConfig =
-    #       "proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;"+
-    #       "proxy_set_header Host $host;"+
-    #       "proxy_set_header X-Forwarded-Proto https;"+
-    #       "proxy_redirect off;";
-    #   };
-    # };
+
+
+      # virtualHosts."upgradegamma.ru" =  {
+      #   enableACME = true;
+      #   forceSSL = true;
+      #   locations."/" = {
+      #     proxyPass = "http://localhost:8001/";
+      #     proxyWebsockets = true;
+      #     extraConfig =
+      #       "proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;"+
+      #       "proxy_set_header Host $host;"+
+      #       "proxy_set_header X-Forwarded-Proto https;"+
+      #       "proxy_redirect off;";
+      #   };
+      # };
   };
   # security.acme.certs."ug.kyrgyzstan.kg" = {
   #   webroot = "/var/lib/acme/.challenges";
@@ -670,7 +694,7 @@
       # libreoffice
       pkgs.onlyoffice-bin
       koreader
-      # vlc
+      vlc
       gsettings-desktop-schemas
       wineWowPackages.stable
       whatsapp-for-linux
