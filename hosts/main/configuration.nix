@@ -660,7 +660,7 @@
       gnome.gedit
       ntfs3g
       # gnome.gnome-boxes
-      # rustdesk
+      rustdesk
       qbittorrent
       epiphany
       # tor-browser-bundle-bin
