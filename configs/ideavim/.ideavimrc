@@ -1,7 +1,7 @@
 source ~/.intellimacs/spacemacs.vim
 
 " (Optional) Enable other Intellimacs modules
-# source ~/.intellimacs/extra.vim
+source ~/.intellimacs/extra.vim
 source ~/.intellimacs/major.vim
 # source ~/.intellimacs/hybrid.vim
 
@@ -44,6 +44,7 @@ nnoremap <leader>op    :action ActivateProjectToolWindow<CR>
 vnoremap <leader>op    :action ActivateProjectToolWindow<CR>
 
 nnoremap <C-j> :action NextOccurence<CR>
+unmap! <C-k>
 nnoremap <C-k> :action PreviousOccurence<CR>
 
 let g:WhichKeyDesc_Open_ActivateRunToolWindow = "<leader>or Open Run window"
