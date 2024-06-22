@@ -694,6 +694,7 @@
       # libreoffice
       pkgs.onlyoffice-bin
       koreader
+      stremio
       vlc
       gsettings-desktop-schemas
       wineWowPackages.stable

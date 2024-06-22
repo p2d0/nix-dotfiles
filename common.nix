@@ -37,7 +37,7 @@
       "inode/directory" = "nemo.desktop";
       "x-directory/normal"= "nemo.desktop";
       "text/plain" = "org.gnome.gedit.desktop";
-      "application/pdf" = "koreader.desktop";
+      "application/pdf" = "org.gnome.Evince.desktop";
       "application/x-bittorrent" = "org.qbittorrent.qBittorrent.desktop";
       # "image/jpeg" = "feh.desktop";
       "image/bmp"= "org.gnome.eog.desktop";
