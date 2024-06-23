@@ -723,8 +723,8 @@
       #       "ffmpeg-3.4.8"
       #     ];}).natron
       # unstable.natron
-      # my.natron-bin
-      unstable.natron
+      my.natron-bin
+      # unstable.natron
       unstable.scrcpy
       python39Packages.yt-dlp
       imagemagick

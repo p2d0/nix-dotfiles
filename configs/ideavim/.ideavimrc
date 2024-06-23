@@ -87,3 +87,4 @@ vmap , <leader>m
 " (Optional) Add/edit actions
 nnoremap <leader>gl    :action Vcs.Show.Log<CR>
 vnoremap <leader>gl    :action Vcs.Show.Log<CR>
+set vim-paragraph-motion
