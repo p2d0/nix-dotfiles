@@ -1,34 +1,34 @@
-# { lib
-# , libGL
-# , libX11
-# , pkgs
-# , makeDesktopItem
-# , stdenv
-# , autoPatchelfHook
-# , makeWrapper
-# , ffmpeg-full
-# , openfx
-# , openimageio
-# , boost
-# , expat
-# , python310
-# , wayland
-# , glog
-# , ceres-solver
-# , libXdmcp
-# , libXrender
-# , libXrandr
-# , libXi
-# , libxcrypt
-# , libxcrypt-legacy
-# , libXcursor
-# , libXinerama
-# , libGLU
-# , alsa-lib
-# , ncurses
-# , readline
-# , copyDesktopItems
-# }:
+{ lib
+, libGL
+, libX11
+, pkgs
+, makeDesktopItem
+, stdenv
+, autoPatchelfHook
+, makeWrapper
+, ffmpeg-full
+, openfx
+, openimageio
+, boost
+, expat
+, python310
+, wayland
+, glog
+, ceres-solver
+, libXdmcp
+, libXrender
+, libXrandr
+, libXi
+, libxcrypt
+, libxcrypt-legacy
+, libXcursor
+, libXinerama
+, libGLU
+, alsa-lib
+, ncurses
+, readline
+, copyDesktopItems
+}:
 
 with import <nixpkgs> {};
 # with qt5;
