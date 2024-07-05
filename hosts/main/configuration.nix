@@ -431,6 +431,7 @@
       '';
     };
   };
+
   modules.taffybar.enable = false;
   environment.systemPackages = with pkgs;
     (if config.programs.hyprland.enable then [
@@ -649,8 +650,8 @@
         #   abseil-cpp = unstable.abseil-cpp_202111;
         # })
         # unstable.tdesktop
-        telegram-desktop_git
-        # unstable.telegram-desktop
+        # telegram-desktop_git
+        master.telegram-desktop
         unstable.nil
         jpegoptim
         chatterino2
