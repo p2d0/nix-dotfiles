@@ -251,11 +251,11 @@ content-padding = 1
 
 type = custom/script
 ;; 祥
-exec = ~/.config/polybar/polybar-timer.sh tail ' POMOTIMER' 1
+exec = ~/.config/polybar/polybar-timer.sh tail ' POMOSTOPWATCH' 1
 tail = true
 
 click-middle = ~/.config/polybar/polybar-timer.sh new 15 ' Long rest' 'notify-send "Session finished"' ; ~/.config/polybar/polybar-timer.sh update %pid%
-click-left = ~/.config/polybar/polybar-timer.sh new 25 ' Work' 'notify-send "Session finished"' ; ~/.config/polybar/polybar-timer.sh update %pid%
+click-left = ~/.config/polybar/polybar-timer.sh stopwatch ; ~/.config/polybar/polybar-timer.sh update %pid%
 click-right = ~/.config/polybar/polybar-timer.sh new 5 ' Short rest' 'notify-send "Break finished"' ; ~/.config/polybar/polybar-timer.sh update %pid%
 double-click-right = ~/.config/polybar/polybar-timer.sh reset_count
 scroll-up = ~/.config/polybar/polybar-timer.sh increase 300 || ~/.config/polybar/polybar-timer.sh new 5 'TIMER:' 'paplay ~/.config/polybar/mixkit-achievement-bell-600.wav;notify-send -u critical "Timer expired."' ; ~/.config/polybar/polybar-timer.sh update %pid%

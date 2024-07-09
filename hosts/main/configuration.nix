@@ -60,8 +60,8 @@
     rocm-opencl-icd
     rocm-opencl-runtime
   ];
-  systemd.tmpfiles.rules =
-    [ "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}" ];
+  # systemd.tmpfiles.rules =
+  #   [ "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}" ];
   # rocmTargets = ["gfx803"];
   # hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ vaapiIntel ];
   services.ratbagd.enable = true;
