@@ -38,6 +38,12 @@
       "x-directory/normal"= "nemo.desktop";
       "text/plain" = "org.gnome.gedit.desktop";
       "application/pdf" = "org.gnome.Evince.desktop";
+      "application/x-extension-osz" = "osu!.desktop";
+      "application/x-extension-osk" = "osu!.desktop";
+      "application/x-extension-osb" = "osu!.desktop";
+      "application/x-extension-osu" = "osu!.desktop";
+      "application/x-osu-beatmap-archive" = "osu!.desktop";
+      "application/x-osu-skin-archive" = "osu!.desktop";
       "application/x-bittorrent" = "org.qbittorrent.qBittorrent.desktop";
       # "image/jpeg" = "feh.desktop";
       "image/bmp"= "org.gnome.eog.desktop";
