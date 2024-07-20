@@ -666,7 +666,7 @@
         # gnome.gnome-boxes
         rustdesk
         qbittorrent
-        epiphany
+        # epiphany
         # tor-browser-bundle-bin
         # looking-glass-client
         # unstable.tg

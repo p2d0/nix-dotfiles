@@ -67,6 +67,8 @@
       "x-scheme-handler/http" = "brave-browser.desktop";
       "x-scheme-handler/https" = "brave-browser.desktop";
       "x-scheme-handler/chrome" = "brave-browser.desktop";
+      # Handler for custom uri
+      "x-scheme-handler/tg" = "org.telegram.desktop.desktop";
       "text/html" = "brave-browser.desktop";
       "application/x-extension-htm" = "brave-browser.desktop";
       "application/x-extension-html" = "brave-browser.desktop";
