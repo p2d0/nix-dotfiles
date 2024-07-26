@@ -45,8 +45,8 @@
           ];
         })
         # pkgs.unstable.stremio
-        # pkgs.my.osu-lazer-bin
-        pkgs.unstable.osu-lazer-bin
+        pkgs.my.osu-lazer-bin
+        # pkgs.unstable.osu-lazer-bin
         pkgs.chatterino2
       ];
     };
@@ -79,6 +79,7 @@
 
   home-manager.useGlobalPkgs = true;
   home-manager.backupFileExtension = "backup";
+  xdg.configFile."mimeapps.list".force = true;
 
   home-manager.users.${config.user} =
     { pkgs, guake, fetchFromGitHub, callPackage, ... }: {
