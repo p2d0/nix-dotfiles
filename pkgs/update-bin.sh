@@ -1,12 +1,13 @@
 #!/usr/bin/env nix-shell
-#!nix-shell -I nixpkgs=./. -i bash -p unzip curl jq common-updater-scripts
+#!nix-shell -i bash -p unzip curl jq common-updater-scripts
 set -eo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
-bin_file="$(realpath ./bin.nix)"
+bin_file="$(realpath ./osu-lazer-bin.nix)"
 
 new_version="$(curl -s "https://api.github.com/repos/ppy/osu/releases?per_page=1" | jq -r '.[0].name')"
-old_version="$(sed -nE 's/\s*version = "(.*)".*/\1/p' ./bin.nix)"
+old_version="$(sed -nE 's/\s*version = "(.*)".*/\1/p' ./osu-lazer-bin.nix)"
+echo $new_version
 if [[ "$new_version" == "$old_version" ]]; then
     echo "Already up to date."
     exit 0
@@ -19,8 +20,6 @@ sed -Ei.bak '/ *version = "/s/".+"/"'"$new_version"'"/' "$bin_file"
 rm "$bin_file.bak"
 
 for pair in \
-    'aarch64-darwin osu.app.Apple.Silicon.zip' \
-    'x86_64-darwin osu.app.Intel.zip' \
     'x86_64-linux osu.AppImage'; do
     set -- $pair
     echo "Prefetching binary for $1..."
@@ -37,4 +36,4 @@ for pair in \
     echo "$1 ($2): hash = $hash"
     sed -Ei.bak '/ *'"$1"' = /{N;N; s@("sha256-)[^;"]+@"'"$hash"'@}' "$bin_file"
     rm "$bin_file.bak"
-donet
+done

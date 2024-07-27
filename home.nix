@@ -79,7 +79,7 @@
 
   home-manager.useGlobalPkgs = true;
   home-manager.backupFileExtension = "backup";
-  xdg.configFile."mimeapps.list".force = true;
+  # xdg.configFile."mimeapps.list".force = true;
 
   home-manager.users.${config.user} =
     { pkgs, guake, fetchFromGitHub, callPackage, ... }: {
