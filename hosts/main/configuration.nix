@@ -28,6 +28,7 @@
     # xdgOpenUsePortal = true;
   };
   xdg.portal.config.common.default = "*";
+  nix.settings.trusted-users = [ "root" "andrew" ];
 
   security.rtkit.enable = true;
   security.pki.certificateFiles = [
@@ -302,6 +303,22 @@
     # recommendedProxySettings = true;
     recommendedTlsSettings = true;
     # other Nginx options
+    virtualHosts."localhost" = {
+      locations."/" = {
+        proxyPass = "http://localhost:8989/";
+        proxyWebsockets = true; # needed if you need to use WebSocket
+        # extraConfig =
+        #   "proxy_set_header Host $host;" +
+        #   # required when the target is also TLS server with multiple hosts
+        #   "proxy_ssl_server_name on;" +
+        #   # required when the server wants to use HTTP Authentication
+        #   "proxy_pass_header Authorization;";
+        extraConfig =
+          "proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;"
+          + "proxy_set_header Host $host;"
+          + "proxy_set_header X-Forwarded-Proto https;" + "proxy_redirect off;";
+      };
+    };
     virtualHosts."ug.kyrgyzstan.kg" = {
       # sslCertificate = "/etc/letsencrypt/live/ug.kyrgyzstan.kg/fullchain.pem";
       # sslCertificateKey = "/etc/letsencrypt/live/ug.kyrgyzstan.kg/privkey.pem";
@@ -456,6 +473,7 @@
         # my.hbctool
         vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
         OSCAR
+        cachix
         poetry
         nix-index
         charles

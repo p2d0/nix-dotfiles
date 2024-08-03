@@ -94,6 +94,7 @@
   };
 
   nix.settings.auto-optimise-store = true;
+  nix.settings.trusted-users = [ "root" "andrew" ];
   nix.gc.automatic = true;
   nix.gc.options = "--delete-older-than 1d";
 
