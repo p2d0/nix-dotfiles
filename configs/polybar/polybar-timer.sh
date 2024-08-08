@@ -154,6 +154,7 @@ case $1 in
         do
           sleep 1
           count=$((count + 1))
+          mkdir -p /tmp/polybar-timer
           echo $count > /tmp/polybar-timer/stopwatch_time
           if [ $count -ge $interval ]
           then
