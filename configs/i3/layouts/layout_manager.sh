@@ -180,11 +180,16 @@ if [[ "$ACTION" = "LOAD LAYOUT" ]]; then
 
   #Shell companion file
   LAYOUT_FILE_SH="${LAYOUT_FILE%.json}.sh"
-  echo $LAYOUT_FILE_SH;
-  if [ -f "$LAYOUT_FILE_SH" ]; then
-    i3-msg "exec $LAYOUT_FILE_SH" >> "$LOG_FILE" 2>&1
-  fi
+  echo $LAYOUT_FILE_SH
 
+  if [ -f "$LAYOUT_FILE_SH" ]; then
+    if [ -x "$LAYOUT_FILE_SH" ]; then
+      i3-msg "exec $LAYOUT_FILE_SH" >> "$LOG_FILE" 2>&1
+    else
+      zenity --error --text="Error: $LAYOUT_FILE_SH is not executable."
+      echo "Error: $LAYOUT_FILE_SH is not executable." >> "$LOG_FILE" 2>&1
+    fi
+  fi
 
 
   echo "" >> "$LOG_FILE"

@@ -14,20 +14,33 @@
   # https://nixos.wiki/wiki/Agenix
   user = self.user;
 
-  xdg.portal = {
-    enable = true;
-    extraPortals =
-      [ # pkgs.xdg-dbus-proxy pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-gnome pkgs.xdg-desktop-portal-kde
-        # https://superuser.com/questions/944119/replace-gtk-file-dialog-with-alternative
-        # Custom file dialog for browsers, etc.
-        # pkgs.xdg-desktop-portal-kde
+  # xdg.portal = {
+  #   enable = true;
+  #   extraPortals =
+  #     [ # pkgs.xdg-dbus-proxy pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-gnome pkgs.xdg-desktop-portal-kde
+  #       # https://superuser.com/questions/944119/replace-gtk-file-dialog-with-alternative
+  #       # Custom file dialog for browsers, etc.
+  #       # pkgs.xdg-desktop-portal-kde
+  #     ];
+  #   # gtkUsePortal = true;
+  #   # https://github.com/NixOS/nixpkgs/pull/179204
+  #   # environment.sessionVariables.GTK_USE_PORTAL
+  #   # xdgOpenUsePortal = true;
+  # };
+   xdg.portal = {
+      enable = true;
+      xdgOpenUsePortal = true;
+      # I think the name under config has to match up with the value of XDG_CURRENT_DESKTOP.
+      # kde portal by default, fallback to anything for KDE and i3
+      # I don't set this for KDE in my personal config and it seems to work fine.
+      config.KDE.default = [ "kde" "*" ];
+      config.${"none+i3"}.default = [ "kde" "*" ];
+      extraPortals = [
+        pkgs.xdg-desktop-portal-gtk
+        pkgs.xdg-desktop-portal-wlr
       ];
-    # gtkUsePortal = true;
-    # https://github.com/NixOS/nixpkgs/pull/179204
-    # environment.sessionVariables.GTK_USE_PORTAL
-    # xdgOpenUsePortal = true;
-  };
-  xdg.portal.config.common.default = "*";
+    };
+  # xdg.portal.config.common.default = "*";
   nix.settings.trusted-users = [ "root" "andrew" ];
 
   security.rtkit.enable = true;
@@ -240,7 +253,11 @@
   programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;
 
-  modules.emacs-with-doom.enable = true;
+  modules.emacs-with-doom  =
+    {
+      enable = true;
+      package = pkgs.emacs;
+    };
 
   # nixpkgs.config =
   #   let nixpkgs-tars = "https://github.com/NixOS/nixpkgs/archive/";
@@ -322,8 +339,9 @@
     virtualHosts."ug.kyrgyzstan.kg" = {
       # sslCertificate = "/etc/letsencrypt/live/ug.kyrgyzstan.kg/fullchain.pem";
       # sslCertificateKey = "/etc/letsencrypt/live/ug.kyrgyzstan.kg/privkey.pem";
-      enableACME = true;
-      forceSSL = true;
+      # TODO Fix ACME
+      enableACME = false;
+      forceSSL = false;
       # locations."/.well-known/acme-challenge" = {
       #   root = "/var/lib/acme/.challenges";
       # };
@@ -592,7 +610,8 @@
         breeze-gtk
         breeze-qt5
         # nixfmt
-        (gimp.override { withPython = true; })
+        # TODO FIX
+        # (gimp.override { withPython = true; })
         krita
         mpv
         libva-utils
@@ -616,7 +635,7 @@
         # tigervnc
         # x11vnc
         cabal2nix
-        dbeaver
+        dbeaver-bin
         yad
         ccls
         wofi
@@ -636,7 +655,7 @@
         brave
         peco
         ffmpeg-full
-        dfeet
+        d-spy
         slop
         libnotify
         xclip
@@ -679,7 +698,7 @@
         gnome.dconf-editor
         gnome.gnome-characters
         minidlna
-        gnome.gedit
+        gedit
         ntfs3g
         # gnome.gnome-boxes
         rustdesk
@@ -693,7 +712,7 @@
         pkgs.cinnamon.nemo-python
         # pkgs.libsForQt5.dolphin
         # unstable.telegram-cli
-        soundux
+        # soundux
         # (unstable.callPackage /etc/nixos/pkgs/nemo-preview.nix {})
         # my.nemo-preview
         # 41.2

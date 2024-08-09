@@ -215,6 +215,7 @@
       source = ./configs/qt5ct;
       recursive = true;
     };
+    ".config/mpv".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/mpv;
 
     ".config/slop" = {
       source = ./configs/slop;

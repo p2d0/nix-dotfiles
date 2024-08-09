@@ -24,11 +24,11 @@ timerRunning () { [ -e /tmp/polybar-timer/expiry ] ; }
 timerCount () { cat $script_dir/count ; }
 
 decrementPomoCount() {
-  if [ "$(timerLength)" -gt 15 ]; then
-    current_count=$(cat $script_dir/count)
-    new_count=$((current_count - 1))
-    echo "$new_count" > $script_dir/count
-  fi
+  # if [ "$(timerLength)" -gt 15 ]; then
+  current_count=$(cat $script_dir/count)
+  new_count=$((current_count - 1))
+  echo "$new_count" > $script_dir/count
+  # fi
 }
 
 incrementPomoCount() {
@@ -135,6 +135,9 @@ case $1 in
   reset_count)
     resetCount
     ;;
+  decrement_count)
+    decrementPomoCount
+    ;;
   cancel)
     killTimer
     deleteExpiryTime
@@ -149,6 +152,7 @@ case $1 in
     else
       (
         interval=1500 # 25 minutes in seconds
+        incrementPomoCount $interval
         count=0
         while true
         do
@@ -156,7 +160,7 @@ case $1 in
           count=$((count + 1))
           mkdir -p /tmp/polybar-timer
           echo $count > /tmp/polybar-timer/stopwatch_time
-          if [ $count -ge $interval ]
+          if [ $count -ge $(($interval*2)) ]
           then
             incrementPomoCount $interval
             count=0
