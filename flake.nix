@@ -27,6 +27,7 @@
   outputs = inputs @
     {self,
       nixpkgs,
+      nixpkgs-23,
       poetry2nix,
       chaotic,
       compfy,
@@ -59,6 +60,7 @@
                   "https://github.com/NixOS/nixpkgs/archive/pull/229886/head.tar.gz") {
                     config = self.config;
                   };
+                old-23 = import nixpkgs-23 { config = self.config; };
                 unstable = import nixos-unstable { config = self.config; };
                 master = import nixos-master { config = self.config; };
                 compfy = compfy.packages.${system}.compfy;

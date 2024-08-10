@@ -521,7 +521,7 @@
         # pr229886.amdgpu-pro-libs.prefixes
         # unstable.amf-headers
         pr314293.tdlib
-        nixfmt
+        nixfmt-classic
         # python2
         glibc
         xmrig
@@ -786,7 +786,7 @@
         my.get_current_screen_geometry
         # (pkgs.callPackage /etc/nixos/pkgs/get_current_screen_geometry.nix { })
         # NOTE https://nixos.wiki/wiki/Nixpkgs/Modifying_Packages
-        guake
+        # guake
         # my.guake-latest
         # (callPackage /etc/nixos/pkgs/jetbrains-gateway.nix { })
       ];

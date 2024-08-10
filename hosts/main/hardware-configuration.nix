@@ -25,7 +25,7 @@
       fsType = "ext4";
     };
 
-  fileSystems."/boot/efi" =
+  fileSystems."/boot" =
     { device = "/dev/nvme0n1p1";
       fsType = "fat";
       options = [ "defaults,noauto" ];

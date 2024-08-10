@@ -83,7 +83,7 @@ in {
     {
       programs.dconf.enable = true;
       environment.systemPackages = [
-        pkgs.guake
+        pkgs.old-23.guake
       ];
     });
 }
