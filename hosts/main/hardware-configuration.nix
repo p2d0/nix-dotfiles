@@ -25,10 +25,10 @@
       fsType = "ext4";
     };
 
-  fileSystems."/boot" =
+  fileSystems."/boot/efi" =
     { device = "/dev/nvme0n1p1";
-      fsType = "fat";
-      options = [ "defaults,noauto" ];
+      fsType = "vfat";
+      options = [ "defaults" ];
     };
 
   fileSystems."/mnt/old" =
