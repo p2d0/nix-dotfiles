@@ -511,6 +511,7 @@
         unstable.jetbrains.idea-community
         unstable.gamescope
         yandex-disk
+        unstable.yandex-browser
         gpu-screen-recorder
         shared-mime-info
         clinfo
@@ -611,7 +612,7 @@
         breeze-qt5
         # nixfmt
         # TODO FIX
-        # (gimp.override { withPython = true; })
+        (old-23.gimp.override { withPython = true; })
         krita
         mpv
         libva-utils
