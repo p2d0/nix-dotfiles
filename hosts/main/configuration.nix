@@ -57,6 +57,7 @@
   programs.nix-ld.libraries = with pkgs; [
     zlib # numpy
     libgcc # sqlalchemy
+    gcc.cc.libgcc.lib
     # that's where the shared libs go, you can find which one you need using
     # nix-locate --top-level libstdc++.so.6  (replace this with your lib)
     # ^ this requires `nix-index` pkg
@@ -425,6 +426,7 @@
   #   Storage=none
   # '';
 
+
   # modules.xdg-variables.sessionVariables = true;
 
   # programs.java = {
@@ -506,12 +508,13 @@
         nodePackages.localtunnel
         # pr218037.microsoft-edge-dev
         gcc.cc.libgcc
+        gcc.cc.libgcc.lib
         conda
         megasync
         unstable.jetbrains.idea-community
         unstable.gamescope
         yandex-disk
-        unstable.yandex-browser
+        # unstable.yandex-browser
         gpu-screen-recorder
         shared-mime-info
         clinfo
