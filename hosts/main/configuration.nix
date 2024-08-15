@@ -56,8 +56,12 @@
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
     zlib # numpy
-    libgcc # sqlalchemy
-    gcc.cc.libgcc.lib
+    # libgcc # sqlalchemy
+    # libcxxStdenv
+    # gcc12.cc
+
+    # gcc12.cc.lib
+    # gcc.cc.libgcc.lib
     # that's where the shared libs go, you can find which one you need using
     # nix-locate --top-level libstdc++.so.6  (replace this with your lib)
     # ^ this requires `nix-index` pkg
