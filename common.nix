@@ -39,6 +39,7 @@
       "text/plain" = "org.gnome.gedit.desktop";
       "application/pdf" = "org.gnome.Evince.desktop";
       "application/x-extension-osz" = "osu!.desktop";
+      "application/zip" = "osu!.desktop";
       "application/x-extension-osk" = "osu!.desktop";
       "application/x-extension-osb" = "osu!.desktop";
       "application/x-extension-osu" = "osu!.desktop";
