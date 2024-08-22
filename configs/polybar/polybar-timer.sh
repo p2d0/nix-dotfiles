@@ -151,6 +151,7 @@ case $1 in
       echo "Stopwatch stopped."
     else
       (
+        mkdir -p /tmp/polybar-timer
         interval=1500 # 25 minutes in seconds
         incrementPomoCount $interval
         count=0
@@ -158,13 +159,12 @@ case $1 in
         do
           sleep 1
           count=$((count + 1))
-          mkdir -p /tmp/polybar-timer
           echo $count > /tmp/polybar-timer/stopwatch_time
-          if [ $count -ge $(($interval*2)) ]
-          then
-            incrementPomoCount $interval
-            count=0
-          fi
+          # if [ $count -ge $(($interval*2)) ]
+          # then
+          #   incrementPomoCount $interval
+          #   count=0
+          # fi
         done
       ) &
       echo $! > /tmp/polybar-timer/stopwatch_pid
