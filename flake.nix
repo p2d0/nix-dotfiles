@@ -61,6 +61,10 @@
                   "https://github.com/NixOS/nixpkgs/archive/pull/229886/head.tar.gz") {
                     config = self.config;
                   };
+                flacpkgs = import (builtins.fetchTarball {
+                  url = "https://github.com/NixOS/nixpkgs/archive/cea111161b02f1a823698038bfd01bc93607e391.tar.gz";
+                }) {};
+
                 old-23 = import nixpkgs-23 { config = self.config; };
                 unstable = import nixos-unstable { config = self.config; };
                 master = import nixos-master { config = self.config; };

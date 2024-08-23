@@ -34,6 +34,14 @@
             pkgs.alsa-lib
             # pkgs.pkgsi686Linux.alsa-lib
             pkgs.SDL2
+            pkgs.speex
+            pkgs.flacpkgs.flac
+
+            pkgs.libusb1
+            pkgs.libsoup
+            pkgs.openal
+            pkgs.libgudev
+            pkgs.libvdpau
             pkgs.libpulseaudio
             pkgs.pkgsi686Linux.libpulseaudio
             pkgs.winetricks
@@ -120,7 +128,7 @@
         };
       };
       xdg.configFile."direnv/direnvrc" = {
-text = ''
+        text = ''
 : "''${XDG_CACHE_HOME:="''${HOME}/.cache"}"
 declare -A direnv_layout_dirs
 direnv_layout_dir() {
@@ -129,7 +137,7 @@ direnv_layout_dir() {
         hash="$(sha1sum - <<< "$PWD" | head -c40)"
         path="''${PWD//[^a-zA-Z0-9]/-}"
         echo "''${XDG_CACHE_HOME}/direnv/layouts/''${hash}''${path}"
-    )}"
+                                       )}"
 }
 '';
       };
