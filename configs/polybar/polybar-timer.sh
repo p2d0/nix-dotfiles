@@ -131,9 +131,9 @@ case $1 in
     fi
     ;;
   increase)
+    killStopwatch
     if timerRunning
     then
-      killStopwatch
       echo "$(( $(cat /tmp/polybar-timer/expiry) + ${2} ))" > /tmp/polybar-timer/expiry
     else
       exit 1
@@ -141,9 +141,11 @@ case $1 in
     printExpiryTime
     ;;
   reset_count)
+    killStopwatch
     resetCount
     ;;
   decrement_count)
+    killStopwatch
     decrementPomoCount
     ;;
   cancel)

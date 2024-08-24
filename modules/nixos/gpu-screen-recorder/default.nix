@@ -21,6 +21,14 @@ in {
     #     ExecStart = "${pkgs.my.gpu-screen-recorder}/bin/gsr-kms-server";
     #   };
     # };
+    security.polkit.extraConfig = ''
+polkit.addRule(function(action, subject) {
+    if (action.id == "org.freedesktop.policykit.exec" &&
+        subject.user == "${config.user}") {
+        return polkit.Result.YES;
+        }
+});
+'';
 
     environment.systemPackages = [
       pkgs.my.gpu-screen-recorder
