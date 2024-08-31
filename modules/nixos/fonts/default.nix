@@ -61,8 +61,8 @@ in {
                   pkgs.fira-code
                   pkgs.hanazono
                   pkgs.dejavu_fonts
-                  pkgs.material-design-icons
-                  pkgs.material-icons
+                  # pkgs.material-design-icons
+                  # pkgs.material-icons
             ];
       };
 }
