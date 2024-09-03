@@ -160,6 +160,7 @@ case $1 in
       echo "Stopwatch stopped."
     else
       (
+        mkdir -p /tmp/polybar-timer
         interval=1500 # 25 minutes in seconds
         incrementPomoCount $interval
         count=0

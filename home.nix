@@ -6,7 +6,7 @@
       programs.steam.enable = true;
       programs.steam.package = pkgs.unstable.steam;
       hardware.opentabletdriver.enable = true;
-      services.xserver.displayManager.autoLogin = {
+      services.displayManager.autoLogin = {
         enable = true;
         user = config.user;
       };

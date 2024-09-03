@@ -1,4 +1,7 @@
 {
+  # --fake 8 --ttl 5
+  # --disorder 1 --auto=torst --fake -1 --tlsrec 3+h
+  # --fake -1 --md5sig
   description = "An example NixOS configuration";
   nixConfig = {
     extra-substituters = [
@@ -64,6 +67,9 @@
                 flacpkgs = import (builtins.fetchTarball {
                   url = "https://github.com/NixOS/nixpkgs/archive/cea111161b02f1a823698038bfd01bc93607e391.tar.gz";
                 }) {};
+                # gvfspkgs = import (builtins.fetchTarball {
+                #   url = "https://github.com/NixOS/nixpkgs/archive/c3f5dc69cdff75a054db50eec743e0693d296978.tar.gz";
+                # }) {};
 
                 old-23 = import nixpkgs-23 { config = self.config; };
                 unstable = import nixos-unstable { config = self.config; };

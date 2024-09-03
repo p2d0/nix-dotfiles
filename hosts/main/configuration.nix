@@ -27,19 +27,19 @@
   #   # environment.sessionVariables.GTK_USE_PORTAL
   #   # xdgOpenUsePortal = true;
   # };
-   xdg.portal = {
-      enable = true;
-      xdgOpenUsePortal = true;
-      # I think the name under config has to match up with the value of XDG_CURRENT_DESKTOP.
-      # kde portal by default, fallback to anything for KDE and i3
-      # I don't set this for KDE in my personal config and it seems to work fine.
-      config.KDE.default = [ "kde" "*" ];
-      config.${"none+i3"}.default = [ "kde" "*" ];
-      extraPortals = [
-        pkgs.xdg-desktop-portal-gtk
-        pkgs.xdg-desktop-portal-wlr
-      ];
-    };
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    # I think the name under config has to match up with the value of XDG_CURRENT_DESKTOP.
+    # kde portal by default, fallback to anything for KDE and i3
+    # I don't set this for KDE in my personal config and it seems to work fine.
+    config.KDE.default = [ "kde" "*" ];
+    config.${"none+i3"}.default = [ "kde" "*" ];
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-wlr
+    ];
+  };
   # xdg.portal.config.common.default = "*";
   nix.settings.trusted-users = [ "root" "andrew" ];
 
@@ -56,7 +56,10 @@
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
     zlib # numpy
-    # libgcc # sqlalchemy
+    # glib
+    # glibc
+    # libgcc
+    # sqlalchemy
     # libcxxStdenv
     # gcc12.cc
 
@@ -117,6 +120,7 @@
 
   i18n.defaultLocale = "en_US.UTF-8";
   services.gvfs.enable = true;
+  # services.gvfs.package = pkgs.gvfspkgs.gnome.gvfs;
   services.udev.extraRules = ''
     SUBSYSTEM=="usb", ACTION=="add", ATTR{idVendor}=="0e8d", ATTR{idProduct}=="201d" MODE="0777" GROUP="users"
     KERNEL=="hidraw*", MODE="0666"
@@ -132,6 +136,10 @@
   #   enable = true;
   #   wrapperFeatures.gtk = true;
   # };
+  services.libinput = {
+    enable = true;
+    mouse = { accelProfile = "flat"; };
+  };
 
   services.xserver = {
     enable = true;
@@ -165,15 +173,13 @@
     ];
 
     # Doesnt work
-    layout = "us,ru";
-    xkbOptions = "grp:alt_shift_toggle";
+    xkb = {
+      layout = "us,ru";
+      options = "grp:alt_shift_toggle";
+    };
     #  deviceSection = ''
     #      Option          "TearFree" "true"
     # '';
-    libinput = {
-      enable = true;
-      mouse = { accelProfile = "flat"; };
-    };
     exportConfiguration = true;
     windowManager.i3.enable = true;
     # windowManager.i3.package = (import (builtins.fetchTarball {
@@ -204,12 +210,13 @@
     # ];
 
     # windowManager.qtile.enable = true;
-    displayManager = {
-      defaultSession = "none+i3";
-      autoLogin = {
-        enable = true;
-        user = config.user;
-      };
+  };
+
+  services.displayManager = {
+    defaultSession = "none+i3";
+    autoLogin = {
+      enable = true;
+      user = config.user;
     };
   };
 
@@ -448,6 +455,7 @@
 
   modules.fonts.enable = true;
   modules.guake.enable = true;
+  modules.byedpi.enable = true;
   modules.timed-shutdown.enable = false;
   modules.timed-shutdown.time = "23:00:00";
   modules.darkman.enable = true;
@@ -499,7 +507,9 @@
         OSCAR
         cachix
         poetry
+        putty
         nix-index
+        sshfs
         charles
         wget
         rnnoise-plugin
@@ -531,7 +541,6 @@
         pr314293.tdlib
         nixfmt-classic
         # python2
-        glibc
         xmrig
         sumneko-lua-language-server
         tgs2png
@@ -697,12 +706,12 @@
         # unstable.tdesktop
         # telegram-desktop_git
         master.telegram-desktop
-        unstable.nil
+        # unstable.nil
+        unstable.nixd
         jpegoptim
         chatterino2
         filelight
         polkit_gnome
-        glib
         gnome.dconf-editor
         gnome.gnome-characters
         minidlna

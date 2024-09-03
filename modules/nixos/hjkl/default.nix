@@ -3,7 +3,7 @@
 with lib;
 let cfg = config.modules.hjkl;
     xkeyboard = pkgs.xorg.xkeyboardconfig_custom {
-      layouts = config.services.xserver.extraLayouts;
+      layouts = config.services.xserver.xkb.extraLayouts;
     };
     xkbrdz = xkeyboard.overrideAttrs(oldAttrs: {
       postPatch = ''sed -i '0,/{/ {s/{/&\n    include "us-hjkl(us-hjkl)"/}' symbols/us;
@@ -17,7 +17,7 @@ in {
     };
   };
   config = mkIf cfg.enable {
-    services.xserver.extraLayouts.us-hjkl = {
+    services.xserver.xkb.extraLayouts.us-hjkl = {
       description = "US layout with hjkl";
       languages = [ "eng" ];
       symbolsFile = pkgs.writeText "us-hjkl" ''
@@ -43,9 +43,8 @@ in {
     environment.sessionVariables = {
       XKB_CONFIG_ROOT = mkOverride 1 "${xkbrdz}/etc/X11/xkb";
     };
-
+    services.xserver.xkb.dir = mkOverride 1 "${xkbrdz}/etc/X11/xkb";
     services.xserver = {
-      xkbDir = mkOverride 1 "${xkbrdz}/etc/X11/xkb";
       exportConfiguration = mkOverride 1 true;
     };
   };
