@@ -107,12 +107,12 @@
     (position 484 207))
 (session-info "toplevel"
     (factory-entry "gimp-file-open-dialog")
-    (position 278 117)
-    (size 948 710))
+    (position 276 99)
+    (size 1143 720))
 (session-info "toplevel"
     (factory-entry "gimp-file-export-dialog")
-    (position 438 227)
-    (size 948 710))
+    (position 436 209)
+    (size 1143 720))
 (session-info "toplevel"
     (factory-entry "gimp-toolbox-color-dialog")
     (position 0 173))
