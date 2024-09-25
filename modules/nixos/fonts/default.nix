@@ -13,7 +13,11 @@ in {
             };
       };
       config = mkIf cfg.enable {
-            fonts.fontconfig = { enable = true; };
+            fonts.fontconfig = {
+                  enable = true;
+                  allowBitmaps = true;
+                  useEmbeddedBitmaps = true;
+            };
             fonts.fontconfig.defaultFonts = {
                   monospace = [ "Noto Sans Mono" ];
                   sansSerif = [ "Noto Sans" ];
@@ -45,15 +49,15 @@ in {
                   pkgs.noto-fonts-cjk-sans
                   unstable.noto-fonts-color-emoji
                   # pkgs.noto-fonts-emoji
-#                   (unstable.noto-fonts-color-emoji.overrideAttrs(oldAttrs: rec {
-#                         installPhase = ''
-#         runHook preInstall
-#         mkdir -p $out/share/fonts/noto
-#         cp NotoColorEmoji.ttf $out/share/fonts/noto
-#         cp NotoColorEmoji-emojicompat.ttf $out/share/fonts/noto
-#         runHook postInstall
-# '';
-#                   }))
+                  #                   (unstable.noto-fonts-color-emoji.overrideAttrs(oldAttrs: rec {
+                  #                         installPhase = ''
+                  #         runHook preInstall
+                  #         mkdir -p $out/share/fonts/noto
+                  #         cp NotoColorEmoji.ttf $out/share/fonts/noto
+                  #         cp NotoColorEmoji-emojicompat.ttf $out/share/fonts/noto
+                  #         runHook postInstall
+                  # '';
+                  #                   }))
 
                   pkgs.roboto
                   pkgs.noto-fonts

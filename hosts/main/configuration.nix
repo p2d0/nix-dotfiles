@@ -128,6 +128,11 @@
     KERNEL=="ttyUSB*", MODE="0666"
   '';
 
+  # users.users.andrew.extraGroups = ["corectrl" "gamemode"];
+  programs.corectrl ={
+    enable = true;
+  };
+
   #  programs.hyprland = {
   #    enable = true;
   #  };
@@ -322,6 +327,22 @@
   nix.settings.auto-optimise-store = true;
   nix.gc.automatic = false;
   nix.gc.options = "--delete-older-than 1d";
+
+    security.polkit.extraConfig = ''
+polkit.addRule(function(action, subject) {
+    if (action.id == "org.corectrl.helper.init" &&
+        subject.user == "${config.user}") {
+        return polkit.Result.YES;
+        }
+});
+
+polkit.addRule(function(action, subject) {
+    if (action.id == "org.corectrl.helper.init" &&
+        subject.user == "${config.user}") {
+        return polkit.Result.YES;
+        }
+});
+'';
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -527,11 +548,14 @@
         megasync
         unstable.jetbrains.idea-community
         unstable.gamescope
+        create-react-app
+        my.cursor
         yandex-disk
         # unstable.yandex-browser
         gpu-screen-recorder
         shared-mime-info
         clinfo
+        radeontop
         qrencode
         # pr229886.amdgpu-pro-libs.amf
         # pr229886.amdgpu-pro-libs.vulkan
@@ -686,6 +710,7 @@
         paprefs
         # shotcut
         darktable
+        anki-bin
         compfy
         # picom
         # (callPackage /etc/nixos/pkgs/picom-animations.nix { })

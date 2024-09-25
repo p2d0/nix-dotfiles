@@ -14,10 +14,13 @@ killTimer () {
   rm -f /tmp/polybar-timer/label
   rm -f /tmp/polybar-timer/action
 }
+
 killStopwatch (){
-  kill $(cat /tmp/polybar-timer/stopwatch_pid)
-  rm /tmp/polybar-timer/stopwatch_pid
-  rm /tmp/polybar-timer/stopwatch_time
+  if [ -f /tmp/polybar-timer/stopwatch_pid ] && [ -f /tmp/polybar-timer/stopwatch_time ]; then
+    kill $(cat /tmp/polybar-timer/stopwatch_pid)
+    rm /tmp/polybar-timer/stopwatch_pid
+    rm /tmp/polybar-timer/stopwatch_time
+  fi
 }
 
 resetCount () {
@@ -121,7 +124,7 @@ case $1 in
     else
       killStopwatch
       killTimer
-      mkdir -p /tmp/polybar-timer
+      mkdir -p /tmp/polybar-timer/
       echo "${2}" > /tmp/polybar-timer/length
       echo "$(( $(now) + 60*${2} ))" > /tmp/polybar-timer/expiry
       echo "${3}" > /tmp/polybar-timer/label
@@ -159,8 +162,8 @@ case $1 in
       killStopwatch
       echo "Stopwatch stopped."
     else
+      mkdir -p /tmp/polybar-timer
       (
-        mkdir -p /tmp/polybar-timer
         interval=1500 # 25 minutes in seconds
         incrementPomoCount $interval
         count=0

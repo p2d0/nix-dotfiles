@@ -1,0 +1,139 @@
+<!docttype HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>ofn-path-arrows</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<style>
+
+div.background {
+    padding: 20px; 
+    width: 800px; 
+    font-size:120%; 
+    color: #000040; 
+    background: #fcfcfc;
+}
+
+h1, h2, h3, h4{
+    color: #2020A0;
+}
+
+h1 {
+    background: #fefefe; 
+    border-style: solid; 
+    border-width: 3px; 
+    border-color: #303080; 
+    border-radius: 8px; 
+    padding-left: 8px;
+}
+
+code { 
+    color: #000000; 
+    background: #fefefe; 
+    border-style: solid; 
+    border-width: 1px; 
+    border-color: #e0e0e0; 
+    border-radius: 2px; 
+    padding-left: 2px;
+    padding-right: 2px;
+    font-family:monospace;
+    font-size:90%;
+}
+
+pre { 
+    color: #000000; 
+    background: #fffff8; 
+    border-style: solid; 
+    border-width: 1px; 
+    border-color: #c0c0c0; 
+    border-radius: 5px; 
+    padding-top: 8px;
+    padding-bottom: 5px;    
+    padding-left: 8px;
+    padding-right: 8px;
+    font-family:monospace;
+    font-size:90%;
+}
+
+pre > code {
+    border-style: none; 
+    background: none;     
+    font-size:none;
+}
+
+li {
+    margin: 5px 0;
+}
+
+img {
+    border-style: solid; 
+    border-width: 1px; 
+    border-color: #e0e0e0; 
+}
+</style>
+<body>
+<div class="background">
+<a name="ofn-2d-path-2d-arrows"></a>
+<h1>ofn-path-arrows</h1>
+
+<p>This script adds arrowheads at the end of open path strokes.</p>
+
+<a name="Usage"></a>
+<h2>Usage</h2>
+
+<ul>
+<li>Create the arrow lines with the Paths tool</li>
+</ul>
+
+
+<p style="text-align:center;"><img src="Initial.png" alt="Initial" /></p>
+
+<ul>
+<li>Run the script to create another path with open arrow heads: right-click the path in the Paths list, and <code>Decorate &gt; Add arrow heads</code>.</li>
+</ul>
+
+
+<p style="text-align:center;"><img src="Call.png" alt="Call" /></p>
+
+<ul>
+<li>With the options above, the heads are added directly to the subject path</li>
+</ul>
+
+
+<p style="text-align:center;"><img src="Result.png" alt="Result" /></p>
+
+<ul>
+<li>In which case you can readily stroke the path:</li>
+</ul>
+
+
+<p style="text-align:center;"><img src="Stroked.png" alt="Stroked" /></p>
+
+<ul>
+<li>If you want closed/filled heads, use a distinct path for the heads, so that you stroke the lines path and fill the heads path.</li>
+</ul>
+
+
+<a name="Options"></a>
+<h2>Options</h2>
+
+<ul>
+<li><strong><code>Size</code></strong>: The length (in pixels) of the arrow wings.</li>
+<li><strong><code>Angle</code></strong>: The angle of the arrow wings with the axis of the arrow head. The angle between the arrow wings is therefore twice this angle.
+Using a 90° angle produces a straight segment perpendicular to the line (but best use the <code>Tangent</code> option below)</li>
+<li><strong><code>Target path</code></strong>: Wether the arrow heads are added in the current path, or added to a new separate path.</li>
+<li><strong><code>Extremities</code></strong>: The extremities of the strokes that should receive an arrow head. Some path transformations can swap strokes end to end and result in an arrow head that doesn&rsquo;t show up where expected. I also have scripts to swap strokes around.</li>
+<li><strong><code>Close</code></strong>: If &lsquo;yes&rsquo;, the arrow head will be a triangle usable for selection and fill. This best used with a new path</li>
+<li><strong><code>Axis</code></strong>: <code>Tangent</code> sets the axis of the arrow head to the exact tangent to the curve on the ending point of the stroke, while <code>Best fit</code> adjusts this axis to make the arrow head look a bit more natural.</li>
+</ul>
+
+
+<a name="Usage-notes"></a>
+<h2>Usage notes</h2>
+
+<ul>
+<li>For best results, keep the length of the arrow wings under a third of the curve radius of the stroke (in other words, don&rsquo;t expect miracles on sharp turns ended by an arrowhead)</li>
+<li>Close strokes are not modified</li>
+</ul>
+
+</div></body></html>

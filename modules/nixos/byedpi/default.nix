@@ -19,6 +19,7 @@ in {
       wantedBy = [ "default.target" ];
       serviceConfig = {
         ExecStart =
+          # "${pkgs.my.byedpi}/bin/ciadpi --disorder 1 --auto=torst --fake -1 --tlsrec 3+h";
           "${pkgs.my.byedpi}/bin/ciadpi --fake -1 --md5sig";
       };
     };
