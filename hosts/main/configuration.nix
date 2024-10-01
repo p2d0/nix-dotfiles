@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ghcWithPackages, self, ... }:
+{ config, pkgs, ghcWithPackages, self, inputs, ... }:
 
 {
   imports = [ ./hardware-configuration.nix ];
@@ -526,6 +526,7 @@ polkit.addRule(function(action, subject) {
         # my.hbctool
         vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
         OSCAR
+        inputs.zen-browser.packages.default
         cachix
         poetry
         putty

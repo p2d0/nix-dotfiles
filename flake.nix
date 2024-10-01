@@ -25,6 +25,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     compfy.url = "github:allusive-dev/compfy";
     spl3g-config.url = "github:spl3g/nixfiles";
+    zen-browser.url = "github:MarceColl/zen-browser-flake";
   };
 
   outputs = inputs @
@@ -33,6 +34,7 @@
       nixpkgs-23,
       poetry2nix,
       chaotic,
+      zen-browser,
       compfy,
       nixos-unstable,
       nixos-master,
