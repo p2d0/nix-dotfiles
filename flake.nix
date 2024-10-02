@@ -77,6 +77,7 @@
                 unstable = import nixos-unstable { config = self.config; };
                 master = import nixos-master { config = self.config; };
                 compfy = compfy.packages.${system}.compfy;
+                zen-browser = zen-browser.packages.${system}.default;
                 my = lib.my.mapModules ./pkgs (p: self.callPackage p {});
                 tgs2png = spl3g-config.overlays.additions.tgs2png;
               })] ++ extraOverlays;
