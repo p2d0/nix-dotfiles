@@ -602,7 +602,7 @@ polkit.addRule(function(action, subject) {
         usbutils
         unstable.pmbootstrap
         # unstable.davinci-resolve
-        # unstable.firefox
+        unstable.firefox
         # unstable.librewolf
         xcompmgr
         heroic
