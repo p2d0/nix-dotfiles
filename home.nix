@@ -4,7 +4,7 @@
   specialisation.default = {
     configuration = {
       programs.steam.enable = true;
-      programs.steam.package = pkgs.unstable.steam;
+      # programs.steam.package = pkgs.unstable.steam;
       hardware.opentabletdriver.enable = true;
       services.displayManager.autoLogin = {
         enable = true;
