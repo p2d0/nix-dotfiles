@@ -319,7 +319,7 @@
         "00 22 * * * root /etc/nixos/shutdown.sh"
         "55 21 * * * andrew DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /run/current-system/sw/bin/notify-send 'Shutdown in 5 MINUTES'"
         "00 20 * * * andrew fish -c 'sync_repos'"
-        "3,8,13,18,23,28,33,38,43,48,53,58 * * * * andrew sleep 50 ; wget --no-check-certificate -O - https://freedns.afraid.org/dynamic/update.php?RnBTMHFiQlhHWnVmUXpNYmtLWlQ0ZXB5OjIxNjg5NzI5 >> /tmp/freedns_ug_kyrgyzstan_kg.log 2>&1 &"
+        "0,5,10,15,20,25,30,35,40,45,50,55 * * * * sleep 12 ; wget --no-check-certificate -O - https://freedns.afraid.org/dynamic/update.php?RnBTMHFiQlhHWnVmUXpNYmtLWlQ0ZXB5OjIyMTIzNjM3 >> /tmp/freedns_ug_kyrgyzstan_kg.log 2>&1 &"
       ];
     };
   };
