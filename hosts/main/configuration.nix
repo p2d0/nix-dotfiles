@@ -328,7 +328,7 @@
   nix.gc.automatic = false;
   nix.gc.options = "--delete-older-than 1d";
 
-    security.polkit.extraConfig = ''
+  security.polkit.extraConfig = ''
 polkit.addRule(function(action, subject) {
     if (action.id == "org.corectrl.helper.init" &&
         subject.user == "${config.user}") {
@@ -467,6 +467,16 @@ polkit.addRule(function(action, subject) {
   #   # https://javadl.oracle.com/webapps/download/GetFile/1.8.0_281-b09/89d678f2be164786b292527658ca1605/linux-i586/jdk-8u281-linux-x64.tar.gz
   #   # TODO direct link
   # };
+
+  programs.proxychains = {
+    enable = true;
+    proxies.xray = {
+      enable = true;
+      type = "http";
+      host = "127.0.0.1";
+      port = 8093;
+    };
+  };
   security.acme = {
     acceptTerms = true;
     defaults.email = "cerkin-3@yandex.ru";
@@ -531,7 +541,10 @@ polkit.addRule(function(action, subject) {
         putty
         nix-index
         sshfs
+        mattermost-desktop
         charles
+        wgcf
+        wireguard-tools
         wget
         rnnoise-plugin
         clang
