@@ -113,6 +113,7 @@
   programs.git = {
     enable = true;
     userName = "patriot720";
+    lfs.enable = true;
     userEmail = "cerkin-3@yandex.ru";
     extraConfig = {
       core.autocrlf = false;

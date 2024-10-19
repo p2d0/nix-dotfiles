@@ -172,11 +172,11 @@ case $1 in
           sleep 1
           count=$((count + 1))
           echo $count > /tmp/polybar-timer/stopwatch_time
-          # if [ $count -ge $(($interval*2)) ]
-          # then
-          #   incrementPomoCount $interval
-          #   count=0
-          # fi
+          if [ $count -ge $(($interval*2)) ]
+          then
+            incrementPomoCount $interval
+            count=0
+          fi
         done
       ) &
       echo $! > /tmp/polybar-timer/stopwatch_pid

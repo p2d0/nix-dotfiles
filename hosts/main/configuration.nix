@@ -746,7 +746,7 @@ polkit.addRule(function(action, subject) {
         # unstable.tdesktop
         # telegram-desktop_git
         master.telegram-desktop
-        # unstable.nil
+        unstable.nil
         unstable.nixd
         jpegoptim
         chatterino2
