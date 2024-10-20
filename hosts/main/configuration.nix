@@ -92,7 +92,7 @@
 
   boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.loader.grub.enable = true;
-  # boot.loader.grub.default = "saved";
+  boot.loader.grub.default = 1;
 
   boot.blacklistedKernelModules = [ "iTCO_wdt" "iTCO_vendor_support" ];
 

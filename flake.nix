@@ -25,7 +25,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     compfy.url = "github:allusive-dev/compfy";
     spl3g-config.url = "github:spl3g/nixfiles";
-    zen-browser.url = "github:MarceColl/zen-browser-flake";
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
   outputs = inputs @
