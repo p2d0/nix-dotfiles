@@ -543,6 +543,7 @@ polkit.addRule(function(action, subject) {
         sshfs
         mattermost-desktop
         charles
+        autokey
         wgcf
         wireguard-tools
         wget

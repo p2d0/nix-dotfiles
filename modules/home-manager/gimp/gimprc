@@ -31,7 +31,8 @@
     (padding-in-show-all no))
 (toolbox-wilber no)
 (icon-size small)
-(selection-feather-radius 1)
+(layer-add-mask-type selection)
+(selection-feather-radius 10)
 (selection-grow-radius 5)
 (fill-options
     (style solid)
