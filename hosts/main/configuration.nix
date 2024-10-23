@@ -318,6 +318,7 @@
         "00 23 * * * andrew DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /run/current-system/sw/bin/notify-send 'Sleep'"
         "00 22 * * * root /etc/nixos/shutdown.sh"
         "55 21 * * * andrew DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /run/current-system/sw/bin/notify-send 'Shutdown in 5 MINUTES'"
+        "00 20 * * * andrew /etc/nixos/update_ip.sh"
         "00 20 * * * andrew fish -c 'sync_repos'"
         "0,5,10,15,20,25,30,35,40,45,50,55 * * * * andrew sleep 12 ; wget --no-check-certificate -O - https://freedns.afraid.org/dynamic/update.php?RnBTMHFiQlhHWnVmUXpNYmtLWlQ0ZXB5OjIyMTIzNjM3 >> /tmp/freedns_ug_kyrgyzstan_kg.log 2>&1 &"
       ];
@@ -558,6 +559,7 @@ polkit.addRule(function(action, subject) {
         # pr218037.microsoft-edge-dev
         gcc.cc.libgcc
         gcc.cc.libgcc.lib
+        keepassxc
         conda
         megasync
         unstable.jetbrains.idea-community
