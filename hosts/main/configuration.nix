@@ -560,6 +560,7 @@ polkit.addRule(function(action, subject) {
         gcc.cc.libgcc
         gcc.cc.libgcc.lib
         keepassxc
+        remmina
         conda
         megasync
         unstable.jetbrains.idea-community
@@ -749,7 +750,7 @@ polkit.addRule(function(action, subject) {
         # unstable.tdesktop
         # telegram-desktop_git
         master.telegram-desktop
-        unstable.nil
+        # unstable.nil
         unstable.nixd
         jpegoptim
         chatterino2
