@@ -568,7 +568,7 @@ polkit.addRule(function(action, subject) {
         create-react-app
         my.cursor
         yandex-disk
-        # unstable.yandex-browser
+        yandex-browser-stable
         gpu-screen-recorder
         shared-mime-info
         clinfo
@@ -592,7 +592,7 @@ polkit.addRule(function(action, subject) {
         neovide
         lazygit
         gmsh
-        unstable.microsoft-edge
+        # unstable.microsoft-edge
         calculix
         # pr229886.amdgpu-pro-libs.amf
         # pr229886.amdgpu-pro-libs.prefixes

@@ -26,6 +26,7 @@
     compfy.url = "github:allusive-dev/compfy";
     spl3g-config.url = "github:spl3g/nixfiles";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    yandex-browser.url = "github:miuirussia/yandex-browser.nix";
   };
 
   outputs = inputs @
@@ -35,6 +36,7 @@
       poetry2nix,
       chaotic,
       zen-browser,
+      yandex-browser,
       compfy,
       nixos-unstable,
       nixos-master,
@@ -51,7 +53,7 @@
               config.allowBroken = true;
               config.allowUnfree = true;  # forgive me Stallman senpai
               config.permittedInsecurePackages = [
-                "xrdp-0.9.9" "python-2.7.18.8-env" "python-2.7.18.8" "python-2.7.18.7-env" "python-2.7.18.7" "libdwarf-20181024" "python-2.7.18.6" ];
+               "yandex-browser-stable-24.4.1.915-1" "xrdp-0.9.9" "python-2.7.18.8-env" "python-2.7.18.8" "python-2.7.18.7-env" "python-2.7.18.7" "libdwarf-20181024" "python-2.7.18.6" ];
               overlays = [(self: super: {
                 inherit lib;
                 # fish get-pr-override 218037
@@ -78,6 +80,7 @@
                 master = import nixos-master { config = self.config; };
                 compfy = compfy.packages.${system}.compfy;
                 zen-browser = zen-browser.packages.${system}.default;
+                yandex-browser-stable = yandex-browser.packages.${system}.yandex-browser-stable;
                 my = lib.my.mapModules ./pkgs (p: self.callPackage p {});
                 tgs2png = spl3g-config.overlays.additions.tgs2png;
               })] ++ extraOverlays;
