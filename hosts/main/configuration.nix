@@ -742,7 +742,7 @@ polkit.addRule(function(action, subject) {
         # (pkgs.callPackage ./pkgs/openhab.nix { })
         # (callPackage ./pkgs/psiphon.nix { })
         speedcrunch
-        discord
+        # discord
         # unstable.tdesktop
         # (unstable.qt6Packages.callPackage /etc/nixos/pkgs/tdesktop/tdesktop.nix {
         #   abseil-cpp = unstable.abseil-cpp_202111;
