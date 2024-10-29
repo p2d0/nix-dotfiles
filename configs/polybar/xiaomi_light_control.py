@@ -17,9 +17,9 @@ def ping(host):
 
 # Define the lightbulbs data as a list of dictionaries
 yeelights = [
-    {"ip": "192.168.31.101", "token": "67c3d12c44ada627ad6e37a4db561f8d", "model": "yeelink.light.color5"},
-    {"ip": "192.168.31.247", "token": "aae89b7b5e2560d50e9877026a2f9ba5", "model": "yeelink.light.color5"},
-    {"ip": "192.168.31.144", "token": "80e52c76c607d227190857502638ca6e", "model": "yeelink.light.color5"}
+    {"ip": "192.168.1.157", "token": "80e52c76c607d227190857502638ca6e", "model": "yeelink.light.color5"},
+    {"ip": "192.168.1.190", "token": "aae89b7b5e2560d50e9877026a2f9ba5", "model": "yeelink.light.color5"},
+    {"ip": "192.168.1.206", "token": "67c3d12c44ada627ad6e37a4db561f8d", "model": "yeelink.light.color5"},
 ]
 
 def create_yeelight(lightbulb):
