@@ -588,6 +588,7 @@ polkit.addRule(function(action, subject) {
         luarocks
         helvum
         unstable.cloudflare-warp
+        nmap
         skypeforlinux
         neovide
         lazygit
