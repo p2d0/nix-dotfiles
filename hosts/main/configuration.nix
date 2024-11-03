@@ -591,6 +591,7 @@ polkit.addRule(function(action, subject) {
         nmap
         skypeforlinux
         neovide
+        my.hiddify
         lazygit
         gmsh
         # unstable.microsoft-edge
