@@ -82,7 +82,7 @@ font-8 = FontAwesome:size=12;5
 
 modules-left = i3
 modules-center = popup-calendar
-modules-right = timer weather
+modules-right =  weather
 ; bluetooth pulseaudio
 ; scratchpad-indicator
 ; text
@@ -251,8 +251,9 @@ content-padding = 1
 
 type = custom/script
 ;; 祥
-exec = ~/.config/polybar/polybar-timer.sh tail ' POMOSTOPTIMER' 1
-tail = true
+; exec = ~/.config/polybar/polytimer.py tail 'kek' 1
+; tail = true
+
 
 click-middle = ~/.config/polybar/polybar-timer.sh new 15 ' Long rest' 'notify-send "Session finished"' ; ~/.config/polybar/polybar-timer.sh update %pid%
 click-left = ~/.config/polybar/polybar-timer.sh stopwatch ; ~/.config/polybar/polybar-timer.sh update %pid%
@@ -263,6 +264,21 @@ double-click-right = ~/.config/polybar/polybar-timer.sh reset_count
 scroll-up = ~/.config/polybar/polybar-timer.sh increase 300 || ~/.config/polybar/polybar-timer.sh new 5 'TIMER:' 'paplay ~/.config/polybar/mixkit-achievement-bell-600.wav;notify-send -u critical "Timer expired."' ; ~/.config/polybar/polybar-timer.sh update %pid%
 scroll-down = ~/.config/polybar/polybar-timer.sh increase -300 ; ~/.config/polybar/polybar-timer.sh update %pid%
 
+[module/polypomo]
+type = custom/script
+
+exec = ~/.config/polybar/polypomo
+tail = true
+
+label = %output%
+click-left = ~/.config/polybar/polypomo toggle
+click-right = ~/.config/polybar/polypomo end
+click-middle = ~/.config/polybar/polypomo lock
+scroll-up = ~/.config/polybar/polypomo time +60
+scroll-down = ~/.config/polybar/polypomo time -60
+
+font-0 = fixed:pixelsize=10;1
+font-1 = Noto Emoji:scale=15:antialias=false;0
 [module/xkeyboard]
 type = internal/xkeyboard
 blacklist-0 = num lock
@@ -724,6 +740,7 @@ tray-position = right
 [bar/DVI]
 inherit = bar/mybar
 monitor = DVI-D-0
+modules-right = polypomo weather
 tray-position = right
 
 [bar/workbar]
@@ -766,7 +783,7 @@ font-8 = FontAwesome:size=12;5
 
 modules-left = i3
 modules-center = text popup-calendar
-modules-right = timer weather
+modules-right = weather
 ; bluetooth pulseaudio
 ; scratchpad-indicator
 ; text
