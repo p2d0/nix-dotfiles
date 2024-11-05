@@ -39,6 +39,7 @@ in {
         wantedBy = [ "default.target" ];
         serviceConfig = {
           Type = "simple";
+          # ExecStart = "/etc/nixos/modules/nixos/vpn/xray.sh";
           ExecStart = "${pkgs.xray}/bin/xray run -c /home/andrew/Dropbox/xray/config.json";
         };
       };});

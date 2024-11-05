@@ -381,13 +381,17 @@
 #           withdrawn from screen again and will get delayed like a new notification
 #[fullscreen_delay_everything]
 #    fullscreen = delay
-#[fullscreen_show_critical]
+# [fullscreen_show_critical]
 #    msg_urgency = critical
 #    fullscreen = show
 
 #[espeak]
 #    summary = "*"
 #    script = dunst_espeak.sh
+
+[play_sound]
+    script = /etc/nixos/configs/dunst/alert.sh
+    msg_urgency = critical
 
 #[script-test]
 #    summary = "*script*"

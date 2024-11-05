@@ -186,9 +186,12 @@
     ".alsoftrc".text = "drivers=pulse";
 
     ".config/dunst" = {
-      source = ./configs/dunst;
-      recursive = true;
+      source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/dunst;
     };
+    # ".config/dunst" = {
+    #   source = ./configs/dunst;
+    #   recursive = true;
+    # };
 
     ".config/minidlna.conf".text = ''
     network_interface=enp3s0
