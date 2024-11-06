@@ -81,8 +81,11 @@
                 compfy = compfy.packages.${system}.compfy;
                 zen-browser = zen-browser.packages.${system}.default;
                 yandex-browser-stable = yandex-browser.packages.${system}.yandex-browser-stable;
-                # my = lib.my.mapModules ./pkgs (p: self.callPackage p {});
-                my = lib.my.mapModules ./pkgs (p: builtins.trace "calling self.callPackage for: " ++ toString p (self.callPackage p {}));
+                # my = lib.my.mapModules ./pkgs (p:
+                #   let eval = builtins.tryEval (self.callPackage p {});
+                #   in
+                #     if eval.success then eval.value else builtins.throw "Package error " ++ p );
+                my = lib.my.mapModules ./pkgs (p:  (self.callPackage (lib.debug.traceVal p) {}));
                 tgs2png = spl3g-config.overlays.additions.tgs2png;
               })] ++ extraOverlays;
             };

@@ -19,6 +19,7 @@ SOCKFILE = os.path.join(SOCKDIR, "polypomo.sock")
 TOMATO = "\U0001F345"  # Recommended font: Noto Emoji
 BREAK = "\U0001F3D6"  # Recommended font: Noto Emoji
 PAUSE = "\U000023F8"  # Recommended font: Siji
+CLOCK = "\U000023F0"
 
 
 class Exit(Exception):
@@ -112,13 +113,39 @@ class Status:
         status = TOMATO if self.status == "work" else BREAK
         if not self.active:
             status = PAUSE
-        sys.stdout.write("{} {}\n".format(status, self.timer))
+        sys.stdout.write(f"{CLOCK} {self.total_time_today()} {TOMATO} {self.pomocount()} || {status} {self.timer}\n")
         sys.stdout.flush()
 
     def toggle(self):
         self.active = not self.active
         if self.saveto and self.status == "work":
             self.save()
+
+    def total_time_today(self):
+        if self.saveto:
+            with setup_conn(self.saveto) as conn:
+                conn.execute("SELECT SUM((strftime('%s', stop) - strftime('%s', start))) FROM sessions WHERE date(date) = date('now')")
+                total_seconds = conn.fetchone()[0]
+                if total_seconds is None:
+                    return "0h 0m"
+                else:
+                    hours = int(total_seconds // 3600)
+                    minutes = int((total_seconds % 3600) // 60)
+                    return f"{hours}h {minutes}m"
+        else:
+            return "0h 0m"
+
+    def pomocount(self):
+        if self.saveto:
+            with setup_conn(self.saveto) as conn:
+                conn.execute("SELECT SUM((strftime('%s', stop) - strftime('%s', start))) FROM sessions WHERE date(date) = date('now')")
+                total_seconds = conn.fetchone()[0]
+                if total_seconds is None:
+                    return 0
+                else:
+                    return total_seconds // self.worktime
+        else:
+            return 0
 
     def toggle_lock(self):
         self.locked = not self.locked

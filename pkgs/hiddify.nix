@@ -1,6 +1,6 @@
-# { appimageTools, lib, fetchurl, makeDesktopItem }:
+{ appimageTools, lib, fetchurl, makeDesktopItem }:
 
-with import <nixpkgs> {};
+# with import <nixpkgs> {};
 appimageTools.wrapType2 rec {
   pname = "hiddify";
   version = "2.5.71";

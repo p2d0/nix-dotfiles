@@ -25,7 +25,7 @@ appimageTools.wrapType2 rec {
   meta = with lib; {
     description = "ALVR";
     homepage = "ALVR";
-    maintainers = [ maintainers.p720 ];
+    # maintainers = [ maintainers.p720 ];
     mainProgram = "alvr";
     platforms = [ "x86_64-linux" ];
   };
