@@ -180,7 +180,7 @@
     # Doesnt work
     xkb = {
       layout = "us,ru";
-      options = "grp:alt_shift_toggle";
+      options = "grp:alt_shift_toggle,compose:ralt";
     };
     #  deviceSection = ''
     #      Option          "TearFree" "true"
