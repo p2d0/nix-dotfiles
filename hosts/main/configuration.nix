@@ -568,7 +568,6 @@ polkit.addRule(function(action, subject) {
         create-react-app
         my.cursor
         yandex-disk
-        yandex-browser-stable
         gpu-screen-recorder
         shared-mime-info
         clinfo
