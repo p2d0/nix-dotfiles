@@ -106,7 +106,7 @@ class Status:
         self.status = "work"  # or "break"
         self.timer = Timer(self.worktime)
         self.active = False
-        self.locked = True
+        self.locked = False
         self.saveto = saveto
 
     def show(self):
