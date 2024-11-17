@@ -743,7 +743,7 @@ polkit.addRule(function(action, subject) {
         # (pkgs.callPackage ./pkgs/openhab.nix { })
         # (callPackage ./pkgs/psiphon.nix { })
         speedcrunch
-        discord
+        # discord
         # unstable.tdesktop
         # (unstable.qt6Packages.callPackage /etc/nixos/pkgs/tdesktop/tdesktop.nix {
         #   abseil-cpp = unstable.abseil-cpp_202111;
@@ -774,7 +774,8 @@ polkit.addRule(function(action, subject) {
         pkgs.cinnamon.nemo-python
         # pkgs.libsForQt5.dolphin
         # unstable.telegram-cli
-        # soundux
+        # sounduxPkgs.soundux
+        my.soundux
         # (unstable.callPackage /etc/nixos/pkgs/nemo-preview.nix {})
         # my.nemo-preview
         # 41.2

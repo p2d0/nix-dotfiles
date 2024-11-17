@@ -1,0 +1,10 @@
+--- a/src/helper/audio/linux/pipewire/pipewire.cpp
++++ b/src/helper/audio/linux/pipewire/pipewire.cpp
+@@ -1,5 +1,6 @@
+ #if defined(__linux__)
+ #include "pipewire.hpp"
+ #include "forward.hpp"
++#include <algorithm>
+ #include <fancy.hpp>
+ #include <memory>
+ #include <optional>

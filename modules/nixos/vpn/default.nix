@@ -48,10 +48,13 @@ in {
         enable = true;
         description = "Sing-box hiddify";
         wantedBy = [ "default.target" ];
+
         serviceConfig = {
           Type = "simple";
           # ExecStart = "/etc/nixos/modules/nixos/vpn/xray.sh";
           ExecStart = "${pkgs.my.singbox}/bin/sing-box run -c /home/andrew/Dropbox/singbox/config.json";
+          Restart = "on-failure";
+          RestartSec = 3;
         };
       };
 

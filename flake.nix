@@ -51,6 +51,7 @@
               config.allowBroken = true;
               config.allowUnfree = true;  # forgive me Stallman senpai
               config.permittedInsecurePackages = [
+                "python3.11-youtube-dl-2021.12.17"
                 "qbittorrent-4.6.4" "xrdp-0.9.9" "python-2.7.18.8-env" "python-2.7.18.8" "python-2.7.18.7-env" "python-2.7.18.7" "libdwarf-20181024" "python-2.7.18.6" ];
               overlays = [(self: super: {
                 inherit lib;
@@ -72,6 +73,10 @@
                 # gvfspkgs = import (builtins.fetchTarball {
                 #   url = "https://github.com/NixOS/nixpkgs/archive/c3f5dc69cdff75a054db50eec743e0693d296978.tar.gz";
                 # }) {};
+
+                sounduxPkgs = import (builtins.fetchTarball {
+                  url = "https://github.com/NixOS/nixpkgs/archive/7a339d87931bba829f68e94621536cad9132971a.tar.gz";
+                }) {};
 
                 old-23 = import nixpkgs-23 { config = self.config; };
                 unstable = import nixos-unstable { config = self.config; };
