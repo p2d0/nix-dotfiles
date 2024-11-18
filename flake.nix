@@ -75,7 +75,7 @@
                 # }) {};
 
                 sounduxPkgs = import (builtins.fetchTarball {
-                  url = "https://github.com/NixOS/nixpkgs/archive/7a339d87931bba829f68e94621536cad9132971a.tar.gz";
+                  url = "https://github.com/NixOS/nixpkgs/archive/78747312c7c8978a140c0a3ad236766289aecf8b.tar.gz";
                 }) {};
 
                 old-23 = import nixpkgs-23 { config = self.config; };

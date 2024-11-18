@@ -108,6 +108,7 @@ class Status:
         self.active = False
         self.locked = False
         self.saveto = saveto
+        self.last_session_id = None 
 
     def show(self):
         status = TOMATO if self.status == "work" else BREAK
@@ -181,19 +182,18 @@ class Status:
         if self.saveto:
             with setup_conn(self.saveto) as conn:
                 if self.active:
+                    # Insert a new session and track the last inserted row ID
                     conn.execute(
-                        "INSERT INTO sessions VALUES (date('now'), time('now'), NULL)"
+                        "INSERT INTO sessions (date, start) VALUES (date('now'), time('now','localtime'))"
                     )
-                else:
+                    self.last_session_id = conn.lastrowid
+                elif self.last_session_id is not None:
+                    # Update the last inserted session with the stop time
                     conn.execute(
-                        """UPDATE sessions
-                           SET stop = time('now')
-                           WHERE start IN (
-                             SELECT start FROM sessions
-                             ORDER BY start DESC
-                             LIMIT 1)
-                        """
+                        "UPDATE sessions SET stop = time('now','localtime') WHERE id = ?",
+                        (self.last_session_id,)
                     )
+                    self.last_session_id = None  # Reset the last session ID after updating
 
 
 @contextmanager
@@ -203,6 +203,7 @@ def setup_conn(path):
     cur = conn.cursor()
     cur.execute(
         """CREATE TABLE IF NOT EXISTS sessions (
+             id INTEGER PRIMARY KEY AUTOINCREMENT,
              date text,
              start text,
              stop text

@@ -267,7 +267,7 @@ scroll-down = ~/.config/polybar/polybar-timer.sh increase -300 ; ~/.config/polyb
 [module/polypomo]
 type = custom/script
 
-exec = ~/.config/polybar/polypomo --saveto /etc/nixos/configs/polybar/kek.sqlite
+exec = ~/.config/polybar/polypomo --saveto /etc/nixos/configs/polybar/time.sqlite
 tail = true
 
 label = %output%

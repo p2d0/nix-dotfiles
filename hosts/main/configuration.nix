@@ -107,6 +107,7 @@
   boot.loader.grub.device = "nodev";
 
   networking.hostName = config.user;
+  networking.proxy.default = "http://localhost:8092/";
 
   time.timeZone = "Europe/Moscow";
   boot.extraModprobeConfig = ''
@@ -236,7 +237,7 @@
   modules.ilzabot.enable = false;
   modules.hjkl.enable = true;
   modules.printing3d.enable = true;
-  modules.warp.enable = true;
+  modules.warp.enable = false;
   modules.keyrings.enable = true;
 
   users.users.${config.user} = {
@@ -524,6 +525,7 @@ polkit.addRule(function(action, subject) {
           ps.python-lsp-server
           ps.pytest
           ps.python-miio
+          ps.debugpy
           ps.requests
           ps.epc
           ps.lxml
@@ -586,7 +588,7 @@ polkit.addRule(function(action, subject) {
         tgs2png
         luarocks
         helvum
-        unstable.cloudflare-warp
+        # unstable.cloudflare-warp
         nmap
         skypeforlinux
         neovide
@@ -743,7 +745,8 @@ polkit.addRule(function(action, subject) {
         # (pkgs.callPackage ./pkgs/openhab.nix { })
         # (callPackage ./pkgs/psiphon.nix { })
         speedcrunch
-        # discord
+        discord
+        legcord
         # unstable.tdesktop
         # (unstable.qt6Packages.callPackage /etc/nixos/pkgs/tdesktop/tdesktop.nix {
         #   abseil-cpp = unstable.abseil-cpp_202111;
@@ -774,8 +777,8 @@ polkit.addRule(function(action, subject) {
         pkgs.cinnamon.nemo-python
         # pkgs.libsForQt5.dolphin
         # unstable.telegram-cli
-        # sounduxPkgs.soundux
-        my.soundux
+        sounduxPkgs.soundux
+        # my.soundux
         # (unstable.callPackage /etc/nixos/pkgs/nemo-preview.nix {})
         # my.nemo-preview
         # 41.2
