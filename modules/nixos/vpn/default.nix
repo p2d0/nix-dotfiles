@@ -47,8 +47,7 @@ in {
       systemd.services.singbox = {
         enable = true;
         description = "Sing-box hiddify";
-        wantedBy = [ "default.target" ];
-
+        wantedBy = [ "multi-user.target" ];
         serviceConfig = {
           Type = "simple";
           # ExecStart = "/etc/nixos/modules/nixos/vpn/xray.sh";
