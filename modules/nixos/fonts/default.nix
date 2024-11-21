@@ -36,6 +36,7 @@ in {
                   (callPackage ./fonts/bellandlamb.nix { })
                   (callPackage ./fonts/icomoon.nix { })
                   (callPackage ./fonts/apex.nix { })
+                  (callPackage ./fonts/cryptocoins.nix { })
                   #corduoy https://www.behance.net/gallery/10761523/Corduroy-Slab-Free
                   # hamster script https://www.behance.net/gallery/24882765/Hamster-Script-(Free-Font)
                   # https://www.behance.net/gallery/77444055/APEX-MK3-FREE-ROBUST-DISPLAY-TYPEFACE

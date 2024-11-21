@@ -546,6 +546,7 @@ polkit.addRule(function(action, subject) {
         sshfs
         mattermost-desktop
         charles
+        gnome.gucharmap
         autokey
         wgcf
         wireguard-tools

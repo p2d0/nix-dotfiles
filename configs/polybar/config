@@ -79,6 +79,7 @@ font-5 = Weather Icons:size=12;5
 font-6 = MaterialIcons:size=15;6
 font-7 = NotoEmoji:fontformat=truetype:scale=7;4
 font-8 = FontAwesome:size=12;5
+font-9 = cryptocoins:style=Regular;2
 
 modules-left = i3
 modules-center = popup-calendar
@@ -294,6 +295,12 @@ label-indicator-padding = 2
 label-indicator-margin = 1
 label-indicator-background = ${colors.secondary}
 label-indicator-underline = ${colors.secondary}
+
+[module/crypto]
+type = custom/script
+interval = 300
+exec = /etc/nixos/configs/polybar/polybar-crypto/crypto.py
+; font-0 = cryptocoins:style=Regular;0
 
 [module/filesystem]
 type = internal/fs
@@ -740,6 +747,7 @@ tray-position = right
 [bar/DVI]
 inherit = bar/mybar
 monitor = DVI-D-0
+modules-left = i3 crypto
 modules-right = polypomo weather
 tray-position = right
 

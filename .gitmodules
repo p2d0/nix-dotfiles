@@ -7,3 +7,6 @@
 [submodule "modules/nixos/editors/.doom.d"]
 	path = modules/nixos/editors/.doom.d
 	url = git@github.com:p2d0/.doom.d
+[submodule "configs/polybar/polybar-crypto"]
+	path = configs/polybar/polybar-crypto
+	url = https://github.com/willHol/polybar-crypto.git

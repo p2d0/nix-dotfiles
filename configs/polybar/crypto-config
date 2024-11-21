@@ -1,0 +1,8 @@
+[general]
+base_currency = USD
+display = both
+
+[bitcoin]
+icon = 
+[dogecoin]
+icon = 
