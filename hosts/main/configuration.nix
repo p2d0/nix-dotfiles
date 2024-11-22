@@ -237,7 +237,7 @@
   modules.ilzabot.enable = false;
   modules.hjkl.enable = true;
   modules.printing3d.enable = true;
-  modules.warp.enable = false;
+  modules.warp.enable = true;
   modules.keyrings.enable = true;
 
   users.users.${config.user} = {
