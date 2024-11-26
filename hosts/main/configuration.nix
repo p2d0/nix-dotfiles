@@ -570,6 +570,7 @@ polkit.addRule(function(action, subject) {
         unstable.gamescope
         create-react-app
         my.cursor
+        vscode
         yandex-disk
         gpu-screen-recorder
         shared-mime-info
