@@ -11,13 +11,13 @@ def fetch_tasks(db_path, alltime=False):
     cur = conn.cursor()
     if alltime:
         cur.execute("""
-            SELECT date, start, stop, title
+            SELECT id, date, start, stop, title
             FROM sessions
             ORDER BY start
         """)
     else:
         cur.execute("""
-            SELECT date, start, stop, title
+            SELECT id, date, start, stop, title
             FROM sessions
             WHERE date(date) = date('now')
             ORDER BY start
@@ -35,7 +35,7 @@ def calculate_duration(start, stop):
 def aggregate_durations(tasks):
     task_durations = {}
     for task in tasks:
-        date, start, stop, title = task
+        date, start, stop, title = task[1:5]
         duration = calculate_duration(start, stop)
         if title in task_durations:
             task_durations[title] += duration
@@ -46,12 +46,20 @@ def aggregate_durations(tasks):
 def aggregate_durations_alltime(tasks):
     return aggregate_durations(tasks)
 
+def update_task_title(db_path, task_id, new_title):
+    conn = sqlite3.connect(db_path)
+    cur = conn.cursor()
+    cur.execute("UPDATE sessions SET title = ? WHERE id = ?", (new_title, task_id))
+    conn.commit()
+    conn.close()
+
 class TasksWindow(QMainWindow):
-    def __init__(self, tasks_today, task_durations_today, tasks_alltime, task_durations_alltime):
+    def __init__(self, tasks_today, task_durations_today, tasks_alltime, task_durations_alltime, db_path):
         super().__init__()
 
         self.setWindowTitle("Pomotasks")
         self.setGeometry(100, 100, 600, 400)
+        self.db_path = db_path
 
         # Create a central widget and set the layout
         central_widget = QWidget()
@@ -77,19 +85,25 @@ class TasksWindow(QMainWindow):
 
         # Create a table widget for tasks
         self.tasks_table = QTableWidget()
-        self.tasks_table.setColumnCount(5)
-        self.tasks_table.setHorizontalHeaderLabels(["Date", "Start", "Stop", "Title", "Duration"])
+        self.tasks_table.setColumnCount(5)  # Removed the "Edit" column
+        self.tasks_table.setHorizontalHeaderLabels(["ID", "Date", "Start", "Stop", "Title", "Duration"])
         self.tasks_table.setRowCount(len(tasks_today))
 
         # Populate the table with tasks
         for row, task in enumerate(tasks_today):
-            date, start, stop, title = task
+            task_id, date, start, stop, title = task
             duration = calculate_duration(start, stop)
-            self.tasks_table.setItem(row, 0, QTableWidgetItem(date))
-            self.tasks_table.setItem(row, 1, QTableWidgetItem(start))
-            self.tasks_table.setItem(row, 2, QTableWidgetItem(stop))
-            self.tasks_table.setItem(row, 3, QTableWidgetItem(title))
-            self.tasks_table.setItem(row, 4, QTableWidgetItem(str(datetime.utcfromtimestamp(duration).strftime('%H:%M:%S'))))
+            self.tasks_table.setItem(row, 0, QTableWidgetItem(str(task_id)))
+            self.tasks_table.setItem(row, 1, QTableWidgetItem(date))
+            self.tasks_table.setItem(row, 2, QTableWidgetItem(start))
+            self.tasks_table.setItem(row, 3, QTableWidgetItem(stop))
+            title_item = QTableWidgetItem(title)
+            title_item.setFlags(title_item.flags() | Qt.ItemFlag.ItemIsEditable)  # Make the title cell editable
+            self.tasks_table.setItem(row, 4, title_item)
+            self.tasks_table.setItem(row, 5, QTableWidgetItem(str(datetime.utcfromtimestamp(duration).strftime('%H:%M:%S'))))
+
+        # Connect the itemChanged signal to the edit_title method
+        self.tasks_table.itemChanged.connect(self.edit_title)
 
         tasks_layout.addWidget(self.tasks_table)
 
@@ -152,6 +166,25 @@ class TasksWindow(QMainWindow):
         close_button.clicked.connect(self.close)
         layout.addWidget(close_button)
 
+    def edit_title(self, item):
+        if item.column() == 4:  # Column for titles
+            row = item.row()
+            task_id = int(self.tasks_table.item(row, 0).text())
+            new_title = item.text()
+            update_task_title(self.db_path, task_id, new_title)
+            # Refresh the durations table
+            tasks_today = fetch_tasks(self.db_path, alltime=False)
+            task_durations_today = aggregate_durations(tasks_today)
+            self.update_durations_table(self.durations_table, task_durations_today)
+
+    def update_durations_table(self, table, task_durations):
+        table.setRowCount(len(task_durations))
+        row = 0
+        for title, duration in task_durations.items():
+            table.setItem(row, 0, QTableWidgetItem(title))
+            table.setItem(row, 1, QTableWidgetItem(str(datetime.utcfromtimestamp(duration).strftime('%H:%M:%S'))))
+            row += 1
+
 def main():
     db_path = "/etc/nixos/configs/polybar/time.sqlite"
     tasks_today = fetch_tasks(db_path, alltime=False)
@@ -160,7 +193,7 @@ def main():
     task_durations_alltime = aggregate_durations_alltime(tasks_alltime)
 
     app = QApplication([])
-    window = TasksWindow(tasks_today, task_durations_today, tasks_alltime, task_durations_alltime)
+    window = TasksWindow(tasks_today, task_durations_today, tasks_alltime, task_durations_alltime, db_path)
     window.show()
     app.exec()
 
