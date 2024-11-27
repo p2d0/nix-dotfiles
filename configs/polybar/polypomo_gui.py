@@ -6,15 +6,22 @@ from PyQt6.QtWidgets import QApplication, QMainWindow, QTableWidget, QTableWidge
 from PyQt6.QtCore import Qt
 from datetime import datetime
 
-def fetch_tasks(db_path):
+def fetch_tasks(db_path, alltime=False):
     conn = sqlite3.connect(db_path)
     cur = conn.cursor()
-    cur.execute("""
-        SELECT date, start, stop, title
-        FROM sessions
-        WHERE date(date) = date('now')
-        ORDER BY start
-    """)
+    if alltime:
+        cur.execute("""
+            SELECT date, start, stop, title
+            FROM sessions
+            ORDER BY start
+        """)
+    else:
+        cur.execute("""
+            SELECT date, start, stop, title
+            FROM sessions
+            WHERE date(date) = date('now')
+            ORDER BY start
+        """)
     tasks = cur.fetchall()
     conn.close()
     return tasks
@@ -36,8 +43,11 @@ def aggregate_durations(tasks):
             task_durations[title] = duration
     return task_durations
 
+def aggregate_durations_alltime(tasks):
+    return aggregate_durations(tasks)
+
 class TasksWindow(QMainWindow):
-    def __init__(self, tasks, task_durations):
+    def __init__(self, tasks_today, task_durations_today, tasks_alltime, task_durations_alltime):
         super().__init__()
 
         self.setWindowTitle("Pomotasks")
@@ -53,9 +63,9 @@ class TasksWindow(QMainWindow):
         tab_widget = QTabWidget()
         layout.addWidget(tab_widget)
 
-        # Tab for individual tasks
+        # Tab for individual tasks today
         tasks_tab = QWidget()
-        tab_widget.addTab(tasks_tab, "Tasks")
+        tab_widget.addTab(tasks_tab, "Tasks Today")
 
         tasks_layout = QVBoxLayout()
         tasks_tab.setLayout(tasks_layout)
@@ -69,10 +79,10 @@ class TasksWindow(QMainWindow):
         self.tasks_table = QTableWidget()
         self.tasks_table.setColumnCount(5)
         self.tasks_table.setHorizontalHeaderLabels(["Date", "Start", "Stop", "Title", "Duration"])
-        self.tasks_table.setRowCount(len(tasks))
+        self.tasks_table.setRowCount(len(tasks_today))
 
         # Populate the table with tasks
-        for row, task in enumerate(tasks):
+        for row, task in enumerate(tasks_today):
             date, start, stop, title = task
             duration = calculate_duration(start, stop)
             self.tasks_table.setItem(row, 0, QTableWidgetItem(date))
@@ -83,15 +93,15 @@ class TasksWindow(QMainWindow):
 
         tasks_layout.addWidget(self.tasks_table)
 
-        # Tab for aggregated durations
+        # Tab for aggregated durations today
         durations_tab = QWidget()
-        tab_widget.addTab(durations_tab, "Total Durations")
+        tab_widget.addTab(durations_tab, "Total Durations Today")
 
         durations_layout = QVBoxLayout()
         durations_tab.setLayout(durations_layout)
 
         # Add a label for durations
-        durations_label = QLabel("Total Duration by Task Title:")
+        durations_label = QLabel("Total Duration by Task Title Today:")
         durations_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         durations_layout.addWidget(durations_label)
 
@@ -99,16 +109,43 @@ class TasksWindow(QMainWindow):
         self.durations_table = QTableWidget()
         self.durations_table.setColumnCount(2)
         self.durations_table.setHorizontalHeaderLabels(["Title", "Total Duration"])
-        self.durations_table.setRowCount(len(task_durations))
+        self.durations_table.setRowCount(len(task_durations_today))
 
         # Populate the table with durations
         row = 0
-        for title, duration in task_durations.items():
+        for title, duration in task_durations_today.items():
             self.durations_table.setItem(row, 0, QTableWidgetItem(title))
             self.durations_table.setItem(row, 1, QTableWidgetItem(str(datetime.utcfromtimestamp(duration).strftime('%H:%M:%S'))))
             row += 1
 
         durations_layout.addWidget(self.durations_table)
+
+        # Tab for aggregated durations alltime
+        durations_alltime_tab = QWidget()
+        tab_widget.addTab(durations_alltime_tab, "Total Durations Alltime")
+
+        durations_alltime_layout = QVBoxLayout()
+        durations_alltime_tab.setLayout(durations_alltime_layout)
+
+        # Add a label for durations
+        durations_alltime_label = QLabel("Total Duration by Task Title Alltime:")
+        durations_alltime_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        durations_alltime_layout.addWidget(durations_alltime_label)
+
+        # Create a table widget for durations
+        self.durations_alltime_table = QTableWidget()
+        self.durations_alltime_table.setColumnCount(2)
+        self.durations_alltime_table.setHorizontalHeaderLabels(["Title", "Total Duration"])
+        self.durations_alltime_table.setRowCount(len(task_durations_alltime))
+
+        # Populate the table with durations
+        row = 0
+        for title, duration in task_durations_alltime.items():
+            self.durations_alltime_table.setItem(row, 0, QTableWidgetItem(title))
+            self.durations_alltime_table.setItem(row, 1, QTableWidgetItem(str(datetime.utcfromtimestamp(duration).strftime('%H:%M:%S'))))
+            row += 1
+
+        durations_alltime_layout.addWidget(self.durations_alltime_table)
 
         # Add a close button
         close_button = QPushButton("Close")
@@ -117,11 +154,13 @@ class TasksWindow(QMainWindow):
 
 def main():
     db_path = "/etc/nixos/configs/polybar/time.sqlite"
-    tasks = fetch_tasks(db_path)
-    task_durations = aggregate_durations(tasks)
+    tasks_today = fetch_tasks(db_path, alltime=False)
+    task_durations_today = aggregate_durations(tasks_today)
+    tasks_alltime = fetch_tasks(db_path, alltime=True)
+    task_durations_alltime = aggregate_durations_alltime(tasks_alltime)
 
     app = QApplication([])
-    window = TasksWindow(tasks, task_durations)
+    window = TasksWindow(tasks_today, task_durations_today, tasks_alltime, task_durations_alltime)
     window.show()
     app.exec()
 
