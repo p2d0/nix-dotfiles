@@ -12,3 +12,7 @@ tmp/
 *.egg
 build
 htmlcov
+
+*.sqlite
+
+configs/fcitx5/profile

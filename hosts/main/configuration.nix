@@ -542,6 +542,7 @@ polkit.addRule(function(action, subject) {
         cachix
         poetry
         putty
+        texliveMedium
         nix-index
         sshfs
         mattermost-desktop
