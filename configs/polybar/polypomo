@@ -100,7 +100,7 @@ class Timer:
 
 
 class Status:
-    def __init__(self, worktime, breaktime, saveto):
+    def __init__(self, worktime, breaktime, saveto, title=None):
         self.worktime = worktime
         self.breaktime = breaktime
         self.status = "work"  # or "break"
@@ -109,12 +109,13 @@ class Status:
         self.locked = False
         self.saveto = saveto
         self.last_session_id = None 
+        self.title = title  # New attribute to store the task title
 
     def show(self):
         status = TOMATO if self.status == "work" else BREAK
         if not self.active:
             status = PAUSE
-        sys.stdout.write(f"{CLOCK} {self.total_time_today()} {TOMATO} {self.pomocount()} || {status} {self.timer}\n")
+        sys.stdout.write(f" {CLOCK} {self.total_time_today()} {TOMATO} {self.pomocount()} || {status} {self.timer} {self.title}\n")
         sys.stdout.flush()
 
     def toggle(self):
@@ -179,21 +180,22 @@ class Status:
             self.timer = Timer(self.worktime)
 
     def save(self):
-        if self.saveto:
-            with setup_conn(self.saveto) as conn:
-                if self.active:
-                    # Insert a new session and track the last inserted row ID
-                    conn.execute(
-                        "INSERT INTO sessions (date, start) VALUES (date('now'), time('now','localtime'))"
-                    )
-                    self.last_session_id = conn.lastrowid
-                elif self.last_session_id is not None:
-                    # Update the last inserted session with the stop time
-                    conn.execute(
-                        "UPDATE sessions SET stop = time('now','localtime') WHERE id = ?",
-                        (self.last_session_id,)
-                    )
-                    self.last_session_id = None  # Reset the last session ID after updating
+            if self.saveto:
+                with setup_conn(self.saveto) as conn:
+                    if self.active:
+                        # Insert a new session and track the last inserted row ID
+                        conn.execute(
+                            "INSERT INTO sessions (date, start, title) VALUES (date('now'), time('now','localtime'), ?)",
+                            (self.title,)  # Include the task title in the insert statement
+                        )
+                        self.last_session_id = conn.lastrowid
+                    elif self.last_session_id is not None:
+                        # Update the last inserted session with the stop time
+                        conn.execute(
+                            "UPDATE sessions SET stop = time('now','localtime') WHERE id = ?",
+                            (self.last_session_id,)
+                        )
+                        self.last_session_id = None  # Reset the last session ID after updating
 
 
 @contextmanager
@@ -206,7 +208,8 @@ def setup_conn(path):
              id INTEGER PRIMARY KEY AUTOINCREMENT,
              date text,
              start text,
-             stop text
+             stop text,
+             title text
         )"""
     )
     try:
@@ -299,9 +302,18 @@ def check_actions(sock, status):
     elif action.startswith("time"):
         _, op, seconds = action.split(" ")
         status.change(op, seconds)
+    elif action.startswith("title"):
+        _, title = action.split(" ", 1)  # Split only once to allow spaces in the title
+        status.title = title  # Update the task title
     elif action == "exit":
         raise Exit()
 
+
+def action_title(args):
+    # New action to change the task title
+    with setup_client() as s:
+        msg = "title " + args.title
+        s.send(msg.encode("utf8"))
 
 def action_display(args):
     # TODO logging = print("Running display", args)
@@ -399,6 +411,9 @@ def parse_args():
     parser.add_argument(
         "--saveto", type=pathlib.Path, default=None, help="Path to database"
     )
+    parser.add_argument(
+        "--title", type=str, default=None, help="Title of the current task"  # New argument for task title
+    )
     parser.set_defaults(func=action_display)
 
     sub = parser.add_subparsers()
@@ -429,6 +444,15 @@ def parse_args():
         help="Time to add/remove to current timer (in seconds)",
     )
     time.set_defaults(func=action_time)
+
+    # change task title
+    title = sub.add_parser("title", help="change the title of the current task")
+    title.add_argument(
+        "title",
+        type=str,
+        help="Title of the current task",
+    )
+    title.set_defaults(func=action_title)
 
     return parser.parse_args()
 
