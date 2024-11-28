@@ -156,16 +156,10 @@ class TasksWindow(QMainWindow):
         self.durations_table = QTableWidget()
         self.durations_table.setColumnCount(3)
         self.durations_table.setHorizontalHeaderLabels(["Title", "Total Duration", "Pomodoros"])
-        self.durations_table.setRowCount(len(task_durations_today))
+        self.durations_table.setRowCount(len(task_durations_today) + 1)  # Add an extra row for the total
 
         # Populate the table with durations
-        row = 0
-        for title, duration in task_durations_today.items():
-            pomodoros = duration / 1500  # Calculate duration in pomodoros
-            self.durations_table.setItem(row, 0, QTableWidgetItem(title))
-            self.durations_table.setItem(row, 1, QTableWidgetItem(str(datetime.utcfromtimestamp(duration).strftime('%H:%M:%S'))))
-            self.durations_table.setItem(row, 2, QTableWidgetItem(f"{pomodoros:.2f}"))  # Added pomodoros column
-            row += 1
+        self.populate_durations_table(self.durations_table, task_durations_today)
 
         durations_layout.addWidget(self.durations_table)
 
@@ -185,16 +179,10 @@ class TasksWindow(QMainWindow):
         self.durations_alltime_table = QTableWidget()
         self.durations_alltime_table.setColumnCount(3)
         self.durations_alltime_table.setHorizontalHeaderLabels(["Title", "Total Duration", "Pomodoros"])
-        self.durations_alltime_table.setRowCount(len(task_durations_alltime))
+        self.durations_alltime_table.setRowCount(len(task_durations_alltime) + 1)  # Add an extra row for the total
 
         # Populate the table with durations
-        row = 0
-        for title, duration in task_durations_alltime.items():
-            pomodoros = duration / 1500  # Calculate duration in pomodoros
-            self.durations_alltime_table.setItem(row, 0, QTableWidgetItem(title))
-            self.durations_alltime_table.setItem(row, 1, QTableWidgetItem(str(datetime.utcfromtimestamp(duration).strftime('%H:%M:%S'))))
-            self.durations_alltime_table.setItem(row, 2, QTableWidgetItem(f"{pomodoros:.2f}"))  # Added pomodoros column
-            row += 1
+        self.populate_durations_table(self.durations_alltime_table, task_durations_alltime)
 
         durations_alltime_layout.addWidget(self.durations_alltime_table)
 
@@ -256,16 +244,10 @@ class TasksWindow(QMainWindow):
         self.durations_yesterday_table = QTableWidget()
         self.durations_yesterday_table.setColumnCount(3)
         self.durations_yesterday_table.setHorizontalHeaderLabels(["Title", "Total Duration", "Pomodoros"])
-        self.durations_yesterday_table.setRowCount(len(task_durations_yesterday))
+        self.durations_yesterday_table.setRowCount(len(task_durations_yesterday) + 1)  # Add an extra row for the total
 
         # Populate the table with durations
-        row = 0
-        for title, duration in task_durations_yesterday.items():
-            pomodoros = duration / 1500  # Calculate duration in pomodoros
-            self.durations_yesterday_table.setItem(row, 0, QTableWidgetItem(title))
-            self.durations_yesterday_table.setItem(row, 1, QTableWidgetItem(str(datetime.utcfromtimestamp(duration).strftime('%H:%M:%S'))))
-            self.durations_yesterday_table.setItem(row, 2, QTableWidgetItem(f"{pomodoros:.2f}"))  # Added pomodoros column
-            row += 1
+        self.populate_durations_table(self.durations_yesterday_table, task_durations_yesterday)
 
         durations_yesterday_layout.addWidget(self.durations_yesterday_table)
 
@@ -285,16 +267,10 @@ class TasksWindow(QMainWindow):
         self.durations_this_month_table = QTableWidget()
         self.durations_this_month_table.setColumnCount(3)
         self.durations_this_month_table.setHorizontalHeaderLabels(["Title", "Total Duration", "Pomodoros"])
-        self.durations_this_month_table.setRowCount(len(task_durations_this_month))
+        self.durations_this_month_table.setRowCount(len(task_durations_this_month) + 1)  # Add an extra row for the total
 
         # Populate the table with durations
-        row = 0
-        for title, duration in task_durations_this_month.items():
-            pomodoros = duration / 1500  # Calculate duration in pomodoros
-            self.durations_this_month_table.setItem(row, 0, QTableWidgetItem(title))
-            self.durations_this_month_table.setItem(row, 1, QTableWidgetItem(str(datetime.utcfromtimestamp(duration).strftime('%H:%M:%S'))))
-            self.durations_this_month_table.setItem(row, 2, QTableWidgetItem(f"{pomodoros:.2f}"))  # Added pomodoros column
-            row += 1
+        self.populate_durations_table(self.durations_this_month_table, task_durations_this_month)
 
         durations_this_month_layout.addWidget(self.durations_this_month_table)
 
@@ -302,6 +278,23 @@ class TasksWindow(QMainWindow):
         close_button = QPushButton("Close")
         close_button.clicked.connect(self.close)
         layout.addWidget(close_button)
+
+    def populate_durations_table(self, table, task_durations):
+        total_duration = 0
+        row = 0
+        for title, duration in task_durations.items():
+            pomodoros = duration / 1500  # Calculate duration in pomodoros
+            table.setItem(row, 0, QTableWidgetItem(title))
+            table.setItem(row, 1, QTableWidgetItem(str(datetime.utcfromtimestamp(duration).strftime('%H:%M:%S'))))
+            table.setItem(row, 2, QTableWidgetItem(f"{pomodoros:.2f}"))  # Added pomodoros column
+            total_duration += duration
+            row += 1
+
+        # Add a total row
+        total_pomodoros = total_duration / 1500
+        table.setItem(row, 0, QTableWidgetItem("Total"))
+        table.setItem(row, 1, QTableWidgetItem(str(datetime.utcfromtimestamp(total_duration).strftime('%H:%M:%S'))))
+        table.setItem(row, 2, QTableWidgetItem(f"{total_pomodoros:.2f}"))
 
     def edit_task(self, item):
         row = item.row()
@@ -316,14 +309,7 @@ class TasksWindow(QMainWindow):
         self.update_durations_table(self.durations_table, task_durations_today)
 
     def update_durations_table(self, table, task_durations):
-        table.setRowCount(len(task_durations))
-        row = 0
-        for title, duration in task_durations.items():
-            pomodoros = duration / 1500  # Calculate duration in pomodoros
-            table.setItem(row, 0, QTableWidgetItem(title))
-            table.setItem(row, 1, QTableWidgetItem(str(datetime.utcfromtimestamp(duration).strftime('%H:%M:%S'))))
-            table.setItem(row, 2, QTableWidgetItem(f"{pomodoros:.2f}"))  # Added pomodoros column
-            row += 1
+        self.populate_durations_table(table, task_durations)
 
 def main():
     db_path = "/etc/nixos/configs/polybar/time.sqlite"
