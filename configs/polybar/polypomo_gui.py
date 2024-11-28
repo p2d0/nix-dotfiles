@@ -5,6 +5,8 @@ import sqlite3
 from PyQt6.QtWidgets import QApplication, QMainWindow, QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget, QPushButton, QLabel, QTabWidget, QGridLayout
 from PyQt6.QtCore import Qt
 from datetime import datetime, timedelta
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 
 def fetch_tasks(db_path, alltime=False, yesterday=False):
     conn = sqlite3.connect(db_path)
@@ -56,22 +58,22 @@ def calculate_duration(start, stop):
     duration = stop_time - start_time
     return duration.total_seconds()
 
-def aggregate_durations(tasks):
-    task_durations = {}
+def aggregate_durations_by_date(tasks):
+    date_durations = {}
     for task in tasks:
         date, start, stop, title = task[1:5]
         duration = calculate_duration(start, stop)
-        if title in task_durations:
-            task_durations[title] += duration
+        if date in date_durations:
+            date_durations[date] += duration
         else:
-            task_durations[title] = duration
-    return task_durations
+            date_durations[date] = duration
+    return date_durations
 
 def aggregate_durations_alltime(tasks):
-    return aggregate_durations(tasks)
+    return aggregate_durations_by_date(tasks)
 
 def aggregate_durations_this_month(tasks):
-    return aggregate_durations(tasks)
+    return aggregate_durations_by_date(tasks)
 
 def update_task(db_path, task_id, new_start, new_stop, new_title):
     conn = sqlite3.connect(db_path)
@@ -274,6 +276,27 @@ class TasksWindow(QMainWindow):
 
         durations_this_month_layout.addWidget(self.durations_this_month_table)
 
+        # Tab for duration graph this month
+        graph_this_month_tab = QWidget()
+        tab_widget.addTab(graph_this_month_tab, "Duration Graph This Month")
+
+        graph_this_month_layout = QVBoxLayout()
+        graph_this_month_tab.setLayout(graph_this_month_layout)
+
+        # Add a label for the graph
+        graph_this_month_label = QLabel("Duration Graph by Date This Month:")
+        graph_this_month_label.setMaximumHeight(15)
+        graph_this_month_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        graph_this_month_layout.addWidget(graph_this_month_label)
+
+        # Create a figure and canvas for the graph
+        self.figure, self.ax = plt.subplots()
+        self.canvas = FigureCanvas(self.figure)
+        graph_this_month_layout.addWidget(self.canvas)
+
+        # Plot the graph
+        self.plot_duration_graph(tasks_this_month)
+
         # Add a close button
         close_button = QPushButton("Close")
         close_button.clicked.connect(self.close)
@@ -305,20 +328,38 @@ class TasksWindow(QMainWindow):
         update_task(self.db_path, task_id, new_start, new_stop, new_title)
         # Refresh the durations table
         tasks_today = fetch_tasks(self.db_path, alltime=False)
-        task_durations_today = aggregate_durations(tasks_today)
+        task_durations_today = aggregate_durations_by_date(tasks_today)
         self.update_durations_table(self.durations_table, task_durations_today)
 
     def update_durations_table(self, table, task_durations):
         self.populate_durations_table(table, task_durations)
 
+    def plot_duration_graph(self, tasks):
+        date_durations = aggregate_durations_by_date(tasks)
+        dates = sorted(date_durations.keys())
+        durations = [date_durations[date] / 60 for date in dates]  # Convert durations to minutes
+
+        self.ax.clear()
+        self.ax.plot(dates, durations, marker='o')
+        self.ax.set_xlabel('Date')
+        self.ax.set_ylabel('Duration (minutes)')
+        self.ax.set_title('Duration by Date This Month')
+        self.ax.set_xticks(range(len(dates)))
+        self.ax.set_xticklabels(dates, rotation=45, ha='right')
+
+        # self.ax.tick_params(axis='x', pad=15)  # Add padding to x-axis labels for better visibility
+        self.ax.grid(True)
+        self.figure.autofmt_xdate()  # Automatically format x-axis labels for better visibility
+        self.canvas.draw()
+
 def main():
     db_path = "/etc/nixos/configs/polybar/time.sqlite"
     tasks_today = fetch_tasks(db_path, alltime=False)
-    task_durations_today = aggregate_durations(tasks_today)
+    task_durations_today = aggregate_durations_by_date(tasks_today)
     tasks_alltime = fetch_tasks(db_path, alltime=True)
     task_durations_alltime = aggregate_durations_alltime(tasks_alltime)
     tasks_yesterday = fetch_tasks(db_path, yesterday=True)
-    task_durations_yesterday = aggregate_durations(tasks_yesterday)
+    task_durations_yesterday = aggregate_durations_by_date(tasks_yesterday)
     tasks_this_month = fetch_tasks_this_month(db_path)
     task_durations_this_month = aggregate_durations_this_month(tasks_this_month)
 

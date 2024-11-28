@@ -277,6 +277,8 @@ click-right = ~/.config/polybar/polypomo end
 click-middle = ~/.config/polybar/polypomo time -1410
 scroll-up = ~/.config/polybar/polypomo time +300
 scroll-down = ~/.config/polybar/polypomo time -300
+double-click-left = ~/.config/polybar/polypomo-title-dialog.sh
+double-click-right = ~/.config/polybar/polypomo_gui.py
 
 font-0 = fixed:pixelsize=10;1
 font-1 = Noto Emoji:scale=15:antialias=false;0

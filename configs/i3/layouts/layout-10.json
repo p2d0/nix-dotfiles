@@ -1,5 +1,5 @@
-// vim:ts=4:sw=4:et
-[{
+[
+{
     // splith split container with 1 children
     "border": "pixel",
     "floating": "auto_off",
@@ -9,7 +9,7 @@
     "type": "con",
     "nodes": [
         {
-            // splith split container with 3 children
+            // splith split container with 2 children
             "border": "pixel",
             "floating": "auto_off",
             "layout": "splith",
@@ -28,38 +28,14 @@
                        "y": 10
                     },
                     "marks": [],
-                    "name": "Google Calendar - Wednesday, November 27, 2024, today",
-                    "percent": 0.245154794254658,
+                    "name": "Google Calendar - Friday, October 25, 2024, today",
+                    "percent": 0.26,
                     "swallows": [
                        {
                        // "class": "^Brave\\-browser$",
                        "instance": "^calendar\\.google\\.com$"
                        // "machine": "^andrew$",
-                       // "title": "^Google\\ Calendar\\ \\-\\ Wednesday\\,\\ November\\ 27\\,\\ 2024\\,\\ today$",
-                       // "window_role": "^pop\\-up$"
-                       }
-                    ],
-                    "type": "con"
-                },
-                {
-                    "border": "pixel",
-                    "current_border_width": 5,
-                    "floating": "auto_off",
-                    "geometry": {
-                       "height": 1060,
-                       "width": 1265,
-                       "x": 10,
-                       "y": 10
-                    },
-                    "marks": [],
-                    "name": "All - TickTick",
-                    "percent": 0.26,
-                    "swallows": [
-                       {
-                       // "class": "^Brave\\-browser$",
-                       "instance": "^ticktick\\.com$"
-                       // "machine": "^andrew$",
-                       // "title": "^All\\ \\-\\ TickTick$",
+                       // "title": "^Google\\ Calendar\\ \\-\\ Friday\\,\\ October\\ 25\\,\\ 2024\\,\\ today$",
                        // "window_role": "^pop\\-up$"
                        }
                     ],
@@ -77,7 +53,7 @@
                     },
                     "marks": [],
                     "name": "emacs-todos",
-                    "percent": 0.494845205745342,
+                    "percent": 0.74,
                     "swallows": [
                        {
                        // "class": "^Emacs$",

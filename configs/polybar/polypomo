@@ -100,7 +100,7 @@ class Timer:
 
 
 class Status:
-    def __init__(self, worktime, breaktime, saveto, title=None):
+    def __init__(self, worktime, breaktime, saveto, title=''):
         self.worktime = worktime
         self.breaktime = breaktime
         self.status = "work"  # or "break"
@@ -209,7 +209,7 @@ def setup_conn(path):
              date text,
              start text,
              stop text,
-             title text
+             title text NOT NULL DEFAULT ''
         )"""
     )
     try:

@@ -17,7 +17,7 @@ function record_screen
             notify-send "Clipped"
         else
             notify-send "Started recording"
-            ffmpeg (get_current_screen_geometry "-y -video_size {width}x{height} -framerate 30  -f x11grab -i :0.0+{x},{y}  -vf scale=1280:-1  -pix_fmt yuv420p  /tmp/output.mp4 -pix_fmt yuv420p -c:v h264_v4l2m2 -movflags +faststart" | string split -n " ")
+            ffmpeg (get_current_screen_geometry "-y -video_size {width}x{height} -framerate 30  -f x11grab -i :0.0+{x},{y}  -vf scale=1280:-1  -pix_fmt yuv420p /tmp/output.mp4 -pix_fmt yuv420p  -movflags +faststart" | string split -n " ")
         end
     end
 end
