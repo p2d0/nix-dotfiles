@@ -34,6 +34,22 @@ def fetch_tasks(db_path, alltime=False, yesterday=False):
     conn.close()
     return tasks
 
+def fetch_tasks_this_month(db_path):
+    conn = sqlite3.connect(db_path)
+    cur = conn.cursor()
+    first_day_of_month = datetime.now().replace(day=1).strftime('%Y-%m-%d')
+    last_day_of_month = (datetime.now().replace(day=1) + timedelta(days=31)).replace(day=1) - timedelta(days=1)
+    last_day_of_month = last_day_of_month.strftime('%Y-%m-%d')
+    cur.execute("""
+        SELECT id, date, start, stop, title
+        FROM sessions
+        WHERE date(date) BETWEEN ? AND ?
+        ORDER BY start
+    """, (first_day_of_month, last_day_of_month))
+    tasks = cur.fetchall()
+    conn.close()
+    return tasks
+
 def calculate_duration(start, stop):
     start_time = datetime.strptime(start, "%H:%M:%S")
     stop_time = datetime.strptime(stop, "%H:%M:%S")
@@ -54,6 +70,9 @@ def aggregate_durations(tasks):
 def aggregate_durations_alltime(tasks):
     return aggregate_durations(tasks)
 
+def aggregate_durations_this_month(tasks):
+    return aggregate_durations(tasks)
+
 def update_task(db_path, task_id, new_start, new_stop, new_title):
     conn = sqlite3.connect(db_path)
     cur = conn.cursor()
@@ -62,7 +81,7 @@ def update_task(db_path, task_id, new_start, new_stop, new_title):
     conn.close()
 
 class TasksWindow(QMainWindow):
-    def __init__(self, tasks_today, task_durations_today, tasks_alltime, task_durations_alltime, tasks_yesterday, task_durations_yesterday, db_path):
+    def __init__(self, tasks_today, task_durations_today, tasks_alltime, task_durations_alltime, tasks_yesterday, task_durations_yesterday, tasks_this_month, task_durations_this_month, db_path):
         super().__init__()
 
         self.setWindowTitle("Pomotasks")
@@ -250,6 +269,35 @@ class TasksWindow(QMainWindow):
 
         durations_yesterday_layout.addWidget(self.durations_yesterday_table)
 
+        # Tab for aggregated durations this month
+        durations_this_month_tab = QWidget()
+        tab_widget.addTab(durations_this_month_tab, "Total Durations This Month")
+
+        durations_this_month_layout = QVBoxLayout()
+        durations_this_month_tab.setLayout(durations_this_month_layout)
+
+        # Add a label for durations
+        durations_this_month_label = QLabel("Total Duration by Task Title This Month:")
+        durations_this_month_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        durations_this_month_layout.addWidget(durations_this_month_label)
+
+        # Create a table widget for durations
+        self.durations_this_month_table = QTableWidget()
+        self.durations_this_month_table.setColumnCount(3)
+        self.durations_this_month_table.setHorizontalHeaderLabels(["Title", "Total Duration", "Pomodoros"])
+        self.durations_this_month_table.setRowCount(len(task_durations_this_month))
+
+        # Populate the table with durations
+        row = 0
+        for title, duration in task_durations_this_month.items():
+            pomodoros = duration / 1500  # Calculate duration in pomodoros
+            self.durations_this_month_table.setItem(row, 0, QTableWidgetItem(title))
+            self.durations_this_month_table.setItem(row, 1, QTableWidgetItem(str(datetime.utcfromtimestamp(duration).strftime('%H:%M:%S'))))
+            self.durations_this_month_table.setItem(row, 2, QTableWidgetItem(f"{pomodoros:.2f}"))  # Added pomodoros column
+            row += 1
+
+        durations_this_month_layout.addWidget(self.durations_this_month_table)
+
         # Add a close button
         close_button = QPushButton("Close")
         close_button.clicked.connect(self.close)
@@ -285,9 +333,11 @@ def main():
     task_durations_alltime = aggregate_durations_alltime(tasks_alltime)
     tasks_yesterday = fetch_tasks(db_path, yesterday=True)
     task_durations_yesterday = aggregate_durations(tasks_yesterday)
+    tasks_this_month = fetch_tasks_this_month(db_path)
+    task_durations_this_month = aggregate_durations_this_month(tasks_this_month)
 
     app = QApplication([])
-    window = TasksWindow(tasks_today, task_durations_today, tasks_alltime, task_durations_alltime, tasks_yesterday, task_durations_yesterday, db_path)
+    window = TasksWindow(tasks_today, task_durations_today, tasks_alltime, task_durations_alltime, tasks_yesterday, task_durations_yesterday, tasks_this_month, task_durations_this_month, db_path)
     window.show()
     app.exec()
 
