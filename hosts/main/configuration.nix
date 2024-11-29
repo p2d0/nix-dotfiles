@@ -299,7 +299,11 @@
   #       #   };
   #     };
   #   };
-
+  services.transmission = {
+    enable = true;
+    settings.incomplete-dir-enabled = false;
+    home = "/mnt/md127/transmission";
+  };
   services.blueman.enable = true;
   programs.dconf.enable = true;
 
