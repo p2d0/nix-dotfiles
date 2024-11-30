@@ -1219,6 +1219,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-amnezia": {
+      "locked": {
+        "lastModified": 1726222156,
+        "narHash": "sha256-gRyOOTC3ENEL8JVTAUVHsoc7Bbmcdb47+SNPxmbbRQI=",
+        "owner": "averyanalex",
+        "repo": "nixpkgs",
+        "rev": "0bcb5f57694c071aa03bb75d508b1d9ca1364f70",
+        "type": "github"
+      },
+      "original": {
+        "owner": "averyanalex",
+        "ref": "amneziawg",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-small": {
       "locked": {
         "lastModified": 1729577921,
@@ -1543,6 +1559,7 @@
         "nixos-unstable": "nixos-unstable",
         "nixpkgs": "nixpkgs_4",
         "nixpkgs-23": "nixpkgs-23",
+        "nixpkgs-amnezia": "nixpkgs-amnezia",
         "poetry2nix": "poetry2nix",
         "spl3g-config": "spl3g-config",
         "zen-browser": "zen-browser"

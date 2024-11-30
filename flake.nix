@@ -26,6 +26,7 @@
     compfy.url = "github:allusive-dev/compfy";
     spl3g-config.url = "github:spl3g/nixfiles";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    nixpkgs-amnezia.url = "github:averyanalex/nixpkgs/amneziawg";
   };
 
   outputs = inputs @
@@ -50,8 +51,10 @@
               inherit system;
               config.allowBroken = true;
               config.allowUnfree = true;  # forgive me Stallman senpai
+
               config.permittedInsecurePackages = [
                 "python3.11-youtube-dl-2021.12.17"
+                "qbittorrent-qt5-4.6.4"
                 "qbittorrent-4.6.4" "xrdp-0.9.9" "python-2.7.18.8-env" "python-2.7.18.8" "python-2.7.18.7-env" "python-2.7.18.7" "libdwarf-20181024" "python-2.7.18.6" ];
               overlays = [(self: super: {
                 inherit lib;

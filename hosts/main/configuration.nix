@@ -90,7 +90,7 @@
 
   environment.variables = { ROC_ENABLE_PRE_VEGA = "1"; };
 
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  # boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.loader.grub.enable = true;
   boot.loader.grub.default = 1;
 
@@ -302,7 +302,7 @@
   services.transmission = {
     enable = true;
     settings.incomplete-dir-enabled = false;
-    home = "/mnt/md127/transmission";
+    home = "/mnt/old/transmission";
   };
   services.blueman.enable = true;
   programs.dconf.enable = true;
@@ -490,6 +490,8 @@ polkit.addRule(function(action, subject) {
     # };
   };
 
+  modules.singbox.enable = false;
+  modules.amnezia.enable = true;
   modules.fonts.enable = true;
   modules.guake.enable = true;
   modules.byedpi.enable = true;
@@ -555,7 +557,8 @@ polkit.addRule(function(action, subject) {
         gnome.gucharmap
         autokey
         wgcf
-        wireguard-tools
+        # my.amneziawg-tools
+        # my.amneziawg-go
         wget
         rnnoise-plugin
         clang
@@ -776,6 +779,7 @@ polkit.addRule(function(action, subject) {
         # gnome.gnome-boxes
         rustdesk
         qbittorrent
+        qbittorrent-qt5
         epiphany
         # tor-browser-bundle-bin
         # looking-glass-client

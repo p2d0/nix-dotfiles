@@ -32,7 +32,7 @@
     };
 
   fileSystems."/mnt/old" =
-    { device = "/dev/disk/by-uuid/66e90d46-d031-4e40-ad33-c3f156316c20";
+    { device = "/dev/disk/by-uuid/a8b905b6-7e2d-4274-b974-f460aeabdab7";
       options = [ "noatime" ];
       fsType = "ext4";
     };

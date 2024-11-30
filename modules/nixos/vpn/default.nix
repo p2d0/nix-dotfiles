@@ -29,33 +29,11 @@ in {
           pkgs.qv2ray
           pkgs.unstable.nekoray
           pkgs.xray
-          pkgs.my.singbox
-          # (pkgs.sing-box.overrideAttrs(oldAttrs: rec {
-          #   src = fetchFromGitHub {
-          #     owner = "hiddify";
-          #     repo = "hiddify-sing-box";
-          #     rev = "master";
-          #     sha256 = "sha256-TZuEcLWHHmjlH0g0baPOurqFIHzppkYCHL1Dif8wLsk=";
-          #   };
-          #   vendorHash = "kekes";
-          # }))
 
           # my.psiphon
           # my.lantern
         ];
 
-      systemd.services.singbox = {
-        enable = true;
-        description = "Sing-box hiddify";
-        wantedBy = [ "multi-user.target" ];
-        serviceConfig = {
-          Type = "simple";
-          # ExecStart = "/etc/nixos/modules/nixos/vpn/xray.sh";
-          ExecStart = "${pkgs.my.singbox}/bin/sing-box run -c /home/andrew/Dropbox/singbox/config.json";
-          Restart = "on-failure";
-          RestartSec = 3;
-        };
-      };
 
       systemd.services.xray = {
         enable = true;
