@@ -779,7 +779,7 @@ polkit.addRule(function(action, subject) {
         # gnome.gnome-boxes
         rustdesk
         qbittorrent
-        qbittorrent-qt5
+        # qbittorrent-qt5
         epiphany
         # tor-browser-bundle-bin
         # looking-glass-client
