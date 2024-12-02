@@ -107,7 +107,7 @@
   boot.loader.grub.device = "nodev";
 
   networking.hostName = config.user;
-  networking.proxy.default = "http://localhost:8092/";
+  # networking.proxy.default = "http://localhost:8092/";
 
   time.timeZone = "Europe/Moscow";
   boot.extraModprobeConfig = ''
@@ -237,7 +237,7 @@
   modules.ilzabot.enable = false;
   modules.hjkl.enable = true;
   modules.printing3d.enable = true;
-  modules.warp.enable = true;
+  modules.warp.enable = false;
   modules.keyrings.enable = true;
 
   users.users.${config.user} = {
@@ -299,11 +299,13 @@
   #       #   };
   #     };
   #   };
+
   services.transmission = {
-    enable = true;
+    enable = false;
     settings.incomplete-dir-enabled = false;
     home = "/mnt/old/transmission";
   };
+
   services.blueman.enable = true;
   programs.dconf.enable = true;
 
@@ -352,98 +354,98 @@ polkit.addRule(function(action, subject) {
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  services.nginx = {
-    enable = true;
-    recommendedGzipSettings = true;
-    recommendedOptimisation = true;
-    # recommendedProxySettings = true;
-    recommendedTlsSettings = true;
-    # other Nginx options
-    virtualHosts."localhost" = {
-      locations."/" = {
-        proxyPass = "http://localhost:8989/";
-        proxyWebsockets = true; # needed if you need to use WebSocket
-        # extraConfig =
-        #   "proxy_set_header Host $host;" +
-        #   # required when the target is also TLS server with multiple hosts
-        #   "proxy_ssl_server_name on;" +
-        #   # required when the server wants to use HTTP Authentication
-        #   "proxy_pass_header Authorization;";
-        extraConfig =
-          "proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;"
-          + "proxy_set_header Host $host;"
-          + "proxy_set_header X-Forwarded-Proto https;" + "proxy_redirect off;";
-      };
-    };
-    virtualHosts."ug.kyrgyzstan.kg" = {
-      # sslCertificate = "/etc/letsencrypt/live/ug.kyrgyzstan.kg/fullchain.pem";
-      # sslCertificateKey = "/etc/letsencrypt/live/ug.kyrgyzstan.kg/privkey.pem";
-      # TODO Fix ACME
-      enableACME = false;
-      forceSSL = false;
-      # locations."/.well-known/acme-challenge" = {
-      #   root = "/var/lib/acme/.challenges";
-      # };
-      locations."/landing/" = {
-        alias = "/mnt/md127/upgrade/website2";
-        tryFiles = "$uri $uri/ /index.html";
-      };
-      locations."/" = {
-        proxyPass = "http://localhost:8989/";
-        proxyWebsockets = true; # needed if you need to use WebSocket
-        # extraConfig =
-        #   "proxy_set_header Host $host;" +
-        #   # required when the target is also TLS server with multiple hosts
-        #   "proxy_ssl_server_name on;" +
-        #   # required when the server wants to use HTTP Authentication
-        #   "proxy_pass_header Authorization;";
-        extraConfig =
-          "proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;"
-          + "proxy_set_header Host $host;"
-          + "proxy_set_header X-Forwarded-Proto https;" + "proxy_redirect off;";
-      };
+  # services.nginx = {
+  #   enable = false;
+  #   recommendedGzipSettings = true;
+  #   recommendedOptimisation = true;
+  #   # recommendedProxySettings = true;
+  #   recommendedTlsSettings = true;
+  #   # other Nginx options
+  #   virtualHosts."localhost" = {
+  #     locations."/" = {
+  #       proxyPass = "http://localhost:8989/";
+  #       proxyWebsockets = true; # needed if you need to use WebSocket
+  #       # extraConfig =
+  #       #   "proxy_set_header Host $host;" +
+  #       #   # required when the target is also TLS server with multiple hosts
+  #       #   "proxy_ssl_server_name on;" +
+  #       #   # required when the server wants to use HTTP Authentication
+  #       #   "proxy_pass_header Authorization;";
+  #       extraConfig =
+  #         "proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;"
+  #         + "proxy_set_header Host $host;"
+  #         + "proxy_set_header X-Forwarded-Proto https;" + "proxy_redirect off;";
+  #     };
+  #   };
+  #   virtualHosts."ug.kyrgyzstan.kg" = {
+  #     # sslCertificate = "/etc/letsencrypt/live/ug.kyrgyzstan.kg/fullchain.pem";
+  #     # sslCertificateKey = "/etc/letsencrypt/live/ug.kyrgyzstan.kg/privkey.pem";
+  #     # TODO Fix ACME
+  #     enableACME = false;
+  #     forceSSL = false;
+  #     # locations."/.well-known/acme-challenge" = {
+  #     #   root = "/var/lib/acme/.challenges";
+  #     # };
+  #     locations."/landing/" = {
+  #       alias = "/mnt/md127/upgrade/website2";
+  #       tryFiles = "$uri $uri/ /index.html";
+  #     };
+  #     locations."/" = {
+  #       proxyPass = "http://localhost:8989/";
+  #       proxyWebsockets = true; # needed if you need to use WebSocket
+  #       # extraConfig =
+  #       #   "proxy_set_header Host $host;" +
+  #       #   # required when the target is also TLS server with multiple hosts
+  #       #   "proxy_ssl_server_name on;" +
+  #       #   # required when the server wants to use HTTP Authentication
+  #       #   "proxy_pass_header Authorization;";
+  #       extraConfig =
+  #         "proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;"
+  #         + "proxy_set_header Host $host;"
+  #         + "proxy_set_header X-Forwarded-Proto https;" + "proxy_redirect off;";
+  #     };
 
-      locations."/wb/" = {
-        alias = "/mnt/md127/wbcourier/";
-        tryFiles = "$uri $uri/ /index.html";
-      };
-      locations."/dostavista/" = {
-        proxyPass = "http://localhost:3000/";
-        # proxyWebsockets = true; # needed if you need to use WebSocket
-        # extraConfig =
-        #   "proxy_set_header Host $host;" +
-        #   # required when the target is also TLS server with multiple hosts
-        #   "proxy_ssl_server_name on;" +
-        #   # required when the server wants to use HTTP Authentication
-        #   "proxy_pass_header Authorization;";
-        extraConfig = ''
-          proxy_set_header Host $host;
-          proxy_cache_bypass $http_upgrade;
-          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-          proxy_set_header X-Forwarded-Proto $scheme;
-          proxy_set_header X-Real-IP $remote_addr;
-          proxy_set_header X-Forwarded-Host $host;
-          proxy_set_header X-Forwarded-Port $server_port;
-          proxy_redirect off;
-          rewrite /dostavista/(.*) /$1 break;
-        '';
-      };
-    };
+  #     locations."/wb/" = {
+  #       alias = "/mnt/md127/wbcourier/";
+  #       tryFiles = "$uri $uri/ /index.html";
+  #     };
+  #     locations."/dostavista/" = {
+  #       proxyPass = "http://localhost:3000/";
+  #       # proxyWebsockets = true; # needed if you need to use WebSocket
+  #       # extraConfig =
+  #       #   "proxy_set_header Host $host;" +
+  #       #   # required when the target is also TLS server with multiple hosts
+  #       #   "proxy_ssl_server_name on;" +
+  #       #   # required when the server wants to use HTTP Authentication
+  #       #   "proxy_pass_header Authorization;";
+  #       extraConfig = ''
+  #         proxy_set_header Host $host;
+  #         proxy_cache_bypass $http_upgrade;
+  #         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  #         proxy_set_header X-Forwarded-Proto $scheme;
+  #         proxy_set_header X-Real-IP $remote_addr;
+  #         proxy_set_header X-Forwarded-Host $host;
+  #         proxy_set_header X-Forwarded-Port $server_port;
+  #         proxy_redirect off;
+  #         rewrite /dostavista/(.*) /$1 break;
+  #       '';
+  #     };
+  #   };
 
-    # virtualHosts."upgradegamma.ru" =  {
-    #   enableACME = true;
-    #   forceSSL = true;
-    #   locations."/" = {
-    #     proxyPass = "http://localhost:8001/";
-    #     proxyWebsockets = true;
-    #     extraConfig =
-    #       "proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;"+
-    #       "proxy_set_header Host $host;"+
-    #       "proxy_set_header X-Forwarded-Proto https;"+
-    #       "proxy_redirect off;";
-    #   };
-    # };
-  };
+  #   # virtualHosts."upgradegamma.ru" =  {
+  #   #   enableACME = true;
+  #   #   forceSSL = true;
+  #   #   locations."/" = {
+  #   #     proxyPass = "http://localhost:8001/";
+  #   #     proxyWebsockets = true;
+  #   #     extraConfig =
+  #   #       "proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;"+
+  #   #       "proxy_set_header Host $host;"+
+  #   #       "proxy_set_header X-Forwarded-Proto https;"+
+  #   #       "proxy_redirect off;";
+  #   #   };
+  #   # };
+  # };
   # security.acme.certs."ug.kyrgyzstan.kg" = {
   #   webroot = "/var/lib/acme/.challenges";
   #   email = "cerkin-3@yandex.ru";
@@ -456,7 +458,9 @@ polkit.addRule(function(action, subject) {
   #   # extraDomainNames = [ "mail.example.com" ];
   # };
 
-  users.users.nginx.extraGroups = [ "acme" ];
+  # users.users.nginx.extraGroups = [ "acme" ];
+  # users.users.nginx.group = "nginx";
+  # users.groups.nginx = {};
 
   # services.getty.autologinUser = config.user;
 
@@ -483,11 +487,18 @@ polkit.addRule(function(action, subject) {
       port = 8093;
     };
   };
+
   security.acme = {
     acceptTerms = true;
     defaults.email = "cerkin-3@yandex.ru";
     # certs."mx1.example.org" = {
     # };
+  };
+
+  modules.mihomo = {
+    enable = true;
+    configFile = "/home/${config.user}/Dropbox/mihomo/config.yaml";
+    tunMode = true;
   };
 
   modules.singbox.enable = false;
@@ -566,6 +577,7 @@ polkit.addRule(function(action, subject) {
         clojure
         kdenlive
         lm_sensors
+        mihomo
         openssl
         nodePackages.localtunnel
         # pr218037.microsoft-edge-dev
