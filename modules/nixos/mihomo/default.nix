@@ -63,7 +63,7 @@ in
       after = [ "network-online.target" ];
       wantedBy = [ "multi-user.target" ];
       environment = {
-        SKIP_SAFE_PATH_CHECK = 1;
+        SKIP_SAFE_PATH_CHECK = "1";
       };
       script = ''
               # Function to run Mihomo
