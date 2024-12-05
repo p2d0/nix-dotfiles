@@ -189,6 +189,7 @@ class Status:
                             (self.title,)  # Include the task title in the insert statement
                         )
                         self.last_session_id = conn.lastrowid
+                        os.system("xset s off -dpms")  # Turn off screen saver and DPMS
                     elif self.last_session_id is not None:
                         # Update the last inserted session with the stop time
                         conn.execute(
@@ -196,7 +197,7 @@ class Status:
                             (self.last_session_id,)
                         )
                         self.last_session_id = None  # Reset the last session ID after updating
-
+                        os.system("xset s on +dpms")  # Turn on screen saver and DPMS
 
 @contextmanager
 def setup_conn(path):
