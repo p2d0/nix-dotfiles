@@ -60,7 +60,7 @@ in
       description = "Mihomo daemon, A rule-based proxy in Go.";
       documentation = [ "https://wiki.metacubex.one/" ];
       requires = [ "network-online.target" ];
-      after = [ "network-online.target" ];
+      after = [ "graphical.target" ];
       wantedBy = [ "multi-user.target" ];
       environment = {
         SKIP_SAFE_PATH_CHECK = "1";
