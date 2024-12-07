@@ -43,12 +43,13 @@ def fetch_kas_to_rub_rate():
     else:
         return None
 
-def calculate_electricity_cost(start_datetime):
+def calculate_electricity_cost(start_datetime, elapsed_hours=None):
     # Current time
     now = datetime.now()
 
     # Total elapsed time in hours since the start date
-    elapsed_hours = int((now - start_datetime).total_seconds() / 3600)
+    if elapsed_hours is None:
+        elapsed_hours = int((now - start_datetime).total_seconds() / 3600)
 
     # Power consumption in kWh per hour
     power_consumption_per_hour = 0.1  # 100W = 0.1 kWh/hour
@@ -69,16 +70,32 @@ def calculate_electricity_cost(start_datetime):
 
 if __name__ == "__main__":
     # Start datetime for electricity calculation
-    start_datetime = datetime(2024, 12, 6, 10, 0)
+    start_datetime = datetime(2024, 12, 6, 16, 0)
 
     # Fetch data
     pending_balance = fetch_pending_balance()
     kas_to_rub_rate = fetch_kas_to_rub_rate()
-    electricity_cost = calculate_electricity_cost(start_datetime)
 
     if pending_balance is not None and kas_to_rub_rate is not None:
+        now = datetime.now()
+        elapsed_days = (now - start_datetime).days
+        if elapsed_days == 0:  # Avoid division by zero
+            elapsed_days = 1
+
         pending_balance_rub = pending_balance * kas_to_rub_rate
-        profit = pending_balance_rub - electricity_cost;
-        print(f"KAS: {pending_balance:.3f} RUB: {pending_balance_rub:.2f} Electricity: {electricity_cost:.2f} RUB Profit: {profit:.2f} RUB")
+        electricity_cost = calculate_electricity_cost(start_datetime)
+        profit = pending_balance_rub - electricity_cost
+
+        # Calculate daily averages
+        daily_pending_balance = pending_balance / elapsed_days
+        daily_electricity_cost = electricity_cost / elapsed_days
+        daily_profit = daily_pending_balance * kas_to_rub_rate - daily_electricity_cost
+
+        # Project yearly profit
+        yearly_profit = daily_profit * 365
+
+        print(f"KAS: {pending_balance:.3f} RUB: {pending_balance_rub:.2f} "
+              f"Electricity: {electricity_cost:.2f} RUB Profit: {profit:.2f} RUB "
+              f"Yearly Projected Profit: {yearly_profit:.2f} RUB")
     else:
         print("Failed to fetch data.")

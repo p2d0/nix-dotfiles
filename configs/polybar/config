@@ -83,7 +83,7 @@ font-9 = cryptocoins:style=Regular;2
 
 modules-left = i3
 modules-center = popup-calendar
-modules-right =  weather
+modules-right =  humpool weather
 ; bluetooth pulseaudio
 ; scratchpad-indicator
 ; text
@@ -300,7 +300,7 @@ label-indicator-underline = ${colors.secondary}
 
 [module/crypto]
 type = custom/script
-interval = 300
+interval = 600
 exec = /etc/nixos/configs/polybar/polybar-crypto/crypto.py
 ; font-0 = cryptocoins:style=Regular;0
 
@@ -376,6 +376,12 @@ label-urgent-padding = 2
 ; Separator in between workspaces
 ; label-separator = |
 
+[module/humpool]
+type = custom/script
+exec = ~/.config/polybar/humpool.py
+interval = 300
+label-prefix-foreground = ${colors.foreground}
+label-padding = 1
 
 [module/mpd]
 type = internal/mpd
@@ -750,6 +756,7 @@ tray-position = right
 inherit = bar/mybar
 monitor = DVI-D-0
 modules-left = i3 crypto
+modules-center =  popup-calendar
 modules-right = polypomo weather
 tray-position = right
 

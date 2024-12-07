@@ -1,6 +1,7 @@
 hadrware-configuration.nix
 result
 .envrc
+.env
 Plugins/
 .emacs.d
 .DS_Store

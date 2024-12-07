@@ -15,6 +15,7 @@ in {
   config = mkIf cfg.enable {
     environment.systemPackages = [
       pkgs.maestral
+      # pkgs.maestral-gui
     ];
     systemd.user.services.maestral = {
       description = "Maestral daemon";

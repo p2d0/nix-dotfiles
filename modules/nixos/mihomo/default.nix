@@ -60,7 +60,7 @@ in
       description = "Mihomo daemon, A rule-based proxy in Go.";
       documentation = [ "https://wiki.metacubex.one/" ];
       requires = [ "network-online.target" ];
-      after = [ "graphical.target" ];
+      after = [ "network-online.target" ];
       wantedBy = [ "multi-user.target" ];
       environment = {
         SKIP_SAFE_PATH_CHECK = "1";
@@ -93,6 +93,8 @@ in
               }
 
               # Initial Mihomo run
+              restart_mihomo
+              sleep 3
               restart_mihomo
 
               # Set up inotifywait to monitor file changes
