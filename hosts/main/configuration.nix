@@ -74,13 +74,14 @@
   hardware.opengl.driSupport = true;
   hardware.opengl.driSupport32Bit = true;
   hardware.opengl.extraPackages = with pkgs; [
-    vaapiVdpau
-    libvdpau-va-gl
-    amdvlk
+    ocl-icd
+    # vaapiVdpau
+    # libvdpau-va-gl
+    # amdvlk
     # libva1
     # libva
-    rocm-opencl-icd
-    rocm-opencl-runtime
+    # rocm-opencl-icd
+    # rocm-opencl-runtime
   ];
   # systemd.tmpfiles.rules =
   #   [ "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}" ];
@@ -119,7 +120,18 @@
     enableOnBoot = false;
   };
 
-  i18n.defaultLocale = "en_US.UTF-8";
+  # i18n.defaultLocale = "en_US.UTF-8";
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    # extraLocaleSettings = {
+    #   LC_MEASUREMENT = "en_SE.UTF-8";
+    #   LC_NUMERIC = "en_SE.UTF-8";
+    #   # For dates formatted like ISO8601
+    #   LC_TIME = "en_SE.UTF-8";
+    # };
+    supportedLocales = [ "all" ];
+  };
+
   services.gvfs.enable = true;
   # services.gvfs.package = pkgs.gvfspkgs.gnome.gvfs;
   services.udev.extraRules = ''
@@ -147,13 +159,25 @@
     mouse = { accelProfile = "flat"; };
   };
 
+
+  hardware.nvidia = {
+    modesetting.enable = true;
+    nvidiaSettings = true;
+    powerManagement = {
+      enable = true;
+      # finegrained = true;
+    };
+    open = false;
+  };
+
   services.xserver = {
     enable = true;
-    videoDrivers = [ "amdgpu" ];
+    videoDrivers = [ "nvidia" # "amdgpu"
+                   ];
 
     xrandrHeads = [
       {
-        output = "DisplayPort-0";
+        output = "DP-4";
         primary = true;
         monitorConfig = ''
           Modeline "2560x1080_75.00"  294.00  2560 2744 3016 3472  1080 1083 1093 1130 -hsync +vsync
@@ -161,13 +185,13 @@
           Modeline "2560x1080@75"  228.25  2560 2608 2640 2720  1080 1083 1093 1119 +hsync -vsync
           Option "PreferredMode" "2560x1080@75"'';
       }
-      {
-        output = "DVI-D-0";
-        monitorConfig = ''
-          Option "Position" "2560 0"
-          Option          "TearFree" "true"
-        '';
-      }
+      # {
+      #   output = "DVI-D-0";
+      #   monitorConfig = ''
+      #     Option "Position" "2560 0"
+      #     Option          "TearFree" "true"
+      #   '';
+      # }
       # {
       #         output = "HDMI-A-0";
       #         monitorConfig = ''
@@ -501,6 +525,7 @@ polkit.addRule(function(action, subject) {
     tunMode = true;
   };
 
+  modules.trex.enable = true;
   modules.singbox.enable = false;
   modules.amnezia.enable = true;
   modules.fonts.enable = true;
@@ -790,6 +815,7 @@ polkit.addRule(function(action, subject) {
         ntfs3g
         # gnome.gnome-boxes
         rustdesk
+        my.trex
         qbittorrent
         # qbittorrent-qt5
         epiphany

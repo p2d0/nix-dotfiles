@@ -40,6 +40,7 @@
       nixos-unstable,
       nixos-master,
       hyprland,
+      nixpkgs-amnezia,
       home-manager,
       spl3g-config,
       ... }:
@@ -63,6 +64,10 @@
                   "${nixpkgs-tars}84963237b438319092a352a7d375878d82beb1ca.tar.gz") {
                     config = self.config;
                   };
+                amnezia = import nixpkgs-amnezia {
+                  inherit system;
+                  config = self.config;
+                };
                 pr314293 = import (fetchTarball
                   "${nixpkgs-tars}dd0629f12ebf19510a682ff132265253b7728ccc.tar.gz")
                   { config = self.config; };

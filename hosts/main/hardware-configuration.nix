@@ -13,8 +13,8 @@
   boot.kernelModules = [ "vfio-pci" ];
   boot.kernelParams = [ # "quiet" "vga=current" "udev.log_level=3" "rd.systemd.show_status=auto" "nowatchdog"
     # "amdgpu.ppfeaturemask=0xffffffff"
+    # "nvidia.NVreg_EnableGpuFirmware=0"
     "usbhid.mousepoll=1"   "raid0.default_layout=2" ];
-  boot.extraModulePackages = [ ];
   boot.loader.timeout = 1;
   services.fstrim.enable = lib.mkDefault true;
   # hardware.hidpi.enable = true;
