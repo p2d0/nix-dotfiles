@@ -13,7 +13,7 @@ in {
     };
   };
   config = mkIf cfg.enable {
-    systemd.services.trex = {
+    systemd.user.services.trex = {
       enable = true;
       description = "trex";
       serviceConfig = {

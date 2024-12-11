@@ -174,17 +174,17 @@
     enable = true;
     videoDrivers = [ "nvidia" # "amdgpu"
                    ];
-
+    dpi = 96;
     xrandrHeads = [
-      {
-        output = "DP-4";
-        primary = true;
-        monitorConfig = ''
-          Modeline "2560x1080_75.00"  294.00  2560 2744 3016 3472  1080 1083 1093 1130 -hsync +vsync
-          Modeline "2560x1080_74.99"  294.00  2560 2744 3016 3472  1080 1083 1093 1130 -hsync +vsync
-          Modeline "2560x1080@75"  228.25  2560 2608 2640 2720  1080 1083 1093 1119 +hsync -vsync
-          Option "PreferredMode" "2560x1080@75"'';
-      }
+      # {
+      #   output = "DP-4";
+      #   primary = true;
+      #   monitorConfig = ''
+      #     Modeline "2560x1080_75.00"  294.00  2560 2744 3016 3472  1080 1083 1093 1130 -hsync +vsync
+      #     Modeline "2560x1080_74.99"  294.00  2560 2744 3016 3472  1080 1083 1093 1130 -hsync +vsync
+      #     Modeline "2560x1080@75"  228.25  2560 2608 2640 2720  1080 1083 1093 1119 +hsync -vsync
+      #     Option "PreferredMode" "2560x1080@75"'';
+      # }
       # {
       #   output = "DVI-D-0";
       #   monitorConfig = ''
@@ -346,8 +346,10 @@
       systemCronJobs = [
         "*/30 11-21 * * * andrew DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /run/current-system/sw/bin/notify-send 'Update daily'"
         # "30 20 * * * andrew fish -c 'update-system'"
+        "00 22 * * * andrew systemctl --user start trex.service"
+        "30 08 * * * andrew systemctl --user stop trex.service"
         "00 23 * * * andrew DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /run/current-system/sw/bin/notify-send 'Sleep'"
-        "00 22 * * * root /etc/nixos/shutdown.sh"
+        # "00 22 * * * root /etc/nixos/shutdown.sh"
         "55 21 * * * andrew DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /run/current-system/sw/bin/notify-send 'Shutdown in 5 MINUTES'"
         "00 20 * * * andrew /etc/nixos/update_ip.sh"
         "00 20 * * * andrew fish -c 'sync_repos'"
