@@ -749,12 +749,12 @@ margin-bottom = 0
 
 [bar/workdvi]
 inherit = bar/workbar
-monitor = HDMI-1
+monitor = HDMI-A-2
 tray-position = right
 
 [bar/DVI]
 inherit = bar/mybar
-monitor = HDMI-1
+monitor = HDMI-A-2
 modules-left = i3 crypto
 modules-center =  popup-calendar
 modules-right = polypomo weather

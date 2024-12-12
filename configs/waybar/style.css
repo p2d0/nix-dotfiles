@@ -3,8 +3,8 @@
     border-radius: 2px;
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: 'ShureTechMono Nerd Font';
-    font-weight: 600;
-    font-size: 13px;
+    /* font-weight: 600; */
+    font-size: 16px;
     min-height: 0;
     padding: 0px 0px;
 }
@@ -57,7 +57,7 @@ window#waybar.chromium {
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-#workspaces button.focused {
+#workspaces button.active {
     /* box-shadow: 2px 2px 6px 1px black; */
     color: #2a2e38;
     background-color: #51afef;

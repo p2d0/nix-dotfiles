@@ -2,7 +2,7 @@
 
 {
   home.packages = [
-    pkgs.rofi
+    pkgs.rofi-wayland
   ];
   home.file = {
     ".config/rofi" = {

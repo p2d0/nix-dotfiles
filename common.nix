@@ -162,7 +162,17 @@
     };
   };
 
-  home.stateVersion = "22.11";
+  # wayland.windowManager.hyprland  = {
+  #   enable = true;
+  #   plugins = [
+  #     pkgs.hyprlandPlugins.hy3
+  #   ];
+  #   settings = {
+  #     source = "/etc/nixos/configs/hypr/conf.d.backup/*";
+  #   };
+  # };
+
+    home.stateVersion = "22.11";
 
   services.blueman-applet.enable = true;
   # services.dropbox.enable = true;
@@ -221,6 +231,7 @@
       recursive = true;
     };
     ".config/mpv".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/mpv;
+    # ".config/hypr/conf.d".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/hypr/conf.d;
 
     ".config/slop" = {
       source = ./configs/slop;

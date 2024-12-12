@@ -19,7 +19,7 @@
     nixos-unstable.url = "nixpkgs/nixos-unstable";
     nixos-master.url = "github:nixos/nixpkgs/master";
     home-manager.url = "github:nix-community/home-manager/release-24.05";
-    hyprland.url = "github:hyprwm/Hyprland";
+    # hyprland.url = "github:hyprwm/Hyprland";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     poetry2nix.url = "github:nix-community/poetry2nix";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -39,7 +39,7 @@
       compfy,
       nixos-unstable,
       nixos-master,
-      hyprland,
+      # hyprland,
       nixpkgs-amnezia,
       home-manager,
       spl3g-config,
@@ -138,7 +138,7 @@
                     ];
                   }
                   home-manager.nixosModules.home-manager
-                  hyprland.nixosModules.default
+                  # hyprland.nixosModules.default
                   ./home.nix
                   ./hosts/main/configuration.nix
                 ];

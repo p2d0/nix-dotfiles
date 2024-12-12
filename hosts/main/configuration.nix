@@ -146,9 +146,9 @@
     enable = true;
   };
 
-   programs.hyprland = {
-     enable = true;
-   };
+  programs.hyprland = {
+    enable = true;
+  };
   programs.droidcam.enable = true;
   # programs.sway = {
   #   enable = true;
@@ -171,7 +171,7 @@
   };
 
   services.xserver = {
-    enable = false;
+    enable = true;
     videoDrivers = [ "nvidia" # "amdgpu"
                    ];
     dpi = 96;
@@ -213,11 +213,12 @@
     exportConfiguration = true;
     windowManager.i3 = {
       enable = true;
-      package = pkgs.unstable.i3.overrideAttrs(oldAttrs: rec {
-        src = /mnt/md127/i3;
-        dontCheck = true;
-        doCheck = false;
-      }) ;
+      package = pkgs.unstable.i3;
+      # .overrideAttrs(oldAttrs: rec {
+      #   src = /mnt/md127/i3;
+      #   dontCheck = true;
+      #   doCheck = false;
+      # })
     };
     # windowManager.i3.package = (import (builtins.fetchTarball {
     #     url = "https://github.com/NixOS/nixpkgs/archive/79b3d4bcae8c7007c9fd51c279a8a67acfa73a2a.tar.gz";
@@ -305,7 +306,7 @@
   modules.emacs-with-doom  =
     {
       enable = true;
-      package = pkgs.emacs;
+      package = pkgs.emacs-pgtk;
     };
 
   # nixpkgs.config =
@@ -563,11 +564,19 @@ polkit.addRule(function(action, subject) {
     };
   };
 
-  modules.taffybar.enable = false;
+  modules.taffybar.enable = true;
   environment.systemPackages = with pkgs;
     (if config.programs.hyprland.enable then [
       gammastep
-      waybar
+      wf-recorder
+      (unstable.waybar.overrideAttrs(oldAttrs: rec {
+        src = fetchFromGitHub {
+          owner = "VAWVAW";
+          repo = "Waybar";
+          rev = "hyprland-bar-scroll";
+          sha256 = "sha256-CAV776d4osbQWZp5zHW7zhDdOZkWWGOpXC6+VFarOAs=";
+        };
+      }))
     ] else
       [ redshift ]) ++ [
         (pkgs.python3.withPackages (ps: [
