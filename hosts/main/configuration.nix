@@ -146,9 +146,9 @@
     enable = true;
   };
 
-  #  programs.hyprland = {
-  #    enable = true;
-  #  };
+   programs.hyprland = {
+     enable = true;
+   };
   programs.droidcam.enable = true;
   # programs.sway = {
   #   enable = true;
@@ -171,7 +171,7 @@
   };
 
   services.xserver = {
-    enable = true;
+    enable = false;
     videoDrivers = [ "nvidia" # "amdgpu"
                    ];
     dpi = 96;
@@ -211,7 +211,14 @@
     #      Option          "TearFree" "true"
     # '';
     exportConfiguration = true;
-    windowManager.i3.enable = true;
+    windowManager.i3 = {
+      enable = true;
+      package = pkgs.unstable.i3.overrideAttrs(oldAttrs: rec {
+        src = /mnt/md127/i3;
+        dontCheck = true;
+        doCheck = false;
+      }) ;
+    };
     # windowManager.i3.package = (import (builtins.fetchTarball {
     #     url = "https://github.com/NixOS/nixpkgs/archive/79b3d4bcae8c7007c9fd51c279a8a67acfa73a2a.tar.gz";
     # }) {}).i3;
@@ -346,10 +353,8 @@
       systemCronJobs = [
         "*/30 11-21 * * * andrew DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /run/current-system/sw/bin/notify-send 'Update daily'"
         # "30 20 * * * andrew fish -c 'update-system'"
-        "00 22 * * * andrew systemctl --user start trex.service"
-        "30 08 * * * andrew systemctl --user stop trex.service"
         "00 23 * * * andrew DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /run/current-system/sw/bin/notify-send 'Sleep'"
-        # "00 22 * * * root /etc/nixos/shutdown.sh"
+        "00 22 * * * root /etc/nixos/shutdown.sh"
         "55 21 * * * andrew DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /run/current-system/sw/bin/notify-send 'Shutdown in 5 MINUTES'"
         "00 20 * * * andrew /etc/nixos/update_ip.sh"
         "00 20 * * * andrew fish -c 'sync_repos'"
@@ -784,7 +789,7 @@ polkit.addRule(function(action, subject) {
         darktable
         anki-bin
         compfy
-        # picom
+        unstable.picom
         # (callPackage /etc/nixos/pkgs/picom-animations.nix { })
         my.puush-linux
         # (pkgs.callPackage /mnt/md127/nixpkgs/pkgs/applications/networking/instant-messengers/telegram/tdesktop { })

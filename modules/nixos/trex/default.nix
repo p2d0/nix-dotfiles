@@ -19,7 +19,25 @@ in {
       serviceConfig = {
         ExecStart =
           "${pkgs.my.trex}/bin/t-rex -c /home/${config.user}/Dropbox/trex/config.json";
+        ExecStop = "/bin/kill -SIGTERM $MAINPID";
       };
     };
+
+    systemd.user.timers.trex-start = {
+      wantedBy = [ "timers.target"];
+      timerConfig = {
+        OnCalendar = "*-*-* 22:13:00";
+        Unit = "trex.service";
+      };
+    };
+
+    # systemd.user.timers.trex-stop = {
+    #   wantedBy = [ "timers.target"];
+
+    #   timerConfig = {
+    #     OnCalendar = "*-*-* 08:30:00";
+    #     Unit = "trex.service";
+    #   };
+    # };
   };
 }
