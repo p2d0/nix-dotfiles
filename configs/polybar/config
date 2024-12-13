@@ -119,13 +119,6 @@ exec = cat '/mnt/md127/MiBand2/text.txt'
 interval = 1
 format-prefix = "  "
 
-[module/texto]
-type = custom/text
-content = "Apnea exercises. Neck exercises."
-content-padding = 1
-content-background = ${colors.foreground}
-content-foreground = #000
-
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%

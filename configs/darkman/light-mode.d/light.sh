@@ -1,23 +1,29 @@
 #/usr/bin/env nix-shell
 #!nix-shell -p feh
-source /etc/set-environment;
+/nix/store/4nyqjyfzdfp87z5illnm6jz6jw95w6ka-dbus-1.14.10/bin/dbus-update-activation-environment --systemd --all
+hyprctl hyprpaper wallpaper ",/etc/nixos/light.jpg"
 
-if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-    export SWAYSOCK="/run/user/$(id -u)/sway-ipc.$(id -u).$(pidof sway).sock"
-    swaymsg "output * bg /etc/nixos/light.jpg fill"
+if [ "$XDG_CURRENT_DESKTOP" = "Hyprland"];
+then
+    hyprctl hyprpaper wallpaper ",/etc/nixos/light.jpg"
 else
-    if [ "$WORK_MODE" = "1" ]; then
-        feh --bg-fill /etc/nixos/work-bg.jpg;
+    if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+        export SWAYSOCK="/run/user/$(id -u)/sway-ipc.$(id -u).$(pidof sway).sock"
+        swaymsg "output * bg /etc/nixos/light.jpg fill"
     else
-        feh --bg-fill /etc/nixos/light.jpg;
-    fi
+        if [ "$WORK_MODE" = "1" ]; then
+            feh --bg-fill /etc/nixos/work-bg.jpg;
+        else
+            feh --bg-fill /etc/nixos/light.jpg;
+        fi
 
-    touch $HOME/.xsettingsd
-    cat > $HOME/.xsettingsd <<-EOF
+        touch $HOME/.xsettingsd
+        cat > $HOME/.xsettingsd <<-EOF
     Net/IconThemeName "Obsidian"
     Net/ThemeName "Adwaita"
 EOF
-    pkill -HUP xsettingsd
+        pkill -HUP xsettingsd
+    fi
 fi
 
 # touch $HOME/.config/gtk-3.0/settings.ini;

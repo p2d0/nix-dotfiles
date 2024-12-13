@@ -29,13 +29,39 @@
   #         })];
   #     }));
   #   };
+  home.pointerCursor = {
+    gtk.enable = true;
+    package = pkgs.bibata-cursors;
+    # x11.enable = true;
+    name = "Adwaita";
+    size = 10;
+  };
+
+  gtk = {
+    enable = true;
+
+    theme = {
+      # package = pkgs.gnome.adwaita;
+      name = "Adwaita";
+    };
+
+    iconTheme = {
+      package = pkgs.gnome.adwaita-icon-theme;
+      name = "Adwaita-dark";
+    };
+
+    # font = {
+    #   name = "Roboto";
+    #   size = 10;
+    # };
+  };
   xdg.mimeApps = {
     enable = true;
     # use mimeapps application/x-bittorrent
     # to list mimetypes
     defaultApplications = {
-      "inode/directory" = "nemo.desktop";
-      "x-directory/normal"= "nemo.desktop";
+      "inode/directory" = "nautilus.desktop";
+      "x-directory/normal"= "nautilus.desktop";
       "text/plain" = "org.gnome.gedit.desktop";
       "application/pdf" = "org.gnome.Evince.desktop";
       "application/x-extension-osz" = "osu!.desktop";
@@ -162,17 +188,28 @@
     };
   };
 
-  # wayland.windowManager.hyprland  = {
-  #   enable = true;
-  #   plugins = [
-  #     pkgs.hyprlandPlugins.hy3
-  #   ];
-  #   settings = {
-  #     source = "/etc/nixos/configs/hypr/conf.d.backup/*";
-  #   };
-  # };
+  home.stateVersion = "22.11";
+  services.darkman = {
+    enable = true;
+    darkModeScripts = {
+      gtk-theme = ''
+${pkgs.dconf}/bin/dconf write \
+        /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
+'';
 
-    home.stateVersion = "22.11";
+    };
+    lightModeScripts = {
+      gtk-theme = ''
+    ${pkgs.dconf}/bin/dconf write \
+        /org/gnome/desktop/interface/color-scheme "'prefer-light'"
+'';
+    };
+    settings = {
+      lat = 55.7;
+      lng = 37.6;
+      usegeoclue = false;
+    };
+  };
 
   services.blueman-applet.enable = true;
   # services.dropbox.enable = true;
@@ -232,6 +269,10 @@
     };
     ".config/mpv".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/mpv;
     # ".config/hypr/conf.d".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/hypr/conf.d;
+    # ".config/hypr/hyprland.conf".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/hypr/hyprland.conf;
+    #     ".config/hypr/plugins".text =''
+    # plugin=${pkgs.unstable.hyprlandPlugins.hy3}/lib/lib${pkgs.unstable.hyprlandPlugins.hy3.pname}.so
+    # '' ;
 
     ".config/slop" = {
       source = ./configs/slop;
@@ -263,7 +304,6 @@
       source = ./configs/ideavim/.intellimacs;
       recursive = true;
     };
-    ".config/darkman".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/darkman;
     ".config/uair".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/uair;
     ".config/redshift.conf" = {
       source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/redshift.conf;

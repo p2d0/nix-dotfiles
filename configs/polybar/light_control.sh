@@ -14,7 +14,7 @@ rofi_prompt="Yeelight Controls $brightness_and_temp"
 options=("Change Brightness" "Change Temperature" "Toggle Lights" "50% 3000K" "100% 5000K" "50% 4000K")
 
 # Use rofi to select an option
-selected_option=$(printf "%s\n" "${options[@]}" | rofi -dmenu -i -p "$rofi_prompt")
+selected_option=$(printf "%s\n" "${options[@]}" | rofi -theme ~/.config/rofi/launchers/text/style_3.rasi -dmenu -i -p "$rofi_prompt")
 
 # Perform an action based on the selected option
 case $selected_option in

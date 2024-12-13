@@ -33,6 +33,9 @@ in {
     ];
   } // (my.allUsers ({...}: { # TODO could be a better function
 
+    home.file = {
+      ".config/darkman".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/darkman;
+    };
     systemd.user.services.darkman = {
       Unit = {
         Description = "Darkman system service";

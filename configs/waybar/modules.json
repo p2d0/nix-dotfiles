@@ -109,6 +109,11 @@
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
+    "custom/humpool": {
+        "exec": "~/.config/polybar/humpool.py",
+        "interval": 300,
+        "format": "{}",
+    },
     "custom/polypomo": {
         "exec": "~/.config/polybar/polypomo --saveto /etc/nixos/configs/polybar/time.sqlite",
         "on-click": "~/.config/polybar/polypomo toggle",

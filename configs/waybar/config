@@ -12,12 +12,13 @@
       "clock"
     ],
     "modules-right": [
+      // "custom/humpool",
       "custom/weather",
       "pulseaudio",
       "backlight",
       "keyboard-state",
-      "hyprland/language",
-      "tray"
+      "hyprland/language"
+      // "tray"
     ],
     "include": "~/.config/waybar/modules.json"
   },
