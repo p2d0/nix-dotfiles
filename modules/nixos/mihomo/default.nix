@@ -68,12 +68,12 @@ in
       script = ''
               # Function to run Mihomo
               function run_mihomo {
-                  ${pkgs.mihomo}/bin/mihomo -d /var/lib/private/mihomo -f ${cfg.configFile} &
+                  ${cfg.package}/bin/mihomo -d /var/lib/private/mihomo -f ${cfg.configFile} &
               }
 
               # Function to check if Mihomo is running
               function check_mihomo_running {
-                  if ${pkgs.procps}/bin/pgrep -f ${pkgs.mihomo} > /dev/null; then
+                  if ${pkgs.procps}/bin/pgrep -f ${cfg.package} > /dev/null; then
                       return 0  # Mihomo is running
                   else
                       return 1
@@ -84,7 +84,7 @@ in
               function restart_mihomo {
                   if check_mihomo_running; then
                       echo "Mihomo is running. Restarting..."
-                      ${pkgs.procps}/bin/pkill -f ${pkgs.mihomo}
+                      ${pkgs.procps}/bin/pkill -f ${cfg.package}
                       run_mihomo
                   else
                       echo "Mihomo is not running. Starting..."

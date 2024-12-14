@@ -31,7 +31,8 @@ polkit.addRule(function(action, subject) {
 '';
 
     environment.systemPackages = [
-      pkgs.my.gpu-screen-recorder
+      # pkgs.my.gpu-screen-recorder
+      pkgs.gpu-screen-recorder
     ];
   };
 }

@@ -71,10 +71,8 @@
     # ^ this requires `nix-index` pkg
   ];
 
-  hardware.opengl.enable = true;
-  hardware.opengl.driSupport = true;
-  hardware.opengl.driSupport32Bit = true;
-  hardware.opengl.extraPackages = with pkgs; [
+  hardware.graphics.enable = true;
+  hardware.graphics.extraPackages = with pkgs; [
     ocl-icd
     # vaapiVdpau
     # libvdpau-va-gl
@@ -87,14 +85,15 @@
   # systemd.tmpfiles.rules =
   #   [ "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}" ];
   # rocmTargets = ["gfx803"];
-  # hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ vaapiIntel ];
+  # hardware.graphics.extraPackages32 = with pkgs.pkgsi686Linux; [ vaapiIntel ];
   services.ratbagd.enable = true;
 
   environment.variables = { ROC_ENABLE_PRE_VEGA = "1"; };
 
   # boot.kernelPackages = pkgs.linuxPackages_zen;
-  boot.loader.grub.enable = true;
-  boot.loader.grub.default = 1;
+
+  # boot.loader.grub.enable = true;
+  # boot.loader.grub.default = 1;
 
   boot.blacklistedKernelModules = [ "iTCO_wdt" "iTCO_vendor_support" ];
 
@@ -105,8 +104,9 @@
     canTouchEfiVariables = true;
     efiSysMountPoint = "/boot/efi";
   };
-  boot.loader.grub.efiSupport = true;
-  boot.loader.grub.device = "nodev";
+
+  # boot.loader.grub.efiSupport = true;
+  # boot.loader.grub.device = "nodev";
 
   networking.hostName = config.user;
   # networking.proxy.default = "http://localhost:8092/";
@@ -169,7 +169,7 @@
   };
 
   services.xserver = {
-    enable = false;
+    enable = true;
     videoDrivers = [ "nvidia" # "amdgpu"
                    ];
     dpi = 96;
@@ -248,19 +248,30 @@
     # windowManager.qtile.enable = true;
   };
 
-  # services.displayManager = {
-  #   defaultSession = "none+i3";
-  #   autoLogin = {
-  #     enable = true;
-  #     user = config.user;
-  #   };
-  # };
+  services.displayManager = {
+    enable = true;
+    sddm.enable = true;
+    sddm.package = pkgs.kdePackages.sddm;
+    sddm.extraPackages = [
+      pkgs.sddm-astronaut
+    ];
+    sddm.wayland.enable = true;
+    sddm.theme = "sddm-astronaut-theme";
+    # enable = true;
+    # defaultSession = "Hyprland";
+    # ly.enable = true;
+    # autoLogin = {
+    #   enable = true;
+    #   user = config.user;
+    # };
+  };
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
   hardware.bluetooth.enable = true;
 
+  modules.plymouth.enable = true;
 	modules.hypr.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   # TODO Move to home manager user config?
@@ -494,6 +505,7 @@ polkit.addRule(function(action, subject) {
   # users.groups.nginx = {};
 
   # services.getty.autologinUser = config.user;
+  # services.gretd.enable = true;
 
   # systemd.coredump.extraConfig = ''
   #   Storage=none
@@ -529,8 +541,37 @@ polkit.addRule(function(action, subject) {
   modules.mihomo = {
     enable = true;
     configFile = "/home/${config.user}/Dropbox/mihomo/config.yaml";
+    package = pkgs.old-24-05.mihomo;
     tunMode = true;
   };
+  services.interception-tools = {
+    enable = true;
+    udevmonConfig = ''
+- JOB: "dual-function-keys -c /dev/stdin"
+  DEVICE:
+    NAME: ".*"
+  CONFIG: |
+    mappings:
+      - key: KEY_DOWN
+        tap: KEY_DOWN
+        repeat_delay_ms: 200  # Minimum delay between consecutive presses
+      - key: KEY_RIGHT
+        tap: KEY_RIGHT
+        repeat_delay_ms: 200  # Minimum delay between consecutive presses
+'';
+  };
+  # services.keyd = {
+  #   enable = true;
+  #   keyboards.default = {
+  #     ids = ["*"];
+  #     settings = {
+  #       main = {
+  #         Right = "block(50ms)";
+  #         Down = "block(50ms)";
+  #       };
+  #     };
+  #   };
+  # };
 
   modules.trex.enable = true;
   modules.singbox.enable = false;
@@ -540,7 +581,7 @@ polkit.addRule(function(action, subject) {
   modules.byedpi.enable = true;
   modules.timed-shutdown.enable = false;
   modules.timed-shutdown.time = "23:00:00";
-  modules.darkman.enable = false;
+  modules.darkman.enable = true;
   modules.vpn.enable = true;
   modules.vm.enable = false;
   zramSwap.enable = true;
@@ -587,6 +628,12 @@ polkit.addRule(function(action, subject) {
       vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
       OSCAR
       cachix
+      (sddm-astronaut.override {
+        themeConfig = {
+          FullBlur = true;
+          BlurRadius = 25;
+        };
+      })
       poetry
       putty
       texliveMedium
@@ -606,7 +653,7 @@ polkit.addRule(function(action, subject) {
       clojure
       kdenlive
       lm_sensors
-      mihomo
+      # mihomo
       openssl
       nodePackages.localtunnel
       # pr218037.microsoft-edge-dev
@@ -615,7 +662,7 @@ polkit.addRule(function(action, subject) {
       keepassxc
       remmina
       conda
-      megasync
+      # megasync
       unstable.jetbrains.idea-community
       unstable.gamescope
       create-react-app
@@ -725,7 +772,7 @@ polkit.addRule(function(action, subject) {
       breeze-qt5
       # nixfmt
       # TODO FIX
-      (old-23.gimp.override { withPython = true; })
+      # (old-23.gimp.override { withPython = true; })
       krita
       mpv
       libva-utils
@@ -757,7 +804,7 @@ polkit.addRule(function(action, subject) {
       # jupyter
       docker-compose
       playerctl
-      libusb
+      libusb1
       solaar
       piper
       # rocketchat-desktop
@@ -806,7 +853,7 @@ polkit.addRule(function(action, subject) {
       # unstable.tdesktop
       # telegram-desktop_git
       master.telegram-desktop
-      # unstable.nil
+      nil
       unstable.nixd
       jpegoptim
       chatterino2
@@ -866,7 +913,7 @@ polkit.addRule(function(action, subject) {
       # sublime
       # drawio
       pipenv
-      spotify
+      unstable.spotify
       # my.immersed-vr
       # (import (builtins.fetchTarball {
       #   url = "https://github.com/NixOS/nixpkgs/archive/23c10dbe320e6957f2607d8a22f9e0e36f56a235.tar.gz";
@@ -887,12 +934,12 @@ polkit.addRule(function(action, subject) {
       # my.natron-bin
       # unstable.natron
       unstable.scrcpy
-      python39Packages.yt-dlp
+      # pythonPackages.yt-dlp
       imagemagick
       # thunderbird
       # libpulseaudio
-      python39Packages.virtualenv
-      python39Packages.pip
+      # pythonPackages.virtualenv
+      # pythonPackages.pip
       unstable.anydesk
       feh
       gnome.eog

@@ -15,7 +15,7 @@
     # "amdgpu.ppfeaturemask=0xffffffff"
     # "nvidia.NVreg_EnableGpuFirmware=0"
     "usbhid.mousepoll=1"   "raid0.default_layout=2" ];
-  boot.loader.timeout = 1;
+  # boot.loader.timeout = 1;
   services.fstrim.enable = lib.mkDefault true;
   # hardware.hidpi.enable = true;
 

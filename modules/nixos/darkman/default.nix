@@ -17,49 +17,28 @@ in {
     };
   };
   config = mkIf cfg.enable ({
-    xdg.portal = {
+
+  } // (my.allUsers ({...}: {
+    services.darkman = {
       enable = true;
-      extraPortals = [ darkman ];
-    };
-    services = {
-      dbus = {
-        enable = true;
-        packages = [darkman];
+      darkModeScripts = {
+        gtk-theme = ''${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"'';
+        hyprpaper = ''
+${pkgs.hyprland}/bin/hyprctl hyprpaper wallpaper ",/etc/nixos/bg_old.png" '';
+
+      };
+      lightModeScripts = {
+        gtk-theme = ''${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/color-scheme "'prefer-light'" '';
+        # exec-once = systemctl --user import-environment HYPRLAND_INSTANCE_SIGNATURE
+        # in hyprland config if no signature
+        hyprpaper = ''
+${pkgs.hyprland}/bin/hyprctl hyprpaper wallpaper ",/etc/nixos/light.jpg" '';
+      };
+      settings = {
+        lat = 55.7;
+        lng = 37.6;
+        usegeoclue = false;
       };
     };
-
-    environment.systemPackages = [
-      darkman
-    ];
-  } // (my.allUsers ({...}: { # TODO could be a better function
-
-    home.file = {
-      ".config/darkman".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/darkman;
-    };
-    systemd.user.services.darkman = {
-      Unit = {
-        Description = "Darkman system service";
-        Documentation = "man:darkman(1)";
-        PartOf = [ "graphical-session.target" ];
-        BindsTo = [ "graphical-session.target" ];
-        # X-Restart-Triggers =
-        #   [ "${config.xdg.configFile."darkman/config.yaml".source}" ];
-      };
-
-      Service = {
-        Type = "dbus";
-        BusName = "nl.whynothugo.darkman";
-        Environment = "PATH=/run/current-system/sw/bin";
-        ExecStart = "${pkgs.darkman}/bin/darkman run";
-        Restart = "on-failure";
-        TimeoutStopSec = 15;
-        Slice = "background.slice";
-      };
-
-      Install.WantedBy = [ "graphical-session.target" ];
-    };
-    xdg.systemDirs.data = [
-      "/etc/nixos/configs/darkman"
-    ];
   })));
 }

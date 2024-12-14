@@ -138,7 +138,7 @@
       gimp
       mpv
       playerctl
-      libusb
+      libusb1
       ffmpeg
       peco
       xclip

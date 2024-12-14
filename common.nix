@@ -46,7 +46,7 @@
     };
 
     iconTheme = {
-      package = pkgs.gnome.adwaita-icon-theme;
+      package = pkgs.adwaita-icon-theme;
       name = "Adwaita-dark";
     };
 
@@ -189,44 +189,16 @@
   };
 
   home.stateVersion = "22.11";
-  services.darkman = {
-    enable = true;
-    darkModeScripts = {
-      gtk-theme = ''
-${pkgs.dconf}/bin/dconf write \
-        /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
-'';
-
-    };
-    lightModeScripts = {
-      gtk-theme = ''
-    ${pkgs.dconf}/bin/dconf write \
-        /org/gnome/desktop/interface/color-scheme "'prefer-light'"
-'';
-    };
-    settings = {
-      lat = 55.7;
-      lng = 37.6;
-      usegeoclue = false;
-    };
-  };
 
   services.blueman-applet.enable = true;
-  # services.dropbox.enable = true;
   home.keyboard = null;
-  # {layout = "us,ru"; options = [ "grp:alt_shift_toggle" ];};
+
   home.file = {
     # ".config/GIMP" = {
     #   source = ./configs/GIMP;
     #   recursive = true;
     # };
 
-    # ".config/Trolltech.conf" = {
-    #   source = ./configs/Trolltech.conf;
-    # };
-    # ".config/brave-flags.conf" = {
-    #   source = ./configs/brave-flags.conf;
-    # };
     ".npmrc".text = "prefix = \${HOME}/.npm-packages";
 
     # telegram-desktop audio problems fix tdesktop
@@ -235,10 +207,6 @@ ${pkgs.dconf}/bin/dconf write \
     ".config/dunst" = {
       source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/dunst;
     };
-    # ".config/dunst" = {
-    #   source = ./configs/dunst;
-    #   recursive = true;
-    # };
 
     ".config/minidlna.conf".text = ''
     network_interface=enp3s0
@@ -252,12 +220,6 @@ ${pkgs.dconf}/bin/dconf write \
       recursive = true;
     };
 
-
-    # ".config/omf" = {
-    #   source = ./configs/omf;
-    #   recursive = true;
-    # };
-
     ".config/psiphon" = {
       source = ./configs/psiphon;
       recursive = true;
@@ -268,11 +230,6 @@ ${pkgs.dconf}/bin/dconf write \
       recursive = true;
     };
     ".config/mpv".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/mpv;
-    # ".config/hypr/conf.d".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/hypr/conf.d;
-    # ".config/hypr/hyprland.conf".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/hypr/hyprland.conf;
-    #     ".config/hypr/plugins".text =''
-    # plugin=${pkgs.unstable.hyprlandPlugins.hy3}/lib/lib${pkgs.unstable.hyprlandPlugins.hy3.pname}.so
-    # '' ;
 
     ".config/slop" = {
       source = ./configs/slop;

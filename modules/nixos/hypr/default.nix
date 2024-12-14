@@ -20,6 +20,8 @@ in {
         plugins = [
           pkgs.unstable.hyprlandPlugins.hy3
         ];
+        systemd.enable = true;
+        xwayland.enable = true;
         systemd.variables = [
           "--all"
         ];
@@ -32,11 +34,15 @@ in {
 };
     })
     {
+      programs.hyprland = {
+        enable = true;
+        xwayland.enable = true;
+      };
       xdg.portal = {
         enable = true;
         config.common.default = "*";
         extraPortals = [
-          pkgs.xdg-desktop-portal-hyprland
+          # pkgs.xdg-desktop-portal-hyprland
         ];
       };
       environment.systemPackages = with pkgs;

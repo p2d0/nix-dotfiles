@@ -6,20 +6,23 @@
   nixConfig = {
     extra-substituters = [
       "https://nix-community.cachix.org"
+      "https://hyprland.cachix.org"
     ];
     extra-trusted-public-keys = [
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
   };
   # Searching github for packages:
   # %package_name% language:nix
   inputs = {
-    nixpkgs = { url = "github:nixos/nixpkgs/nixos-24.05"; };
+    nixpkgs = { url = "github:nixos/nixpkgs/nixos-24.11"; };
     nixpkgs-23 = { url = "github:nixos/nixpkgs/nixos-23.11"; };
+    nixpkgs-24-05 = { url = "github:nixos/nixpkgs/nixos-24.05"; };
     nixos-unstable.url = "nixpkgs/nixos-unstable";
     nixos-master.url = "github:nixos/nixpkgs/master";
-    home-manager.url = "github:nix-community/home-manager/release-24.05";
-    # hyprland.url = "github:hyprwm/Hyprland";
+    home-manager.url = "github:nix-community/home-manager/release-24.11";
+    hyprland.url = "github:hyprwm/Hyprland";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     poetry2nix.url = "github:nix-community/poetry2nix";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -33,13 +36,14 @@
     {self,
       nixpkgs,
       nixpkgs-23,
+      nixpkgs-24-05,
       poetry2nix,
       chaotic,
       zen-browser,
       compfy,
       nixos-unstable,
       nixos-master,
-      # hyprland,
+      hyprland,
       nixpkgs-amnezia,
       home-manager,
       spl3g-config,
@@ -56,6 +60,10 @@
               config.permittedInsecurePackages = [
                 "python3.11-youtube-dl-2021.12.17"
                 "qbittorrent-qt5-4.6.4"
+                "dotnet-runtime-6.0.36"
+                "dotnet-sdk-wrapped-6.0.428"
+                "dotnet-sdk-6.0.428"
+                "dotnet-runtime-wrapped-6.0.36"
                 "qbittorrent-4.6.4" "xrdp-0.9.9" "python-2.7.18.8-env" "python-2.7.18.8" "python-2.7.18.7-env" "python-2.7.18.7" "libdwarf-20181024" "python-2.7.18.6" ];
               overlays = [(self: super: {
                 inherit lib;
@@ -87,6 +95,7 @@
                 }) {};
 
                 old-23 = import nixpkgs-23 { config = self.config; };
+                old-24-05 = import nixpkgs-24-05 { config = self.config; };
                 unstable = import nixos-unstable { config = self.config; };
                 master = import nixos-master { config = self.config; };
                 compfy = compfy.packages.${system}.compfy;
@@ -138,7 +147,7 @@
                     ];
                   }
                   home-manager.nixosModules.home-manager
-                  # hyprland.nixosModules.default
+                  hyprland.nixosModules.default
                   ./home.nix
                   ./hosts/main/configuration.nix
                 ];

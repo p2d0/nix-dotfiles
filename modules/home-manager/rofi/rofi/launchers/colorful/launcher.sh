@@ -48,7 +48,7 @@ EOF
 # themes=($(ls -p --hide="launcher.sh" --hide="colors.rasi" $dir))
 # theme="${themes[$(( $RANDOM % 12 ))]}"
 if [ $XDG_SESSION_TYPE == "wayland" ]; then
-	rofi  -monitor $(swaymsg -t get_outputs | jq 'map(.focused) | index(false)') -no-lazy-grab -show drun -modi run,drun -theme $dir/"$theme"
+	rofi  -no-lazy-grab -show drun -modi run,drun -theme $dir/"$theme"
 else
 	rofi -no-lazy-grab -show drun -modi run,drun -theme $dir/"$theme"
 fi
