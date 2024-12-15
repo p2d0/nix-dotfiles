@@ -29,9 +29,35 @@ in {
           source = "/etc/nixos/configs/hypr/hyprland.conf";
         };
       };
-      home.file = {
-".config/hypr/hyprpaper.conf".source = args.config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/hypr/hyprpaper.conf;
-};
+
+      systemd.user.services.swww = {
+        Install = { WantedBy = [ "graphical-session.target" ]; };
+
+        Unit = {
+          ConditionEnvironment = "WAYLAND_DISPLAY";
+          Description = "hyprpaper";
+          After = [ "graphical-session-pre.target" ];
+          PartOf = [ "graphical-session.target" ];
+        };
+
+        Service = {
+          ExecStart = "${pkgs.swww}/bin/swww-daemon";
+          Restart = "always";
+          RestartSec = "10";
+        };
+      };
+
+      # services.hyprpaper = {
+      #   enable = true;
+      #   package = pkgs.unstable.hyprpaper;
+      #   settings = {
+      #     ipc = "on";
+      #     preload = [ "/etc/nixos/light.jpg" "/etc/nixos/bg_old.png"];
+      #   };
+      # };
+      #       home.file = {
+      # ".config/hypr/hyprpaper.conf".source = args.config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/hypr/hyprpaper.conf;
+      # };
     })
     {
       programs.hyprland = {
@@ -48,7 +74,7 @@ in {
       environment.systemPackages = with pkgs;
         [
           gammastep
-          hyprpaper
+          swww
           # hyprwall
           grim # screenshot functionality
           slurp # screenshot functionality

@@ -271,7 +271,8 @@
 
   hardware.bluetooth.enable = true;
 
-  modules.plymouth.enable = true;
+  modules.plymouth.enable = false;
+  modules.silentboot.enable = true;
 	modules.hypr.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   # TODO Move to home manager user config?
@@ -544,30 +545,24 @@ polkit.addRule(function(action, subject) {
     package = pkgs.old-24-05.mihomo;
     tunMode = true;
   };
-  services.interception-tools = {
-    enable = true;
-    udevmonConfig = ''
-- JOB: "dual-function-keys -c /dev/stdin"
-  DEVICE:
-    NAME: ".*"
-  CONFIG: |
-    mappings:
-      - key: KEY_DOWN
-        tap: KEY_DOWN
-        repeat_delay_ms: 200  # Minimum delay between consecutive presses
-      - key: KEY_RIGHT
-        tap: KEY_RIGHT
-        repeat_delay_ms: 200  # Minimum delay between consecutive presses
-'';
-  };
+
   # services.keyd = {
   #   enable = true;
   #   keyboards.default = {
   #     ids = ["*"];
   #     settings = {
   #       main = {
-  #         Right = "block(50ms)";
-  #         Down = "block(50ms)";
+  #         capslock = "overload(hjkl, capslock)";
+  #       };
+  #       hjkl = {
+  #         h = "left";
+  #         j = "down";
+  #         k = "up";
+  #         l = "right";
+  #         left = "macro(←)";
+  #         right = "macro(→)";
+  #         down = "macro(↓)";
+  #         up = "macro(↑)";
   #       };
   #     };
   #   };

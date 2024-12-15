@@ -24,20 +24,24 @@ in {
       partial keypad_keys
       xkb_symbols "us-hjkl"
       {
-      key <CAPS> { [ ISO_Level3_Shift            ] };
-      key <AB02> { [ x, X, Delete, Delete        ] };
-      key <AC02> { [ s, S, KP_Enter, KP_Enter    ] };
-      key <AC03> { [ d, D, Next, Next            ] };
-      key <AC04> { [ f, F, BackSpace, BackSpace  ] };
-      key <AC06> { [ h, H , Left, Left           ] };
-      key <AC07> { [ j, J, Down, Down            ] };
-      key <AC08> { [ k, K, Up, Up                ] };
-      key <AC09> { [ l, L, Right, Right          ] };
-      key <AD07> { [ u, U, Prior, Prior          ] };
-      key <AE03> { [ 3, section, Home, Home      ] };
-      key <AE04> { [ 4, dollar, End, End         ] };
+    key <CAPS> { [ ISO_Level3_Shift                     ] };
+    key <AD02> { [ w, W, U2191, U2191                   ] };
+    key <AC01> { [ a, A, U2190, U2190                   ] };
+    key <AC02> { [ s, S, U2193, U2193                   ] };
+    key <AC03> { [ d, D, U2192, U2192                   ] };
+    key <AB02> { [ x, X, Delete, Delete                 ] };
+    key <AC06> { [ h, H, Left, Left                     ] };
+    key <AC07> { [ j, J, Down, Down                     ] };
+    key <AC08> { [ k, K, Up, Up                         ] };
+    key <AC09> { [ l, L, Right, Right                   ] };
+    key <AD07> { [ u, U, Prior, Prior                   ] };
+    key <AE03> { [ 3, section, Home, Home               ] };
+    key <AE04> { [ 4, dollar, End, End                  ] };
       };'';
     };
+    #
+   # key <AC04> { [ s, S, U2193, U2193                   ] };
+   # key <AC05> { [ d, D, U2192, U2192                   ] };
     # services.xserver.layout = mkOverride 1 "us";
     # TODO fix
     environment.sessionVariables = {

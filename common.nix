@@ -40,15 +40,15 @@
   gtk = {
     enable = true;
 
-    theme = {
-      # package = pkgs.gnome.adwaita;
-      name = "Adwaita";
-    };
+    # theme = {
+    #   # package = pkgs.gnome.adwaita;
+    #   name = "Adwaita";
+    # };
 
-    iconTheme = {
-      package = pkgs.adwaita-icon-theme;
-      name = "Adwaita-dark";
-    };
+    # iconTheme = {
+    #   package = pkgs.adwaita-icon-theme;
+    #   name = "Adwaita-dark";
+    # };
 
     # font = {
     #   name = "Roboto";

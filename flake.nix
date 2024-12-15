@@ -133,6 +133,9 @@
 
             # nix eval .#tests --impure
             tests = pkgs.callPackage ./tests/default.nix {};
+            nix.nixPath = [
+              "nixpkgs=${nixpkgs}"
+            ];
 
             nixosConfigurations = {
               mysystem = nixpkgs.lib.nixosSystem {

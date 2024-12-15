@@ -24,7 +24,7 @@ in {
       darkModeScripts = {
         gtk-theme = ''${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"'';
         hyprpaper = ''
-${pkgs.hyprland}/bin/hyprctl hyprpaper wallpaper ",/etc/nixos/bg_old.png" '';
+${pkgs.swww}/bin/swww img  /etc/nixos/bg_old.png --transition-type simple --transition-fps 75'';
 
       };
       lightModeScripts = {
@@ -32,12 +32,18 @@ ${pkgs.hyprland}/bin/hyprctl hyprpaper wallpaper ",/etc/nixos/bg_old.png" '';
         # exec-once = systemctl --user import-environment HYPRLAND_INSTANCE_SIGNATURE
         # in hyprland config if no signature
         hyprpaper = ''
-${pkgs.hyprland}/bin/hyprctl hyprpaper wallpaper ",/etc/nixos/light.jpg" '';
+${pkgs.swww}/bin/swww img /etc/nixos/light.jpg --transition-type simple --transition-fps 75'';
       };
       settings = {
         lat = 55.7;
         lng = 37.6;
         usegeoclue = false;
+      };
+    };
+
+    systemd.user.services.darkman = {
+      Unit = {
+        After = ["swww.service"];
       };
     };
   })));
