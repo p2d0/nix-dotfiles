@@ -142,11 +142,6 @@ direnv_layout_dir() {
 '';
       };
 
-      qt = {
-        enable = true;
-        # TODO Doesnt work with telegram?
-        # platformTheme = "gtk";
-      };
 
       # TODO is it a good way?
       systemd.user.tmpfiles.rules = [

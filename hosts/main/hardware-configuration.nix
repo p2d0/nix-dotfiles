@@ -21,7 +21,7 @@
 
   fileSystems."/" =
     { device = "/dev/nvme0n1p2";
-      options = [ "noatime" ];
+      # options = [ "noatime" ];
       fsType = "ext4";
     };
 

@@ -16,7 +16,7 @@ in {
     boot = {
       plymouth = {
         enable = true;
-        theme = "dark_planet";
+        theme = "circuit";
         themePackages = with pkgs; [
           # By default we would install all themes
           (adi1090x-plymouth-themes.override {

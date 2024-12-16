@@ -31,30 +31,39 @@
   #   };
   home.pointerCursor = {
     gtk.enable = true;
-    package = pkgs.bibata-cursors;
+    package = pkgs.adwaita-icon-theme;
     # x11.enable = true;
     name = "Adwaita";
     size = 10;
   };
 
-  gtk = {
+  qt = {
     enable = true;
-
-    # theme = {
-    #   # package = pkgs.gnome.adwaita;
-    #   name = "Adwaita";
-    # };
-
-    # iconTheme = {
-    #   package = pkgs.adwaita-icon-theme;
-    #   name = "Adwaita-dark";
-    # };
-
-    # font = {
-    #   name = "Roboto";
-    #   size = 10;
-    # };
+    platformTheme = "gnome";
+    style = {
+      name = "Adwaita";
+    };
   };
+
+  # gtk = {
+  #   enable = true;
+
+  #   theme = {
+  #     package = pkgs.breeze-gtk;
+  #     name = "Breeze";
+  #   };
+
+  #   iconTheme = {
+  #     name = "Obsidian";
+  #     package = pkgs.iconpack-obsidian;
+  #   };
+
+  #   # font = {
+  #   #   name = "Roboto";
+  #   #   size = 10;
+  #   # };
+  # };
+
   xdg.mimeApps = {
     enable = true;
     # use mimeapps application/x-bittorrent
@@ -225,10 +234,10 @@
       recursive = true;
     };
 
-    ".config/qt5ct" = {
-      source = ./configs/qt5ct;
-      recursive = true;
-    };
+    # ".config/qt5ct" = {
+    #   source = ./configs/qt5ct;
+    #   recursive = true;
+    # };
     ".config/mpv".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/mpv;
 
     ".config/slop" = {

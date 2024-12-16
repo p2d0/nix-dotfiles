@@ -14,6 +14,7 @@
   # https://nixos.wiki/wiki/Agenix
   user = self.user;
 
+  qt.platformTheme = "gnome";
   # xdg.portal = {
   #   enable = true;
   #   extraPortals =
@@ -271,7 +272,7 @@
 
   hardware.bluetooth.enable = true;
 
-  modules.plymouth.enable = false;
+  modules.plymouth.enable = true;
   modules.silentboot.enable = true;
 	modules.hypr.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -636,7 +637,7 @@ polkit.addRule(function(action, subject) {
       sshfs
       mattermost-desktop
       charles
-      gnome.gucharmap
+      gucharmap
       autokey
       wgcf
       # my.amneziawg-tools
@@ -676,6 +677,7 @@ polkit.addRule(function(action, subject) {
       # unstable.amf-headers
       pr314293.tdlib
       nixfmt-classic
+      gnome-themes-extra
       # python2
       xmrig
       sumneko-lua-language-server
@@ -784,14 +786,16 @@ polkit.addRule(function(action, subject) {
 
       jq
       pulseaudio
-      gnome.gnome-system-monitor
-      gnome.zenity
+      gnome-system-monitor
+      zenity
       zen-browser
       nix-tree
-      gnome.gnome-sound-recorder
+      gnome-sound-recorder
       # tigervnc
       # x11vnc
       cabal2nix
+      qgnomeplatform
+      qgnomeplatform-qt6
       dbeaver-bin
       yad
       ccls
@@ -854,8 +858,8 @@ polkit.addRule(function(action, subject) {
       chatterino2
       filelight
       polkit_gnome
-      gnome.dconf-editor
-      gnome.gnome-characters
+      dconf-editor
+      gnome-characters
       minidlna
       gedit
       ntfs3g
@@ -885,7 +889,7 @@ polkit.addRule(function(action, subject) {
       #   (import (builtins.fetchTarball {
       #     url = "https://github.com/NixOS/nixpkgs/archive/23c10dbe320e6957f2607d8a22f9e0e36f56a235.tar.gz";
       # }) {}).gnome.nautilus
-      gnome.nautilus
+      nautilus
       spice-vdagent
       inetutils
       zip
@@ -937,10 +941,10 @@ polkit.addRule(function(action, subject) {
       # pythonPackages.pip
       unstable.anydesk
       feh
-      gnome.eog
+      eog
       alacritty
       dmenu
-      gnome.gnome-disk-utility
+      gnome-disk-utility
       cabal2nix
       htop
       unzip

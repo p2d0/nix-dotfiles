@@ -208,6 +208,11 @@ label:focus {
     background-color: #7D1313;
 }
 
+#custom-crypto{
+    font-family: cryptocoins;
+    font-stretch: ultra-condensed;
+}
+
 #custom-powerapplet{
     border-radius: 10px;
     background: #f53c3c;

@@ -114,6 +114,11 @@
         "interval": 300,
         "format": "{}",
     },
+    "custom/crypto": {
+        "exec": "/etc/nixos/configs/polybar/polybar-crypto/crypto.py",
+        "interval": 600,
+        "format": "{}",
+    },
     "custom/polypomo": {
         "exec": "~/.config/polybar/polypomo --saveto /etc/nixos/configs/polybar/time.sqlite",
         "on-click": "~/.config/polybar/polypomo toggle",
