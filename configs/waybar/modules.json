@@ -120,6 +120,8 @@
         "format": "{}",
     },
     "custom/polypomo": {
+        "icon-size": 16,
+        "tooltip": false,
         "exec": "~/.config/polybar/polypomo --saveto /etc/nixos/configs/polybar/time.sqlite",
         "on-click": "~/.config/polybar/polypomo toggle",
         "on-click-right": "~/.config/polybar/polypomo end",

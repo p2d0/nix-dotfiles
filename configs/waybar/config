@@ -1,7 +1,7 @@
 [
   {
     "position": "bottom",
-    "height": 15,
+    "height": 30,
     "output": "DP-3",
     "modules-left": [
       "hyprland/workspaces",
@@ -24,7 +24,7 @@
   },
   {
     "position": "bottom",
-    "height": 15,
+    "height": 30,
     "output": "HDMI-A-2",
     "modules-left": [
       "hyprland/workspaces",

@@ -64,6 +64,10 @@ in {
         enable = true;
         xwayland.enable = true;
       };
+      environment.variables = {
+        QT_QPA_PLATFORM = "wayland";
+        ANKI_WAYLAND = 1;
+      };
       xdg.portal = {
         enable = true;
         config.common.default = "*";

@@ -93,21 +93,25 @@
 
   # boot.kernelPackages = pkgs.linuxPackages_zen;
 
-  # boot.loader.grub.enable = true;
-  # boot.loader.grub.default = 1;
+#  boot.loader.systemd-boot.enable = false;
+#  boot.loader.grub.useOSProber = true;
+#  boot.loader.grub.enable = true;
+#  boot.loader.grub.default = 1;
+#  boot.loader.grub.efiSupport = true;
+#  boot.loader.grub.device = "nodev";
+
+
+ boot.loader.efi = {
+   canTouchEfiVariables = true;
+   efiSysMountPoint = "/boot/efi";
+ };
 
   boot.blacklistedKernelModules = [ "iTCO_wdt" "iTCO_vendor_support" ];
 
   # boot.tmp.useTmpfs = true;
   boot.tmp.cleanOnBoot = true;
 
-  boot.loader.efi = {
-    canTouchEfiVariables = true;
-    efiSysMountPoint = "/boot/efi";
-  };
 
-  # boot.loader.grub.efiSupport = true;
-  # boot.loader.grub.device = "nodev";
 
   networking.hostName = config.user;
   # networking.proxy.default = "http://localhost:8092/";
@@ -274,7 +278,7 @@
 
   modules.plymouth.enable = true;
   modules.silentboot.enable = true;
-	modules.hypr.enable = true;
+  modules.hypr.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   # TODO Move to home manager user config?
   modules.sway.enable = false;
@@ -703,7 +707,9 @@ polkit.addRule(function(action, subject) {
       #     sha256 = "sha256:1p39llchnb2b6zbjpn0fk7hp7yhfp03b00s539hhgaliqmq9z93g";
       #   };
       # }))
-      flameshot
+      (flameshot.override {
+        enableWlrSupport = true;
+      })
       unstable.flyctl
       # .overrideAttrs(oldAttrs: rec {
       #   NIX_CFLAGS_COMPILE = "-DUSE_WAYLAND_CLIPBOARD";
@@ -898,6 +904,14 @@ polkit.addRule(function(action, subject) {
       # evolution
       nodejs
       iconpack-obsidian
+      (pkgs.wrapOBS {
+        plugins = with pkgs.obs-studio-plugins; [
+          obs-gstreamer
+          obs-vkcapture
+          obs-vaapi
+          droidcam-obs
+        ];
+      })
       # libreoffice
       pkgs.onlyoffice-bin
       koreader

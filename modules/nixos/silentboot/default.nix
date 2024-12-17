@@ -14,9 +14,9 @@ in {
   };
   config = mkIf cfg.enable {
     boot = {
-      loader.systemd-boot = {
-        enable = true;
-      };
+       loader.systemd-boot = {
+         enable = true;
+       };
       loader.efi.canTouchEfiVariables = true;
       # Enable "Silent Boot"
       consoleLogLevel = 0;

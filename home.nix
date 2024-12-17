@@ -18,14 +18,6 @@
         #       sha256 = "sha256-20SfLfUuo8h5sKyWQAAhc1X8qgF35+8zMRjE3+o8oHU=";
         #     })];
         # }))
-        (pkgs.wrapOBS {
-          plugins = with pkgs.obs-studio-plugins; [
-            obs-gstreamer
-            obs-vkcapture
-            obs-vaapi
-            droidcam-obs
-          ];
-        })
 
 
         # pkgs.obs-studio
