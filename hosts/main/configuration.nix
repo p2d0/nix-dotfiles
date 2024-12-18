@@ -947,6 +947,7 @@ polkit.addRule(function(action, subject) {
       # my.natron-bin
       # unstable.natron
       unstable.scrcpy
+      yt-dlp
       # pythonPackages.yt-dlp
       imagemagick
       # thunderbird
