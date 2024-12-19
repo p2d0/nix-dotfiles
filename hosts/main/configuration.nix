@@ -819,7 +819,7 @@ polkit.addRule(function(action, subject) {
       calibre
       xorg.xdpyinfo
       unstable.postman
-      brave
+      (brave.override {commandLineArgs = "--enable-wayland-ime";})
       peco
       ffmpeg-full
       d-spy
