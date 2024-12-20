@@ -776,6 +776,7 @@ polkit.addRule(function(action, subject) {
       # nixfmt
       # TODO FIX
       # (old-23.gimp.override { withPython = true; })
+      gimp
       krita
       mpv
       libva-utils
@@ -872,7 +873,7 @@ polkit.addRule(function(action, subject) {
       # gnome.gnome-boxes
       rustdesk
       my.trex
-      qbittorrent
+      unstable.qbittorrent
       # qbittorrent-qt5
       epiphany
       # tor-browser-bundle-bin

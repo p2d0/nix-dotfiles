@@ -37,13 +37,13 @@
     size = 10;
   };
 
-  qt = {
-    enable = true;
-    platformTheme = "gnome";
-    style = {
-      name = "Adwaita";
-    };
-  };
+  # qt = {
+  #   enable = true;
+  #   platformTheme = "gnome";
+  #   style = {
+  #     name = "Adwaita";
+  #   };
+  # };
 
   # gtk = {
   #   enable = true;

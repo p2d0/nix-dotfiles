@@ -5,7 +5,6 @@
     "output": "DP-3",
     "modules-left": [
       "hyprland/workspaces",
-      "sway/mode",
       "idle_inhibitor"
     ],
     "modules-center": [
@@ -14,10 +13,8 @@
     "modules-right": [
       // "custom/humpool",
       "custom/weather",
-      "pulseaudio",
-      "backlight",
-      "keyboard-state",
-      "hyprland/language"
+      "pulseaudio"
+      // "hyprland/language",
       // "tray"
     ],
     "include": "~/.config/waybar/modules.json"
@@ -38,8 +35,6 @@
       "custom/polypomo",
       "custom/weather",
       "pulseaudio",
-      "backlight",
-      "keyboard-state",
       "hyprland/language",
       "tray"
     ],

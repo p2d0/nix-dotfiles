@@ -1,0 +1,110 @@
+From 491a3cb5ccc735d57bda91aa79c56c03fed140f6 Mon Sep 17 00:00:00 2001
+From: vawvaw <valentin@wiedekind1.de>
+Date: Tue, 13 Feb 2024 17:55:11 +0100
+Subject: [PATCH] hyprland/workspaces: Add `enable-bar-scroll` option
+
+---
+ include/modules/hyprland/workspaces.hpp |  4 +++
+ man/waybar-hyprland-workspaces.5.scd    |  5 ++++
+ src/modules/hyprland/workspaces.cpp     | 38 +++++++++++++++++++++++++
+ 3 files changed, 47 insertions(+)
+
+diff --git a/include/modules/hyprland/workspaces.hpp b/include/modules/hyprland/workspaces.hpp
+index a9d56b79f..c351cb123 100644
+--- a/include/modules/hyprland/workspaces.hpp
++++ b/include/modules/hyprland/workspaces.hpp
+@@ -37,6 +37,7 @@ class Workspaces : public AModule, public EventHandler {
+   auto activeOnly() const -> bool { return m_activeOnly; }
+   auto specialVisibleOnly() const -> bool { return m_specialVisibleOnly; }
+   auto moveToMonitor() const -> bool { return m_moveToMonitor; }
++  auto barScroll() const -> bool { return m_barScroll; }
+ 
+   auto getBarOutput() const -> std::string { return m_bar.output->name; }
+ 
+@@ -109,6 +110,9 @@ class Workspaces : public AModule, public EventHandler {
+   void loadPersistentWorkspacesFromConfig(Json::Value const& clientsJson);
+   void loadPersistentWorkspacesFromWorkspaceRules(const Json::Value& clientsJson);
+ 
++  bool handleScroll(GdkEventScroll*) override;
++
++  bool m_barScroll = false;
+   bool m_allOutputs = false;
+   bool m_showSpecial = false;
+   bool m_activeOnly = false;
+diff --git a/man/waybar-hyprland-workspaces.5.scd b/man/waybar-hyprland-workspaces.5.scd
+index c71168d46..ed3f1bb67 100644
+--- a/man/waybar-hyprland-workspaces.5.scd
++++ b/man/waybar-hyprland-workspaces.5.scd
+@@ -53,6 +53,11 @@ Addressed by *hyprland/workspaces*
+ 	default: false ++
+ 	If set to false workspaces group will be shown only in assigned output. Otherwise, all workspace groups are shown.
+ 
++*enable-bar-scroll*: ++
++	typeof: bool ++
++	default: false ++
++	If set to false, you can't scroll to cycle throughout workspaces from the entire bar. If set to true this behaviour is enabled.
++
+ *active-only*: ++
+ 	typeof: bool ++
+ 	default: false ++
+diff --git a/src/modules/hyprland/workspaces.cpp b/src/modules/hyprland/workspaces.cpp
+index 13364f3f2..c3af71d81 100644
+--- a/src/modules/hyprland/workspaces.cpp
++++ b/src/modules/hyprland/workspaces.cpp
+@@ -188,6 +188,12 @@ void Workspaces::initializeWorkspaces() {
+   auto const workspacesJson = gIPC->getSocket1JsonReply("workspaces");
+   auto const clientsJson = gIPC->getSocket1JsonReply("clients");
+ 
++  if (barScroll()) {
++    auto &window = const_cast<Bar &>(m_bar).window;
++    window.add_events(Gdk::SCROLL_MASK | Gdk::SMOOTH_SCROLL_MASK);
++    window.signal_scroll_event().connect(sigc::mem_fun(*this, &Workspaces::handleScroll));
++  }
++
+   for (Json::Value workspaceJson : workspacesJson) {
+     std::string workspaceName = workspaceJson["name"].asString();
+     if ((allOutputs() || m_bar.output->name == workspaceJson["monitor"].asString()) &&
+@@ -575,6 +581,7 @@ auto Workspaces::parseConfig(const Json::Value &config) -> void {
+   populateBoolConfig(config, "special-visible-only", m_specialVisibleOnly);
+   populateBoolConfig(config, "active-only", m_activeOnly);
+   populateBoolConfig(config, "move-to-monitor", m_moveToMonitor);
++  populateBoolConfig(config, "enable-bar-scroll", m_barScroll);
+ 
+   m_persistentWorkspaceConfig = config.get("persistent-workspaces", Json::Value());
+   populateSortByConfig(config);
+@@ -905,4 +912,35 @@ int Workspaces::windowRewritePriorityFunction(std::string const &window_rule) {
+   return 0;
+ }
+ 
++bool Workspaces::handleScroll(GdkEventScroll *e) {
++  if (gdk_event_get_pointer_emulated((GdkEvent *)e)) {
++    /**
++     * Ignore emulated scroll events on window
++     */
++    return false;
++  }
++  auto dir = AModule::getScrollDir(e);
++  if (dir == SCROLL_DIR::NONE) {
++    return true;
++  }
++
++  bool increase;
++
++  if (dir == SCROLL_DIR::DOWN || dir == SCROLL_DIR::RIGHT) {
++    if (allOutputs()) {
++      gIPC->getSocket1Reply("dispatch workspace e+1");
++    } else {
++      gIPC->getSocket1Reply("dispatch workspace m+1");
++    }
++  } else if (dir == SCROLL_DIR::UP || dir == SCROLL_DIR::LEFT) {
++    if (allOutputs()) {
++      gIPC->getSocket1Reply("dispatch workspace e-1");
++    } else {
++      gIPC->getSocket1Reply("dispatch workspace m-1");
++    }
++  }
++
++  return true;
++}
++
+ }  // namespace waybar::modules::hyprland

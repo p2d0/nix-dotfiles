@@ -12,6 +12,11 @@
         "on-scroll-down": "hyprctl dispatch workspace e-1",
         "enable-bar-scroll": true,
     },
+    "hyprland/submap": {
+        "format": "✌️ {}",
+        "max-length": 8,
+        "tooltip": false
+    },
     "sway/workspaces": {
         "enable-bar-scroll": true
     },
@@ -56,7 +61,8 @@
     },
     "tray": {
         "icon-size": 18,
-        "spacing": 10
+        "spacing": 10,
+        "show-passive-items": true,
     },
     "clock": {
         // "timezone": "America/New_York",
@@ -128,8 +134,8 @@
         "on-click-middle": "~/.config/polybar/polypomo time -1410",
         "on-scroll-up": "~/.config/polybar/polypomo time +300",
         "on-scroll-down": "~/.config/polybar/polypomo time -300",
-        "on-double-click": "~/.config/polybar/polypomo-title-dialog.sh",
-        "on-double-click-right": "~/.config/polybar/polypomo_gui.py",
+        "on-click-backward": "~/.config/polybar/polypomo-title-dialog.sh",
+        "on-click-forward": "env QT_QPA_PLATFORM=xcb ~/.config/polybar/polypomo_gui.py",
         "format": "{}"
     },
     "custom/timer": {
@@ -147,7 +153,6 @@
         "tooltip": false
     },
     "custom/weather":{
-        "on-click": "~/.config/waybar/wg-status.sh",
         "interval": 6000,
         "exec": "curl -s 'https://wttr.in/?format=%c%20%t%20(%f)'"
     },

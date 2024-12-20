@@ -53,10 +53,23 @@ def fetch_tasks_this_month(db_path):
     return tasks
 
 def calculate_duration(start, stop):
+    if start is None or stop is None:
+        return 0
     start_time = datetime.strptime(start, "%H:%M:%S")
     stop_time = datetime.strptime(stop, "%H:%M:%S")
     duration = stop_time - start_time
     return duration.total_seconds()
+
+def aggregate_durations_by_title(tasks):
+    title_durations = {}
+    for task in tasks:
+        _, _, start, stop, title = task
+        duration = calculate_duration(start, stop)
+        if title in title_durations:
+            title_durations[title] += duration
+        else:
+            title_durations[title] = duration
+    return title_durations
 
 def aggregate_durations_by_date(tasks):
     date_durations = {}
@@ -355,7 +368,7 @@ class TasksWindow(QMainWindow):
 def main():
     db_path = "/etc/nixos/configs/polybar/time.sqlite"
     tasks_today = fetch_tasks(db_path, alltime=False)
-    task_durations_today = aggregate_durations_by_date(tasks_today)
+    task_durations_today = aggregate_durations_by_title(tasks_today)
     tasks_alltime = fetch_tasks(db_path, alltime=True)
     task_durations_alltime = aggregate_durations_alltime(tasks_alltime)
     tasks_yesterday = fetch_tasks(db_path, yesterday=True)

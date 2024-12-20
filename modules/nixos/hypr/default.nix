@@ -85,12 +85,9 @@ in {
           wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
           wf-recorder
           (unstable.waybar.overrideAttrs(oldAttrs: rec {
-            src = fetchFromGitHub {
-              owner = "VAWVAW";
-              repo = "Waybar";
-              rev = "hyprland-bar-scroll";
-              sha256 = "sha256-CAV776d4osbQWZp5zHW7zhDdOZkWWGOpXC6+VFarOAs=";
-            };
+            patches = oldAttrs.patches ++ [
+              ./waybar.patch
+            ];
           }))
         ];
     }) ;
