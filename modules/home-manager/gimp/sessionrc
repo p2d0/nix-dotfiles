@@ -16,7 +16,7 @@
     (open-on-exit)
     (aux-info
         (left-docks-width "58")
-        (right-docks-width "202")
+        (right-docks-width "209")
         (maximized "no"))
     (gimp-toolbox
         (side left))
@@ -49,7 +49,7 @@
                 (aux-info
                     (show-button-bar "true"))))
         (book
-            (position 309)
+            (position 293)
             (current-page 2)
             (dockable "gimp-brush-grid"
                 (tab-style name)
@@ -112,11 +112,11 @@
 (session-info "toplevel"
     (factory-entry "gimp-file-open-dialog")
     (position 228 0)
-    (size 456 530))
+    (size 471 703))
 (session-info "toplevel"
     (factory-entry "gimp-file-export-dialog")
     (position 496 0)
-    (size 488 542))
+    (size 489 542))
 (session-info "toplevel"
     (factory-entry "gimp-toolbox-color-dialog")
     (position 0 137))
