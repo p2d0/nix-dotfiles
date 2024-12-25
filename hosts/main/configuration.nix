@@ -667,6 +667,7 @@ polkit.addRule(function(action, subject) {
       unstable.gamescope
       create-react-app
       my.cursor
+      parallel
       vscode
       yandex-disk
       gpu-screen-recorder
