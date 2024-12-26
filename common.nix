@@ -152,6 +152,7 @@
     userEmail = "cerkin-3@yandex.ru";
     extraConfig = {
       core.autocrlf = false;
+      core.trustctime = false;
     };
     aliases = {
       coa = "!git add -A && git commit -m";
@@ -280,6 +281,10 @@
 
     ".config/picom/picom.conf" = {
       source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/picom/picom.conf;
+    };
+
+    ".tmux.conf" = {
+      source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/tmux/tmux.conf;
     };
 
     ".local/share/nautilus" = {

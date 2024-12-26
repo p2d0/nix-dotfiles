@@ -527,6 +527,9 @@ polkit.addRule(function(action, subject) {
   #   # TODO direct link
   # };
 
+  programs.tmux = {
+    enable = true;
+  };
   programs.proxychains = {
     enable = true;
     proxies.xray = {
@@ -669,6 +672,7 @@ polkit.addRule(function(action, subject) {
       my.cursor
       parallel
       vscode
+
       yandex-disk
       gpu-screen-recorder
       shared-mime-info
