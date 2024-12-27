@@ -24,9 +24,10 @@ in {
     };
 
     systemd.user.timers.trex-start = {
+      enable = true;
       wantedBy = [ "timers.target"];
       timerConfig = {
-        OnCalendar = "*-*-* 22:13:00";
+        OnCalendar = "*-*-* 22:00:00";
         Unit = "trex.service";
       };
     };

@@ -40,23 +40,23 @@
   # qt = {
   #   enable = true;
   #   platformTheme = "gnome";
-  #   style = {
-  #     name = "Adwaita";
-  #   };
+  #   # style = {
+  #   #   name = "Adwaita";
+  #   # };
   # };
 
   # gtk = {
   #   enable = true;
 
-  #   theme = {
-  #     package = pkgs.breeze-gtk;
-  #     name = "Breeze";
-  #   };
+  #   # theme = {
+  #   #   package = pkgs.gnome-themes-extra;
+  #   #   name = "Adwaita";
+  #   # };
 
-  #   iconTheme = {
-  #     name = "Obsidian";
-  #     package = pkgs.iconpack-obsidian;
-  #   };
+  #   # iconTheme = {
+  #   #   name = "Obsidian";
+  #   #   package = pkgs.iconpack-obsidian;
+  #   # };
 
   #   # font = {
   #   #   name = "Roboto";
