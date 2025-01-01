@@ -7,7 +7,7 @@
 
 let
   pname = "osu-lazer-bin";
-  version = "2024.1115.3";
+  version = "2024.1224.1";
 
   src = {
     aarch64-darwin = fetchzip {
@@ -22,7 +22,7 @@ let
     };
     x86_64-linux = fetchurl {
       url = "https://github.com/ppy/osu/releases/download/${version}/osu.AppImage";
-      hash = "sha256-kwZHy0FfOUFIWvyOj0ghlQz05U+Lnzl5TgC4T6bhm7o=";
+      hash = "sha256-9qZ5XNAII2I4PemNGrWuUCY1Syq5PH3NBc2/Jj5tcoQ=";
     };
   }.${stdenv.system} or (throw "${pname}-${version}: ${stdenv.system} is unsupported.");
 
@@ -67,7 +67,7 @@ else appimageTools.wrapType2 {
       mv -v $out/bin/${pname} $out/bin/osu\!
       install -m 444 -D ${contents}/osu\!.desktop -t $out/share/applications
       for i in 16 32 48 64 96 128 256 512 1024; do
-        install -D ${contents}/osu\!.png $out/share/icons/hicolor/''${i}x$i/apps/osu\!.png
+        install -D ${contents}/osu.png $out/share/icons/hicolor/''${i}x$i/apps/osu.png
       done
     '';
 }

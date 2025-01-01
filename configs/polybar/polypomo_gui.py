@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import sqlite3
-from PyQt6.QtWidgets import QApplication, QMainWindow, QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget, QPushButton, QLabel, QTabWidget, QGridLayout
+from PyQt6.QtWidgets import QApplication, QMainWindow, QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget, QPushButton, QLabel, QTabWidget, QLineEdit, QGridLayout
 from PyQt6.QtCore import Qt
 from datetime import datetime, timedelta
 import matplotlib.pyplot as plt
@@ -310,6 +310,29 @@ class TasksWindow(QMainWindow):
         # Plot the graph
         self.plot_duration_graph(tasks_this_month)
 
+        # Tab for total time by title
+        total_time_by_title_tab = QWidget()
+        tab_widget.addTab(total_time_by_title_tab, "Total Time by Title")
+
+        total_time_by_title_layout = QVBoxLayout()
+        total_time_by_title_tab.setLayout(total_time_by_title_layout)
+
+        # Add a label for the input
+        title_label = QLabel("Enter Task Title:")
+        title_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        total_time_by_title_layout.addWidget(title_label)
+
+        # Add a line edit for the title input
+        self.title_input = QLineEdit()
+        self.title_input.setPlaceholderText("Type task title here")
+        self.title_input.returnPressed.connect(self.calculate_total_time_by_title)
+        total_time_by_title_layout.addWidget(self.title_input)
+
+        # Add a label for the result
+        self.result_label = QLabel("")
+        self.result_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        total_time_by_title_layout.addWidget(self.result_label)
+
         # Add a close button
         close_button = QPushButton("Close")
         close_button.clicked.connect(self.close)
@@ -364,6 +387,22 @@ class TasksWindow(QMainWindow):
         self.ax.grid(True)
         self.figure.autofmt_xdate()  # Automatically format x-axis labels for better visibility
         self.canvas.draw()
+
+    def calculate_total_time_by_title(self):
+        title = self.title_input.text()
+        if not title:
+            self.result_label.setText("Please enter a task title.")
+            return
+
+        tasks_alltime = fetch_tasks(self.db_path, alltime=True)
+        title_durations = aggregate_durations_by_title(tasks_alltime)
+
+        if title in title_durations:
+            duration = title_durations[title]
+            pomodoros = duration / 1500
+            self.result_label.setText(f"Total Duration for '{title}': {datetime.utcfromtimestamp(duration).strftime('%H:%M:%S')} (Pomodoros: {pomodoros:.2f})")
+        else:
+            self.result_label.setText(f"No tasks found with title '{title}'.")
 
 def main():
     db_path = "/etc/nixos/configs/polybar/time.sqlite"

@@ -666,7 +666,7 @@ polkit.addRule(function(action, subject) {
       remmina
       conda
       # megasync
-      unstable.jetbrains.idea-community
+      # unstable.jetbrains.idea-community
       unstable.gamescope
       create-react-app
       my.cursor
