@@ -83,7 +83,7 @@ def aggregate_durations_by_date(tasks):
     return date_durations
 
 def aggregate_durations_alltime(tasks):
-    return aggregate_durations_by_date(tasks)
+    return aggregate_durations_by_title(tasks)
 
 def aggregate_durations_this_month(tasks):
     return aggregate_durations_by_date(tasks)
