@@ -16,7 +16,7 @@ def get_active_monitor():
 
 def move_window(offset_x):
     # Move the window by the calculated offset
-    subprocess.run(['hyprctl', 'dispatch', 'movewindowpixel', str(offset_x), '0', ',class:speedcrunch'])
+    subprocess.run(['hyprctl', 'dispatch', 'movewindowpixel', str(offset_x), '0', ',class:org.speedcrunch.'])
 
 def main():
     active_monitor = get_active_monitor()
