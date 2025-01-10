@@ -876,7 +876,7 @@ polkit.addRule(function(action, subject) {
       gedit
       ntfs3g
       # gnome.gnome-boxes
-      rustdesk
+      unstable.rustdesk
       my.trex
       unstable.qbittorrent
       # qbittorrent-qt5
