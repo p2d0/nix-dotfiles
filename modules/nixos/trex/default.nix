@@ -33,6 +33,27 @@ in {
       };
     };
 
+    systemd.user.services.trexstop = {
+      enable = true;
+      description = "stop trex";
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart =
+          "${pkgs.systemd}/bin/systemctl stop trex";
+        # ExecStop = "/bin/kill -SIGTERM $MAINPID";
+      };
+    };
+
+    systemd.user.timers.trexstop = {
+      enable = true;
+      wantedBy = [ "timers.target" ];
+      timerConfig = {
+        OnCalendar = "*-*-* 07:00:00";
+        Unit = "trexstop.service";
+        Persistent = true;
+      };
+    };
+
     # systemd.user.timers.trex-stop = {
     #   wantedBy = [ "timers.target"];
 
