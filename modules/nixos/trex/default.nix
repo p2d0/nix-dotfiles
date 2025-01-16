@@ -39,7 +39,7 @@ in {
       serviceConfig = {
         Type = "oneshot";
         ExecStart =
-          "${pkgs.systemd}/bin/systemctl stop trex";
+          "whoami";
         # ExecStop = "/bin/kill -SIGTERM $MAINPID";
       };
     };

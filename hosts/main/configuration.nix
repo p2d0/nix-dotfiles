@@ -322,7 +322,7 @@
   modules.emacs-with-doom  =
     {
       enable = true;
-      package = pkgs.emacs-pgtk;
+      package = pkgs.emacs30-pgtk;
     };
 
   # nixpkgs.config =
