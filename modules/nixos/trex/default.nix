@@ -38,6 +38,7 @@ in {
       description = "stop trex";
       serviceConfig = {
         Type = "oneshot";
+        # ExecStart = "${pkgs.utillinux}/bin/kill -SIGTERM $(${procps}/bin/pgrep -f 't-rex -c /home/${config.user}/Dropbox/trex/config.json')";
         ExecStart =
           "whoami";
         # ExecStop = "/bin/kill -SIGTERM $MAINPID";

@@ -666,6 +666,8 @@ polkit.addRule(function(action, subject) {
       gcc.cc.libgcc.lib
       keepassxc
       remmina
+      pkgs.libayatana-appindicator
+      pkgs.libayatana-appindicator-gtk3
       conda
       # megasync
       # unstable.jetbrains.idea-community
