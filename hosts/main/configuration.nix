@@ -371,7 +371,7 @@
         "*/30 11-21 * * * andrew DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /run/current-system/sw/bin/notify-send 'Update daily'"
         # "30 20 * * * andrew fish -c 'update-system'"
         "00 23 * * * andrew DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /run/current-system/sw/bin/notify-send 'Sleep'"
-        "00 22 * * * root /etc/nixos/shutdown.sh"
+        "10 22 * * * root /etc/nixos/shutdown.sh"
         "55 21 * * * andrew DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /run/current-system/sw/bin/notify-send 'Shutdown in 5 MINUTES'"
         "00 20 * * * andrew /etc/nixos/update_ip.sh"
         "00 23 * * * andrew /home/andrew/Dropbox/miner_enable.sh"
