@@ -8,4 +8,5 @@ if [ ! -e /tmp/emergency ]; then
 else
     # If the file exists, do nothing
     echo "File /tmp/emergency exists. No action taken."
+    rm /tmp/emergency
 fi
