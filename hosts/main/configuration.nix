@@ -666,6 +666,7 @@ polkit.addRule(function(action, subject) {
       gcc.cc.libgcc.lib
       keepassxc
       remmina
+      unstable.aider-chat
       pkgs.libayatana-appindicator
       pkgs.libayatana-appindicator-gtk3
       conda
