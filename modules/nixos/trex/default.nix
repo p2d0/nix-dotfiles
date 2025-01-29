@@ -33,35 +33,32 @@ in {
       };
     };
 
-    systemd.user.services.trexstop = {
+    systemd.user.services.whoami = {
+      enable = true;
+      description = "whoami";
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart = "${pkgs.whoami}/bin/whoami";
+      };
+    };
+
+    systemd.user.services.trex_stop = {
       enable = true;
       description = "stop trex";
       serviceConfig = {
         Type = "oneshot";
-        # ExecStart = "${pkgs.utillinux}/bin/kill -SIGTERM $(${procps}/bin/pgrep -f 't-rex -c /home/${config.user}/Dropbox/trex/config.json')";
-        ExecStart =
-          "whoami";
-        # ExecStop = "/bin/kill -SIGTERM $MAINPID";
+        ExecStart = "${pkgs.procps}/bin/pkill -f 't-rex -c /home/${config.user}/Dropbox/trex/config.json'";
       };
     };
 
-    systemd.user.timers.trexstop = {
+    systemd.user.timers.trex_stop = {
       enable = true;
       wantedBy = [ "timers.target" ];
       timerConfig = {
         OnCalendar = "*-*-* 07:00:00";
-        Unit = "trexstop.service";
+        Unit = "trex_stop.service";
         Persistent = true;
       };
     };
-
-    # systemd.user.timers.trex-stop = {
-    #   wantedBy = [ "timers.target"];
-
-    #   timerConfig = {
-    #     OnCalendar = "*-*-* 08:30:00";
-    #     Unit = "trex.service";
-    #   };
-    # };
   };
 }
