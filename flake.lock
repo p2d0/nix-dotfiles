@@ -631,6 +631,26 @@
         "type": "github"
       }
     },
+    "hy3": {
+      "inputs": {
+        "hyprland": [
+          "hyprland"
+        ]
+      },
+      "locked": {
+        "lastModified": 1738351398,
+        "narHash": "sha256-5BKWzHV2exCZvGERbjEQbCIPrKGHOdhOQV1qsSMBJ6U=",
+        "owner": "outfoxxed",
+        "repo": "hy3",
+        "rev": "0744378f46bdb8928eeba5f1dd744bd54c6b66ff",
+        "type": "github"
+      },
+      "original": {
+        "owner": "outfoxxed",
+        "repo": "hy3",
+        "type": "github"
+      }
+    },
     "hyprcursor": {
       "inputs": {
         "hyprlang": [
@@ -769,11 +789,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1738273002,
-        "narHash": "sha256-R1CWBSEHZhykHo3/H3M4U7zLv1QaS87JCTHas38TNiU=",
+        "lastModified": 1738394946,
+        "narHash": "sha256-Puvpm+NKTVprwX++/eraTxniGdQ8pQwnMs/HDADUooI=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "ef03f6911694413b1b06aba727ad9ab089a511f7",
+        "rev": "d11d0697155e0896c4ab76406e6d5dcf35abff05",
         "type": "github"
       },
       "original": {
@@ -3754,6 +3774,7 @@
         "chaotic": "chaotic",
         "compfy": "compfy",
         "home-manager": "home-manager_2",
+        "hy3": "hy3",
         "hyprland": "hyprland",
         "nixos-master": "nixos-master",
         "nixos-unstable": "nixos-unstable",

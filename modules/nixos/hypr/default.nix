@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib,inputs, pkgs, ... }:
 
 with lib;
 let cfg = config.modules.hypr;
@@ -16,9 +16,10 @@ in {
     (args:{
       wayland.windowManager.hyprland  = {
         enable = true;
-        package = pkgs.unstable.hyprland;
+        package = inputs.hyprland.packages.x86_64-linux.hyprland;
         plugins = [
-          pkgs.unstable.hyprlandPlugins.hy3
+          # pkgs.unstable.hyprlandPlugins.hy3
+          inputs.hy3.packages.x86_64-linux.hy3
         ];
         systemd.enable = true;
         xwayland.enable = true;

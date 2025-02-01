@@ -23,6 +23,7 @@
     nixos-master.url = "github:nixos/nixpkgs/master";
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     hyprland.url = "github:hyprwm/Hyprland";
+
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     poetry2nix.url = "github:nix-community/poetry2nix";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -30,6 +31,10 @@
     spl3g-config.url = "github:spl3g/nixfiles";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     nixpkgs-amnezia.url = "github:averyanalex/nixpkgs/amneziawg";
+    hy3 = {
+      url = "github:outfoxxed/hy3";
+      inputs.hyprland.follows = "hyprland";
+    };
   };
 
   outputs = inputs @
@@ -41,6 +46,7 @@
       chaotic,
       zen-browser,
       compfy,
+      # hy3,
       nixos-unstable,
       nixos-master,
       hyprland,
