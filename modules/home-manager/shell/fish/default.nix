@@ -41,6 +41,10 @@ in {
         fish_add_path  $HOME/.npm-packages/lib/node_modules
         alias s="sgpt -se"
         alias nv="neovide --multigrid --frame none --maximized"
+        if status is-interactive
+        and not set -q TMUX
+            exec tmux
+        end
         function fish_user_key_bindings
             bind -M normal -m insert \cr 'peco_select_history (commandline -b)'
             bind -M insert \cr 'peco_select_history (commandline -b)'

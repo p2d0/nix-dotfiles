@@ -531,6 +531,20 @@ polkit.addRule(function(action, subject) {
 
   programs.tmux = {
     enable = true;
+    extraConfig = ''
+set-window-option -g mode-keys vi
+
+unbind C-b
+set-option -g prefix C-s
+bind-key C-s send-prefix
+
+# act like vim
+setw -g mode-keys vi
+bind-key h select-pane -L
+bind-key j select-pane -D
+bind-key k select-pane -U
+bind-key l select-pane -R
+'';
   };
   programs.proxychains = {
     enable = true;
@@ -771,7 +785,6 @@ polkit.addRule(function(action, subject) {
       #   { })
       unstable.video-trimmer
       kdiskmark
-      tmux
       # Config https://github.com/elken/tabbed/blob/master/config.h
       # pkgs.tabbed.override {
       # customConfig = builtins.readFile ../files/tabbed-config.h;

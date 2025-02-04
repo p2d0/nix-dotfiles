@@ -283,9 +283,9 @@
       source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/picom/picom.conf;
     };
 
-    ".tmux.conf" = {
-      source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/tmux/tmux.conf;
-    };
+    # ".tmux.conf" = {
+    #   source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/tmux/tmux.conf;
+    # };
 
     ".local/share/nautilus" = {
       source = ./configs/nautilus;
