@@ -544,6 +544,13 @@ bind-key h select-pane -L
 bind-key j select-pane -D
 bind-key k select-pane -U
 bind-key l select-pane -R
+
+set-option -g set-titles on
+set-option -g set-titles-string "#T"
+bind-key -T copy-mode-vi v send -X begin-selection
+
+
+run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
 '';
   };
   programs.proxychains = {
