@@ -16,7 +16,7 @@ in {
     (args:{
       wayland.windowManager.hyprland  = {
         enable = true;
-        package = unstable.hyprland;
+        package = pkgs.unstable.hyprland;
         plugins = [
           pkgs.unstable.hyprlandPlugins.hy3
           # inputs.hy3.packages.x86_64-linux.hy3

@@ -710,7 +710,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       # pr229886.amdgpu-pro-libs.opengl
       # pr229886.amdgpu-pro-libs.prefixes
       # unstable.amf-headers
-      pr314293.tdlib
+      # pr314293.tdlib
       nixfmt-classic
       gnome-themes-extra
       # python2
