@@ -63,6 +63,15 @@ in {
             new-tab = "<Primary>t";
             next-tab = "<Alt>l";
             previous-tab = "<Alt>h";
+            switch-tab1 = "<Alt>1";
+            switch-tab3 = "<Alt>3";
+            switch-tab4 = "<Alt>4";
+            switch-tab5 = "<Alt>5";
+            switch-tab6 = "<Alt>6";
+            switch-tab7 = "<Alt>7";
+            switch-tab8 = "<Alt>8";
+            switch-tab9 = "<Alt>9";
+            switch-tab10 = "<Alt>0";
           };
 
           "style/background" = {

@@ -5,10 +5,11 @@
     "output": "DP-3",
     "modules-left": [
       "hyprland/workspaces",
-      "idle_inhibitor"
+      "idle_inhibitor",
+      "mpris"
     ],
     "modules-center": [
-      "clock"
+      "clock",
     ],
     "modules-right": [
       // "custom/humpool",
