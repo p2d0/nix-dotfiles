@@ -16,7 +16,7 @@ in {
       dconf = {
         enable = true;
         settings = {
-          "general" = {
+          "apps/guake/general" = {
             abbreviate-tab-names = false;
             compat-delete = "delete-sequence";
             display-n = 0;
@@ -52,11 +52,11 @@ in {
             window-width = 100;
           };
 
-          "keybindings/global" = {
+          "apps/guake/keybindings/global" = {
             show-hide = "F12";
           };
 
-          "keybindings/local" = {
+          "apps/guake/keybindings/local" = {
             close-tab = "<Primary>w";
             move-tab-left = "<Primary><Alt>h";
             move-tab-right = "<Primary><Alt>l";
@@ -64,6 +64,7 @@ in {
             next-tab = "<Alt>l";
             previous-tab = "<Alt>h";
             switch-tab1 = "<Alt>1";
+            switch-tab2 = "<Alt>2";
             switch-tab3 = "<Alt>3";
             switch-tab4 = "<Alt>4";
             switch-tab5 = "<Alt>5";
@@ -74,18 +75,17 @@ in {
             switch-tab10 = "<Alt>0";
           };
 
-          "style/background" = {
+          "apps/guake/style/background" = {
             transparency = 90;
           };
 
-          "style/font" = {
+          "apps/guake/style/font" = {
             allow-bold = true;
             bold-is-bright = false;
             palette = "#000000000000:#cccc00000000:#4e4e9a9a0606:#c4c4a0a00000:#34346565a4a4:#757550507b7b:#060698209a9a:#d3d3d7d7cfcf:#555557575353:#efef29292929:#8a8ae2e23434:#fcfce9e94f4f:#72729f9fcfcf:#adad7f7fa8a8:#3434e2e2e2e2:#eeeeeeeeecec:#ffffffffffff:#000000000000";
             palette-name = "Tango";
             style = "Noto Sans Mono 10";
           };
-
         };
       };
     }
