@@ -142,6 +142,8 @@
       ffmpeg
       peco
       xclip
+      mc
+      ranger
       xdotool
       tldr
       # TODO THEME

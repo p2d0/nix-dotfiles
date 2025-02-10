@@ -599,7 +599,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
   #   };
   # };
 
-  modules.trex.enable = false;
+  modules.trex.enable = true;
   modules.singbox.enable = false;
   modules.amnezia.enable = true;
   modules.fonts.enable = true;
