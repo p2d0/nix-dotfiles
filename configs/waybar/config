@@ -5,8 +5,8 @@
     "output": "DP-3",
     "modules-left": [
       "hyprland/workspaces",
-      "idle_inhibitor",
-      "mpris"
+      "idle_inhibitor"
+      // "mpris"
     ],
     "modules-center": [
       "clock",
