@@ -115,6 +115,12 @@ class Status:
         status = TOMATO if self.status == "work" else BREAK
         if not self.active:
             status = PAUSE
+        stream_status = "СТОИМ" if self.status == "work" else "СИДИМ"
+        if not self.active:
+            stream_status = "ПАУЗА"
+        output = f" ВСЕГО СТОЯ: {self.total_time_today()} \n СЕЙЧАС {stream_status} {self.timer}\n"
+        with open("/tmp/pomo.txt", "w") as file:
+            file.write(output)
         sys.stdout.write(f" {CLOCK} {self.total_time_today()} {TOMATO} {self.pomocount()} || {status} {self.timer} {self.title}\n")
         sys.stdout.flush()
 
