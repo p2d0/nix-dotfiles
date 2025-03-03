@@ -55,7 +55,7 @@ in {
       enable = true;
       wantedBy = [ "timers.target" ];
       timerConfig = {
-        OnCalendar = "*-*-* 07:00:00";
+        OnCalendar = "*-*-* 06:30:00";
         Unit = "trex_stop.service";
         Persistent = true;
       };
