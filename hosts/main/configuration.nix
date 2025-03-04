@@ -210,6 +210,12 @@
       layout = "us,ru";
       options = "grp:alt_shift_toggle,compose:ralt";
     };
+serverFlagsSection = ''
+  Option "BlankTime" "1"
+  Option "StandbyTime" "1"
+  Option "SuspendTime" "1"
+  Option "OffTime" "1"
+'';
     #  deviceSection = ''
     #      Option          "TearFree" "true"
     # '';
@@ -255,12 +261,39 @@
 
   services.displayManager = {
     enable = true;
+    defaultSession = "hyprland";
+
     sddm.enable = true;
     sddm.package = pkgs.kdePackages.sddm;
+    sddm.settings = {
+      X11 = {
+        ServerArguments="-s 1 -logfile /tmp/x111.log";
+      };
+    };
     sddm.extraPackages = [
       pkgs.sddm-astronaut
     ];
-    sddm.wayland.enable = true;
+    sddm.wayland.enable = false;
+    sddm.wayland.compositorCommand =
+      let
+        xcfg = config.services.xserver;
+        westonIni = (pkgs.formats.ini { }).generate "weston.ini" {
+          libinput = {
+            enable-tap = config.services.libinput.mouse.tapping;
+            left-handed = config.services.libinput.mouse.leftHanded;
+          };
+          core = {
+            idle-time = 15;
+          };
+          keyboard = {
+            keymap_model = xcfg.xkb.model;
+            keymap_layout = xcfg.xkb.layout;
+            keymap_variant = xcfg.xkb.variant;
+            keymap_options = xcfg.xkb.options;
+          };
+        };
+      in
+      "${pkgs.lib.getExe pkgs.weston} --idle-time=5 --shell=kiosk -c ${westonIni}";
     sddm.theme = "sddm-astronaut-theme";
     # enable = true;
     # defaultSession = "Hyprland";
@@ -376,8 +409,8 @@
         "00 20 * * * andrew /etc/nixos/update_ip.sh"
         # "00 23 * * * andrew /home/andrew/Dropbox/miner_enable.sh"
         # "00 7 * * * andrew /home/andrew/Dropbox/miner_disable.sh"
-        "50 6 * * * andrew /etc/nixos/play_alsa_alarm.sh"
-        "30 7 * * * andrew /etc/nixos/stop_alarm.sh"
+        "45 6 * * * andrew /etc/nixos/play_alsa_alarm.sh"
+        "30 7 * * * root /etc/nixos/stop_alarm.sh"
         "00 20 * * * andrew fish -c 'sync_repos'"
         "0,5,10,15,20,25,30,35,40,45,50,55 * * * * andrew sleep 12 ; wget --no-check-certificate -O - https://freedns.afraid.org/dynamic/update.php?RnBTMHFiQlhHWnVmUXpNYmtLWlQ0ZXB5OjIyMTIzNjM3 >> /tmp/freedns_ug_kyrgyzstan_kg.log 2>&1 &"
       ];
@@ -631,6 +664,9 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       '';
     };
   };
+#  environment.extraInit = ''
+#xset dpms 15 15 15
+#'';
 
   modules.taffybar.enable = false;
   environment.systemPackages = with pkgs;
@@ -660,6 +696,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
         themeConfig = {
           FullBlur = true;
           BlurRadius = 25;
+          PasswordFocus = false;
         };
       })
       poetry
