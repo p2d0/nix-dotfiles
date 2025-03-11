@@ -153,6 +153,11 @@
     extraConfig = {
       core.autocrlf = false;
       core.trustctime = false;
+      url = {
+        "git@github.com:"= {
+          insteadOf = "https://github.com/";
+        };
+      };
     };
     aliases = {
       coa = "!git add -A && git commit -m";

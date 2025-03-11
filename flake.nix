@@ -29,7 +29,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     compfy.url = "github:allusive-dev/compfy";
     spl3g-config.url = "github:spl3g/nixfiles";
-    zen-browser.url = "github:0xc000022070/zen-browser-flake?rev=7868f1c54b7f8e09be194aaa0934791596df1ea1";
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
     nixpkgs-amnezia.url = "github:averyanalex/nixpkgs/amneziawg";
     hy3 = {
       url = "github:outfoxxed/hy3";
