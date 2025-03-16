@@ -976,11 +976,13 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       # evolution
       nodejs
       iconpack-obsidian
+      kdePackages.xwaylandvideobridge
       (pkgs.wrapOBS {
         plugins = with pkgs.obs-studio-plugins; [
           obs-gstreamer
           obs-vkcapture
           obs-vaapi
+          wlrobs
           droidcam-obs
         ];
       })
