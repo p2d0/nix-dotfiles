@@ -7,7 +7,7 @@
 
 let
   pname = "osu-lazer-bin";
-  version = "2025.310.0";
+  version = "2025.321.0";
 
   src = {
     aarch64-darwin = fetchzip {
@@ -22,7 +22,7 @@ let
     };
     x86_64-linux = fetchurl {
       url = "https://github.com/ppy/osu/releases/download/${version}/osu.AppImage";
-      hash = "sha256-DQQMgG4lQLonKvmQSJgGqNl1RaVPDVLfqgVeN7JLIkM=";
+      hash = "sha256-mNxoEx/wgJ1OUm7y9JLd5vHSwfcB49QjKDVQWZaMDJQ=";
     };
   }.${stdenv.system} or (throw "${pname}-${version}: ${stdenv.system} is unsupported.");
 
