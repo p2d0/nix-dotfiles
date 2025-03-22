@@ -2,15 +2,15 @@
 # 
 # This is your personal gimprc file.  Any variable defined in this file takes
 # precedence over the value defined in the system-wide gimprc:
-# /nix/store/5f8dg1h2n6al420i8rjjxyxkfibwi8kh-gimp-2.10.38/etc/gimp/2.0/gimprc
+# /nix/store/0gynpb5ys81cxhayswcbpyp2g7yhqvwd-gimp-2.10.38/etc/gimp/2.0/gimprc
 # Most values can be set within GIMP by changing some options in the
 # Preferences dialog.
 
 (language "en_US")
 (import-raw-plug-in "${gimp_plug_in_dir}/plug-ins/file-raw-placeholder/file-raw-placeholder")
 (transparency-type light-checks)
-(monitor-xresolution 102)
-(monitor-yresolution 102)
+(monitor-xresolution 81)
+(monitor-yresolution 81)
 (default-view
     (show-menubar yes)
     (show-statusbar yes)
