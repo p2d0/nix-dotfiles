@@ -673,6 +673,8 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
     [
       (pkgs.python3.withPackages (ps: [
         ps.python-lsp-server
+        ps.python-telegram-bot
+        ps.python-dotenv
         ps.pytest
         ps.python-miio
         ps.debugpy
