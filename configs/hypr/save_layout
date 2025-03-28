@@ -1,0 +1,13 @@
+#!/bin/sh
+# Saves current workspace and windows layout for loading to resume last session.
+mkdir -p /etc/nixos/configs/hypr/layouts
+
+# Save `hyprctl clients`
+hyprctl -j clients > /etc/nixos/configs/hypr/layouts/$(date +%Y-%m-%d_%H-%M-%S-%N).json
+
+# Clean up old layouts with a move to layouts/old/date, and clean layouts/old/ by set duration to keep
+RM_LIST=$(for i in $(ls --sort time /etc/nixos/configs/hypr/layouts | tail -n +5); do echo "/etc/nixos/configs/hypr/layouts/$i";  done)
+
+if [ -n "$RM_LIST" ]; then
+	rm $RM_LIST
+fi

@@ -1,0 +1,197 @@
+#!/run/current-system/sw/bin/python
+"""
+Load the Hyprland layout, defaulting to latest in layout history and assumes
+that the layout should not be loaded if the app is already running. This is
+primarily for restoring sessions after logging back into a new Hyprland session
+where the applications are assumed to restore their prior windows and it is up
+to this script to move those windows back into the place they were before.
+
+layout saved by `~/.config/hypr/save_layout`
+Environment vars set in `~/.config/hypr/hyprland.conf`
+"""
+# TODO handle apps that don't save state since last close, but are to be run
+# per window, such as most terminals
+
+import argparse
+import glob
+import json
+import os
+import subprocess
+
+import logging
+logger = logging.getLogger(__name__)
+
+
+# TODO logger and log level arg
+# TODO log path to log warnings or debug data etc.
+
+
+def get_app_to_windows(clients_json, keys=None):
+    if keys is None:
+        keys = ['class', 'title']
+    apps = {}
+    for client in clients_json:
+        app = client['class'].lower()
+        if app not in apps:
+            apps[app] = {tuple(client[k] for k in keys): client}
+        else:
+            # NOTE Will error here if multiple matches!
+            apps[app][tuple(client[k] for k in keys)] = client
+    return apps
+
+
+def load_layout(
+    filepath,
+    include_apps=None,
+    layout_existing=False,
+    run_apps=True,          # TODO make set/map for app specific run rules
+    run_per_windows=None,   # TODO run the app per window, rather than once
+    keys=None,
+):
+    if keys is None:
+        keys = ['class', 'title']
+
+    # app set ignore case to load from layout
+    # Get unique apps & windows
+    with open(filepath) as openf:
+        apps = get_app_to_windows(json.load(openf), keys)
+
+    # Get current open clients in case useful info
+    before_load_apps = get_app_to_windows(
+        json.loads(
+            subprocess.run(
+                ['hyprctl', '-j', 'clients'],
+                capture_output=True,
+            ).stdout
+        ),
+        keys,
+    )
+
+    # TODO may wanna make this an env
+    loading_id = 1337
+
+    # For each unique app, start the app and wait briefly for opening, then move opened windows to designated locations if in the layout file, otherwise, leave in the temporary workspace for the user to manage.
+    # TODO could be parallelized
+    unassigned = False
+    for app, windows in apps.items():
+        if app in before_load_apps:
+            logger.warning('`%s` was running prior to loading layout.', app)
+            if not layout_existing:
+                continue
+        else:
+            # Start application, if not already started. Important these don't get interuptted!
+            # TODO replace the workspace ids with those known not in to be loaded or before loaded!
+            subprocess.run(['hyprctl', f'dispatch workspace {loading_id}'])
+            subprocess.run(['hyprctl', f'dispatch renameworkspace {loading_id} Loading {app}...'])
+            if run_apps:
+                subprocess.run(f'hyprctl dispatch exec "[workspace name:Loading {app}... silent;]" {app}', shell=True)
+
+        # Sleep to wait to complete loading. TODO replace with better listener.
+        subprocess.run(['sleep', '4'])
+
+        # Get new window data # TODO would be nice to target just tmp workspace
+        loaded_apps  = get_app_to_windows(
+            json.loads(
+                subprocess.run(
+                    ['hyprctl', '-j', 'clients'],
+                    capture_output=True,
+                ).stdout
+            ),
+            keys,
+        )
+
+        # Matches determined by keys, defaulting to window class and title.
+        # Matches are moved to layout's workspace
+        updated_workspaces = set() # To avoid re-updating
+        unassigned = False
+        for target, window in windows.items():
+            # Get target data
+            workspace_id = window['workspace']['id']
+            workspace_name = window['workspace']['name']
+            monitor = str(window['monitor'])
+
+            if target not in loaded_apps[app]:
+                # Unassigned windows sit in a tmp workspace for user to handle
+                logger.info('target %s not in loaded_apps', target)
+
+                subprocess.run(['hyprctl', f'dispatch renameworkspace {loading_id} Unassigned {app}'])
+                unassigned = True
+                continue
+
+            # Get source data
+            address = loaded_apps[app][target]['address']
+
+            subprocess.run(['hyprctl', f'dispatch movetoworkspacesilent {workspace_id},address:{address}'])
+
+            if workspace_id not in updated_workspaces:
+                updated_workspaces.add(workspace_id)
+                subprocess.run(['hyprctl', f'dispatch moveworkspacetomonitor {workspace_id} {monitor}'])
+                subprocess.run(['hyprctl', f'dispatch renameworkspace {workspace_id} {workspace_name}'])
+
+        if unassigned:
+            loading_id += 1
+
+        # TODO, now that all the windows are in their workspace, they need
+        # manipulated to match the desired layout.
+        # Use monitor resolution and each window's 'at' & 'size'
+
+    # TODO consider changing window title to Done to inform user no longer loading.
+    #if not unassigned:
+    #    subprocess.run(['hyprctl', f'dispatch renameworkspace {loading_id} Finished {app}'])
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(prog='load_hypr_layout.py')
+
+    home = os.environ['HOME']
+    base_dir = f'{home}/.config/hypr'
+
+    parser.add_argument(
+        '-p',
+        '--path',
+        default=f'{base_dir}/layout_history'
+    )
+    # TODO enable nargs for multiple apps given, rather than only one
+    parser.add_argument(
+        '-a',
+        '--include_apps',
+        #nargs='*',
+        #help='List of app names to be loaded (case insensitive)',
+        help='Specific app name to be loaded (case insensitive)',
+    )
+
+    parser.add_argument('--layout_existing', action='store_true')
+    parser.add_argument('--no_run_apps', dest='run_apps', action='store_false')
+    parser.set_defaults(run_apps=True)
+
+    parser.add_argument(
+        '--log',
+        help='Log file or directory to write any logging to.',
+        default=f'{base_dir}/load_layout_logs/'
+    )
+    # TODO Log level
+    # TODO log output Set args.load_layout_logs = f'{args.load_layout_logs}/test.log'
+
+    # TODO workspace_id arg to output a given layout on a specific workspace.
+    # TODO without executing/reopening apps, reorder into desired layout.
+
+    args = parser.parse_args()
+
+    if os.path.isdir(args.path):
+        # Assumes is layout history and uses the most recent file by filesystem datetime
+        layouts = glob.glob(f'{args.path}/*')
+        args.path = max(layouts, key=os.path.getctime)
+    elif not os.path.isfile(args.path):
+        raise ValueError(f'{args.path} is neither a directory or a file.')
+
+    if args.include_apps is not None:
+        args.include_apps = set([args.include_apps])
+
+    load_layout(
+        args.path,
+        args.include_apps,
+        args.layout_existing,
+        args.run_apps,
+        #run_per_windows=None,
+        #keys=None,
+    )
