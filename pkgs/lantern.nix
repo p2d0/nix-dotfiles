@@ -1,5 +1,6 @@
-{stdenv,pkgs, lib}:
+# {stdenv,pkgs, lib}:
 
+with import <nixpkgs> { config.allowUnfree = true;};
 with pkgs;
 let libpcap =
       (pkgs.libpcap.overrideAttrs (old: {
@@ -9,11 +10,11 @@ let libpcap =
 in stdenv.mkDerivation rec {
 
   pname = "lantern";
-  version = "7.3.6";
+  version = "7.9.5";
 
   src = fetchurl {
     url = "https://s3.amazonaws.com/lantern/lantern-installer-${version}-64-bit.deb";
-    sha256 = "sha256-uIgd2kxuq/t4ddiegKUbTKG6XRG3Uw1i4UvqGDm6WBI=";
+    sha256 = "sha256-wQefu6MminQyI73tF5qRreKIc+vh7dI9ecCrfC2t46E=";
   };
 
   unpackCmd = "${dpkg}/bin/dpkg-deb -x $curSrc .";
@@ -26,10 +27,12 @@ in stdenv.mkDerivation rec {
   buildInputs = [
     libpcap
     libappindicator-gtk3
+    libayatana-appindicator
   ];
 
   runtimeDependencies = [
     libpcap
+    libayatana-appindicator
     libappindicator-gtk3
   ];
 
@@ -43,7 +46,9 @@ in stdenv.mkDerivation rec {
     wrapProgram $out/lib/lantern/lantern-binary \
     --prefix PATH ":" ${lib.makeBinPath [
       libpcap
+      libayatana-appindicator
       libappindicator-gtk3
+
     ]}
   '';
 
