@@ -85,7 +85,8 @@ in {
           slurp # screenshot functionality
           wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
           wf-recorder
-          (unstable.waybar.overrideAttrs(oldAttrs: rec {
+          # unstable.waybar
+          (waybar.overrideAttrs(oldAttrs: rec {
             patches = oldAttrs.patches ++ [
               ./waybar.patch
             ];

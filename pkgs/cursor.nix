@@ -9,7 +9,7 @@ let
   src = pkgs.fetchurl {
     # url = "https://download.todesktop.com/${appKey}/cursor-${version}-build-${buildKey}-x86_64.AppImage";
     url = "https://dl.todesktop.com/230313mzl4w4u92/linux/appImage/x64";
-    hash = "sha256-X/+6LtJzUJ6sx65agOYEfbVqmtakmc9xI6atVHTuM1o=";
+    hash = "sha256-5MGWJi8TP+13jZf6YMMUU5uYY/3OBTFxtGpirvgj8ZI=";
   };
   appimageContents = appimageTools.extract { inherit pname version src; };
 in

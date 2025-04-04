@@ -1,6 +1,6 @@
-# {stdenv,pkgs, lib}:
+{stdenv,pkgs, lib}:
 
-with import <nixpkgs> { config.allowUnfree = true;};
+# with import <nixpkgs> { config.allowUnfree = true;};
 with pkgs;
 let libpcap =
       (pkgs.libpcap.overrideAttrs (old: {

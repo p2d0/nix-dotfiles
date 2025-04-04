@@ -318,7 +318,7 @@ serverFlagsSection = ''
   modules.ilzabot.enable = false;
   modules.hjkl.enable = true;
   modules.printing3d.enable = true;
-  modules.warp.enable = false;
+  modules.warp.enable = true;
   modules.keyrings.enable = true;
 
   users.users.${config.user} = {
@@ -608,7 +608,8 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
   modules.mihomo = {
     enable = true;
     configFile = "/home/${config.user}/Dropbox/mihomo/config.yaml";
-    package = pkgs.old-24-05.mihomo;
+    package = pkgs.unstable.mihomo;
+    # package = pkgs.old-24-05.mihomo;
     tunMode = true;
   };
 
@@ -944,7 +945,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       gedit
       ntfs3g
       # gnome.gnome-boxes
-      unstable.rustdesk
+      # unstable.rustdesk
       my.trex
       unstable.qbittorrent
       # qbittorrent-qt5
