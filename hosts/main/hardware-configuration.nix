@@ -37,6 +37,12 @@
       fsType = "ext4";
     };
 
+  fileSystems."/mnt/new" =
+    { device = "/dev/disk/by-uuid/e7b71064-63c1-4f01-9bef-b961ed405b97";
+      options = [ "noatime" ];
+      fsType = "ext4";
+    };
+
   # TODO fix permissions
   # https://superuser.com/questions/174776/modify-fstab-entry-so-all-users-can-read-and-write-to-an-ext4-volume
   fileSystems."/mnt/md127" =
@@ -47,12 +53,12 @@
 
   swapDevices = [
     {
-      device = "/swapfile2";
-      size = 64 * 1024;
-    }
-    {
       device = "/dev/disk/by-uuid/6461bae0-3f65-4d32-9a2f-696b57250ab2";
       # size = 96*1024;
+    }
+    {
+      device = "/swapfile2";
+      size = 16 * 1024;
     }
   ];
 

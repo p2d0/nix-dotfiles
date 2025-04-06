@@ -137,7 +137,7 @@ direnv_layout_dir() {
 
       # TODO is it a good way?
       systemd.user.tmpfiles.rules = [
-        "L /home/${config.user}/Downloads - - - - /mnt/md127/Downloads"
+        "L /home/${config.user}/Downloads - - - - /mnt/new/Downloads"
         "L /home/${config.user}/Documents - - - - /mnt/md127/Documents"
         "L /home/${config.user}/Videos - - - - /mnt/md127/Videos"
         "L /home/${config.user}/.ssh - - - - /mnt/md127/backup_arch/.ssh"

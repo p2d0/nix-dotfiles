@@ -40,7 +40,7 @@ in {
       # https://stackoverflow.com/questions/68523367/in-nixpkgs-how-do-i-override-files-of-a-package-without-recompilation/68523368#68523368
       # https://discourse.nixos.org/t/overriding-a-package-without-rebuilding-it/13898/6
 
-      freecad
+      # freecad
       openscad
 
       # (pkgs.symlinkJoin {

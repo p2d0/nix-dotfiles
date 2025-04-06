@@ -318,7 +318,7 @@ serverFlagsSection = ''
   modules.ilzabot.enable = false;
   modules.hjkl.enable = true;
   modules.printing3d.enable = true;
-  modules.warp.enable = true;
+  modules.warp.enable = false;
   modules.keyrings.enable = true;
 
   users.users.${config.user} = {
@@ -401,7 +401,6 @@ serverFlagsSection = ''
     cron = {
       enable = true;
       systemCronJobs = [
-        "*/30 11-21 * * * andrew DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /run/current-system/sw/bin/notify-send 'Update daily'"
         # "30 20 * * * andrew fish -c 'update-system'"
         "00 23 * * * andrew DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /run/current-system/sw/bin/notify-send 'Sleep'"
         "00 21 * * * root /etc/nixos/shutdown.sh"
@@ -418,7 +417,7 @@ serverFlagsSection = ''
   };
 
   nix.settings.auto-optimise-store = true;
-  nix.gc.automatic = false;
+  nix.gc.automatic = true;
   nix.gc.options = "--delete-older-than 1d";
 
   security.polkit.extraConfig = ''
@@ -707,8 +706,8 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       texliveMedium
       nix-index
       sshfs
-      mattermost-desktop
-      charles
+      # mattermost-desktop
+      # charles
       gucharmap
       autokey
       alsa-utils
@@ -730,7 +729,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       gcc.cc.libgcc.lib
       keepassxc
       remmina
-      unstable.aider-chat
+      # unstable.aider-chat
       pkgs.libayatana-appindicator
       pkgs.libayatana-appindicator-gtk3
       conda
@@ -765,11 +764,11 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       helvum
       # unstable.cloudflare-warp
       nmap
-      skypeforlinux
+      # skypeforlinux
       neovide
-      my.hiddify
+      # my.hiddify
       lazygit
-      gmsh
+      # gmsh
       # unstable.microsoft-edge
       calculix
       # pr229886.amdgpu-pro-libs.amf
@@ -794,8 +793,8 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       #   # ];
       # })
       pciutils
-      musescore
-      deluge
+      # musescore
+      # deluge
       usbutils
       unstable.pmbootstrap
       # unstable.davinci-resolve
@@ -805,7 +804,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       heroic
       killall
       xdo
-      floorp
+      # floorp
       inotify-tools
       # (import (fetchTarball
       #   "https://github.com/aaronjanse/nix-eval-lsp/archive/master.tar.gz"))
@@ -859,7 +858,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       sidequest
       xorg.xwininfo
       xboxdrv
-      mangohud
+      # mangohud
       lua
       apktool
       apksigner
@@ -925,7 +924,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       # (callPackage ./pkgs/psiphon.nix { })
       speedcrunch
       discord
-      legcord
+      # legcord
       # unstable.tdesktop
       # (unstable.qt6Packages.callPackage /etc/nixos/pkgs/tdesktop/tdesktop.nix {
       #   abseil-cpp = unstable.abseil-cpp_202111;
@@ -949,7 +948,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       my.trex
       unstable.qbittorrent
       # qbittorrent-qt5
-      epiphany
+      # epiphany
       # tor-browser-bundle-bin
       # looking-glass-client
       # unstable.tg
@@ -993,10 +992,10 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       pkgs.onlyoffice-bin
       koreader
       stremio
-      vlc
+      # vlc
       gsettings-desktop-schemas
       wineWowPackages.stable
-      whatsapp-for-linux
+      # whatsapp-for-linux
       libvirt
       dunst
       android-tools

@@ -27,7 +27,7 @@ in {
         [
           pkgs.v2ray
           pkgs.qv2ray
-          pkgs.unstable.nekoray
+          # pkgs.unstable.nekoray
           pkgs.xray
 
           # my.psiphon
