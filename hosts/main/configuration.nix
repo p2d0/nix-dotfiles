@@ -639,7 +639,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
   modules.amnezia.enable = true;
   modules.fonts.enable = true;
   modules.guake.enable = true;
-  modules.byedpi.enable = true;
+  modules.byedpi.enable = false;
   modules.timed-shutdown.enable = false;
   modules.timed-shutdown.time = "23:00:00";
   modules.darkman.enable = true;
@@ -715,7 +715,8 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       # my.amneziawg-tools
       # my.amneziawg-go
       wget
-      rnnoise-plugin
+      unstable.rnnoise-plugin
+
       clang
       file
       clojure
@@ -931,7 +932,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       # })
       # unstable.tdesktop
       # telegram-desktop_git
-      master.telegram-desktop
+      unstable.telegram-desktop
       nil
       unstable.nixd
       jpegoptim
