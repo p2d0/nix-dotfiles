@@ -932,7 +932,17 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       # })
       # unstable.tdesktop
       # telegram-desktop_git
-      unstable.telegram-desktop
+      # (telegram-desktop.overrideAttrs(oldAttrs: rec {
+      #   name = "tdesktop";
+      #   version = "p5.13.1";
+      #   src = fetchFromGitHub {
+      #     owner = "p2d0";
+      #     repo = "tdesktop";
+      #     rev = "a2422d1a49d9ac4cf1387312418e1772efb6195b";
+      #     fetchSubmodules = true;
+      #     sha256 = "sha256-/x7VZssjPk17gYSXxU/4KdHSdOjxW8ncWxItwj7lA/Y=";};
+      # }))
+      tdesktop_p2d0
       nil
       unstable.nixd
       jpegoptim

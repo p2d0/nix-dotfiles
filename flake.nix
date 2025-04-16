@@ -23,6 +23,9 @@
     nixos-master.url = "github:nixos/nixpkgs/master";
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     hyprland.url = "github:hyprwm/Hyprland";
+    tdesktop = {
+        url = "git+https://github.com/p2d0/tdesktop.git?ref=refs/heads/p2d0&allRefs=1&submodules=1";
+    };
 
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     poetry2nix.url = "github:nix-community/poetry2nix";
@@ -44,6 +47,7 @@
       nixpkgs-24-05,
       poetry2nix,
       chaotic,
+      tdesktop,
       zen-browser,
       compfy,
       # hy3,
@@ -106,6 +110,7 @@
                 master = import nixos-master { config = self.config; };
                 compfy = compfy.packages.${system}.compfy;
                 zen-browser = zen-browser.packages.${system}.default;
+                tdesktop_p2d0 = tdesktop.packages.${system}.default;
                 # my = lib.my.mapModules ./pkgs (p:
                 #   let eval = builtins.tryEval (self.callPackage p {});
                 #   in
