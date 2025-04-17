@@ -4136,11 +4136,11 @@
       },
       "locked": {
         "allRefs": true,
-        "lastModified": 1744815182,
-        "narHash": "sha256-mBk4Mj7soRh9DQnt9TcQBZDoJ830zYxb/BoqXS3v3+4=",
+        "lastModified": 1744860443,
+        "narHash": "sha256-HZW+eSIUYUjrNGLuzylvd081lnj0znhEhu0lDZ0Ibww=",
         "ref": "refs/heads/p2d0",
-        "rev": "e4835bd86393ef13eeb10f1c0f6fe1964bf43d4f",
-        "revCount": 19544,
+        "rev": "2ba3a1f27efa13e39c1ef731828bb621af7572f3",
+        "revCount": 19545,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/p2d0/tdesktop.git"

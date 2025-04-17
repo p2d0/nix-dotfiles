@@ -17,3 +17,4 @@ htmlcov
 *.sqlite
 
 configs/fcitx5/profile
+.aider*

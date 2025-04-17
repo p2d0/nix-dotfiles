@@ -730,7 +730,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       gcc.cc.libgcc.lib
       keepassxc
       remmina
-      # unstable.aider-chat
+      unstable.aider-chat
       pkgs.libayatana-appindicator
       pkgs.libayatana-appindicator-gtk3
       conda
