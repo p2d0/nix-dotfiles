@@ -2,7 +2,7 @@
 # 
 # This is your personal gimprc file.  Any variable defined in this file takes
 # precedence over the value defined in the system-wide gimprc:
-# /nix/store/0gynpb5ys81cxhayswcbpyp2g7yhqvwd-gimp-2.10.38/etc/gimp/2.0/gimprc
+# /nix/store/ybb3w76jckxnyn4b0r8aia5acfjlp6da-gimp-2.10.38/etc/gimp/2.0/gimprc
 # Most values can be set within GIMP by changing some options in the
 # Preferences dialog.
 
