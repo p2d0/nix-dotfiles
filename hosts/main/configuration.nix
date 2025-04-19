@@ -31,6 +31,7 @@
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
+    # wlr.enable = true;
     # I think the name under config has to match up with the value of XDG_CURRENT_DESKTOP.
     # kde portal by default, fallback to anything for KDE and i3
     # I don't set this for KDE in my personal config and it seems to work fine.
@@ -91,7 +92,7 @@
 
   environment.variables = { ROC_ENABLE_PRE_VEGA = "1"; };
 
-  # boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.unstable.linuxPackages_zen;
 
 #  boot.loader.systemd-boot.enable = false;
 #  boot.loader.grub.useOSProber = true;
@@ -166,11 +167,12 @@
   hardware.nvidia = {
     modesetting.enable = true;
     nvidiaSettings = true;
+    package = pkgs.unstable.linuxKernel.packages.linux_zen.nvidia_x11;
     powerManagement = {
       enable = true;
       finegrained = false;
     };
-    open = false;
+    open = true;
   };
 
   services.xserver = {
@@ -636,7 +638,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
 
   modules.trex.enable = true;
   modules.singbox.enable = false;
-  modules.amnezia.enable = true;
+  modules.amnezia.enable = false;
   modules.fonts.enable = true;
   modules.guake.enable = true;
   modules.byedpi.enable = false;
@@ -769,6 +771,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       neovide
       # my.hiddify
       lazygit
+      mesa
       # gmsh
       # unstable.microsoft-edge
       calculix
@@ -991,7 +994,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       iconpack-obsidian
       kdePackages.xwaylandvideobridge
       (pkgs.wrapOBS {
-        plugins = with pkgs.obs-studio-plugins; [
+        plugins = with pkgs.unstable.obs-studio-plugins; [
           obs-gstreamer
           obs-vkcapture
           obs-vaapi

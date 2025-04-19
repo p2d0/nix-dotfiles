@@ -19,10 +19,16 @@
     nixpkgs = { url = "github:nixos/nixpkgs/nixos-24.11"; };
     nixpkgs-23 = { url = "github:nixos/nixpkgs/nixos-23.11"; };
     nixpkgs-24-05 = { url = "github:nixos/nixpkgs/nixos-24.05"; };
+    nixpkgs-hyprland.url = "github:nixos/nixpkgs/762a398892576efcc76fb233befbd58c2cef59e0";
+    nixpkgs-hy3.url = "github:nixos/nixpkgs/18dd725c29603f582cf1900e0d25f9f1063dbf11";
     nixos-unstable.url = "nixpkgs/nixos-unstable";
+
     nixos-master.url = "github:nixos/nixpkgs/master";
     home-manager.url = "github:nix-community/home-manager/release-24.11";
-    hyprland.url = "github:hyprwm/Hyprland";
+    # hyprland.url = "github:hyprwm/Hyprland/";
+    hyprland = {
+      url = "git+https://github.com/hyprwm/Hyprland.git?ref=v0.47.0";
+    };
     tdesktop = {
         url = "git+https://github.com/p2d0/tdesktop.git?ref=refs/heads/p2d0&allRefs=1&submodules=1";
     };
@@ -35,7 +41,7 @@
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     nixpkgs-amnezia.url = "github:averyanalex/nixpkgs/amneziawg";
     hy3 = {
-      url = "github:outfoxxed/hy3";
+      url = "github:outfoxxed/hy3?ref=hl0.47.0-1";
       inputs.hyprland.follows = "hyprland";
     };
   };
@@ -51,6 +57,8 @@
       zen-browser,
       compfy,
       # hy3,
+      nixpkgs-hyprland,
+      nixpkgs-hy3,
       nixos-unstable,
       nixos-master,
       hyprland,
@@ -107,6 +115,8 @@
                 old-23 = import nixpkgs-23 { config = self.config; };
                 old-24-05 = import nixpkgs-24-05 { config = self.config; };
                 unstable = import nixos-unstable { config = self.config; };
+                nixpkgs-hyprland = import nixpkgs-hyprland { config = self.config; };
+                nixpkgs-hy3 = import nixpkgs-hy3 { config = self.config; };
                 master = import nixos-master { config = self.config; };
                 compfy = compfy.packages.${system}.compfy;
                 zen-browser = zen-browser.packages.${system}.default;
@@ -161,7 +171,7 @@
                     ];
                   }
                   home-manager.nixosModules.home-manager
-                  hyprland.nixosModules.default
+                  # hyprland.nixosModules.default
                   ./home.nix
                   ./hosts/main/configuration.nix
                 ];

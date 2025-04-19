@@ -16,9 +16,13 @@ in {
     (args:{
       wayland.windowManager.hyprland  = {
         enable = true;
-        package = pkgs.unstable.hyprland;
+        # package = pkgs.hyprland;
+        # package = inputs.hyprland.packages.x86_64-linux.hyprland;
+        # package
+        package = pkgs.nixpkgs-hyprland.hyprland;
+        # portalPackage = pkgs.unstable.xdg-desktop-portal-hyprland;
         plugins = [
-          pkgs.unstable.hyprlandPlugins.hy3
+          pkgs.nixpkgs-hy3.hyprlandPlugins.hy3
           # inputs.hy3.packages.x86_64-linux.hy3
         ];
         systemd.enable = true;
@@ -73,7 +77,6 @@ in {
         enable = true;
         config.common.default = "*";
         extraPortals = [
-          # pkgs.xdg-desktop-portal-hyprland
         ];
       };
       environment.systemPackages = with pkgs;

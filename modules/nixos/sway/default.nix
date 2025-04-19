@@ -42,9 +42,9 @@ in {
     services.dbus.enable = true;
     xdg.portal = {
       enable = true;
-      wlr.enable = true;
+      # wlr.enable = true;
       # gtk portal needed to make gtk apps happy
-      extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland];
+      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     };
     # enable sway window manager
     programs.sway = {
@@ -54,6 +54,7 @@ in {
     environment.systemPackages = with pkgs; [
       sway
       dbus-sway-environment
+      xdg-desktop-portal-wlr
       configure-gtk
       wayland
       xdg-utils # for opening default programs when clicking links
