@@ -419,7 +419,7 @@ serverFlagsSection = ''
   };
 
   nix.settings.auto-optimise-store = true;
-  nix.gc.automatic = true;
+  nix.gc.automatic = false;
   nix.gc.options = "--delete-older-than 1d";
 
   security.polkit.extraConfig = ''

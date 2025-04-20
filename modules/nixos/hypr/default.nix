@@ -19,10 +19,10 @@ in {
         # package = pkgs.hyprland;
         # package = inputs.hyprland.packages.x86_64-linux.hyprland;
         # package
-        package = pkgs.nixpkgs-hyprland.hyprland;
+        package = pkgs.hyprland;
         # portalPackage = pkgs.unstable.xdg-desktop-portal-hyprland;
         plugins = [
-          pkgs.nixpkgs-hy3.hyprlandPlugins.hy3
+          pkgs.hyprlandPlugins.hy3
           # inputs.hy3.packages.x86_64-linux.hy3
         ];
         systemd.enable = true;

@@ -20,7 +20,7 @@
     nixpkgs-23 = { url = "github:nixos/nixpkgs/nixos-23.11"; };
     nixpkgs-24-05 = { url = "github:nixos/nixpkgs/nixos-24.05"; };
     nixpkgs-hyprland.url = "github:nixos/nixpkgs/762a398892576efcc76fb233befbd58c2cef59e0";
-    nixpkgs-hy3.url = "github:nixos/nixpkgs/18dd725c29603f582cf1900e0d25f9f1063dbf11";
+    nixpkgs-hy3.url = "github:nixos/nixpkgs/d98abf5cf5914e5e4e9d57205e3af55ca90ffc1d";
     nixos-unstable.url = "nixpkgs/nixos-unstable";
 
     nixos-master.url = "github:nixos/nixpkgs/master";
