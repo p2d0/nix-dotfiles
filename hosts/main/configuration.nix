@@ -1037,7 +1037,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       # my.natron-bin
       # unstable.natron
       unstable.scrcpy
-      yt-dlp
+      unstable.yt-dlp
       # pythonPackages.yt-dlp
       imagemagick
       # thunderbird
