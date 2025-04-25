@@ -149,9 +149,9 @@
   '';
 
   # users.users.andrew.extraGroups = ["corectrl" "gamemode"];
-  programs.corectrl ={
-    enable = true;
-  };
+  # programs.corectrl ={
+  #   enable = true;
+  # };
 
   programs.droidcam.enable = true;
   # programs.sway = {
@@ -312,13 +312,14 @@ serverFlagsSection = ''
   hardware.bluetooth.enable = true;
 
   modules.plymouth.enable = true;
+  modules.gamemode.enable = true;
   modules.silentboot.enable = true;
   modules.hypr.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   # TODO Move to home manager user config?
   modules.sway.enable = false;
   modules.ilzabot.enable = false;
-  modules.hjkl.enable = true;
+  modules.hjkl.enable = false;
   modules.printing3d.enable = true;
   modules.warp.enable = false;
   modules.keyrings.enable = true;
