@@ -650,9 +650,9 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
   modules.vm.enable = false;
   zramSwap.enable = true;
   # zramSwap.writebackDevice = "/dev/sdb1";
-  # services.journald.extraConfig = ''
-  #   SystemMaxUse=1G
-  # '';
+  services.journald.extraConfig = ''
+    SystemMaxUse=2G
+  '';
 
   environment.etc = {
     "wireplumber/policy.lua.d/11-bluetooth-policy.lua".text = ''
