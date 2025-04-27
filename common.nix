@@ -167,6 +167,7 @@
     enable = true;
   };
   modules.shell.fish.enable = true;
+  modules.gimp3-photoshop-shortcuts.enable = true;
 
   xdg.userDirs = {
     enable = true;

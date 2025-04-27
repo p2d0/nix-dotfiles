@@ -854,7 +854,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       # nixfmt
       # TODO FIX
       # (old-23.gimp.override { withPython = true; })
-      gimp
+      unstable.gimp3
       krita
       mpv
       libva-utils

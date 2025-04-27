@@ -28,6 +28,7 @@
             pkgs.SDL2
             pkgs.speex
             pkgs.flacpkgs.flac
+            pkgs.gamemode
 
             pkgs.libusb1
             pkgs.libsoup

@@ -26,9 +26,9 @@
     nixos-master.url = "github:nixos/nixpkgs/master";
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     # hyprland.url = "github:hyprwm/Hyprland/";
-    hyprland = {
-      url = "git+https://github.com/hyprwm/Hyprland.git?ref=v0.47.0";
-    };
+    # hyprland = {
+    #   url = "git+https://github.com/hyprwm/Hyprland.git?ref=v0.47.0";
+    # };
     tdesktop = {
         url = "git+https://github.com/p2d0/tdesktop.git?ref=refs/heads/p2d0&allRefs=1&submodules=1";
     };
@@ -40,10 +40,10 @@
     spl3g-config.url = "github:spl3g/nixfiles";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     nixpkgs-amnezia.url = "github:averyanalex/nixpkgs/amneziawg";
-    hy3 = {
-      url = "github:outfoxxed/hy3?ref=hl0.47.0-1";
-      inputs.hyprland.follows = "hyprland";
-    };
+    # hy3 = {
+    #   url = "github:outfoxxed/hy3?ref=hl0.47.0-1";
+    #   inputs.hyprland.follows = "hyprland";
+    # };
   };
 
   outputs = inputs @
@@ -61,7 +61,7 @@
       nixpkgs-hy3,
       nixos-unstable,
       nixos-master,
-      hyprland,
+      # hyprland,
       nixpkgs-amnezia,
       home-manager,
       spl3g-config,
