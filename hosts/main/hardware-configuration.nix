@@ -32,13 +32,13 @@
     };
 
   fileSystems."/mnt/old" =
-    { device = "/dev/disk/by-uuid/a8b905b6-7e2d-4274-b974-f460aeabdab7";
+    { device = "/dev/disk/by-id/ata-BRAVEEAGLE_SSD_240GB_AA00000000540-part1";
       options = [ "noatime" ];
       fsType = "ext4";
     };
 
   fileSystems."/mnt/new" =
-    { device = "/dev/disk/by-uuid/e7b71064-63c1-4f01-9bef-b961ed405b97";
+    { device = "/dev/disk/by-id/ata-XrayDisk_1TB_SSD_AA000000000000000117-part1";
       options = [ "noatime" "discard" "nodelalloc" "commit=60" ];
       fsType = "ext4";
     };

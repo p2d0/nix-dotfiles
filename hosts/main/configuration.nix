@@ -167,7 +167,7 @@
   hardware.nvidia = {
     modesetting.enable = true;
     nvidiaSettings = true;
-    package = pkgs.unstable.linuxKernel.packages.linux_zen.nvidia_x11;
+    # package = pkgs.unstable.linuxKernel.packages.linux_zen.nvidia_x11;
     powerManagement = {
       enable = true;
       finegrained = false;
@@ -772,6 +772,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       neovide
       # my.hiddify
       lazygit
+      ranger
       mesa
       # gmsh
       # unstable.microsoft-edge
