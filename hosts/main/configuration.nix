@@ -899,7 +899,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       calibre
       xorg.xdpyinfo
       unstable.postman
-      (brave.override {commandLineArgs = "--enable-wayland-ime";})
+      unstable.brave
       peco
       ffmpeg-full
       d-spy
