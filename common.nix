@@ -100,18 +100,18 @@
       "image/x-tga"= "org.gnome.eog.desktop";
       "image/x-xbitmap"= "org.gnome.eog.desktop";
       "image/heic"= "org.gnome.eog.desktop";
-      "x-scheme-handler/http" = "zen.desktop";
-      "x-scheme-handler/https" = "zen.desktop";
-      "x-scheme-handler/chrome" = "zen.desktop";
+      "x-scheme-handler/http" = "zen-beta.desktop";
+      "x-scheme-handler/https" = "zen-beta.desktop";
+      "x-scheme-handler/chrome" = "zen-beta.desktop";
       # Handler for custom uri
       "x-scheme-handler/tg" = "org.telegram.desktop.desktop";
-      "text/html" = "zen.desktop";
-      "application/x-extension-htm" = "zen.desktop";
-      "application/x-extension-html" = "zen.desktop";
-      "application/x-extension-shtml" = "zen.desktop";
-      "application/xhtml+xml" = "zen.desktop";
-      "application/x-extension-xhtml" = "zen.desktop";
-      "application/x-extension-xht" = "zen.desktop";
+      "text/html" = "zen-beta.desktop";
+      "application/x-extension-htm" = "zen-beta.desktop";
+      "application/x-extension-html" = "zen-beta.desktop";
+      "application/x-extension-shtml" = "zen-beta.desktop";
+      "application/xhtml+xml" = "zen-beta.desktop";
+      "application/x-extension-xhtml" = "zen-beta.desktop";
+      "application/x-extension-xht" = "zen-beta.desktop";
       "x-scheme-handler/sidequest" ="SideQuest.desktop";
       "x-scheme-handler/discord-529050037532098580"="discord-529050037532098580.desktop";
 
