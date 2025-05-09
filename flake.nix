@@ -155,7 +155,8 @@
             # nix eval .#tests --impure
             tests = pkgs.callPackage ./tests/default.nix {};
             nix.nixPath = [
-              "nixpkgs=${nixpkgs}"
+              "nixpkgs=${pkgs.path}"
+              "unstable=${nixos-unstable}"
             ];
 
             nixosConfigurations = {
@@ -167,7 +168,8 @@
                     # pin system nixpkgs to the same version as the flake input
                     # (don't see a way to declaratively set channels but this seems to work fine?)
                     nix.nixPath = [
-                      "nixpkgs=${nixpkgs}"
+                      "nixpkgs=${pkgs.path}"
+                      "unstable=${nixos-unstable}"
                     ];
                   }
                   home-manager.nixosModules.home-manager
