@@ -684,6 +684,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
         ps.debugpy
         ps.requests
         ps.epc
+        ps.pygobject3
         ps.lxml
         ps.tld
         ps.sexpdata
