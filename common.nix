@@ -6,6 +6,8 @@
     pkgs.cask
   ];
 
+  xdg.desktopEntries = [
+  ];
   xsession = {
     enable = true;
     profileExtra = ''
@@ -72,6 +74,7 @@
       "inode/directory" = "nautilus.desktop";
       "x-directory/normal"= "nautilus.desktop";
       "text/plain" = "org.gnome.gedit.desktop";
+      "application/x-wine-extension-ini" = "org.gnome.gedit.desktop";
       "application/pdf" = "org.gnome.Evince.desktop";
       "application/x-extension-osz" = "osu!.desktop";
       "application/zip" = "osu!.desktop";
@@ -145,6 +148,9 @@
       "application/vnd.ms-access" = "onlyoffice-desktopeditors.desktop";
     };
   };
+
+  # home.file."${config.xdg.dataHome}/mimeapps.list".force = true;
+
   programs.git = {
     enable = true;
     userName = "patriot720";
@@ -294,9 +300,13 @@
     # };
 
     ".local/share/nautilus" = {
-      source = ./configs/nautilus;
-      recursive = true;
+      source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/nautilus;
     };
+
+    ".local/share/nautilus-python" = {
+      source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/nautilus-python;
+    };
+
     ".local/share/nemo" = {
       source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/nemo;
     };

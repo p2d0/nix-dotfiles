@@ -15,8 +15,14 @@ in {
   config = mkIf cfg.enable {
 
     home.file = {
-      ".config/GIMP/3.0/shortcutsrc".source = ./shortcutsrc;
-      ".config/GIMP/3.0/controllerrc".source = ./controllerrc;
+      ".config/GIMP/3.0/shortcutsrc" = {
+        source = ./shortcutsrc;
+        force = true;
+      };
+      ".config/GIMP/3.0/controllerrc" = {
+        source = ./controllerrc;
+        force = true;
+      };
     };
   };
 }

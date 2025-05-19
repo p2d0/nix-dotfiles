@@ -671,7 +671,13 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
 #  environment.extraInit = ''
 #xset dpms 15 15 15
 #'';
+  environment.sessionVariables.NAUTILUS_4_EXTENSION_DIR = "${config.system.path}/lib/nautilus/extensions-4";
 
+  environment.pathsToLink = [
+    "/share/nautilus-python/extensions"
+  ];
+
+  # environment.sessionVariables.NAUTILUS_EXTENSION_DIR = "${config.system.path}/lib/nautilus/extensions-4";
   modules.taffybar.enable = false;
   environment.systemPackages = with pkgs;
     [
@@ -681,6 +687,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
         ps.python-dotenv
         ps.pytest
         ps.python-miio
+        ps.pygobject-stubs
         ps.debugpy
         ps.requests
         ps.epc
@@ -767,6 +774,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       xmrig
       sumneko-lua-language-server
       tgs2png
+      my.tg
       luarocks
       helvum
       # unstable.cloudflare-warp
@@ -989,6 +997,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       #     url = "https://github.com/NixOS/nixpkgs/archive/23c10dbe320e6957f2607d8a22f9e0e36f56a235.tar.gz";
       # }) {}).gnome.nautilus
       nautilus
+      nautilus-python
       spice-vdagent
       inetutils
       zip
