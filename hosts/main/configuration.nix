@@ -774,7 +774,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       xmrig
       sumneko-lua-language-server
       tgs2png
-      my.tg
+      # my.tg
       luarocks
       helvum
       # unstable.cloudflare-warp

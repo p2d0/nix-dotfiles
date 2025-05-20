@@ -1707,18 +1707,18 @@
       },
       "locked": {
         "allRefs": true,
-        "lastModified": 1744860443,
-        "narHash": "sha256-HZW+eSIUYUjrNGLuzylvd081lnj0znhEhu0lDZ0Ibww=",
-        "ref": "refs/heads/p2d0",
-        "rev": "2ba3a1f27efa13e39c1ef731828bb621af7572f3",
-        "revCount": 19545,
+        "lastModified": 1747731379,
+        "narHash": "sha256-lyd5QRvaNJseTBJroqZvfPn5aWQz2cqyyksgTtFhGTY=",
+        "ref": "refs/heads/p2d0_old",
+        "rev": "36994740a5386c0a2c0247c521e5bfd79e6f075f",
+        "revCount": 19551,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/p2d0/tdesktop.git"
       },
       "original": {
         "allRefs": true,
-        "ref": "refs/heads/p2d0",
+        "ref": "refs/heads/p2d0_old",
         "submodules": true,
         "type": "git",
         "url": "https://github.com/p2d0/tdesktop.git"

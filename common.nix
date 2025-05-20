@@ -6,8 +6,8 @@
     pkgs.cask
   ];
 
-  xdg.desktopEntries = [
-  ];
+  # xdg.desktopEntries = [
+  # ];
   xsession = {
     enable = true;
     profileExtra = ''

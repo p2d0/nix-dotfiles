@@ -30,7 +30,7 @@
     #   url = "git+https://github.com/hyprwm/Hyprland.git?ref=v0.47.0";
     # };
     tdesktop = {
-        url = "git+https://github.com/p2d0/tdesktop.git?ref=refs/heads/p2d0&allRefs=1&submodules=1";
+        url = "git+https://github.com/p2d0/tdesktop.git?ref=refs/heads/p2d0_old&allRefs=1&submodules=1";
     };
 
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
