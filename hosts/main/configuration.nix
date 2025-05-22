@@ -404,12 +404,12 @@ serverFlagsSection = ''
     cron = {
       enable = true;
       systemCronJobs = [
-        # "30 20 * * * andrew fish -c 'update-system'"
+        "*/30 11-21 * * * andrew DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /run/current-system/sw/bin/notify-send 'Check daily'"
         "00 20 * * * andrew darkman set dark"
         "00 23 * * * andrew DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /run/current-system/sw/bin/notify-send 'Sleep'"
         "00 21 * * * root /etc/nixos/shutdown.sh"
         "55 21 * * * andrew DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /run/current-system/sw/bin/notify-send 'Shutdown in 5 MINUTES'"
-        "00 20 * * * andrew /etc/nixos/update_ip.sh"
+        "00 20 * * * andrew /home/andrew/Dropbox/update_ip.sh"
         # "00 23 * * * andrew /home/andrew/Dropbox/miner_enable.sh"
         # "00 7 * * * andrew /home/andrew/Dropbox/miner_disable.sh"
         # "35 6 * * * root /etc/nixos/play_alsa_alarm.sh"

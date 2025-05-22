@@ -393,6 +393,11 @@
     script = /etc/nixos/configs/dunst/alert.sh
     msg_urgency = critical
 
+[play_daily_sound]
+    new_icon = /etc/nixos/configs/dunst/alert.jpg
+    script = /etc/nixos/configs/dunst/alert_light.sh
+    summary = "Check daily"
+
 #[script-test]
 #    summary = "*script*"
 #    script = dunst_test.sh
