@@ -21,9 +21,9 @@ in {
       description = "US layout with hjkl";
       languages = [ "eng" ];
       symbolsFile = pkgs.writeText "us-hjkl" ''
-      partial keypad_keys
-      xkb_symbols "us-hjkl"
-      {
+    partial keypad_keys
+    xkb_symbols "us-hjkl"
+    {
     key <CAPS> { [ ISO_Level3_Shift                     ] };
     key <AD02> { [ w, W, U2191, U2191                   ] };
     key <AC01> { [ a, A, U2190, U2190                   ] };
@@ -37,8 +37,10 @@ in {
     key <AD07> { [ u, U, Prior, Prior                   ] };
     key <AE03> { [ 3, section, Home, Home               ] };
     key <AE04> { [ 4, dollar, End, End                  ] };
-      };'';
+};
+'';
     };
+    # key <AC05> { [ g, G, F12, F12                      ] };
     #
    # key <AC04> { [ s, S, U2193, U2193                   ] };
    # key <AC05> { [ d, D, U2192, U2192                   ] };

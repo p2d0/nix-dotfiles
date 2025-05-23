@@ -23,7 +23,7 @@
   {
     "position": "bottom",
     "height": 30,
-    "output": "HDMI-A-2",
+    "output": "HDMI-A-1",
     "modules-left": [
       "hyprland/workspaces",
       "idle_inhibitor",

@@ -25,7 +25,7 @@ def main():
     calendar_gap = 10
     window_width_calendar = 600
     window_height = 910
-    if(active_monitor['name'] == 'HDMI-A-2'):
+    if(active_monitor['name'] == 'HDMI-A-1'):
         width = active_monitor['width']
         height = active_monitor['height']
 

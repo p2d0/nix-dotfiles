@@ -319,7 +319,7 @@ serverFlagsSection = ''
   # TODO Move to home manager user config?
   modules.sway.enable = false;
   modules.ilzabot.enable = false;
-  modules.hjkl.enable = false;
+  modules.hjkl.enable = true;
   modules.printing3d.enable = true;
   modules.warp.enable = false;
   modules.keyrings.enable = true;
