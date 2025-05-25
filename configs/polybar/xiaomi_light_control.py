@@ -6,6 +6,7 @@ from miio.exceptions import DeviceException
 from sys import argv
 from time import sleep
 import os
+from concurrent.futures import ThreadPoolExecutor
 
 def ping(host):
     response = os.system("ping -c 1 " + host + " > /dev/null 2>&1")
@@ -23,7 +24,7 @@ yeelights = [
 ]
 
 def create_yeelight(lightbulb):
-    ping(lightbulb["ip"])
+    # ping(lightbulb["ip"])
     yeelight = Yeelight(lightbulb["ip"], lightbulb["token"], model=lightbulb["model"])
     yeelight.timeout = 5000;
     return yeelight
@@ -124,37 +125,58 @@ def display_brightness_and_temperature():
     values = yeelight.get_properties(["bright","ct"])
     print("{}% {}K".format(values[0],values[1]))
 
-# Define a function to change the brightness of the lightbulbs by a given amount
 def change_brightness(amount):
-    for lightbulb in yeelights:
+    def process(lightbulb):
         brightness = get_brightness(lightbulb)
-        brightness = min(max(brightness + amount, 1), 100)
-        set_brightness(lightbulb, brightness)
+        new_brightness = min(max(brightness + amount, 1), 100)
+        set_brightness(lightbulb, new_brightness)
+        return (lightbulb, brightness, new_brightness)
+
+    with ThreadPoolExecutor() as executor:
+        results = list(executor.map(process, yeelights))
+
+    for i, (_, old_brightness, new_brightness) in enumerate(results):
+        print(f"Light {i+1} brightness: {old_brightness}% → {new_brightness}%")
+
     print(f"Brightness changed by {amount}%")
 
-def set_brightness_for_all(brightness):
-    for lightbulb in yeelights:
-        set_brightness(lightbulb, brightness)
+def set_brightness_for_all(brightness, amount):
+    with ThreadPoolExecutor() as executor:
+        executor.map(lambda bulb: set_brightness(bulb, brightness), yeelights)
     print(f"Brightness changed by {amount}%")
 
-def set_both(brightness,temperature):
-    for lightbulb in yeelights:
+def set_both(brightness, temperature):
+    def process(lightbulb):
         set_brightness(lightbulb, brightness)
         set_temperature(lightbulb, temperature)
+        return lightbulb
+
+    with ThreadPoolExecutor() as executor:
+        list(executor.map(process, yeelights))
+
     print(f"Brightness set to {brightness}%\nTemperature set to {temperature}K")
 
 # Define a function to change the temperature of the lightbulbs
 def change_temperature(amount):
-    for lightbulb in yeelights:
+    def process(lightbulb):
         yeelight = create_yeelight(lightbulb)
         current_temperature = int(yeelight.get_properties(["ct"])[0])
         new_temperature = min(max(current_temperature + amount, 1000), 6500)
         set_temperature(lightbulb, new_temperature)
+        return (lightbulb, current_temperature, new_temperature)
+
+    with ThreadPoolExecutor() as executor:
+        results = list(executor.map(process, yeelights))
+
+    for i, (lightbulb, old_temp, new_temp) in enumerate(results):
+        print(f"Light {i+1} temperature: {old_temp}K → {new_temp}K")
+
     print(f"Temperature changed by {amount}K")
 
 # Define a function to toggle all lightbulbs
 def toggle_lights():
-    states = [toggle_light(lightbulb) for lightbulb in yeelights]
+    with ThreadPoolExecutor() as executor:
+        states = list(executor.map(toggle_light, yeelights))
     for i, (current_state, new_state) in enumerate(states):
         print(f"Light {i + 1} toggled: {current_state} -> {new_state}")
 

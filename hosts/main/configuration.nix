@@ -126,6 +126,7 @@
     enable = true;
     enableOnBoot = false;
   };
+  services.flatpak.enable = true;
 
   # i18n.defaultLocale = "en_US.UTF-8";
   i18n = {
@@ -326,7 +327,7 @@ serverFlagsSection = ''
 
   users.users.${config.user} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" "vboxusers" ]; # Enable ‘sudo’ for the user.
     openssh.authorizedKeys.keys = [
       "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC2DE1tCBC6IebCR4XC7/o1yZj1r+NI7n9nhQchP6n58iJPB20u0CWdIN6EVOIOjjMzMAxAA2mKU8faJVaV5MgY6Q4F7RtbKk/gwwhH3WfDI/HYtYDkvceBlTzQ6LGnnca1A++S7tn8J8V6jp+b5ISyw7QyL0mXLk88IyxUUpcMTU4Kfl+lDUSvKnHAu4KjoRATff4b6aVjUzdVrmoJm41lxq7aMmFQaUgK+1yD89lRWSVYa49HQ7UISSpYaHnx1sdfcwJntub97lTxwOtrOfBSBX5WPXmGf1dfC6eBf5ZL1XoLoA64n7StXzrru4PJ1NHIbJSrGmAzJP7Q1zrRBjwf andrew@DESKTOP-FFBHS36"
     ];
