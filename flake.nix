@@ -16,7 +16,7 @@
   # Searching github for packages:
   # %package_name% language:nix
   inputs = {
-    nixpkgs = { url = "github:nixos/nixpkgs/nixos-24.11"; };
+    nixpkgs = { url = "github:nixos/nixpkgs/nixos-25.05"; };
     nixpkgs-23 = { url = "github:nixos/nixpkgs/nixos-23.11"; };
     nixpkgs-24-05 = { url = "github:nixos/nixpkgs/nixos-24.05"; };
     nixpkgs-hyprland.url = "github:nixos/nixpkgs/762a398892576efcc76fb233befbd58c2cef59e0";
@@ -24,7 +24,7 @@
     nixos-unstable.url = "nixpkgs/nixos-unstable";
 
     nixos-master.url = "github:nixos/nixpkgs/master";
-    home-manager.url = "github:nix-community/home-manager/release-24.11";
+    home-manager.url = "github:nix-community/home-manager/release-25.05";
     # hyprland.url = "github:hyprwm/Hyprland/";
     # hyprland = {
     #   url = "git+https://github.com/hyprwm/Hyprland.git?ref=v0.47.0";

@@ -39,7 +39,7 @@
     # config.${"none+i3"}.default = [ "kde" "*" ];
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
-      pkgs.xdg-desktop-portal-kde
+      pkgs.kdePackages.xdg-desktop-portal-kde
       # pkgs.xdg-desktop-portal-wlr
     ];
   };
@@ -733,7 +733,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       clang
       file
       clojure
-      kdenlive
+      kdePackages.kdenlive
       lm_sensors
       # mihomo
       openssl
@@ -751,7 +751,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       # megasync
       # unstable.jetbrains.idea-community
       unstable.gamescope
-      create-react-app
+      # create-react-app
       my.cursor
       parallel
       vscode
@@ -847,7 +847,6 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       # my.tlala
       # my.chatgpt
       neovim
-      # (callPackage /etc/nixos/pkgs/psiphon.nix { })
       # unstable.elementary-planner
       # (haskellPackages.callPackage /etc/nixos/modules/nixos/taffybar/build/taffybar.nix
       #   { })
@@ -862,8 +861,8 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       ripgrep
       wmctrl
       fd
-      breeze-gtk
-      breeze-qt5
+      kdePackages.breeze-gtk
+      libsForQt5.breeze-qt5
       # nixfmt
       # TODO FIX
       # (old-23.gimp.override { withPython = true; })
@@ -875,7 +874,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       evince
       sidequest
       xorg.xwininfo
-      xboxdrv
+      # xboxdrv
       # mangohud
       lua
       apktool
@@ -939,7 +938,6 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       # })
       #(pkgs.callPackage /etc/nixos/pkgs/tdesktop.nix { })
       # (pkgs.callPackage ./pkgs/openhab.nix { })
-      # (callPackage ./pkgs/psiphon.nix { })
       speedcrunch
       discord
       # legcord
@@ -964,7 +962,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       unstable.nixd
       jpegoptim
       chatterino2
-      filelight
+      kdePackages.filelight
       polkit_gnome
       dconf-editor
       gnome-characters
