@@ -1004,9 +1004,11 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       easyeffects
       # evolution
       nodejs
-      iconpack-obsidian
+      old-24-11.iconpack-obsidian
       kdePackages.xwaylandvideobridge
-      (pkgs.wrapOBS {
+      (pkgs.wrapOBS.override {
+        obs-studio = obs-studio.override { cudaSupport = true;};
+      } {
         plugins = with pkgs.unstable.obs-studio-plugins; [
           obs-gstreamer
           obs-vkcapture

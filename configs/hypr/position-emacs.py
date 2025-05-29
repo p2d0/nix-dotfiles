@@ -33,7 +33,7 @@ def main():
         position_y = (height - window_height) // 2
 
         # Move the window
-        move_window(position_x, position_y, 'class:brave-calendar.notion.so*+')
+        move_window(position_x, position_y, 'class:brave-calendar.notion.so.+')
 
         position_x_calendar = position_x + window_width_calendar + calendar_gap
         move_window(position_x_calendar, position_y, 'title:emacs-todo')
@@ -49,7 +49,7 @@ def main():
         move_window(position_x, position_y, 'title:emacs-todo')
 
         position_x_calendar = position_x - window_width_calendar - calendar_gap
-        move_window(position_x_calendar, position_y, 'class:brave-calendar.notion.so*+')
+        move_window(position_x_calendar, position_y, 'class:brave-calendar.notion.so.+')
 
     # if active_monitor:
     #     second_monitor_offset = 0;

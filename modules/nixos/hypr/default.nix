@@ -89,7 +89,7 @@ in {
           wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
           wf-recorder
           # unstable.waybar
-          (waybar.overrideAttrs(oldAttrs: rec {
+          (old-24-11.waybar.overrideAttrs(oldAttrs: rec {
             patches = oldAttrs.patches ++ [
               ./waybar.patch
             ];

@@ -18,7 +18,7 @@
   inputs = {
     nixpkgs = { url = "github:nixos/nixpkgs/nixos-25.05"; };
     nixpkgs-23 = { url = "github:nixos/nixpkgs/nixos-23.11"; };
-    nixpkgs-24-05 = { url = "github:nixos/nixpkgs/nixos-24.05"; };
+    nixpkgs-24-11 = { url = "github:nixos/nixpkgs/nixos-24.11"; };
     nixpkgs-hyprland.url = "github:nixos/nixpkgs/762a398892576efcc76fb233befbd58c2cef59e0";
     nixpkgs-hy3.url = "github:nixos/nixpkgs/d98abf5cf5914e5e4e9d57205e3af55ca90ffc1d";
     nixos-unstable.url = "nixpkgs/nixos-unstable";
@@ -50,7 +50,7 @@
     {self,
       nixpkgs,
       nixpkgs-23,
-      nixpkgs-24-05,
+      nixpkgs-24-11,
       poetry2nix,
       chaotic,
       tdesktop,
@@ -113,7 +113,7 @@
                 }) {};
 
                 old-23 = import nixpkgs-23 { config = self.config; };
-                old-24-05 = import nixpkgs-24-05 { config = self.config; };
+                old-24-11 = import nixpkgs-24-11 { config = self.config; };
                 unstable = import nixos-unstable { config = self.config; };
                 nixpkgs-hyprland = import nixpkgs-hyprland { config = self.config; };
                 nixpkgs-hy3 = import nixpkgs-hy3 { config = self.config; };
