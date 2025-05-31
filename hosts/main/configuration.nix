@@ -971,6 +971,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       ntfs3g
       # gnome.gnome-boxes
       # unstable.rustdesk
+      rustdesk
       my.trex
       unstable.qbittorrent
       # qbittorrent-qt5
