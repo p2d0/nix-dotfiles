@@ -15,35 +15,6 @@
   user = self.user;
 
   qt.platformTheme = "gnome";
-  # xdg.portal = {
-  #   enable = true;
-  #   extraPortals =
-  #     [ # pkgs.xdg-dbus-proxy pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-gnome pkgs.xdg-desktop-portal-kde
-  #       # https://superuser.com/questions/944119/replace-gtk-file-dialog-with-alternative
-  #       # Custom file dialog for browsers, etc.
-  #       # pkgs.xdg-desktop-portal-kde
-  #     ];
-  #   # gtkUsePortal = true;
-  #   # https://github.com/NixOS/nixpkgs/pull/179204
-  #   # environment.sessionVariables.GTK_USE_PORTAL
-  #   # xdgOpenUsePortal = true;
-  # };
-  xdg.portal = {
-    enable = true;
-    xdgOpenUsePortal = true;
-    # wlr.enable = true;
-    # I think the name under config has to match up with the value of XDG_CURRENT_DESKTOP.
-    # kde portal by default, fallback to anything for KDE and i3
-    # I don't set this for KDE in my personal config and it seems to work fine.
-    # config.KDE.default = [ "kde" "*" ];
-    # config.${"none+i3"}.default = [ "kde" "*" ];
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
-      pkgs.kdePackages.xdg-desktop-portal-kde
-      # pkgs.xdg-desktop-portal-wlr
-    ];
-  };
-  xdg.portal.config.common.default = "*";
   nix.settings.trusted-users = [ "root" "andrew" ];
 
   security.rtkit.enable = true;
@@ -734,6 +705,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       file
       clojure
       kdePackages.kdenlive
+      openvpn
       lm_sensors
       # mihomo
       openssl

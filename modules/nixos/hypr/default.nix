@@ -27,6 +27,7 @@ in {
         ];
         systemd.enable = true;
         xwayland.enable = true;
+        # withUWSM = true;
         systemd.variables = [
           "--all"
         ];
@@ -73,12 +74,13 @@ in {
         QT_QPA_PLATFORM = "wayland";
         ANKI_WAYLAND = 1;
       };
-      xdg.portal = {
-        enable = true;
-        config.common.default = "*";
-        extraPortals = [
-        ];
-      };
+      # xdg.portal = {
+      #   enable = true;
+      #   config.common.default = "*";
+      #   extraPortals = [
+      #     pkgs.xdg-desktop-portal-hyprland
+      #   ];
+      # };
       environment.systemPackages = with pkgs;
         [
           gammastep

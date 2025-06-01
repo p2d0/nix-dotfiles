@@ -175,6 +175,15 @@
   modules.shell.fish.enable = true;
   modules.gimp3-photoshop-shortcuts.enable = true;
 
+  xdg.portal = {
+    xdgOpenUsePortal = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.kdePackages.xdg-desktop-portal-kde
+    ];
+  };
+  xdg.portal.config.common.default = "*";
+
   xdg.userDirs = {
     enable = true;
   };
