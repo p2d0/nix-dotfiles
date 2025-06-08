@@ -33,6 +33,14 @@
         url = "git+https://github.com/p2d0/tdesktop.git?ref=refs/heads/p2d0_old&allRefs=1&submodules=1";
     };
 
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+
+      # THIS IS IMPORTANT
+      # Mismatched system dependencies will lead to crashes and other issues.
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     poetry2nix.url = "github:nix-community/poetry2nix";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -111,7 +119,7 @@
                 sounduxPkgs = import (builtins.fetchTarball {
                   url = "https://github.com/NixOS/nixpkgs/archive/78747312c7c8978a140c0a3ad236766289aecf8b.tar.gz";
                 }) {};
-
+                quickshell = inputs.quickshell.packages.${system}.default;
                 old-23 = import nixpkgs-23 { config = self.config; };
                 old-24-11 = import nixpkgs-24-11 { config = self.config; };
                 unstable = import nixos-unstable { config = self.config; };

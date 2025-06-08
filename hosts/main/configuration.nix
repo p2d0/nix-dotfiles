@@ -573,6 +573,22 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
     };
   };
 
+  environment.profileRelativeSessionVariables =
+    let
+      qtVersions = with pkgs; [
+        qt5
+        qt6
+      ];
+    in
+      {
+        QT_PLUGIN_PATH = map (qt: "/${qt.qtbase.qtPluginPrefix}") qtVersions;
+        QMLLS_BUILD_DIRS = [
+          "${pkgs.quickshell}/${pkgs.qt6.qtbase.qtPluginPrefix}/"
+          "${pkgs.kdePackages.qtdeclarative}/${pkgs.qt6.qtbase.qtPluginPrefix}/"
+        ];
+        QML2_IMPORT_PATH = map (qt: "/${qt.qtbase.qtQmlPrefix}") qtVersions;
+      };
+
   security.acme = {
     acceptTerms = true;
     defaults.email = "cerkin-3@yandex.ru";
@@ -700,6 +716,8 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       # my.amneziawg-go
       wget
       unstable.rnnoise-plugin
+      quickshell
+      kdePackages.qtdeclarative
 
       clang
       file
@@ -724,9 +742,10 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       # unstable.jetbrains.idea-community
       unstable.gamescope
       # create-react-app
-      my.cursor
+      unstable.code-cursor
       parallel
       vscode
+      ddcutil
 
       yandex-disk
       gpu-screen-recorder

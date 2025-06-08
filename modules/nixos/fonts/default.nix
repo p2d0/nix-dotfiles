@@ -27,6 +27,7 @@ in {
             fonts.packages = with pkgs; [
                   pkgs.jetbrains-mono
                   pkgs.font-awesome
+                  pkgs.ibm-plex
                   pkgs.freefont_ttf
                   pkgs.nerd-fonts.fira-code
                   pkgs.nerd-fonts.droid-sans-mono
@@ -67,6 +68,7 @@ in {
                   pkgs.fira-code
                   pkgs.hanazono
                   pkgs.dejavu_fonts
+                  pkgs.material-symbols
                   # pkgs.material-design-icons
                   # pkgs.material-icons
             ];
