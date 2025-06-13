@@ -734,6 +734,8 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       keepassxc
       remmina
       unstable.aider-chat
+      frida-tools
+      ghidra-bin
       kdePackages.kwalletmanager
       unstable.unarc
       pkgs.libayatana-appindicator

@@ -51,7 +51,7 @@
     },
     "hyprland/submap": {
         "format": "✌️ {}",
-        "max-length": 8,
+        "max-length": 40,
         "tooltip": false
     },
     "sway/workspaces": {

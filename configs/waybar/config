@@ -5,6 +5,7 @@
     "output": "DP-3",
     "modules-left": [
       "hyprland/workspaces",
+      "hyprland/submap",
       "idle_inhibitor"
       // "mpris"
     ],
@@ -26,6 +27,7 @@
     "output": "HDMI-A-1",
     "modules-left": [
       "hyprland/workspaces",
+      "hyprland/submap",
       "idle_inhibitor",
       "custom/crypto"
     ],
