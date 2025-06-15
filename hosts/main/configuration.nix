@@ -637,6 +637,29 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
   modules.darkman.enable = true;
   modules.vpn.enable = true;
   modules.vm.enable = false;
+  programs.opengamepadui.enable = true;
+  programs.opengamepadui.extraPackages = [
+    pkgs.vulkan-tools
+  ];
+  services.sunshine.enable = true;
+  services.sunshine.capSysAdmin = true;
+  services.sunshine.package = pkgs.my.sunshine;
+  services.sunshine.openFirewall = true;
+  # services.sunshine.applications = {
+  #   apps = [
+  #     {
+  #       name = "2k Tablet Desktop";
+  #       prep-cmd = [
+  #         {
+  #           do = "hyprctl output create headless test";
+  #           undo = "hyprctl output remove test";
+  #         }
+  #       ];
+  #       exclude-global-prep-cmd = "false";
+  #       auto-detach = "true";
+  #     }
+  #   ];
+  # };
   zramSwap.enable = true;
   # zramSwap.writebackDevice = "/dev/sdb1";
   services.journald.extraConfig = ''
