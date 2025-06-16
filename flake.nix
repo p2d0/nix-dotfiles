@@ -161,6 +161,7 @@
             # user-modules = (lib.my.mapModulesRec' ./modules/nixos (p: pkgs.callPackage p {}));
 
             # nix eval .#tests --impure
+            # kek = pkgs.my.apollo;
             tests = pkgs.callPackage ./tests/default.nix {};
             nix.nixPath = [
               "nixpkgs=${pkgs.path}"

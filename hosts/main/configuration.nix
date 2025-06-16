@@ -118,6 +118,8 @@
     KERNEL=="hidraw*", MODE="0666"
     KERNEL=="hiddev*", MODE="0666"
     KERNEL=="ttyUSB*", MODE="0666"
+
+    SUBSYSTEM=="input", ACTION=="change", ATTR{NAME}=="Touch passthrough", ENV{ID_INPUT_TOUCHSCREEN}=="1", ENV{WL_OUTPUT}="test", ENV{LIBINPUT_CALIBRATION_MATRIX}="0.233426 0 0 0 0.211308 0"
   '';
 
   # users.users.andrew.extraGroups = ["corectrl" "gamemode"];
@@ -376,7 +378,7 @@ serverFlagsSection = ''
     cron = {
       enable = true;
       systemCronJobs = [
-        "*/30 11-21 * * * andrew DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /run/current-system/sw/bin/notify-send 'Check daily'"
+        # "*/30 11-21 * * * andrew DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /run/current-system/sw/bin/notify-send 'Check daily'"
         "00 20 * * * andrew darkman set dark"
         "00 23 * * * andrew DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /run/current-system/sw/bin/notify-send 'Sleep'"
         "00 21 * * * root /etc/nixos/shutdown.sh"
@@ -638,28 +640,60 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
   modules.vpn.enable = true;
   modules.vm.enable = false;
   programs.opengamepadui.enable = true;
+  programs.opengamepadui.gamescopeSession.enable = false;
   programs.opengamepadui.extraPackages = [
     pkgs.vulkan-tools
+    pkgs.hwdata
   ];
   services.sunshine.enable = true;
   services.sunshine.capSysAdmin = true;
   services.sunshine.package = pkgs.my.sunshine;
-  services.sunshine.openFirewall = true;
-  # services.sunshine.applications = {
-  #   apps = [
-  #     {
-  #       name = "2k Tablet Desktop";
-  #       prep-cmd = [
-  #         {
-  #           do = "hyprctl output create headless test";
-  #           undo = "hyprctl output remove test";
-  #         }
-  #       ];
-  #       exclude-global-prep-cmd = "false";
-  #       auto-detach = "true";
-  #     }
-  #   ];
-  # };
+  # services.sunshine.openFirewall = true;
+  services.sunshine.settings = {
+    upnp = "enabled";
+    output_name = 2;
+    capture = "wlr";
+    encoder = "nvenc";
+  };
+
+  services.sunshine.applications = {
+    env = {
+      PATH = "\${PATH}:\${HOME}/.local/bin";
+    };
+    apps = [
+      {
+        name = "OpenGamepadUI";
+        cmd = "${pkgs.opengamepadui}/bin/opengamepadui --fullscreen";
+        exclude-global-prep-cmd = "false";
+        auto-detach = "true";
+      }
+      {
+        name = "Desktop";
+        image-path = "desktop.png";
+        exclude-global-prep-cmd = "false";
+        auto-detach = "true";
+      }
+      {
+        name = "Low Res Desktop";
+        image-path = "desktop.png";
+        prep-cmd = [
+          {
+            do = "xrandr --output HDMI-1 --mode 1920x1080";
+            undo = "xrandr --output HDMI-1 --mode 1920x1200";
+          }
+        ];
+        exclude-global-prep-cmd = "false";
+        auto-detach = "true";
+      }
+      {
+        name = "Steam Big Picture";
+        cmd = "setsid steam steam://open/bigpicture";
+        image-path = "steam.png";
+        exclude-global-prep-cmd = "false";
+        auto-detach = "true";
+      }
+    ];
+  };
   zramSwap.enable = true;
   # zramSwap.writebackDevice = "/dev/sdb1";
   services.journald.extraConfig = ''
@@ -1103,7 +1137,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
   # Enable the OpenSSH daemon.
   services.openssh = {
     enable = true;
-    startWhenNeeded = false;
+    startWhenNeeded = true;
     settings.PasswordAuthentication = false;
   };
 
