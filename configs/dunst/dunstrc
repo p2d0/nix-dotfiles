@@ -2,7 +2,7 @@
     ### Display ###
 
     # Which monitor should the notifications be displayed on.
-    monitor = 0
+    monitor = 1
 
     # Display notification on focused monitor.  Possible modes are:
     #   mouse: follow mouse pointer
@@ -15,7 +15,7 @@
     #
     # If this option is set to mouse or keyboard, the monitor option
     # will be ignored.
-    follow = mouse
+    follow = none
 
     # The geometry of the window:
     #   [{width}]x{height}[+/-{x}+/-{y}]
@@ -32,7 +32,7 @@
     # geometry = "400x-5-30+20"
     width = 400
     height = 500
-    origin = bottom-right
+    origin = bottom-left
     offset = 15x40
 
     # Show how many messages are currently hidden (because of geometry).

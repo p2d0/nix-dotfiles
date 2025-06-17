@@ -119,7 +119,7 @@
     KERNEL=="hiddev*", MODE="0666"
     KERNEL=="ttyUSB*", MODE="0666"
 
-    SUBSYSTEM=="input", ACTION=="change", ATTR{NAME}=="Touch passthrough", ENV{ID_INPUT_TOUCHSCREEN}=="1", ENV{WL_OUTPUT}="test", ENV{LIBINPUT_CALIBRATION_MATRIX}="0.233426 0 0 0 0.211308 0"
+    ACTION=="add|change", KERNEL=="event[0-9]*", SUBSYSTEM=="input", ATTRS{name}=="Touch passthrough", ATTRS{capabilities/abs}=="670800001000003", ATTRS{id/vendor}=="beef", ATTRS{id/product}=="dead", ENV{LIBINPUT_CALIBRATION_MATRIX}="2.25 0 0 0 1.9 0"
   '';
 
   # users.users.andrew.extraGroups = ["corectrl" "gamemode"];
@@ -640,7 +640,8 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
   modules.vpn.enable = true;
   modules.vm.enable = false;
   programs.opengamepadui.enable = true;
-  programs.opengamepadui.gamescopeSession.enable = false;
+  programs.opengamepadui.args = "--fullscreen";
+  # programs.opengamepadui.gamescopeSession.enable = true;
   programs.opengamepadui.extraPackages = [
     pkgs.vulkan-tools
     pkgs.hwdata
@@ -658,12 +659,17 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
 
   services.sunshine.applications = {
     env = {
-      PATH = "\${PATH}:\${HOME}/.local/bin";
+      PATH = "\${PATH}:\${HOME}/.local/bin:\${HOME}/.nix-profile/bin/";
     };
     apps = [
       {
         name = "OpenGamepadUI";
-        cmd = "${pkgs.opengamepadui}/bin/opengamepadui --fullscreen";
+        cmd = "${pkgs.opengamepadui}/share/opengamepadui/opengamepad-ui.x86_64 --fullscreen";
+        prep-cmd = [
+          {
+            do = "${pkgs.hyprland}/bin/hyprctl dispatch workspace 12";
+          }
+        ];
         exclude-global-prep-cmd = "false";
         auto-detach = "true";
       }
@@ -674,20 +680,13 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
         auto-detach = "true";
       }
       {
-        name = "Low Res Desktop";
-        image-path = "desktop.png";
+        name = "Steam Big Picture";
         prep-cmd = [
           {
-            do = "xrandr --output HDMI-1 --mode 1920x1080";
-            undo = "xrandr --output HDMI-1 --mode 1920x1200";
+            do = "${pkgs.hyprland}/bin/hyprctl dispatch workspace 12";
           }
         ];
-        exclude-global-prep-cmd = "false";
-        auto-detach = "true";
-      }
-      {
-        name = "Steam Big Picture";
-        cmd = "setsid steam steam://open/bigpicture";
+        cmd = "${pkgs.util-linux}/bin/setsid steam steam://open/bigpicture";
         image-path = "steam.png";
         exclude-global-prep-cmd = "false";
         auto-detach = "true";
@@ -788,6 +787,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       # pr218037.microsoft-edge-dev
       gcc.cc.libgcc
       gcc.cc.libgcc.lib
+      nwg-drawer
       keepassxc
       remmina
       unstable.aider-chat
