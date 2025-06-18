@@ -649,6 +649,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
   services.sunshine.enable = true;
   services.sunshine.capSysAdmin = true;
   services.sunshine.package = pkgs.my.sunshine;
+  services.sunshine.autoStart = false;
   # services.sunshine.openFirewall = true;
   services.sunshine.settings = {
     upnp = "enabled";
@@ -659,7 +660,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
 
   services.sunshine.applications = {
     env = {
-      PATH = "\${PATH}:\${HOME}/.local/bin:\${HOME}/.nix-profile/bin/";
+      PATH = "\${PATH}:\${HOME}/.local/bin";
     };
     apps = [
       {
@@ -674,6 +675,17 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
         auto-detach = "true";
       }
       {
+        name = "Yuzu";
+        cmd = "${pkgs.coreutils}/bin/env QT_QPA_PLATFORM=xcb ${pkgs.appimage-run}/bin/appimage-run /home/andrew/.local/share/lutris/runners/yuzu/yuzu-mainline.AppImage";
+        prep-cmd = [
+          {
+            do = "${pkgs.hyprland}/bin/hyprctl dispatch workspace 12";
+          }
+        ];
+        # exclude-global-prep-cmd = "false";
+        # auto-detach = "true";
+      }
+      {
         name = "Desktop";
         image-path = "desktop.png";
         exclude-global-prep-cmd = "false";
@@ -681,15 +693,17 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       }
       {
         name = "Steam Big Picture";
+        detached = [
+          "${pkgs.coreutils}/bin/nohup steam steam://open/bigpicture >/dev/null 2>&1 &"
+        ];
         prep-cmd = [
           {
             do = "${pkgs.hyprland}/bin/hyprctl dispatch workspace 12";
           }
         ];
-        cmd = "${pkgs.util-linux}/bin/setsid steam steam://open/bigpicture";
         image-path = "steam.png";
-        exclude-global-prep-cmd = "false";
-        auto-detach = "true";
+        # exclude-global-prep-cmd = "false";
+        # auto-detach = "true";
       }
     ];
   };
