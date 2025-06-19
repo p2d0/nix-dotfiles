@@ -656,6 +656,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
     output_name = 2;
     capture = "wlr";
     encoder = "nvenc";
+    min_log_level = "Debug";
   };
 
   services.sunshine.applications = {
@@ -676,14 +677,14 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       }
       {
         name = "Yuzu";
-        cmd = "${pkgs.coreutils}/bin/env QT_QPA_PLATFORM=xcb ${pkgs.appimage-run}/bin/appimage-run /home/andrew/.local/share/lutris/runners/yuzu/yuzu-mainline.AppImage";
+        cmd = "${pkgs.hyprland}/bin/hyprctl dispatch exec ${pkgs.coreutils}/bin/env QT_QPA_PLATFORM=xcb ${pkgs.appimage-run}/bin/appimage-run /home/andrew/.local/share/lutris/runners/yuzu/yuzu-mainline.AppImage";
         prep-cmd = [
           {
             do = "${pkgs.hyprland}/bin/hyprctl dispatch workspace 12";
           }
         ];
-        # exclude-global-prep-cmd = "false";
-        # auto-detach = "true";
+        exclude-global-prep-cmd = "false";
+        auto-detach = "true";
       }
       {
         name = "Desktop";
@@ -693,17 +694,15 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       }
       {
         name = "Steam Big Picture";
-        detached = [
-          "${pkgs.coreutils}/bin/nohup steam steam://open/bigpicture >/dev/null 2>&1 &"
-        ];
+        cmd = "${pkgs.hyprland}/bin/hyprctl dispatch exec steam steam://open/bigpicture";
         prep-cmd = [
           {
             do = "${pkgs.hyprland}/bin/hyprctl dispatch workspace 12";
           }
         ];
         image-path = "steam.png";
-        # exclude-global-prep-cmd = "false";
-        # auto-detach = "true";
+        exclude-global-prep-cmd = "false";
+        auto-detach = "true";
       }
     ];
   };

@@ -1,0 +1,68 @@
+/* --- eww.scss --- */
+
+// --- Variables ---
+$bg-color: rgba(25, 27, 31, 0.85);
+$fg-color: #cdd6f4;               // A nice off-white for text (Catppuccin Macchiato)
+$border-color: #494d64;
+$border-radius: 14px;
+$padding: 18px;
+
+$title-color: #89b4fa;            // A cool blue for titles
+$bullet-color: #f5c2e7;           // A magenta/pink for bullets
+
+* { all: unset; }
+
+// .todo_window {
+//     background: transparent;
+// }
+
+// --- Main Panel ---
+.todo-panel {
+  background-color: $bg-color;
+  color: $fg-color;
+  font-family: "JetBrainsMono Nerd Font", "monospace";
+  font-size: 14px;
+  padding: $padding;
+  margin-bottom: $padding * 2;
+  border-radius: $border-radius;
+  border: 1px solid $border-color;
+  // box-shadow: 0 20px 20px rgba(0, 0, 0, 0.5);
+}
+
+// --- Task Section (Repeatable, Speedruns) ---
+.task-section {
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid $border-color;
+
+  &:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+
+.section-title {
+  color: $title-color;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+// --- Individual Task Items ---
+.task-item {
+  margin-left: 5px;
+  padding: 2px 0;
+}
+
+.task-bullet {
+  color: $bullet-color;
+  font-weight: bold;
+  margin-right: 12px;
+  font-size: 1.1em;
+}
+
+.task-text {
+  // The text of the todo itself
+}

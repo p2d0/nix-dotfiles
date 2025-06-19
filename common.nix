@@ -174,6 +174,7 @@
   };
   modules.shell.fish.enable = true;
   modules.gimp3-photoshop-shortcuts.enable = true;
+  modules.eww.enable = true;
 
   xdg.portal = {
     xdgOpenUsePortal = true;
