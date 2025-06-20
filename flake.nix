@@ -119,6 +119,9 @@
                 sounduxPkgs = import (builtins.fetchTarball {
                   url = "https://github.com/NixOS/nixpkgs/archive/78747312c7c8978a140c0a3ad236766289aecf8b.tar.gz";
                 }) {};
+                openssl_3_2Pkgs = import (builtins.fetchTarball {
+                  url = "https://github.com/NixOS/nixpkgs/archive/007604529b133db7ef40e687cd95d88c37e5fe8a.tar.gz";
+                }) {};
                 quickshell = inputs.quickshell.packages.${system}.default;
                 old-23 = import nixpkgs-23 { config = self.config; };
                 old-24-11 = import nixpkgs-24-11 { config = self.config; };

@@ -763,6 +763,13 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
       OSCAR
       cachix
+
+      # APPIMAGES
+      my.ytmusic-appimage
+
+      my.chatgpt-pake
+      my.aistudio-pake
+
       (sddm-astronaut.override {
         themeConfig = {
           FullBlur = true;
@@ -792,6 +799,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       file
       clojure
       kdePackages.kdenlive
+      nix-prefetch-scripts
       openvpn
       lm_sensors
       # mihomo
@@ -949,7 +957,14 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       pulseaudio
       gnome-system-monitor
       zenity
-      zen-browser
+      (zen-browser.overrideAttrs (oldAttrs: rec {
+        patches = [
+          (fetchpatch {
+            url = "https://patch-diff.githubusercontent.com/raw/zen-browser/desktop/pull/8272.patch";
+            sha256 = "sha256-gAVp+fyknjiXC9igpAc3TtJGPqzKTz7Laa4JpdagSXk=";
+          })
+        ];
+      }))
       nix-tree
       gnome-sound-recorder
       # tigervnc
