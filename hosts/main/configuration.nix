@@ -660,9 +660,9 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
   };
 
   services.sunshine.applications = {
-    env = {
-      PATH = "\${PATH}:\${HOME}/.local/bin";
-    };
+    # env = {
+    #   PATH = "\${PATH}:\${HOME}/.local/bin";
+    # };
     apps = [
       {
         name = "OpenGamepadUI";
@@ -957,14 +957,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       pulseaudio
       gnome-system-monitor
       zenity
-      (zen-browser.overrideAttrs (oldAttrs: rec {
-        patches = [
-          (fetchpatch {
-            url = "https://patch-diff.githubusercontent.com/raw/zen-browser/desktop/pull/8272.patch";
-            sha256 = "sha256-gAVp+fyknjiXC9igpAc3TtJGPqzKTz7Laa4JpdagSXk=";
-          })
-        ];
-      }))
+      zen-browser
       nix-tree
       gnome-sound-recorder
       # tigervnc

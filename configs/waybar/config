@@ -44,26 +44,26 @@
     "include": "~/.config/waybar/modules.json"
   }
   //,
-  // {
-    // "position": "bottom",
-    // "height": 10,
-    // "output": "test",
-    // "modules-left": [
-      // "hyprland/workspaces",
-      // "hyprland/submap",
-      // "idle_inhibitor"
-      // // "mpris"
-    // ],
-    // "modules-center": [
-      // "clock",
-    // ],
-    // "modules-right": [
-      // // "custom/humpool",
-      // "custom/weather",
-      // "pulseaudio"
-      // // "hyprland/language",
-      // // "tray"
-    // ],
-    // "include": "~/.config/waybar/modules.json"
-  // },
+   //{
+     //"position": "bottom",
+     //"height": 10,
+     //"output": "test",
+     //"modules-left": [
+       //"hyprland/workspaces",
+       //"hyprland/submap",
+       //"idle_inhibitor"
+       //// "mpris"
+     //],
+     //"modules-center": [
+       //"clock",
+     //],
+     //"modules-right": [
+       //// "custom/humpool",
+       //"custom/weather",
+       //"pulseaudio"
+       //// "hyprland/language",
+       //// "tray"
+     //],
+     //"include": "~/.config/waybar/modules.json"
+   //},
 ]

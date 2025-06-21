@@ -10,6 +10,8 @@ $padding: 18px;
 $title-color: #89b4fa;            // A cool blue for titles
 $bullet-color: #f5c2e7;           // A magenta/pink for bullets
 
+@import "clock.scss";
+
 * { all: unset; }
 
 // .todo_window {

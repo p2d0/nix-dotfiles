@@ -1,0 +1,14 @@
+;; Time vars
+(defpoll HOUR :interval "5s" `date +\"%I\"`)
+(defpoll MIN :interval "5s" `date +\"%M\"`)
+(defpoll MER :interval "5s" `date +\"%p\"`)
+(defpoll DAY :interval "5s" `date +\"%A\"`)
+
+(defwidget clock []
+	(box :class "genwin" :orientation "h" :spacing 50 :space-evenly false :vexpand "false" :hexpand "false"
+		(box :orientation "h" :spacing 0
+			(label :class "time_hour" :valign "start" :wrap "true" :limit-width 25 :text HOUR)
+			(label :class "time_min" :valign "end" :wrap "true" :limit-width 25 :text MIN))
+		(box :orientation "v" :spacing 0
+			(label :class "time_mer" :valign "start" :halign "end" :wrap "true" :limit-width 25 :text MER)
+			(label :class "time_day" :valign "end" :halign "end" :wrap "true" :limit-width 25 :text DAY))))

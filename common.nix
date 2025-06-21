@@ -6,8 +6,26 @@
     pkgs.cask
   ];
 
-  # xdg.desktopEntries = [
-  # ];
+  xdg.desktopEntries =
+    {
+      yuzu = {
+        name = "Yuzu";
+        exec = "QT_QPA_PLATFORM=xcb ${pkgs.appimage-run}/bin/appimage-run /home/andrew/.local/share/lutris/runners/yuzu/yuzu-mainline.AppImage";
+        genericName = "Yuzu Emulator";
+        icon = "net.lutris.Lutris";
+        categories = [ "Game" "Emulator" ];
+        startupNotify = true;
+      };
+      OpenGamepadUI = {
+        name = "OpenGamepadUI";
+        exec = "${pkgs.opengamepadui}/share/opengamepadui/opengamepad-ui.x86_64 --fullscreen";
+        genericName = "OpenGamepadUI";
+        icon = "net.lutris.Lutris";
+        categories = [ "Game" "Emulator" ];
+        startupNotify = true;
+      };
+
+    };
   xsession = {
     enable = true;
     profileExtra = ''
