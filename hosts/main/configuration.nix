@@ -690,6 +690,19 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
         name = "Desktop";
         image-path = "desktop.png";
         exclude-global-prep-cmd = "false";
+        prep-cmd = [
+          {
+            do = "${pkgs.hyprland}/bin/hyprctl dispatch workspace 12";
+          }
+          {
+            do = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off DP-3";
+            undo = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on DP-3";
+          }
+          {
+            do = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off HDMI-A-1";
+            undo = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on HDMI-A-1";
+          }
+        ];
         auto-detach = "true";
       }
       {
@@ -764,11 +777,6 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       OSCAR
       cachix
 
-      # APPIMAGES
-      my.ytmusic-appimage
-
-      my.chatgpt-pake
-      my.aistudio-pake
 
       (sddm-astronaut.override {
         themeConfig = {

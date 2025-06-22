@@ -26,6 +26,7 @@
             pkgs.alsa-lib
             # pkgs.pkgsi686Linux.alsa-lib
             pkgs.SDL2
+            pkgs.mangohud
             pkgs.speex
             pkgs.flacpkgs.flac
             pkgs.gamemode.lib
