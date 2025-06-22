@@ -113,6 +113,7 @@ class Status:
 
     def show(self):
         status = TOMATO if self.status == "work" else BREAK
+        WORK_OR_BREAK = status;
         if not self.active:
             status = PAUSE
         stream_status = "СТОИМ" if self.status == "work" else "СИДИМ"
@@ -121,7 +122,7 @@ class Status:
         output = f" ВСЕГО СТОЯ: {self.total_time_today()} \n СЕЙЧАС {stream_status} {self.timer}\n"
         with open("/tmp/pomo.txt", "w") as file:
             file.write(output)
-        sys.stdout.write(f" {CLOCK} {self.total_time_today()} {TOMATO} {self.pomocount()} || {status} {self.timer} {self.title}\n")
+        sys.stdout.write(f" {CLOCK} {self.total_time_today()} {TOMATO} {self.pomocount()} || {status} {self.timer} {WORK_OR_BREAK} {self.title} \n")
         sys.stdout.flush()
 
     def toggle(self):
@@ -174,16 +175,31 @@ class Status:
         self.timer.change(op, seconds)
 
     def next_timer(self):
+        # Initialize work_phase if not set (e.g., first run)
+        if not hasattr(self, 'work_phase'):
+            self.work_phase = 'work_10'
+
         if self.status == "work":
             if self.active:
                 self.active = False
-                self.save()  # save before switching if toggle didn't get called
-            self.status = "break"
-            self.timer = Timer(self.breaktime)
+                self.save()  # Save before switching if toggle didn't get called
+
+            # Determine next phase based on current work_phase
+            if self.work_phase == 'work_10':  # After 10-minute work
+                self.work_phase = 'work_25'
+                self.timer = Timer(25 * 60)  # Next: 25-minute work
+            elif self.work_phase == 'work_25':  # After 25-minute work
+                self.work_phase = 'work_90'
+                self.timer = Timer(90 * 60)  # Next: 90-minute work
+            elif self.work_phase == 'work_90':  # After 90-minute work
+                self.work_phase = 'break'
+                self.status = "break"
+                self.timer = Timer(self.breaktime)  # Next: break
         elif self.status == "break":
             self.active = False
             self.status = "work"
-            self.timer = Timer(self.worktime)
+            self.work_phase = 'work_10'
+            self.timer = Timer(10 * 60)  # Start cycle again with 10-minute work
 
     def save(self):
             if self.saveto:
@@ -406,7 +422,7 @@ def parse_args():
     parser.add_argument(
         "--worktime",
         type=int,
-        default=90 * 60,
+        default=10 * 60,
         help="Default work timer time in seconds",
     )
     parser.add_argument(

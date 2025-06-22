@@ -55,8 +55,26 @@ def fetch_tasks_this_month(db_path):
 def calculate_duration(start, stop):
     if start is None or stop is None:
         return 0
-    start_time = datetime.strptime(start, "%H:%M:%S")
-    stop_time = datetime.strptime(stop, "%H:%M:%S")
+
+    # Possible time formats
+    formats = ["%H:%M:%S", "%H:%M"]
+
+    start_time = stop_time = None
+
+    # Try parsing start and stop times with each format
+    for fmt in formats:
+        try:
+            start_time = datetime.strptime(start, fmt)
+            stop_time = datetime.strptime(stop, fmt)
+            break  # Exit loop if both parsed successfully
+        except ValueError:
+            continue  # Try next format
+
+    # If parsing failed for both formats, return 0
+    if start_time is None or stop_time is None:
+        return 0
+
+    # Calculate duration in seconds
     duration = stop_time - start_time
     return duration.total_seconds()
 
