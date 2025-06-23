@@ -702,6 +702,15 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
             do = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off HDMI-A-1";
             undo = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on HDMI-A-1";
           }
+          {
+            do = "${pkgs.hyprland}/bin/hyprctl dispatch pkill emacs";
+          }
+          {
+            do = "${pkgs.hyprland}/bin/hyprctl dispatch pkill zen";
+          }
+          {
+            do = "${pkgs.hyprland}/bin/hyprctl dispatch pkill telegram";
+          }
         ];
         auto-detach = "true";
       }
