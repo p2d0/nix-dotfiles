@@ -6,6 +6,8 @@
 ;; This runs the command every 5 minutes (300s) and stores the JSON output
 (deflisten eww_todos :initial "[]" `./scripts/org.sh`)
 
+(deflisten eww_totals :initial "{}" `./scripts/org-today.sh`)
+
 ;; 2. Widget to display a list of tasks for a given category
 ;; This widget is perfectly reusable and needs no changes.
 (defwidget task_section [title tasks]
@@ -23,11 +25,32 @@
                                       :wrap-mode "char"
                                       ))))))
 
+(defwidget points []
+           (box :class "points"
+                :orientation "v" :space-evenly false
+                (box :orientation "h" :space-evenly false
+                     (label :class "points-label" :text "Median week points:" :halign "start")
+                     (label :class "points-value" :text { eww_totals.median-points }
+                            :halign "end" :hexpand true
+                            ))
+                (box :orientation "h" :space-evenly false
+                     (label :class "points-label" :text "Week points:" :halign "start")
+                     (label :class "points-value" :text { eww_totals.week-points }
+                            :halign "end" :hexpand true
+                            ))
+                (box :orientation "h" :space-evenly false
+                     (label :class "points-label" :text "Todays points:" :halign "start")
+                     (label :class "points-value" :text { eww_totals.todays-points }
+                            :halign "end" :hexpand true
+                            ))
+                ))
+
 ;; 3. The main panel widget that combines all sections (MODIFIED)
 (defwidget todo_panel []
            (box :orientation "v" :space-evenly false
                 :valign "end"
                 (clock)
+                (points)
                 (box :class "todo-panel" :orientation "v" :space-evenly false
                      (for kek in eww_todos
                           ;; For each entry, create a task_section widget.

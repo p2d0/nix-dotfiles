@@ -829,6 +829,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       nodePackages.localtunnel
       # pr218037.microsoft-edge-dev
       gcc.cc.libgcc
+      pr419945.gemini-cli
       gcc.cc.libgcc.lib
       nwg-drawer
       keepassxc

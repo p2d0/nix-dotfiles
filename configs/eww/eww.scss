@@ -68,3 +68,44 @@ $bullet-color: #f5c2e7;           // A magenta/pink for bullets
 .task-text {
   // The text of the todo itself
 }
+
+
+// Points panel (main container)
+.points {
+  background-color: $bg-color;
+  color: $fg-color;
+  // font-family: "JetBrainsMono Nerd Font", "monospace";
+  // font-size: 14px;
+  padding: $padding;
+  margin-bottom: $padding / 3;
+  border-radius: $border-radius;
+  border: 1px solid $border-color;
+}
+
+// Points section (each horizontal box for today's and week's points)
+// .points-section {
+//   padding-bottom: 12px;
+//   margin-bottom: 12px;
+//   border-bottom: 1px solid $border-color;
+
+//   &:last-child {
+//     border-bottom: none;
+//     margin-bottom: 0;
+//     padding-bottom: 0;
+//   }
+// }
+
+// Points label (e.g., "Today's points:", "Week points:")
+.points-label {
+  color: $title-color;
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-right: 12px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+// Points value (e.g., the actual points value)
+.points-value {
+  color: $fg-color;
+  font-size: 1.3em;
+}

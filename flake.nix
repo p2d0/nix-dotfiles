@@ -109,6 +109,10 @@
                   "https://github.com/NixOS/nixpkgs/archive/pull/229886/head.tar.gz") {
                     config = self.config;
                   };
+                pr419945 = import (fetchTarball
+                  "${nixpkgs-tars}6574cde9e881474ca4ee3438d4ad0ab471f58b0b.tar.gz")
+                  { config = self.config; };
+
                 flacpkgs = import (builtins.fetchTarball {
                   url = "https://github.com/NixOS/nixpkgs/archive/cea111161b02f1a823698038bfd01bc93607e391.tar.gz";
                 }) {};
