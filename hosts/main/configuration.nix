@@ -124,7 +124,7 @@
     KERNEL=="hiddev*", MODE="0666"
     KERNEL=="ttyUSB*", MODE="0666"
 
-    ACTION=="add|change", KERNEL=="event[0-9]*", SUBSYSTEM=="input", ATTRS{name}=="Touch passthrough", ATTRS{capabilities/abs}=="670800001000003", ATTRS{id/vendor}=="beef", ATTRS{id/product}=="dead", ENV{LIBINPUT_CALIBRATION_MATRIX}="2.25 0 0 0 1.9 0"
+    ACTION=="add|change", KERNEL=="event[0-9]*", SUBSYSTEM=="input", ATTRS{name}=="Touch passthrough", ATTRS{capabilities/abs}=="670800001000003", ATTRS{id/vendor}=="beef", ATTRS{id/product}=="dead", ENV{LIBINPUT_CALIBRATION_MATRIX}="2.5 0 0 0 2 0"
   '';
 
   # users.users.andrew.extraGroups = ["corectrl" "gamemode"];
@@ -659,8 +659,9 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
   services.sunshine.settings = {
     upnp = "enabled";
     output_name = 2;
-    capture = "wlr";
+    capture = "kms";
     encoder = "nvenc";
+    nvenc_twopass = "disabled";
     min_log_level = "Debug";
   };
 
@@ -689,6 +690,17 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
           }
         ];
         exclude-global-prep-cmd = "false";
+        auto-detach = "true";
+      }
+      {
+        name = "All Monitors Desktop";
+        image-path = "desktop-alt.png";
+        exclude-global-prep-cmd = "false";
+        prep-cmd = [
+          {
+            do = "${pkgs.hyprland}/bin/hyprctl dispatch workspace 12";
+          }
+        ];
         auto-detach = "true";
       }
       {
@@ -970,7 +982,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       sidequest
       xorg.xwininfo
       # xboxdrv
-      # mangohud
+      mangohud
       lua
       apktool
       apksigner

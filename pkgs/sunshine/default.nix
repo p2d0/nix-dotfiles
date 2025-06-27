@@ -48,7 +48,7 @@
   nlohmann_json,
   config,
   coreutils,
-  cudaSupport ? config.cudaSupport,
+  cudaSupport ? true,
   cudaPackages ? { },
 }:
 let
