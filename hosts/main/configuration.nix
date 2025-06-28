@@ -694,7 +694,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       }
       {
         name = "All Monitors Desktop";
-        image-path = "desktop-alt.png";
+        image-path = "/etc/nixos/pkgs/sunshine/desktop-multiple.png";
         exclude-global-prep-cmd = "false";
         prep-cmd = [
           {
