@@ -654,7 +654,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
   services.sunshine.enable = true;
   services.sunshine.capSysAdmin = true;
   services.sunshine.package = pkgs.my.sunshine;
-  services.sunshine.autoStart = false;
+  services.sunshine.autoStart = true;
   # services.sunshine.openFirewall = true;
   services.sunshine.settings = {
     upnp = "enabled";
@@ -662,7 +662,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
     capture = "kms";
     encoder = "nvenc";
     nvenc_twopass = "disabled";
-    min_log_level = "Debug";
+    # min_log_level = "Debug";
   };
 
   services.sunshine.applications = {
