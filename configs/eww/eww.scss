@@ -109,3 +109,20 @@ $bullet-color: #f5c2e7;           // A magenta/pink for bullets
   color: $fg-color;
   font-size: 1.3em;
 }
+
+.exercises {
+	padding: $padding;
+}
+
+.exercise-label {
+  color: $title-color;
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-right: 12px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.grid {
+  margin-left: $padding;
+  margin-right: $padding;
+}
