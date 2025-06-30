@@ -152,7 +152,7 @@ class Status:
                 if total_seconds is None:
                     return 0
                 else:
-                    return total_seconds // self.worktime
+                    return total_seconds // (25 * 60)  # Assuming a pomodoro is 25 minutes
         else:
             return 0
 

@@ -82,7 +82,7 @@
            (todo_panel))
 
 (defwindow todo_window_2
-           :monitor 1
+           :monitor "DP-3"
            :geometry (geometry :x "2130px"
                                :y "50px"
                                :width "380px"
