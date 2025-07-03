@@ -54,8 +54,8 @@
 ;; 3. The main panel widget that combines all sections (MODIFIED)
 (defwidget todo_panel []
            (box :orientation "v" :space-evenly false
-                :valign "end"
-                (clock)
+                :valign "start"
+                ;; (clock)
                 (exercise)
                 (points)
                 (box :class "todo-panel" :orientation "v" :space-evenly false
