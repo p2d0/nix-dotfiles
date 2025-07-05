@@ -54,7 +54,7 @@
 ;; 3. The main panel widget that combines all sections (MODIFIED)
 (defwidget todo_panel []
            (box :orientation "v" :space-evenly false
-                :valign "start"
+                :valign "end"
                 ;; (clock)
                 (exercise)
                 (points)
@@ -70,27 +70,27 @@
 (defwindow todo_window
            :monitor 0
            :geometry (geometry :x "20px"
-                               :y "50px"
+                               :y "10px"
                                :width "380px"
-                               :height "90%"
+                               :height "97%"
                                )
            :stacking "bg"  ; 'bg' layer
            :layer "background" ; Put it on the background layer
            :focusable false
            :hexpand true
-           :vexpand true
+           :vexpand false
            (todo_panel))
 
 (defwindow todo_window_2
            :monitor "DP-3"
            :geometry (geometry :x "2130px"
-                               :y "50px"
+                               :y "10px"
                                :width "380px"
-                               :height "90%"
+                               :height "97%"
                                )
            :stacking "bg"  ; 'bg' layer
            :layer "background" ; Put it on the background layer
            :focusable false
            :hexpand true
-           :vexpand true
+           :vexpand false
            (todo_panel))
