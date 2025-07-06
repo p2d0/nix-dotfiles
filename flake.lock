@@ -1242,11 +1242,11 @@
     },
     "nixpkgs_10": {
       "locked": {
-        "lastModified": 1743827369,
-        "narHash": "sha256-rpqepOZ8Eo1zg+KJeWoq1HAOgoMCDloqv5r2EAa9TSA=",
+        "lastModified": 1751637120,
+        "narHash": "sha256-xVNy/XopSfIG9c46nRmPaKfH1Gn/56vQ8++xWA8itO4=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "42a1c966be226125b48c384171c44c651c236c22",
+        "rev": "5c724ed1388e53cc231ed98330a60eb2f7be4be3",
         "type": "github"
       },
       "original": {
@@ -1728,18 +1728,18 @@
       },
       "locked": {
         "allRefs": true,
-        "lastModified": 1749642220,
-        "narHash": "sha256-wxrqEXmWVHk+l5KS0anaySxwjqBtKBMRtq838YKSads=",
-        "ref": "refs/heads/p2d0_old",
-        "rev": "e94da645cb093600bb6a8a41c28025b77c830e0e",
-        "revCount": 19554,
+        "lastModified": 1751815745,
+        "narHash": "sha256-XfXtV3hzRiuA+8BLcjZ4aRNwPeEt0oSuZ4gxY3LdDpc=",
+        "ref": "refs/heads/p2d0_update",
+        "rev": "b5b60d2375a7dd9647c6a2e86c9f689678bf703c",
+        "revCount": 19859,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/p2d0/tdesktop.git"
       },
       "original": {
         "allRefs": true,
-        "ref": "refs/heads/p2d0_old",
+        "ref": "refs/heads/p2d0_update",
         "submodules": true,
         "type": "git",
         "url": "https://github.com/p2d0/tdesktop.git"
