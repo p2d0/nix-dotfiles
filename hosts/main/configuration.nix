@@ -661,7 +661,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
     output_name = 2;
     capture = "kms";
     encoder = "nvenc";
-    nvenc_twopass = "disabled";
+    # nvenc_twopass = "disabled";
     # min_log_level = "Debug";
   };
 
