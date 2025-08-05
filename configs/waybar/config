@@ -28,15 +28,15 @@
     "modules-left": [
       "hyprland/workspaces",
       "hyprland/submap",
-      "idle_inhibitor",
-      "custom/crypto"
+      "idle_inhibitor"
+    //  "custom/crypto"
     ],
     "modules-center": [
       "clock"
     ],
     "modules-right": [
       "custom/polypomo",
-      "custom/weather",
+   //   "custom/weather",
       "pulseaudio",
       "hyprland/language",
       "tray"
