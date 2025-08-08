@@ -1100,6 +1100,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       # pkgs.libsForQt5.dolphin
       # unstable.telegram-cli
       sounduxPkgs.soundux
+      my.qwen-code
       # my.soundux
       # (unstable.callPackage /etc/nixos/pkgs/nemo-preview.nix {})
       # my.nemo-preview
