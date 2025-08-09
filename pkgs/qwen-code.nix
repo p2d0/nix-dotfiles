@@ -17,7 +17,7 @@ buildNpmPackage (finalAttrs: {
 
   npmDeps = fetchNpmDeps {
     inherit (finalAttrs) src;
-    hash = "sha256-A/f4MDHICxwXj+OqG+QQPwnPhNmE3NbZxmgeVYKIiJE=";
+    hash = "sha256-O9STim5g6FlbZn03XQ7C25tdKMksLpUdjLg1C5kmEqY=";
   };
   buildPhase = ''
     runHook preBuild
