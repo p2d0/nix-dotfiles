@@ -386,14 +386,14 @@ serverFlagsSection = ''
         # "*/30 11-21 * * * andrew DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /run/current-system/sw/bin/notify-send 'Check daily'"
         "00 20 * * * andrew darkman set dark"
         "00 23 * * * andrew DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /run/current-system/sw/bin/notify-send 'Sleep'"
-        "00 20 * * * root /etc/nixos/shutdown.sh"
-        "55 20 * * * andrew DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /run/current-system/sw/bin/notify-send 'Shutdown in 5 MINUTES'"
-        "00 19 * * * andrew /home/andrew/Dropbox/update_ip.sh"
+        "00 21 * * * root /etc/nixos/shutdown.sh"
+        "55 21 * * * andrew DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /run/current-system/sw/bin/notify-send 'Shutdown in 5 MINUTES'"
+        "00 20 * * * andrew /home/andrew/Dropbox/update_ip.sh"
         # "00 23 * * * andrew /home/andrew/Dropbox/miner_enable.sh"
         # "00 7 * * * andrew /home/andrew/Dropbox/miner_disable.sh"
         # "35 6 * * * root /etc/nixos/play_alsa_alarm.sh"
         "30 7 * * * root /etc/nixos/stop_alarm.sh"
-        "00 19 * * * andrew fish -c 'sync_repos'"
+        "00 20 * * * andrew fish -c 'sync_repos'"
         "0,5,10,15,20,25,30,35,40,45,50,55 * * * * andrew sleep 12 ; wget --no-check-certificate -O - https://freedns.afraid.org/dynamic/update.php?RnBTMHFiQlhHWnVmUXpNYmtLWlQ0ZXB5OjIyMTIzNjM3 >> /tmp/freedns_ug_kyrgyzstan_kg.log 2>&1 &"
       ];
     };
