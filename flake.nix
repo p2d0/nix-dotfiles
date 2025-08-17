@@ -85,6 +85,7 @@
 
               config.permittedInsecurePackages = [
                 "python3.11-youtube-dl-2021.12.17"
+                "ventoy-gtk3-1.1.05"
                 "qbittorrent-qt5-4.6.4"
                 "dotnet-runtime-6.0.36"
                 "dotnet-sdk-wrapped-6.0.428"

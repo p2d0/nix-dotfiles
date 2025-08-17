@@ -71,6 +71,7 @@ in {
         enable = true;
         xwayland.enable = true;
       };
+      programs.hyprlock.enable = true;
       environment.variables = {
         QT_QPA_PLATFORM = "wayland";
         ANKI_WAYLAND = 1;

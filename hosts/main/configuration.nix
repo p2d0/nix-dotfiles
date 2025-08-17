@@ -829,7 +829,9 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       quickshell
       kdePackages.qtdeclarative
 
+      ventoy-full-gtk
       clang
+      unetbootin
       file
       clojure
       kdePackages.kdenlive
