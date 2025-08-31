@@ -808,7 +808,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
         themeConfig = {
           FullBlur = true;
           BlurRadius = 25;
-          PasswordFocus = false;
+          # PasswordFocus = false;
         };
       })
       poetry
