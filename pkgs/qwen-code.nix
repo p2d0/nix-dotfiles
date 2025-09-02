@@ -7,17 +7,17 @@
 }:
 buildNpmPackage (finalAttrs: {
   pname = "qwen-code";
-  version = "v0.0.5-nightly.7";
+  version = "v0.0.10-nightly.2";
   src = fetchFromGitHub {
     owner = "QwenLM";
     repo = "qwen-code";
-    rev = "9875ea6479da3a21e9e48636b9eda2ef6453a243";
-    hash = "sha256-A/f4MDHICxwXj+OqG+QQPwnPhNmE3NbZxmgeVYKIiJE=";
+    rev = "50b94383def83d4621faf03906eafcdfe074ca44";
+    hash = "sha256-PoeSpid7WJwHS2RRd09FOaEvnJw4qJKLGijNeMc68xE=";
   };
 
   npmDeps = fetchNpmDeps {
     inherit (finalAttrs) src;
-    hash = "sha256-O9STim5g6FlbZn03XQ7C25tdKMksLpUdjLg1C5kmEqY=";
+    hash = "sha256-4MNz8BmRG2hFbzlsoy7kEBr0l2S5cs/ZmWcHTxTvryc=";
   };
   buildPhase = ''
     runHook preBuild
