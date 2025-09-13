@@ -33,6 +33,15 @@ in {
           sha256 = "sha256-EUoicPd+aUMlfCeo9BOuIiBlQSpPtMtMn5AUkZU3uQA=";
         };
       }
+      {
+        name = "fzf";
+        src = pkgs.fetchFromGitHub {
+          owner = "PatrickF1";
+          repo = "fzf.fish";
+          rev = "master";
+          sha256 = "sha256-T8KYLA/r/gOKvAivKRoeqIwE2pINlxFQtZJHpOy9GMM=";
+        };
+      }
     ];
     programs.fish.shellInit = ''
         fish_vi_key_bindings
