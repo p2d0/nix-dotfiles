@@ -843,7 +843,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       nodePackages.localtunnel
       # pr218037.microsoft-edge-dev
       gcc.cc.libgcc
-      pr419945.gemini-cli
+      unstable.gemini-cli-bin
       gcc.cc.libgcc.lib
       nwg-drawer
       keepassxc
@@ -1102,7 +1102,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       # pkgs.libsForQt5.dolphin
       # unstable.telegram-cli
       sounduxPkgs.soundux
-      my.qwen-code
+      # my.qwen-code
       # my.soundux
       # (unstable.callPackage /etc/nixos/pkgs/nemo-preview.nix {})
       # my.nemo-preview
