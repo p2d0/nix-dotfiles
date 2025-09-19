@@ -16,8 +16,13 @@ rm -f package-lock.json package.json
 wget "$url/package.json"
 npm i --package-lock-only
 npm_hash=$(prefetch-npm-deps package-lock.json)
-sed -i 's#npmDepsHash = "[^"]*"#npmDepsHash = "'"$npm_hash"'"#' package.nix
+sed -i 's#npmDepsHash = "[^"]*"#npmDepsHash = "'"$npm_hash"'"#' default.nix
 rm -f package.json
 
+package="$(realpath ./default.nix)"
+
+sed -Ei.bak '/ *version = "/s/".+"/"'"$version"'"/' "$package"
+# prefetch_output=$(nix --extra-experimental-features nix-command store prefetch-file --json --hash-type sha256 "https://github.com/ppy/osu/releases/download/$new_version/$2")
+
 # popd
-# nix-update sunshine --version $version
+# nix-update ./default.nix --version $version

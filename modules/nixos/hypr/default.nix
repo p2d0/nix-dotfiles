@@ -19,10 +19,10 @@ in {
         # package = pkgs.hyprland;
         # package = inputs.hyprland.packages.x86_64-linux.hyprland;
         # package
-        package = pkgs.hyprland;
+        package = pkgs.unstable.hyprland;
         # portalPackage = pkgs.unstable.xdg-desktop-portal-hyprland;
         plugins = [
-          pkgs.hyprlandPlugins.hy3
+          pkgs.unstable.hyprlandPlugins.hy3
           pkgs.hyprlandPlugins.hyprgrass
           # inputs.hy3.packages.x86_64-linux.hy3
         ];

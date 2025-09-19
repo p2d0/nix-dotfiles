@@ -68,7 +68,7 @@
 
   environment.variables = { ROC_ENABLE_PRE_VEGA = "1"; };
 
-  boot.kernelPackages = pkgs.unstable.linuxPackages_zen;
+  # boot.kernelPackages = pkgs.unstable.linuxPackages_zen;
 
 #  boot.loader.systemd-boot.enable = false;
 #  boot.loader.grub.useOSProber = true;
@@ -834,6 +834,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       unetbootin
       file
       clojure
+      fzf
       kdePackages.kdenlive
       nix-prefetch-scripts
       openvpn
@@ -843,7 +844,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       nodePackages.localtunnel
       # pr218037.microsoft-edge-dev
       gcc.cc.libgcc
-      unstable.gemini-cli-bin
+      master.gemini-cli
       gcc.cc.libgcc.lib
       nwg-drawer
       keepassxc
