@@ -55,9 +55,12 @@ in {
             exec tmux
         end
         function fish_user_key_bindings
+            fzf_configure_bindings --directory=\cf --variables=\e\cv --git_log=\cl
             bind -M normal -m insert \cr 'peco_select_history (commandline -b)'
             bind -M insert \cr 'peco_select_history (commandline -b)'
-        end'';
+
+        end
+'';
     home.file = {
       # ".config/fish/conf.d".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/modules/home-manager/shell/fish/conf.d;
       ".config/fish/conf.d" = {

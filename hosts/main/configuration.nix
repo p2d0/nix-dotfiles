@@ -835,6 +835,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       file
       clojure
       fzf
+      bat
       kdePackages.kdenlive
       nix-prefetch-scripts
       openvpn
