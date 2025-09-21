@@ -191,7 +191,7 @@
     },
     "custom/weather":{
         "interval": 6000,
-        "exec": "curl -s 'https://wttr.in/?format=%c%20%t%20(%f)'"
+        "exec": "curl -s 'https://wttr.in/Moscow?format=%c%20%t%20(Feels%20Like%20%f)'"
     },
     "custom/wireguard":{
         "on-click": "~/.config/waybar/wg-status.sh",

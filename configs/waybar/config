@@ -14,7 +14,7 @@
     ],
     "modules-right": [
       // "custom/humpool",
-      "custom/weather",
+      // "custom/weather",
       "pulseaudio"
       // "hyprland/language",
       // "tray"
@@ -36,7 +36,7 @@
     ],
     "modules-right": [
       "custom/polypomo",
-   //   "custom/weather",
+      "custom/weather",
       "pulseaudio",
       "hyprland/language",
       "tray"
