@@ -1109,11 +1109,11 @@
     },
     "nixpkgs_10": {
       "locked": {
-        "lastModified": 1751637120,
-        "narHash": "sha256-xVNy/XopSfIG9c46nRmPaKfH1Gn/56vQ8++xWA8itO4=",
+        "lastModified": 1758277210,
+        "narHash": "sha256-iCGWf/LTy+aY0zFu8q12lK8KuZp7yvdhStehhyX1v8w=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "5c724ed1388e53cc231ed98330a60eb2f7be4be3",
+        "rev": "8eaee110344796db060382e15d3af0a9fc396e0e",
         "type": "github"
       },
       "original": {
@@ -1620,11 +1620,11 @@
       },
       "locked": {
         "allRefs": true,
-        "lastModified": 1751815745,
-        "narHash": "sha256-XfXtV3hzRiuA+8BLcjZ4aRNwPeEt0oSuZ4gxY3LdDpc=",
+        "lastModified": 1758695299,
+        "narHash": "sha256-5/rgSmR55yB3L3zfBMC7r1tiZcBRz+brfb3UVlNz3P0=",
         "ref": "refs/heads/p2d0_update",
-        "rev": "b5b60d2375a7dd9647c6a2e86c9f689678bf703c",
-        "revCount": 19859,
+        "rev": "c7d474fc9025a96495383c1d48052e049db6cf76",
+        "revCount": 20566,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/p2d0/tdesktop.git"
