@@ -919,9 +919,14 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       #     sha256 = "sha256:1p39llchnb2b6zbjpn0fk7hp7yhfp03b00s539hhgaliqmq9z93g";
       #   };
       # }))
-      (flameshot.override {
+      ((flameshot.override {
         enableWlrSupport = true;
-      })
+      }).overrideAttrs(oldAttrs: rec {
+        patches = oldAttrs.patches ++ [
+          /etc/nixos/flameshot.patch
+        ];
+      }))
+
       unstable.flyctl
       # .overrideAttrs(oldAttrs: rec {
       #   NIX_CFLAGS_COMPILE = "-DUSE_WAYLAND_CLIPBOARD";

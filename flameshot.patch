@@ -1,0 +1,13 @@
+diff --git a/src/widgets/panel/sidepanelwidget.h b/src/widgets/panel/sidepanelwidget.h
+index b1ca13c6..e95c7dc3 100644
+--- a/src/widgets/panel/sidepanelwidget.h
++++ b/src/widgets/panel/sidepanelwidget.h
+@@ -16,7 +16,7 @@ class QColorPickingEventFilter;
+ class QSlider;
+ class QCheckBox;
+ 
+-constexpr int maxToolSize = 50;
++constexpr int maxToolSize = 200;
+ constexpr int minSliderWidth = 100;
+ 
+ class SidePanelWidget : public QWidget
