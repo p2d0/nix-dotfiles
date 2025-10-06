@@ -42,7 +42,7 @@ def main():
         height = active_monitor['height']
 
 
-        position_x = width // 2
+        position_x = width // 2 - 250
         position_y = (height - window_height) // 2
 
         # Move the window
