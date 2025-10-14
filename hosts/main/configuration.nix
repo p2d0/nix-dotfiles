@@ -1064,6 +1064,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       #(pkgs.callPackage /etc/nixos/pkgs/tdesktop.nix { })
       # (pkgs.callPackage ./pkgs/openhab.nix { })
       speedcrunch
+      songrec
       discord
       # legcord
       # unstable.tdesktop
