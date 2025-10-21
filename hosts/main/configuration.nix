@@ -386,8 +386,8 @@ serverFlagsSection = ''
         # "*/30 11-21 * * * andrew DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /run/current-system/sw/bin/notify-send 'Check daily'"
         "00 19 * * * andrew darkman set dark"
 
-        # "00 23 * * * root /etc/nixos/shutdown.sh"
-        # "55 22 * * * andrew DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /run/current-system/sw/bin/notify-send 'Shutdown in 5 MINUTES'"
+        "00 23 * * * root /etc/nixos/shutdown.sh"
+        "55 22 * * * andrew DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /run/current-system/sw/bin/notify-send 'Shutdown in 5 MINUTES'"
 
         "00 20 * * * andrew /home/andrew/Dropbox/update_ip.sh"
         # "00 23 * * * andrew /home/andrew/Dropbox/miner_enable.sh"
@@ -652,9 +652,9 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
     pkgs.vulkan-tools
     pkgs.hwdata
   ];
-  services.sunshine.enable = true;
+  services.sunshine.enable = false;
   services.sunshine.capSysAdmin = true;
-  services.sunshine.package = pkgs.my.sunshine;
+  services.sunshine.package = pkgs.unstable.sunshine;
   services.sunshine.autoStart = true;
   # services.sunshine.openFirewall = true;
   services.sunshine.settings = {
