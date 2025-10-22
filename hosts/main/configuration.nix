@@ -942,7 +942,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       usbutils
       unstable.pmbootstrap
       # unstable.davinci-resolve
-      # unstable.firefox
+      unstable.firefox
       # unstable.librewolf
       xcompmgr
       heroic
@@ -1036,7 +1036,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       calibre
       xorg.xdpyinfo
       unstable.postman
-      unstable.brave
+      brave
       peco
       ffmpeg-full
       d-spy
