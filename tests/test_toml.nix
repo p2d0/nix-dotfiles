@@ -1,0 +1,19 @@
+{ lib }:
+
+lib.runTests {
+  testEasy = {
+    expr = builtins.fromTOML ''
+[Profile0]
+Name=default
+IsRelative=1
+Path=yt6yyim5.default
+Default=1
+
+[General]
+StartWithLastProfile=1
+Version=2
+
+'';
+    expected = { kek = "y";};
+  };
+}

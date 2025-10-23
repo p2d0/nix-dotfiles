@@ -16,7 +16,7 @@ See the above repository for updates as well as full license text. */
 */
 :where(#main-window) #browser{
   --uc-sidebar-width: 40px;
-  --uc-sidebar-hover-width: 210px;
+  --uc-sidebar-hover-width: 250px;
 }
 #main-window[sizemode="fullscreen"] #browser{
   --uc-sidebar-width: 1px;
