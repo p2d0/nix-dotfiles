@@ -1036,7 +1036,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       calibre
       xorg.xdpyinfo
       unstable.postman
-      brave
+      unstable.brave
       peco
       ffmpeg-full
       d-spy

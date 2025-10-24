@@ -25,20 +25,20 @@ See the above repository for updates as well as full license text. */
     visibility: collapse;
   }
   :root[sizemode="fullscreen"] #nav-bar > .titlebar-buttonbox-container{
-    display: flex !important;
+    display: none !important;
   }
   :root:is([tabsintitlebar],[customtitlebar]) #toolbar-menubar:is([autohide=""],not([autohide="false"])) ~ #nav-bar{
     > .titlebar-buttonbox-container{
-      display: flex !important;
+      display: none !important;
     }
     :root[sizemode="normal"] & {
       > .titlebar-spacer{
-        display: flex !important;
+        display: none !important;
       }
     }
     :root[sizemode="maximized"] & {
       > .titlebar-spacer[type="post-tabs"]{
-        display: flex !important;
+        display: none !important;
       }
       @media (-moz-bool-pref: "userchrome.force-window-controls-on-left.enabled"),
         -moz-pref("userchrome.force-window-controls-on-left.enabled"),
