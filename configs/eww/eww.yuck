@@ -69,7 +69,7 @@
 ;; This makes the widget a persistent background panel
 (defwindow todo_window
            :monitor 0
-           :geometry (geometry :x "20px"
+           :geometry (geometry :x "1520px"
                                :y "10px"
                                :width "380px"
                                :height "97%"
