@@ -47,7 +47,7 @@
 (defwidget exercise []
            (box :class "genwin exercises"
                 :orientation "v" :space-evenly false
-                (label :class "exercise-label" :text "OSU! and HAND EXERCISE" :halign "center")
+                (label :class "exercise-label" :text "95% 210 BPM!! before moving on" :halign "center")
                 ))
 
 
