@@ -399,6 +399,9 @@ serverFlagsSection = ''
       ];
     };
   };
+  networking.extraHosts = ''
+    130.255.77.28 ntc.party
+  '';
 
   nix.settings.auto-optimise-store = true;
   nix.gc.automatic = false;
