@@ -1031,7 +1031,16 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       docker-compose
       playerctl
       libusb1
-      solaar
+      (solaar.overrideAttrs(oldAttrs: rec {
+        version = "1.1.16";
+        src = fetchFromGitHub {
+          owner = "pwr-Solaar";
+          repo = "Solaar";
+          tag = version;
+          hash = "sha256-PhZoDRsckJXk2t2qR8O3ZGGeMUhmliqSpibfQDO7BeA=";
+        };
+        buildInputs = oldAttrs.buildInputs ++ [ upower ];
+      }))
       piper
       # rocketchat-desktop
       tetex
