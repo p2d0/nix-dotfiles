@@ -994,11 +994,11 @@
     },
     "nixos-master": {
       "locked": {
-        "lastModified": 1762183440,
-        "narHash": "sha256-V4fWnWzlq7QRoeL8NZCK30x3pNAxUEQ4Ow46gy7qzPs=",
+        "lastModified": 1763545338,
+        "narHash": "sha256-CdrP7rGZSqz4xlaETbUoggy6cZJU5HNqdhioP0EJiyI=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "9c54fa8e6c6d84acc0eb75d01206a762518c17ff",
+        "rev": "abe0f4b0a8e95d5b3ddaebbc35f69525c64873b7",
         "type": "github"
       },
       "original": {
