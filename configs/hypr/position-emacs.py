@@ -16,63 +16,64 @@ def get_active_monitor():
 
 def move_window(offset_x, offset_y, selector='title:emacs-todo'):
     # Move the window by the calculated offsets
-    subprocess.run(['hyprctl', 'dispatch', 'movewindowpixel exact', f'{offset_x} {offset_y},', selector])
+    # Syntax: movewindowpixel exact x y,address
+    subprocess.run(['hyprctl', 'dispatch', 'movewindowpixel', f'exact {offset_x} {offset_y},{selector}'])
+
+def focus_window(selector='title:emacs-todo'):
+    # Focus the specific window
+    subprocess.run(['hyprctl', 'dispatch', 'focuswindow', selector])
 
 def main():
     active_monitor = get_active_monitor()
-    gap_x = 30
+    
+    if not active_monitor:
+        print("No active monitor found.")
+        return
+
+    # Defaults
     window_width = 800
     calendar_gap = 10
     window_width_calendar = 600
     window_height = 910
-    if(active_monitor['name'] == 'HDMI-A-1'):
+    
+    # 1. Position the windows based on monitor
+    if active_monitor['name'] == 'HDMI-A-1':
         width = active_monitor['width']
         height = active_monitor['height']
 
         position_x = 2560 + (width // 2  - window_width)
         position_y = (height - window_height) // 2
 
-        # Move the window
+        # Move Brave
         move_window(position_x, position_y, 'class:brave-calendar.notion.so.+')
 
         position_x_calendar = position_x + window_width_calendar + calendar_gap
+        # Move Emacs
         move_window(position_x_calendar, position_y, 'title:emacs-todo')
     else:
         width = active_monitor['width']
         height = active_monitor['height']
 
-
         position_x = width // 2 - 250
         position_y = (height - window_height) // 2
 
-        # Move the window
+        # Move Emacs
         move_window(position_x, position_y, 'title:emacs-todo')
 
         position_x_calendar = position_x - window_width_calendar - calendar_gap
+        # Move Brave
         move_window(position_x_calendar, position_y, 'class:brave-calendar.notion.so.+')
 
-    # if active_monitor:
-    #     second_monitor_offset = 0;
-    #     if(active_monitor['name'] == 'HDMI-A-2'):
-    #         second_monitor_offset = 2560
+    # 2. Check if the special workspace is active
+    # hyprctl monitors returns a dictionary object for specialWorkspace
+    # e.g., { "id": 0, "name": "" } if inactive
+    # e.g., { "id": -98, "name": "special:emacs" } if active
+    special_workspace_info = active_monitor.get('specialWorkspace', {})
+    active_special_name = special_workspace_info.get('name', '')
 
-    #     width = active_monitor['width']
-    #     height = active_monitor['height']
-
-    #     # Define window dimensions
-    #     window_width = 610  # Updated from 610 to 810 as per your code
-    #     window_height = 810  # Assuming a reasonable height; adjust as needed
-
-    #     position_x = width - window_width + second_monitor_offset
-    #     position_y = (height - window_height) // 2
-
-    #     # Move the window
-    #     move_window(position_x, position_y, 'title:emacs-todo')
-
-    #     position_x_calendar = position_x - window_width
-    #     move_window(position_x_calendar, position_y, 'class:brave-calendar.notion.so*+')
-    # else:
-    #     print("No active monitor found.")
+    # 3. Only focus if special:emacs is NOT active
+    if active_special_name == 'special:emacs':
+        focus_window('title:emacs-todo')
 
 if __name__ == "__main__":
     main()
