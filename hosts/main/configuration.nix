@@ -275,7 +275,7 @@ serverFlagsSection = ''
         };
       in
       "${pkgs.lib.getExe pkgs.weston} --idle-time=5 --shell=kiosk -c ${westonIni}";
-    sddm.theme = "sddm-astronaut-theme";
+    sddm.theme = "catppuccin-mocha-mauve";
     # enable = true;
     # defaultSession = "Hyprland";
     # ly.enable = true;
@@ -808,14 +808,23 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       OSCAR
       cachix
 
-
-      (sddm-astronaut.override {
-        themeConfig = {
-          FullBlur = true;
-          BlurRadius = 25;
-          # PasswordFocus = false;
-        };
-      })
+      (
+        pkgs.catppuccin-sddm.override {
+          flavor = "mocha";
+          accent = "mauve";
+          font  = "Noto Sans";
+          fontSize = "9";
+          background = "${./wallpaper.png}";
+          loginBackground = true;
+        }
+      )
+      # (sddm-astronaut.override {
+      #   themeConfig = {
+      #     FullBlur = true;
+      #     BlurRadius = 25;
+      #     # PasswordFocus = false;
+      #   };
+      # })
       poetry
       putty
       texliveMedium
