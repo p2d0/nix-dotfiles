@@ -275,7 +275,7 @@ serverFlagsSection = ''
         };
       in
       "${pkgs.lib.getExe pkgs.weston} --idle-time=5 --shell=kiosk -c ${westonIni}";
-    sddm.theme = "catppuccin-mocha-mauve";
+    sddm.theme = "sddm-astronaut-theme";
     # enable = true;
     # defaultSession = "Hyprland";
     # ly.enable = true;
@@ -807,24 +807,14 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
       OSCAR
       cachix
-
-      (
-        pkgs.catppuccin-sddm.override {
-          flavor = "mocha";
-          accent = "mauve";
-          font  = "Noto Sans";
-          fontSize = "9";
-          background = "${./wallpaper.png}";
-          loginBackground = true;
-        }
-      )
-      # (sddm-astronaut.override {
-      #   themeConfig = {
-      #     FullBlur = true;
-      #     BlurRadius = 25;
-      #     # PasswordFocus = false;
-      #   };
-      # })
+      (sddm-astronaut.override {
+        embeddedTheme = "black_hole";
+        # themeConfig = {
+        #   # FullBlur = true;
+        #   # BlurRadius = 25;
+        #   # PasswordFocus = false;
+        # };
+      })
       poetry
       putty
       texliveMedium
