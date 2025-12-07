@@ -160,6 +160,14 @@
                    ];
     dpi = 96;
     xrandrHeads = [
+      {
+        output = "HDMI-1";
+        monitorConfig = ''
+        Option "UseDisplayDevice" "none"
+        Option "Ignore" "true"
+        '';
+      }
+
       # {
       #   output = "DP-4";
       #   primary = true;
