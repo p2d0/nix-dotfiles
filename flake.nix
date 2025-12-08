@@ -24,6 +24,7 @@
     nixos-unstable.url = "nixpkgs/nixos-unstable";
 
     nixos-master.url = "github:nixos/nixpkgs/master";
+    void-editor.url = "github:bariscodefxy/void-editor-flake";
     home-manager.url = "github:nix-community/home-manager/release-25.05";
     # hyprland.url = "github:hyprwm/Hyprland/";
     # hyprland = {
@@ -69,6 +70,7 @@
       nixpkgs-hy3,
       nixos-unstable,
       nixos-master,
+      void-editor,
       # hyprland,
       nixpkgs-amnezia,
       home-manager,
@@ -129,6 +131,7 @@
                   url = "https://github.com/NixOS/nixpkgs/archive/007604529b133db7ef40e687cd95d88c37e5fe8a.tar.gz";
                 }) {};
                 quickshell = inputs.quickshell.packages.${system}.default;
+                void-editor = inputs.void-editor.packages.${system}.default;
                 old-23 = import nixpkgs-23 { config = self.config; };
                 old-24-11 = import nixpkgs-24-11 { config = self.config; };
                 unstable = import nixos-unstable { config = self.config; };

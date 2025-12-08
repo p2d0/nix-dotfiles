@@ -1184,6 +1184,22 @@
     },
     "nixpkgs_11": {
       "locked": {
+        "lastModified": 1749285348,
+        "narHash": "sha256-frdhQvPbmDYaScPFiCnfdh3B/Vh81Uuoo0w5TkWmmjU=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "3e3afe5174c561dee0df6f2c2b2236990146329f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_12": {
+      "locked": {
         "lastModified": 1755615617,
         "narHash": "sha256-HMwfAJBdrr8wXAkbGhtcby1zGFvs+StOp19xNsbqdOg=",
         "owner": "nixos",
@@ -1458,6 +1474,7 @@
         "quickshell": "quickshell",
         "spl3g-config": "spl3g-config",
         "tdesktop": "tdesktop",
+        "void-editor": "void-editor",
         "zen-browser": "zen-browser_2"
       }
     },
@@ -1816,6 +1833,24 @@
         "type": "github"
       }
     },
+    "void-editor": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_11"
+      },
+      "locked": {
+        "lastModified": 1755376251,
+        "narHash": "sha256-Ac/jMCCcBL+k89IDJceqyS78NiSZU6naH0jWcJWVKEY=",
+        "owner": "bariscodefxy",
+        "repo": "void-editor-flake",
+        "rev": "0b5bc1a69acd7876443857dd200bfb1877dae660",
+        "type": "github"
+      },
+      "original": {
+        "owner": "bariscodefxy",
+        "repo": "void-editor-flake",
+        "type": "github"
+      }
+    },
     "xdph": {
       "inputs": {
         "hyprland-protocols": [
@@ -1921,7 +1956,7 @@
     "zen-browser_2": {
       "inputs": {
         "home-manager": "home-manager_5",
-        "nixpkgs": "nixpkgs_11"
+        "nixpkgs": "nixpkgs_12"
       },
       "locked": {
         "lastModified": 1762131860,

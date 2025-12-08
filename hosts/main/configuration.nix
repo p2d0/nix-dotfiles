@@ -143,6 +143,8 @@
   };
 
 
+  # https://gitlab.com/fazzi/nixohess/-/blob/main/modules/hardware/nvidia.nix
+  modules.nvidia.enable = true;
   hardware.nvidia = {
     modesetting.enable = true;
     nvidiaSettings = true;
@@ -1049,6 +1051,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
         buildInputs = oldAttrs.buildInputs ++ [ upower ];
       }))
       piper
+      void-editor
       # rocketchat-desktop
       tetex
       gnumake
