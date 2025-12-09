@@ -55,8 +55,8 @@
 (defwidget todo_panel []
            (box :orientation "v" :space-evenly false
                 :valign "end"
-                ;; (clock)
-                (exercise)
+                (clock)
+                ;; (exercise)
                 ;; (points)
                 (box :class "todo-panel" :orientation "v" :space-evenly false
                      (for kek in eww_todos
