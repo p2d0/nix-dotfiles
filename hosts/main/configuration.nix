@@ -49,6 +49,33 @@
     # ^ this requires `nix-index` pkg
   ];
 
+  systemd.user.services.f5-ai-server = {
+    description = "Nvidia AI Server (F5)";
+    wantedBy = [ "graphical-session.target" ];
+    after = [ "network.target" ];
+
+    # Ensure the service can find the 'nix' command
+    path = [ pkgs.nix pkgs.bash pkgs.git ];
+
+    serviceConfig = {
+      # The directory containing the flake.nix and .venv
+      WorkingDirectory = "/mnt/new/ai/projects/nvidia";
+
+      # 1. Run 'nix develop' to load the huge LD_LIBRARY_PATH and variables
+      # 2. Use --command to run a shell script inside that environment
+      # 3. Source the venv and start the server
+      ExecStart = ''
+        ${pkgs.nix}/bin/nix develop /mnt/new/ai/projects/nvidia \
+          --extra-experimental-features "nix-command flakes" \
+          --command bash -c "cd /mnt/new/ai/projects/f5 && source .venv/bin/activate && python server.py"
+      '';
+
+      # Basic restart logic
+      Restart = "always";
+      RestartSec = "10";
+    };
+  };
+
   hardware.graphics.enable = true;
   hardware.graphics.extraPackages = with pkgs; [
     ocl-icd
@@ -958,7 +985,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       unstable.firefox
       # unstable.librewolf
       xcompmgr
-      heroic
+      unstable.heroic
       killall
       xdo
       # floorp

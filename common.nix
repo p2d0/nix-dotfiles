@@ -212,6 +212,7 @@
   manual.json.enable = true;
   services.kdeconnect.enable = true;
 
+
   # systemd.user.services.kdeconnect = {
   #   Unit = {
   #     After = lib.mkForce [ "default.target" ];
