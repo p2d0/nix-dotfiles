@@ -55,7 +55,7 @@
     after = [ "network.target" ];
 
     # Ensure the service can find the 'nix' command
-    path = [ pkgs.nix pkgs.bash pkgs.git ];
+    path = [ pkgs.nix pkgs.bash pkgs.git pkgs.ffmpeg-full ];
 
     serviceConfig = {
       # The directory containing the flake.nix and .venv
