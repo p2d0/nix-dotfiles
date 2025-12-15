@@ -890,6 +890,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       gcc.cc.libgcc.lib
       nwg-drawer
       keepassxc
+      tree
       my.realm-studio-bin
       remmina
       (pkgs.whisper-cpp.overrideAttrs (oldAttrs: {

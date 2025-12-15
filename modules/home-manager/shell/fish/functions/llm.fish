@@ -17,3 +17,4 @@ function llm -d "cat the contents of fd copy them to tmp and then cfic"
     
     clip-file /tmp/llm.txt
 end
+
