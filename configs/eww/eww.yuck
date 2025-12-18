@@ -27,7 +27,7 @@
 
 ;; 3. Main Panel Widget
 (defwidget todo_panel []
-           (revealer :transition "crossfade"
+           (revealer :transition "slidedown"
                      :reveal show_panel
                      :duration "100ms"
                      (box :orientation "v" :space-evenly false
@@ -50,6 +50,7 @@
            :geometry (geometry :x "55px"
                                :y "780px")
            :stacking "fg"
+           :wm-ignore true
            :layer "top"
            :focusable false
            (todo_panel))
