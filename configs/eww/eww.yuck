@@ -89,7 +89,8 @@
                                :height "97%"
                                )
            :stacking "bg"  ; 'bg' layer
-           :layer "background" ; Put it on the background layer
+           ;; :layer "foreground" ; Put it on the background layer
+           ;; :namespace "overlay"
            :focusable false
            :hexpand true
            :vexpand false
