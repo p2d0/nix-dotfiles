@@ -2,22 +2,22 @@
 
 (include "clock.yuck")
 
-;; 1. Polling variable to get todos from Emacs
-;; This runs the command every 5 minutes (300s) and stores the JSON output
+;; 1. Variables
 (deflisten eww_todos :initial "[]" `./scripts/org.sh`)
-
 (deflisten eww_totals :initial "{}" `./scripts/org-today.sh`)
 
-;; 2. Widget to display a list of tasks for a given category
-;; This widget is perfectly reusable and needs no changes.
+;; VISIBLE BY DEFAULT (Set to true)
+(defvar show_panel true)
+
+;; 2. Task Widget
 (defwidget task_section [title tasks]
-           ;; Only show this section if the task list is not empty
            (box :class "task-section"
                 :orientation "v"
                 :space-evenly false
-                (label :class "section-title" :halign "start" :text title)
+                :halign "center"
+                (label :class "section-title" :halign "center"
+                       :text title)
                 (box :class "task-list" :orientation "v" :space-evenly false
-                     ;; Loop through the tasks and create a row for each one
                      (for task in tasks
                           (box :class "task-item" :orientation "h" :space-evenly false
                                (label :class "task-bullet" :text "›")
@@ -25,73 +25,40 @@
                                       :wrap-mode "char"
                                       ))))))
 
-(defwidget points []
-           (box :class "points"
-                :orientation "v" :space-evenly false
-                (box :orientation "h" :space-evenly false
-                     (label :class "points-label" :text "Median week points:" :halign "start")
-                     (label :class "points-value" :text { eww_totals.median-points }
-                            :halign "end" :hexpand true
-                            ))
-                (box :orientation "h" :space-evenly false
-                     (label :class "points-label" :text "Week points:" :halign "start")
-                     (label :class "points-value" :text { eww_totals.week-points }
-                            :halign "end" :hexpand true
-                            ))
-                (box :orientation "h" :space-evenly false
-                     (label :class "points-label" :text "Todays points:" :halign "start")
-                     (label :class "points-value" :text { eww_totals.todays-points }
-                            :halign "end" :hexpand true
-                            ))
-                ))
-(defwidget exercise []
-           (box :class "genwin exercises"
-                :orientation "v" :space-evenly false
-                (label :class "exercise-label" :text "80% sub30x before moving on" :halign "center")
-                ))
-
-
-;; 3. The main panel widget that combines all sections (MODIFIED)
+;; 3. Main Panel Widget
 (defwidget todo_panel []
-           (box :orientation "v" :space-evenly false
-                :valign "end"
-                (clock)
-                ;; (exercise)
-                ;; (points)
-                (box :class "todo-panel" :orientation "v" :space-evenly false
-                     (for kek in eww_todos
-                          ;; For each entry, create a task_section widget.
-                          ;; The title is the JSON key, and the tasks are the JSON value (array of strings).
-                          ;; We also capitalize the category name for a nicer display.
-                          (task_section :title { kek.key } :tasks {kek.value})))))
+           (revealer :transition "crossfade"
+                     :reveal show_panel
+                     :duration "100ms"
+                     (box :orientation "v" :space-evenly false
+                          :valign "start"
+                          ;; (clock) 
+                          
+                          ;; The sliding container
+                          (box :class "todo-panel"
+                               ;; :spacing  -10
+                               :orientation "h"
+                               :space-evenly true
+                               ;; Iterate over todos
+                               (for kek in eww_todos
+                                    (task_section :title { kek.key } :tasks {kek.value}))))))
 
-;; 4. The window definition
-;; This makes the widget a persistent background panel
+;; 4. Window Definitions
+;; No fixed width/height. When 'show_panel' is false, the window shrinks to 0x0.
 (defwindow todo_window
            :monitor 0
-           :geometry (geometry :x "1520px"
-                               :y "10px"
-                               :width "380px"
-                               :height "97%"
-                               )
-           :stacking "bg"  ; 'bg' layer
-           :layer "background" ; Put it on the background layer
+           :geometry (geometry :x "55px"
+                               :y "780px")
+           :stacking "fg"
+           :layer "top"
            :focusable false
-           :hexpand true
-           :vexpand false
            (todo_panel))
 
-(defwindow todo_window_2
-           :monitor "DP-3"
-           :geometry (geometry :x "2130px"
-                               :y "10px"
-                               :width "380px"
-                               :height "97%"
-                               )
-           :stacking "bg"  ; 'bg' layer
-           ;; :layer "foreground" ; Put it on the background layer
-           ;; :namespace "overlay"
-           :focusable false
-           :hexpand true
-           :vexpand false
-           (todo_panel))
+;; (defwindow todo_window_2
+;;            :monitor "DP-3"
+;;            :geometry (geometry :x "2130px"
+;;                                :y "10px")
+;;            :stacking "fg"
+;;            :layer "top"
+;;            :focusable false
+;;            (todo_panel))
