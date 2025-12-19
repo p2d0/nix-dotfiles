@@ -2,6 +2,7 @@
 
 # Get current state
 IS_OPEN=$(eww get show_panel)
+# eww open todo_window --screen $(hyprctl activewindow -j | jq '.monitor')
 
 # Toggle the state
 if [ "$IS_OPEN" = "true" ]; then

@@ -20,6 +20,7 @@
                 (box :class "task-list" :orientation "v" :space-evenly false
                      (for task in tasks
                           (box :class "task-item" :orientation "h" :space-evenly false
+                               :width 300
                                (label :class "task-bullet" :text "›")
                                (label :class "task-text" :halign "start" :wrap true :text task
                                       :wrap-mode "char"
