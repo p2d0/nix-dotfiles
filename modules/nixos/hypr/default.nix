@@ -54,6 +54,10 @@ in {
         };
       };
 
+      home.file = {
+        ".config/hypr/hypridle.conf".source = args.config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/hypr/hypridle.conf;
+      };
+
       # services.hyprpaper = {
       #   enable = true;
       #   package = pkgs.unstable.hyprpaper;
@@ -76,6 +80,8 @@ in {
         QT_QPA_PLATFORM = "wayland";
         ANKI_WAYLAND = 1;
       };
+      services.hypridle.enable = true;
+      
       # xdg.portal = {
       #   enable = true;
       #   config.common.default = "*";
@@ -91,6 +97,7 @@ in {
             ];
           }));
       };
+
       environment.systemPackages = with pkgs;
         [
           gammastep
