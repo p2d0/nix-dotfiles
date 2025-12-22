@@ -22,7 +22,7 @@
     nixpkgs-hyprland.url = "github:nixos/nixpkgs/762a398892576efcc76fb233befbd58c2cef59e0";
     nixpkgs-hy3.url = "github:nixos/nixpkgs/d98abf5cf5914e5e4e9d57205e3af55ca90ffc1d";
     nixos-unstable.url = "nixpkgs/nixos-unstable";
-
+    nanobanana.url = "path:/mnt/new/ai/projects/nanobanana"; 
     nixos-master.url = "github:nixos/nixpkgs/master";
     void-editor.url = "github:bariscodefxy/void-editor-flake";
     home-manager.url = "github:nix-community/home-manager/release-25.05";
@@ -73,6 +73,7 @@
       void-editor,
       # hyprland,
       nixpkgs-amnezia,
+      nanobanana,
       home-manager,
       spl3g-config,
       ... }:
@@ -194,6 +195,7 @@
                     ];
                   }
                   home-manager.nixosModules.home-manager
+                  nanobanana.nixosModules.default
                   # hyprland.nixosModules.default
                   ./home.nix
                   ./hosts/main/configuration.nix

@@ -48,6 +48,7 @@
     # nix-locate --top-level libstdc++.so.6  (replace this with your lib)
     # ^ this requires `nix-index` pkg
   ];
+  services.nanobanana.enable = true;
 
   systemd.user.services.f5-ai-server = {
     description = "Nvidia AI Server (F5)";
