@@ -33,24 +33,9 @@ $bullet-color: #f5c2e7;           // A magenta/pink for bullets
 
 // --- Task Section (Repeatable, Speedruns) ---
 .task-section {
-<<<<<<< HEAD
-    // width:300px;
-    // max-width:300px;
-  // padding-bottom: 12px;
-  // margin-bottom: 12px;
-  // border-bottom: 1px solid $border-color;
-    // &:first-child{
-    //     margin-left: -90px;
-    // }
-    // margin-left: -10px;
-    // &:last-child{
-    //     margin-left:10px;
-    // }
-=======
   padding-bottom: 12px;
   margin-bottom: 12px;
   border-bottom: 1px solid $border-color;
->>>>>>> parent of 03023c2 (YUCK update)
 
   &:last-child {
     border-bottom: none;
