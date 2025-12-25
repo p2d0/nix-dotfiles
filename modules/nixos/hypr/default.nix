@@ -24,6 +24,8 @@ in {
         plugins = [
           pkgs.unstable.hyprlandPlugins.hy3
           pkgs.hyprlandPlugins.hyprgrass
+          pkgs.unstable.hyprlandPlugins.hypr-darkwindow
+          # inputs.hypr-darkwindow.packages.x86_64-linux.Hypr-DarkWindow
           # inputs.hy3.packages.x86_64-linux.hy3
         ];
         systemd.enable = true;

@@ -133,6 +133,7 @@
                 }) {};
                 quickshell = inputs.quickshell.packages.${system}.default;
                 void-editor = inputs.void-editor.packages.${system}.default;
+
                 old-23 = import nixpkgs-23 { config = self.config; };
                 old-24-11 = import nixpkgs-24-11 { config = self.config; };
                 unstable = import nixos-unstable { config = self.config; };
