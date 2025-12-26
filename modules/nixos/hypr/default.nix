@@ -24,7 +24,12 @@ in {
         plugins = [
           pkgs.unstable.hyprlandPlugins.hy3
           pkgs.hyprlandPlugins.hyprgrass
-          pkgs.unstable.hyprlandPlugins.hypr-darkwindow
+          (pkgs.unstable.hyprlandPlugins.hypr-darkwindow.overrideAttrs(oldAttrs: rec {
+            patches = [
+              /etc/nixos/modules/nixos/hypr/noblur.patch
+            ];
+          }))
+ 
           # inputs.hypr-darkwindow.packages.x86_64-linux.Hypr-DarkWindow
           # inputs.hy3.packages.x86_64-linux.hy3
         ];
