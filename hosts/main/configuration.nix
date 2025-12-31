@@ -31,7 +31,7 @@
       url = "https://gu-st.ru/content/lending/russian_trusted_sub_ca_pem.crt";
     })
   ];
-
+virtualisation.waydroid.enable = true;
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
     zlib # numpy
