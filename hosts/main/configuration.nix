@@ -1234,6 +1234,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       # unstable.natron
       unstable.scrcpy
       unstable.yt-dlp
+      insomnia
       # pythonPackages.yt-dlp
       imagemagick
       # thunderbird
