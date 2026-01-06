@@ -87,6 +87,8 @@
               config.allowUnfree = true;  # forgive me Stallman senpai
 
               config.permittedInsecurePackages = [
+                "qtwebengine-5.15.19"
+
                 "python3.11-youtube-dl-2021.12.17"
                 "mbedtls-2.28.10"
                 "ventoy-gtk3-1.1.05"

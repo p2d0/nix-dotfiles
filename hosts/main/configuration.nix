@@ -1201,7 +1201,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       # libreoffice
       pkgs.onlyoffice-bin
       koreader
-      stremio
+      unstable.stremio
       # vlc
       gsettings-desktop-schemas
       wineWowPackages.stable
