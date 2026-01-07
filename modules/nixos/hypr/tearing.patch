@@ -1,0 +1,22 @@
+diff --git a/src/main.cpp b/src/main.cpp
+index 82ef447..47969ed 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -40,7 +40,7 @@ CFunctionHook* g_surfacePassDraw;
+ 
+ void hkSurfacePassDraw(CSurfacePassElement* thisptr, const CRegion& damage) {
+     {
+-        std::lock_guard<std::mutex> lock(g_ShaderMutex);
++        // std::lock_guard<std::mutex> lock(g_ShaderMutex);
+         auto shader = g_WindowShader.OnRenderWindowPre(thisptr->m_data.pWindow);
+         if (shader && (*shader)->Transparent == IntroducesTransparency::Yes) {
+             // TODO: undo these changes?
+@@ -58,7 +58,7 @@ void hkSurfacePassDraw(CSurfacePassElement* thisptr, const CRegion& damage) {
+     ((decltype(&hkSurfacePassDraw))g_surfacePassDraw->m_original)(thisptr, damage);
+ 
+     {
+-        std::lock_guard<std::mutex> lock(g_ShaderMutex);
++        // std::lock_guard<std::mutex> lock(g_ShaderMutex);
+         g_WindowShader.OnRenderWindowPost();
+     }
+ }

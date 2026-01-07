@@ -27,6 +27,7 @@ in {
           (pkgs.unstable.hyprlandPlugins.hypr-darkwindow.overrideAttrs(oldAttrs: rec {
             patches = [
               /etc/nixos/modules/nixos/hypr/noblur.patch
+              /etc/nixos/modules/nixos/hypr/tearing.patch
             ];
           }))
  
