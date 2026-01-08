@@ -25,6 +25,11 @@ in {
           }) [
             "Hyprland"
             ".Hyprland-wrapped"
+            "firefox"
+            ".firefox-wrapped"
+            "Brave"
+            "brave"
+            ".brave-wrapped"
             "Discord"
             ".Discord-wrapped"
             "DiscordCanary"

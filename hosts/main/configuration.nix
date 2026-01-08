@@ -424,7 +424,9 @@ serverFlagsSection = ''
         # "*/30 11-21 * * * andrew DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /run/current-system/sw/bin/notify-send 'Check daily'"
         "00 19 * * * andrew darkman set dark"
 
-        # "00 21 * * * root /etc/nixos/shutdown.sh"
+        "00 21 * * * root /etc/nixos/shutdown.sh"
+        "15 21 * * * root /etc/nixos/shutdown.sh"
+        "30 21 * * * root /etc/nixos/shutdown.sh"
         "55 22 * * * andrew DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /run/current-system/sw/bin/notify-send 'Shutdown in 5 MINUTES'"
 
         "00 20 * * * andrew /home/andrew/Dropbox/update_ip.sh"
