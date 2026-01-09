@@ -28,6 +28,7 @@ in {
             "firefox"
             ".firefox-wrapped"
             "Brave"
+            "kdenlive"
             "brave"
             ".brave-wrapped"
             "Discord"
