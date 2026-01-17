@@ -893,8 +893,8 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1768400601,
-        "narHash": "sha256-1IJmibMIuYwNUdSDYUsb5ulZBcx3Dx56tqLzeLHliAw=",
+        "lastModified": 1768630801,
+        "narHash": "sha256-ioIN3bodWBKR1kMxSGeC/epML+S28EC7rgavm2Y95J8=",
         "path": "/mnt/new/ai/projects/nanobanana",
         "type": "path"
       },

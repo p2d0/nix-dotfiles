@@ -1269,8 +1269,9 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
   # Enable the OpenSSH daemon.
   services.openssh = {
     enable = true;
-    startWhenNeeded = true;
+    # startWhenNeeded = true;
     settings.PasswordAuthentication = false;
+
   };
 
   # Open ports in the firewall.
