@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
-hyprlock
+DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' hyprlock
+
 
 # Check if the file /tmp/emergency does not exist
 # if [ ! -e /tmp/emergency ]; then
