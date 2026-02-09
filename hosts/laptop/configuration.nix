@@ -168,7 +168,7 @@
       iconpack-obsidian
       gsettings-desktop-schemas
       dunst
-      unstable.python39Packages.yt-dlp
+      # unstable.pythonPackages.yt-dlp
       python39Packages.virtualenv
       python39Packages.pip
       feh
