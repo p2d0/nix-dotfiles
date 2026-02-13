@@ -14,9 +14,11 @@
   hardware.opengl.extraPackages = with pkgs; [ vaapiIntel vaapiVdpau libvdpau-va-gl];
   hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ vaapiIntel ];
 
-  boot.loader.grub.enable = true;
-  boot.loader.grub.default = 2;
-  boot.loader.grub.version = 2;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  # boot.loader.grub.enable = true;
+  # boot.loader.grub.default = 2;
+  # boot.loader.grub.version = 2;
   boot.blacklistedKernelModules = [ "iTCO_wdt" "iTCO_vendor_support" ];
 
   # TODO just use self.user 
