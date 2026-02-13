@@ -53,16 +53,62 @@
       mouse = { accelProfile = "flat"; };
     };
     exportConfiguration = true;
-    windowManager.i3.enable = true;
+    # windowManager.i3.enable = true;
 
-    displayManager = {
-      defaultSession = "none+i3";
-      autoLogin = {
-        enable = true;
-        user = config.user;
+    # displayManager = {
+    #   defaultSession = "none+i3";
+    #   autoLogin = {
+    #     enable = true;
+    #     user = config.user;
+    #   };
+    # };
+  };
+
+  services.displayManager = {
+    enable = true;
+    defaultSession = "hyprland";
+
+    sddm.enable = true;
+    sddm.package = pkgs.kdePackages.sddm;
+    sddm.settings = {
+      X11 = {
+        ServerArguments="-s 1 -logfile /tmp/x111.log";
       };
     };
+    sddm.extraPackages = [
+      pkgs.sddm-astronaut
+    ];
+    sddm.wayland.enable = false;
+    sddm.wayland.compositorCommand =
+      let
+        xcfg = config.services.xserver;
+        westonIni = (pkgs.formats.ini { }).generate "weston.ini" {
+          libinput = {
+            enable-tap = config.services.libinput.mouse.tapping;
+            left-handed = config.services.libinput.mouse.leftHanded;
+          };
+          core = {
+            idle-time = 15;
+          };
+          keyboard = {
+            keymap_model = xcfg.xkb.model;
+            keymap_layout = xcfg.xkb.layout;
+            keymap_variant = xcfg.xkb.variant;
+            keymap_options = xcfg.xkb.options;
+          };
+        };
+      in
+        "${pkgs.lib.getExe pkgs.weston} --idle-time=5 --shell=kiosk -c ${westonIni}";
+    sddm.theme = "sddm-astronaut-theme";
+    # enable = true;
+    # defaultSession = "Hyprland";
+    # ly.enable = true;
+    # autoLogin = {
+    #   enable = true;
+    #   user = config.user;
+    # };
   };
+
   hardware.bluetooth.enable = true;
   modules.hjkl.enable = true;
   modules.keyrings.enable = true;
