@@ -198,7 +198,7 @@
       pasystray
       pavucontrol
       paprefs
-      discord
+      # discord
       speedcrunch
 
       # unstable-small.tdesktop

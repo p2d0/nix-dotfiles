@@ -890,7 +890,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       nodePackages.localtunnel
       # pr218037.microsoft-edge-dev
       gcc.cc.libgcc
-      my.gemini
+      # my.gemini
       gcc.cc.libgcc.lib
       nwg-drawer
       keepassxc
