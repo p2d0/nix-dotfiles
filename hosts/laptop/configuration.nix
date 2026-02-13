@@ -60,6 +60,40 @@
     #   };
     # };
   };
+  programs.tmux = {
+    enable = true;
+    extraConfig = ''
+set-window-option -g mode-keys vi
+
+unbind C-b
+set-option -g prefix C-s
+bind-key C-s send-prefix
+
+# act like vim
+setw -g mode-keys vi
+bind-key h select-pane -L
+bind-key j select-pane -D
+bind-key k select-pane -U
+bind-key l select-pane -R
+
+set-option -g set-titles on
+set-option -g set-titles-string "#T"
+bind-key -T copy-mode-vi v send -X begin-selection
+
+
+run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
+'';
+  };
+
+  modules.maestral.enable = true;
+  modules.mihomo = {
+    enable = true;
+    configFile = "/home/${config.user}/Dropbox/mihomo/config.yaml";
+    # package = pkgs.unstable.mihomo;
+    package = pkgs.my.mihomo;
+    # package = pkgs.old-24-05.mihomo;
+    tunMode = true;
+  };
 
   modules.hypr.enable = true;
   services.displayManager = {
