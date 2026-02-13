@@ -1189,7 +1189,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       # evolution
       nodejs
       old-24-11.iconpack-obsidian
-      kdePackages.xwaylandvideobridge
+      # kdePackages.xwaylandvideobridge
       (pkgs.wrapOBS.override {
         obs-studio = obs-studio.override { cudaSupport = true;};
       } {
@@ -1202,7 +1202,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
         ];
       })
       # libreoffice
-      pkgs.onlyoffice-bin
+      pkgs.onlyoffice-desktopeditors
       koreader
       stremio
       # vlc
