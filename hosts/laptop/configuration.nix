@@ -6,14 +6,7 @@
     ./hardware-configuration.nix
   ];
   modules.flakes.enable = true;
-  xdg.portal = {
-    enable = true;
-    extraPortals = [
-      # pkgs.xdg-dbus-proxy pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-gnome pkgs.xdg-desktop-portal-kde
-      pkgs.xdg-desktop-portal-kde
-    ];
-  };
-  xdg.portal.config.common.default = "*";
+
   security.rtkit.enable = true;
 
   hardware.opengl.enable = true;
