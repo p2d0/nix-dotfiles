@@ -21,36 +21,36 @@
 
 
         # pkgs.obs-studio
-        (pkgs.lutris.override {
-          extraPkgs = pkgs: with pkgs;[
-            pkgs.alsa-lib
-            # pkgs.pkgsi686Linux.alsa-lib
-            pkgs.SDL2
-            pkgs.mangohud
-            pkgs.speex
-            pkgs.flacpkgs.flac
-            pkgs.gamemode.lib
+        # (pkgs.lutris.override {
+        #   extraPkgs = pkgs: with pkgs;[
+        #     pkgs.alsa-lib
+        #     # pkgs.pkgsi686Linux.alsa-lib
+        #     pkgs.SDL2
+        #     pkgs.mangohud
+        #     pkgs.speex
+        #     pkgs.flacpkgs.flac
+        #     pkgs.gamemode.lib
 
-            pkgs.libusb1
-            pkgs.libsoup_2_4
-            pkgs.openal
-            pkgs.libgudev
-            pkgs.libvdpau
-            pkgs.libpulseaudio
-            pkgs.pkgsi686Linux.libpulseaudio
-            pkgs.winetricks
-            pkgs.gtk3-x11
-            pkgs.pango
-            pkgs.gdk-pixbuf
-            pkgs.shared-mime-info
-            pkgs.libxcrypt
-          ];
-        })
+        #     pkgs.libusb1
+        #     pkgs.libsoup_2_4
+        #     pkgs.openal
+        #     pkgs.libgudev
+        #     pkgs.libvdpau
+        #     pkgs.libpulseaudio
+        #     pkgs.pkgsi686Linux.libpulseaudio
+        #     pkgs.winetricks
+        #     pkgs.gtk3-x11
+        #     pkgs.pango
+        #     pkgs.gdk-pixbuf
+        #     pkgs.shared-mime-info
+        #     pkgs.libxcrypt
+        #   ];
+        # })
         # pkgs.unstable.stremio
         # pkgs.my.osu-lazer-bin
         # pkgs.my.tlauncher
         # pkgs.unstable.osu-lazer-bin
-        pkgs.chatterino2
+        # pkgs.chatterino2
       ];
     };
     inheritParentConfig = true;
