@@ -183,6 +183,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
 
   modules.xdg.sessionVariables = true;
   modules.fonts.enable = true;
+  modules.guake.enable = true;
   modules.timed-shutdown.enable = false;
   modules.timed-shutdown.time = "23:00:00";
 
