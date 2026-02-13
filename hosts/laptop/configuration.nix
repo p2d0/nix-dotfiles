@@ -176,8 +176,8 @@
       ripgrep
       fd
       # TODO THEME
-      breeze-gtk
-      breeze-qt5
+      kdePackages.breeze-gtk
+      libsForQt5.breeze-qt5
       nixfmt
       gimp
       mpv
