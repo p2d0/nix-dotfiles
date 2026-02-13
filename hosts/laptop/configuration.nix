@@ -117,6 +117,7 @@
   };
 
   users.defaultUserShell = pkgs.fish;
+  programs.fish.enable = true;
 
   modules.emacs-with-doom  =
     {
