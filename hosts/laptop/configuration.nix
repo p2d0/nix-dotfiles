@@ -61,6 +61,7 @@
     # };
   };
 
+  modules.hypr.enable = true;
   services.displayManager = {
     enable = true;
     defaultSession = "hyprland";
