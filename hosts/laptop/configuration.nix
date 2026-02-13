@@ -228,6 +228,6 @@
   services.openssh.startWhenNeeded = false;
 
   networking.firewall.enable = false;
-  system.stateVersion = "21.11"; # Did you read the comment?
+  system.stateVersion = "25.11"; # Did you read the comment?
 
 }
