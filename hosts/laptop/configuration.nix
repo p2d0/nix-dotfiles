@@ -177,7 +177,7 @@
       fd
       # TODO THEME
       kdePackages.breeze-gtk
-      libsForQt5.breeze-qt5
+      # libsForQt5.breeze-qt5
       nixfmt
       gimp
       mpv
