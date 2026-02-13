@@ -3,7 +3,7 @@
 , lib
 , stdenv
 , fetchurl
-, oraclejdk8
+, oraclejdk8 ? null
 , makeDesktopItem
 , libpulseaudio
 , libGL
