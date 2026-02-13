@@ -201,7 +201,7 @@
 
       # unstable-small.tdesktop
       jpegoptim
-      filelight
+      # filelight
       gnome.gedit
       qbittorrent
       gnome.nautilus
