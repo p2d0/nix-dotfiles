@@ -3,7 +3,7 @@
 {
   imports = lib.my.findAllModulePathsIn /etc/nixos/modules/home-manager;
   home.packages = [
-    pkgs.cask
+    pkgs.emacsPackages.cask
   ];
 
   xdg.desktopEntries =
