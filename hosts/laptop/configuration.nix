@@ -157,10 +157,11 @@
 
   zramSwap.enable = true;
 
-  programs.java = {
-    enable = true;
-    package = pkgs.oraclejre8;
-  };
+  # programs.java = {
+  #   enable = true;
+  #   package = pkgs.oraclejre8;
+  # };
+
   environment.systemPackages = with pkgs;
     [
       vim
