@@ -26,7 +26,7 @@ in {
       environment.systemPackages = with pkgs;
         [
           pkgs.v2ray
-          pkgs.qv2ray
+          # pkgs.qv2ray
           # pkgs.unstable.nekoray
           pkgs.xray
 
