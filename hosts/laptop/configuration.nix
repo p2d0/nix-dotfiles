@@ -10,7 +10,7 @@
   security.rtkit.enable = true;
 
   hardware.opengl.enable = true;
-  hardware.opengl.driSupport = true;
+  # hardware.opengl.driSupport = true;
   hardware.opengl.extraPackages = with pkgs; [ vaapiIntel vaapiVdpau libvdpau-va-gl];
   hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ vaapiIntel ];
 
