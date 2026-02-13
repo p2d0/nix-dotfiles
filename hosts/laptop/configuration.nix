@@ -26,6 +26,9 @@
   boot.loader.grub.version = 2;
   boot.blacklistedKernelModules = [ "iTCO_wdt" "iTCO_vendor_support" ];
 
+  # TODO just use self.user 
+  user = self.user;
+
   boot.tmpOnTmpfs = true;
 
   # TODO boot.loader.grub.device = "/dev/sda";
