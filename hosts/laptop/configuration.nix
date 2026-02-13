@@ -202,9 +202,9 @@
       # unstable-small.tdesktop
       jpegoptim
       # filelight
-      gnome.gedit
+      gedit
       qbittorrent
-      gnome.nautilus
+      nautilus
       zip
       inetutils
       xsettingsd
@@ -214,14 +214,14 @@
       gsettings-desktop-schemas
       dunst
       # unstable.pythonPackages.yt-dlp
-      python39Packages.virtualenv
-      python39Packages.pip
+      # python39Packages.virtualenv
+      # python39Packages.pip
       feh
-      gnome.eog
+      eog
       htop
       unzip
       my.get_current_screen_geometry
-      my.guake-latest
+      # my.guake-latest
     ];
   services.openssh.enable = true;
   services.openssh.startWhenNeeded = false;
