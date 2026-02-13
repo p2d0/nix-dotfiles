@@ -221,7 +221,7 @@
                   home-manager.nixosModules.home-manager
                   # nanobanana.nixosModules.default
                   # hyprland.nixosModules.default
-                  ./home.nix
+                  ./home-laptop.nix
                   ./hosts/laptop/configuration.nix
                 ];
                 specialArgs = { inherit self inputs lib;};
