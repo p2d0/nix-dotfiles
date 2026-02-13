@@ -32,7 +32,7 @@
             pkgs.gamemode.lib
 
             pkgs.libusb1
-            pkgs.libsoup
+            pkgs.libsoup_2_4
             pkgs.openal
             pkgs.libgudev
             pkgs.libvdpau
