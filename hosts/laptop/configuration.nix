@@ -191,8 +191,8 @@
       xdotool
       tldr
       # TODO THEME
-      libsForQt5.breeze-gtk
-      libsForQt5.breeze-qt5
+      # libsForQt5.breeze-gtk
+      # libsForQt5.breeze-qt5
       pasystray
       pavucontrol
       paprefs
