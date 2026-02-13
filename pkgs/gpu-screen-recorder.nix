@@ -1,4 +1,4 @@
-{ pkgs, lib, makeWrapper, wrapGAppsHook, stdenv, fetchgit, ... }:
+{ pkgs, lib, makeWrapper, wrapGAppsHook3, stdenv, fetchgit, ... }:
 
 # with import <nixos-unstable> { };
 stdenv.mkDerivation rec {
@@ -15,7 +15,7 @@ stdenv.mkDerivation rec {
   #   /etc/nixos/pkgs/gpu-screen-recorder.patch
   # ];
 
-  nativeBuildInputs = [makeWrapper wrapGAppsHook ];
+  nativeBuildInputs = [makeWrapper wrapGAppsHook3 ];
   buildInputs = [
     pkgs.pkg-config
     pkgs.libdrm

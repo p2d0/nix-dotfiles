@@ -9,7 +9,7 @@
 , callPackage
 , gnome
 , gobject-introspection
-, wrapGAppsHook
+, wrapGAppsHook3
 , clutter
 , clutter-gtk
 , clutter-gst

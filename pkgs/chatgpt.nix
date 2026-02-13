@@ -5,7 +5,7 @@
   dpkg,
   makeWrapper,
   autoPatchelfHook,
-  wrapGAppsHook,
+  wrapGAppsHook3,
   gtk3,
   cairo,
   gdk-pixbuf,
@@ -32,7 +32,7 @@ stdenv.mkDerivation rec {
     cp -r . $out/
 '';
 
-  nativeBuildInputs = [ makeWrapper autoPatchelfHook wrapGAppsHook ];
+  nativeBuildInputs = [ makeWrapper autoPatchelfHook wrapGAppsHook3 ];
   runtimeDependencies = [
     gtk3
     cairo

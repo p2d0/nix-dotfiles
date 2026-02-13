@@ -1,6 +1,6 @@
 # {
  # sounduxPkgs,
-  # lib, stdenv, fetchFromGitHub, cmake, ninja, pkg-config, makeWrapper, wrapGAppsHook, makeDesktopItem, copyDesktopItems,
+  # lib, stdenv, fetchFromGitHub, cmake, ninja, pkg-config, makeWrapper, wrapGAppsHook3, makeDesktopItem, copyDesktopItems,
   # libappindicator-gtk3, openssl, pipewire, pulseaudio, webkitgtk, xorg,
   # libpulseaudio, libwnck3,gcc14Stdenv,
   # downloaderSupport ? true, ffmpeg, youtube-dl
@@ -56,7 +56,7 @@ stdenv.mkDerivation rec {
       ${lib.optionalString downloaderSupport "--prefix PATH \":\" " + downloaderPath}
 #   '';
 
-  nativeBuildInputs = [ cmake ninja pkg-config makeWrapper wrapGAppsHook copyDesktopItems ];
+  nativeBuildInputs = [ cmake ninja pkg-config makeWrapper wrapGAppsHook3 copyDesktopItems ];
 
   buildInputs = [
     libappindicator-gtk3

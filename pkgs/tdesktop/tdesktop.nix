@@ -6,7 +6,7 @@
 , cmake
 , ninja
 , python3
-, wrapGAppsHook
+, wrapGAppsHook3
 , wrapQtAppsHook
 , extra-cmake-modules
 , qtbase
@@ -114,7 +114,7 @@ stdenv.mkDerivation rec {
     cmake
     ninja
     python3
-    wrapGAppsHook
+    wrapGAppsHook3
     wrapQtAppsHook
     extra-cmake-modules
   ];
@@ -176,7 +176,7 @@ stdenv.mkDerivation rec {
 
   postFixup = ''
     # This is necessary to run Telegram in a pure environment.
-    # We also use gappsWrapperArgs from wrapGAppsHook.
+    # We also use gappsWrapperArgs from wrapGAppsHook3.
     wrapProgram $out/bin/telegram-desktop \
       "''${gappsWrapperArgs[@]}" \
       "''${qtWrapperArgs[@]}" \

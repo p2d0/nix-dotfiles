@@ -43,6 +43,6 @@ appimageTools.wrapType2 {
     unzip
     autoPatchelfHook
     asar
-    (buildPackages.wrapGAppsHook.override { inherit (buildPackages) makeWrapper; })
+    (buildPackages.wrapGAppsHook3.override { inherit (buildPackages) makeWrapper; })
   ];
 }
