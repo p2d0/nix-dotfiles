@@ -48,7 +48,7 @@ virtualisation.waydroid.enable = true;
     # nix-locate --top-level libstdc++.so.6  (replace this with your lib)
     # ^ this requires `nix-index` pkg
   ];
-  services.nanobanana.enable = true;
+  # services.nanobanana.enable = true;
 
   systemd.user.services.f5-ai-server = {
     description = "Nvidia AI Server (F5)";
@@ -846,7 +846,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
 
       # my.hbctool
       vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-      OSCAR
+      oscar
       cachix
       (sddm-astronaut.override {
         embeddedTheme = "black_hole";
@@ -911,7 +911,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       kdePackages.kwalletmanager
       unstable.unarc
       pkgs.libayatana-appindicator
-      pkgs.libayatana-appindicator-gtk3
+      # pkgs.libayatana-appindicator-gtk3
       conda
       # megasync
       # unstable.jetbrains.idea-community
@@ -939,7 +939,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       gnome-themes-extra
       # python2
       xmrig
-      sumneko-lua-language-server
+      lua-language-server
       tgs2png
       # my.tg
       luarocks
@@ -954,7 +954,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       mesa
       # gmsh
       # unstable.microsoft-edge
-      calculix
+      calculix-ccx
       # pr229886.amdgpu-pro-libs.amf
       # pr229886.amdgpu-pro-libs.prefixes
       # (microsoft-edge-dev.overrideAttrs(oldAttrs: rec {
@@ -1033,7 +1033,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       wmctrl
       fd
       kdePackages.breeze-gtk
-      libsForQt5.breeze-qt5
+      # libsForQt5.breeze-qt5
       # nixfmt
       # TODO FIX
       # (old-23.gimp.override { withPython = true; })
@@ -1101,8 +1101,8 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       xdotool
       tldr
       cheat
-      libsForQt5.breeze-gtk
-      libsForQt5.breeze-qt5
+      # libsForQt5.breeze-gtk
+      # libsForQt5.breeze-qt5
       pasystray
       pavucontrol
       paprefs
