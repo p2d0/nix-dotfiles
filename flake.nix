@@ -205,6 +205,27 @@
                 ];
                 specialArgs = { inherit self inputs lib;};
               };
+
+              laptop = nixpkgs.lib.nixosSystem {
+                system = "x86_64-linux";
+                modules = (lib.my.findAllModulePathsIn ./modules/nixos) ++ [
+                  {nixpkgs.pkgs = pkgs;}
+                  {
+                    # pin system nixpkgs to the same version as the flake input
+                    # (don't see a way to declaratively set channels but this seems to work fine?)
+                    nix.nixPath = [
+                      "nixpkgs=${pkgs.path}"
+                      "unstable=${nixos-unstable}"
+                    ];
+                  }
+                  home-manager.nixosModules.home-manager
+                  nanobanana.nixosModules.default
+                  # hyprland.nixosModules.default
+                  ./home.nix
+                  ./hosts/laptop/configuration.nix
+                ];
+                specialArgs = { inherit self inputs lib;};
+              };
             };
           };
 }
