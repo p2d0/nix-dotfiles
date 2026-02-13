@@ -198,7 +198,8 @@
       paprefs
       discord
       speedcrunch
-      unstable-small.tdesktop
+
+      # unstable-small.tdesktop
       jpegoptim
       filelight
       gnome.gedit
