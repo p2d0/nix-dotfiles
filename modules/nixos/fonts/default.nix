@@ -64,7 +64,7 @@ in {
 
                   pkgs.roboto
                   pkgs.noto-fonts
-                  pkgs.noto-fonts-extra
+                  # pkgs.noto-fonts-extra
                   pkgs.fira-code
                   pkgs.hanazono
                   pkgs.dejavu_fonts
