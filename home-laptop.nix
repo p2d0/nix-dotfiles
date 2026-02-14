@@ -55,6 +55,7 @@
     };
     inheritParentConfig = true;
   };
+  networking.networkmanager.enable = true;
 
   specialisation.work = {
     configuration = {
