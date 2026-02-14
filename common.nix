@@ -204,7 +204,9 @@
           owner = "waycrate";
           repo = "xdg-desktop-portal-luminous";
           rev = "master";
-          sha256 = "sha256-fXbpQ2a8nEOGcp0r3hwnulPG7yE6ZSVBgVz6YoOEBZA=";};
+          sha256 = "sha256-fXbpQ2a8nEOGcp0r3hwnulPG7yE6ZSVBgVz6YoOEBZA=";
+          cargoHash = "";
+        };
 
       }))
       pkgs.kdePackages.xdg-desktop-portal-kde
