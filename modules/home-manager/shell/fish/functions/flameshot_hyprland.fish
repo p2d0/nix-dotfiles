@@ -5,7 +5,7 @@ function flameshot_hyprland --description "Save cursor position when launching f
     set mouse_pos (hyprctl cursorpos | string split -n ", ")
 
     # Wait until a client with class "flameshot" appears
-    while not hyprctl clients -j | jq -e '.[] | select(.class == "flameshot")' > /dev/null
+    while not hyprctl clients -j | jq -e '.[] | select(.initialTitle == "flameshot")' > /dev/null
         sleep 0.05
     end
 

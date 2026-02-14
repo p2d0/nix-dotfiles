@@ -942,7 +942,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       # python2
       xmrig
       lua-language-server
-      tgs2png
+      # tgs2png
       # my.tg
       luarocks
       helvum
@@ -1242,6 +1242,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       insomnia
       # pythonPackages.yt-dlp
       imagemagick
+      deskflow
       # thunderbird
       # libpulseaudio
       # pythonPackages.virtualenv

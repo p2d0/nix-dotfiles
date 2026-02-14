@@ -28,7 +28,7 @@
   # TODO boot.loader.grub.device = "/dev/sda";
 
   # TODO extract
-  networking.hostName = config.user;
+  networking.hostName = "${config.user}-laptop";
   networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Moscow";
@@ -228,11 +228,13 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       ranger
       xdotool
       tldr
+      wofi
       # TODO THEME
       # libsForQt5.breeze-gtk
       # libsForQt5.breeze-qt5
       pasystray
       pavucontrol
+      deskflow
       paprefs
       # discord
       speedcrunch
