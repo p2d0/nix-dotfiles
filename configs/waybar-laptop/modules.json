@@ -1,0 +1,239 @@
+{
+    "keyboard-state": {
+        "format": "{name} {icon}",
+        "format-icons": {
+            "locked": "",
+            "unlocked": "",
+        }
+    },
+    "hyprland/workspaces": {
+        "format": "{icon} {windows}",
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1",
+        "enable-bar-scroll": true,
+        "format-window-separator": " ",
+        "window-rewrite-default": "",
+    "window-rewrite": {
+        "title<.*youtube.*>": "",
+        "class<firefox>": "",
+        "class<firefox> title<.*github.*>": "",
+        "foot": "",
+        "code": "󰨞",
+        "class<emacs>": "",
+        "class<emacs> title<.*org-mode.*>": "",
+        "class<vim>": "",
+        "class<nvim>": "",
+        "class<kitty>": "",
+        "class<vscode>": "󰨞",
+        "class<vscode> title<.*typescript.*>": "",
+        "class<alacritty>": "",
+        "class<intellij>": "",
+        "class<pycharm>": "",
+        "sublime": "",
+        "terminal": "",
+        "class<guake>": "",
+        "class<zen-beta>": "󰽪",
+        "class<zen-beta> title<.*reddit.*>": "",
+        "class<chrome>": "󰊯",
+        "class<brave>": "🦁",
+        "class<vivaldi>": "󰖝",
+        "class<spotify>": "󰓇",
+        "class<telegramdesktop>": "",
+        "class<telegramdesktop> title<.*group.*>": "",
+        "spotify": "󰓇",
+        "telegram": "",
+        "class<org.gnome.Nautilus>": "",
+        "class<org.gnome.Nautilus> title<.*trash.*>": "🗑",
+        "class<osu>": "󰝚",
+        "osu": "󰝚",
+        "class<gimp-3.0>": ""
+    },
+    },
+    "hyprland/submap": {
+        "format": "✌️ {}",
+        "max-length": 40,
+        "tooltip": false
+    },
+    "sway/workspaces": {
+        "enable-bar-scroll": true
+    },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "sway/language":{
+        "format": "{}"
+    },
+    "mpd": {
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
+        "format-disconnected": "Disconnected ",
+        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+        "unknown-tag": "N/A",
+        "interval": 2,
+        "consume-icons": {
+            "on": " "
+        },
+        "random-icons": {
+            "off": "<span color=\"#f53c3c\"></span> ",
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": "1 "
+        },
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": " ",
+            "deactivated": ""
+        }
+    },
+    "tray": {
+        "icon-size": 18,
+        "spacing": 10,
+        "show-passive-items": true,
+    },
+    "clock": {
+        // "timezone": "America/New_York",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}",
+        "format":"{:%a, %d %b %H:%M}"
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", ""]
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{percent}% {icon}",
+        "format-icons": ["", ""]
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "battery#bat2": {
+        "bat": "BAT2"
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "custom/humpool": {
+        "exec": "~/.config/polybar/humpool.py",
+        "interval": 300,
+        "format": "{}",
+    },
+    "custom/crypto": {
+        "exec": "/etc/nixos/configs/polybar/polybar-crypto/crypto.py",
+        "interval": 600,
+        "format": "{}",
+    },
+    "custom/polypomo": {
+        "icon-size": 16,
+        "tooltip": false,
+        "exec": "~/.config/polybar/polypomo --saveto /etc/nixos/configs/polybar/time.sqlite",
+        "on-click": "~/.config/polybar/polypomo toggle",
+        "on-click-right": "~/.config/polybar/polypomo end",
+        "on-click-middle": "~/.config/polybar/polypomo time -1410",
+        "on-scroll-up": "~/.config/polybar/polypomo time +300",
+        "on-scroll-down": "~/.config/polybar/polypomo time -300",
+        "on-click-backward": "~/.config/polybar/polypomo-title-dialog.sh",
+        "on-click-forward": "env QT_QPA_PLATFORM=xcb ~/.config/polybar/polypomo_gui.py",
+        "format": "{}"
+    },
+    "custom/timer": {
+        "exec": "~/.config/polybar/polybar-timer.sh tail ' POMOTIMER' 1",
+        "on-click": "~/.config/polybar/polybar-timer.sh new 10 '祥' 'notify-send \"Session finished\"' ; ~/.config/polybar/polybar-timer.sh update %pid%",
+        "on-click-middle": "~/.config/polybar/polybar-timer.sh new 15 ' Long rest' 'notify-send \"Session finished\"'; ~/.config/polybar/polybar-timer.sh update %pid%",
+        "on-click-right": "~/.config/polybar/polybar-timer.sh new 5 ' Short rest' 'notify-send \"Break finished\"' ; ~/.config/polybar/polybar-timer.sh update %pid%",
+        "on-scroll-up": "~/.config/polybar/polybar-timer.sh increase 300 || ~/.config/polybar/polybar-timer.sh new 5 'TIMER:' 'paplay ~/.config/polybar/mixkit-achievement-bell-600.wav;notify-send -u critical \"Timer expired.\"'; ~/.config/polybar/polybar-timer.sh update %pid%",
+        "on-scroll-down": "~/.config/polybar/polybar-timer.sh increase -300 ; ~/.config/polybar/polybar-timer.sh update %pid%",
+        "format": "{}  "
+    },
+    "custom/powerapplet":{
+        "format": "",
+        "on-click": "~/.config/rofi/applets/applets/powermenu.sh",
+        "tooltip": false
+    },
+    "custom/weather":{
+        "interval": 6000,
+        "exec": "curl -s 'https://wttr.in/Moscow?format=%c%20%t%20(Feels%20Like%20%f)'"
+    },
+    "custom/wireguard":{
+        "on-click": "~/.config/waybar/wg-status.sh",
+        "interval": 1,
+        "return-type": "json",
+        "exec": "~/.config/waybar/wg-status.sh --status"
+    },
+    "custom/bluetoothapplet":{
+        "exec": "~/.config/polybar/system-bluetooth-bluetoothctl.sh",
+        "exec-on-event": false,
+        "on-click": "~/.config/rofi/bin/rofi-bluetooth"
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon}   {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "mpris": {
+	    "format": "{player_icon} {dynamic}",
+	    "format-paused": "{status_icon} <i>{dynamic}</i>",
+	    "player-icons": {
+		    "default": "▶",
+		    "mpv": "🎵",
+            "spotify": ""
+	    },
+	    "status-icons": {
+		    "paused": "⏸"
+	    },
+	    "ignored-players": ["zen"]
+    }
+}

@@ -199,6 +199,7 @@
     xdgOpenUsePortal = true;
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
+      pkgs.unstable.xdg-desktop-portal-luminous
       pkgs.kdePackages.xdg-desktop-portal-kde
     ];
   };
@@ -300,9 +301,6 @@
 
     ".config/sway" = {
       source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/sway;
-    };
-    ".config/waybar" = {
-      source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/waybar;
     };
 
     ".ideavimrc" = {
