@@ -14,7 +14,7 @@ in {
   };
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs;[
-      blender
+      # blender
       unstable.cura-appimage
       # (let cura5 = appimageTools.wrapType2 rec {
     #          name = "cura5";

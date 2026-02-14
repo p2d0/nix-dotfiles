@@ -679,7 +679,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
   #   };
   # };
 
-  modules.trex.enable = true;
+  modules.trex.enable = false;
   modules.singbox.enable = false;
   modules.amnezia.enable = false;
   modules.fonts.enable = true;
@@ -858,7 +858,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       })
       poetry
       putty
-      texliveMedium
+      # texliveMedium
       nix-index
       sshfs
       # mattermost-desktop
@@ -905,9 +905,11 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       sha256 = "sha256-dppBhiCS4C3ELw/Ckx5W0KOMUvOHUiisdZvkS7gkxj4=";
     };
   }))
-      unstable.aider-chat
+      # unstable.aider-chat
       frida-tools
-      ghidra-bin
+
+      # ghidra-bin
+
       kdePackages.kwalletmanager
       unstable.unarc
       pkgs.libayatana-appindicator
@@ -917,9 +919,9 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       # unstable.jetbrains.idea-community
       unstable.gamescope
       # create-react-app
-      unstable.code-cursor
+      # unstable.code-cursor
       parallel
-      vscode
+      # vscode
       ddcutil
 
       yandex-disk
@@ -1038,7 +1040,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       # TODO FIX
       # (old-23.gimp.override { withPython = true; })
       unstable.gimp3
-      krita
+      # krita
       mpv
       libva-utils
       inkscape
@@ -1083,7 +1085,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
         buildInputs = oldAttrs.buildInputs ++ [ upower ];
       }))
       piper
-      void-editor
+      # void-editor
       # rocketchat-desktop
       tetex
       gnumake
@@ -1166,7 +1168,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       # pkgs.cinnamon.nemo-python
       # pkgs.libsForQt5.dolphin
       # unstable.telegram-cli
-      sounduxPkgs.soundux
+      # sounduxPkgs.soundux
       # my.qwen-code
       # my.soundux
       # (unstable.callPackage /etc/nixos/pkgs/nemo-preview.nix {})
@@ -1188,16 +1190,16 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       easyeffects
       # evolution
       nodejs
-      old-24-11.iconpack-obsidian
+      # old-24-11.iconpack-obsidian
       # kdePackages.xwaylandvideobridge
       (pkgs.wrapOBS.override {
         obs-studio = obs-studio.override { cudaSupport = true;};
       } {
         plugins = with pkgs.unstable.obs-studio-plugins; [
-          obs-gstreamer
+          # obs-gstreamer
           obs-vkcapture
-          obs-vaapi
-          wlrobs
+          # obs-vaapi
+          # wlrobs
           droidcam-obs
         ];
       })

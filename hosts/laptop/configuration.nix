@@ -29,6 +29,7 @@
 
   # TODO extract
   networking.hostName = config.user;
+  networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Moscow";
 

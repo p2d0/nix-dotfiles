@@ -3,9 +3,9 @@
 {
   specialisation.default = {
     configuration = {
-      programs.steam.enable = true;
+      # programs.steam.enable = true;
       # programs.steam.package = pkgs.unstable.steam;
-      hardware.opentabletdriver.enable = true;
+      # hardware.opentabletdriver.enable = true;
       services.displayManager.autoLogin = {
         enable = true;
         user = config.user;
