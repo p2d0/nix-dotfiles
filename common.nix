@@ -203,7 +203,8 @@
       pkgs.kdePackages.xdg-desktop-portal-kde
     ];
   };
-  xdg.portal.config.common.default = "*";
+  xdg.portal.config.common.default = "luminous";
+  # xdg.portal.config.common.org.freedesktop.impl.portal.InputCapture = "luminous;gtk";
 
   xdg.userDirs = {
     enable = true;
