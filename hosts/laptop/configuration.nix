@@ -191,6 +191,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
   modules.darkman.enable = true;
   modules.vpn.enable = true;
   modules.vm.enable = false;
+  modules.firefox.enable = true;
 
   zramSwap.enable = true;
 
