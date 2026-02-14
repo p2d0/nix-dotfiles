@@ -86,12 +86,17 @@
   # xdg.configFile."mimeapps.list".force = true;
 
   home-manager.users.${config.user} =
-    { pkgs, guake, fetchFromGitHub, callPackage, ... }: {
+    { pkgs, config, guake, fetchFromGitHub, callPackage, ... }: {
       imports = [
         ./common.nix
       ];
       home.packages = [
       ];
+      home.file = {
+        ".config/waybar" = {
+          source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/waybar-laptop;
+        };
+      };
 
       programs.fish.shellInit = ''
         function rebuild-work

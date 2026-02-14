@@ -60,16 +60,16 @@ in {
     fi
   '';
     })
-  ) {
-    environment.systemPackages = [
-      pkgs.firefoxpwa
-    ];
+    {
+      environment.systemPackages = [
+        pkgs.firefoxpwa
+      ];
 
-    programs.firefox = {
-      enable = true;
-      package = pkgs.firefox;
-      nativeMessagingHosts.packages = [ pkgs.firefoxpwa ];
-    };
-  };
+      programs.firefox = {
+        enable = true;
+        package = pkgs.firefox;
+        nativeMessagingHosts.packages = [ pkgs.firefoxpwa ];
+      };
+    });
 }
 

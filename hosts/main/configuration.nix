@@ -693,6 +693,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
   programs.opengamepadui.enable = true;
   programs.opengamepadui.args = "--fullscreen";
   # programs.opengamepadui.gamescopeSession.enable = true;
+  modules.firefox.enable = true;
   programs.opengamepadui.extraPackages = [
     pkgs.vulkan-tools
     pkgs.hwdata

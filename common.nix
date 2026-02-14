@@ -193,13 +193,20 @@
   modules.shell.fish.enable = true;
   modules.gimp3-photoshop-shortcuts.enable = true;
   modules.eww.enable = true;
-  modules.firefox.enable = true;
+  # modules.firefox.enable = true;
 
   xdg.portal = {
     xdgOpenUsePortal = true;
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
-      pkgs.unstable.xdg-desktop-portal-luminous
+      (pkgs.unstable.xdg-desktop-portal-luminous.overrideAttrs(oldAttrs: rec {
+        src = pkgs.fetchFromGitHub {
+          owner = "waycrate";
+          repo = "xdg-desktop-portal-luminous";
+          rev = "master";
+          sha256 = "sha256-fXbpQ2a8nEOGcp0r3hwnulPG7yE6ZSVBgVz6YoOEBZA=";};
+
+      }))
       pkgs.kdePackages.xdg-desktop-portal-kde
     ];
   };
