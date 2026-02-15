@@ -12,10 +12,22 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
+  boot.supportedFilesystems = [ "ntfs" ];
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/3575c709-53ed-47ef-aed3-c21a4429650c";
       fsType = "ext4";
+    };
+
+  fileSystems."/mnt/md127" =
+    { device = "/dev/disk/by-id/ata-TOSHIBA_MQ01ABD075_8318P8C2T-part2";
+      options = [ "noatime" ];
+      fsType = "ext4";
+    };
+  fileSystems."/mnt/windows" =
+    { device = "/dev/disk/by-id/ata-TOSHIBA_MQ01ABD075_8318P8C2T-part1";
+      fsType = "ntfs-3g"; 
+      options = [ "rw" "uid=1000"];
     };
 
   fileSystems."/boot" =

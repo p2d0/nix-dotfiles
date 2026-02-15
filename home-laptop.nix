@@ -6,10 +6,6 @@
       # programs.steam.enable = true;
       # programs.steam.package = pkgs.unstable.steam;
       # hardware.opentabletdriver.enable = true;
-      services.displayManager.autoLogin = {
-        enable = true;
-        user = config.user;
-      };
       environment.systemPackages = [
         # (unstable.obs-studio.overrideAttrs(oldAttrs: rec {
         #   patches = [
@@ -79,6 +75,11 @@
       # };
     };
     inheritParentConfig = true;
+  };
+
+  services.displayManager.autoLogin = {
+    enable = true;
+    user = config.user;
   };
 
   home-manager.useGlobalPkgs = true;

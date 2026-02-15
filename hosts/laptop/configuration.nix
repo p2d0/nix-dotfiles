@@ -8,10 +8,18 @@
 
   security.rtkit.enable = true;
 
-  hardware.opengl.enable = true;
+  hardware.graphics = {
+    enable = true;
+    # extraPackages = [
+    #   # pkgs.intel-media-sdk
+    #   pkgs.intel-media-driver
+    #   pkgs.intel-vaapi-driver
+    # ];
+  };
+  # hardware.opengl.enable = true;
   # hardware.opengl.driSupport = true;
-  hardware.opengl.extraPackages = with pkgs; [ intel-vaapi-driver libva-vdpau-driver libvdpau-va-gl];
-  hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ intel-vaapi-driver ];
+  # hardware.opengl.extraPackages = with pkgs; [ intel-vaapi-driver libva-vdpau-driver libvdpau-va-gl];
+  # hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ intel-vaapi-driver ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -210,6 +218,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       inotify-tools
       my.pythonbin
       neovim
+      gnome-disk-utility
       git
       ripgrep
       fd
@@ -238,7 +247,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       paprefs
       # discord
       speedcrunch
-
+      telegram-desktop
       # unstable-small.tdesktop
       jpegoptim
       # filelight

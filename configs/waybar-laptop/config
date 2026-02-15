@@ -14,9 +14,9 @@
     "modules-right": [
       // "custom/humpool",
       // "custom/weather",
-      "pulseaudio"
+      "pulseaudio",
       // "hyprland/language",
-      // "tray"
+      "tray"
     ],
     "include": "~/.config/waybar/modules.json"
   }
