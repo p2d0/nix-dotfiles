@@ -4,6 +4,7 @@
   # --fake -1 --md5sig
   description = "An example NixOS configuration";
   nixConfig = {
+    substitute = true;
     extra-substituters = [
       "https://nix-community.cachix.org"
       "https://hyprland.cachix.org"
