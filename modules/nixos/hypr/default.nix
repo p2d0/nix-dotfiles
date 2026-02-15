@@ -85,7 +85,7 @@ in {
       };
       programs.hyprlock.enable = true;
       environment.variables = {
-        QT_QPA_PLATFORM = "wayland";
+        qt_qpa_PLATFORM = "wayland";
         ANKI_WAYLAND = 1;
       };
       services.hypridle.enable = true;

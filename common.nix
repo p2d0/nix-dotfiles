@@ -244,7 +244,7 @@
 
   home.stateVersion = "22.11";
 
-  services.blueman-applet.enable = true;
+  # services.blueman-applet.enable = true;
   home.keyboard = null;
 
   home.file = {
