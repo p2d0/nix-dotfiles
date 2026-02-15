@@ -97,7 +97,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
   modules.maestral.enable = true;
   modules.mihomo = {
     enable = true;
-    configFile = "/home/${config.user}/Dropbox/mihomo/config.yaml";
+    configFile = "/mnt/md127/Dropbox/mihomo/config.yaml";
     # package = pkgs.unstable.mihomo;
     package = pkgs.my.mihomo;
     # package = pkgs.old-24-05.mihomo;
