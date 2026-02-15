@@ -17,7 +17,9 @@ def get_active_monitor():
 def move_window(offset_x, offset_y, selector='title:emacs-todo'):
     # Move the window by the calculated offsets
     # Syntax: movewindowpixel exact x y,address
-    subprocess.run(['hyprctl', 'dispatch', 'movewindowpixel', f'exact {offset_x} {offset_y},{selector}'])
+    command = ['hyprctl', 'dispatch', 'movewindowpixel', f'exact {offset_x} {offset_y},{selector}'];
+    print("Running command:", " ".join(command))
+    subprocess.run(command)
 
 def focus_window(selector='title:emacs-todo'):
     # Focus the specific window
@@ -33,7 +35,7 @@ def main():
     # Defaults
     window_width = 800
     calendar_gap = 10
-    window_width_calendar = 600
+    window_width_calendar = 400
     window_height = 910
     
     # 1. Position the windows based on monitor
@@ -45,7 +47,7 @@ def main():
         position_y = (height - window_height) // 2
 
         # Move Brave
-        move_window(position_x, position_y, 'class:brave-calendar.notion.so.+')
+        move_window(position_x, position_y, 'class:FFPWA-01KHGFZJW5A9WBS3CZPFAFKXPJ')
 
         position_x_calendar = position_x + window_width_calendar + calendar_gap
         # Move Emacs
@@ -62,7 +64,7 @@ def main():
 
         position_x_calendar = position_x - window_width_calendar - calendar_gap
         # Move Brave
-        move_window(position_x_calendar, position_y, 'class:brave-calendar.notion.so.+')
+        move_window(position_x_calendar, position_y, 'class:FFPWA-01KHGFZJW5A9WBS3CZPFAFKXPJ')
 
     # 2. Check if the special workspace is active
     # hyprctl monitors returns a dictionary object for specialWorkspace

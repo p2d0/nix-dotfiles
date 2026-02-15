@@ -6,8 +6,8 @@
 emacsclient -c -F '((name . "emacs-todo"))' --eval "(emacs-todo)" &
 
 # 2. Launch Brave (Notion Calendar)
-brave --disable-features=WaylandWpColorManagerV1 --new-window --app=https://calendar.notion.so/ &
-
+# brave --disable-features=WaylandWpColorManagerV1 --new-window --app=https://calendar.notion.so/ &
+firefoxpwa site launch 01KHGFZJW5A9WBS3CZPFAFKXPJ
 # 3. Wait loop (Max 10 seconds)
 # We poll hyprctl clients to check if the windows actually exist before proceeding.
 MAX_RETRIES=20
@@ -18,7 +18,7 @@ while [ $i -lt $MAX_RETRIES ]; do
     CLIENTS=$(hyprctl clients)
 
     # Check if BOTH "emacs-todo" and "Notion" (or the URL) are present in the client list
-    if echo "$CLIENTS" | grep -q "emacs-todo" && echo "$CLIENTS" | grep -q "Notion"; then
+    if echo "$CLIENTS" | grep -q "emacs-todo" && echo "$CLIENTS" | grep -q "FFPWA-01KHGFZJW5A9WBS3CZPFAFKXPJ"; then
         break
     fi
 

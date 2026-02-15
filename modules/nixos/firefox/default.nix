@@ -37,6 +37,11 @@ in {
             url = "https://chat.deepseek.com/";
             manifestUrl = "data:application/manifest+json;base64,eyJzdGFydF91cmwiOiJodHRwczovL2NoYXQuZGVlcHNlZWsuY29tLyIsIm5hbWUiOiJEZWVwU2VlayAtIEludG8gdGhlIFVua25vd24iLCJkZXNjcmlwdGlvbiI6IkNoYXQgd2l0aCBEZWVwU2VlayBBSSDigJMgeW91ciBpbnRlbGxpZ2VudCBhc3Npc3RhbnQgZm9yIGNvZGluZywgY29udGVudCBjcmVhdGlvbiwgZmlsZSByZWFkaW5nLCBhbmQgbW9yZS4gVXBsb2FkIGRvY3VtZW50cywgZW5nYWdlIGluIGxvbmctY29udGV4dCBjb252ZXJzYXRpb25zLCBhbmQgZ2V0IGV4cGVydCBoZWxwIGluIEFJLCBuYXR1cmFsIGxhbmd1YWdlIHByb2Nlc3NpbmcsIGFuZCBiZXlvbmQuIHwg5rex5bqm5rGC57Si77yIRGVlcFNlZWvvvInliqnlipvnvJbnqIvku6PnoIHlvIDlj5HjgIHliJvmhI/lhpnkvZzjgIHmlofku7blpITnkIbnrYnku7vliqHvvIzmlK/mjIHmlofku7bkuIrkvKDlj4rplb/mlofmnKzlr7nor53vvIzpmo/ml7bkuLrmgqjmj5Dkvpvpq5jmlYjnmoRBSeaUr+aMgeOAgiIsImljb25zIjpbeyJzcmMiOiJodHRwczovL2Nkbi5kZWVwc2Vlay5jb20vY2hhdC9pY29uLnBuZyIsInB1cnBvc2UiOiJhbnkifSx7InNyYyI6Imh0dHBzOi8vY2hhdC5kZWVwc2Vlay5jb20vZmF2aWNvbi5zdmciLCJ0eXBlIjoiaW1hZ2UveC1pY29uIiwicHVycG9zZSI6ImFueSJ9XX0=";
           };
+          "01KHGFZJW5A9WBS3CZPFAFKXPJ" = {
+            name = "Notion Calendar";
+            url = "https://calendar.notion.so/";
+            manifestUrl = "data:application/manifest+json;base64,eyJzdGFydF91cmwiOiJodHRwczovL2NhbGVuZGFyLm5vdGlvbi5zby8iLCJuYW1lIjoiRmViIDE1LCAyMDI2IMK3IE5vdGlvbiBDYWxlbmRhciIsImljb25zIjpbeyJzcmMiOiJodHRwczovL2NhbGVuZGFyLm5vdGlvbi5zby9Dcm9uLWZhdmljb24tc3R5bGUyLTMxQDJ4LnBuZyIsInB1cnBvc2UiOiJhbnkifSx7InNyYyI6Imh0dHBzOi8vY2FsZW5kYXIubm90aW9uLnNvL0Nyb24tZmF2aWNvbi1zdHlsZTItMzEuc3ZnIiwicHVycG9zZSI6ImFueSJ9LHsic3JjIjoiaHR0cHM6Ly9jYWxlbmRhci5ub3Rpb24uc28vQ3Jvbi1mYXZpY29uLXN0eWxlMi0xNUAyeC5wbmciLCJwdXJwb3NlIjoiYW55In0seyJzcmMiOiJodHRwczovL2NhbGVuZGFyLm5vdGlvbi5zby9Dcm9uLWZhdmljb24tc3R5bGUyLTE1LnN2ZyIsInB1cnBvc2UiOiJhbnkifV19";
+          };
         };
       };
 home.activation.linkFirefoxChrome = args.lib.hm.dag.entryAfter ["writeBoundary"] ''
