@@ -198,13 +198,13 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
   #   enable = true;
   #   package = pkgs.oraclejre8;
   # };
-
+  modules.firefox.enable = true;
   environment.systemPackages = with pkgs;
     [
       vim
       wget
       flameshot
-      unstable.firefox
+      # unstable.firefox
       killall
       xdo
       inotify-tools

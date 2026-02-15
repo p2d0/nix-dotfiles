@@ -99,11 +99,11 @@ in {
       # };
       programs.waybar = {
         enable = true;
-        package = (pkgs.old-24-11.waybar.overrideAttrs(oldAttrs: rec {
-            patches = oldAttrs.patches ++ [
-              ./waybar.patch
-            ];
-          }));
+#        package = (pkgs.old-24-11.waybar.overrideAttrs(oldAttrs: rec {
+#            patches = oldAttrs.patches ++ [
+#              ./waybar.patch
+#            ];
+#          }));
       };
 
       environment.systemPackages = with pkgs;
