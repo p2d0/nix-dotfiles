@@ -151,6 +151,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
   };
 
   hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
   modules.hjkl.enable = true;
   modules.keyrings.enable = true;
 
@@ -242,6 +243,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       # libsForQt5.breeze-qt5
       pasystray
       pavucontrol
+      cachix
       # deskflow
       paprefs
       # discord
