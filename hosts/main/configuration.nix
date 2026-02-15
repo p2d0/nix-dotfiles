@@ -990,7 +990,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       usbutils
       unstable.pmbootstrap
       # unstable.davinci-resolve
-      unstable.firefox
+      # unstable.firefox
       # unstable.librewolf
       xcompmgr
       unstable.heroic
@@ -1243,7 +1243,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       insomnia
       # pythonPackages.yt-dlp
       imagemagick
-      deskflow
+      # deskflow
       # thunderbird
       # libpulseaudio
       # pythonPackages.virtualenv

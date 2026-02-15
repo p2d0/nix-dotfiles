@@ -205,7 +205,6 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       vim
       wget
       flameshot
-      # unstable.firefox
       killall
       xdo
       inotify-tools
@@ -235,7 +234,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       # libsForQt5.breeze-qt5
       pasystray
       pavucontrol
-      deskflow
+      # deskflow
       paprefs
       # discord
       speedcrunch
