@@ -793,6 +793,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
     ];
   };
   zramSwap.enable = true;
+  zramSwap.memoryPercent = 80;
   # zramSwap.writebackDevice = "/dev/sdb1";
   services.journald.extraConfig = ''
     SystemMaxUse=2G
