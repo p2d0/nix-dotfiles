@@ -113,7 +113,7 @@ virtualisation.waydroid.enable = true;
 
   boot.blacklistedKernelModules = [ "iTCO_wdt" "iTCO_vendor_support" ];
 
-  # boot.tmp.useTmpfs = true;
+  boot.tmp.useTmpfs = false;
   boot.tmp.cleanOnBoot = true;
 
 
