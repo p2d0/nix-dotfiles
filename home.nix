@@ -97,6 +97,8 @@ in {
           source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/waybar;
         };
       };
+      services.kdeconnect.enable = true;
+      modules.eww.enable = true;
 
       programs.fish.shellInit = ''
         function rebuild-work

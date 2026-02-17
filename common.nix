@@ -192,7 +192,7 @@
   };
   modules.shell.fish.enable = true;
   modules.gimp3-photoshop-shortcuts.enable = true;
-  modules.eww.enable = true;
+  # modules.eww.enable = true;
   # modules.firefox.enable = true;
 
   xdg.portal = {
@@ -212,7 +212,6 @@
   services.gnome-keyring.enable = true;
   services.lorri.enable = true;
   manual.json.enable = true;
-  services.kdeconnect.enable = true;
 
 
   # systemd.user.services.kdeconnect = {

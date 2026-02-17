@@ -39,10 +39,9 @@ def main():
     window_height = 910
     
     # 1. Position the windows based on monitor
-    if active_monitor['name'] == 'HDMI-A-1':
+    if active_monitor['name'] == 'HDMI-A-1' and active_monitor["description"] != "LG Electronics LG HDR WFHD 0x00077717":
         width = active_monitor['width']
         height = active_monitor['height']
-
         position_x = 2560 + (width // 2  - window_width)
         position_y = (height - window_height) // 2
 

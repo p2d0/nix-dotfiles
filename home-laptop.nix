@@ -103,7 +103,7 @@ let baseconfig = config;
 
       programs.fish.shellInit = ''
         function rebuild-work
-          set -x NIX_BUILD_CORES 10
+          # set -x NIX_BUILD_CORES 1
           sudo nixos-rebuild switch --impure  --flake '/etc/nixos/.?submodules=1#laptop' $argv
           sudo /run/current-system/specialisation/work/activate
         end
@@ -111,7 +111,7 @@ let baseconfig = config;
           sudo /run/current-system/specialisation/work/activate
         end
         function rebuild-default
-          set -x NIX_BUILD_CORES 10
+          # set -x NIX_BUILD_CORES 1
           sudo nixos-rebuild switch --impure  --flake '/etc/nixos/.?submodules=1#laptop' $argv
           sudo /run/current-system/specialisation/default/activate
         end

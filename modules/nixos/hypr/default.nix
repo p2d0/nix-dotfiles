@@ -11,6 +11,10 @@ in {
       description = ''
       '';
     };
+    settingsFile = mkOption {
+      type = types.str;
+      default = "/etc/nixos/configs/hypr/hyprland.conf";
+    };
   };
   config = mkIf cfg.enable (lib.my.withHome
     (args:{
@@ -41,7 +45,7 @@ in {
           "--all"
         ];
         settings = {
-          source = "/etc/nixos/configs/hypr/hyprland.conf";
+          source = cfg.settingsFile;
         };
       };
 

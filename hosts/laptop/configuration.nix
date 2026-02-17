@@ -5,15 +5,52 @@
     ./hardware-configuration.nix
   ];
   modules.flakes.enable = true;
+  # services.tlp = {
+  #   enable = true;
+  #   settings = {
+  #     CPU_SCALING_GOVERNOR_ON_AC = "performance";
+  #     CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
 
+  #     CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+  #     CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+
+  #     CPU_MIN_PERF_ON_AC = 0;
+  #     CPU_MAX_PERF_ON_AC = 100;
+  #     CPU_MIN_PERF_ON_BAT = 0;
+  #     CPU_MAX_PERF_ON_BAT = 20;
+  #     INTEL_GPU_MIN_FREQ_ON_AC=1100000;
+
+  #     #Optional helps save long term battery health
+  #     # START_CHARGE_THRESH_BAT0 = 40; # 40 and below it starts to charge
+  #     # STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
+
+  #   };
+  # };
+
+  # users.users.andrew.extraGroups = ["corectrl" "gamemode"];
+  # programs.corectrl ={
+  #   enable = true;
+  # };
   security.rtkit.enable = true;
 
   hardware.graphics = {
     enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver
+      intel-vaapi-driver
+      libva-vdpau-driver
+      intel-compute-runtime-legacy1
+    ];
+
+    extraPackages32 = with pkgs.driversi686Linux; [
+      intel-media-driver
+      libva-vdpau-driver
+    ];
     # extraPackages = [
     #   # pkgs.intel-media-sdk
-    #   pkgs.intel-media-driver
+    #   # pkgs.intel-media-driver
     #   pkgs.intel-vaapi-driver
+    #   pkgs.libvdpau-va-gl
     # ];
   };
   # hardware.opengl.enable = true;
@@ -21,6 +58,9 @@
   # hardware.opengl.extraPackages = with pkgs; [ intel-vaapi-driver libva-vdpau-driver libvdpau-va-gl];
   # hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ intel-vaapi-driver ];
 
+  environment.variables = {
+    LIBVA_DRIVER_NAME = "i965";
+  };
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   # boot.loader.grub.enable = true;
@@ -28,10 +68,12 @@
   # boot.loader.grub.version = 2;
   boot.blacklistedKernelModules = [ "iTCO_wdt" "iTCO_vendor_support" ];
 
+  # boot.kernelPackages = pkgs.linuxPackages_lts;
+
   # TODO just use self.user 
   user = self.user;
 
-  boot.tmpOnTmpfs = true;
+  # boot.tmpOnTmpfs = true;
 
   # TODO boot.loader.grub.device = "/dev/sda";
 
@@ -59,15 +101,15 @@
       mouse = { accelProfile = "flat"; };
     };
     exportConfiguration = true;
-    # windowManager.i3.enable = true;
+    #windowManager.i3.enable = true;
 
-    # displayManager = {
-    #   defaultSession = "none+i3";
-    #   autoLogin = {
-    #     enable = true;
-    #     user = config.user;
-    #   };
-    # };
+    #displayManager = {
+    #  defaultSession = "none+i3";
+    #  autoLogin = {
+    #    enable = true;
+    #    user = config.user;
+    #  };
+    #};
   };
   programs.tmux = {
     enable = true;
@@ -104,7 +146,10 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
     tunMode = true;
   };
 
-  modules.hypr.enable = true;
+  modules.hypr = {
+    enable = true;
+    settingsFile = "/etc/nixos/configs/hypr/hyprland-laptop.conf";
+  };
   services.displayManager = {
     enable = true;
     defaultSession = "hyprland";
@@ -157,7 +202,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
 
   users.users.${config.user} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "corectrl" "gamemode" "wheel" "docker" ]; # Enable ‘sudo’ for the user.
   };
 
   users.defaultUserShell = pkgs.fish;
@@ -182,6 +227,10 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
     };
   };
 
+  systemd.services.nix-daemon.serviceConfig = {
+    MemoryMax = "2G"; 
+  };
+
   nix.settings.auto-optimise-store = true;
   nix.settings.trusted-users = [ "root" "andrew" ];
   nix.gc.automatic = true;
@@ -203,6 +252,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
   modules.firefox.enable = true;
 
   zramSwap.enable = true;
+  zramSwap.memoryPercent = 70;
 
   # programs.java = {
   #   enable = true;
@@ -216,6 +266,13 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       killall
       xdo
       inotify-tools
+      (pkgs.python3.withPackages (ps: [
+        ps.python-miio
+        ps.pygobject-stubs
+        ps.requests
+        ps.pygobject3
+        ps.lxml
+      ]))
       my.pythonbin
       neovim
       gnome-disk-utility
@@ -229,6 +286,9 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       gimp
       mpv
       playerctl
+      brave
+      gnome-system-monitor
+      kdePackages.kdenlive
       libusb1
       ffmpeg
       peco
@@ -258,6 +318,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       zip
       inetutils
       xsettingsd
+      intel-gpu-tools
       nodejs
       # TODO THEME
       iconpack-obsidian

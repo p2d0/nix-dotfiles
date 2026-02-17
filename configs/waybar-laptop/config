@@ -14,6 +14,8 @@
     "modules-right": [
       // "custom/humpool",
       // "custom/weather",
+      "battery",
+      "network",
       "pulseaudio",
       // "hyprland/language",
       "tray"

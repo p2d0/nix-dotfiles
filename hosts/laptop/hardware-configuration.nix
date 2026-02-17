@@ -9,7 +9,13 @@
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
+  boot.initrd.kernelModules = [ "i915" ];
+  boot.kernelParams = [
+    "i915.enable_psr=0"
+    "i915.enable_dc=0"       # Disables Power Saving Display C-states
+    "i915.enable_fbc=0"      # Disables Framebuffer Compression
+    "i915.mitigations=off"   # (Optional) Small boost by disabling CPU security mitigations
+  ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
   boot.supportedFilesystems = [ "ntfs" ];
