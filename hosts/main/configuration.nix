@@ -174,14 +174,15 @@ virtualisation.waydroid.enable = true;
   # https://gitlab.com/fazzi/nixohess/-/blob/main/modules/hardware/nvidia.nix
   modules.nvidia.enable = true;
   hardware.nvidia = {
-    modesetting.enable = true;
+    modesetting.enable = false;
     nvidiaSettings = true;
     # package = pkgs.unstable.linuxKernel.packages.linux_zen.nvidia_x11;
     powerManagement = {
-      enable = true;
+      enable = false;
       finegrained = false;
     };
-    open = true;
+    gsp.enable = false;
+    open = false;
   };
 
   services.xserver = {

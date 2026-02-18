@@ -13,7 +13,11 @@
   boot.kernelModules = [ "vfio-pci" "nvidia_uvm" ];
   boot.kernelParams = [ # "quiet" "vga=current" "udev.log_level=3" "rd.systemd.show_status=auto" "nowatchdog"
     # "amdgpu.ppfeaturemask=0xffffffff"
-    # "nvidia.NVreg_EnableGpuFirmware=0"
+"video=efifb:off" 
+"video=vesafb:off"
+"nvidia.NVreg_EnableGpuFirmware=0"
+"nvidia-drm.modeset=0"  # Disable display mode setting
+"nvidia-drm.fbdev=0"    # Disable the NVIDIA-controlled console buffer
     "usbhid.mousepoll=1"   "raid0.default_layout=2" ];
   # boot.loader.timeout = 1;
   services.fstrim.enable = lib.mkDefault true;
