@@ -8,6 +8,7 @@ Plugins/
 .idea
 *.log
 tmp/
+.db
 
 *.py[cod]
 *.egg
