@@ -5,6 +5,31 @@
     ./hardware-configuration.nix
   ];
   modules.flakes.enable = true;
+  services.auto-cpufreq.enable = true;
+  services.auto-cpufreq.settings = {
+    charger = {
+      governor = "performance";
+      turbo = "always";
+    };
+    battery = {
+      governor = "powersave"; # Or "schedutil" for a middle ground
+      turbo = "auto";
+    };
+  };
+  systemd.services.intel-gpu-tools-init = {
+    description = "Set Intel GPU Frequency for UI performance";
+    after = [ "multi-user.target" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      # We use the absolute path from the nix store for the binary
+      ExecStart = [
+        "${pkgs.intel-gpu-tools}/bin/intel_gpu_frequency --custom max=1200"
+        "${pkgs.intel-gpu-tools}/bin/intel_gpu_frequency -m 1100"
+      ];
+      RemainAfterExit = true;
+    };
+  };
   # services.tlp = {
   #   enable = true;
   #   settings = {
@@ -264,6 +289,14 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       wget
       flameshot
       killall
+      (sddm-astronaut.override {
+        embeddedTheme = "black_hole";
+        # themeConfig = {
+        #   # FullBlur = true;
+        #   # BlurRadius = 25;
+        #   # PasswordFocus = false;
+        # };
+      })
       xdo
       inotify-tools
       (pkgs.python3.withPackages (ps: [

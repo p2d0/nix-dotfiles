@@ -20,15 +20,21 @@ in {
     services.xserver.xkb.extraLayouts.us-hjkl = {
       description = "US layout with hjkl";
       languages = [ "eng" ];
+
+      # symbols
+    # key <AD02> { [ w, W, U2191, U2191                   ] };
+    # key <AC01> { [ a, A, U2190, U2190                   ] };
+    # key <AC02> { [ s, S, U2193, U2193                   ] };
+    # key <AC03> { [ d, D, U2192, U2192                   ] };
       symbolsFile = pkgs.writeText "us-hjkl" ''
 partial keypad_keys
 xkb_symbols "us-hjkl"
 {
     key <CAPS> { [ ISO_Level3_Shift                     ] };
-    key <AD02> { [ w, W, U2191, U2191                   ] };
-    key <AC01> { [ a, A, U2190, U2190                   ] };
-    key <AC02> { [ s, S, U2193, U2193                   ] };
-    key <AC03> { [ d, D, U2192, U2192                   ] };
+    key <AD02> { [ w, W, Up, Up                   ] };
+    key <AC01> { [ a, A, Left, Left                   ] };
+    key <AC02> { [ s, S, Down, Down                   ] };
+    key <AC03> { [ d, D, Right, Right                   ] };
     key <AB02> { [ x, X, Delete, Delete                 ] };
     key <AC06> { [ h, H, Left, Left                     ] };
     key <AC07> { [ j, J, Down, Down                     ] };
@@ -36,7 +42,7 @@ xkb_symbols "us-hjkl"
     key <AC09> { [ l, L, Right, Right                   ] };
     key <AD07> { [ u, U, Prior, Prior                   ] };
     key <AE03> { [ 3, section, Home, Home               ] };
-    key <AE04> { [ 4, dollar, End, End                  ] };
+    key <AE04> { [ n, N, End, End                  ] };
     key <AD09> { [ o, O, Page_Up, Page_Up               ] };
     key <AD10> { [ p, P, Page_Down, Page_Down           ] };
 };
