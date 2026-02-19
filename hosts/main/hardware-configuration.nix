@@ -82,10 +82,10 @@
     #   device = "/dev/disk/by-uuid/6461bae0-3f65-4d32-9a2f-696b57250ab2";
     #   # size = 96*1024;
     # }
-    {
-      device = "/swapfile2";
-      size = 32 * 1024;
-    }
+    #{
+   #   device = "/swapfile2";
+   #   size = 32 * 1024;
+   # }
   ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
