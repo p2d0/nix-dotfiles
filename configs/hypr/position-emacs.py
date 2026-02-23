@@ -2,79 +2,130 @@
 
 import json
 import subprocess
+import re
 
-def get_active_monitor():
-    # Run hyprctl monitors and parse the JSON output
-    result = subprocess.run(['hyprctl', 'monitors', '-j'], capture_output=True, text=True)
-    monitors = json.loads(result.stdout)
+def get_hypr_data(command):
+    """Helper to run hyprctl commands and return JSON."""
+    try:
+        result = subprocess.run(['hyprctl', command, '-j'], capture_output=True, text=True)
+        return json.loads(result.stdout)
+    except Exception as e:
+        print(f"Error fetching Hyprland data: {e}")
+        return None
 
-    # Find the active monitor
-    for monitor in monitors:
-        if monitor.get('focused', False):
-            return monitor
+def find_window(title_regex=None, class_regex=None, workspace_name=None):
+    """
+    Finds a window's hex address based on title, class, and/or workspace.
+    Returns something like 'address:0x55ca12345670' or None.
+    """
+    clients = get_hypr_data('clients')
+    if not clients:
+        return None
+
+    for client in clients:
+        match = True
+        
+        if title_regex and not re.search(title_regex, client.get('title', ''), re.IGNORECASE):
+            match = False
+        if class_regex and not re.search(class_regex, client.get('class', ''), re.IGNORECASE):
+            match = False
+        if workspace_name and client.get('workspace', {}).get('name', '') != workspace_name:
+            match = False
+            
+        if match:
+            # Important: Hyprland expects the '0x' prefix in dispatchers
+            addr = client['address']
+            if not addr.startswith('0x'):
+                addr = '0x' + addr
+            return f"address:{addr}"
     return None
 
-def move_window(offset_x, offset_y, selector='title:emacs-todo'):
-    # Move the window by the calculated offsets
-    # Syntax: movewindowpixel exact x y,address
-    command = ['hyprctl', 'dispatch', 'movewindowpixel', f'exact {offset_x} {offset_y},{selector}'];
-    print("Running command:", " ".join(command))
+def resize_window(address, w, h):
+    """Resizes a window to exact pixel dimensions."""
+    if not address:
+        return
+    # Ensure window is floating first
+    subprocess.run(['hyprctl', 'dispatch', 'setfloating', address], capture_output=True)
+    command = ['hyprctl', 'dispatch', 'resizewindowpixel', f'exact {w} {h},{address}']
+    print(f"Resizing {address} to {w}x{h}")
     subprocess.run(command)
 
-def focus_window(selector='title:emacs-todo'):
-    # Focus the specific window
-    subprocess.run(['hyprctl', 'dispatch', 'focuswindow', selector])
+def move_window(address, x, y):
+    """Moves a window to exact coordinates using its address."""
+    if not address:
+        return
+    # Ensure window is floating first
+    subprocess.run(['hyprctl', 'dispatch', 'setfloating', address], capture_output=True)
+    command = ['hyprctl', 'dispatch', 'movewindowpixel', f'exact {x} {y},{address}']
+    print(f"Moving {address} to {x}, {y}")
+    subprocess.run(command)
+
+def focus_window(address):
+    """Focuses a window by its address."""
+    if address:
+        subprocess.run(['hyprctl', 'dispatch', 'focuswindow', address])
 
 def main():
-    active_monitor = get_active_monitor()
-    
+    monitors = get_hypr_data('monitors')
+    if not monitors:
+        return
+
+    # Find active monitor
+    active_monitor = next((m for m in monitors if m.get('focused')), None)
     if not active_monitor:
         print("No active monitor found.")
         return
 
-    # Defaults
+    # 1. Identify Windows
+    # Specifically find emacs-todo on the special workspace
+    emacs_addr = find_window(title_regex="emacs-todo", workspace_name="special:emacs")
+    # Find Firefox (searching by class "firefox" is usually safer than title)
+    browser_addr = find_window(class_regex="firefox", workspace_name="special:emacs")
+
+    # 2. Apply Resizing to Firefox
+    if browser_addr:
+        resize_window(browser_addr, 400, 900)
+    else:
+        print("Could not find Firefox window to resize.")
+
+    # 3. Position the windows based on monitor
+    # Standard dimensions for your math
     window_width = 800
     calendar_gap = 10
     window_width_calendar = 400
-    window_height = 910
+    window_height = 900
     
-    # 1. Position the windows based on monitor
-    if active_monitor['name'] == 'HDMI-A-1' and active_monitor["description"] != "LG Electronics LG HDR WFHD 0x00077717":
+    if  active_monitor["description"] != "LG Electronics LG HDR WFHD 0x00077717":
         width = active_monitor['width']
         height = active_monitor['height']
+        
+        # Position Browser
         position_x = 2560 + (width // 2  - window_width)
         position_y = (height - window_height) // 2
+        move_window(browser_addr, position_x, position_y)
 
-        # Move Brave
-        move_window(position_x, position_y, 'class:FFPWA-01KHGFZJW5A9WBS3CZPFAFKXPJ')
-
-        position_x_calendar = position_x + window_width_calendar + calendar_gap
-        # Move Emacs
-        move_window(position_x_calendar, position_y, 'title:emacs-todo')
+        # Position Emacs
+        position_x_calendar = position_x + window_width_calendar + calendar_gap + 100
+        move_window(emacs_addr, position_x_calendar, position_y)
     else:
         width = active_monitor['width']
         height = active_monitor['height']
 
+        # Position Emacs
         position_x = width // 2 - 250
         position_y = (height - window_height) // 2
+        move_window(emacs_addr, position_x, position_y)
 
-        # Move Emacs
-        move_window(position_x, position_y, 'title:emacs-todo')
+        # Position Browser
+        position_x_calendar = position_x - window_width_calendar - calendar_gap - 100
+        move_window(browser_addr, position_x_calendar, position_y)
 
-        position_x_calendar = position_x - window_width_calendar - calendar_gap
-        # Move Brave
-        move_window(position_x_calendar, position_y, 'class:FFPWA-01KHGFZJW5A9WBS3CZPFAFKXPJ')
-
-    # 2. Check if the special workspace is active
-    # hyprctl monitors returns a dictionary object for specialWorkspace
-    # e.g., { "id": 0, "name": "" } if inactive
-    # e.g., { "id": -98, "name": "special:emacs" } if active
+    # 4. Handle Focus logic
+    # Only focus if the specific special workspace is currently visible
     special_workspace_info = active_monitor.get('specialWorkspace', {})
-    active_special_name = special_workspace_info.get('name', '')
-
-    # 3. Only focus if special:emacs is NOT active
-    if active_special_name == 'special:emacs':
-        focus_window('title:emacs-todo')
+    if special_workspace_info.get('name') == 'special:emacs':
+        if emacs_addr:
+            focus_window(emacs_addr)
 
 if __name__ == "__main__":
     main()
