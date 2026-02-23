@@ -46,7 +46,7 @@
         "class<org.gnome.Nautilus> title<.*trash.*>": "🗑",
         "class<osu>": "󰝚",
         "osu": "󰝚",
-        "class<gimp-3.0>": ""
+        "class<gimp>": ""
     },
     },
     "hyprland/submap": {

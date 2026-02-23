@@ -207,6 +207,7 @@
                   # hyprland.nixosModules.default
                   ./home.nix
                   ./hosts/main/configuration.nix
+                  ./hosts/common.nix
                 ];
                 specialArgs = { inherit self inputs lib;};
               };
@@ -228,6 +229,7 @@
                   # hyprland.nixosModules.default
                   ./home-laptop.nix
                   ./hosts/laptop/configuration.nix
+                  ./hosts/common.nix
                 ];
                 specialArgs = { inherit self inputs lib;};
               };

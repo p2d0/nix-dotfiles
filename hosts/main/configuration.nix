@@ -94,8 +94,6 @@ virtualisation.waydroid.enable = true;
   # hardware.graphics.extraPackages32 = with pkgs.pkgsi686Linux; [ vaapiIntel ];
   services.ratbagd.enable = true;
 
-  environment.variables = { ROC_ENABLE_PRE_VEGA = "1"; };
-
   # boot.kernelPackages = pkgs.unstable.linuxPackages_zen;
 
 #  boot.loader.systemd-boot.enable = false;
@@ -116,8 +114,6 @@ virtualisation.waydroid.enable = true;
   boot.tmp.useTmpfs = false;
   boot.tmp.cleanOnBoot = true;
 
-
-
   networking.hostName = config.user;
   # networking.proxy.default = "http://localhost:8092/";
 
@@ -133,16 +129,6 @@ virtualisation.waydroid.enable = true;
   services.flatpak.enable = true;
 
   # i18n.defaultLocale = "en_US.UTF-8";
-  i18n = {
-    defaultLocale = "en_US.UTF-8";
-    # extraLocaleSettings = {
-    #   LC_MEASUREMENT = "en_SE.UTF-8";
-    #   LC_NUMERIC = "en_SE.UTF-8";
-    #   # For dates formatted like ISO8601
-    #   LC_TIME = "en_SE.UTF-8";
-    # };
-    supportedLocales = [ "all" ];
-  };
 
   services.gvfs.enable = true;
   # services.gvfs.package = pkgs.gvfspkgs.gnome.gvfs;
@@ -155,24 +141,16 @@ virtualisation.waydroid.enable = true;
     ACTION=="add|change", KERNEL=="event[0-9]*", SUBSYSTEM=="input", ATTRS{name}=="Touch passthrough", ATTRS{capabilities/abs}=="670800001000003", ATTRS{id/vendor}=="beef", ATTRS{id/product}=="dead", ENV{LIBINPUT_CALIBRATION_MATRIX}="2.5 0 0 0 2 0"
   '';
 
-  # users.users.andrew.extraGroups = ["corectrl" "gamemode"];
-  # programs.corectrl ={
-  #   enable = true;
-  # };
-
   programs.droidcam.enable = true;
   # programs.sway = {
   #   enable = true;
   #   wrapperFeatures.gtk = true;
   # };
-  services.libinput = {
-    enable = true;
-    mouse = { accelProfile = "flat"; };
-  };
 
 
   # https://gitlab.com/fazzi/nixohess/-/blob/main/modules/hardware/nvidia.nix
   modules.nvidia.enable = true;
+
   hardware.nvidia = {
     modesetting.enable = false;
     nvidiaSettings = true;
@@ -279,51 +257,6 @@ serverFlagsSection = ''
     # windowManager.qtile.enable = true;
   };
 
-  services.displayManager = {
-    enable = true;
-    defaultSession = "hyprland";
-
-    sddm.enable = true;
-    sddm.package = pkgs.kdePackages.sddm;
-    sddm.settings = {
-      X11 = {
-        ServerArguments="-s 1 -logfile /tmp/x111.log";
-      };
-    };
-    sddm.extraPackages = [
-      pkgs.sddm-astronaut
-    ];
-    sddm.wayland.enable = false;
-    sddm.wayland.compositorCommand =
-      let
-        xcfg = config.services.xserver;
-        westonIni = (pkgs.formats.ini { }).generate "weston.ini" {
-          libinput = {
-            enable-tap = config.services.libinput.mouse.tapping;
-            left-handed = config.services.libinput.mouse.leftHanded;
-          };
-          core = {
-            idle-time = 15;
-          };
-          keyboard = {
-            keymap_model = xcfg.xkb.model;
-            keymap_layout = xcfg.xkb.layout;
-            keymap_variant = xcfg.xkb.variant;
-            keymap_options = xcfg.xkb.options;
-          };
-        };
-      in
-      "${pkgs.lib.getExe pkgs.weston} --idle-time=5 --shell=kiosk -c ${westonIni}";
-    sddm.theme = "sddm-astronaut-theme";
-    # enable = true;
-    # defaultSession = "Hyprland";
-    # ly.enable = true;
-    # autoLogin = {
-    #   enable = true;
-    #   user = config.user;
-    # };
-  };
-
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
@@ -332,7 +265,7 @@ serverFlagsSection = ''
   modules.plymouth.enable = true;
   modules.gamemode.enable = true;
   modules.silentboot.enable = true;
-  modules.hypr.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   # TODO Move to home manager user config?
   modules.sway.enable = false;
@@ -350,34 +283,6 @@ serverFlagsSection = ''
     ];
   };
   # TODO Extract to fish module
-  security.sudo = {
-    enable = true;
-    extraRules = [{
-      commands = [
-        {
-          command = "/run/current-system/sw/bin/nixos-rebuild";
-          options = [ "NOPASSWD" ];
-        }
-        {
-          command = "/run/current-system/specialisation/work/activate";
-          options = [ "NOPASSWD" ];
-        }
-        {
-          command = "/run/current-system/specialisation/default/activate";
-          options = [ "NOPASSWD" ];
-        }
-      ];
-      groups = [ "wheel" ];
-    }];
-  };
-  programs.fish.enable = true;
-  users.defaultUserShell = pkgs.fish;
-
-  modules.emacs-with-doom  =
-    {
-      enable = true;
-      package = pkgs.emacs30-pgtk;
-    };
 
   # nixpkgs.config =
   #   let nixpkgs-tars = "https://github.com/NixOS/nixpkgs/archive/";
@@ -441,29 +346,11 @@ serverFlagsSection = ''
       ];
     };
   };
-  networking.extraHosts = ''
-    130.255.77.28 ntc.party
-  '';
 
   nix.settings.auto-optimise-store = true;
   nix.gc.automatic = false;
   nix.gc.options = "--delete-older-than 1d";
 
-  security.polkit.extraConfig = ''
-polkit.addRule(function(action, subject) {
-    if (action.id == "org.corectrl.helper.init" &&
-        subject.user == "${config.user}") {
-        return polkit.Result.YES;
-        }
-});
-
-polkit.addRule(function(action, subject) {
-    if (action.id == "org.corectrl.helper.init" &&
-        subject.user == "${config.user}") {
-        return polkit.Result.YES;
-        }
-});
-'';
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -592,30 +479,6 @@ polkit.addRule(function(action, subject) {
   #   # TODO direct link
   # };
 
-  programs.tmux = {
-    enable = true;
-    extraConfig = ''
-set-window-option -g mode-keys vi
-
-unbind C-b
-set-option -g prefix C-s
-bind-key C-s send-prefix
-
-# act like vim
-setw -g mode-keys vi
-bind-key h select-pane -L
-bind-key j select-pane -D
-bind-key k select-pane -U
-bind-key l select-pane -R
-
-set-option -g set-titles on
-set-option -g set-titles-string "#T"
-bind-key -T copy-mode-vi v send -X begin-selection
-
-
-run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
-'';
-  };
   programs.proxychains = {
     enable = true;
     proxies.xray = {
@@ -649,15 +512,6 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
     # };
   };
 
-  modules.mihomo = {
-    enable = true;
-    configFile = "/home/${config.user}/Dropbox/mihomo/config.yaml";
-    # package = pkgs.unstable.mihomo;
-    package = pkgs.my.mihomo;
-    # package = pkgs.old-24-05.mihomo;
-    tunMode = true;
-  };
-
   # services.keyd = {
   #   enable = true;
   #   keyboards.default = {
@@ -683,18 +537,13 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
   modules.trex.enable = false;
   modules.singbox.enable = false;
   modules.amnezia.enable = false;
-  modules.fonts.enable = true;
-  modules.guake.enable = true;
   modules.byedpi.enable = false;
   modules.timed-shutdown.enable = false;
   modules.timed-shutdown.time = "23:00:00";
-  modules.darkman.enable = true;
-  modules.vpn.enable = true;
   modules.vm.enable = false;
   programs.opengamepadui.enable = true;
   programs.opengamepadui.args = "--fullscreen";
   # programs.opengamepadui.gamescopeSession.enable = true;
-  modules.firefox.enable = true;
   programs.opengamepadui.extraPackages = [
     pkgs.vulkan-tools
     pkgs.hwdata
@@ -796,31 +645,10 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
   zramSwap.enable = true;
   zramSwap.memoryPercent = 80;
   # zramSwap.writebackDevice = "/dev/sdb1";
-  services.journald.extraConfig = ''
-    SystemMaxUse=2G
-  '';
 
-  environment.etc = {
-    "wireplumber/policy.lua.d/11-bluetooth-policy.lua".text = ''
-      bluetooth_policy.policy["media-role.use-headset-profile"] = false
-    '';
-    "docker/daemon.json" = {
-      text = ''
-        {
-        "log-driver": "json-file",
-        "log-opts": {"max-size": "10m", "max-file": "3"}
-        }
-      '';
-    };
-  };
 #  environment.extraInit = ''
 #xset dpms 15 15 15
 #'';
-  environment.sessionVariables.NAUTILUS_4_EXTENSION_DIR = "${config.system.path}/lib/nautilus/extensions-4";
-
-  environment.pathsToLink = [
-    "/share/nautilus-python/extensions"
-  ];
 
   # environment.sessionVariables.NAUTILUS_EXTENSION_DIR = "${config.system.path}/lib/nautilus/extensions-4";
   modules.taffybar.enable = false;

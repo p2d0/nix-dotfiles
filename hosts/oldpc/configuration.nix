@@ -5,52 +5,6 @@
     ./hardware-configuration.nix
   ];
   modules.flakes.enable = true;
-  services.auto-cpufreq.enable = true;
-  services.auto-cpufreq.settings = {
-    charger = {
-      governor = "performance";
-      turbo = "always";
-    };
-    battery = {
-      governor = "powersave"; # Or "schedutil" for a middle ground
-      turbo = "auto";
-    };
-  };
-  systemd.services.intel-gpu-tools-init = {
-    description = "Set Intel GPU Frequency for UI performance";
-    after = [ "multi-user.target" ];
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig = {
-      Type = "oneshot";
-      # We use the absolute path from the nix store for the binary
-      ExecStart = [
-        "${pkgs.intel-gpu-tools}/bin/intel_gpu_frequency --custom max=1200"
-        "${pkgs.intel-gpu-tools}/bin/intel_gpu_frequency -m 1100"
-      ];
-      RemainAfterExit = true;
-    };
-  };
-  # services.tlp = {
-  #   enable = true;
-  #   settings = {
-  #     CPU_SCALING_GOVERNOR_ON_AC = "performance";
-  #     CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-
-  #     CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-  #     CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
-
-  #     CPU_MIN_PERF_ON_AC = 0;
-  #     CPU_MAX_PERF_ON_AC = 100;
-  #     CPU_MIN_PERF_ON_BAT = 0;
-  #     CPU_MAX_PERF_ON_BAT = 20;
-  #     INTEL_GPU_MIN_FREQ_ON_AC=1100000;
-
-  #     #Optional helps save long term battery health
-  #     # START_CHARGE_THRESH_BAT0 = 40; # 40 and below it starts to charge
-  #     # STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
-
-  #   };
-  # };
 
   # users.users.andrew.extraGroups = ["corectrl" "gamemode"];
   # programs.corectrl ={
@@ -60,24 +14,13 @@
 
   hardware.graphics = {
     enable = true;
-    extraPackages = with pkgs; [
-      intel-media-driver
-      intel-vaapi-driver
-      libva-vdpau-driver
-      intel-compute-runtime-legacy1
-    ];
+    extraPackages = with pkgs; [];
 
-    extraPackages32 = with pkgs.driversi686Linux; [
-      intel-media-driver
-      libva-vdpau-driver
-    ];
-    # extraPackages = [
-    #   # pkgs.intel-media-sdk
-    #   # pkgs.intel-media-driver
-    #   pkgs.intel-vaapi-driver
-    #   pkgs.libvdpau-va-gl
-    # ];
+    extraPackages32 = with pkgs.driversi686Linux; [];
   };
+
+  environment.variables = { ROC_ENABLE_PRE_VEGA = "1"; };
+
   # hardware.opengl.enable = true;
   # hardware.opengl.driSupport = true;
   # hardware.opengl.extraPackages = with pkgs; [ intel-vaapi-driver libva-vdpau-driver libvdpau-va-gl];
@@ -98,18 +41,17 @@
   # TODO just use self.user 
   user = self.user;
 
-  # boot.tmpOnTmpfs = true;
+  boot.tmpOnTmpfs = true;
   boot.tmp.cleanOnBoot = true;
 
   # TODO boot.loader.grub.device = "/dev/sda";
 
   # TODO extract
-  networking.hostName = "${config.user}-laptop";
+  networking.hostName = "${config.user}";
   networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Moscow";
 
-  i18n.defaultLocale = "en_US.UTF-8";
   services.gvfs.enable = true;
   services.udev.extraRules = ''
     SUBSYSTEM=="usb", ACTION=="add", ATTR{idVendor}=="0e8d", ATTR{idProduct}=="201d" MODE="0777" GROUP="users"
@@ -118,25 +60,23 @@
 
   services.xserver = {
     enable = true;
+    videoDrivers = [ "amdgpu" ];
+    dpi = 96;
 
-    layout = "us,ru";
-    xkbOptions = "grp:alt_shift_toggle";
-
-    libinput = {
-      enable = true;
-      mouse = { accelProfile = "flat"; };
+    # Doesnt work
+    xkb = {
+      layout = "us,ru";
+      options = "grp:alt_shift_toggle,compose:ralt";
     };
+    serverFlagsSection = ''
+  Option "BlankTime" "1"
+  Option "StandbyTime" "1"
+  Option "SuspendTime" "1"
+  Option "OffTime" "1"
+'';
     exportConfiguration = true;
-    #windowManager.i3.enable = true;
-
-    #displayManager = {
-    #  defaultSession = "none+i3";
-    #  autoLogin = {
-    #    enable = true;
-    #    user = config.user;
-    #  };
-    #};
   };
+
   programs.tmux = {
     enable = true;
     extraConfig = ''
@@ -176,6 +116,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
     enable = true;
     settingsFile = "/etc/nixos/configs/hypr/hyprland-laptop.conf";
   };
+
   services.displayManager = {
     enable = true;
     defaultSession = "hyprland";
@@ -290,14 +231,6 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       wget
       flameshot
       killall
-      (sddm-astronaut.override {
-        embeddedTheme = "black_hole";
-        # themeConfig = {
-        #   # FullBlur = true;
-        #   # BlurRadius = 25;
-        #   # PasswordFocus = false;
-        # };
-      })
       xdo
       inotify-tools
       (pkgs.python3.withPackages (ps: [
@@ -373,5 +306,4 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
 
   networking.firewall.enable = false;
   system.stateVersion = "25.11"; # Did you read the comment?
-
 }

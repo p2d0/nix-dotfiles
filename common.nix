@@ -283,6 +283,7 @@
     #   recursive = true;
     # };
     ".config/mpv".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/mpv;
+    ".config/flameshot/flameshot.ini".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/flameshot.ini;
 
     ".config/slop" = {
       source = ./configs/slop;
