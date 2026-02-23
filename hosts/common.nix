@@ -153,8 +153,10 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
 
   environment.pathsToLink = [
     "/share/nautilus-python/extensions"
-  ]
-  environment.sessionVariables.NAUTILUS_4_EXTENSION_DIR = "${config.system.path}/lib/nautilus/extensions-4";
+  ];
+
+  environment.sessionVariables."NAUTILUS_4_EXTENSION_DIR" = "${config.system.path}/lib/nautilus/extensions-4";
+  environment.sessionVariables."NAUTILUS_EXTENSION_DIR" = "${config.system.path}/lib/nautilus/extensions-4";
 
   environment.systemPackages = with pkgs;
     [
@@ -167,6 +169,6 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
         #   # PasswordFocus = false;
         # };
       })
-    ]
+    ];
 
 }

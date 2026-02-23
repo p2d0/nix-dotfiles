@@ -163,63 +163,63 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
   };
 
   modules.maestral.enable = true;
-  modules.mihomo = {
-    enable = true;
-    configFile = "/mnt/md127/Dropbox/mihomo/config.yaml";
-    # package = pkgs.unstable.mihomo;
-    package = pkgs.my.mihomo;
-    # package = pkgs.old-24-05.mihomo;
-    tunMode = true;
-  };
+  # modules.mihomo = {
+  #   enable = true;
+  #   configFile = "/mnt/md127/Dropbox/mihomo/config.yaml";
+  #   # package = pkgs.unstable.mihomo;
+  #   package = pkgs.my.mihomo;
+  #   # package = pkgs.old-24-05.mihomo;
+  #   tunMode = true;
+  # };
 
   modules.hypr = {
     enable = true;
     settingsFile = "/etc/nixos/configs/hypr/hyprland-laptop.conf";
   };
-  services.displayManager = {
-    enable = true;
-    defaultSession = "hyprland";
+  # services.displayManager = {
+  #   enable = true;
+  #   defaultSession = "hyprland";
 
-    sddm.enable = true;
-    sddm.package = pkgs.kdePackages.sddm;
-    sddm.settings = {
-      X11 = {
-        ServerArguments="-s 1 -logfile /tmp/x111.log";
-      };
-    };
-    sddm.extraPackages = [
-      pkgs.sddm-astronaut
-    ];
-    sddm.wayland.enable = false;
-    sddm.wayland.compositorCommand =
-      let
-        xcfg = config.services.xserver;
-        westonIni = (pkgs.formats.ini { }).generate "weston.ini" {
-          libinput = {
-            enable-tap = config.services.libinput.mouse.tapping;
-            left-handed = config.services.libinput.mouse.leftHanded;
-          };
-          core = {
-            idle-time = 15;
-          };
-          keyboard = {
-            keymap_model = xcfg.xkb.model;
-            keymap_layout = xcfg.xkb.layout;
-            keymap_variant = xcfg.xkb.variant;
-            keymap_options = xcfg.xkb.options;
-          };
-        };
-      in
-        "${pkgs.lib.getExe pkgs.weston} --idle-time=5 --shell=kiosk -c ${westonIni}";
-    sddm.theme = "sddm-astronaut-theme";
-    # enable = true;
-    # defaultSession = "Hyprland";
-    # ly.enable = true;
-    # autoLogin = {
-    #   enable = true;
-    #   user = config.user;
-    # };
-  };
+  #   sddm.enable = true;
+  #   sddm.package = pkgs.kdePackages.sddm;
+  #   sddm.settings = {
+  #     X11 = {
+  #       ServerArguments="-s 1 -logfile /tmp/x111.log";
+  #     };
+  #   };
+  #   sddm.extraPackages = [
+  #     pkgs.sddm-astronaut
+  #   ];
+  #   sddm.wayland.enable = false;
+  #   sddm.wayland.compositorCommand =
+  #     let
+  #       xcfg = config.services.xserver;
+  #       westonIni = (pkgs.formats.ini { }).generate "weston.ini" {
+  #         libinput = {
+  #           enable-tap = config.services.libinput.mouse.tapping;
+  #           left-handed = config.services.libinput.mouse.leftHanded;
+  #         };
+  #         core = {
+  #           idle-time = 15;
+  #         };
+  #         keyboard = {
+  #           keymap_model = xcfg.xkb.model;
+  #           keymap_layout = xcfg.xkb.layout;
+  #           keymap_variant = xcfg.xkb.variant;
+  #           keymap_options = xcfg.xkb.options;
+  #         };
+  #       };
+  #     in
+  #       "${pkgs.lib.getExe pkgs.weston} --idle-time=5 --shell=kiosk -c ${westonIni}";
+  #   sddm.theme = "sddm-astronaut-theme";
+  #   # enable = true;
+  #   # defaultSession = "Hyprland";
+  #   # ly.enable = true;
+  #   # autoLogin = {
+  #   #   enable = true;
+  #   #   user = config.user;
+  #   # };
+  # };
 
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
@@ -234,11 +234,6 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
   users.defaultUserShell = pkgs.fish;
   programs.fish.enable = true;
 
-  modules.emacs-with-doom  =
-    {
-      enable = true;
-      package = pkgs.emacs;
-    };
 
   services = {
     dbus = {

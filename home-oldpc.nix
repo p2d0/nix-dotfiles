@@ -1,16 +1,13 @@
 { config, lib, pkgs, ... }:
 
-let configbase = config;
-in {
+let baseconfig = config;
+  in
+{
   specialisation.default = {
     configuration = {
-      programs.steam.enable = true;
+      # programs.steam.enable = true;
       # programs.steam.package = pkgs.unstable.steam;
-      hardware.opentabletdriver.enable = true;
-      services.displayManager.autoLogin = {
-        enable = true;
-        user = config.user;
-      };
+      # hardware.opentabletdriver.enable = true;
       environment.systemPackages = [
         # (unstable.obs-studio.overrideAttrs(oldAttrs: rec {
         #   patches = [
@@ -22,40 +19,41 @@ in {
 
 
         # pkgs.obs-studio
-        (pkgs.lutris.override {
-          extraPkgs = pkgs: with pkgs;[
-            pkgs.alsa-lib
-            # pkgs.pkgsi686Linux.alsa-lib
-            pkgs.SDL2
-            pkgs.mangohud
-            pkgs.speex
-            pkgs.flacpkgs.flac
-            pkgs.gamemode.lib
+        # (pkgs.lutris.override {
+        #   extraPkgs = pkgs: with pkgs;[
+        #     pkgs.alsa-lib
+        #     # pkgs.pkgsi686Linux.alsa-lib
+        #     pkgs.SDL2
+        #     pkgs.mangohud
+        #     pkgs.speex
+        #     pkgs.flacpkgs.flac
+        #     pkgs.gamemode.lib
 
-            pkgs.libusb1
-            pkgs.libsoup_2_4
-            pkgs.openal
-            pkgs.libgudev
-            pkgs.libvdpau
-            pkgs.libpulseaudio
-            pkgs.pkgsi686Linux.libpulseaudio
-            pkgs.winetricks
-            pkgs.gtk3-x11
-            pkgs.pango
-            pkgs.gdk-pixbuf
-            pkgs.shared-mime-info
-            pkgs.libxcrypt
-          ];
-        })
+        #     pkgs.libusb1
+        #     pkgs.libsoup_2_4
+        #     pkgs.openal
+        #     pkgs.libgudev
+        #     pkgs.libvdpau
+        #     pkgs.libpulseaudio
+        #     pkgs.pkgsi686Linux.libpulseaudio
+        #     pkgs.winetricks
+        #     pkgs.gtk3-x11
+        #     pkgs.pango
+        #     pkgs.gdk-pixbuf
+        #     pkgs.shared-mime-info
+        #     pkgs.libxcrypt
+        #   ];
+        # })
         # pkgs.unstable.stremio
-        pkgs.my.osu-lazer-bin
+        # pkgs.my.osu-lazer-bin
         # pkgs.my.tlauncher
         # pkgs.unstable.osu-lazer-bin
-        pkgs.chatterino2
+        # pkgs.chatterino2
       ];
     };
     inheritParentConfig = true;
   };
+  networking.networkmanager.enable = true;
 
   specialisation.work = {
     configuration = {
@@ -81,6 +79,11 @@ in {
     inheritParentConfig = true;
   };
 
+  services.displayManager.autoLogin = {
+    enable = true;
+    user = config.user;
+  };
+
   home-manager.useGlobalPkgs = true;
   home-manager.backupFileExtension = "backup";
   # xdg.configFile."mimeapps.list".force = true;
@@ -97,40 +100,36 @@ in {
           source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/waybar;
         };
       };
-      services.kdeconnect.enable = true;
-      modules.eww.enable = true;
 
       programs.fish.shellInit = ''
         function rebuild-work
-          set -x NIX_BUILD_CORES 10
-          sudo nixos-rebuild switch --impure  --flake '/etc/nixos/.?submodules=1#mysystem' -j10 $argv
+          # set -x NIX_BUILD_CORES 1
+          sudo nixos-rebuild switch --impure  --flake '/etc/nixos/.?submodules=1#oldpc' $argv
           sudo /run/current-system/specialisation/work/activate
         end
         function activate-specialisation-work
           sudo /run/current-system/specialisation/work/activate
         end
         function rebuild-default
-          set -x NIX_BUILD_CORES 10
-          sudo nixos-rebuild switch --impure  --flake '/etc/nixos/.?submodules=1#mysystem' -j10 $argv
+          # set -x NIX_BUILD_CORES 1
+          sudo nixos-rebuild switch --impure  --flake '/etc/nixos/.?submodules=1#oldpc' $argv
           sudo /run/current-system/specialisation/default/activate
         end
         function update-system
           nix flake update /etc/nixos
           set -x NIX_BUILD_CORES 10
-          sudo nixos-rebuild boot --impure  --flake '/etc/nixos/.?submodules=1#mysystem' -j10 $argv
+          sudo nixos-rebuild boot --impure  --flake '/etc/nixos/.?submodules=1#oldpc' $argv
         end
         function activate-specialisation-default
           sudo /run/current-system/specialisation/default/activate
         end'';
-      modules.ssh.enable = true;
-      
 
       # TODO is it a good way?
-      systemd.user.tmpfiles.rules = [
-        "L /home/${configbase.user}/Downloads - - - - /mnt/new/Downloads"
-        "L /home/${configbase.user}/Documents - - - - /mnt/md127/Documents"
-        "L /home/${configbase.user}/Videos - - - - /mnt/md127/Videos"
-        "L /home/${configbase.user}/.ssh - - - - /mnt/md127/backup_arch/.ssh"
-      ];
+      # systemd.user.tmpfiles.rules = [
+      #   "L /home/${baseconfig.user}/Downloads - - - - /mnt/md127/Downloads"
+      #   "L /home/${baseconfig.user}/Documents - - - - /mnt/md127/Documents"
+      #   "L /home/${baseconfig.user}/Videos - - - - /mnt/md127/Videos"
+      #   "L /home/${baseconfig.user}/Dropbox - - - - /mnt/md127/Dropbox"
+      # ];
     };
 }

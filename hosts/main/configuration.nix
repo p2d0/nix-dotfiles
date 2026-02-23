@@ -679,14 +679,6 @@ serverFlagsSection = ''
       vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
       oscar
       cachix
-      (sddm-astronaut.override {
-        embeddedTheme = "black_hole";
-        # themeConfig = {
-        #   # FullBlur = true;
-        #   # BlurRadius = 25;
-        #   # PasswordFocus = false;
-        # };
-      })
       poetry
       putty
       # texliveMedium
