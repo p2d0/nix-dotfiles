@@ -242,6 +242,9 @@
 
   # services.blueman-applet.enable = true;
   home.keyboard = null;
+  home.sessionPath = [
+    "/etc/nixos/bin"
+  ];
   programs = {
     direnv = {
       enable = true;

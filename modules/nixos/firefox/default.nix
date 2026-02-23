@@ -98,6 +98,11 @@ home.activation.linkFirefoxChrome = args.lib.hm.dag.entryAfter ["writeBoundary"]
         enable = true;
         package = pkgs.unstable.firefox;
         nativeMessagingHosts.packages = [ pkgs.firefoxpwa ];
+        policies = {
+          Preferences = {
+            "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+          };
+        };
       };
     });
 }

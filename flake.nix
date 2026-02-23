@@ -249,7 +249,7 @@
                   home-manager.nixosModules.home-manager
                   # nanobanana.nixosModules.default
                   # hyprland.nixosModules.default
-                  ./home-laptop.nix
+                  ./home-oldpc.nix
                   ./hosts/oldpc/configuration.nix
                   ./hosts/common.nix
                 ];
