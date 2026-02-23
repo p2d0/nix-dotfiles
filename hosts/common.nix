@@ -2,10 +2,11 @@
 
 {
 
-      services.libinput = {
-      enable = true;
-      mouse = { accelProfile = "flat"; };
-    };
+  modules.gpu-screen-recorder.enable = true;
+  services.libinput = {
+    enable = true;
+    mouse = { accelProfile = "flat"; };
+  };
   i18n = {
     defaultLocale = "en_US.UTF-8";
     # extraLocaleSettings = {
@@ -96,9 +97,10 @@
 
   programs.tmux = {
     enable = true;
+    escapeTime = 0;
+    keyMode = "vi";
+    terminal = "screen-256color";
     extraConfig = ''
-set-window-option -g mode-keys vi
-
 unbind C-b
 set-option -g prefix C-s
 bind-key C-s send-prefix

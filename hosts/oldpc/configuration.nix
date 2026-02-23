@@ -74,31 +74,6 @@
     exportConfiguration = true;
   };
 
-  programs.tmux = {
-    enable = true;
-    extraConfig = ''
-set-window-option -g mode-keys vi
-
-unbind C-b
-set-option -g prefix C-s
-bind-key C-s send-prefix
-
-# act like vim
-setw -g mode-keys vi
-bind-key h select-pane -L
-bind-key j select-pane -D
-bind-key k select-pane -U
-bind-key l select-pane -R
-
-set-option -g set-titles on
-set-option -g set-titles-string "#T"
-bind-key -T copy-mode-vi v send -X begin-selection
-
-
-run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
-'';
-  };
-
   modules.maestral.enable = true;
   # modules.mihomo = {
   #   enable = true;
@@ -184,6 +159,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       ];
     };
   };
+  modules.printing3d.enable = true;
 
   systemd.services.nix-daemon.serviceConfig = {
     MemoryMax = "2G"; 
@@ -260,6 +236,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
       # libsForQt5.breeze-gtk
       # libsForQt5.breeze-qt5
       pasystray
+      my.osu-lazer-bin
       pavucontrol
       cachix
       # deskflow

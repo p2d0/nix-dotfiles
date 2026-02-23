@@ -24,9 +24,9 @@ function record_screen
             set -l geom (hyprctl monitors -j | jq -r '.[] | select(.focused == true) | "\(.x),\(.y) \(.width)x\(.height)"')
             
             if test -n "$device"
-                wf-recorder -g "$geom" -c $codec -d $device -f /tmp/output.mp4 &
+                wf-recorder -y -g "$geom" -c $codec -d $device -f /tmp/output.mp4 &
             else
-                wf-recorder -g "$geom" -c $codec -f /tmp/output.mp4 &
+                wf-recorder -y -g "$geom" -c $codec -f /tmp/output.mp4 &
             end
         end
 
@@ -40,7 +40,7 @@ function record_screen
             notify-send "Started recording"
             set -l geom (swaymsg -t get_outputs | jq -r '.[] | select(.focused == true) | "\(.rect.x),\(.rect.y) \(.rect.width)x\(.rect.height)"')
             
-            wf-recorder -g "$geom" $codec_flags -f /tmp/output.mp4 &
+            wf-recorder -y -g "$geom" $codec_flags -f /tmp/output.mp4 &
         end
 
     else

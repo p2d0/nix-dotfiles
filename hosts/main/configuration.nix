@@ -8,7 +8,7 @@
   imports = [ ./hardware-configuration.nix ];
   modules.flakes.enable = true;
   modules.maestral.enable = true;
-  modules.gpu-screen-recorder.enable = true;
+  # modules.gpu-screen-recorder.enable = true;
 
   # TODO Agenix
   # https://nixos.wiki/wiki/Agenix

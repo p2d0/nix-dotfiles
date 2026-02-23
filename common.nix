@@ -194,6 +194,12 @@
   modules.gimp3-photoshop-shortcuts.enable = true;
   # modules.eww.enable = true;
   # modules.firefox.enable = true;
+  programs.bash = {
+    enable = true;
+    initExtra = "
+      set -o vi;
+      ";
+  };
 
   xdg.portal = {
     xdgOpenUsePortal = true;

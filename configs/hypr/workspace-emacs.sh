@@ -7,7 +7,8 @@ emacsclient -c -F '((name . "emacs-todo"))' --eval "(emacs-todo)" &
 
 # 2. Launch Brave (Notion Calendar)
 # brave --disable-features=WaylandWpColorManagerV1 --new-window --app=https://calendar.notion.so/ &
-firefoxpwa site launch 01KHGFZJW5A9WBS3CZPFAFKXPJ
+firefox-pwa https://calendar.notion.so/
+# firefoxpwa site launch 01KHGFZJW5A9WBS3CZPFAFKXPJ
 # 3. Wait loop (Max 10 seconds)
 # We poll hyprctl clients to check if the windows actually exist before proceeding.
 MAX_RETRIES=20
