@@ -10,11 +10,9 @@
 
   boot.initrd.availableKernelModules = [ "ehci_pci" "ata_piix" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ "amdgpu" ];
-  boot.kernelModules = [ "kvm-intel" "vfio-pci ];
+  boot.kernelModules = [ "kvm-intel" "vfio-pci" ];
   boot.extraModulePackages = [ ];
-  boot.kernelParams = [
-	  "usbhid.mousepoll=1" "intel_iommu=on" "mitigations=off"
-  ];
+  boot.kernelParams = [ "usbhid.mousepoll=1" "intel_iommu=on" "mitigations=off" ];
 
 
   fileSystems."/" =
