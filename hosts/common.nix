@@ -162,6 +162,38 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
     [
       nix-index
       sshfs
+      cachix
+      vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+      kdePackages.kdenlive
+      my.pythonbin
+      unstable.video-trimmer
+      git
+      ripgrep
+      wmctrl
+      kdePackages.breeze-gtk
+      fd
+      unstable.gimp3
+      mpv
+      jq
+      nix-tree
+      libva-utils
+      wofi
+      docker-compose
+      playerctl
+      libusb1
+      peco
+      ffmpeg-full
+      my.puush-linux
+      speedcrunch
+      songrec
+      unstable.nixd
+      ntfs3g
+      nautilus
+      nautilus-python
+      alacritty
+      htop
+      my.get_current_screen_geometry
+      unzip
       (sddm-astronaut.override {
         embeddedTheme = "black_hole";
         # themeConfig = {

@@ -676,14 +676,10 @@ serverFlagsSection = ''
       ]))
 
       # my.hbctool
-      vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
       oscar
-      cachix
       poetry
       putty
       # texliveMedium
-      nix-index
-      sshfs
       # mattermost-desktop
       # charles
       gucharmap
@@ -704,7 +700,6 @@ serverFlagsSection = ''
       clojure
       fzf
       bat
-      kdePackages.kdenlive
       nix-prefetch-scripts
       openvpn
       lm_sensors
@@ -839,33 +834,23 @@ serverFlagsSection = ''
       #   vendorHash = "";
       # }))
 
-      my.pythonbin
       # my.tlala
       # my.chatgpt
       neovim
       # unstable.elementary-planner
       # (haskellPackages.callPackage /etc/nixos/modules/nixos/taffybar/build/taffybar.nix
       #   { })
-      unstable.video-trimmer
       kdiskmark
       # Config https://github.com/elken/tabbed/blob/master/config.h
       # pkgs.tabbed.override {
       # customConfig = builtins.readFile ../files/tabbed-config.h;
       # };
       # (callPackage /etc/nixos/modules/tabbed/tabbed.nix { })
-      git
-      ripgrep
-      wmctrl
-      fd
-      kdePackages.breeze-gtk
       # libsForQt5.breeze-qt5
       # nixfmt
       # TODO FIX
       # (old-23.gimp.override { withPython = true; })
-      unstable.gimp3
       # krita
-      mpv
-      libva-utils
       inkscape
       evince
       sidequest
@@ -877,12 +862,10 @@ serverFlagsSection = ''
       apksigner
       # my.alvr
 
-      jq
       pulseaudio
       gnome-system-monitor
       zenity
       zen-browser
-      nix-tree
       gnome-sound-recorder
       # tigervnc
       # x11vnc
@@ -892,11 +875,7 @@ serverFlagsSection = ''
       dbeaver-bin
       yad
       ccls
-      wofi
       # jupyter
-      docker-compose
-      playerctl
-      libusb1
       (solaar.overrideAttrs(oldAttrs: rec {
         version = "1.1.16";
         src = fetchFromGitHub {
@@ -917,8 +896,6 @@ serverFlagsSection = ''
       xorg.xdpyinfo
       unstable.postman
       unstable.brave
-      peco
-      ffmpeg-full
       d-spy
       slop
       libnotify
@@ -937,15 +914,12 @@ serverFlagsSection = ''
       compfy
       unstable.picom
       # (callPackage /etc/nixos/pkgs/picom-animations.nix { })
-      my.puush-linux
       # (pkgs.callPackage /mnt/md127/nixpkgs/pkgs/applications/networking/instant-messengers/telegram/tdesktop { })
       # (pkgs.qt6Packages.callPackage /mnt/md127/nixpkgs/pkgs/applications/networking/instant-messengers/telegram/tdesktop {
       # abseil-cpp = pkgs.abseil-cpp_202111;
       # })
       #(pkgs.callPackage /etc/nixos/pkgs/tdesktop.nix { })
       # (pkgs.callPackage ./pkgs/openhab.nix { })
-      speedcrunch
-      songrec
       discord
       # legcord
       # unstable.tdesktop
@@ -966,7 +940,6 @@ serverFlagsSection = ''
       # }))
       tdesktop_p2d0
       nil
-      unstable.nixd
       jpegoptim
       chatterino2
       kdePackages.filelight
@@ -975,11 +948,10 @@ serverFlagsSection = ''
       gnome-characters
       minidlna
       gedit
-      ntfs3g
       # gnome.gnome-boxes
       # unstable.rustdesk
       rustdesk
-      my.trex
+      # my.trex
       unstable.qbittorrent
       # qbittorrent-qt5
       # epiphany
@@ -1004,8 +976,6 @@ serverFlagsSection = ''
       #   (import (builtins.fetchTarball {
       #     url = "https://github.com/NixOS/nixpkgs/archive/23c10dbe320e6957f2607d8a22f9e0e36f56a235.tar.gz";
       # }) {}).gnome.nautilus
-      nautilus
-      nautilus-python
       spice-vdagent
       inetutils
       zip
@@ -1073,14 +1043,10 @@ serverFlagsSection = ''
       unstable.anydesk
       feh
       eog
-      alacritty
-      dmenu
+      # dmenu
       gnome-disk-utility
       cabal2nix
-      htop
-      unzip
       audacity
-      my.get_current_screen_geometry
       # (pkgs.callPackage /etc/nixos/pkgs/get_current_screen_geometry.nix { })
       # NOTE https://nixos.wiki/wiki/Nixpkgs/Modifying_Packages
       # guake
