@@ -161,6 +161,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
   environment.systemPackages = with pkgs;
     [
       nix-index
+      sshfs
       (sddm-astronaut.override {
         embeddedTheme = "black_hole";
         # themeConfig = {
