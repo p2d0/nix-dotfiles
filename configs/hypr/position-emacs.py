@@ -14,6 +14,17 @@ def get_active_monitor():
             return monitor
     return None
 
+def get_address_by_class(class_name):
+    # Get all windows
+    result = subprocess.run(['hyprctl', 'clients', '-j'], capture_output=True, text=True)
+    clients = json.loads(result.stdout)
+    
+    for client in clients:
+        if (client.get('workspace', {}).get('name') == 'special:emacs' and 
+            client.get('class') == class_name):
+            return f"address:{client['address']}"
+    return None
+
 def move_window(offset_x, offset_y, selector='title:emacs-todo'):
     # Move the window by the calculated offsets
     # Syntax: movewindowpixel exact x y,address
@@ -35,18 +46,18 @@ def main():
     # Defaults
     window_width = 800
     calendar_gap = 10
-    window_width_calendar = 400
+    window_width_calendar = 550
     window_height = 910
     
     # 1. Position the windows based on monitor
-    if active_monitor['name'] == 'HDMI-A-1' and active_monitor["description"] != "LG Electronics LG HDR WFHD 0x00077717":
+    if active_monitor["description"] != "LG Electronics LG HDR WFHD 0x00077717":
         width = active_monitor['width']
         height = active_monitor['height']
         position_x = 2560 + (width // 2  - window_width)
         position_y = (height - window_height) // 2
 
         # Move Brave
-        move_window(position_x, position_y, 'match:workspace n[emacs], match:class firefox')
+        move_window(position_x, position_y, get_address_by_class("firefox"))
 
         position_x_calendar = position_x + window_width_calendar + calendar_gap
         # Move Emacs
@@ -55,15 +66,15 @@ def main():
         width = active_monitor['width']
         height = active_monitor['height']
 
-        position_x = width // 2 - 250
+        position_x = width // 2 - 150
         position_y = (height - window_height) // 2
 
         # Move Emacs
         move_window(position_x, position_y, 'title:emacs-todo')
 
-        position_x_calendar = position_x - window_width_calendar - calendar_gap
+        position_x_calendar = position_x - window_width_calendar - calendar_gap 
         # Move Brave
-        move_window(position_x_calendar, position_y, 'workspace n[emacs]')
+        move_window(position_x_calendar, position_y, get_address_by_class("firefox"))
 
     # 2. Check if the special workspace is active
     # hyprctl monitors returns a dictionary object for specialWorkspace
