@@ -101,14 +101,15 @@ in {
       #     pkgs.xdg-desktop-portal-hyprland
       #   ];
       # };
-      programs.waybar = {
-        enable = false;
-       package = pkgs.my.waybar;
-      };
+      # programs.waybar = {
+      #   enable = false;
+      #  package = 
+      # };
 
       environment.systemPackages = with pkgs;
         [
           gammastep
+          my.waybar
           swww
           # hyprwall
           grim # screenshot functionality
