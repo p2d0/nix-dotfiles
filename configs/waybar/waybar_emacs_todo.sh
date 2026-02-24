@@ -1,25 +1,24 @@
-#!/run/current-system/sw/bin/bash
+#!/usr/bin/env bash
 
-# --- Colors (Edit these as you like) ---
-p_color="#ff7a93" # Pending / Doable
-r_color="#a6e3a1" # Repeatable
+# --- Config ---
+p_color="#ff7a93" 
+r_color="#a6e3a1"
 
 get_waybar_data() {
-    # 1. Fetch JSON from Emacs
-    local raw_json=$(emacsclient --eval '(my-eww-get-todos-json)' 2>/dev/null | jq -r)
+    # Fetch from Emacs
+    local raw_json
+    raw_json=$(emacsclient --eval '(my-eww-get-todos-json)' 2>/dev/null | jq -r 2>/dev/null)
 
+    # Handle Emacs being closed or returning nil
     if [[ -z "$raw_json" || "$raw_json" == "nil" ]]; then
-        echo '{"text": "Emacs Offline", "tooltip": "Start Emacs server", "class": "error"}'
+        echo '{"text":"󰄭","tooltip":"Emacs Offline","class":"offline"}'
         return
     fi
 
-    # 2. Process your specific JSON structure:
-    # {"Repeatable": ["..."], "Doable": ["..."]}
+    # Process JSON
     echo "$raw_json" | jq -r --arg pc "$p_color" --arg rc "$r_color" '
-        # Define which task shows up on the bar (Priority: Doable first, then Repeatable)
         (.Doable[0] // .Repeatable[0] // "All Done!") as $curr |
-
-        # Build the Tooltip with Pango Markup
+        
         "<b><u>Daily Tasks</u></b>\n\n" +
         (if (.Doable | length) > 0 then 
             "<span color=\"" + $pc + "\"><b>Doable:</b></span>\n" + ([.Doable[] | " • " + .] | join("\n")) + "\n\n" 
@@ -29,7 +28,6 @@ get_waybar_data() {
         else "" end)
         as $tooltip |
 
-        # Output Waybar JSON format
         {
             text: (" " + $curr),
             tooltip: $tooltip,
@@ -38,23 +36,27 @@ get_waybar_data() {
     ' -c
 }
 
-# --- Main Logic (Watcher) ---
+# 1. Get the file path
+# Use sed to strip quotes reliably
+FILES_TO_WATCH=$(emacsclient --eval '(my-get-todays-daily-path)' 2>/dev/null | sed 's/^"\(.*\)"$/\1/')
 
-# Get the file path from Emacs
-FILES_TO_WATCH=$(eval emacsclient --eval "'(my-get-todays-daily-path)'" 2>/dev/null)
-FILES_TO_WATCH="${FILES_TO_WATCH//\"}"
-
-if [ -z "$FILES_TO_WATCH" ]; then
-    echo '{"text": "No Org File", "tooltip": "Waiting for Emacs..."}'
-    exit 1
-fi
-
-# Initial output
+# 2. Initial Run
 get_waybar_data
 
-# Watch for changes and update Waybar instantly
+# 3. The Loop
+if [[ -z "$FILES_TO_WATCH" || ! -f "$FILES_TO_WATCH" ]]; then
+    # If file doesn't exist yet, don't crash. Just poll every 10s until it does.
+    while [[ ! -f "$FILES_TO_WATCH" ]]; do
+        sleep 10
+        FILES_TO_WATCH=$(emacsclient --eval '(my-get-todays-daily-path)' 2>/dev/null | sed 's/^"\(.*\)"$/\1/')
+    done
+fi
+
+# Use stdbuf to ensure Waybar sees the output immediately
 while true; do
-    # This blocks until the org file is saved
-    inotifywait -q -e close_write,moved_to,create,modify "$FILES_TO_WATCH" > /dev/null
-    get_waybar_data
+    # Watch the file. If inotifywait fails, the sleep 1 acts as a safety backup.
+    inotifywait -q -e close_write,moved_to,modify "$FILES_TO_WATCH" > /dev/null 2>&1 || sleep 1
+    
+    # Use stdbuf to force line buffering
+    stdbuf -oL get_waybar_data
 done

@@ -102,7 +102,7 @@ in {
       #   ];
       # };
       programs.waybar = {
-        enable = true;
+        enable = false;
        package = pkgs.my.waybar;
       };
 

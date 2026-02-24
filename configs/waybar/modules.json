@@ -160,6 +160,7 @@
         "format": "{}",
         "return-type": "json",
         "exec": "/etc/nixos/configs/waybar/waybar_emacs_todo.sh",
+        "tooltip": true,
         "escape": true
     },
     "custom/humpool": {
