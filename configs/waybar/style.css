@@ -325,3 +325,41 @@ label:focus {
     border-radius: 5px;
     background: green;
 }
+
+/* --- Emacs Todo Module --- */
+
+#custom-emacs_todo {
+    color: #ffffff;
+    padding: 0 12px;
+    margin: 0 4px;
+    /* Optional: add a background color to match your CPU/Memory blocks */
+    /* background-color: #2a2e38; */
+}
+
+/* Color state based on the "class" sent by the script */
+#custom-emacs_todo.pending {
+    color: #ff7a93; /* Flamingo Pink for active tasks */
+}
+
+#custom-emacs_todo.completed {
+    color: #a6e3a1; /* Matcha Green for All Done */
+}
+
+#custom-emacs_todo.offline {
+    color: #f53c3c; /* Red if Emacs server is down */
+}
+
+/* --- Tooltip Styling --- */
+/* This styles the pop-up box that shows your full list */
+tooltip {
+    background: rgba(20, 20, 20, 0.9);
+    border: 1px solid rgba(166, 227, 161, 0.3); /* Subtle green border */
+    border-radius: 8px;
+}
+
+tooltip label {
+    font-family: 'ShureTechMono Nerd Font';
+    font-size: 15px;
+    padding: 10px;
+    color: #ffffff;
+}

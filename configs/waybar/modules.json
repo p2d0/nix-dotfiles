@@ -157,11 +157,10 @@
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "custom/emacs_todo": {
-        "format": "{}",
+        "format": "<span>󰄭</span>{}",
         "return-type": "json",
-        "exec": "/etc/nixos/configs/waybar/waybar_emacs_todo.sh",
         "tooltip": true,
-        "escape": true
+        "exec": "/etc/nixos/configs/waybar/waybar_emacs_todo.sh"
     },
     "custom/humpool": {
         "exec": "~/.config/polybar/humpool.py",
@@ -202,7 +201,7 @@
     },
     "custom/weather":{
         "interval": 6000,
-        "exec": "curl -s 'https://wttr.in/Moscow?format=%c%20%t%20(Feels%20Like%20%f)'"
+        "exec": "curl -s 'https://wttr.in/Moscow?format=%c%t%20(%f)'",
     },
     "custom/wireguard":{
         "on-click": "~/.config/waybar/wg-status.sh",

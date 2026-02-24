@@ -7,16 +7,18 @@
       "hyprland/workspaces",
       "hyprland/submap",
       "idle_inhibitor",
-      "memory",
-      "custom/emacs_todo"
+      "memory"
        //"mpris"
     ],
     "modules-center": [
       "clock",
+      "custom/emacs_todo"
     ],
     "modules-right": [
       // "custom/humpool",
       // "custom/weather",
+      "custom/polypomo",
+      "custom/weather",
       "pulseaudio"
       // "hyprland/language",
       // "tray"
@@ -37,11 +39,10 @@
     //  "custom/crypto"
     ],
     "modules-center": [
+      "custom/emacs_todo",
       "clock"
     ],
     "modules-right": [
-      "custom/polypomo",
-      "custom/weather",
       "pulseaudio/slider",
       "pulseaudio",
       "hyprland/language",
