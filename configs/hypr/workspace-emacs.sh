@@ -19,7 +19,7 @@ while [ $i -lt $MAX_RETRIES ]; do
     CLIENTS=$(hyprctl clients)
 
     # Check if BOTH "emacs-todo" and "Notion" (or the URL) are present in the client list
-    if echo "$CLIENTS" | grep -q "emacs-todo" && echo "$CLIENTS" | grep -q "FFPWA-01KHGFZJW5A9WBS3CZPFAFKXPJ"; then
+    if echo "$CLIENTS" | grep -q "emacs-todo" && echo "$CLIENTS" | grep -q "firefox"; then
         break
     fi
 

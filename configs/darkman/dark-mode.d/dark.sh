@@ -29,3 +29,5 @@ fi
 # configure-gtk
 # gnome_schema=org.gnome.desktop.interface
 # gsettings set $gnome_schema gtk-theme 'Adwaita-dark'
+# gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+# gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'

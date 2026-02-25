@@ -49,6 +49,7 @@
       })
     ];
 
+  modules.timed-lock.enable = true;
   modules.gpu-screen-recorder.enable = true;
   services.libinput = {
     enable = true;
@@ -148,6 +149,11 @@
     keyMode = "vi";
     terminal = "screen-256color";
     extraConfig = ''
+
+set-option -g status-interval 5
+set-option -g automatic-rename on
+set-option -g automatic-rename-format '#{b:pane_current_path}'
+
 unbind C-b
 set-option -g prefix C-s
 bind-key C-s send-prefix

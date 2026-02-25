@@ -363,3 +363,13 @@ tooltip label {
     padding: 10px;
     color: #ffffff;
 }
+
+#custom-gcal.now {
+    color: #51afef; /* Blue / Active color */
+    font-weight: bold;
+    /* Optional: background-color: rgba(81, 175, 239, 0.2); */
+}
+
+#custom-gcal.none {
+    color: #5c6370; /* Dimmer color for idle state */
+}

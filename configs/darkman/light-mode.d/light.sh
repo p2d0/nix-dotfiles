@@ -1,6 +1,6 @@
 #/usr/bin/env nix-shell
 #!nix-shell -p feh
-/nix/store/4nyqjyfzdfp87z5illnm6jz6jw95w6ka-dbus-1.14.10/bin/dbus-update-activation-environment --systemd --all
+# /nix/store/4nyqjyfzdfp87z5illnm6jz6jw95w6ka-dbus-1.14.10/bin/dbus-update-activation-environment --systemd --all
 hyprctl hyprpaper wallpaper ",/etc/nixos/light.jpg"
 
 if [ "$XDG_CURRENT_DESKTOP" = "Hyprland"];

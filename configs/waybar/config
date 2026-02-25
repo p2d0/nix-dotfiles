@@ -11,6 +11,7 @@
        //"mpris"
     ],
     "modules-center": [
+      "custom/gcal",
       "clock",
       "custom/emacs_todo"
     ],

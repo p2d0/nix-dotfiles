@@ -1,5 +1,15 @@
 #!/usr/bin/env sh
-DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' hyprlock
+
+# Ensure the path to hyprlock is correct
+# You can find the path by running 'which hyprlock'
+HYPRLOCK="/run/current-system/sw/bin/hyprlock"
+
+# Export the required session variables
+export XDG_RUNTIME_DIR="/run/user/1000"
+export WAYLAND_DISPLAY="wayland-0"
+export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
+
+$HYPRLOCK
 
 
 # Check if the file /tmp/emergency does not exist

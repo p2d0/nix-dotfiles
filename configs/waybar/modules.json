@@ -203,6 +203,13 @@
         "interval": 6000,
         "exec": "curl -s 'https://wttr.in/Moscow?format=%c%t%20(%f)'",
     },
+    "custom/gcal": {
+        "format": "{}",
+        "return-type": "json",
+        "exec": "/etc/nixos/configs/waybar/waybar_gcal.sh",
+        "interval": 300,
+        "escape": false
+    },
     "custom/wireguard":{
         "on-click": "~/.config/waybar/wg-status.sh",
         "interval": 1,

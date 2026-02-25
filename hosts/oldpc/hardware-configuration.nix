@@ -26,6 +26,63 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
+#   environment.systemPackages = [ pkgs.rclone ];
+#   environment.etc."rclone-mnt.conf".text = ''
+#   [myremote]
+#   type = sftp
+#   host = 192.168.1.203
+#   user = andrew
+#   key_file = /home/andrew/.ssh/id_rsa
+# '';
+
+  fileSystems."/mnt/pc" = {
+    device = "andrew@192.168.1.203:/";
+    fsType = "sshfs";
+    options = [
+      "nodev"
+      "noatime"
+      "allow_other"
+      "IdentityFile=/home/andrew/.ssh/id_rsa"
+    ];
+  };
+
+#   fileSystems."/mnt/pc" = {
+#     device = "myremote:/";
+#     fsType = "rclone";
+#     options = [
+#       "nodev"
+#       "nofail"
+#       "allow_other"
+#       "args2env"
+#       "config=/etc/rclone-mnt.conf"
+#     ];
+#   };
+
+  fileSystems."/mnt/yandex" = lib.mkIf (builtins.pathExists "/home/andrew/Dropbox/rclone/rclone.conf") {
+    device = "yad:/";
+    fsType = "rclone";
+    options = [
+      "nodev"
+      "nofail"
+      "allow_other"
+      "args2env"
+      "config=/home/andrew/Dropbox/rclone/rclone.conf"
+    ];
+  };
+
+  fileSystems."/mnt/gdrive" = lib.mkIf (builtins.pathExists "/home/andrew/Dropbox/rclone/rclone.conf") {
+    device = "gdrive:/";
+    fsType = "rclone";
+    options = [
+      "nodev"
+      "nofail"
+      "allow_other"
+      "args2env"
+      "config=/home/andrew/Dropbox/rclone/rclone.conf"
+    ];
+  };
+
+
   swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

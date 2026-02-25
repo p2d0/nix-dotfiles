@@ -1,72 +1,68 @@
 #!/usr/bin/env bash
 
-# --- Config ---
-ICON_CAL="󰃭"
+# --- Config: Icons ---
 ICON_NOW="󱎫"
-ICON_NEXT="󰔟"
+ICON_NONE="󰃭"
 
-COLOR_NOW="#51afef"
-COLOR_NEXT="#9b59b6"
+# --- Colors ---
+COLOR_TIME="#abb2bf"
+COLOR_TITLE="#ffffff"
 
-# 1. Fetch Agenda
-# We use tail -n +2 to skip the TSV header row
+# 1. Fetch Agenda for Today and Tomorrow
+# We use tail -n +2 to skip the header
 DATA=$(gcalcli agenda --tsv --nodeclined "$(date +%F)" "$(date -d 'tomorrow' +%F)" 2>/dev/null | tail -n +2)
 
-if [[ -z "$DATA" ]]; then
-    echo "{\"text\": \"$ICON_CAL No Events\", \"tooltip\": \"Calendar is clear!\", \"class\": \"empty\"}"
-    exit 0
-fi
-
 NOW_TS=$(date +%s)
-CURRENT_EVENT=""
-NEXT_EVENT=""
+CURRENT_EVENT_TEXT=""
 TOOLTIP="<b><u>Today's Agenda</u></b>\n"
+HAS_EVENTS=false
 
-while IFS=$'\t' read -r sdate stime edate etime title; do
-    # Skip rows that don't have a title (usually day headers in TSV)
+# 2. Parse Data
+# Note: We read 5 specific columns, then 'rest' captures everything else.
+while IFS=$'\t' read -r sdate stime edate etime title rest; do
+    
+    # Ignore the separator lines (gcalcli inserts lines that are just date ranges)
+    # If the title column is a date or empty, skip it.
     [[ -z "$title" ]] && continue
-    # Skip the header row if tail failed to catch it
-    [[ "$sdate" == "start_date" ]] && continue
+    [[ "$title" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]] && continue
 
-    # Handle All-Day events (where time might be empty)
-    [[ -z "$stime" ]] && stime="00:00"
+    HAS_EVENTS=true
+
+    # Handle All-Day events (empty time fields)
+    DISPLAY_TIME="$stime"
+    [[ -z "$stime" ]] && stime="00:00" && DISPLAY_TIME="All Day"
     [[ -z "$etime" ]] && etime="23:59"
 
-    # Convert times to timestamps
+    # Convert to timestamps
+    # Using -d with specific format to ensure compatibility
     START_TS=$(date -d "$sdate $stime" +%s 2>/dev/null)
     END_TS=$(date -d "$edate $etime" +%s 2>/dev/null)
-    
-    # Skip if date conversion failed
-    [[ $? -ne 0 ]] && continue
 
-    # Format line for tooltip
-    TOOLTIP+="\n<span color='#abb2bf'>$stime</span> <b>$title</b>"
+    # Building the Tooltip
+    TOOLTIP+="\n<span color='$COLOR_TIME'>$DISPLAY_TIME</span>  <span color='$COLOR_TITLE'>$title</span>"
 
-    # Check if event is happening NOW
-    if (( NOW_TS >= START_TS && NOW_TS <= END_TS )); then
-        # If multiple events now, it will show the last one found
-        CURRENT_EVENT="$ICON_NOW $title"
-    fi
-
-    # Check for next upcoming event (if nothing is happening now)
-    if [[ -z "$CURRENT_EVENT" && -z "$NEXT_EVENT" && "$START_TS" -gt "$NOW_TS" ]]; then
-        NEXT_EVENT="$ICON_NEXT ($stime) $title"
+    # THE CHECK: Is it happening now?
+    if [[ -n "$START_TS" && -n "$END_TS" ]]; then
+        if (( NOW_TS >= START_TS && NOW_TS <= END_TS )); then
+            CURRENT_EVENT_TEXT="$ICON_NOW $title"
+        fi
     fi
 done <<< "$DATA"
 
-# 3. Determine Output
-if [[ -n "$CURRENT_EVENT" ]]; then
-    TEXT="$CURRENT_EVENT"
+# 3. Final Output Logic
+if [[ -n "$CURRENT_EVENT_TEXT" ]]; then
+    BAR_TEXT="$CURRENT_EVENT_TEXT"
     CLASS="now"
-elif [[ -n "$NEXT_EVENT" ]]; then
-    TEXT="$NEXT_EVENT"
-    CLASS="next"
 else
-    TEXT="$ICON_CAL All Done"
-    CLASS="done"
+    BAR_TEXT="$ICON_NONE No current event"
+    CLASS="none"
 fi
 
-# Final JSON Assembly (Clean multi-line for Tooltip)
+if [ "$HAS_EVENTS" = false ]; then
+    TOOLTIP="No events scheduled for today."
+fi
+
+# Escape for Waybar JSON
 TOOLTIP_ESC=$(echo -e "$TOOLTIP" | sed ':a;N;$!ba;s/\n/\\n/g' | sed 's/"/\\"/g')
 
-echo "{\"text\": \"$TEXT\", \"tooltip\": \"$TOOLTIP_ESC\", \"class\": \"$CLASS\"}"
+echo "{\"text\": \"$BAR_TEXT\", \"tooltip\": \"$TOOLTIP_ESC\", \"class\": \"$CLASS\"}"

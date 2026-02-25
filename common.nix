@@ -206,10 +206,16 @@
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
       # pkgs.my.luminous
-      pkgs.kdePackages.xdg-desktop-portal-kde
+      # pkgs.kdePackages.xdg-desktop-portal-kde
     ];
+    config.common = {
+      # This is the magic line: it forces the portal to use darkman for settings
+      default = "*";
+      "org.freedesktop.impl.portal.Settings" = [ "darkman" ];
+      "org.freedesktop.impl.portal.Desktop" = [ "gtk" ];
+    };
   };
-  xdg.portal.config.common.default = "*";
+  # xdg.portal.config.common.default = "*";
   # xdg.portal.config.common.org.freedesktop.impl.portal.InputCapture = "luminous;gtk";
 
   xdg.userDirs = {

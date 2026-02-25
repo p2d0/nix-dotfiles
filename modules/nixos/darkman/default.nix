@@ -23,24 +23,19 @@ in {
       enable = true;
       darkModeScripts = {
         gtk-theme = ''
-${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
-${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/gtk-theme "'Adwaita-dark'"
-${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/icon-theme "'Adwaita-dark'"
-'';
-        hyprpaper = ''
-${pkgs.swww}/bin/swww img  /etc/nixos/bg_old.png --transition-type center --transition-fps 75'';
-
+          # 1. Set the color scheme preference (Primary for modern apps/Firefox)
+          ${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+          # 2. Set the legacy theme (For GTK3 apps)
+          ${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+        '';
+        hyprpaper = ''${pkgs.swww}/bin/swww img /etc/nixos/bg_old.png --transition-type center'';
       };
       lightModeScripts = {
         gtk-theme = ''
-${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/color-scheme "'prefer-light'"
-${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/gtk-theme "'Adwaita'"
-${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/icon-theme "'Adwaita'"
-'';
-        # exec-once = systemctl --user import-environment HYPRLAND_INSTANCE_SIGNATURE
-        # in hyprland config if no signature
-        hyprpaper = ''
-${pkgs.swww}/bin/swww img /etc/nixos/light.jpg --transition-type center --transition-fps 75'';
+          ${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
+          ${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
+        '';
+        hyprpaper = ''${pkgs.swww}/bin/swww img /etc/nixos/light.jpg --transition-type center'';
       };
       settings = {
         lat = 55.7;
