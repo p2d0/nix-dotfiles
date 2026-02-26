@@ -1,42 +1,38 @@
 import os
+import subprocess
 from urllib.parse import unquote
 from gi.repository import Nautilus, GObject
 from typing import List
-import subprocess
 
-class OpenAlacrittyTmuxExtension(GObject.GObject, Nautilus.MenuProvider):
+class AlacrittySpecialExtension(GObject.GObject, Nautilus.MenuProvider):
     def _open_terminal(self, file: Nautilus.FileInfo) -> None:
         uri = file.get_uri()
         if not uri.startswith("file://"):
             return
         
         target_dir = unquote(uri[7:])
+        # The workspace name in Hyprland
+        special_name = "alacritty" 
+        # The custom class to match your hyprland.conf rule
+        win_class = "alacritty-sp"
 
         try:
-            # 1. Check if a tmux session exists
-            # We try to create a new window in the currently attached session.
-            # If no session is attached/running, this will fail.
-            subprocess.run(
-                ["tmux", "new-window", "-c", target_dir],
-                check=True,
-                capture_output=True
-            )
-            
-            # (Optional) Use a tool like wmctrl to focus the Alacritty window 
-            # if it's buried under other windows.
-            # subprocess.run(["wmctrl", "-a", "Alacritty"], check=False)
-
+            # 1. Try to add a new 'tab' to the existing tmux session
+            # We use 'tmux ls' first to see if a session actually exists
+            subprocess.run(["tmux", "ls"], check=True, capture_output=True)
+            subprocess.run(["tmux", "new-window", "-c", target_dir], check=True)
+        
         except (subprocess.CalledProcessError, FileNotFoundError):
-            # 2. Fallback: If tmux is not running or not installed, 
-            # start Alacritty with a fresh tmux session.
-            try:
-                # -e runs the command. We start tmux and set the starting dir.
-                subprocess.Popen([
-                    "alacritty", 
-                    "-e", "tmux", "new-session", "-c", target_dir
-                ])
-            except FileNotFoundError:
-                print("Error: Alacritty or tmux not found.")
+            # 2. If tmux isn't running, launch Alacritty with the SPECIFIC CLASS
+            # and start a new tmux session inside it.
+            subprocess.Popen([
+                "alacritty", 
+                "--class", win_class, 
+                "-e", "tmux", "new-session", "-c", target_dir
+            ])
+
+        # 3. Bring your special:alacritty workspace into focus
+        subprocess.run(["hyprctl", "dispatch", "togglespecialworkspace", special_name])
 
     def menu_activate_cb(self, menu, file):
         self._open_terminal(file)
@@ -48,18 +44,18 @@ class OpenAlacrittyTmuxExtension(GObject.GObject, Nautilus.MenuProvider):
         if len(files) != 1 or not files[0].is_directory():
             return []
         item = Nautilus.MenuItem(
-            name="NautilusPython::openalacritty_tmux_file",
-            label="Open in Alacritty (Tmux)",
-            tip=f"Open Tmux window in {files[0].get_name()}",
+            name="NautilusPython::alacritty_special_file",
+            label="Open in Special Alacritty",
+            tip="Open in special:alacritty using tmux",
         )
         item.connect("activate", self.menu_activate_cb, files[0])
         return [item]
 
     def get_background_items(self, current_folder: Nautilus.FileInfo) -> List[Nautilus.MenuItem]:
         item = Nautilus.MenuItem(
-            name="NautilusPython::openalacritty_tmux_bg",
-            label="Open in Alacritty (Tmux)",
-            tip=f"Open Tmux window in {current_folder.get_name()}",
+            name="NautilusPython::alacritty_special_bg",
+            label="Open in Special Alacritty",
+            tip="Open in special:alacritty using tmux",
         )
         item.connect("activate", self.menu_background_activate_cb, current_folder)
         return [item]

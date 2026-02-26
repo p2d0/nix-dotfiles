@@ -3,6 +3,7 @@
 {
   environment.systemPackages = with pkgs;
     [
+      unstable.yt-dlp
       nix-index
       gcalcli
       sshfs
@@ -64,6 +65,15 @@
     #   LC_TIME = "en_SE.UTF-8";
     # };
     supportedLocales = [ "all" ];
+  };
+
+  services = {
+    cron = {
+      enable = true;
+      systemCronJobs = [
+        "00 20 * * * andrew fish -c 'sync_repos'"
+      ];
+    };
   };
   
   networking.extraHosts = ''
@@ -152,7 +162,8 @@
 
 set-option -g status-interval 5
 set-option -g automatic-rename on
-set-option -g automatic-rename-format '#{b:pane_current_path}'
+# set-option -g automatic-rename-format "#{pane_current_command}"
+set-window-option -g allow-rename on
 
 unbind C-b
 set-option -g prefix C-s

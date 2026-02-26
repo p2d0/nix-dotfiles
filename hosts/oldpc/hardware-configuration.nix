@@ -26,7 +26,7 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
-#   environment.systemPackages = [ pkgs.rclone ];
+  environment.systemPackages = [ pkgs.rclone ];
 #   environment.etc."rclone-mnt.conf".text = ''
 #   [myremote]
 #   type = sftp
@@ -35,28 +35,28 @@
 #   key_file = /home/andrew/.ssh/id_rsa
 # '';
 
+  # fileSystems."/mnt/pc" = {
+  #   device = "andrew@192.168.1.203:/";
+  #   fsType = "sshfs";
+  #   options = [
+  #     "nodev"
+  #     "noatime"
+  #     "allow_other"
+  #     "IdentityFile=/home/andrew/.ssh/id_rsa"
+  #   ];
+  # };
+
   fileSystems."/mnt/pc" = {
-    device = "andrew@192.168.1.203:/";
-    fsType = "sshfs";
+    device = "myremote:/";
+    fsType = "rclone";
     options = [
       "nodev"
-      "noatime"
+      "nofail"
       "allow_other"
-      "IdentityFile=/home/andrew/.ssh/id_rsa"
+      "args2env"
+      "config=/etc/rclone-mnt.conf"
     ];
   };
-
-#   fileSystems."/mnt/pc" = {
-#     device = "myremote:/";
-#     fsType = "rclone";
-#     options = [
-#       "nodev"
-#       "nofail"
-#       "allow_other"
-#       "args2env"
-#       "config=/etc/rclone-mnt.conf"
-#     ];
-#   };
 
   fileSystems."/mnt/yandex" = lib.mkIf (builtins.pathExists "/home/andrew/Dropbox/rclone/rclone.conf") {
     device = "yad:/";

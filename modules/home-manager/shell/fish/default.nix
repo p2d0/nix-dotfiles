@@ -54,6 +54,16 @@ in {
         and not set -q TMUX
             exec tmux
         end
+        function fish_title
+            # If no command is running, show the current folder name
+            set -l command (status current-command)
+            if test "$command" = "fish"
+                basename (prompt_pwd)
+            else
+                # If a command is running (like ssh), show the command name
+                echo $argv[1]
+            end
+        end
         function fish_user_key_bindings
             fzf_configure_bindings --directory=\cf --variables=\e\cv --git_log=\cl
             bind -M normal -m insert \cr 'peco_select_history (commandline -b)'
