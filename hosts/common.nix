@@ -195,7 +195,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
   };
 
   modules.fonts.enable = true;
-  modules.guake.enable = true;
+  modules.guake.enable = false;
   modules.darkman.enable = true;
   modules.vpn.enable = true;
   modules.firefox.enable = true;
