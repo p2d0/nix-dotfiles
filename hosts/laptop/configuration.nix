@@ -272,7 +272,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
   modules.fonts.enable = true;
   modules.guake.enable = true;
   modules.timed-lock.enable = false;
-  modules.timed-lock.time = "23:00:00";
+  # modules.timed-lock.time = "23:00:00";
 
   modules.darkman.enable = true;
   modules.vpn.enable = true;
