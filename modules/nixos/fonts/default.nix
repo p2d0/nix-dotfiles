@@ -35,7 +35,9 @@ in {
                   pkgs.nerd-fonts.noto
                   pkgs.nerd-fonts.jetbrains-mono
                   pkgs.weather-icons
+                  pkgs.texlivePackages.alfaslabone
                   (callPackage ./fonts/bellandlamb.nix { })
+                  (callPackage ./fonts/sfpro.nix { })
                   (callPackage ./fonts/icomoon.nix { })
                   (callPackage ./fonts/apex.nix { })
                   (callPackage ./fonts/cryptocoins.nix { })

@@ -27,13 +27,13 @@
     };
 
   environment.systemPackages = [ pkgs.rclone ];
-#   environment.etc."rclone-mnt.conf".text = ''
-#   [myremote]
-#   type = sftp
-#   host = 192.168.1.203
-#   user = andrew
-#   key_file = /home/andrew/.ssh/id_rsa
-# '';
+  environment.etc."rclone-mnt.conf".text = ''
+  [myremote]
+  type = sftp
+  host = 192.168.1.203
+  user = andrew
+  key_file = /home/andrew/.ssh/id_rsa
+'';
 
   # fileSystems."/mnt/pc" = {
   #   device = "andrew@192.168.1.203:/";

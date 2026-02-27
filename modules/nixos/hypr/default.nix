@@ -68,6 +68,7 @@ in {
 
       home.file = {
         ".config/hypr/hypridle.conf".source = args.config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/hypr/hypridle.conf;
+        ".config/hypr/hyprlock.conf".source = args.config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/hyprlock/hyprlock.conf;
       };
 
       # services.hyprpaper = {

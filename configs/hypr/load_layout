@@ -6,8 +6,8 @@ primarily for restoring sessions after logging back into a new Hyprland session
 where the applications are assumed to restore their prior windows and it is up
 to this script to move those windows back into the place they were before.
 
-layout saved by `~/.config/hypr/save_layout`
-Environment vars set in `~/.config/hypr/hyprland.conf`
+layout saved by `/etc/nixos/configs/hyprlock/save_layout`
+Environment vars set in `/etc/nixos/configs/hyprlock/hyprland.conf`
 """
 # TODO handle apps that don't save state since last close, but are to be run
 # per window, such as most terminals
