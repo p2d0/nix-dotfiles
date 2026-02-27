@@ -25,7 +25,6 @@
     nixpkgs-hyprland.url = "github:nixos/nixpkgs/762a398892576efcc76fb233befbd58c2cef59e0";
     nixpkgs-hy3.url = "github:nixos/nixpkgs/d98abf5cf5914e5e4e9d57205e3af55ca90ffc1d";
     nixos-unstable.url = "nixpkgs/nixos-unstable";
-    # nanobanana.url = "path:/mnt/new/ai/projects/nanobanana"; 
     nixos-master.url = "github:nixos/nixpkgs/master";
     void-editor.url = "github:bariscodefxy/void-editor-flake";
     home-manager.url = "github:nix-community/home-manager/release-25.11";
@@ -76,11 +75,19 @@
       void-editor,
       # hyprland,
       nixpkgs-amnezia,
-      # nanobanana,
       home-manager,
       spl3g-config,
       ... }:
         let lib = nixpkgs.lib.extend (self: super: { my = import ./lib/util.nix { lib = nixpkgs.lib; }; });
+            nanobanana =
+              let
+                p1 = "/mnt/new/ai/projects/nanobanana";
+                p2 = "/mnt/pc/mnt/new/ai/projects/nanobanana/";
+                p3 = "/home/andrew/desk/mnt/new/ai/projects/nanobanana/";
+                path = if builtins.pathExists p1 then p1
+                       else if builtins.pathExists p2 then p2
+                       else p3;
+              in builtins.getFlake (toString path);
             nixpkgs-tars = "https://github.com/NixOS/nixpkgs/archive/";
             system =  "x86_64-linux";
             mkPkgs = pkgs: extraOverlays: import pkgs {
@@ -203,13 +210,13 @@
                     ];
                   }
                   home-manager.nixosModules.home-manager
-                  # nanobanana.nixosModules.default
+                  nanobanana.nixosModules.default
                   # hyprland.nixosModules.default
                   ./home.nix
                   ./hosts/main/configuration.nix
                   ./hosts/common.nix
                 ];
-                specialArgs = { inherit self inputs lib;};
+                specialArgs = { inherit self inputs lib nanobanana;};
               };
 
               laptop = nixpkgs.lib.nixosSystem {
@@ -225,13 +232,13 @@
                     ];
                   }
                   home-manager.nixosModules.home-manager
-                  # nanobanana.nixosModules.default
+                  nanobanana.nixosModules.default
                   # hyprland.nixosModules.default
                   ./home-laptop.nix
                   ./hosts/laptop/configuration.nix
                   ./hosts/common.nix
                 ];
-                specialArgs = { inherit self inputs lib;};
+                specialArgs = { inherit self inputs lib nanobanana;};
               };
 
               oldpc = nixpkgs.lib.nixosSystem {
@@ -247,13 +254,13 @@
                     ];
                   }
                   home-manager.nixosModules.home-manager
-                  # nanobanana.nixosModules.default
+                  nanobanana.nixosModules.default
                   # hyprland.nixosModules.default
                   ./home-oldpc.nix
                   ./hosts/oldpc/configuration.nix
                   ./hosts/common.nix
                 ];
-                specialArgs = { inherit self inputs lib;};
+                specialArgs = { inherit self inputs lib nanobanana;};
               };
 
             };

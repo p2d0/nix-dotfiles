@@ -30,6 +30,7 @@
       RemainAfterExit = true;
     };
   };
+  services.nanobanana.enable = true;
   systemd.sleep.extraConfig = ''
   AllowSuspend=no
   AllowHibernation=no
