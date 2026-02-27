@@ -32,7 +32,7 @@
       my.puush-linux
       speedcrunch
       songrec
-      unstable.nixd
+      # unstable.nixd
       ntfs3g
       nautilus
       nautilus-python
@@ -152,7 +152,7 @@
       enable = true;
       package = pkgs.emacs30-pgtk;
     };
-
+  services.speechd.enable = false;
   programs.tmux = {
     enable = true;
     escapeTime = 0;
