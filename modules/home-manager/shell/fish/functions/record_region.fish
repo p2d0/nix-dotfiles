@@ -1,4 +1,11 @@
 function record_region
+    if pgrep -x wf-recorder > /dev/null
+        notify-send "KILLING SHIT"
+        killall -s SIGINT wf-recorder
+        clip-file /tmp/output.mp4
+        # notify-send "WTF"
+        return
+    end
     # 1. Detect GPU Vendor
     set -l gpu_vendor (lspci | grep -i 'vga\|3d' | tr '[:upper:]' '[:lower:]')
     set -l codec "libx264"

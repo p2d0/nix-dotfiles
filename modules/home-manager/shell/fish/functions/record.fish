@@ -10,6 +10,8 @@ function record
     if pgrep -x $command_to_kill > /dev/null
         pkill -SIGINT $command_to_kill
         pkill -SIGINT screenkey
+        killall wf-recorder
+        notify-send "KILLING SHIT"
         clip-file /tmp/output.mp4
         notify-send "Clipped"
     else if pgrep -f gpu-screen-recorder > /dev/null

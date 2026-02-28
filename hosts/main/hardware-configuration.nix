@@ -11,6 +11,10 @@
   boot.initrd.availableKernelModules = [ "ehci_pci" "ata_piix" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "vfio-pci" "nvidia_uvm" ];
+  boot.kernel.sysctl = {
+    "vm.swappiness" = 3; # Replace with your calculated value (e.g., 1, 6, or 10)
+    "vm.vfs_cache_pressure" = 50; # Optional: helps keep file metadata in RAM longer
+  };
   boot.kernelParams = [ # "quiet" "vga=current" "udev.log_level=3" "rd.systemd.show_status=auto" "nowatchdog"
     # "amdgpu.ppfeaturemask=0xffffffff"
 "video=efifb:off" 
