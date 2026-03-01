@@ -40,6 +40,7 @@
       htop
       my.get_current_screen_geometry
       unzip
+      packet
       (sddm-astronaut.override {
         embeddedTheme = "black_hole";
         # themeConfig = {

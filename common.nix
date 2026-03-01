@@ -175,6 +175,7 @@
     lfs.enable = true;
     userEmail = "cerkin-3@yandex.ru";
     extraConfig = {
+      safe.directory = "*";
       core.autocrlf = false;
       core.trustctime = false;
       url = {

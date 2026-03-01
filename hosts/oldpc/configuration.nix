@@ -176,7 +176,7 @@
 
   modules.xdg.sessionVariables = true;
   modules.fonts.enable = true;
-  modules.guake.enable = true;
+  modules.guake.enable = false;
 
   modules.darkman.enable = true;
   modules.vpn.enable = true;

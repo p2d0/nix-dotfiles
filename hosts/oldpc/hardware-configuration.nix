@@ -55,6 +55,23 @@
       "allow_other"
       "args2env"
       "config=/etc/rclone-mnt.conf"
+      
+      # --- PERFORMANCE TWEAKS ---
+      # 1. Enable Full VFS Cache. This makes it feel like a local disk.
+      # It caches reads/writes to /var/cache/rclone (default) or a path you set.
+      "vfs-cache-mode=full"
+      
+      # 2. Tune directory listing speed vs. freshness.
+      # If you want to see changes made ON THE REMOTE faster, lower this.
+      # 10s is a good balance for local networks.
+      "dir-cache-time=10s"
+      
+      # 3. Increase lookahead and buffer for smoother file access.
+      "vfs-read-ahead=128M"
+      "buffer-size=64M"
+      
+      # 4. Use more parallel connections for transfers (SFTP specific)
+      "transfers=8"
     ];
   };
 
