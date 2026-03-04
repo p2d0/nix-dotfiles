@@ -20,6 +20,7 @@
       // "custom/weather",
       "custom/polypomo",
       "custom/weather",
+      "pulseaudio/slider",
       "pulseaudio"
       // "hyprland/language",
       // "tray"
