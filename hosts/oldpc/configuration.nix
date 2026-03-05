@@ -197,6 +197,7 @@
       flameshot
       killall
       xdo
+      audacity
       inotify-tools
       (pkgs.python3.withPackages (ps: [
         ps.python-miio
