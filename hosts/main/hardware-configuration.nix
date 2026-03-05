@@ -12,7 +12,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "vfio-pci" "nvidia_uvm" ];
   boot.kernel.sysctl = {
-    "vm.swappiness" = 3; # Replace with your calculated value (e.g., 1, 6, or 10)
+    "vm.swappiness" = 0; # Replace with your calculated value (e.g., 1, 6, or 10)
     "vm.vfs_cache_pressure" = 50; # Optional: helps keep file metadata in RAM longer
   };
   boot.kernelParams = [ # "quiet" "vga=current" "udev.log_level=3" "rd.systemd.show_status=auto" "nowatchdog"
