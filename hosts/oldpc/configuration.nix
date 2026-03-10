@@ -228,6 +228,7 @@
       xclip
       mc
       ranger
+      insomnia
       xdotool
       tldr
       wofi
