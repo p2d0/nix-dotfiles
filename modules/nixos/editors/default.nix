@@ -28,7 +28,7 @@ in{
         }))
       ];
       services.emacs.install = true;
-      services.emacs.enable = false;
+      services.emacs.enable = true;
       services.emacs.defaultEditor = true;
       # services.emacs.package = pkgs.emacs-unstable.override {
       #   withGTK3 = true;
