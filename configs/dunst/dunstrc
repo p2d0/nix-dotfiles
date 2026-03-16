@@ -2,7 +2,7 @@
     ### Display ###
 
     # Which monitor should the notifications be displayed on.
-    monitor = HDMI-A-1
+    monitor = AOC 2269W BGMD59A000839
 
     # Display notification on focused monitor.  Possible modes are:
     #   mouse: follow mouse pointer

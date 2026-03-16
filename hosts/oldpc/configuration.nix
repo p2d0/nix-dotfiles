@@ -231,6 +231,17 @@
       insomnia
       xdotool
       tldr
+      (pkgs.wrapOBS.override {
+        obs-studio = obs-studio.override { cudaSupport = true;};
+      } {
+        plugins = with pkgs.unstable.obs-studio-plugins; [
+          # obs-gstreamer
+          obs-vkcapture
+          # obs-vaapi
+          # wlrobs
+          droidcam-obs
+        ];
+      })
       wofi
       # TODO THEME
       # libsForQt5.breeze-gtk

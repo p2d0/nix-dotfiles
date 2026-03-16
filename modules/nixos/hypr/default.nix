@@ -26,9 +26,11 @@ in {
         package = pkgs.unstable.hyprland;
         # portalPackage = pkgs.unstable.xdg-desktop-portal-hyprland;
         plugins = [
-          pkgs.unstable.hyprlandPlugins.hy3
-          pkgs.hyprlandPlugins.hyprgrass
-          (pkgs.unstable.hyprlandPlugins.hypr-darkwindow.overrideAttrs(oldAttrs: rec {
+          pkgs.hyprold.hyprlandPlugins.hy3
+          # pkgs.hyprlandPlugins.hyprgrass
+
+          # pkgs.hyprold.hyprlandPlugins.hypr-darkwindow
+          (pkgs.hyprold.hyprlandPlugins.hypr-darkwindow.overrideAttrs(oldAttrs: rec {
             patches = [
               /etc/nixos/modules/nixos/hypr/noblur.patch
               /etc/nixos/modules/nixos/hypr/tearing.patch
