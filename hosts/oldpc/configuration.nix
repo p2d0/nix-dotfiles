@@ -230,6 +230,7 @@
       ranger
       insomnia
       xdotool
+      anki-bin
       tldr
       (pkgs.wrapOBS.override {
         obs-studio = obs-studio.override { cudaSupport = true;};
