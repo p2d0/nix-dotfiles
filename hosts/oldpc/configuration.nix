@@ -230,6 +230,7 @@
       ranger
       insomnia
       xdotool
+      unstable.stremio-linux-shell
       anki-bin
       tldr
       (pkgs.wrapOBS.override {
