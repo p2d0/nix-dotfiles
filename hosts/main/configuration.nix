@@ -810,7 +810,7 @@ serverFlagsSection = ''
       # unstable.firefox
       # unstable.librewolf
       xcompmgr
-      unstable.heroic
+      #unstable.heroic
       killall
       xdo
       # floorp
