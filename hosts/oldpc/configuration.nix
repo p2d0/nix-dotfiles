@@ -233,17 +233,18 @@
       unstable.stremio-linux-shell
       anki-bin
       tldr
-      (pkgs.wrapOBS.override {
-        obs-studio = obs-studio.override { cudaSupport = true;};
-      } {
-        plugins = with pkgs.unstable.obs-studio-plugins; [
-          # obs-gstreamer
-          obs-vkcapture
-          # obs-vaapi
-          # wlrobs
-          droidcam-obs
-        ];
-      })
+      obs-studio
+      # (pkgs.wrapOBS.override {
+      #   obs-studio = obs-studio.override { cudaSupport = true;};
+      # } {
+      #   plugins = with pkgs.unstable.obs-studio-plugins; [
+      #     # obs-gstreamer
+      #     # obs-vkcapture
+      #     # obs-vaapi
+      #     # wlrobs
+      #     # droidcam-obs
+      #   ];
+      # })
       wofi
       # TODO THEME
       # libsForQt5.breeze-gtk
@@ -259,7 +260,8 @@
       telegram-desktop
       # unstable-small.tdesktop
       jpegoptim
-      # filelight
+      kdePackages.filelight
+      anydesk
       gedit
       qbittorrent
       nautilus
@@ -269,7 +271,7 @@
       intel-gpu-tools
       nodejs
       # TODO THEME
-      iconpack-obsidian
+      # iconpack-obsidian
       gsettings-desktop-schemas
       dunst
       # unstable.pythonPackages.yt-dlp
