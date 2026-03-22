@@ -902,6 +902,7 @@ serverFlagsSection = ''
       xclip
       xdotool
       tldr
+      claude-code
       cheat
       # libsForQt5.breeze-gtk
       # libsForQt5.breeze-qt5

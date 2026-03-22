@@ -230,6 +230,7 @@
       ranger
       insomnia
       xdotool
+      claude-code
       unstable.stremio-linux-shell
       anki-bin
       tldr
