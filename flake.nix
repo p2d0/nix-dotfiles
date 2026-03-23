@@ -24,6 +24,7 @@
     nixpkgs-24-11 = { url = "github:nixos/nixpkgs/nixos-24.11"; };
     nixpkgs-hyprland.url = "github:nixos/nixpkgs/762a398892576efcc76fb233befbd58c2cef59e0";
     nixpkgs-hy3.url = "github:nixos/nixpkgs/d98abf5cf5914e5e4e9d57205e3af55ca90ffc1d";
+    playwright-cli.url = "github:p2d0/playwright-cli-flake";
     nixos-unstable.url = "nixpkgs/nixos-unstable";
     nixos-hyprstable.url = "github:nixos/nixpkgs/00c21e4c93d963c50d4c0c89bfa84ed6e0694df2";
     nanobanana.url = "github:p2d0/nanobanana";
@@ -68,6 +69,7 @@
       poetry2nix,
       chaotic,
       tdesktop,
+      playwright-cli,
       zen-browser,
       compfy,
       # hy3,
@@ -156,6 +158,7 @@
                 compfy = compfy.packages.${system}.compfy;
                 zen-browser = zen-browser.packages.${system}.default;
                 tdesktop_p2d0 = tdesktop.packages.${system}.default;
+                playwright-cli = playwright-cli.packages.${system}.default;
                 # my = lib.my.mapModules ./pkgs (p:
                 #   let eval = builtins.tryEval (self.callPackage p {});
                 #   in

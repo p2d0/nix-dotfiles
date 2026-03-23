@@ -939,6 +939,7 @@ serverFlagsSection = ''
       #     fetchSubmodules = true;
       #     sha256 = "sha256-/x7VZssjPk17gYSXxU/4KdHSdOjxW8ncWxItwj7lA/Y=";};
       # }))
+      playwright-cli
       tdesktop_p2d0
       nil
       jpegoptim

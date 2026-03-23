@@ -1453,6 +1453,22 @@
     },
     "nixpkgs_7": {
       "locked": {
+        "lastModified": 1771369470,
+        "narHash": "sha256-0NBlEBKkN3lufyvFegY4TYv5mCNHbi5OmBDrzihbBMQ=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "0182a361324364ae3f436a63005877674cf45efb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_7": {
+      "locked": {
         "lastModified": 1730157240,
         "narHash": "sha256-P8wF4ag6Srmpb/gwskYpnIsnspbjZlRvu47iN527ABQ=",
         "owner": "NixOS",
@@ -1548,12 +1564,30 @@
         "type": "github"
       }
     },
+    "playwright-cli": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_6"
+      },
+      "locked": {
+        "lastModified": 1774285025,
+        "narHash": "sha256-JTTQxdVqbctv1YMkiQoWFVIoZxTPgejltbIRQ0/c0Y8=",
+        "owner": "p2d0",
+        "repo": "playwright-cli-flake",
+        "rev": "61eb11df7ea7e8657559546160f5ee92208e36ee",
+        "type": "github"
+      },
+      "original": {
+        "owner": "p2d0",
+        "repo": "playwright-cli-flake",
+        "type": "github"
+      }
+    },
     "poetry2nix": {
       "inputs": {
         "flake-utils": "flake-utils_4",
         "nix-github-actions": "nix-github-actions_2",
         "nixpkgs": "nixpkgs_7",
-        "systems": "systems_5",
+        "systems": "systems_4",
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
@@ -1630,6 +1664,7 @@
         "nixpkgs-amnezia": "nixpkgs-amnezia",
         "nixpkgs-hy3": "nixpkgs-hy3",
         "nixpkgs-hyprland": "nixpkgs-hyprland",
+        "playwright-cli": "playwright-cli",
         "poetry2nix": "poetry2nix",
         "quickshell": "quickshell",
         "spl3g-config": "spl3g-config",
@@ -1899,7 +1934,7 @@
     "tdesktop": {
       "inputs": {
         "devshell": "devshell_2",
-        "flake-utils": "flake-utils_6",
+        "flake-utils": "flake-utils_5",
         "nixpkgs": "nixpkgs_13"
       },
       "locked": {
