@@ -27,6 +27,7 @@
     nixos-unstable.url = "nixpkgs/nixos-unstable";
     nixos-hyprstable.url = "github:nixos/nixpkgs/00c21e4c93d963c50d4c0c89bfa84ed6e0694df2";
     nanobanana.url = "github:p2d0/nanobanana";
+    ai-shell.url = "github:p2d0/ai-shell";
     nixos-master.url = "github:nixos/nixpkgs/master";
     void-editor.url = "github:bariscodefxy/void-editor-flake";
     home-manager.url = "github:nix-community/home-manager/release-25.11";
@@ -79,6 +80,7 @@
       nixpkgs-amnezia,
       nixos-hyprstable,
       nanobanana,
+      ai-shell,
       home-manager,
       spl3g-config,
       ... }:
@@ -142,6 +144,7 @@
                 }) {};
                 quickshell = inputs.quickshell.packages.${system}.default;
                 void-editor = inputs.void-editor.packages.${system}.default;
+                ai-shell = ai-shell.packages.${system}.default;
 
                 old-23 = import nixpkgs-23 { config = self.config; };
                 old-24-11 = import nixpkgs-24-11 { config = self.config; };

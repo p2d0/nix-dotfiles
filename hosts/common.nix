@@ -15,7 +15,8 @@
       unstable.video-trimmer
       git
       ripgrep
-      shell-gpt
+      # shell-gpt
+      ai-shell
       wmctrl
       kdePackages.breeze-gtk
       fd
