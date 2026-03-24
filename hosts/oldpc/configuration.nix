@@ -230,6 +230,7 @@
       ranger
       insomnia
       xdotool
+      max-messenger
       claude-code
       unstable.stremio-linux-shell
       anki-bin

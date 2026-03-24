@@ -23,6 +23,7 @@
     nixpkgs-23 = { url = "github:nixos/nixpkgs/nixos-23.11"; };
     nixpkgs-24-11 = { url = "github:nixos/nixpkgs/nixos-24.11"; };
     nixpkgs-hyprland.url = "github:nixos/nixpkgs/762a398892576efcc76fb233befbd58c2cef59e0";
+    max-messenger.url = "github:spiage/max-messenger";
     nixpkgs-hy3.url = "github:nixos/nixpkgs/d98abf5cf5914e5e4e9d57205e3af55ca90ffc1d";
     playwright-cli.url = "github:p2d0/playwright-cli-flake";
     nixos-unstable.url = "nixpkgs/nixos-unstable";
@@ -145,6 +146,7 @@
                   url = "https://github.com/NixOS/nixpkgs/archive/007604529b133db7ef40e687cd95d88c37e5fe8a.tar.gz";
                 }) {};
                 quickshell = inputs.quickshell.packages.${system}.default;
+                max-messenger = inputs.max-messenger.packages.${system}.default;
                 void-editor = inputs.void-editor.packages.${system}.default;
                 ai-shell = ai-shell.packages.${system}.default;
 
