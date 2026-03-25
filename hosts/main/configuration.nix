@@ -712,6 +712,7 @@ serverFlagsSection = ''
       # my.gemini
       gcc.cc.libgcc.lib
       nwg-drawer
+      unstable.opencode
       keepassxc
       tree
       my.realm-studio-bin
