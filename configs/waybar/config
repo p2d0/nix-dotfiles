@@ -36,7 +36,8 @@
       "hyprland/submap",
       "idle_inhibitor",
       "memory",
-      "disk"
+      "disk",
+      "custom/claude"
       // "custom/emacs_todo"
     //  "custom/crypto"
     ],

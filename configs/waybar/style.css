@@ -95,7 +95,8 @@ window#waybar.chromium {
 #mpd,
 #custom-wireguard,
 #custom-powerapplet,
-#custom-bluetoothapplet
+#custom-bluetoothapplet,
+#custom-claude
 {
     padding: 0 12px;
     margin: 0 4px;
@@ -163,6 +164,10 @@ label:focus {
 
 #disk {
     background-color: #964B00;
+}
+
+#custom-claude {
+    background-color: #313244;
 }
 
 #backlight {
