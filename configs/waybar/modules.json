@@ -200,7 +200,7 @@
         "exec": "python /etc/nixos/configs/waybar/claude.py",
         "return-type": "json",
         "format": "{}",
-        "interval": 150,
+        "interval": 30,
         "tooltip": true
     },
     "custom/powerapplet":{
