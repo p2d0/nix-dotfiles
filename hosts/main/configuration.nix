@@ -708,6 +708,7 @@ serverFlagsSection = ''
       nodePackages.localtunnel
       # pr218037.microsoft-edge-dev
       gcc.cc.libgcc
+      unstable.gemini-cli
       # my.gemini
       gcc.cc.libgcc.lib
       nwg-drawer
