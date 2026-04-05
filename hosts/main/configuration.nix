@@ -152,15 +152,15 @@ virtualisation.waydroid.enable = true;
   modules.nvidia.enable = true;
 
   hardware.nvidia = {
-    modesetting.enable = false;
+    modesetting.enable = true;
     nvidiaSettings = true;
     # package = pkgs.unstable.linuxKernel.packages.linux_zen.nvidia_x11;
     powerManagement = {
       enable = false;
       finegrained = false;
     };
-    gsp.enable = false;
-    open = false;
+    # gsp.enable = false;
+    open = true;
   };
 
   services.xserver = {

@@ -231,7 +231,6 @@
       insomnia
       xdotool
       pkgs.onlyoffice-desktopeditors
-      max-messenger
       claude-code
       unstable.stremio-linux-shell
       anki-bin
