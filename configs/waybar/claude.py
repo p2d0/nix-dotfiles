@@ -8,7 +8,7 @@ from datetime import datetime, timezone
 # ==============================================================================
 #  CONFIGURATION
 # ==============================================================================
-CREDENTIALS_FILE = os.path.expanduser("/mnt/pc/home/andrew/.claude/.credentials.json")
+CREDENTIALS_FILE = os.path.expanduser("~/.claude/.credentials.json")
 CACHE_FILE = "/tmp/claude_usage_cache.json"
 CACHE_TTL = 300  # seconds (5 minutes)
 # ==============================================================================
