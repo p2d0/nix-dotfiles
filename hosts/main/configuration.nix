@@ -942,7 +942,8 @@ serverFlagsSection = ''
       #     sha256 = "sha256-/x7VZssjPk17gYSXxU/4KdHSdOjxW8ncWxItwj7lA/Y=";};
       # }))
       playwright-cli
-      tdesktop_p2d0
+      unstable.telegram-desktop
+      # tdesktop_p2d0
       nil
       jpegoptim
       chatterino2
