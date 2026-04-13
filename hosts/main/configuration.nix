@@ -334,6 +334,8 @@ serverFlagsSection = ''
         "00 21 * * * andrew /etc/nixos/shutdown.sh"
         "15 21 * * * andrew /etc/nixos/shutdown.sh"
         "30 21 * * * andrew /etc/nixos/shutdown.sh"
+        "30 21 * * * andrew /etc/nixos/shutdown.sh"
+        "00 22 * * * andrew /etc/nixos/shutdown.sh"
         "55 22 * * * andrew DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /run/current-system/sw/bin/notify-send 'Shutdown in 5 MINUTES'"
 
         "00 20 * * * andrew /home/andrew/Dropbox/update_ip.sh"
@@ -914,6 +916,7 @@ serverFlagsSection = ''
       # shotcut
       darktable
       anki-bin
+      unstable.antigravity
       compfy
       unstable.picom
       # (callPackage /etc/nixos/pkgs/picom-animations.nix { })
