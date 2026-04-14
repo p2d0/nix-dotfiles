@@ -917,6 +917,7 @@ serverFlagsSection = ''
       darktable
       anki-bin
       unstable.antigravity
+      my.antigravity-manager
       compfy
       unstable.picom
       # (callPackage /etc/nixos/pkgs/picom-animations.nix { })
