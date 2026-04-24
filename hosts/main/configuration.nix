@@ -715,6 +715,7 @@ serverFlagsSection = ''
       gcc.cc.libgcc.lib
       nwg-drawer
       unstable.opencode
+      unstable.pi-coding-agent
       keepassxc
       tree
       my.realm-studio-bin

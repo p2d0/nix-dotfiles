@@ -28,6 +28,7 @@
     playwright-cli.url = "github:p2d0/playwright-cli-flake";
     nixos-unstable.url = "nixpkgs/nixos-unstable";
     nixos-hyprstable.url = "github:nixos/nixpkgs/00c21e4c93d963c50d4c0c89bfa84ed6e0694df2";
+    appblocker.url = "github:p2d0/appblocker";
     nanobanana.url = "github:p2d0/nanobanana";
     ai-shell.url = "github:p2d0/ai-shell";
     nixos-master.url = "github:nixos/nixpkgs/master";
@@ -85,6 +86,7 @@
       nanobanana,
       ai-shell,
       home-manager,
+      appblocker,
       spl3g-config,
       ... }:
         let lib = nixpkgs.lib.extend (self: super: { my = import ./lib/util.nix { lib = nixpkgs.lib; }; });
@@ -214,6 +216,7 @@
                     ];
                   }
                   home-manager.nixosModules.home-manager
+                  appblocker.nixosModules.default
                   nanobanana.nixosModules.default
                   # hyprland.nixosModules.default
                   ./home.nix
@@ -236,6 +239,7 @@
                     ];
                   }
                   home-manager.nixosModules.home-manager
+                  appblocker.nixosModules.default
                   nanobanana.nixosModules.default
                   # hyprland.nixosModules.default
                   ./home-laptop.nix
@@ -258,6 +262,7 @@
                     ];
                   }
                   home-manager.nixosModules.home-manager
+                  appblocker.nixosModules.default
                   nanobanana.nixosModules.default
                   # hyprland.nixosModules.default
                   ./home-oldpc.nix
