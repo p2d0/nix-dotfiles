@@ -125,6 +125,7 @@ virtualisation.waydroid.enable = true;
   virtualisation.docker = {
     enable = true;
     enableOnBoot = false;
+    enableNvidia = true;
   };
   services.flatpak.enable = true;
 
