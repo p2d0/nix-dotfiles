@@ -3,6 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./NVFanControl.nix
   ];
   modules.flakes.enable = true;
 
@@ -55,9 +56,24 @@
     KERNEL=="ttyUSB*", MODE="0666"
   '';
 
+  modules.nvidia.enable = true;
+
+  hardware.nvidia = {
+    modesetting.enable = true;
+    nvidiaSettings = true;
+    # package = pkgs.unstable.linuxKernel.packages.linux_zen.nvidia_x11;
+    powerManagement = {
+      enable = false;
+      finegrained = false;
+    };
+    # gsp.enable = false;
+    open = true;
+  };
+
+
   services.xserver = {
     enable = true;
-    videoDrivers = [ "amdgpu" ];
+    videoDrivers = [ "nvidia" ];
     dpi = 96;
 
     # Doesnt work
