@@ -125,7 +125,6 @@ virtualisation.waydroid.enable = true;
   virtualisation.docker = {
     enable = true;
     enableOnBoot = false;
-    enableNvidia = true;
   };
   services.flatpak.enable = true;
 
@@ -160,8 +159,8 @@ virtualisation.waydroid.enable = true;
       enable = false;
       finegrained = false;
     };
-    gsp.enable = false;
-    open = false;
+    # gsp.enable = false;
+    open = true;
   };
 
   services.xserver = {
@@ -716,7 +715,6 @@ serverFlagsSection = ''
       gcc.cc.libgcc.lib
       nwg-drawer
       unstable.opencode
-      unstable.pi-coding-agent
       keepassxc
       tree
       my.realm-studio-bin
