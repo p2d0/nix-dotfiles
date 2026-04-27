@@ -159,8 +159,8 @@ virtualisation.waydroid.enable = true;
       enable = false;
       finegrained = false;
     };
-    # gsp.enable = false;
-    open = true;
+    gsp.enable = false;
+    open = false;
   };
 
   services.xserver = {

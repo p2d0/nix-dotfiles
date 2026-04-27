@@ -9,7 +9,7 @@ export XDG_RUNTIME_DIR="/run/user/1000"
 export WAYLAND_DISPLAY="wayland-0"
 export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
 
-$HYPRLOCK
+# $HYPRLOCK
 
 
 # Check if the file /tmp/emergency does not exist
