@@ -173,6 +173,9 @@ unbind C-b
 set-option -g prefix C-s
 bind-key C-s send-prefix
 
+bind -n C-l next-window
+bind -n C-h previous-window
+
 # act like vim
 setw -g mode-keys vi
 bind-key h select-pane -L
