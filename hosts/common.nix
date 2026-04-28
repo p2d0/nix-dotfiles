@@ -188,6 +188,11 @@ bind -n M-8 select-window -t 8
 bind -n M-9 select-window -t 9
 bind -n M-0 select-window -t 10
 
+# Disable Alt bindings for SSH (Ctrl+s + u)
+bind u run "tmux unbind -n M-h; tmux unbind -n M-l; tmux unbind -n M-1; tmux unbind -n M-2; tmux unbind -n M-3; tmux unbind -n M-4; tmux unbind -n M-5; tmux unbind -n M-6; tmux unbind -n M-7; tmux unbind -n M-8; tmux unbind -n M-9; tmux unbind -n M-0; tmux display-message 'Alt bindings disabled for SSH'"
+
+# Restore Alt bindings (Ctrl+s + r)
+bind r source-file ~/.tmux.conf \; display-message "Alt bindings restored"
 
 # act like vim
 setw -g mode-keys vi
