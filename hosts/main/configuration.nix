@@ -930,6 +930,7 @@ serverFlagsSection = ''
       #(pkgs.callPackage /etc/nixos/pkgs/tdesktop.nix { })
       # (pkgs.callPackage ./pkgs/openhab.nix { })
       discord
+      unstable.rtk
       # legcord
       # unstable.tdesktop
       # (unstable.qt6Packages.callPackage /etc/nixos/pkgs/tdesktop/tdesktop.nix {
