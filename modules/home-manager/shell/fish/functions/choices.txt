@@ -6,3 +6,4 @@ Mouse region (big)
 Current screen (Sound)
 Start replay
 Clip replay
+Focused window

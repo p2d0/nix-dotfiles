@@ -1,0 +1,18 @@
+{
+  "items": [
+    {
+      "type": "TODO",
+      "message": "autoinsert",
+      "file": "../../../../../configs/firefox/user.js",
+      "line": 1,
+      "column": 3
+    },
+    {
+      "type": "XXX",
+      "message": "Gasp! We're lying here. In fact, nobody really uses or cares about this",
+      "file": "../../../../../configs/qtile/config.py",
+      "line": 203,
+      "column": 2
+    }
+  ]
+}

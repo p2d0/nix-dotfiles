@@ -23,7 +23,11 @@ function record
         set theme "style_7"
         set dir "$HOME/.config/rofi/launchers/colorful"
         if test $XDG_SESSION_TYPE = "wayland"
-            set monitor (swaymsg -t get_outputs | jq 'map(.focused) | index(false)')
+            if test "$XDG_CURRENT_DESKTOP" = "Hyprland"
+                set monitor (hyprctl monitors -j | jq '[.[].focused] | index(true)')
+            else
+                set monitor (swaymsg -t get_outputs | jq 'map(.focused) | index(false)')
+            end
             set choice (rofi -i -monitor $monitor  -p "Record:" -input "$HOME/.config/fish/functions/choices.txt" -format 'i' -dmenu -theme $dir/"$theme")
         else
             set choice (rofi -i -p "Record:" -input "$HOME/.config/fish/functions/choices.txt" -format 'i' -dmenu -theme $dir/"$theme")
@@ -43,8 +47,10 @@ function record
                 record_screen_sound;
             case 6
                 record_screen_replay_sound;
-            case 6
+            case 7
                 record_screen_replay_sound_stop;
+            case 8
+                record_window;
         end
     end
 end
