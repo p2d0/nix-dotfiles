@@ -9,6 +9,7 @@ Plugins/
 *.log
 tmp/
 .db
+.pi-lens
 
 *.py[cod]
 *.egg
