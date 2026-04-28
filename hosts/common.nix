@@ -177,22 +177,22 @@ bind -n M-l next-window
 bind -n M-h previous-window
 
 # Jump directly to tabs with Alt+numbers
-bind -n M-1 select-window -t 0
-bind -n M-2 select-window -t 1
-bind -n M-3 select-window -t 2
-bind -n M-4 select-window -t 3
-bind -n M-5 select-window -t 4
-bind -n M-6 select-window -t 5
-bind -n M-7 select-window -t 6
-bind -n M-8 select-window -t 7
-bind -n M-9 select-window -t 8
-bind -n M-0 select-window -t 9
+bind -n M-1 select-window -t 1
+bind -n M-2 select-window -t 2
+bind -n M-3 select-window -t 3
+bind -n M-4 select-window -t 4
+bind -n M-5 select-window -t 5
+bind -n M-6 select-window -t 6
+bind -n M-7 select-window -t 7
+bind -n M-8 select-window -t 8
+bind -n M-9 select-window -t 9
+bind -n M-0 select-window -t 0
 
 # Disable Alt bindings for SSH (Ctrl+s + u)
 bind u run "tmux unbind -n M-h; tmux unbind -n M-l; tmux unbind -n M-1; tmux unbind -n M-2; tmux unbind -n M-3; tmux unbind -n M-4; tmux unbind -n M-5; tmux unbind -n M-6; tmux unbind -n M-7; tmux unbind -n M-8; tmux unbind -n M-9; tmux unbind -n M-0; tmux display-message 'Alt bindings disabled for SSH'"
 
 # Restore Alt bindings (Ctrl+s + r)
-bind r source-file ~/.tmux.conf \; display-message "Alt bindings restored"
+bind r source-file /etc/.tmux.conf \; display-message "Alt bindings restored"
 
 # act like vim
 setw -g mode-keys vi
