@@ -1,0 +1,13 @@
+# AppBlocker Config
+# [[rules]]
+# class = "discord"
+[[rules]]
+title = "(?i)Ateo"
+start_time = "18:00"
+end_time = "19:00"
+[[rules]]
+title = "(?i)Varlamov"
+start_time = "18:00"
+end_time = "19:00"
+# [[rules]]
+# title = "(?i).*youtube.*"
