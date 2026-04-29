@@ -3,6 +3,7 @@
 {
   environment.systemPackages = with pkgs;
     [
+      pomotasker
       unstable.yt-dlp
       nix-index
       gcalcli

@@ -24,7 +24,7 @@ in{
         (import (builtins.fetchTarball {
           url =
             "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
-          # sha256 = "sha256:195k5y6p2apy6bz3xm7vklsfm3h4vx2m412sinrzrjzxb3b5rgcj";
+          sha256 = "0d7bxhb6c24j8gc5vmvzhadvvrarsix1ll4cvxvajp0kziqvn2pb";
         }))
       ];
       services.emacs.install = true;

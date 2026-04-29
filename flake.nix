@@ -55,6 +55,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     compfy.url = "github:allusive-dev/compfy";
     spl3g-config.url = "github:spl3g/nixfiles";
+    pomotasker.url = "path:/mnt/md127/todolist";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     nixpkgs-amnezia.url = "github:averyanalex/nixpkgs/amneziawg";
     # hy3 = {
@@ -88,6 +89,7 @@
       home-manager,
       appblocker,
       spl3g-config,
+      pomotasker,
       ... }:
         let lib = nixpkgs.lib.extend (self: super: { my = import ./lib/util.nix { lib = nixpkgs.lib; }; });
             nixpkgs-tars = "https://github.com/NixOS/nixpkgs/archive/";
@@ -151,6 +153,7 @@
                 max-messenger = inputs.max-messenger.packages.${system}.default;
                 void-editor = inputs.void-editor.packages.${system}.default;
                 ai-shell = ai-shell.packages.${system}.default;
+                pomotasker = pomotasker.packages.${system}.default;
 
                 old-23 = import nixpkgs-23 { config = self.config; };
                 old-24-11 = import nixpkgs-24-11 { config = self.config; };
