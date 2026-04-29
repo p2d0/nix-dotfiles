@@ -55,7 +55,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     compfy.url = "github:allusive-dev/compfy";
     spl3g-config.url = "github:spl3g/nixfiles";
-    pomotasker.url = "path:/mnt/md127/todolist";
+    pomotasker.url = "github:p2d0/todolist";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     nixpkgs-amnezia.url = "github:averyanalex/nixpkgs/amneziawg";
     # hy3 = {
