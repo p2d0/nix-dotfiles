@@ -33,7 +33,8 @@ Do not output analysis results unless directly relevant to your questions.
 
 After analysis, identify gaps that would block correct implementation.
 
-- Ask **at most 5 questions** in a single message.
+- **Prefer `ask_user` tool** when available: pass your analysis as `context`, offer `options` for distinct choices, and set `allowFreeform: true`.
+- Ask **at most 5 questions** in a single call.
 - Only ask what is **critical and cannot be inferred** from the codebase.
 - Number the questions.
 - Do not ask about things already answerable from the project files.
@@ -63,19 +64,23 @@ Using the analysis and the user's answers, write a `TODO.md` file in the project
 # TODO
 
 ## Goal
+
 One sentence describing what will be built or fixed.
 
 ## Tasks
 
 ### 1. <Phase Name>
+
 - [ ] <Concrete, measurable action>
 - [ ] <Concrete, measurable action>
 
 ### 2. <Phase Name>
+
 - [ ] <Concrete, measurable action>
 - [ ] <Concrete, measurable action>
 
 ## Notes
+
 Any constraints, decisions, or known risks recorded here.
 ```
 
@@ -92,6 +97,8 @@ After writing the file, show the full contents to the user and ask:
 I've created TODO.md. Does this plan look correct?
 Reply YES to start, or tell me what to change.
 ```
+
+- **Prefer `ask_user` tool** for plan approval: pass the TODO.md contents as `context`, offer options like `"Approve plan"`, `"Request changes"`, `"Stop"`.
 
 ---
 
@@ -119,10 +126,11 @@ Once approved:
 5. Do not perform any work not listed in `TODO.md`.
 
 If you discover that an unlisted task is required:
+
 - Stop.
 - Add it to `TODO.md` under a `## Discovered Tasks` section.
 - Tell the user what was found and why it is needed.
-- Ask for approval before continuing.
+- **Prefer `ask_user` tool** to present the finding and get approval before continuing.
 
 When all tasks are marked `[x]`, write:
 
