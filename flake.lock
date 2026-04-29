@@ -1465,17 +1465,18 @@
     },
     "nixpkgs_12": {
       "locked": {
-        "lastModified": 1776548001,
-        "narHash": "sha256-ZSK0NL4a1BwVbbTBoSnWgbJy9HeZFXLYQizjb2DPF24=",
-        "owner": "NixOS",
+        "lastModified": 1777077449,
+        "narHash": "sha256-AIiMJiqvGrN4HyLEbKAoCSRRYn0rnlW5VbKNIMIYqm4=",
+        "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "b12141ef619e0a9c1c84dc8c684040326f27cdcc",
+        "rev": "a4bf06618f0b5ee50f14ed8f0da77d34ecc19160",
         "type": "github"
       },
       "original": {
-        "id": "nixpkgs",
-        "ref": "nixos-unstable",
-        "type": "indirect"
+        "owner": "nixos",
+        "ref": "nixos-25.11",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "nixpkgs_13": {
@@ -1826,14 +1827,17 @@
         "nixpkgs": "nixpkgs_12"
       },
       "locked": {
-        "lastModified": 1777444205,
-        "narHash": "sha256-TTu4FgzGRVvRccdi4iLX2rTvYhGJVRaOFRYpPIuZbmE=",
-        "path": "/mnt/md127/todolist",
-        "type": "path"
+        "lastModified": 1777450089,
+        "narHash": "sha256-vmckwHRncINY95e9KziQycKsocbYjHSfURNQUUaxWV4=",
+        "owner": "p2d0",
+        "repo": "todolist",
+        "rev": "c9ecf656aec676c631cfff2d9f4aa03543d00a0d",
+        "type": "github"
       },
       "original": {
-        "path": "/mnt/md127/todolist",
-        "type": "path"
+        "owner": "p2d0",
+        "repo": "todolist",
+        "type": "github"
       }
     },
     "pre-commit-hooks": {
