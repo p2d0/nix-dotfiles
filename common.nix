@@ -10,6 +10,7 @@
       "npm:pi-lens"
       "npm:context-mode"
       "npm:pi-ask-user"
+      "npm:@sysid/pi-sandbox"
     ];
   };
   home.packages = [
