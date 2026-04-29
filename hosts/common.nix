@@ -16,6 +16,8 @@
       my.pythonbin
       unstable.video-trimmer
       git
+      bubblewrap
+      socat
       ripgrep
       # shell-gpt
       ai-shell
