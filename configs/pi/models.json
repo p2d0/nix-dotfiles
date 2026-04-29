@@ -1,0 +1,47 @@
+{
+  "providers": {
+    "antigravity-manager": {
+      "baseUrl": "http://127.0.0.1:8045/v1",
+      "apiKey": "sk-94e046219d02457486e1910271961a17",
+      "api": "openai-completions",
+      "authHeader": true,
+      "models": [
+        {
+          "id": "gemini-3-flash",
+          "name": "Gemini 3 Flash",
+          "reasoning": true,
+          "input": ["text", "image"],
+          "contextWindow": 1048576,
+          "maxTokens": 65536
+        },
+        {
+          "id": "gemini-3.1-pro-high",
+          "name": "Gemini 3.1 Pro High",
+          "reasoning": true,
+          "input": ["text", "image"],
+          "contextWindow": 1048576,
+          "maxTokens": 65535
+        }
+      ]
+    },
+    "qwen3.6-local": {
+      "baseUrl": "http://127.0.0.1:8020/v1",
+      "apiKey": "ignored",
+      "api": "openai-completions",
+      "authHeader": true,
+      "compat": {
+        "supportsDeveloperRole": false
+      },
+      "models": [
+        {
+          "id": "qwen3.6-27b-autoround",
+          "name": "Qwen 3.6 27B (Local)",
+          "reasoning": true,
+          "input": ["text"],
+          "contextWindow": 91200,
+          "maxTokens": 32000
+        }
+      ]
+    }
+  }
+}

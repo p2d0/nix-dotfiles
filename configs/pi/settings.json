@@ -1,0 +1,19 @@
+{
+  "lastChangelogVersion": "0.70.2",
+  "defaultProvider": "qwen3.6-local",
+  "defaultModel": "qwen3.6-27b-autoround",
+  "defaultThinkingLevel": "medium",
+  "compaction": {
+    "enabled": true,
+    "reserveTokens": 8192,
+    "keepRecentTokens": 8192
+  },
+  "packages": [
+    "npm:pi-caveman",
+    "npm:pi-rtk-optimizer",
+    "npm:pi-lens",
+    "npm:context-mode",
+    "npm:pi-ask-user"
+  ],
+  "hideThinkingBlock": true
+}

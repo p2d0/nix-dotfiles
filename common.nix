@@ -2,6 +2,16 @@
 
 {
   imports = lib.my.findAllModulePathsIn /etc/nixos/modules/home-manager;
+  modules.pi = {
+    enable = true;
+    extensions = [
+      "npm:pi-caveman"
+      "npm:pi-rtk-optimizer"
+      "npm:pi-lens"
+      "npm:context-mode"
+      "npm:pi-ask-user"
+    ];
+  };
   home.packages = [
     pkgs.emacsPackages.cask
   ];

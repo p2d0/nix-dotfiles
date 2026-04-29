@@ -37,7 +37,6 @@
       songrec
       # unstable.nixd
       ntfs3g
-      unstable.pi-coding-agent
       nautilus
       nautilus-python
       alacritty
