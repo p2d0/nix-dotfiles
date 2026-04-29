@@ -16,8 +16,25 @@ const DONE_PATTERNS = [
 	/\bi\s+believe\s+this\s+is\s+complete\b/i,
 ];
 
+const PLANNING_PATTERNS = [
+	/\blet\s+me\s+(first|start|begin)/i,
+	/\b(i|let\s+me)\s+(plan|think|approach)/i,
+	/\bmy\s+(plan|approach|strategy)/i,
+	/\bhere'?s\s+(my\s+)?plan/i,
+	/\bstep\s*(?:by\s*)?step/i,
+	/\bfirst[,\s]+(let\s+)?me/i,
+	/\bto\s+start\s+with/i,
+	/\bi'\s*ll\s+(first|start|begin)/i,
+	/\boutline\b.*\bplan/i,
+	/\broad\s+overview/i,
+];
+
 function isCompletion(text: string): boolean {
 	return DONE_PATTERNS.some((p) => p.test(text));
+}
+
+function isPlanning(text: string): boolean {
+	return PLANNING_PATTERNS.some((p) => p.test(text));
 }
 
 export function assessResponse(
@@ -26,8 +43,8 @@ export function assessResponse(
 	recentToolCalls: ToolCall[],
 	knownTools: Set<string>,
 ): QualityResult {
-	// 0. Agent says done — skip all checks
-	if (isCompletion(text)) {
+	// 0. Agent says done or is planning — skip all checks
+	if (isCompletion(text) || isPlanning(text)) {
 		return { ok: true };
 	}
 

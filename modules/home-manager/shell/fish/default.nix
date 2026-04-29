@@ -49,6 +49,7 @@ in {
         fish_add_path  $HOME/.npm-packages/bin
         fish_add_path  $HOME/.npm-packages/lib/node_modules
         alias s="sgpt -se"
+        alias pia="pi --no-autoformat --no-read-guard"
         alias nv="neovide --multigrid --frame none --maximized"
         if status is-interactive
         and not set -q TMUX
