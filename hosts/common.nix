@@ -3,16 +3,16 @@
 {
   environment.systemPackages = with pkgs;
     [
-      pomotasker
+      # pomotasker
       unstable.yt-dlp
       nix-index
       gcalcli
       sshfs
-      max-messenger
+      # max-messenger
       libnotify
       cachix
       vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-      kdePackages.kdenlive
+      # kdePackages.kdenlive
       my.pythonbin
       unstable.video-trimmer
       git
@@ -154,11 +154,11 @@
   };
   programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;
-  modules.emacs-with-doom  =
-    {
-      enable = true;
-      package = pkgs.emacs30-pgtk;
-    };
+  # modules.emacs-with-doom  =
+  #   {
+  #     enable = true;
+  #     package = pkgs.emacs30-pgtk;
+  #   };
   services.speechd.enable = false;
   programs.tmux = {
     enable = true;

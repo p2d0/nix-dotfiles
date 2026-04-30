@@ -14,7 +14,7 @@
     ];
   };
   home.packages = [
-    pkgs.emacsPackages.cask
+    # pkgs.emacsPackages.cask
   ];
 
   xdg.desktopEntries =

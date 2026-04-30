@@ -28,14 +28,17 @@
       RemainAfterExit = true;
     };
   };
-  services.nanobanana.enable = true;
-  pomotasker.enable = true;
+
+  # services.nanobanana.enable = true;
+  # pomotasker.enable = true;
+
   systemd.sleep.extraConfig = ''
     AllowSuspend=no
     AllowHibernation=no
     AllowHybridSleep=no
     AllowSuspendThenHibernate=no
   '';
+
   # services.tlp = {
   #   enable = true;
   #   settings = {
@@ -272,7 +275,7 @@
   modules.darkman.enable = true;
   modules.vpn.enable = true;
   modules.vm.enable = false;
-  modules.firefox.enable = true;
+  modules.firefox.enable = false;
 
   zramSwap.enable = true;
   zramSwap.memoryPercent = 70;
@@ -316,7 +319,7 @@
     gimp
     mpv
     playerctl
-    brave
+    # brave
     gnome-system-monitor
     kdePackages.kdenlive
     libusb1
