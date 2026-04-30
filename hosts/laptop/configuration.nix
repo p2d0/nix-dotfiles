@@ -30,7 +30,7 @@
   };
 
   # services.nanobanana.enable = true;
-  # pomotasker.enable = true;
+  pomotasker.enable = true;
 
   systemd.sleep.extraConfig = ''
     AllowSuspend=no
