@@ -3,7 +3,7 @@
 {
   imports = lib.my.findAllModulePathsIn /etc/nixos/modules/home-manager;
   modules.pi = {
-    enable = true;
+    enable = false;
     extensions = [
       "npm:pi-caveman"
       "npm:pi-rtk-optimizer"
