@@ -1576,15 +1576,15 @@
     },
     "nixpkgs_19": {
       "locked": {
-        "lastModified": 1749285348,
-        "narHash": "sha256-frdhQvPbmDYaScPFiCnfdh3B/Vh81Uuoo0w5TkWmmjU=",
-        "owner": "NixOS",
+        "lastModified": 1777268161,
+        "narHash": "sha256-bxrdOn8SCOv8tN4JbTF/TXq7kjo9ag4M+C8yzzIRYbE=",
+        "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "3e3afe5174c561dee0df6f2c2b2236990146329f",
+        "rev": "1c3fe55ad329cbcb28471bb30f05c9827f724c76",
         "type": "github"
       },
       "original": {
-        "owner": "NixOS",
+        "owner": "nixos",
         "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
@@ -1607,6 +1607,22 @@
       }
     },
     "nixpkgs_20": {
+      "locked": {
+        "lastModified": 1749285348,
+        "narHash": "sha256-frdhQvPbmDYaScPFiCnfdh3B/Vh81Uuoo0w5TkWmmjU=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "3e3afe5174c561dee0df6f2c2b2236990146329f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_21": {
       "locked": {
         "lastModified": 1755615617,
         "narHash": "sha256-HMwfAJBdrr8wXAkbGhtcby1zGFvs+StOp19xNsbqdOg=",
@@ -1908,6 +1924,7 @@
         "quickshell": "quickshell",
         "spl3g-config": "spl3g-config",
         "tdesktop": "tdesktop",
+        "todolist-web": "todolist-web",
         "void-editor": "void-editor",
         "zen-browser": "zen-browser_2"
       }
@@ -2338,6 +2355,24 @@
         "type": "github"
       }
     },
+    "todolist-web": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_19"
+      },
+      "locked": {
+        "lastModified": 1777558974,
+        "narHash": "sha256-VivnX95LmAVZ44NdTxMd//COjzd+NM5IYbDMKwRR1Bo=",
+        "owner": "p2d0",
+        "repo": "todolist-web",
+        "rev": "88604f39f46519da242fed168a05b418f76db811",
+        "type": "github"
+      },
+      "original": {
+        "owner": "p2d0",
+        "repo": "todolist-web",
+        "type": "github"
+      }
+    },
     "treefmt-nix": {
       "inputs": {
         "nixpkgs": [
@@ -2361,7 +2396,7 @@
     },
     "void-editor": {
       "inputs": {
-        "nixpkgs": "nixpkgs_19"
+        "nixpkgs": "nixpkgs_20"
       },
       "locked": {
         "lastModified": 1755376251,
@@ -2482,7 +2517,7 @@
     "zen-browser_2": {
       "inputs": {
         "home-manager": "home-manager_5",
-        "nixpkgs": "nixpkgs_20"
+        "nixpkgs": "nixpkgs_21"
       },
       "locked": {
         "lastModified": 1762131860,

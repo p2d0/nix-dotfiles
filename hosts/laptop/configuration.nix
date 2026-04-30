@@ -1,9 +1,7 @@
 { config, pkgs, self, ... }:
 
 {
-  imports = [
-    ./hardware-configuration.nix
-  ];
+  imports = [ ./hardware-configuration.nix ];
   modules.flakes.enable = true;
   services.auto-cpufreq.enable = true;
   services.auto-cpufreq.settings = {
@@ -31,12 +29,13 @@
     };
   };
   services.nanobanana.enable = true;
+  pomotasker.enable = true;
   systemd.sleep.extraConfig = ''
-  AllowSuspend=no
-  AllowHibernation=no
-  AllowHybridSleep=no
-  AllowSuspendThenHibernate=no
-'';
+    AllowSuspend=no
+    AllowHibernation=no
+    AllowHybridSleep=no
+    AllowSuspendThenHibernate=no
+  '';
   # services.tlp = {
   #   enable = true;
   #   settings = {
@@ -90,9 +89,7 @@
   # hardware.opengl.extraPackages = with pkgs; [ intel-vaapi-driver libva-vdpau-driver libvdpau-va-gl];
   # hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ intel-vaapi-driver ];
 
-  environment.variables = {
-    LIBVA_DRIVER_NAME = "i965";
-  };
+  environment.variables = { LIBVA_DRIVER_NAME = "i965"; };
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   # boot.loader.grub.enable = true;
@@ -147,26 +144,26 @@
   programs.tmux = {
     enable = true;
     extraConfig = ''
-set-window-option -g mode-keys vi
+      set-window-option -g mode-keys vi
 
-unbind C-b
-set-option -g prefix C-s
-bind-key C-s send-prefix
+      unbind C-b
+      set-option -g prefix C-s
+      bind-key C-s send-prefix
 
-# act like vim
-setw -g mode-keys vi
-bind-key h select-pane -L
-bind-key j select-pane -D
-bind-key k select-pane -U
-bind-key l select-pane -R
+      # act like vim
+      setw -g mode-keys vi
+      bind-key h select-pane -L
+      bind-key j select-pane -D
+      bind-key k select-pane -U
+      bind-key l select-pane -R
 
-set-option -g set-titles on
-set-option -g set-titles-string "#T"
-bind-key -T copy-mode-vi v send -X begin-selection
+      set-option -g set-titles on
+      set-option -g set-titles-string "#T"
+      bind-key -T copy-mode-vi v send -X begin-selection
 
 
-run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
-'';
+      run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
+    '';
   };
 
   modules.maestral.enable = true;
@@ -235,17 +232,17 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
 
   users.users.${config.user} = {
     isNormalUser = true;
-    extraGroups = [ "corectrl" "gamemode" "wheel" "docker" ]; # Enable ‘sudo’ for the user.
+    extraGroups =
+      [ "corectrl" "gamemode" "wheel" "docker" ]; # Enable ‘sudo’ for the user.
   };
 
   users.defaultUserShell = pkgs.fish;
   programs.fish.enable = true;
 
-
   services = {
     dbus = {
       enable = true;
-      packages = [];
+      packages = [ ];
     };
     cron = {
       enable = true;
@@ -255,9 +252,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
     };
   };
 
-  systemd.services.nix-daemon.serviceConfig = {
-    MemoryMax = "2G"; 
-  };
+  systemd.services.nix-daemon.serviceConfig = { MemoryMax = "2G"; };
 
   nix.settings.auto-optimise-store = true;
   nix.settings.trusted-users = [ "root" "andrew" ];
@@ -286,90 +281,89 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
   #   enable = true;
   #   package = pkgs.oraclejre8;
   # };
-  environment.systemPackages = with pkgs;
-    [
-      vim
-      wget
-      flameshot
-      killall
-      (sddm-astronaut.override {
-        embeddedTheme = "black_hole";
-        # themeConfig = {
-        #   # FullBlur = true;
-        #   # BlurRadius = 25;
-        #   # PasswordFocus = false;
-        # };
-      })
-      xdo
-      inotify-tools
-      (pkgs.python3.withPackages (ps: [
-        ps.python-miio
-        ps.pygobject-stubs
-        ps.requests
-        ps.pygobject3
-        ps.lxml
-      ]))
-      my.pythonbin
-      neovim
-      gnome-disk-utility
-      git
-      ripgrep
-      fd
-      # TODO THEME
-      kdePackages.breeze-gtk
-      # libsForQt5.breeze-qt5
-      nixfmt
-      gimp
-      mpv
-      playerctl
-      brave
-      gnome-system-monitor
-      kdePackages.kdenlive
-      libusb1
-      ffmpeg
-      peco
-      xclip
-      mc
-      ranger
-      xdotool
-      tldr
-      wofi
-      # TODO THEME
-      # libsForQt5.breeze-gtk
-      # libsForQt5.breeze-qt5
-      pasystray
-      pavucontrol
-      # cachix
-      # deskflow
-      paprefs
-      # discord
-      speedcrunch
-      telegram-desktop
-      # unstable-small.tdesktop
-      jpegoptim
-      # filelight
-      gedit
-      qbittorrent
-      nautilus
-      zip
-      inetutils
-      xsettingsd
-      intel-gpu-tools
-      nodejs
-      # TODO THEME
-      # iconpack-obsidian
-      gsettings-desktop-schemas
-      dunst
-      # unstable.pythonPackages.yt-dlp
-      # python39Packages.virtualenv
-      # python39Packages.pip
-      feh
-      eog
-      htop
-      unzip
-      my.get_current_screen_geometry
-      # my.guake-latest
-    ];
+  environment.systemPackages = with pkgs; [
+    vim
+    wget
+    flameshot
+    killall
+    (sddm-astronaut.override {
+      embeddedTheme = "black_hole";
+      # themeConfig = {
+      #   # FullBlur = true;
+      #   # BlurRadius = 25;
+      #   # PasswordFocus = false;
+      # };
+    })
+    xdo
+    inotify-tools
+    (pkgs.python3.withPackages (ps: [
+      ps.python-miio
+      ps.pygobject-stubs
+      ps.requests
+      ps.pygobject3
+      ps.lxml
+    ]))
+    my.pythonbin
+    neovim
+    gnome-disk-utility
+    git
+    ripgrep
+    fd
+    # TODO THEME
+    kdePackages.breeze-gtk
+    # libsForQt5.breeze-qt5
+    nixfmt
+    gimp
+    mpv
+    playerctl
+    brave
+    gnome-system-monitor
+    kdePackages.kdenlive
+    libusb1
+    ffmpeg
+    peco
+    xclip
+    mc
+    ranger
+    xdotool
+    tldr
+    wofi
+    # TODO THEME
+    # libsForQt5.breeze-gtk
+    # libsForQt5.breeze-qt5
+    pasystray
+    pavucontrol
+    # cachix
+    # deskflow
+    paprefs
+    # discord
+    speedcrunch
+    telegram-desktop
+    # unstable-small.tdesktop
+    jpegoptim
+    # filelight
+    gedit
+    qbittorrent
+    nautilus
+    zip
+    inetutils
+    xsettingsd
+    intel-gpu-tools
+    nodejs
+    # TODO THEME
+    # iconpack-obsidian
+    gsettings-desktop-schemas
+    dunst
+    # unstable.pythonPackages.yt-dlp
+    # python39Packages.virtualenv
+    # python39Packages.pip
+    feh
+    eog
+    htop
+    unzip
+    my.get_current_screen_geometry
+    # my.guake-latest
+  ];
   services.openssh.enable = true;
   services.openssh.startWhenNeeded = false;
 
