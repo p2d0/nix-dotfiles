@@ -226,7 +226,7 @@ run-shell ${pkgs.tmuxPlugins.yank}/share/tmux-plugins/yank/yank.tmux
   modules.guake.enable = false;
   modules.darkman.enable = true;
   modules.vpn.enable = true;
-  modules.firefox.enable = true;
+  modules.firefox.enable = false;
   environment.etc = {
     "wireplumber/policy.lua.d/11-bluetooth-policy.lua".text = ''
       bluetooth_policy.policy["media-role.use-headset-profile"] = false
