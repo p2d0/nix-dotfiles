@@ -56,7 +56,7 @@
         # };
       })
     ];
-  modules.appblock.enable = true;
+  modules.appblock.enable = false;
   modules.timed-lock.enable = true;
   modules.gpu-screen-recorder.enable = true;
   services.libinput = {
