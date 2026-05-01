@@ -12,6 +12,7 @@
       "npm:pi-ask-user"
       "npm:@sysid/pi-sandbox"
     ];
+# https://mcp-nixos.io/usage
   };
   home.packages = [
     pkgs.emacsPackages.cask
