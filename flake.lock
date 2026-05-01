@@ -2360,11 +2360,11 @@
         "nixpkgs": "nixpkgs_19"
       },
       "locked": {
-        "lastModified": 1777558974,
-        "narHash": "sha256-VivnX95LmAVZ44NdTxMd//COjzd+NM5IYbDMKwRR1Bo=",
+        "lastModified": 1777645750,
+        "narHash": "sha256-kOj5j9cQ9TWCi1BRzk2akXAuy7VG1gLoky+JmZm7row=",
         "owner": "p2d0",
         "repo": "todolist-web",
-        "rev": "88604f39f46519da242fed168a05b418f76db811",
+        "rev": "a3ac82b2f0b32a7d2812c037109548302a9ebd13",
         "type": "github"
       },
       "original": {
