@@ -5,6 +5,7 @@
 @import url(autohide_sidebar.css);
 @import url(sidebery.css);
 /* @import url(compact_urlbar_megabar.css); */
+html { min-width: 0 !important; }
 
 #sidebar-header {
     display: none;
