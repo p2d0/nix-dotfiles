@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "entries": {
+    "[\"npx\",\"-y\",\"awesome-ionic-mcp@latest\"]": {
+      "resolvedBin": "/home/andrew/.npm/_npx/48adb5d9a8cde080/node_modules/awesome-ionic-mcp/bin/mcp-server.js",
+      "resolvedAt": 1777738414731,
+      "packageVersion": "0.1.23",
+      "isJs": true
+    }
+  }
+}

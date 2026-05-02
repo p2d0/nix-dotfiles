@@ -12,8 +12,8 @@
     "npm:pi-caveman",
     "npm:pi-rtk-optimizer",
     "npm:pi-lens",
-    "npm:context-mode",
-    "npm:pi-ask-user"
+    "npm:pi-ask-user",
+    "npm:pi-mcp-adapter"
   ],
   "hideThinkingBlock": true
 }
