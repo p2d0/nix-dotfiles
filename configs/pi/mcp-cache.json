@@ -1,4 +1,707 @@
 {
   "version": 1,
-  "servers": {}
+  "servers": {
+    "jina-mcp-server": {
+      "configHash": "8737f7a043a7550e44472c3e8ae99e4e6199d7a1f5f268cabd3e66f1991e5ea3",
+      "tools": [
+        {
+          "name": "show_api_key",
+          "description": "Return the bearer token from the Authorization header of the MCP settings, which is used to debug.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {},
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "primer",
+          "description": "Get up-to-date contextual information of the current session to provide localized, time-aware responses. Use this when you need to know the current time, user's location, or network environment to give more relevant and personalized information.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {},
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "guess_datetime_url",
+          "description": "Guess the last updated or published datetime of a web page. This tool examines HTTP headers, HTML metadata, Schema.org data, visible dates, JavaScript timestamps, HTML comments, Git information, RSS/Atom feeds, sitemaps, and international date formats to provide the most accurate update time with confidence scores. Returns the best guess timestamp and confidence level.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string",
+                "format": "uri",
+                "description": "The complete HTTP/HTTPS URL of the webpage to guess datetime information"
+              }
+            },
+            "required": [
+              "url"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "capture_screenshot_url",
+          "description": "Capture high-quality screenshots of web pages in base64 encoded JPEG format. Use this tool when you need to visually inspect a website, take a snapshot for analysis, or show users what a webpage looks like.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string",
+                "format": "uri",
+                "description": "The complete HTTP/HTTPS URL of the webpage to capture (e.g., 'https://example.com')"
+              },
+              "firstScreenOnly": {
+                "type": "boolean",
+                "default": false,
+                "description": "Set to true for a single screen capture (faster), false for full page capture including content below the fold"
+              },
+              "return_url": {
+                "type": "boolean",
+                "default": false,
+                "description": "Set to true to return screenshot URLs instead of downloading images as base64"
+              }
+            },
+            "required": [
+              "url"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "read_url",
+          "description": "Extract and convert web page content to clean, readable markdown format. Perfect for reading articles, documentation, blog posts, or any web content. Use this when you need to analyze text content from websites, bypass paywalls, or get structured data.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "uri"
+                    }
+                  }
+                ],
+                "description": "The complete URL of the webpage or PDF file to read and convert (e.g., 'https://example.com/article'). Can be a single URL string or an array of URLs for parallel reading."
+              },
+              "withAllLinks": {
+                "type": "boolean",
+                "description": "Set to true to extract and return all hyperlinks found on the page as structured data"
+              },
+              "withAllImages": {
+                "type": "boolean",
+                "description": "Set to true to extract and return all images found on the page as structured data"
+              }
+            },
+            "required": [
+              "url"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "search_web",
+          "description": "Search the entire web for current information, news, articles, and websites. Use this when you need up-to-date information, want to find specific websites, research topics, or get the latest news. Ideal for answering questions about recent events, finding resources, or discovering relevant content.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "query": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ],
+                "description": "Search terms or keywords to find relevant web content (e.g., 'climate change news 2024', 'best pizza recipe'). Can be a single query string or an array of queries for parallel search."
+              },
+              "num": {
+                "type": "number",
+                "default": 30,
+                "description": "Maximum number of search results to return, between 1-100"
+              },
+              "tbs": {
+                "type": "string",
+                "description": "Time-based search parameter, e.g., 'qdr:h' for past hour, can be qdr:h, qdr:d, qdr:w, qdr:m, qdr:y"
+              },
+              "location": {
+                "type": "string",
+                "description": "Location for search results, e.g., 'London', 'New York', 'Tokyo'"
+              },
+              "gl": {
+                "type": "string",
+                "description": "Country code, e.g., 'dz' for Algeria"
+              },
+              "hl": {
+                "type": "string",
+                "description": "Language code, e.g., 'zh-cn' for Simplified Chinese"
+              }
+            },
+            "required": [
+              "query"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "expand_query",
+          "description": "Expand and rewrite search queries based on an up-to-date query expansion model. This tool takes an initial query and returns multiple expanded queries that can be used for more diversed and deeper searches. Useful for improving deep research results by searching broader and deeper.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "query": {
+                "type": "string",
+                "description": "The search query to expand (e.g., 'machine learning', 'climate change')"
+              }
+            },
+            "required": [
+              "query"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "search_arxiv",
+          "description": "Search academic papers and preprints on arXiv repository. Perfect for finding research papers, scientific studies, technical papers, and academic literature. Use this when researching scientific topics, looking for papers by specific authors, or finding the latest research in fields like AI, physics, mathematics, computer science, etc.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "query": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ],
+                "description": "Academic search terms, author names, or research topics (e.g., 'transformer neural networks', 'Einstein relativity', 'machine learning optimization'). Can be a single query string or an array of queries for parallel search."
+              },
+              "num": {
+                "type": "number",
+                "default": 30,
+                "description": "Maximum number of academic papers to return, between 1-100"
+              },
+              "tbs": {
+                "type": "string",
+                "description": "Time-based search parameter, e.g., 'qdr:h' for past hour, can be qdr:h, qdr:d, qdr:w, qdr:m, qdr:y"
+              }
+            },
+            "required": [
+              "query"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "search_ssrn",
+          "description": "Search academic papers and preprints on SSRN (Social Science Research Network). Perfect for finding research papers in social sciences, economics, law, finance, accounting, management, and humanities. Use this when researching social science topics, looking for working papers, or finding the latest research in business and economics fields.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "query": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ],
+                "description": "Academic search terms, author names, or research topics (e.g., 'corporate governance', 'behavioral finance', 'contract law'). Can be a single query string or an array of queries for parallel search."
+              },
+              "num": {
+                "type": "number",
+                "default": 30,
+                "description": "Maximum number of academic papers to return, between 1-100"
+              },
+              "tbs": {
+                "type": "string",
+                "description": "Time-based search parameter, e.g., 'qdr:h' for past hour, can be qdr:h, qdr:d, qdr:w, qdr:m, qdr:y"
+              }
+            },
+            "required": [
+              "query"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "search_jina_blog",
+          "description": "Search Jina AI news and blog posts at jina.ai/news for articles about AI, machine learning, neural search, embeddings, and Jina products. Use this to find official Jina documentation, tutorials, product announcements, and technical deep-dives.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "query": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ],
+                "description": "Search terms to find relevant Jina blog posts (e.g., 'embeddings', 'reranker', 'ColBERT'). Can be a single query string or an array of queries for parallel search."
+              },
+              "num": {
+                "type": "number",
+                "default": 30,
+                "description": "Maximum number of blog posts to return, between 1-100"
+              },
+              "tbs": {
+                "type": "string",
+                "description": "Time-based search parameter, e.g., 'qdr:h' for past hour, can be qdr:h, qdr:d, qdr:w, qdr:m, qdr:y"
+              }
+            },
+            "required": [
+              "query"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "search_images",
+          "description": "Search for images across the web, similar to Google Images. Use this when you need to find photos, illustrations, diagrams, charts, logos, or any visual content. Perfect for finding images to illustrate concepts, locating specific pictures, or discovering visual resources. Images are returned by default as small base64-encoded JPEG images.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "query": {
+                "type": "string",
+                "description": "Image search terms describing what you want to find (e.g., 'sunset over mountains', 'vintage car illustration', 'data visualization chart')"
+              },
+              "return_url": {
+                "type": "boolean",
+                "default": false,
+                "description": "Set to true to return image URLs, title, shapes, and other metadata. By default, images are downloaded as base64 and returned as rendered images."
+              },
+              "tbs": {
+                "type": "string",
+                "description": "Time-based search parameter, e.g., 'qdr:h' for past hour, can be qdr:h, qdr:d, qdr:w, qdr:m, qdr:y"
+              },
+              "location": {
+                "type": "string",
+                "description": "Location for search results, e.g., 'London', 'New York', 'Tokyo'"
+              },
+              "gl": {
+                "type": "string",
+                "description": "Country code, e.g., 'dz' for Algeria"
+              },
+              "hl": {
+                "type": "string",
+                "description": "Language code, e.g., 'zh-cn' for Simplified Chinese"
+              }
+            },
+            "required": [
+              "query"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "parallel_search_web",
+          "description": "Run multiple web searches in parallel for comprehensive topic coverage and diverse perspectives. For best results, provide multiple search queries that explore different aspects of your topic. You can use expand_query to help generate diverse queries, or create them yourself.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "searches": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "query": {
+                      "type": "string",
+                      "description": "Search terms or keywords to find relevant web content"
+                    },
+                    "num": {
+                      "type": "number",
+                      "default": 30,
+                      "description": "Maximum number of search results to return, between 1-100"
+                    },
+                    "tbs": {
+                      "type": "string",
+                      "description": "Time-based search parameter, e.g., 'qdr:h' for past hour"
+                    },
+                    "location": {
+                      "type": "string",
+                      "description": "Location for search results, e.g., 'London', 'New York', 'Tokyo'"
+                    },
+                    "gl": {
+                      "type": "string",
+                      "description": "Country code, e.g., 'dz' for Algeria"
+                    },
+                    "hl": {
+                      "type": "string",
+                      "description": "Language code, e.g., 'zh-cn' for Simplified Chinese"
+                    }
+                  },
+                  "required": [
+                    "query"
+                  ],
+                  "additionalProperties": false
+                },
+                "maxItems": 5,
+                "description": "Array of search configurations to execute in parallel (maximum 5 searches for optimal performance)"
+              },
+              "timeout": {
+                "type": "number",
+                "default": 30000,
+                "description": "Timeout in milliseconds for all searches"
+              }
+            },
+            "required": [
+              "searches"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "parallel_search_arxiv",
+          "description": "Run multiple arXiv searches in parallel for comprehensive research coverage and diverse academic angles. For best results, provide multiple search queries that explore different research angles and methodologies. You can use expand_query to help generate diverse queries, or create them yourself.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "searches": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "query": {
+                      "type": "string",
+                      "description": "Academic search terms, author names, or research topics"
+                    },
+                    "num": {
+                      "type": "number",
+                      "default": 30,
+                      "description": "Maximum number of academic papers to return, between 1-100"
+                    },
+                    "tbs": {
+                      "type": "string",
+                      "description": "Time-based search parameter, e.g., 'qdr:h' for past hour"
+                    }
+                  },
+                  "required": [
+                    "query"
+                  ],
+                  "additionalProperties": false
+                },
+                "maxItems": 5,
+                "description": "Array of arXiv search configurations to execute in parallel (maximum 5 searches for optimal performance)"
+              },
+              "timeout": {
+                "type": "number",
+                "default": 30000,
+                "description": "Timeout in milliseconds for all searches"
+              }
+            },
+            "required": [
+              "searches"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "parallel_search_ssrn",
+          "description": "Run multiple SSRN searches in parallel for comprehensive social science research coverage and diverse academic angles. For best results, provide multiple search queries that explore different research angles and methodologies. You can use expand_query to help generate diverse queries, or create them yourself.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "searches": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "query": {
+                      "type": "string",
+                      "description": "Academic search terms, author names, or research topics"
+                    },
+                    "num": {
+                      "type": "number",
+                      "default": 30,
+                      "description": "Maximum number of academic papers to return, between 1-100"
+                    },
+                    "tbs": {
+                      "type": "string",
+                      "description": "Time-based search parameter, e.g., 'qdr:h' for past hour"
+                    }
+                  },
+                  "required": [
+                    "query"
+                  ],
+                  "additionalProperties": false
+                },
+                "maxItems": 5,
+                "description": "Array of SSRN search configurations to execute in parallel (maximum 5 searches for optimal performance)"
+              },
+              "timeout": {
+                "type": "number",
+                "default": 30000,
+                "description": "Timeout in milliseconds for all searches"
+              }
+            },
+            "required": [
+              "searches"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "parallel_read_url",
+          "description": "Read multiple web pages in parallel to extract clean content efficiently. For best results, provide multiple URLs that you need to extract simultaneously. This is useful for comparing content across multiple sources or gathering information from multiple pages at once.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "urls": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "The complete URL of the webpage or PDF file to read and convert"
+                    },
+                    "withAllLinks": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Set to true to extract and return all hyperlinks found on the page as structured data"
+                    },
+                    "withAllImages": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Set to true to extract and return all images found on the page as structured data"
+                    }
+                  },
+                  "required": [
+                    "url"
+                  ],
+                  "additionalProperties": false
+                },
+                "maxItems": 5,
+                "description": "Array of URL configurations to read in parallel (maximum 5 URLs for optimal performance)"
+              },
+              "timeout": {
+                "type": "number",
+                "default": 30000,
+                "description": "Timeout in milliseconds for all URL reads"
+              }
+            },
+            "required": [
+              "urls"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "classify_text",
+          "description": "Classify texts into user-defined labels using Jina embeddings. Use this when you need to categorize, tag, or sort text content into predefined categories. Perfect for sentiment analysis, topic classification, content moderation, or any text categorization task.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "texts": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Array of text strings to classify (e.g., ['I love this product', 'terrible experience'])"
+              },
+              "labels": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Array of classification labels (e.g., ['positive', 'negative', 'neutral'])"
+              },
+              "model": {
+                "type": "string",
+                "default": "jina-embeddings-v5-text-small",
+                "description": "Model to use for classification (default: jina-embeddings-v5-text-small)"
+              }
+            },
+            "required": [
+              "texts",
+              "labels"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "sort_by_relevance",
+          "description": "Rerank a list of documents by relevance to a query using Jina Reranker API. Use this when you have multiple documents and want to sort them by how well they match a specific query or topic. Perfect for document retrieval, content filtering, or finding the most relevant information from a collection.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "query": {
+                "type": "string",
+                "description": "The query or topic to rank documents against (e.g., 'machine learning algorithms', 'climate change solutions')"
+              },
+              "documents": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Array of document texts to rerank by relevance"
+              },
+              "top_n": {
+                "type": "number",
+                "description": "Maximum number of top results to return"
+              }
+            },
+            "required": [
+              "query",
+              "documents"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "deduplicate_strings",
+          "description": "Get top-k semantically unique strings from a list using Jina embeddings and submodular optimization. Use this when you have many similar strings and want to select the most diverse subset that covers the semantic space. Perfect for removing duplicates, selecting representative samples, or finding diverse content.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "strings": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Array of strings to deduplicate"
+              },
+              "k": {
+                "type": "number",
+                "description": "Number of unique strings to return. If not provided, automatically finds optimal k by looking at diminishing return"
+              }
+            },
+            "required": [
+              "strings"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "deduplicate_images",
+          "description": "Get top-k semantically unique images (URLs or base64-encoded) using Jina CLIP v2 embeddings and submodular optimization. Use this when you have many visually similar images and want the most diverse subset.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "images": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Array of image inputs to deduplicate. Each item can be either an HTTP(S) URL or a raw base64-encoded image string (without data URI prefix)."
+              },
+              "k": {
+                "type": "number",
+                "description": "Number of unique images to return. If not provided, automatically finds optimal k by looking at diminishing return"
+              }
+            },
+            "required": [
+              "images"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "search_bibtex",
+          "description": "Search for academic papers and return BibTeX citations. Searches DBLP (computer science) and Semantic Scholar (broad academic coverage) for comprehensive results. Returns formatted BibTeX entries ready to use in LaTeX documents.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "query": {
+                "type": "string",
+                "description": "Search query - paper title, topic, or keywords (e.g., 'attention is all you need', 'transformer neural networks', 'deep learning optimization')"
+              },
+              "num": {
+                "type": "number",
+                "minimum": 1,
+                "maximum": 50,
+                "default": 10,
+                "description": "Maximum number of results to return (1-50, default: 10)"
+              },
+              "year": {
+                "type": "number",
+                "description": "Filter by minimum publication year (e.g., 2020 for papers from 2020 onwards)"
+              },
+              "author": {
+                "type": "string",
+                "description": "Filter by author name (e.g., 'Vaswani', 'Hinton')"
+              }
+            },
+            "required": [
+              "query"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "extract_pdf",
+          "description": "Extract figures, tables, and equations from PDF documents using layout detection. Perfect for extracting visual elements from academic papers on arXiv or any PDF URL. Returns base64-encoded images of detected elements with metadata.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "arXiv paper ID (e.g., '2301.12345' or 'hep-th/9901001'). Either id or url is required."
+              },
+              "url": {
+                "type": "string",
+                "format": "uri",
+                "description": "Direct PDF URL. Either id or url is required."
+              },
+              "max_edge": {
+                "type": "number",
+                "default": 1024,
+                "description": "Maximum edge size for extracted images in pixels (default: 1024)"
+              },
+              "type": {
+                "type": "string",
+                "description": "Filter by float types (comma-separated): figure, table, equation. If not specified, returns all types."
+              }
+            },
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        }
+      ],
+      "resources": [],
+      "cachedAt": 1777750426609
+    }
+  }
 }
