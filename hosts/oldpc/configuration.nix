@@ -269,6 +269,7 @@
       # libsForQt5.breeze-qt5
       pasystray
       my.osu-lazer-bin
+      my.opencode-baseline
       pavucontrol
       cachix
       # deskflow
