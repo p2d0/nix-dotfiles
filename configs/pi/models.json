@@ -38,8 +38,8 @@
           "name": "Qwen 3.6 27B (Local)",
           "reasoning": true,
           "input": ["text"],
-          "contextWindow": 91200,
-          "maxTokens": 32000
+          "contextWindow": 180000,
+          "maxTokens": 55000
         }
       ]
     }

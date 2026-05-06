@@ -14,34 +14,32 @@
     ];
 # https://mcp-nixos.io/usage
   };
-  home.packages = [
-    pkgs.emacsPackages.cask
-  ];
+  home.packages = [ pkgs.emacsPackages.cask ];
 
-  xdg.desktopEntries =
-    {
-      yuzu = {
-        name = "Yuzu";
-        exec = "QT_QPA_PLATFORM=xcb ${pkgs.appimage-run}/bin/appimage-run /home/andrew/.local/share/lutris/runners/yuzu/yuzu-mainline.AppImage";
-        genericName = "Yuzu Emulator";
-        icon = "net.lutris.Lutris";
-        categories = [ "Game" "Emulator" ];
-        startupNotify = true;
-      };
-      OpenGamepadUI = {
-        name = "OpenGamepadUI";
-        exec = "${pkgs.opengamepadui}/share/opengamepadui/opengamepad-ui.x86_64 --fullscreen";
-        genericName = "OpenGamepadUI";
-        icon = "net.lutris.Lutris";
-        categories = [ "Game" "Emulator" ];
-        startupNotify = true;
-      };
-
+  xdg.desktopEntries = {
+    yuzu = {
+      name = "Yuzu";
+      exec =
+        "QT_QPA_PLATFORM=xcb ${pkgs.appimage-run}/bin/appimage-run /home/andrew/.local/share/lutris/runners/yuzu/yuzu-mainline.AppImage";
+      genericName = "Yuzu Emulator";
+      icon = "net.lutris.Lutris";
+      categories = [ "Game" "Emulator" ];
+      startupNotify = true;
     };
+    OpenGamepadUI = {
+      name = "OpenGamepadUI";
+      exec =
+        "${pkgs.opengamepadui}/share/opengamepadui/opengamepad-ui.x86_64 --fullscreen";
+      genericName = "OpenGamepadUI";
+      icon = "net.lutris.Lutris";
+      categories = [ "Game" "Emulator" ];
+      startupNotify = true;
+    };
+
+  };
   xsession = {
     enable = true;
-    profileExtra = ''
-    dbus-update-activation-environment --systemd DISPLAY;'';
+    profileExtra = "dbus-update-activation-environment --systemd DISPLAY;";
     #     eval $(/run/wrappers/bin/gnome-keyring-daemon --start --daemonize)
     #     export SSH_AUTH_SOCK
     #   '';
@@ -102,7 +100,7 @@
     # to list mimetypes
     defaultApplications = {
       "inode/directory" = "nautilus.desktop";
-      "x-directory/normal"= "nautilus.desktop";
+      "x-directory/normal" = "nautilus.desktop";
       "text/plain" = "org.gnome.gedit.desktop";
       "application/x-wine-extension-ini" = "org.gnome.gedit.desktop";
       "application/pdf" = "org.gnome.Evince.desktop";
@@ -115,24 +113,24 @@
       "application/x-osu-skin-archive" = "osu!.desktop";
       "application/x-bittorrent" = "org.qbittorrent.qBittorrent.desktop";
       # "image/jpeg" = "feh.desktop";
-      "image/bmp"= "org.gnome.eog.desktop";
-      "image/gif"= "org.gnome.eog.desktop";
-      "image/jpeg"= "org.gnome.eog.desktop";
-      "image/jpg"= "org.gnome.eog.desktop";
-      "image/pjpeg"= "org.gnome.eog.desktop";
-      "image/png"= "org.gnome.eog.desktop";
-      "image/tiff"= "org.gnome.eog.desktop";
-      "image/webp"= "org.gnome.eog.desktop";
-      "image/x-bmp"= "org.gnome.eog.desktop";
-      "image/x-pcx"= "org.gnome.eog.desktop";
-      "image/x-png"= "org.gnome.eog.desktop";
-      "image/x-portable-anymap"= "org.gnome.eog.desktop";
-      "image/x-portable-bitmap"= "org.gnome.eog.desktop";
-      "image/x-portable-graymap"= "org.gnome.eog.desktop";
-      "image/x-portable-pixmap"= "org.gnome.eog.desktop";
-      "image/x-tga"= "org.gnome.eog.desktop";
-      "image/x-xbitmap"= "org.gnome.eog.desktop";
-      "image/heic"= "org.gnome.eog.desktop";
+      "image/bmp" = "org.gnome.eog.desktop";
+      "image/gif" = "org.gnome.eog.desktop";
+      "image/jpeg" = "org.gnome.eog.desktop";
+      "image/jpg" = "org.gnome.eog.desktop";
+      "image/pjpeg" = "org.gnome.eog.desktop";
+      "image/png" = "org.gnome.eog.desktop";
+      "image/tiff" = "org.gnome.eog.desktop";
+      "image/webp" = "org.gnome.eog.desktop";
+      "image/x-bmp" = "org.gnome.eog.desktop";
+      "image/x-pcx" = "org.gnome.eog.desktop";
+      "image/x-png" = "org.gnome.eog.desktop";
+      "image/x-portable-anymap" = "org.gnome.eog.desktop";
+      "image/x-portable-bitmap" = "org.gnome.eog.desktop";
+      "image/x-portable-graymap" = "org.gnome.eog.desktop";
+      "image/x-portable-pixmap" = "org.gnome.eog.desktop";
+      "image/x-tga" = "org.gnome.eog.desktop";
+      "image/x-xbitmap" = "org.gnome.eog.desktop";
+      "image/heic" = "org.gnome.eog.desktop";
       "x-scheme-handler/http" = "firefox.desktop";
       "x-scheme-handler/https" = "firefox.desktop";
       "x-scheme-handler/chrome" = "firefox.desktop";
@@ -145,35 +143,53 @@
       "application/xhtml+xml" = "firefox.desktop";
       "application/x-extension-xhtml" = "firefox.desktop";
       "application/x-extension-xht" = "firefox.desktop";
-      "x-scheme-handler/sidequest" ="SideQuest.desktop";
-      "x-scheme-handler/discord-529050037532098580"="discord-529050037532098580.desktop";
+      "x-scheme-handler/sidequest" = "SideQuest.desktop";
+      "x-scheme-handler/discord-529050037532098580" =
+        "discord-529050037532098580.desktop";
 
       # OFFICE
       "application/msword" = "onlyoffice-desktopeditors.desktop";
 
-      "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = "onlyoffice-desktopeditors.desktop";
-      "application/vnd.openxmlformats-officedocument.wordprocessingml.template" = "onlyoffice-desktopeditors.desktop";
-      "application/vnd.ms-word.document.macroEnabled.12" = "onlyoffice-desktopeditors.desktop";
-      "application/vnd.ms-word.template.macroEnabled.12" = "onlyoffice-desktopeditors.desktop";
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document" =
+        "onlyoffice-desktopeditors.desktop";
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.template" =
+        "onlyoffice-desktopeditors.desktop";
+      "application/vnd.ms-word.document.macroEnabled.12" =
+        "onlyoffice-desktopeditors.desktop";
+      "application/vnd.ms-word.template.macroEnabled.12" =
+        "onlyoffice-desktopeditors.desktop";
 
       "application/vnd.ms-excel" = "onlyoffice-desktopeditors.desktop";
 
-      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" = "onlyoffice-desktopeditors.desktop";
-      "application/vnd.openxmlformats-officedocument.spreadsheetml.template" = "onlyoffice-desktopeditors.desktop";
-      "application/vnd.ms-excel.sheet.macroEnabled.12" = "onlyoffice-desktopeditors.desktop";
-      "application/vnd.ms-excel.template.macroEnabled.12" = "onlyoffice-desktopeditors.desktop";
-      "application/vnd.ms-excel.addin.macroEnabled.12" = "onlyoffice-desktopeditors.desktop";
-      "application/vnd.ms-excel.sheet.binary.macroEnabled.12" = "onlyoffice-desktopeditors.desktop";
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" =
+        "onlyoffice-desktopeditors.desktop";
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.template" =
+        "onlyoffice-desktopeditors.desktop";
+      "application/vnd.ms-excel.sheet.macroEnabled.12" =
+        "onlyoffice-desktopeditors.desktop";
+      "application/vnd.ms-excel.template.macroEnabled.12" =
+        "onlyoffice-desktopeditors.desktop";
+      "application/vnd.ms-excel.addin.macroEnabled.12" =
+        "onlyoffice-desktopeditors.desktop";
+      "application/vnd.ms-excel.sheet.binary.macroEnabled.12" =
+        "onlyoffice-desktopeditors.desktop";
 
       "application/vnd.ms-powerpoint" = "onlyoffice-desktopeditors.desktop";
 
-      "application/vnd.openxmlformats-officedocument.presentationml.presentation" = "onlyoffice-desktopeditors.desktop";
-      "application/vnd.openxmlformats-officedocument.presentationml.template" = "onlyoffice-desktopeditors.desktop";
-      "application/vnd.openxmlformats-officedocument.presentationml.slideshow" = "onlyoffice-desktopeditors.desktop";
-      "application/vnd.ms-powerpoint.addin.macroEnabled.12" = "onlyoffice-desktopeditors.desktop";
-      "application/vnd.ms-powerpoint.presentation.macroEnabled.12" = "onlyoffice-desktopeditors.desktop";
-      "application/vnd.ms-powerpoint.template.macroEnabled.12" = "onlyoffice-desktopeditors.desktop";
-      "application/vnd.ms-powerpoint.slideshow.macroEnabled.12" = "onlyoffice-desktopeditors.desktop";
+      "application/vnd.openxmlformats-officedocument.presentationml.presentation" =
+        "onlyoffice-desktopeditors.desktop";
+      "application/vnd.openxmlformats-officedocument.presentationml.template" =
+        "onlyoffice-desktopeditors.desktop";
+      "application/vnd.openxmlformats-officedocument.presentationml.slideshow" =
+        "onlyoffice-desktopeditors.desktop";
+      "application/vnd.ms-powerpoint.addin.macroEnabled.12" =
+        "onlyoffice-desktopeditors.desktop";
+      "application/vnd.ms-powerpoint.presentation.macroEnabled.12" =
+        "onlyoffice-desktopeditors.desktop";
+      "application/vnd.ms-powerpoint.template.macroEnabled.12" =
+        "onlyoffice-desktopeditors.desktop";
+      "application/vnd.ms-powerpoint.slideshow.macroEnabled.12" =
+        "onlyoffice-desktopeditors.desktop";
 
       "application/vnd.ms-access" = "onlyoffice-desktopeditors.desktop";
     };
@@ -190,28 +206,18 @@
       safe.directory = "*";
       core.autocrlf = false;
       core.trustctime = false;
-      url = {
-        "git@github.com:"= {
-          insteadOf = "https://github.com/";
-        };
-      };
+      url = { "git@github.com:" = { insteadOf = "https://github.com/"; }; };
     };
-    aliases = {
-      coa = "!git add -A && git commit -m";
-    };
+    aliases = { coa = "!git add -A && git commit -m"; };
   };
-  services.xsettingsd = {
-    enable = true;
-  };
+  services.xsettingsd = { enable = true; };
   modules.shell.fish.enable = true;
   modules.gimp3-photoshop-shortcuts.enable = true;
   # modules.eww.enable = true;
   # modules.firefox.enable = true;
   programs.bash = {
     enable = true;
-    initExtra = "
-      set -o vi;
-      ";
+    initExtra = "\n      set -o vi;\n      ";
   };
 
   xdg.portal = {
@@ -231,13 +237,10 @@
   # xdg.portal.config.common.default = "*";
   # xdg.portal.config.common.org.freedesktop.impl.portal.InputCapture = "luminous;gtk";
 
-  xdg.userDirs = {
-    enable = true;
-  };
+  xdg.userDirs = { enable = true; };
   services.gnome-keyring.enable = true;
   services.lorri.enable = true;
   manual.json.enable = true;
-
 
   # systemd.user.services.kdeconnect = {
   #   Unit = {
@@ -252,9 +255,7 @@
   # nixpkgs.config.allowBroken = true;
   programs.alacritty = {
     enable = true;
-    settings = {
-      window.opacity = 0.7;
-    };
+    settings = { window.opacity = 0.7; };
   };
   dconf.settings = {
     "org/gnome/desktop/interface" = {
@@ -267,9 +268,7 @@
 
   # services.blueman-applet.enable = true;
   home.keyboard = null;
-  home.sessionPath = [
-    "/etc/nixos/bin"
-  ];
+  home.sessionPath = [ "/etc/nixos/bin" ];
   programs = {
     direnv = {
       enable = true;
@@ -278,17 +277,17 @@
   };
   xdg.configFile."direnv/direnvrc" = {
     text = ''
-: "''${XDG_CACHE_HOME:="''${HOME}/.cache"}"
-declare -A direnv_layout_dirs
-direnv_layout_dir() {
-    local hash path
-    echo "''${direnv_layout_dirs[$PWD]:=$(
-        hash="$(sha1sum - <<< "$PWD" | head -c40)"
-        path="''${PWD//[^a-zA-Z0-9]/-}"
-        echo "''${XDG_CACHE_HOME}/direnv/layouts/''${hash}''${path}"
-                                       )}"
-}
-'';
+      : "''${XDG_CACHE_HOME:="''${HOME}/.cache"}"
+      declare -A direnv_layout_dirs
+      direnv_layout_dir() {
+          local hash path
+          echo "''${direnv_layout_dirs[$PWD]:=$(
+              hash="$(sha1sum - <<< "$PWD" | head -c40)"
+              path="''${PWD//[^a-zA-Z0-9]/-}"
+              echo "''${XDG_CACHE_HOME}/direnv/layouts/''${hash}''${path}"
+                                             )}"
+      }
+    '';
   };
 
   home.file = {
@@ -307,10 +306,10 @@ direnv_layout_dir() {
     };
 
     ".config/minidlna.conf".text = ''
-    network_interface=enp3s0
-    friendly_name=Pepega Server
-    inotify=yes
-    media_dir=/mnt/md127/Downloads/stuff
+      network_interface=enp3s0
+      friendly_name=Pepega Server
+      inotify=yes
+      media_dir=/mnt/md127/Downloads/stuff
     '';
 
     ".config/albert" = {
@@ -327,8 +326,10 @@ direnv_layout_dir() {
     #   source = ./configs/qt5ct;
     #   recursive = true;
     # };
-    ".config/mpv".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/mpv;
-    ".config/flameshot/flameshot.ini".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/flameshot.ini;
+    ".config/mpv".source =
+      config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/mpv;
+    ".config/flameshot/flameshot.ini".source =
+      config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/flameshot.ini;
 
     ".config/slop" = {
       source = ./configs/slop;
@@ -349,24 +350,26 @@ direnv_layout_dir() {
       source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/sway;
     };
 
-    ".ideavimrc" = {
-      source = ./configs/ideavim/.ideavimrc;
-    };
+    ".ideavimrc" = { source = ./configs/ideavim/.ideavimrc; };
 
     ".intellimacs" = {
       source = ./configs/ideavim/.intellimacs;
       recursive = true;
     };
-    ".config/uair".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/uair;
+    ".config/uair".source =
+      config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/uair;
     ".config/redshift.conf" = {
-      source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/redshift.conf;
+      source =
+        config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/redshift.conf;
     };
     ".config/gammastep.conf" = {
-      source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/gammastep.conf;
+      source =
+        config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/gammastep.conf;
     };
 
     ".config/picom/picom.conf" = {
-      source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/picom/picom.conf;
+      source =
+        config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/picom/picom.conf;
     };
 
     # ".tmux.conf" = {
@@ -378,7 +381,8 @@ direnv_layout_dir() {
     };
 
     ".local/share/nautilus-python" = {
-      source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/nautilus-python;
+      source =
+        config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/nautilus-python;
     };
 
     ".local/share/nemo" = {

@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.70.2",
+  "lastChangelogVersion": "0.73.0",
   "defaultProvider": "qwen3.6-local",
   "defaultModel": "qwen3.6-27b-autoround",
   "defaultThinkingLevel": "high",
