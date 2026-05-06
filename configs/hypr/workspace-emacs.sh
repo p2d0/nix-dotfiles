@@ -3,10 +3,10 @@
 # 1. Launch Emacs
 # We set the frame name to "emacs-todo" so we can detect it later.
 # Note: I adjusted the quoting slightly to ensure the alist is valid ((key . val)).
-emacsclient -c -F '((name . "emacs-todo"))' --eval "(emacs-todo)" &
 
 # 2. Launch Brave (Notion Calendar)
 # brave --disable-features=WaylandWpColorManagerV1 --new-window --app=https://calendar.notion.so/ &
+emacsclient -c -F '((name . "emacs-todo"))' --eval "(emacs-todo)" &
 firefox-pwa https://calendar.notion.so/
 # firefoxpwa site launch 01KHGFZJW5A9WBS3CZPFAFKXPJ
 # 3. Wait loop (Max 10 seconds)

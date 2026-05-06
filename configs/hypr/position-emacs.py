@@ -44,9 +44,9 @@ def main():
         return
 
     # Defaults
-    window_width = 800
+    window_width = 955
     calendar_gap = 10
-    window_width_calendar = 550
+    window_width_calendar = 400
     window_height = 910
     
     # 1. Position the windows based on monitor
@@ -66,7 +66,7 @@ def main():
         width = active_monitor['width']
         height = active_monitor['height']
 
-        position_x = width // 2 - 150
+        position_x = width // 2 - 350
         position_y = (height - window_height) // 2
 
         # Move Emacs
