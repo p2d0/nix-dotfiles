@@ -2521,11 +2521,11 @@
         "nixpkgs": "nixpkgs_21"
       },
       "locked": {
-        "lastModified": 1778234670,
-        "narHash": "sha256-kcRMDOSxAz4XqqxiDwDttUu81UhxdmmCJlNj71Ze98w=",
+        "lastModified": 1778586624,
+        "narHash": "sha256-tNy00m04Qn5si+IqPr/KbdRx8wiLQryk57gk2XoloVQ=",
         "owner": "p2d0",
         "repo": "todolist-web",
-        "rev": "d8d5e11b5a6665b1b1c9527e25555c15ad1f43f9",
+        "rev": "7f78f5e1c5d5ec753fa40f86402e00f2d0a7cc84",
         "type": "github"
       },
       "original": {
