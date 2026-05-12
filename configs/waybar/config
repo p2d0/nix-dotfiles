@@ -37,7 +37,8 @@
       "idle_inhibitor",
       "memory",
       "disk",
-      "custom/claude"
+      "custom/pomotask"
+      // "custom/claude"
       // "custom/emacs_todo"
     //  "custom/crypto"
     ],

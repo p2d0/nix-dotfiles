@@ -96,7 +96,8 @@ window#waybar.chromium {
 #custom-wireguard,
 #custom-powerapplet,
 #custom-bluetoothapplet,
-#custom-claude
+#custom-claude,
+#custom-pomotask
 {
     padding: 0 12px;
     margin: 0 4px;
@@ -164,6 +165,11 @@ label:focus {
 
 #disk {
     background-color: #964B00;
+}
+
+#custom-pomotask {
+    /* line-height: 20px; */
+    background-color: #313244;
 }
 
 #custom-claude {

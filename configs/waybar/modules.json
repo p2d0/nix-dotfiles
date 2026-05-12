@@ -196,6 +196,12 @@
         "on-scroll-down": "~/.config/polybar/polybar-timer.sh increase -300 ; ~/.config/polybar/polybar-timer.sh update %pid%",
         "format": "{}  "
     },
+    "custom/pomotask": {
+        "exec": "/etc/nixos/configs/waybar/polybar-pomotask.py",
+        "on-click": "/etc/nixos/configs/waybar/polybar-pomotask.py --stop",
+        "icon-size": 16,
+        "format": "{}"
+    },
     "custom/claude": {
         "exec": "python /etc/nixos/configs/waybar/claude.py",
         "return-type": "json",
