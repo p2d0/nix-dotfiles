@@ -224,8 +224,8 @@
     xdgOpenUsePortal = true;
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
-      # pkgs.my.luminous
       # pkgs.kdePackages.xdg-desktop-portal-kde
+      # pkgs.my.luminous
     ];
     config.common = {
       # This is the magic line: it forces the portal to use darkman for settings
