@@ -251,7 +251,18 @@
       unstable.stremio-linux-shell
       anki-bin
       tldr
-      obs-studio
+      (pkgs.wrapOBS.override {
+        obs-studio = obs-studio.override { cudaSupport = true;};
+      } {
+        plugins = with pkgs.obs-studio-plugins; [
+          # obs-gstreamer
+          # obs-vkcapture
+          # obs-vaapi
+          # wlrobs
+          # droidcam-obs
+          obs-multi-rtmp
+        ];
+      })
       # (pkgs.wrapOBS.override {
       #   obs-studio = obs-studio.override { cudaSupport = true;};
       # } {
@@ -269,7 +280,7 @@
       # libsForQt5.breeze-qt5
       pasystray
       my.osu-lazer-bin
-      my.opencode-baseline
+      # my.opencode-baseline
       pavucontrol
       cachix
       # deskflow
