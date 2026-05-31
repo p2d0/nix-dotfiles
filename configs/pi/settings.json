@@ -1,7 +1,7 @@
 {
   "lastChangelogVersion": "0.73.0",
-  "defaultProvider": "llamacpp",
-  "defaultModel": "qwen3.6-35b-a3b",
+  "defaultProvider": "qwen3.6-local",
+  "defaultModel": "qwen3.6-27b-autoround",
   "defaultThinkingLevel": "high",
   "compaction": {
     "enabled": true,
