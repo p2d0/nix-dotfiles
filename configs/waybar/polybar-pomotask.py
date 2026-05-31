@@ -75,10 +75,7 @@ def tail_mode():
 
     def ticker():
         while running:
-            with state_lock:
-                is_running = current_state.get("running", False)
-            if is_running:
-                print_state()
+            print_state()
             time.sleep(1)
 
     def on_message(_, message):
@@ -94,18 +91,19 @@ def tail_mode():
             print_state()
 
     def on_error(_, error):
-        with state_lock:
-            current_state.clear()
         print("", flush=True)
 
     def on_close(_, code, reason):
-        with state_lock:
-            current_state.clear()
-        print("", flush=True)
+        # Keep stale state visible until new data arrives
+        pass
+
+    def on_open(_):
+        _.send(json.dumps({"type": "timer:query"}))
 
     def connect():
         ws_ref[0] = websocket.WebSocketApp(
             WS_URL,
+            on_open=on_open,
             on_message=on_message,
             on_error=on_error,
             on_close=on_close,
@@ -129,9 +127,7 @@ def tail_mode():
         try:
             connect()
         except Exception:
-            with state_lock:
-                current_state.clear()
-            print("", flush=True)
+            pass
         time.sleep(3)
 
 
