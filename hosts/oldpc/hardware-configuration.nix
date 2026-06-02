@@ -46,36 +46,38 @@
   #   ];
   # };
 
-  # fileSystems."/mnt/pc" = {
-  #   device = "myremote:/";
-  #   fsType = "rclone";
-  #   options = [
-  #     "nodev"
-  #     "nofail"
-  #     "allow_other"
-  #     "args2env"
-  #     "config=/etc/rclone-mnt.conf"
+  fileSystems."/mnt/pc" = {
+    device = "myremote:/";
+    fsType = "rclone";
+    options = [
+      "nodev"
+      "nofail"
+      "allow_other"
+      "args2env"
+      "config=/etc/rclone-mnt.conf"
 
-  #     "noauto"                   # Don't mount automatically at boot
-  #     "x-systemd.automount"      # Mount automatically when the directory is accessed      
-  #     # # --- PERFORMANCE TWEAKS ---
-  #     # # 1. Enable Full VFS Cache. This makes it feel like a local disk.
-  #     # # It caches reads/writes to /var/cache/rclone (default) or a path you set.
-  #     # "vfs-cache-mode=full"
+      "noauto"                   # Don't mount automatically at boot
+      "x-systemd.automount"      # Mount automatically when the directory is accessed      
+      # # --- PERFORMANCE TWEAKS ---
+      # # 1. Enable Full VFS Cache. This makes it feel like a local disk.
+      # # It caches reads/writes to /var/cache/rclone (default) or a path you set.
+      "vfs-cache-mode=full"
+      "vfs-read-ahead=128M"
+      "buffer-size=64M"
       
-  #     # # 2. Tune directory listing speed vs. freshness.
-  #     # # If you want to see changes made ON THE REMOTE faster, lower this.
-  #     # # 10s is a good balance for local networks.
-  #     # "dir-cache-time=10s"
+      # # 2. Tune directory listing speed vs. freshness.
+      # # If you want to see changes made ON THE REMOTE faster, lower this.
+      # # 10s is a good balance for local networks.
+      # "dir-cache-time=10s"
       
-  #     # # 3. Increase lookahead and buffer for smoother file access.
-  #     # "vfs-read-ahead=128M"
-  #     # "buffer-size=64M"
+      # # 3. Increase lookahead and buffer for smoother file access.
+      # "vfs-read-ahead=128M"
+      # "buffer-size=64M"
       
-  #     # # 4. Use more parallel connections for transfers (SFTP specific)
-  #     # "transfers=8"
-  #   ];
-  # };
+      # # 4. Use more parallel connections for transfers (SFTP specific)
+      # "transfers=8"
+    ];
+  };
 
   fileSystems."/mnt/yandex" = lib.mkIf (builtins.pathExists "/home/andrew/Dropbox/rclone/rclone.conf") {
     device = "yad:/";
