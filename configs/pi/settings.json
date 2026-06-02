@@ -13,7 +13,8 @@
     "npm:pi-rtk-optimizer",
     "npm:pi-lens",
     "npm:pi-ask-user",
-    "npm:pi-mcp-adapter"
+    "npm:pi-mcp-adapter",
+    "npm:@firstpick/pi-extension-nixos-wiki-local"
   ],
   "hideThinkingBlock": true
 }
