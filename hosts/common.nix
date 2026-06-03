@@ -45,6 +45,7 @@
       alacritty
       htop
       my.get_current_screen_geometry
+      pulseaudio
       unzip
       packet
       (sddm-astronaut.override {
@@ -57,7 +58,7 @@
       })
     ];
   modules.appblock.enable = true;
-  modules.timed-lock.enable = true;
+  modules.timed-lock.enable = false;
   modules.gpu-screen-recorder.enable = true;
   services.libinput = {
     enable = true;

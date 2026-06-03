@@ -332,12 +332,12 @@ serverFlagsSection = ''
         "00 19 * * * andrew darkman set dark"
         "* * * * * andrew env > ~/cronenv"
 
-        "00 21 * * * andrew /etc/nixos/shutdown.sh"
-        "15 21 * * * andrew /etc/nixos/shutdown.sh"
-        "30 21 * * * andrew /etc/nixos/shutdown.sh"
-        "30 21 * * * andrew /etc/nixos/shutdown.sh"
-        "00 22 * * * andrew /etc/nixos/shutdown.sh"
-        "55 22 * * * andrew DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /run/current-system/sw/bin/notify-send 'Shutdown in 5 MINUTES'"
+        # "00 21 * * * andrew /etc/nixos/shutdown.sh"
+        # "15 21 * * * andrew /etc/nixos/shutdown.sh"
+        # "30 21 * * * andrew /etc/nixos/shutdown.sh"
+        # "30 21 * * * andrew /etc/nixos/shutdown.sh"
+        # "00 22 * * * andrew /etc/nixos/shutdown.sh"
+        # "55 22 * * * andrew DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /run/current-system/sw/bin/notify-send 'Shutdown in 5 MINUTES'"
 
         "00 20 * * * andrew /home/andrew/Dropbox/update_ip.sh"
         # "00 23 * * * andrew /home/andrew/Dropbox/miner_enable.sh"
@@ -867,7 +867,6 @@ serverFlagsSection = ''
       apksigner
       # my.alvr
 
-      pulseaudio
       gnome-system-monitor
       zenity
       zen-browser
