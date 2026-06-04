@@ -20,13 +20,13 @@ in{
         ".doom.d".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos/modules/nixos/editors/.doom.d; # TODO resolve relative paths
       };})
     {
-      nixpkgs.overlays = [
-        (import (builtins.fetchTarball {
-          url =
-            "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
-          sha256 = "1hp1hnvc2fd38f7h4qd6izc7wwdvi4vis4zmnbpqx043f1155baf";
-        }))
-      ];
+      # nixpkgs.overlays = [
+      #   (import (builtins.fetchTarball {
+      #     url =
+      #       "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
+      #     sha256 = "0n8836xwcs6wckaszikzsxbvzsn34livcm3qc4rkrb0ndr5cp4jn";
+      #   }))
+      # ];
       services.emacs.install = true;
       services.emacs.enable = true;
       services.emacs.defaultEditor = true;
