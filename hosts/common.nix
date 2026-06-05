@@ -161,6 +161,29 @@
       package = pkgs.emacs30-pgtk;
     };
   services.speechd.enable = false;
+  # 1. Turn OFF systemd-oomd so they don't fight
+  systemd.oomd.enable = false;
+
+  # 2. Turn ON earlyoom
+  services.earlyoom = {
+    enable = true;
+    enableNotifications = true;    
+
+    # Trigger when free RAM drops below 6% AND free Swap drops below 6%
+    freeMemThreshold = 6;
+    freeSwapThreshold = 6;
+    
+    # Tell earlyoom to send SIGKILL instantly when under 2% RAM 
+    # to completely bypass system lockups.
+    freeMemKillThreshold = 2; 
+
+    # Highly Recommended: Prevent it from accidentally killing your desktop environment
+    # extraArgs = [
+    #   "--avoid '^(gdm|kwin|plasma.*|hyprland|sway|Xorg)$'"
+    #   # "--prefer '^(firefox|chromium|electron|webinspect)$'"
+    #   "--prefer '^(max|org\.telegram\.desktop|chromium|electron|webinspect)$'"
+    # ];
+  };
   programs.tmux = {
     enable = true;
     escapeTime = 0;
