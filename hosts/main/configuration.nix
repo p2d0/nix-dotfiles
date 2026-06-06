@@ -686,7 +686,7 @@ serverFlagsSection = ''
       # mattermost-desktop
       # charles
       gucharmap
-      autokey
+      # autokey
       alsa-utils
       wgcf
       # my.amneziawg-tools
@@ -719,7 +719,7 @@ serverFlagsSection = ''
       keepassxc
       tree
       my.realm-studio-bin
-      remmina
+      # remmina
       (pkgs.whisper-cpp.overrideAttrs (oldAttrs: {
     src = pkgs.fetchFromGitHub {
       owner = "ggml-org";
@@ -869,7 +869,7 @@ serverFlagsSection = ''
 
       gnome-system-monitor
       zenity
-      zen-browser
+      # zen-browser
       gnome-sound-recorder
       # tigervnc
       # x11vnc
@@ -898,7 +898,7 @@ serverFlagsSection = ''
       btop
       calibre
       xorg.xdpyinfo
-      unstable.postman
+      # unstable.postman
       unstable.brave
       d-spy
       slop
@@ -914,9 +914,9 @@ serverFlagsSection = ''
       pavucontrol
       paprefs
       # shotcut
-      darktable
+      # darktable
       anki-bin
-      unstable.antigravity
+      # unstable.antigravity
       my.antigravity-manager
       compfy
       unstable.picom
@@ -927,7 +927,7 @@ serverFlagsSection = ''
       # })
       #(pkgs.callPackage /etc/nixos/pkgs/tdesktop.nix { })
       # (pkgs.callPackage ./pkgs/openhab.nix { })
-      discord
+      # discord
       unstable.rtk
       # legcord
       # unstable.tdesktop
@@ -990,7 +990,7 @@ serverFlagsSection = ''
       inetutils
       zip
       xsettingsd
-      easyeffects
+      # easyeffects
       # evolution
       nodejs
       # old-24-11.iconpack-obsidian
@@ -1020,7 +1020,7 @@ serverFlagsSection = ''
       # sublime
       # drawio
       pipenv
-      unstable.spotify
+      # unstable.spotify
       # my.immersed-vr
       # (import (builtins.fetchTarball {
       #   url = "https://github.com/NixOS/nixpkgs/archive/23c10dbe320e6957f2607d8a22f9e0e36f56a235.tar.gz";
@@ -1042,7 +1042,7 @@ serverFlagsSection = ''
       # unstable.natron
       unstable.scrcpy
       unstable.yt-dlp
-      insomnia
+      # insomnia
       # pythonPackages.yt-dlp
       imagemagick
       # deskflow

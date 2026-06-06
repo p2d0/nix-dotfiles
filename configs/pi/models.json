@@ -25,7 +25,7 @@
       ]
     },
     "qwen3.6-local": {
-      "baseUrl": "http://127.0.0.1:8020/v1",
+      "baseUrl": "http://127.0.0.1:8060/v1",
       "apiKey": "ignored",
       "api": "openai-completions",
       "authHeader": true,
