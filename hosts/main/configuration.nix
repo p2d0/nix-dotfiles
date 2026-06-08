@@ -18,8 +18,18 @@
   nix.settings.trusted-users = [ "root" "andrew" ];
 
   security.pam.loginLimits = [
-    { domain = "*"; type = "soft"; item = "nofile"; value = "65536"; }
-    { domain = "*"; type = "hard"; item = "nofile"; value = "1048576"; }
+    {
+      domain = "*";
+      type = "soft";
+      item = "nofile";
+      value = "65536";
+    }
+    {
+      domain = "*";
+      type = "hard";
+      item = "nofile";
+      value = "1048576";
+    }
   ];
 
   security.rtkit.enable = true;
@@ -31,23 +41,24 @@
       url = "https://gu-st.ru/content/lending/russian_trusted_sub_ca_pem.crt";
     })
   ];
-virtualisation.waydroid.enable = true;
+  virtualisation.waydroid.enable = true;
   programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    zlib # numpy
-    # glib
-    # glibc
-    # libgcc
-    # sqlalchemy
-    # libcxxStdenv
-    # gcc12.cc
+  programs.nix-ld.libraries = with pkgs;
+    [
+      zlib # numpy
+      # glib
+      # glibc
+      # libgcc
+      # sqlalchemy
+      # libcxxStdenv
+      # gcc12.cc
 
-    # gcc12.cc.lib
-    # gcc.cc.libgcc.lib
-    # that's where the shared libs go, you can find which one you need using
-    # nix-locate --top-level libstdc++.so.6  (replace this with your lib)
-    # ^ this requires `nix-index` pkg
-  ];
+      # gcc12.cc.lib
+      # gcc.cc.libgcc.lib
+      # that's where the shared libs go, you can find which one you need using
+      # nix-locate --top-level libstdc++.so.6  (replace this with your lib)
+      # ^ this requires `nix-index` pkg
+    ];
   # services.nanobanana.enable = true;
 
   systemd.user.services.f5-ai-server = {
@@ -78,36 +89,36 @@ virtualisation.waydroid.enable = true;
   };
 
   hardware.graphics.enable = true;
-  hardware.graphics.extraPackages = with pkgs; [
-    ocl-icd
-    # vaapiVdpau
-    # libvdpau-va-gl
-    # amdvlk
-    # libva1
-    # libva
-    # rocm-opencl-icd
-    # rocm-opencl-runtime
-  ];
+  hardware.graphics.extraPackages = with pkgs;
+    [
+      ocl-icd
+      # vaapiVdpau
+      # libvdpau-va-gl
+      # amdvlk
+      # libva1
+      # libva
+      # rocm-opencl-icd
+      # rocm-opencl-runtime
+    ];
   # systemd.tmpfiles.rules =
   #   [ "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}" ];
   # rocmTargets = ["gfx803"];
   # hardware.graphics.extraPackages32 = with pkgs.pkgsi686Linux; [ vaapiIntel ];
   services.ratbagd.enable = true;
 
-  # boot.kernelPackages = pkgs.unstable.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
-#  boot.loader.systemd-boot.enable = false;
-#  boot.loader.grub.useOSProber = true;
-#  boot.loader.grub.enable = true;
-#  boot.loader.grub.default = 1;
-#  boot.loader.grub.efiSupport = true;
-#  boot.loader.grub.device = "nodev";
+  #  boot.loader.systemd-boot.enable = false;
+  #  boot.loader.grub.useOSProber = true;
+  #  boot.loader.grub.enable = true;
+  #  boot.loader.grub.default = 1;
+  #  boot.loader.grub.efiSupport = true;
+  #  boot.loader.grub.device = "nodev";
 
-
- boot.loader.efi = {
-   canTouchEfiVariables = true;
-   efiSysMountPoint = "/boot/efi";
- };
+  boot.loader.efi = {
+    canTouchEfiVariables = true;
+    efiSysMountPoint = "/boot/efi";
+  };
 
   boot.blacklistedKernelModules = [ "iTCO_wdt" "iTCO_vendor_support" ];
 
@@ -148,7 +159,6 @@ virtualisation.waydroid.enable = true;
   #   wrapperFeatures.gtk = true;
   # };
 
-
   # https://gitlab.com/fazzi/nixohess/-/blob/main/modules/hardware/nvidia.nix
   modules.nvidia.enable = true;
 
@@ -166,55 +176,55 @@ virtualisation.waydroid.enable = true;
 
   services.xserver = {
     enable = true;
-    videoDrivers = [ "nvidia" # "amdgpu"
-                   ];
+    videoDrivers = [
+      "nvidia" # "amdgpu"
+    ];
     dpi = 96;
-    xrandrHeads = [
-      {
-        output = "HDMI-1";
-        monitorConfig = ''
+    xrandrHeads = [{
+      output = "HDMI-1";
+      monitorConfig = ''
         Option "UseDisplayDevice" "none"
         Option "Ignore" "true"
-        '';
-      }
+      '';
+    }
 
-      # {
-      #   output = "DP-4";
-      #   primary = true;
-      #   monitorConfig = ''
-      #     Modeline "2560x1080_75.00"  294.00  2560 2744 3016 3472  1080 1083 1093 1130 -hsync +vsync
-      #     Modeline "2560x1080_74.99"  294.00  2560 2744 3016 3472  1080 1083 1093 1130 -hsync +vsync
-      #     Modeline "2560x1080@75"  228.25  2560 2608 2640 2720  1080 1083 1093 1119 +hsync -vsync
-      #     Option "PreferredMode" "2560x1080@75"'';
-      # }
-      # {
-      #   output = "DVI-D-0";
-      #   monitorConfig = ''
-      #     Option "Position" "2560 0"
-      #     Option          "TearFree" "true"
-      #   '';
-      # }
-      # {
-      #         output = "HDMI-A-0";
-      #         monitorConfig = ''
-      #          Modeline "2000x1000_60.00"  166.25  2000 2128 2336 2672  1000 1003 1013 1038 -hsync +vsync
-      #          Option "PreferredMode" "2000x1000_60.00"
-      #          Option "Position" "0 1080"
-      # '';
-      #       }
-    ];
+    # {
+    #   output = "DP-4";
+    #   primary = true;
+    #   monitorConfig = ''
+    #     Modeline "2560x1080_75.00"  294.00  2560 2744 3016 3472  1080 1083 1093 1130 -hsync +vsync
+    #     Modeline "2560x1080_74.99"  294.00  2560 2744 3016 3472  1080 1083 1093 1130 -hsync +vsync
+    #     Modeline "2560x1080@75"  228.25  2560 2608 2640 2720  1080 1083 1093 1119 +hsync -vsync
+    #     Option "PreferredMode" "2560x1080@75"'';
+    # }
+    # {
+    #   output = "DVI-D-0";
+    #   monitorConfig = ''
+    #     Option "Position" "2560 0"
+    #     Option          "TearFree" "true"
+    #   '';
+    # }
+    # {
+    #         output = "HDMI-A-0";
+    #         monitorConfig = ''
+    #          Modeline "2000x1000_60.00"  166.25  2000 2128 2336 2672  1000 1003 1013 1038 -hsync +vsync
+    #          Option "PreferredMode" "2000x1000_60.00"
+    #          Option "Position" "0 1080"
+    # '';
+    #       }
+      ];
 
     # Doesnt work
     xkb = {
       layout = "us,ru";
       options = "grp:alt_shift_toggle,compose:ralt";
     };
-serverFlagsSection = ''
-  Option "BlankTime" "1"
-  Option "StandbyTime" "1"
-  Option "SuspendTime" "1"
-  Option "OffTime" "1"
-'';
+    serverFlagsSection = ''
+      Option "BlankTime" "1"
+      Option "StandbyTime" "1"
+      Option "SuspendTime" "1"
+      Option "OffTime" "1"
+    '';
     #  deviceSection = ''
     #      Option          "TearFree" "true"
     # '';
@@ -278,7 +288,8 @@ serverFlagsSection = ''
 
   users.users.${config.user} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" "vboxusers" ]; # Enable ‘sudo’ for the user.
+    extraGroups =
+      [ "wheel" "docker" "vboxusers" ]; # Enable ‘sudo’ for the user.
     openssh.authorizedKeys.keys = [
       "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC2DE1tCBC6IebCR4XC7/o1yZj1r+NI7n9nhQchP6n58iJPB20u0CWdIN6EVOIOjjMzMAxAA2mKU8faJVaV5MgY6Q4F7RtbKk/gwwhH3WfDI/HYtYDkvceBlTzQ6LGnnca1A++S7tn8J8V6jp+b5ISyw7QyL0mXLk88IyxUUpcMTU4Kfl+lDUSvKnHAu4KjoRATff4b6aVjUzdVrmoJm41lxq7aMmFQaUgK+1yD89lRWSVYa49HQ7UISSpYaHnx1sdfcwJntub97lTxwOtrOfBSBX5WPXmGf1dfC6eBf5ZL1XoLoA64n7StXzrru4PJ1NHIbJSrGmAzJP7Q1zrRBjwf andrew@DESKTOP-FFBHS36"
     ];
@@ -353,7 +364,6 @@ serverFlagsSection = ''
   nix.settings.auto-optimise-store = true;
   nix.gc.automatic = false;
   nix.gc.options = "--delete-older-than 1d";
-
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -472,7 +482,6 @@ serverFlagsSection = ''
   #   Storage=none
   # '';
 
-
   # modules.xdg-variables.sessionVariables = true;
 
   # programs.java = {
@@ -493,20 +502,15 @@ serverFlagsSection = ''
   };
 
   environment.profileRelativeSessionVariables =
-    let
-      qtVersions = with pkgs; [
-        qt5
-        qt6
+    let qtVersions = with pkgs; [ qt5 qt6 ];
+    in {
+      QT_PLUGIN_PATH = map (qt: "/${qt.qtbase.qtPluginPrefix}") qtVersions;
+      QMLLS_BUILD_DIRS = [
+        "${pkgs.quickshell}/${pkgs.qt6.qtbase.qtPluginPrefix}/"
+        "${pkgs.kdePackages.qtdeclarative}/${pkgs.qt6.qtbase.qtPluginPrefix}/"
       ];
-    in
-      {
-        QT_PLUGIN_PATH = map (qt: "/${qt.qtbase.qtPluginPrefix}") qtVersions;
-        QMLLS_BUILD_DIRS = [
-          "${pkgs.quickshell}/${pkgs.qt6.qtbase.qtPluginPrefix}/"
-          "${pkgs.kdePackages.qtdeclarative}/${pkgs.qt6.qtbase.qtPluginPrefix}/"
-        ];
-        QML2_IMPORT_PATH = map (qt: "/${qt.qtbase.qtQmlPrefix}") qtVersions;
-      };
+      QML2_IMPORT_PATH = map (qt: "/${qt.qtbase.qtQmlPrefix}") qtVersions;
+    };
 
   security.acme = {
     acceptTerms = true;
@@ -547,10 +551,7 @@ serverFlagsSection = ''
   programs.opengamepadui.enable = true;
   programs.opengamepadui.args = "--fullscreen";
   # programs.opengamepadui.gamescopeSession.enable = true;
-  programs.opengamepadui.extraPackages = [
-    pkgs.vulkan-tools
-    pkgs.hwdata
-  ];
+  programs.opengamepadui.extraPackages = [ pkgs.vulkan-tools pkgs.hwdata ];
   services.sunshine.enable = false;
   services.sunshine.capSysAdmin = true;
   services.sunshine.package = pkgs.unstable.sunshine;
@@ -572,23 +573,19 @@ serverFlagsSection = ''
     apps = [
       {
         name = "OpenGamepadUI";
-        cmd = "${pkgs.opengamepadui}/share/opengamepadui/opengamepad-ui.x86_64 --fullscreen";
-        prep-cmd = [
-          {
-            do = "${pkgs.hyprland}/bin/hyprctl dispatch workspace 12";
-          }
-        ];
+        cmd =
+          "${pkgs.opengamepadui}/share/opengamepadui/opengamepad-ui.x86_64 --fullscreen";
+        prep-cmd =
+          [{ do = "${pkgs.hyprland}/bin/hyprctl dispatch workspace 12"; }];
         exclude-global-prep-cmd = "false";
         auto-detach = "true";
       }
       {
         name = "Yuzu";
-        cmd = "${pkgs.hyprland}/bin/hyprctl dispatch exec ${pkgs.coreutils}/bin/env QT_QPA_PLATFORM=xcb ${pkgs.appimage-run}/bin/appimage-run /home/andrew/.local/share/lutris/runners/yuzu/yuzu-mainline.AppImage";
-        prep-cmd = [
-          {
-            do = "${pkgs.hyprland}/bin/hyprctl dispatch workspace 12";
-          }
-        ];
+        cmd =
+          "${pkgs.hyprland}/bin/hyprctl dispatch exec ${pkgs.coreutils}/bin/env QT_QPA_PLATFORM=xcb ${pkgs.appimage-run}/bin/appimage-run /home/andrew/.local/share/lutris/runners/yuzu/yuzu-mainline.AppImage";
+        prep-cmd =
+          [{ do = "${pkgs.hyprland}/bin/hyprctl dispatch workspace 12"; }];
         exclude-global-prep-cmd = "false";
         auto-detach = "true";
       }
@@ -596,11 +593,8 @@ serverFlagsSection = ''
         name = "All Monitors Desktop";
         image-path = "/etc/nixos/pkgs/sunshine/desktop-multiple.png";
         exclude-global-prep-cmd = "false";
-        prep-cmd = [
-          {
-            do = "${pkgs.hyprland}/bin/hyprctl dispatch workspace 12";
-          }
-        ];
+        prep-cmd =
+          [{ do = "${pkgs.hyprland}/bin/hyprctl dispatch workspace 12"; }];
         auto-detach = "true";
       }
       {
@@ -608,9 +602,7 @@ serverFlagsSection = ''
         image-path = "desktop.png";
         exclude-global-prep-cmd = "false";
         prep-cmd = [
-          {
-            do = "${pkgs.hyprland}/bin/hyprctl dispatch workspace 12";
-          }
+          { do = "${pkgs.hyprland}/bin/hyprctl dispatch workspace 12"; }
           {
             do = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off DP-3";
             undo = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on DP-3";
@@ -619,26 +611,18 @@ serverFlagsSection = ''
             do = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off HDMI-A-1";
             undo = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on HDMI-A-1";
           }
-          {
-            do = "${pkgs.hyprland}/bin/hyprctl dispatch pkill emacs";
-          }
-          {
-            do = "${pkgs.hyprland}/bin/hyprctl dispatch pkill zen";
-          }
-          {
-            do = "${pkgs.hyprland}/bin/hyprctl dispatch pkill telegram";
-          }
+          { do = "${pkgs.hyprland}/bin/hyprctl dispatch pkill emacs"; }
+          { do = "${pkgs.hyprland}/bin/hyprctl dispatch pkill zen"; }
+          { do = "${pkgs.hyprland}/bin/hyprctl dispatch pkill telegram"; }
         ];
         auto-detach = "true";
       }
       {
         name = "Steam Big Picture";
-        cmd = "${pkgs.hyprland}/bin/hyprctl dispatch exec steam steam://open/bigpicture";
-        prep-cmd = [
-          {
-            do = "${pkgs.hyprland}/bin/hyprctl dispatch workspace 12";
-          }
-        ];
+        cmd =
+          "${pkgs.hyprland}/bin/hyprctl dispatch exec steam steam://open/bigpicture";
+        prep-cmd =
+          [{ do = "${pkgs.hyprland}/bin/hyprctl dispatch workspace 12"; }];
         image-path = "steam.png";
         exclude-global-prep-cmd = "false";
         auto-detach = "true";
@@ -649,420 +633,416 @@ serverFlagsSection = ''
   zramSwap.memoryPercent = 80;
   # zramSwap.writebackDevice = "/dev/sdb1";
 
-#  environment.extraInit = ''
-#xset dpms 15 15 15
-#'';
+  #  environment.extraInit = ''
+  #xset dpms 15 15 15
+  #'';
 
   # environment.sessionVariables.NAUTILUS_EXTENSION_DIR = "${config.system.path}/lib/nautilus/extensions-4";
   modules.taffybar.enable = false;
-  environment.systemPackages = with pkgs;
-    [
-      (pkgs.python3.withPackages (ps: [
-        ps.python-lsp-server
-        ps.python-telegram-bot
-        ps.python-dotenv
-        ps.pytest
-        ps.python-miio
-        ps.pygobject-stubs
-        ps.debugpy
-        ps.requests
-        ps.epc
-        ps.pygobject3
-        ps.lxml
-        ps.tld
-        ps.sexpdata
-        ps.pyqt6
-        ps.pyqt6-sip
-        ps.pyqt6-webengine
-        ps.pygetwindow
-        ps.matplotlib
-      ]))
+  environment.systemPackages = with pkgs; [
+    (pkgs.python3.withPackages (ps: [
+      ps.python-lsp-server
+      ps.python-telegram-bot
+      ps.python-dotenv
+      ps.pytest
+      ps.python-miio
+      ps.pygobject-stubs
+      ps.debugpy
+      ps.requests
+      ps.epc
+      ps.pygobject3
+      ps.lxml
+      ps.tld
+      ps.sexpdata
+      ps.pyqt6
+      ps.pyqt6-sip
+      ps.pyqt6-webengine
+      ps.pygetwindow
+      ps.matplotlib
+    ]))
 
-      # my.hbctool
-      oscar
-      poetry
-      putty
-      # texliveMedium
-      # mattermost-desktop
-      # charles
-      gucharmap
-      # autokey
-      alsa-utils
-      wgcf
-      # my.amneziawg-tools
-      # my.amneziawg-go
-      wget
-      unstable.rnnoise-plugin
-      quickshell
-      kdePackages.qtdeclarative
+    # my.hbctool
+    oscar
+    poetry
+    putty
+    # texliveMedium
+    # mattermost-desktop
+    # charles
+    gucharmap
+    # autokey
+    alsa-utils
+    wgcf
+    # my.amneziawg-tools
+    # my.amneziawg-go
+    wget
+    unstable.rnnoise-plugin
+    quickshell
+    kdePackages.qtdeclarative
 
-      ventoy-full-gtk
-      clang
-      unetbootin
-      file
-      clojure
-      fzf
-      bat
-      nix-prefetch-scripts
-      openvpn
-      lm_sensors
-      # mihomo
-      openssl
-      nodePackages.localtunnel
-      # pr218037.microsoft-edge-dev
-      gcc.cc.libgcc
-      unstable.gemini-cli
-      # my.gemini
-      gcc.cc.libgcc.lib
-      nwg-drawer
-      unstable.opencode
-      keepassxc
-      tree
-      my.realm-studio-bin
-      # remmina
-      (pkgs.whisper-cpp.overrideAttrs (oldAttrs: {
-    src = pkgs.fetchFromGitHub {
-      owner = "ggml-org";
-      repo = "whisper.cpp";
-      rev = "a8d002cfd879315632a579e73f0148d06959de36";
-      sha256 = "sha256-dppBhiCS4C3ELw/Ckx5W0KOMUvOHUiisdZvkS7gkxj4=";
-    };
-  }))
-      # unstable.aider-chat
-      frida-tools
+    ventoy-full-gtk
+    # clang
+    unetbootin
+    file
+    clojure
+    fzf
+    bat
+    nix-prefetch-scripts
+    openvpn
+    lm_sensors
+    # mihomo
+    openssl
+    nodePackages.localtunnel
+    # pr218037.microsoft-edge-dev
+    gcc.cc.libgcc
+    unstable.gemini-cli
+    # my.gemini
+    gcc.cc.libgcc.lib
+    nwg-drawer
+    unstable.opencode
+    keepassxc
+    tree
+    my.realm-studio-bin
+    # remmina
+    (pkgs.whisper-cpp.overrideAttrs (oldAttrs: {
+      src = pkgs.fetchFromGitHub {
+        owner = "ggml-org";
+        repo = "whisper.cpp";
+        rev = "a8d002cfd879315632a579e73f0148d06959de36";
+        sha256 = "sha256-dppBhiCS4C3ELw/Ckx5W0KOMUvOHUiisdZvkS7gkxj4=";
+      };
+    }))
+    # unstable.aider-chat
+    frida-tools
 
-      # ghidra-bin
+    # ghidra-bin
 
-      kdePackages.kwalletmanager
-      unstable.unarc
-      pkgs.libayatana-appindicator
-      # pkgs.libayatana-appindicator-gtk3
-      conda
-      # megasync
-      # unstable.jetbrains.idea-community
-      unstable.gamescope
-      # create-react-app
-      # unstable.code-cursor
-      parallel
-      # vscode
-      ddcutil
+    kdePackages.kwalletmanager
+    unstable.unarc
+    pkgs.libayatana-appindicator
+    # pkgs.libayatana-appindicator-gtk3
+    conda
+    # megasync
+    # unstable.jetbrains.idea-community
+    unstable.gamescope
+    # create-react-app
+    # unstable.code-cursor
+    parallel
+    # vscode
+    ddcutil
 
-      yandex-disk
-      gpu-screen-recorder
-      shared-mime-info
-      clinfo
-      radeontop
-      qrencode
-      unrar
-      # pr229886.amdgpu-pro-libs.amf
-      # pr229886.amdgpu-pro-libs.vulkan
-      # pr229886.amdgpu-pro-libs.opengl
-      # pr229886.amdgpu-pro-libs.prefixes
-      # unstable.amf-headers
-      # pr314293.tdlib
-      nixfmt-classic
-      gnome-themes-extra
-      # python2
-      xmrig
-      lua-language-server
-      # tgs2png
-      # my.tg
-      luarocks
-      helvum
-      # unstable.cloudflare-warp
-      nmap
-      # skypeforlinux
-      neovide
-      # my.hiddify
-      lazygit
-      ranger
-      mesa
-      # gmsh
-      # unstable.microsoft-edge
-      calculix-ccx
-      # pr229886.amdgpu-pro-libs.amf
-      # pr229886.amdgpu-pro-libs.prefixes
-      # (microsoft-edge-dev.overrideAttrs(oldAttrs: rec {
-      #   name = "edge-dev";
-      #   version = "110.0.1587.1";
-      #   src = builtins.fetchurl {
-      #     url = "https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-dev/microsoft-edge-dev_110.0.1587.1-1_amd64.deb";
-      #     sha256 = "sha256:1p39llchnb2b6zbjpn0fk7hp7yhfp03b00s539hhgaliqmq9z93g";
-      #   };
-      # }))
-      ((flameshot.override {
-        enableWlrSupport = true;
-      }).overrideAttrs(oldAttrs: rec {
-        patches = oldAttrs.patches ++ [
-          /etc/nixos/flameshot.patch
-        ];
+    yandex-disk
+    gpu-screen-recorder
+    shared-mime-info
+    clinfo
+    radeontop
+    qrencode
+    unrar
+    # pr229886.amdgpu-pro-libs.amf
+    # pr229886.amdgpu-pro-libs.vulkan
+    # pr229886.amdgpu-pro-libs.opengl
+    # pr229886.amdgpu-pro-libs.prefixes
+    # unstable.amf-headers
+    # pr314293.tdlib
+    nixfmt-classic
+    gnome-themes-extra
+    # python2
+    xmrig
+    lua-language-server
+    # tgs2png
+    # my.tg
+    luarocks
+    helvum
+    # unstable.cloudflare-warp
+    nmap
+    # skypeforlinux
+    neovide
+    # my.hiddify
+    lazygit
+    ranger
+    mesa
+    # gmsh
+    # unstable.microsoft-edge
+    calculix-ccx
+    # pr229886.amdgpu-pro-libs.amf
+    # pr229886.amdgpu-pro-libs.prefixes
+    # (microsoft-edge-dev.overrideAttrs(oldAttrs: rec {
+    #   name = "edge-dev";
+    #   version = "110.0.1587.1";
+    #   src = builtins.fetchurl {
+    #     url = "https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-dev/microsoft-edge-dev_110.0.1587.1-1_amd64.deb";
+    #     sha256 = "sha256:1p39llchnb2b6zbjpn0fk7hp7yhfp03b00s539hhgaliqmq9z93g";
+    #   };
+    # }))
+    ((flameshot.override { enableWlrSupport = true; }).overrideAttrs
+      (oldAttrs: rec {
+        patches = oldAttrs.patches ++ [ /etc/nixos/flameshot.patch ];
       }))
 
-      unstable.flyctl
-      # .overrideAttrs(oldAttrs: rec {
-      #   NIX_CFLAGS_COMPILE = "-DUSE_WAYLAND_CLIPBOARD";
-      #   CFLAGS = ["-DUSE_WAYLAND_CLIPBOARD"];
-      #   # configureFlags = [
-      #   #   "CPPFLAGS=-DUSE_WAYLAND_CLIPBOARD";
-      #   # ];
-      # })
-      pciutils
-      # musescore
-      # deluge
-      usbutils
-      unstable.pmbootstrap
-      # unstable.davinci-resolve
-      # unstable.firefox
-      # unstable.librewolf
-      xcompmgr
-      #unstable.heroic
-      killall
-      xdo
-      # floorp
-      inotify-tools
-      # (import (fetchTarball
-      #   "https://github.com/aaronjanse/nix-eval-lsp/archive/master.tar.gz"))
-      # (import (fetchTarball
-      #   "https://github.com/nix-community/rnix-lsp/archive/master.tar.gz"))
-      # my.shell_gpt
-      # unstable.tgpt
-      my.tgpt
-      # (unstable.tgpt.overrideAttrs(oldAttrs: rec {
-      #   version = "2.0.3";
+    unstable.flyctl
+    # .overrideAttrs(oldAttrs: rec {
+    #   NIX_CFLAGS_COMPILE = "-DUSE_WAYLAND_CLIPBOARD";
+    #   CFLAGS = ["-DUSE_WAYLAND_CLIPBOARD"];
+    #   # configureFlags = [
+    #   #   "CPPFLAGS=-DUSE_WAYLAND_CLIPBOARD";
+    #   # ];
+    # })
+    pciutils
+    # musescore
+    # deluge
+    usbutils
+    unstable.pmbootstrap
+    # unstable.davinci-resolve
+    # unstable.firefox
+    # unstable.librewolf
+    xcompmgr
+    #unstable.heroic
+    killall
+    xdo
+    # floorp
+    inotify-tools
+    # (import (fetchTarball
+    #   "https://github.com/aaronjanse/nix-eval-lsp/archive/master.tar.gz"))
+    # (import (fetchTarball
+    #   "https://github.com/nix-community/rnix-lsp/archive/master.tar.gz"))
+    # my.shell_gpt
+    # unstable.tgpt
+    my.tgpt
+    # (unstable.tgpt.overrideAttrs(oldAttrs: rec {
+    #   version = "2.0.3";
 
-      #   src = fetchFromGitHub {
-      #     owner = "aandrew-me";
-      #     repo = "tgpt";
-      #     rev = "refs/tags/v${version}";
-      #     hash = "sha256-4zm2dsYhN5itGto39p2Aq+9vF4iqqjCGwMWACuKSMs0=";
-      #   };
-      #   vendorHash = "";
-      # }))
+    #   src = fetchFromGitHub {
+    #     owner = "aandrew-me";
+    #     repo = "tgpt";
+    #     rev = "refs/tags/v${version}";
+    #     hash = "sha256-4zm2dsYhN5itGto39p2Aq+9vF4iqqjCGwMWACuKSMs0=";
+    #   };
+    #   vendorHash = "";
+    # }))
 
-      # my.tlala
-      # my.chatgpt
-      neovim
-      # unstable.elementary-planner
-      # (haskellPackages.callPackage /etc/nixos/modules/nixos/taffybar/build/taffybar.nix
-      #   { })
-      kdiskmark
-      # Config https://github.com/elken/tabbed/blob/master/config.h
-      # pkgs.tabbed.override {
-      # customConfig = builtins.readFile ../files/tabbed-config.h;
-      # };
-      # (callPackage /etc/nixos/modules/tabbed/tabbed.nix { })
-      # libsForQt5.breeze-qt5
-      # nixfmt
-      # TODO FIX
-      # (old-23.gimp.override { withPython = true; })
-      # krita
-      inkscape
-      evince
-      sidequest
-      xorg.xwininfo
-      # xboxdrv
-      mangohud
-      lua
-      apktool
-      apksigner
-      # my.alvr
+    # my.tlala
+    # my.chatgpt
+    neovim
+    # unstable.elementary-planner
+    # (haskellPackages.callPackage /etc/nixos/modules/nixos/taffybar/build/taffybar.nix
+    #   { })
+    kdiskmark
+    # Config https://github.com/elken/tabbed/blob/master/config.h
+    # pkgs.tabbed.override {
+    # customConfig = builtins.readFile ../files/tabbed-config.h;
+    # };
+    # (callPackage /etc/nixos/modules/tabbed/tabbed.nix { })
+    # libsForQt5.breeze-qt5
+    # nixfmt
+    # TODO FIX
+    # (old-23.gimp.override { withPython = true; })
+    # krita
+    inkscape
+    evince
+    sidequest
+    xorg.xwininfo
+    # xboxdrv
+    mangohud
+    lua
+    apktool
+    apksigner
+    # my.alvr
 
-      gnome-system-monitor
-      zenity
-      # zen-browser
-      gnome-sound-recorder
-      # tigervnc
-      # x11vnc
-      cabal2nix
-      qgnomeplatform
-      qgnomeplatform-qt6
-      dbeaver-bin
-      yad
-      ccls
-      # jupyter
-      (solaar.overrideAttrs(oldAttrs: rec {
-        version = "1.1.16";
-        src = fetchFromGitHub {
-          owner = "pwr-Solaar";
-          repo = "Solaar";
-          tag = version;
-          hash = "sha256-PhZoDRsckJXk2t2qR8O3ZGGeMUhmliqSpibfQDO7BeA=";
-        };
-        buildInputs = oldAttrs.buildInputs ++ [ upower ];
-      }))
-      piper
-      # void-editor
-      # rocketchat-desktop
-      tetex
-      gnumake
-      btop
-      calibre
-      xorg.xdpyinfo
-      # unstable.postman
-      unstable.brave
-      d-spy
-      slop
-      libnotify
-      xclip
-      xdotool
-      tldr
-      claude-code
-      cheat
-      # libsForQt5.breeze-gtk
-      # libsForQt5.breeze-qt5
-      pasystray
-      pavucontrol
-      paprefs
-      # shotcut
-      # darktable
-      anki-bin
-      # unstable.antigravity
-      my.antigravity-manager
-      compfy
-      unstable.picom
-      # (callPackage /etc/nixos/pkgs/picom-animations.nix { })
-      # (pkgs.callPackage /mnt/md127/nixpkgs/pkgs/applications/networking/instant-messengers/telegram/tdesktop { })
-      # (pkgs.qt6Packages.callPackage /mnt/md127/nixpkgs/pkgs/applications/networking/instant-messengers/telegram/tdesktop {
-      # abseil-cpp = pkgs.abseil-cpp_202111;
-      # })
-      #(pkgs.callPackage /etc/nixos/pkgs/tdesktop.nix { })
-      # (pkgs.callPackage ./pkgs/openhab.nix { })
-      # discord
-      unstable.rtk
-      # legcord
-      # unstable.tdesktop
-      # (unstable.qt6Packages.callPackage /etc/nixos/pkgs/tdesktop/tdesktop.nix {
-      #   abseil-cpp = unstable.abseil-cpp_202111;
-      # })
-      # unstable.tdesktop
-      # telegram-desktop_git
-      # (telegram-desktop.overrideAttrs(oldAttrs: rec {
-      #   name = "tdesktop";
-      #   version = "p5.13.1";
-      #   src = fetchFromGitHub {
-      #     owner = "p2d0";
-      #     repo = "tdesktop";
-      #     rev = "a2422d1a49d9ac4cf1387312418e1772efb6195b";
-      #     fetchSubmodules = true;
-      #     sha256 = "sha256-/x7VZssjPk17gYSXxU/4KdHSdOjxW8ncWxItwj7lA/Y=";};
-      # }))
-      playwright-cli
-      unstable.telegram-desktop
-      # tdesktop_p2d0
-      nil
-      jpegoptim
-      chatterino2
-      kdePackages.filelight
-      polkit_gnome
-      dconf-editor
-      gnome-characters
-      minidlna
-      gedit
-      # gnome.gnome-boxes
-      # unstable.rustdesk
-      rustdesk
-      # my.trex
-      unstable.qbittorrent
-      # qbittorrent-qt5
-      # epiphany
-      # tor-browser-bundle-bin
-      # looking-glass-client
-      # unstable.tg
-      # pkgs.cinnamon.nemo-with-extensions
-      # pkgs.cinnamon.nemo-fileroller
-      # pkgs.cinnamon.nemo-python
-      # pkgs.libsForQt5.dolphin
-      # unstable.telegram-cli
-      # sounduxPkgs.soundux
-      # my.qwen-code
-      # my.soundux
-      # (unstable.callPackage /etc/nixos/pkgs/nemo-preview.nix {})
-      # my.nemo-preview
-      # 41.2
-      #   (import (builtins.fetchTarball {
-      #     url = "https://github.com/NixOS/nixpkgs/archive/d1c3fea7ecbed758168787fe4e4a3157e52bc808.tar.gz";
-      # }) {}).gnome.nautilus
-      # 40.1
-      #   (import (builtins.fetchTarball {
-      #     url = "https://github.com/NixOS/nixpkgs/archive/23c10dbe320e6957f2607d8a22f9e0e36f56a235.tar.gz";
-      # }) {}).gnome.nautilus
-      spice-vdagent
-      inetutils
-      zip
-      xsettingsd
-      # easyeffects
-      # evolution
-      nodejs
-      # old-24-11.iconpack-obsidian
-      # kdePackages.xwaylandvideobridge
-      (pkgs.wrapOBS.override {
-        obs-studio = obs-studio.override { cudaSupport = true;};
-      } {
-        plugins = with pkgs.unstable.obs-studio-plugins; [
-          # obs-gstreamer
-          obs-vkcapture
-          # obs-vaapi
-          # wlrobs
-          droidcam-obs
-        ];
-      })
-      # libreoffice
-      pkgs.onlyoffice-desktopeditors
-      koreader
-      stremio
-      # vlc
-      gsettings-desktop-schemas
-      wineWowPackages.stable
-      # whatsapp-for-linux
-      libvirt
-      dunst
-      android-tools
-      # sublime
-      # drawio
-      pipenv
-      # unstable.spotify
-      # my.immersed-vr
-      # (import (builtins.fetchTarball {
-      #   url = "https://github.com/NixOS/nixpkgs/archive/23c10dbe320e6957f2607d8a22f9e0e36f56a235.tar.gz";
-      # }) {config.allowBroken = true;
-      #     config.permittedInsecurePackages = [
-      #       "python-2.7.18.6"
-      #       "ffmpeg-3.4.8"
-      #     ];
-      #    }).natron
-      # (import (builtins.fetchTarball {
-      #   url = "https://github.com/NixOS/nixpkgs/archive/5c1ffb7a9fc96f2d64ed3523c2bdd379bdb7b471.tar.gz";
-      # }) {config.allowBroken = true;
-      #     config.permittedInsecurePackages = [
-      #       "python-2.7.18.6"
-      #       "ffmpeg-3.4.8"
-      #     ];}).natron
-      # unstable.natron
-      # my.natron-bin
-      # unstable.natron
-      unstable.scrcpy
-      unstable.yt-dlp
-      # insomnia
-      # pythonPackages.yt-dlp
-      imagemagick
-      # deskflow
-      # thunderbird
-      # libpulseaudio
-      # pythonPackages.virtualenv
-      # pythonPackages.pip
-      unstable.anydesk
-      feh
-      eog
-      # dmenu
-      gnome-disk-utility
-      cabal2nix
-      audacity
-      # (pkgs.callPackage /etc/nixos/pkgs/get_current_screen_geometry.nix { })
-      # NOTE https://nixos.wiki/wiki/Nixpkgs/Modifying_Packages
-      # guake
-      # my.guake-latest
-      # (callPackage /etc/nixos/pkgs/jetbrains-gateway.nix { })
-    ];
+    gnome-system-monitor
+    zenity
+    # zen-browser
+    gnome-sound-recorder
+    # tigervnc
+    # x11vnc
+    cabal2nix
+    qgnomeplatform
+    qgnomeplatform-qt6
+    dbeaver-bin
+    yad
+    # ccls
+    # jupyter
+    (solaar.overrideAttrs (oldAttrs: rec {
+      version = "1.1.16";
+      src = fetchFromGitHub {
+        owner = "pwr-Solaar";
+        repo = "Solaar";
+        tag = version;
+        hash = "sha256-PhZoDRsckJXk2t2qR8O3ZGGeMUhmliqSpibfQDO7BeA=";
+      };
+      buildInputs = oldAttrs.buildInputs ++ [ upower ];
+    }))
+    piper
+    # void-editor
+    # rocketchat-desktop
+    tetex
+    gnumake
+    btop
+    calibre
+    xorg.xdpyinfo
+    # unstable.postman
+    unstable.brave
+    d-spy
+    slop
+    libnotify
+    xclip
+    xdotool
+    tldr
+    claude-code
+    cheat
+    # libsForQt5.breeze-gtk
+    # libsForQt5.breeze-qt5
+    pasystray
+    pavucontrol
+    paprefs
+    # shotcut
+    # darktable
+    anki-bin
+    # unstable.antigravity
+    my.antigravity-manager
+    compfy
+    unstable.picom
+    # (callPackage /etc/nixos/pkgs/picom-animations.nix { })
+    # (pkgs.callPackage /mnt/md127/nixpkgs/pkgs/applications/networking/instant-messengers/telegram/tdesktop { })
+    # (pkgs.qt6Packages.callPackage /mnt/md127/nixpkgs/pkgs/applications/networking/instant-messengers/telegram/tdesktop {
+    # abseil-cpp = pkgs.abseil-cpp_202111;
+    # })
+    #(pkgs.callPackage /etc/nixos/pkgs/tdesktop.nix { })
+    # (pkgs.callPackage ./pkgs/openhab.nix { })
+    # discord
+    unstable.rtk
+    # legcord
+    # unstable.tdesktop
+    # (unstable.qt6Packages.callPackage /etc/nixos/pkgs/tdesktop/tdesktop.nix {
+    #   abseil-cpp = unstable.abseil-cpp_202111;
+    # })
+    # unstable.tdesktop
+    # telegram-desktop_git
+    # (telegram-desktop.overrideAttrs(oldAttrs: rec {
+    #   name = "tdesktop";
+    #   version = "p5.13.1";
+    #   src = fetchFromGitHub {
+    #     owner = "p2d0";
+    #     repo = "tdesktop";
+    #     rev = "a2422d1a49d9ac4cf1387312418e1772efb6195b";
+    #     fetchSubmodules = true;
+    #     sha256 = "sha256-/x7VZssjPk17gYSXxU/4KdHSdOjxW8ncWxItwj7lA/Y=";};
+    # }))
+    playwright-cli
+    unstable.telegram-desktop
+    # tdesktop_p2d0
+    nil
+    jpegoptim
+    chatterino2
+    kdePackages.filelight
+    polkit_gnome
+    dconf-editor
+    gnome-characters
+    minidlna
+    gedit
+    # gnome.gnome-boxes
+    # unstable.rustdesk
+    rustdesk
+    # my.trex
+    unstable.qbittorrent
+    # qbittorrent-qt5
+    # epiphany
+    # tor-browser-bundle-bin
+    # looking-glass-client
+    # unstable.tg
+    # pkgs.cinnamon.nemo-with-extensions
+    # pkgs.cinnamon.nemo-fileroller
+    # pkgs.cinnamon.nemo-python
+    # pkgs.libsForQt5.dolphin
+    # unstable.telegram-cli
+    # sounduxPkgs.soundux
+    # my.qwen-code
+    # my.soundux
+    # (unstable.callPackage /etc/nixos/pkgs/nemo-preview.nix {})
+    # my.nemo-preview
+    # 41.2
+    #   (import (builtins.fetchTarball {
+    #     url = "https://github.com/NixOS/nixpkgs/archive/d1c3fea7ecbed758168787fe4e4a3157e52bc808.tar.gz";
+    # }) {}).gnome.nautilus
+    # 40.1
+    #   (import (builtins.fetchTarball {
+    #     url = "https://github.com/NixOS/nixpkgs/archive/23c10dbe320e6957f2607d8a22f9e0e36f56a235.tar.gz";
+    # }) {}).gnome.nautilus
+    spice-vdagent
+    inetutils
+    zip
+    xsettingsd
+    # easyeffects
+    # evolution
+    nodejs
+    # old-24-11.iconpack-obsidian
+    # kdePackages.xwaylandvideobridge
+    (pkgs.wrapOBS.override {
+      obs-studio = obs-studio.override { cudaSupport = true; };
+    } {
+      plugins = with pkgs.obs-studio-plugins; [
+        # obs-gstreamer
+        obs-vkcapture
+        # obs-vaapi
+        # wlrobs
+        droidcam-obs
+      ];
+    })
+    # libreoffice
+    pkgs.onlyoffice-desktopeditors
+    koreader
+    stremio
+    # vlc
+    gsettings-desktop-schemas
+    wineWowPackages.stable
+    # whatsapp-for-linux
+    libvirt
+    dunst
+    android-tools
+    # sublime
+    # drawio
+    pipenv
+    # unstable.spotify
+    # my.immersed-vr
+    # (import (builtins.fetchTarball {
+    #   url = "https://github.com/NixOS/nixpkgs/archive/23c10dbe320e6957f2607d8a22f9e0e36f56a235.tar.gz";
+    # }) {config.allowBroken = true;
+    #     config.permittedInsecurePackages = [
+    #       "python-2.7.18.6"
+    #       "ffmpeg-3.4.8"
+    #     ];
+    #    }).natron
+    # (import (builtins.fetchTarball {
+    #   url = "https://github.com/NixOS/nixpkgs/archive/5c1ffb7a9fc96f2d64ed3523c2bdd379bdb7b471.tar.gz";
+    # }) {config.allowBroken = true;
+    #     config.permittedInsecurePackages = [
+    #       "python-2.7.18.6"
+    #       "ffmpeg-3.4.8"
+    #     ];}).natron
+    # unstable.natron
+    # my.natron-bin
+    # unstable.natron
+    unstable.scrcpy
+    unstable.yt-dlp
+    # insomnia
+    # pythonPackages.yt-dlp
+    imagemagick
+    # deskflow
+    # thunderbird
+    # libpulseaudio
+    # pythonPackages.virtualenv
+    # pythonPackages.pip
+    unstable.anydesk
+    feh
+    eog
+    # dmenu
+    gnome-disk-utility
+    cabal2nix
+    audacity
+    # (pkgs.callPackage /etc/nixos/pkgs/get_current_screen_geometry.nix { })
+    # NOTE https://nixos.wiki/wiki/Nixpkgs/Modifying_Packages
+    # guake
+    # my.guake-latest
+    # (callPackage /etc/nixos/pkgs/jetbrains-gateway.nix { })
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

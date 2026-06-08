@@ -10,7 +10,7 @@
 
   boot.initrd.availableKernelModules = [ "ehci_pci" "ata_piix" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "vfio-pci" "nvidia_uvm" ];
+  boot.kernelModules = [ "vfio-pci" "nvidia_uvm" "ntsync" ];
   boot.kernel.sysctl = {
     "vm.swappiness" = 10; # Replace with your calculated value (e.g., 1, 6, or 10)
     # "vm.vfs_cache_pressure" = 50; # Optional: helps keep file metadata in RAM longer
