@@ -938,6 +938,8 @@
     gnome-characters
     minidlna
     gedit
+    my.cassistant
+    unstable.codex
     # gnome.gnome-boxes
     # unstable.rustdesk
     rustdesk
