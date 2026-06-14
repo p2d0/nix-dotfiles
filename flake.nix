@@ -102,6 +102,8 @@
             "dotnet-sdk-6.0.428"
             "dotnet-runtime-wrapped-6.0.36"
             "qbittorrent-4.6.4"
+            "docker-28.5.2"
+            "ventoy-gtk3-1.1.10"
             "xrdp-0.9.9"
             "python-2.7.18.8-env"
             "python-2.7.18.8"

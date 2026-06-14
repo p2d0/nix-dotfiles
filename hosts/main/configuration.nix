@@ -62,6 +62,7 @@
   # services.nanobanana.enable = true;
 
   systemd.user.services.f5-ai-server = {
+    enable = false;
     description = "Nvidia AI Server (F5)";
     wantedBy = [ "graphical-session.target" ];
     after = [ "network.target" ];
@@ -506,7 +507,7 @@
     in {
       QT_PLUGIN_PATH = map (qt: "/${qt.qtbase.qtPluginPrefix}") qtVersions;
       QMLLS_BUILD_DIRS = [
-        "${pkgs.quickshell}/${pkgs.qt6.qtbase.qtPluginPrefix}/"
+        # "${pkgs.quickshell}/${pkgs.qt6.qtbase.qtPluginPrefix}/"
         "${pkgs.kdePackages.qtdeclarative}/${pkgs.qt6.qtbase.qtPluginPrefix}/"
       ];
       QML2_IMPORT_PATH = map (qt: "/${qt.qtbase.qtQmlPrefix}") qtVersions;
@@ -676,7 +677,7 @@
     # my.amneziawg-go
     wget
     unstable.rnnoise-plugin
-    quickshell
+    # quickshell
     kdePackages.qtdeclarative
 
     ventoy-full-gtk
@@ -717,7 +718,7 @@
     # ghidra-bin
 
     kdePackages.kwalletmanager
-    unstable.unarc
+    # unstable.unarc
     pkgs.libayatana-appindicator
     # pkgs.libayatana-appindicator-gtk3
     conda

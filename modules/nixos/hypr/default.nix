@@ -26,10 +26,10 @@ in {
         package = pkgs.unstable.hyprland;
         # portalPackage = pkgs.unstable.xdg-desktop-portal-hyprland;
         plugins = [
-          pkgs.hyprold.hyprlandPlugins.hy3
+          # pkgs.hyprold.hyprlandPlugins.hy3
           # pkgs.hyprlandPlugins.hyprgrass
 
-          pkgs.unstable.hyprlandPlugins.hypr-darkwindow
+          # pkgs.unstable.hyprlandPlugins.hypr-darkwindow
           # (pkgs.unstable.hyprlandPlugins.hypr-darkwindow.overrideAttrs(oldAttrs: rec {
           #   patches = [
           #     /etc/nixos/modules/nixos/hypr/noblur.patch
