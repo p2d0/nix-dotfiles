@@ -7,7 +7,7 @@ mainMod = "SUPER"
 -- Basic binds
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
-hl.bind(mainMod .. " + x", hl.dsp.window.kill())
+hl.bind(mainMod .. " + x", hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT + q", hl.dsp.exit())
 hl.bind(mainMod .. " + SHIFT + r", hl.dsp.exec_cmd("hyprctl reload"))
 hl.bind(mainMod .. " + ALT + b", hl.dsp.exec_cmd("systemctl --user restart waybar"))
@@ -15,7 +15,6 @@ hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + t", hl.dsp.window.float())
 hl.bind(mainMod .. " + d", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
-hl.bind(mainMod .. " + slash", hl.dsp.exec_cmd("/etc/nixos/configs/hypr/workspace-telegram.sh"))
 hl.bind(mainMod .. " + bracketright", hl.dsp.exec_cmd("~/.config/polybar/light_control.sh"))
 
 -- Screenshots and recording

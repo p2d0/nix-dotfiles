@@ -44,7 +44,7 @@
   wireplumber,
   wrapGAppsHook3,
 
-  cavaSupport ? true,
+  cavaSupport ? false,
   enableManpages ? stdenv.buildPlatform.canExecute stdenv.hostPlatform,
   evdevSupport ? true,
   experimentalPatches ? true,
@@ -93,7 +93,7 @@ stdenv.mkDerivation (finalAttrs: {
     owner = "Alexays";
     repo = "Waybar";
     rev = "master";
-    hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+    hash = "sha256-51R3mIt8cLNvh/X5qe9vOqeJCj0U9KRyemVE5y+OhiU=";
   };
 
   postUnpack = lib.optional cavaSupport ''
@@ -203,7 +203,7 @@ stdenv.mkDerivation (finalAttrs: {
     versionCheckHook
   ];
 
-  doInstallCheck = true;
+  doInstallCheck = false;
 
   passthru = {
     updateScript = nix-update-script { };

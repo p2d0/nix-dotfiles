@@ -14,3 +14,4 @@ end
 
 hl.workspace_rule({ workspace = '1', default = true})
 hl.workspace_rule({ workspace = '9', default = true})
+hl.workspace_rule({ workspace = '11', layout = "lua:ff-tg" })

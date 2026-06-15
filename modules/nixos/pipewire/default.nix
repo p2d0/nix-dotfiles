@@ -94,7 +94,7 @@ lib.my.withHome
                     {
                       type = "ladspa";
                       name = "rnnoise";
-                      plugin = "/librnnoise_ladspa.so";
+                      plugin = "librnnoise_ladspa";
                       label = "noise_suppressor_stereo";
                       control = {
                         "VAD Threshold (%)" = 50.0;
