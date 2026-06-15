@@ -20,7 +20,7 @@ in {
     systemd.user.services.maestral = {
       description = "Maestral daemon";
       wantedBy = [ "graphical-session.target" ];
-      after = ["swww.service"];
+      after = ["awww.service"];
       serviceConfig = {
         ExecStart = "${pkgs.maestral}/bin/maestral start -f";
         ExecStop = "${pkgs.maestral}/bin/maestral stop";

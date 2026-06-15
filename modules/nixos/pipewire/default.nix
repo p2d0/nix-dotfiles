@@ -45,6 +45,9 @@ lib.my.withHome
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
+      extraLadspaPackages = [
+        pkgs.unstable.rnnoise-plugin.ladspa
+      ];
       extraConfig.pipewire = {
 
         # context.modules = [
@@ -91,7 +94,7 @@ lib.my.withHome
                     {
                       type = "ladspa";
                       name = "rnnoise";
-                      plugin = "${pkgs.unstable.rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so";
+                      plugin = "/librnnoise_ladspa.so";
                       label = "noise_suppressor_stereo";
                       control = {
                         "VAD Threshold (%)" = 50.0;

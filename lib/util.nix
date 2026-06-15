@@ -34,7 +34,8 @@ rec {
         !(lib.hasPrefix "_" n))
       (n: v:
         let path = "${toString dir}/${n}"; in
-        if v == "directory" && lib.pathExists "${path}/default.nix"
+        if lib.hasPrefix "_" n then lib.nameValuePair "" null
+        else if v == "directory" && lib.pathExists "${path}/default.nix"
         then lib.nameValuePair n (fn path)
         else if v == "regular" &&
                 n != "default.nix" &&
@@ -50,7 +51,8 @@ rec {
         !(lib.hasPrefix "_" n))
       (n: v:
         let path = "${toString dir}/${n}"; in
-        if v == "directory" && lib.pathExists "${path}/default.nix"
+        if lib.hasPrefix "_" n then lib.nameValuePair "" null
+        else if v == "directory" && lib.pathExists "${path}/default.nix"
         then lib.nameValuePair n (fn path)
         else if v == "regular" &&
                 n != "default.nix" &&
@@ -67,7 +69,8 @@ rec {
         !(hasPrefix "_" n))
       (n: v:
         let path = "${toString dir}/${n}"; in
-        if v == "directory" && !(lib.pathExists "${path}/default.nix")
+        if hasPrefix "_" n then nameValuePair "" null
+        else if v == "directory" && !(lib.pathExists "${path}/default.nix")
         then nameValuePair n (mapModulesRec path fn)
         else if v == "directory"
         then nameValuePair n (fn path)
@@ -103,7 +106,8 @@ rec {
         !(hasPrefix "_" n))
       (n: v:
         let path = "${toString dir}/${n}"; in
-        if v == "directory" && !(lib.pathExists "${path}/default.nix")
+        if hasPrefix "_" n then nameValuePair "" null
+        else if v == "directory" && !(lib.pathExists "${path}/default.nix")
         then nameValuePair n (mapModulesRec path fn)
         else if v == "directory"
         then nameValuePair n (fn path)

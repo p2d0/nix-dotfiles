@@ -19,7 +19,7 @@
   # Searching github for packages:
   # %package_name% language:nix
   inputs = {
-    nixpkgs = { url = "github:nixos/nixpkgs/nixos-25.11"; };
+    nixpkgs = { url = "github:nixos/nixpkgs/nixos-26.05"; };
     nixpkgs-23 = { url = "github:nixos/nixpkgs/nixos-23.11"; };
     nixpkgs-24-11 = { url = "github:nixos/nixpkgs/nixos-24.11"; };
     nixpkgs-hyprland.url =
@@ -36,7 +36,7 @@
     ai-shell.url = "github:p2d0/ai-shell";
     nixos-master.url = "github:nixos/nixpkgs/master";
     void-editor.url = "github:bariscodefxy/void-editor-flake";
-    home-manager.url = "github:nix-community/home-manager/release-25.11";
+    home-manager.url = "github:nix-community/home-manager/release-26.05";
     # hyprland.url = "github:hyprwm/Hyprland/";
     # hyprland = {
     #   url = "git+https://github.com/hyprwm/Hyprland.git?ref=v0.47.0";
@@ -93,8 +93,7 @@
 
             "python3.11-youtube-dl-2021.12.17"
             "mbedtls-2.28.10"
-            "ventoy-gtk3-1.1.05"
-            "ventoy-gtk3-1.1.07"
+            "ventoy-gtk3-1.1.12"
             "qbittorrent-qt5-4.6.4"
             "libsoup-2.74.3"
             "dotnet-runtime-6.0.36"

@@ -13,7 +13,7 @@ in {
     };
     settingsFile = mkOption {
       type = types.str;
-      default = "/etc/nixos/configs/hypr/hyprland.conf";
+      default = "/etc/nixos/configs/hypr/lua/hyprland.lua";
     };
   };
   config = mkIf cfg.enable (lib.my.withHome
@@ -46,23 +46,25 @@ in {
         systemd.variables = [
           "--all"
         ];
-        settings = {
-          source = cfg.settingsFile;
-        };
+        configType = "lua";
+        extraConfig = ''
+          package.path = "/etc/nixos/configs/hypr/lua/?.lua;/etc/nixos/configs/hypr/lua/?/init.lua;" .. package.path
+          require("hyprland")
+        '';
       };
 
-      systemd.user.services.swww = {
+      systemd.user.services.awww = {
         Install = { WantedBy = [ "graphical-session.target" ]; };
 
         Unit = {
           ConditionEnvironment = "WAYLAND_DISPLAY";
-          Description = "hyprpaper";
+          Description = "awww wallpaper daemon";
           After = [ "graphical-session-pre.target" ];
           PartOf = [ "graphical-session.target" ];
         };
 
         Service = {
-          ExecStart = "${pkgs.swww}/bin/swww-daemon";
+          ExecStart = "${pkgs.awww}/bin/awww-daemon";
           Restart = "always";
           RestartSec = "10";
         };
@@ -113,7 +115,7 @@ in {
         [
           gammastep
           my.waybar
-          swww
+          awww
           # hyprwall
           grim # screenshot functionality
           slurp # screenshot functionality

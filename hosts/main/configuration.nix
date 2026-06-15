@@ -655,9 +655,9 @@
       ps.lxml
       ps.tld
       ps.sexpdata
-      ps.pyqt6
-      ps.pyqt6-sip
-      ps.pyqt6-webengine
+      # ps.pyqt6
+      # ps.pyqt6-sip
+      # ps.pyqt6-webengine
       ps.pygetwindow
       ps.matplotlib
     ]))
@@ -692,7 +692,7 @@
     lm_sensors
     # mihomo
     openssl
-    nodePackages.localtunnel
+    localtunnel
     # pr218037.microsoft-edge-dev
     gcc.cc.libgcc
     unstable.gemini-cli
@@ -752,7 +752,7 @@
     # tgs2png
     # my.tg
     luarocks
-    helvum
+    crosspipe
     # unstable.cloudflare-warp
     nmap
     # skypeforlinux
@@ -943,7 +943,7 @@
     unstable.codex
     # gnome.gnome-boxes
     # unstable.rustdesk
-    rustdesk
+    # rustdesk
     # my.trex
     unstable.qbittorrent
     # qbittorrent-qt5
@@ -992,7 +992,7 @@
     # libreoffice
     pkgs.onlyoffice-desktopeditors
     koreader
-    stremio
+    unstable.stremio-linux-shell
     # vlc
     gsettings-desktop-schemas
     wineWowPackages.stable

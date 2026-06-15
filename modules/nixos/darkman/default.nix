@@ -28,14 +28,14 @@ in {
           # 2. Set the legacy theme (For GTK3 apps)
           ${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
         '';
-        hyprpaper = ''${pkgs.swww}/bin/swww img /etc/nixos/bg_old.png --transition-type center'';
+        hyprpaper = ''${pkgs.awww}/bin/awww img /etc/nixos/bg_old.png --transition-type center'';
       };
       lightModeScripts = {
         gtk-theme = ''
           ${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
           ${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
         '';
-        hyprpaper = ''${pkgs.swww}/bin/swww img /etc/nixos/light.jpg --transition-type center'';
+        hyprpaper = ''${pkgs.awww}/bin/awww img /etc/nixos/light.jpg --transition-type center'';
       };
       settings = {
         lat = 55.7;
@@ -46,7 +46,7 @@ in {
 
     systemd.user.services.darkman = {
       Unit = {
-        After = ["swww.service"];
+        After = ["awww.service"];
       };
     };
   })));
