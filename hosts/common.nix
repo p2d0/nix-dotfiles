@@ -4,7 +4,7 @@
   environment.systemPackages = with pkgs;
     [
       pomotasker
-      unstable.yt-dlp
+      yt-dlp
       nix-index
       gcalcli
       sshfs
@@ -14,7 +14,7 @@
       vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
       kdePackages.kdenlive
       my.pythonbin
-      unstable.video-trimmer
+      video-trimmer
       git
       bubblewrap
       socat
@@ -24,7 +24,7 @@
       wmctrl
       kdePackages.breeze-gtk
       fd
-      unstable.gimp3
+      gimp3
       mpv
       jq
       nix-tree

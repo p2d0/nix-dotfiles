@@ -18,14 +18,14 @@ in {
       description = "Warp service";
       wantedBy = [ "default.target" ];
       serviceConfig = {
-        ExecStart = "${pkgs.unstable.cloudflare-warp}/bin/warp-svc";
+        ExecStart = "${pkgs.cloudflare-warp}/bin/warp-svc";
       };
     };
     # systemd.packages = [
     #   pkgs.cloudflare-warp
     # ];
     environment.systemPackages = [
-      pkgs.unstable.cloudflare-warp
+      pkgs.cloudflare-warp
     ];
   };
 }

@@ -6,6 +6,10 @@ hl.config({
     animations = {
         enabled = true,
     },
+    render = {
+      direct_scanout = 1
+      -- cm_fs_passthrough = 0
+    }
 })
 
 hl.curve("easeOutQuint", { type = "bezier", points = { { 0.23, 1 }, { 0.32, 1 } } })

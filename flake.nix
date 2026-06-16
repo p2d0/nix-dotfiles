@@ -20,24 +20,16 @@
   # %package_name% language:nix
   inputs = {
     nixpkgs = { url = "github:nixos/nixpkgs/nixos-26.05"; };
-    nixpkgs-23 = { url = "github:nixos/nixpkgs/nixos-23.11"; };
-    nixpkgs-24-11 = { url = "github:nixos/nixpkgs/nixos-24.11"; };
-    nixpkgs-hyprland.url =
-      "github:nixos/nixpkgs/762a398892576efcc76fb233befbd58c2cef59e0";
     max-messenger.url = "github:spiage/max-messenger";
-    nixpkgs-hy3.url =
-      "github:nixos/nixpkgs/d98abf5cf5914e5e4e9d57205e3af55ca90ffc1d";
     playwright-cli.url = "github:p2d0/playwright-cli-flake";
+
     nixos-unstable.url = "nixpkgs/nixos-unstable";
-    nixos-hyprstable.url =
-      "github:nixos/nixpkgs/00c21e4c93d963c50d4c0c89bfa84ed6e0694df2";
     appblocker.url = "github:p2d0/appblocker";
     nanobanana.url = "github:p2d0/nanobanana";
     ai-shell.url = "github:p2d0/ai-shell";
-    nixos-master.url = "github:nixos/nixpkgs/master";
     void-editor.url = "github:bariscodefxy/void-editor-flake";
     home-manager.url = "github:nix-community/home-manager/release-26.05";
-    # hyprland.url = "github:hyprwm/Hyprland/";
+    hyprland.url = "github:hyprwm/Hyprland/";
     # hyprland = {
     #   url = "git+https://github.com/hyprwm/Hyprland.git?ref=v0.47.0";
     # };
@@ -54,7 +46,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     poetry2nix.url = "github:nix-community/poetry2nix";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     compfy.url = "github:allusive-dev/compfy";
@@ -69,13 +60,10 @@
     # };
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-23, nixpkgs-24-11, poetry2nix
-    , chaotic, tdesktop, playwright-cli, zen-browser, compfy,
-    # hy3,
-    nixpkgs-hyprland, nixpkgs-hy3, nixos-unstable, nixos-master, void-editor,
-    # hyprland,
-    nixpkgs-amnezia, nixos-hyprstable, nanobanana, ai-shell, home-manager
-    , appblocker, spl3g-config, pomotasker, todolist-web, ... }:
+  outputs = inputs@{ self, nixpkgs, poetry2nix, tdesktop, playwright-cli
+    , zen-browser, compfy, nixos-unstable, void-editor, hyprland,
+    nixpkgs-amnezia, nanobanana, ai-shell, home-manager, appblocker
+    , spl3g-config, pomotasker, todolist-web, ... }:
     let
       lib = nixpkgs.lib.extend
         (self: super: { my = import ./lib/util.nix { lib = nixpkgs.lib; }; });
@@ -123,19 +111,6 @@
                 inherit system;
                 config = self.config;
               };
-              pr314293 = import (fetchTarball
-                "${nixpkgs-tars}dd0629f12ebf19510a682ff132265253b7728ccc.tar.gz") {
-                  config = self.config;
-                };
-              pr229886 = import (fetchTarball
-                "https://github.com/NixOS/nixpkgs/archive/pull/229886/head.tar.gz") {
-                  config = self.config;
-                };
-              pr419945 = import (fetchTarball
-                "${nixpkgs-tars}6574cde9e881474ca4ee3438d4ad0ab471f58b0b.tar.gz") {
-                  config = self.config;
-                };
-
               flacpkgs = import (builtins.fetchTarball {
                 url =
                   "https://github.com/NixOS/nixpkgs/archive/cea111161b02f1a823698038bfd01bc93607e391.tar.gz";
@@ -144,28 +119,13 @@
               #   url = "https://github.com/NixOS/nixpkgs/archive/c3f5dc69cdff75a054db50eec743e0693d296978.tar.gz";
               # }) {};
 
-              sounduxPkgs = import (builtins.fetchTarball {
-                url =
-                  "https://github.com/NixOS/nixpkgs/archive/78747312c7c8978a140c0a3ad236766289aecf8b.tar.gz";
-              }) { };
-              openssl_3_2Pkgs = import (builtins.fetchTarball {
-                url =
-                  "https://github.com/NixOS/nixpkgs/archive/007604529b133db7ef40e687cd95d88c37e5fe8a.tar.gz";
-              }) { };
               quickshell = inputs.quickshell.packages.${system}.default;
               max-messenger = inputs.max-messenger.packages.${system}.default;
               void-editor = inputs.void-editor.packages.${system}.default;
               ai-shell = ai-shell.packages.${system}.default;
               pomotasker = pomotasker.packages.${system}.default;
 
-              old-23 = import nixpkgs-23 { config = self.config; };
-              old-24-11 = import nixpkgs-24-11 { config = self.config; };
               unstable = import nixos-unstable { config = self.config; };
-              nixpkgs-hyprland =
-                import nixpkgs-hyprland { config = self.config; };
-              hyprold = import nixos-hyprstable { config = self.config; };
-              nixpkgs-hy3 = import nixpkgs-hy3 { config = self.config; };
-              master = import nixos-master { config = self.config; };
               compfy = compfy.packages.${system}.compfy;
               zen-browser = zen-browser.packages.${system}.default;
               tdesktop_p2d0 = tdesktop.packages.${system}.default;
@@ -182,8 +142,9 @@
         };
       pkgs = mkPkgs nixpkgs [
         poetry2nix.overlays.default
-        chaotic.overlays.default
         spl3g-config.overlays.additions
+        hyprland.overlays.hyprland
+        hyprland.overlays.hyprland-packages
       ];
     in {
       inherit lib;

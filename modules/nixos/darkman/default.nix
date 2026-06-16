@@ -2,7 +2,7 @@
 
 with lib;
 let cfg = config.modules.darkman;
-    darkman = pkgs.unstable.darkman.overrideAttrs(oldAttrs: rec {
+    darkman = pkgs.darkman.overrideAttrs(oldAttrs: rec {
       postPatch = oldAttrs.postPatch + ''
     sed -i '16a Environment=PATH=/run/current-system/sw/bin' darkman.service'';
     });

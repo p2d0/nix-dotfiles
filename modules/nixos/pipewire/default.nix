@@ -46,7 +46,7 @@ lib.my.withHome
       alsa.support32Bit = true;
       pulse.enable = true;
       extraLadspaPackages = [
-        pkgs.unstable.rnnoise-plugin.ladspa
+        pkgs.rnnoise-plugin.ladspa
       ];
       extraConfig.pipewire = {
 

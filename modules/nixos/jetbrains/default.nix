@@ -36,7 +36,7 @@ in {
     {
       environment.systemPackages = with pkgs;
         [
-          unstable.jetbrains.idea-community
+          jetbrains.idea-community
         ];
 
     }

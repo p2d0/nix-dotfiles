@@ -232,7 +232,7 @@
     exportConfiguration = true;
     windowManager.i3 = {
       enable = true;
-      package = pkgs.unstable.i3;
+      package = pkgs.i3;
       # .overrideAttrs(oldAttrs: rec {
       #   src = /mnt/md127/i3;
       #   dontCheck = true;
@@ -348,14 +348,14 @@
         # "15 21 * * * andrew /etc/nixos/shutdown.sh"
         # "30 21 * * * andrew /etc/nixos/shutdown.sh"
         # "30 21 * * * andrew /etc/nixos/shutdown.sh"
-        # "00 22 * * * andrew /etc/nixos/shutdown.sh"
-        # "55 22 * * * andrew DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /run/current-system/sw/bin/notify-send 'Shutdown in 5 MINUTES'"
+        "00 22 * * * andrew /etc/nixos/shutdown.sh"
+        "55 21 * * * andrew DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /run/current-system/sw/bin/notify-send 'Shutdown in 5 MINUTES'"
 
         "00 20 * * * andrew /home/andrew/Dropbox/update_ip.sh"
         # "00 23 * * * andrew /home/andrew/Dropbox/miner_enable.sh"
         # "00 7 * * * andrew /home/andrew/Dropbox/miner_disable.sh"
         # "35 6 * * * root /etc/nixos/play_alsa_alarm.sh"
-        "30 7 * * * root /etc/nixos/stop_alarm.sh"
+        # "30 7 * * * root /etc/nixos/stop_alarm.sh"
         "00 20 * * * andrew fish -c 'sync_repos'"
         "0,5,10,15,20,25,30,35,40,45,50,55 * * * * andrew sleep 12 ; wget --no-check-certificate -O - https://freedns.afraid.org/dynamic/update.php?RnBTMHFiQlhHWnVmUXpNYmtLWlQ0ZXB5OjIyMTIzNjM3 >> /tmp/freedns_ug_kyrgyzstan_kg.log 2>&1 &"
       ];
@@ -555,7 +555,7 @@
   programs.opengamepadui.extraPackages = [ pkgs.vulkan-tools pkgs.hwdata ];
   services.sunshine.enable = false;
   services.sunshine.capSysAdmin = true;
-  services.sunshine.package = pkgs.unstable.sunshine;
+  services.sunshine.package = pkgs.sunshine;
   services.sunshine.autoStart = true;
   # services.sunshine.openFirewall = true;
   services.sunshine.settings = {
@@ -676,7 +676,7 @@
     # my.amneziawg-tools
     # my.amneziawg-go
     wget
-    unstable.rnnoise-plugin
+    rnnoise-plugin
     # quickshell
     kdePackages.qtdeclarative
 
@@ -695,11 +695,11 @@
     localtunnel
     # pr218037.microsoft-edge-dev
     gcc.cc.libgcc
-    unstable.gemini-cli
+    gemini-cli
     # my.gemini
     gcc.cc.libgcc.lib
     nwg-drawer
-    unstable.opencode
+    opencode
     keepassxc
     tree
     my.realm-studio-bin
@@ -724,7 +724,7 @@
     conda
     # megasync
     # unstable.jetbrains.idea-community
-    unstable.gamescope
+    gamescope
     # create-react-app
     # unstable.code-cursor
     parallel
@@ -779,7 +779,7 @@
         patches = oldAttrs.patches ++ [ /etc/nixos/flameshot.patch ];
       }))
 
-    unstable.flyctl
+    flyctl
     # .overrideAttrs(oldAttrs: rec {
     #   NIX_CFLAGS_COMPILE = "-DUSE_WAYLAND_CLIPBOARD";
     #   CFLAGS = ["-DUSE_WAYLAND_CLIPBOARD"];
@@ -791,7 +791,7 @@
     # musescore
     # deluge
     usbutils
-    unstable.pmbootstrap
+    pmbootstrap
     # unstable.davinci-resolve
     # unstable.firefox
     # unstable.librewolf
@@ -880,7 +880,7 @@
     calibre
     xorg.xdpyinfo
     # unstable.postman
-    unstable.brave
+    brave
     d-spy
     slop
     libnotify
@@ -900,7 +900,7 @@
     # unstable.antigravity
     my.antigravity-manager
     compfy
-    unstable.picom
+    picom
     # (callPackage /etc/nixos/pkgs/picom-animations.nix { })
     # (pkgs.callPackage /mnt/md127/nixpkgs/pkgs/applications/networking/instant-messengers/telegram/tdesktop { })
     # (pkgs.qt6Packages.callPackage /mnt/md127/nixpkgs/pkgs/applications/networking/instant-messengers/telegram/tdesktop {
@@ -909,7 +909,7 @@
     #(pkgs.callPackage /etc/nixos/pkgs/tdesktop.nix { })
     # (pkgs.callPackage ./pkgs/openhab.nix { })
     # discord
-    unstable.rtk
+    rtk
     # legcord
     # unstable.tdesktop
     # (unstable.qt6Packages.callPackage /etc/nixos/pkgs/tdesktop/tdesktop.nix {
@@ -928,7 +928,7 @@
     #     sha256 = "sha256-/x7VZssjPk17gYSXxU/4KdHSdOjxW8ncWxItwj7lA/Y=";};
     # }))
     playwright-cli
-    unstable.telegram-desktop
+    telegram-desktop
     # tdesktop_p2d0
     nil
     jpegoptim
@@ -940,12 +940,12 @@
     minidlna
     gedit
     my.cassistant
-    unstable.codex
+    codex
     # gnome.gnome-boxes
     # unstable.rustdesk
     # rustdesk
     # my.trex
-    unstable.qbittorrent
+    qbittorrent
     # qbittorrent-qt5
     # epiphany
     # tor-browser-bundle-bin
@@ -979,7 +979,7 @@
     # old-24-11.iconpack-obsidian
     # kdePackages.xwaylandvideobridge
     (pkgs.wrapOBS.override {
-      obs-studio = obs-studio.override { cudaSupport = true; };
+      obs-studio = pkgs.obs-studio.override { cudaSupport = true; };
     } {
       plugins = with pkgs.obs-studio-plugins; [
         # obs-gstreamer
@@ -992,7 +992,7 @@
     # libreoffice
     pkgs.onlyoffice-desktopeditors
     koreader
-    unstable.stremio-linux-shell
+    stremio-linux-shell
     # vlc
     gsettings-desktop-schemas
     wineWowPackages.stable
@@ -1023,8 +1023,8 @@
     # unstable.natron
     # my.natron-bin
     # unstable.natron
-    unstable.scrcpy
-    unstable.yt-dlp
+    scrcpy
+    yt-dlp
     # insomnia
     # pythonPackages.yt-dlp
     imagemagick
@@ -1033,7 +1033,7 @@
     # libpulseaudio
     # pythonPackages.virtualenv
     # pythonPackages.pip
-    unstable.anydesk
+    anydesk
     feh
     eog
     # dmenu

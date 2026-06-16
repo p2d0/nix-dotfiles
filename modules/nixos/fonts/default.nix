@@ -52,7 +52,7 @@ in {
                   pkgs.baekmuk-ttf
                   pkgs.ipafont
                   pkgs.noto-fonts-cjk-sans
-                  unstable.noto-fonts-color-emoji
+                  noto-fonts-color-emoji
                   # pkgs.noto-fonts-emoji
                   #                   (unstable.noto-fonts-color-emoji.overrideAttrs(oldAttrs: rec {
                   #                         installPhase = ''

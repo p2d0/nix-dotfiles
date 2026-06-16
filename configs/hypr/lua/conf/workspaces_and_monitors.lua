@@ -1,6 +1,6 @@
 
 -- Monitor definitions
-hl.monitor({ output = monitor_1, mode = "2560x1080@74.99Hz", position = "0x0", scale = 1, vrr = 0 })
+hl.monitor({ output = monitor_1, mode = "2560x1080@74.99Hz", position = "0x0", scale = 1})
 hl.monitor({ output = monitor_2, mode = "preferred", position = "2560x0", scale = 1 })
 hl.monitor({ output = test, disabled = true })
 

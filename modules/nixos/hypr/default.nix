@@ -23,7 +23,7 @@ in {
         # package = pkgs.hyprland;
         # package = inputs.hyprland.packages.x86_64-linux.hyprland;
         # package
-        package = pkgs.unstable.hyprland;
+        package = pkgs.hyprland;
         # portalPackage = pkgs.unstable.xdg-desktop-portal-hyprland;
         plugins = [
           # pkgs.hyprold.hyprlandPlugins.hy3

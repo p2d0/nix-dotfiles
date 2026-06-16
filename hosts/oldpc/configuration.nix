@@ -248,7 +248,7 @@
       xdotool
       pkgs.onlyoffice-desktopeditors
       claude-code
-      unstable.stremio-linux-shell
+      stremio-linux-shell
       anki-bin
       tldr
       (pkgs.wrapOBS.override {

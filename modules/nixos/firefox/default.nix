@@ -96,7 +96,7 @@ home.activation.linkFirefoxChrome = args.lib.hm.dag.entryAfter ["writeBoundary"]
 
       programs.firefox = {
         enable = true;
-        package = pkgs.unstable.firefox;
+        package = pkgs.firefox;
         # nativeMessagingHosts.packages = [ pkgs.firefoxpwa ];
         policies = {
           Preferences = {
