@@ -24,6 +24,8 @@ in {
             profile = "No VidMem Reuse";
           }) [
             "Hyprland"
+            "max"
+            "org.telegram.desktop"
             ".Hyprland-wrapped"
             "firefox"
             ".firefox-wrapped"

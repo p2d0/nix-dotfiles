@@ -21,4 +21,5 @@ htmlcov
 configs/fcitx5/profile
 .aider*
 meta.db-shm
+meta.db
 meta.db-wal

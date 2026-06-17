@@ -348,7 +348,7 @@
         # "15 21 * * * andrew /etc/nixos/shutdown.sh"
         # "30 21 * * * andrew /etc/nixos/shutdown.sh"
         # "30 21 * * * andrew /etc/nixos/shutdown.sh"
-        "00 22 * * * andrew /etc/nixos/shutdown.sh"
+        "00 22 * * * root /etc/nixos/shutdown.sh"
         "55 21 * * * andrew DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /run/current-system/sw/bin/notify-send 'Shutdown in 5 MINUTES'"
 
         "00 20 * * * andrew /home/andrew/Dropbox/update_ip.sh"
@@ -699,7 +699,7 @@
     # my.gemini
     gcc.cc.libgcc.lib
     nwg-drawer
-    opencode
+    unstable.opencode
     keepassxc
     tree
     my.realm-studio-bin
@@ -979,9 +979,9 @@
     # old-24-11.iconpack-obsidian
     # kdePackages.xwaylandvideobridge
     (pkgs.wrapOBS.override {
-      obs-studio = pkgs.obs-studio.override { cudaSupport = true; };
+      obs-studio = pkgs.unstable.obs-studio.override { cudaSupport = true; };
     } {
-      plugins = with pkgs.obs-studio-plugins; [
+      plugins = with pkgs.unstable.obs-studio-plugins; [
         # obs-gstreamer
         obs-vkcapture
         # obs-vaapi
