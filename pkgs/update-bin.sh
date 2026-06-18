@@ -5,7 +5,10 @@ cd "$(dirname "${BASH_SOURCE[0]}")"
 
 bin_file="$(realpath ./osu-lazer-bin.nix)"
 
-new_version="$(curl -s "https://api.github.com/repos/ppy/osu/releases?per_page=10" | jq -r '[.[].name | select(contains("-tachyon") | not)][0]')"
+# stable
+# new_version="$(curl -s "https://api.github.com/repos/ppy/osu/releases?per_page=10" | jq -r '[.[].name | select(contains("-tachyon") | not)][0]')"
+# tachyon
+new_version="$(curl -s "https://api.github.com/repos/ppy/osu/releases?per_page=1" | jq -r '.[0].name')"
 old_version="$(sed -nE 's/\s*version = "(.*)".*/\1/p' ./osu-lazer-bin.nix)"
 echo $new_version
 if [[ "$new_version" == "$old_version" ]]; then

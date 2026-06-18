@@ -7,7 +7,7 @@
 
 let
   pname = "osu-lazer-bin";
-  version = "2026.429.0-lazer";
+  version = "2026.610.0-tachyon";
 
   src = {
     aarch64-darwin = fetchzip {
@@ -22,7 +22,7 @@ let
     };
     x86_64-linux = fetchurl {
       url = "https://github.com/ppy/osu/releases/download/${version}/osu.AppImage";
-      hash = "sha256-3yBDCMffgWQKmBHETYl7IrvT5BOE6vN+sH8dGg+w//s=";
+      hash = "sha256-SK0DTLUlEVAbaelA6++zxZD51+pZNSHP1ChD1TlTvhM=";
     };
   }.${stdenv.system} or (throw "${pname}-${version}: ${stdenv.system} is unsupported.");
 
@@ -58,6 +58,10 @@ else appimageTools.wrapType2 {
   inherit pname version src meta passthru;
 
   extraPkgs = pkgs: with pkgs; [ icu ];
+
+  profile = ''
+    export OSU_SDL3=0
+  '';
 
   extraInstallCommands =
     let
