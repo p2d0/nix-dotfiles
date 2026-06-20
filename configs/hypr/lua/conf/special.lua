@@ -34,7 +34,7 @@ hl.bind(mainMod .. " + z", hl.dsp.exec_cmd("/etc/nixos/configs/hypr/position-ema
 
 -- Workspace rules with gaps and on-created-empty
 hl.workspace_rule({ workspace = "special:default", gaps_out = 50, gaps_in = 15 })
-hl.workspace_rule({ workspace = "special:alacritty", gaps_out = 50, gaps_in = 10, on_created_empty = "alacritty"})
+hl.workspace_rule({ workspace = "special:alacritty", gaps_out = 50, gaps_in = 10, on_created_empty = "foot"})
 hl.workspace_rule({ workspace = "special:openai", gaps_out = 50, gaps_in = 10, on_created_empty = "firefox-pwa https://chatgpt.com/" })
 hl.workspace_rule({ workspace = "special:grok", gaps_out = 50, gaps_in = 10, on_created_empty = "firefox-pwa https://grok.com/" })
 hl.workspace_rule({ workspace = "special:otherai", gaps_out = 50, gaps_in = 15, on_created_empty = "firefox-pwa https://claude.ai/" })

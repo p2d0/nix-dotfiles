@@ -36,7 +36,7 @@ Instead, proactively write the necessary background scripts (Python, Bash, etc.)
 
 ## MCP Servers
 
-When available, prefer MCP tools over built-in web tools for better results:
+When available, prefer MCP tools over built-in web tools for better results: 
 
 - **Exa MCP** (`exa`): Use for web search and content retrieval. Prefer this for finding specific technical documentation, code examples, or recent information.
 - **Jina MCP** (`jina-mcp-server`): Use for reading and summarizing web content. Prefer this when you need to extract or summarize content from a specific URL.
@@ -47,6 +47,8 @@ Use MCPs proactively when the task involves:
 - Researching current best practices or recent changes
 
 Additional tools appear per benchmark: `BrowserNavigate`/`Click`/`Type`/`Scroll`/`Extract`/`Back`/`History` and `EvidenceAdd`/`Get`/`List` (GAIA). Their schemas are passed to you directly when available.
+
+You'll need first to connect to mcp tools.
 
 # Approaching complex tasks
 

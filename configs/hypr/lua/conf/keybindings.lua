@@ -1,6 +1,6 @@
 
 local menu = "~/.config/rofi/launchers/colorful/launcher.sh"
-local terminal = "alacritty"
+local terminal = "foot"
 local fileManager = "dolphin"
 mainMod = "SUPER"
 

@@ -1,9 +1,24 @@
 #!/usr/bin/env bash
+# firefox-pwa — launch Firefox in PWA-like mode with optional window rules
+# Usage: firefox-pwa <url> [rules...]
+#   rules: hyprctl set_prop key=value pairs (space-separated)
+#   e.g. firefox-pwa https://example.com float=1
+#   e.g. firefox-pwa https://example.com opacity="0.9 override"
+#   default: fullscreenstate 0 2 (PWA mode)
+
 URL="$1"
+shift
 
 if [[ -z "$URL" ]]; then
-    echo "Usage: firefox-pwa <url>"
+    echo "Usage: firefox-pwa <url> [rules...]"
     exit 1
+fi
+
+# Default: PWA fullscreen
+if [[ $# -eq 0 ]]; then
+    RULES="fullscreenstate 0 2"
+else
+    RULES="$*"
 fi
 
 # Get current Firefox window addresses
@@ -16,18 +31,29 @@ setsid firefox --new-window "$URL" &
 for i in {1..100}; do
     after=$(hyprctl clients -j | jq -r '[.[] | select(.class == "firefox") | .address] | sort | join("\n")')
     
-    # Find the new address that wasn't in before
     new_addr=$(comm -13 <(echo "$before") <(echo "$after") | head -1)
     
     if [[ -n "$new_addr" ]]; then
-        # Small delay to let window settle
         sleep 0.3
-        hyprctl dispatch focuswindow "address:$new_addr"
-        hyprctl dispatch fullscreenstate 0 2
+        hyprctl eval "hl.dispatch(hl.dsp.focus({ window = hl.get_window('address:$new_addr') }))"
+        
+        # Apply rules
+        if [[ "$RULES" == fullscreenstate\ * ]]; then
+            internal=$(echo "$RULES" | awk '{print $2}')
+            client=$(echo "$RULES" | awk '{print $3}')
+            hyprctl eval "hl.dispatch(hl.dsp.window.fullscreen_state({ internal = $internal, client = $client, window = hl.get_window('address:$new_addr') }))"
+        else
+            for rule in $RULES; do
+                key="${rule%%=*}"
+                val="${rule#*=}"
+                hyprctl eval "hl.dispatch(hl.dsp.window.set_prop({ prop = '$key', value = '$val', window = hl.get_window('address:$new_addr') }))"
+            done
+        fi
+        
         exit 0
     fi
     sleep 0.1
 done
 
 echo "Timeout waiting for Firefox window"
-exit 1o
+exit 1

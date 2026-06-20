@@ -21,7 +21,7 @@
         "foot": "",
         "code": "󰨞",
         "class<emacs>": "",
-        "class<max>": "",
+        "title<.*MAX.*>": "",
         "class<emacs> title<.*org-mode.*>": "",
         "class<vim>": "",
         "class<nvim>": "",

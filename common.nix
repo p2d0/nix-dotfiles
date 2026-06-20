@@ -317,6 +317,9 @@
       recursive = true;
     };
 
+    ".config/foot".source =
+      config.lib.file.mkOutOfStoreSymlink /etc/nixos/configs/foot;
+
     ".config/psiphon" = {
       source = ./configs/psiphon;
       recursive = true;

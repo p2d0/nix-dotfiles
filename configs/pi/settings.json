@@ -11,11 +11,9 @@
   "packages": [
     "npm:pi-caveman",
     "npm:pi-rtk-optimizer",
-    "npm:pi-lens",
     "npm:pi-ask-user",
     "npm:pi-mcp-adapter",
-    "npm:@firstpick/pi-extension-nixos-wiki-local",
-    "git:github.com/deflating/tau"
+    "npm:@firstpick/pi-extension-nixos-wiki-local"
   ],
-  "hideThinkingBlock": true
+  "hideThinkingBlock": false
 }

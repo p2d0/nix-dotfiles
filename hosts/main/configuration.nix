@@ -720,6 +720,7 @@
     kdePackages.kwalletmanager
     # unstable.unarc
     pkgs.libayatana-appindicator
+    # my.little-coder
     # pkgs.libayatana-appindicator-gtk3
     conda
     # megasync
