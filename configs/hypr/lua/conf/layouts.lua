@@ -5,7 +5,7 @@ hl.config({
     },
     master = {
         mfact = 0.70,
-        orientation = "center",
+        orientation = "right",
     },
     dwindle = {},
 })
