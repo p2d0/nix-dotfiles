@@ -348,8 +348,8 @@
         # "15 21 * * * andrew /etc/nixos/shutdown.sh"
         # "30 21 * * * andrew /etc/nixos/shutdown.sh"
         # "30 21 * * * andrew /etc/nixos/shutdown.sh"
-        # "00 22 * * * root /etc/nixos/shutdown.sh"
-        # "55 21 * * * andrew DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /run/current-system/sw/bin/notify-send 'Shutdown in 5 MINUTES'"
+        "00 22 * * * root /etc/nixos/shutdown.sh"
+        "55 21 * * * andrew DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /run/current-system/sw/bin/notify-send 'Shutdown in 5 MINUTES'"
 
         "00 20 * * * andrew /home/andrew/Dropbox/update_ip.sh"
         # "00 23 * * * andrew /home/andrew/Dropbox/miner_enable.sh"
