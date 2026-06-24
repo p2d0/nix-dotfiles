@@ -928,7 +928,7 @@
     #     fetchSubmodules = true;
     #     sha256 = "sha256-/x7VZssjPk17gYSXxU/4KdHSdOjxW8ncWxItwj7lA/Y=";};
     # }))
-    playwright-cli
+    playwright-test
     telegram-desktop
     # tdesktop_p2d0
     nil

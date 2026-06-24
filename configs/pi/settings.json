@@ -10,10 +10,10 @@
   },
   "packages": [
     "npm:pi-caveman",
-    "npm:pi-rtk-optimizer",
     "npm:pi-ask-user",
     "npm:pi-mcp-adapter",
-    "npm:@firstpick/pi-extension-nixos-wiki-local"
+    "npm:@firstpick/pi-extension-nixos-wiki-local",
+    "git:github.com/deflating/tau"
   ],
   "hideThinkingBlock": false
 }
