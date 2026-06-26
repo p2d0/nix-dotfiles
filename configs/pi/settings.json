@@ -12,8 +12,7 @@
     "npm:pi-caveman",
     "npm:pi-ask-user",
     "npm:pi-mcp-adapter",
-    "npm:@firstpick/pi-extension-nixos-wiki-local",
-    "git:github.com/deflating/tau"
+    "npm:@firstpick/pi-extension-nixos-wiki-local"
   ],
   "hideThinkingBlock": false
 }
