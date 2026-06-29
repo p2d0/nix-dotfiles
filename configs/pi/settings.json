@@ -14,5 +14,5 @@
     "npm:pi-mcp-adapter",
     "npm:@firstpick/pi-extension-nixos-wiki-local"
   ],
-  "hideThinkingBlock": false
+  "hideThinkingBlock": true
 }
