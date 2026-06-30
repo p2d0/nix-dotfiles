@@ -929,6 +929,7 @@
     #     sha256 = "sha256-/x7VZssjPk17gYSXxU/4KdHSdOjxW8ncWxItwj7lA/Y=";};
     # }))
     playwright-test
+    open-webui
     telegram-desktop
     # tdesktop_p2d0
     nil

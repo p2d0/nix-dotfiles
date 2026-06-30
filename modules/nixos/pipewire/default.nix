@@ -112,6 +112,7 @@ lib.my.withHome
                   "node.name" = "rnnoise_source";
                   "node.latency" = "256/48000";
                   "media.class" = "Audio/Source";
+                  "audio.position" = [ "FL" "FR" ];
                 };
               };
             }
