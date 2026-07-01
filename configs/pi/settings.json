@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.73.0",
+  "lastChangelogVersion": "0.80.2",
   "defaultProvider": "qwen3.6-local",
   "defaultModel": "qwen3.6-27b-autoround",
   "defaultThinkingLevel": "high",
@@ -9,10 +9,12 @@
     "keepRecentTokens": 8192
   },
   "packages": [
-    "npm:pi-caveman",
     "npm:pi-ask-user",
     "npm:pi-mcp-adapter",
-    "npm:@firstpick/pi-extension-nixos-wiki-local"
+    "npm:@firstpick/pi-extension-nixos-wiki-local",
+    "npm:@plannotator/pi-extension",
+    "npm:pi-caveman"
   ],
-  "hideThinkingBlock": true
+  "hideThinkingBlock": true,
+  "theme": "dark"
 }
