@@ -29,14 +29,24 @@ in {
           # pkgs.hyprold.hyprlandPlugins.hy3
           # pkgs.hyprlandPlugins.hyprgrass
 
-          # pkgs.unstable.hyprlandPlugins.hypr-darkwindow
+          # pkgs.hyprlandPlugins.hypr-darkwindow
           # (pkgs.unstable.hyprlandPlugins.hypr-darkwindow.overrideAttrs(oldAttrs: rec {
           #   patches = [
-          #     /etc/nixos/modules/nixos/hypr/noblur.patch
-          #     /etc/nixos/modules/nixos/hypr/tearing.patch
+          #     /etc/nixos/modules/nixos/hypr/eldata.patch
+          #     # /etc/nixos/modules/nixos/hypr/noblur.patch
+          #     # /etc/nixos/modules/nixos/hypr/tearing.patch
           #   ];
           # }))
+
+          (pkgs.my.hypr-darkwindow.overrideAttrs(oldAttrs: rec {
+            patches = [
+              /etc/nixos/modules/nixos/hypr/eldata.patch
+              # /etc/nixos/modules/nixos/hypr/noblur.patch
+              # /etc/nixos/modules/nixos/hypr/tearing.patch
+            ];
+          }))
  
+          # pkgs.my.hypr-darkwindow
           # inputs.hypr-darkwindow.packages.x86_64-linux.Hypr-DarkWindow
           # inputs.hy3.packages.x86_64-linux.hy3
         ];

@@ -1,0 +1,20 @@
+diff --git a/src/Hooks.cpp b/src/Hooks.cpp
+index a78847e..b013c7a 100644
+--- a/src/Hooks.cpp
++++ b/src/Hooks.cpp
+@@ -16,7 +16,7 @@ HOOK_FUNCTION(Render::, CRenderPass, render,
+ {
+     for (auto& elData : thisptr->m_passElements)
+     {
+-        if (CSurfacePassElement* s = dynamic_cast<CSurfacePassElement*>(elData->element.get()))
++        if (CSurfacePassElement* s = dynamic_cast<CSurfacePassElement*>(elData.element.get()))
+         {
+             if (s->m_data.pWindow)
+             {
+@@ -87,4 +87,4 @@ HOOK_FUNCTION(Render::GL::, CHyprOpenGLImpl, getShaderVariant,
+         g.NotifyError(std::string("Failed to apply custom shader: ") + ex.what());
+         return original(thisptr, frag, features);
+     }
+-}
+\ No newline at end of file
++}

@@ -36,6 +36,25 @@ hl.window_rule({ match = { class = "^(firefox)$" }, border_size = 0 })
 hl.window_rule({ match = { class = "^(osu!)$", float = true }, opacity = 1 })
 hl.window_rule({ match = { class = "^(osu!)$" }, no_blur = true })
 
+hl.config({
+    plugin = {
+        darkwindow = {
+            load_shaders = "all" -- defaults to "all"
+        },
+    }
+})
+
+-- hl.plugin.darkwindow.load_shader("chromakey", {
+--                                    from = "chromakey",
+--                                    introduces_transparency = true,
+--                                    args = "bkg=[0 0 0] amount=0 targetOpacity=0 similarity=0",
+-- })
+
+hl.window_rule({
+    match = { class = "^(osu!)$" },
+    ["darkwindow:shade"] = "chromakey bkg=[0 0 0] amount=0 targetOpacity=0 similarity=0",
+})
+
 -- darkwindow plugin config
 -- hl.config({
 --     plugin = {

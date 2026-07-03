@@ -79,8 +79,23 @@ hl.bind(mainMod .. " + right", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mainMod .. " + left", hl.dsp.focus({ workspace = "e-1" }))
 
 -- Resize + center + move
+-- hl.bind(mainMod .. " + bracketleft", function()
+--     hl.dsp.exec_cmd("hyprctl dispatch resizeactive exact 100% 100% && hyprctl dispatch centerwindow && hyprctl dispatch moveactive 0 15")
+-- end)
+
 hl.bind(mainMod .. " + bracketleft", function()
-    hl.dsp.exec_cmd("hyprctl dispatch resizeactive exact 100% 100% && hyprctl dispatch centerwindow && hyprctl dispatch moveactive 0 15")
+    -- Native dispatcher calls are safer and significantly faster
+    local monitor = hl.get_active_monitor()
+
+    if not monitor then return end
+
+    local height = monitor.height;
+
+    local width = monitor.width;
+
+    hl.dispatch(hl.dsp.window.resize({ x = width, y = height}))
+    hl.dispatch(hl.dsp.window.center())
+    hl.dispatch(hl.dsp.window.move({ x = 0, y = 15, relative = true }))
 end)
 
 hl.bind(mainMod .. " + PERIOD", hl.dsp.window.pin())
