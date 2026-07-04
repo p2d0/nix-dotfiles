@@ -51,7 +51,7 @@ hl.config({
 -- })
 
 hl.window_rule({
-    match = { class = "^(osu!)$" },
+    match = { class = "^(osu!)$", float = true },
     ["darkwindow:shade"] = "chromakey bkg=[0 0 0] amount=0 targetOpacity=0 similarity=0",
 })
 
