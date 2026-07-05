@@ -15,6 +15,6 @@
     "npm:@plannotator/pi-extension",
     "npm:pi-caveman"
   ],
-  "hideThinkingBlock": true,
+  "hideThinkingBlock": false,
   "theme": "dark"
 }
