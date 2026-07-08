@@ -13,7 +13,8 @@
     "npm:pi-mcp-adapter",
     "npm:@firstpick/pi-extension-nixos-wiki-local",
     "npm:@plannotator/pi-extension",
-    "npm:pi-caveman"
+    "npm:pi-caveman",
+    "npm:@juicesharp/rpiv-advisor"
   ],
   "hideThinkingBlock": false,
   "theme": "dark"
