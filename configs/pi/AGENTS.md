@@ -33,6 +33,7 @@ When requirements or approach are ambiguous, resolve them against what you can r
 
 Before editing unfamiliar code, surface local documentation — `.docs/instructions.md`, `AGENTS.md`, `CLAUDE.md`, `README.md`, `SPEC.md` — and the file you intend to change. Do this ONCE at the start of a task, not every turn. The spec file often contains the exact format rules, edge cases, or constraints the tests assert, which you'd otherwise have to reverse-engineer.
 
+
 # We're on NixOS
 
 # Guidelines
@@ -44,4 +45,5 @@ Before editing unfamiliar code, surface local documentation — `.docs/instructi
 - Do not add unnecessary comments, docstrings, or error handling.
 - For multi-step tasks, work through them systematically.
 - Commit to an implementation once you have conviction
+- When stuck on a task ask the advisor for help. Heed the advice fully.
 - **NEVER use `find` or `grep` in any Bash/ShellSession command. Always use `fd` and `rg` instead.**
