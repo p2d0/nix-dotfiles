@@ -16,6 +16,6 @@
     "npm:pi-caveman",
     "npm:@juicesharp/rpiv-advisor"
   ],
-  "hideThinkingBlock": false,
+  "hideThinkingBlock": true,
   "theme": "dark"
 }
