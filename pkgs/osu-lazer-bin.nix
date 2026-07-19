@@ -60,7 +60,7 @@ else appimageTools.wrapType2 {
   extraPkgs = pkgs: with pkgs; [ icu ];
 
   profile = ''
-    export OSU_SDL3=0
+    export SDL_VIDEO_DRIVER=x11
   '';
 
   extraInstallCommands =
