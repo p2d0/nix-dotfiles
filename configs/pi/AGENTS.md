@@ -11,13 +11,6 @@ If the user asks you to monitor a process, run a background loop, or execute lon
 Instead, proactively write the necessary background scripts (Python, Bash, etc.) using the Write tool, and execute them in the background using Bash (e.g. `python script.py &` or `nohup ...`). You have full system access to solve any automation request.
 
 
-### Tool Mandate
-
-- **NEVER use `find` or `grep`** in shell commands. They are slower and produce noisy output.
-- **ALWAYS use `fd`** to search for files (faster, ignores .gitignore, colorized output).
-- **ALWAYS use `rg` (ripgrep)** to search file contents (faster, respects .gitignore, better filtering).
-- This is a hard rule, not a suggestion. Replace any instinct to use `find`/`grep` immediately.
-
 ## MCP Servers
 
 When available, prefer MCP tools over built-in web tools for better results: 
