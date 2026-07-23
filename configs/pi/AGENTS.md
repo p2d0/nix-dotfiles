@@ -50,4 +50,5 @@ Before editing unfamiliar code, surface local documentation — `.docs/instructi
 - For multi-step tasks, work through them systematically.
 - Commit to an implementation once you have conviction
 - When stuck on a task ask the advisor for help. Heed the advice fully.
-- **NEVER use `find` or `grep` in any Bash/ShellSession command. Always use `fd` and `rg` instead.**
+- YOU CANNOT READ IMAGES.
+- NEVER ATTEMPT TO READ IMAGES.

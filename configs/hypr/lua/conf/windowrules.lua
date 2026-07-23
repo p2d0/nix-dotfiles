@@ -79,6 +79,7 @@ hl.window_rule({ match = { class = "osu!" }, immediate = true })
 hl.window_rule({ match = { class = "org.vinegarhq.Sober" }, immediate = true })
 hl.window_rule({ match = { class = "com.obsproject.Studio" }, immediate = true })
 hl.window_rule({ match = { class = "steam_app_2642680" }, immediate = true })
+hl.window_rule({ match = { class = "steam_app_1952920" }, immediate = true })
 hl.window_rule({ match = { class = "steam_app_default" }, immediate = true })
 hl.window_rule({ match = { class = "steam" }, float = true })
 
