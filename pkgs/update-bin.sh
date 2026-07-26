@@ -5,12 +5,26 @@ cd "$(dirname "${BASH_SOURCE[0]}")"
 
 bin_file="$(realpath ./osu-lazer-bin.nix)"
 
-# stable
-# new_version="$(curl -s "https://api.github.com/repos/ppy/osu/releases?per_page=10" | jq -r '[.[].name | select(contains("-tachyon") | not)][0]')"
-# tachyon
-new_version="$(curl -s "https://api.github.com/repos/ppy/osu/releases?per_page=1" | jq -r '.[0].name')"
+# Fetch latest release data
+api_response="$(curl -s "https://api.github.com/repos/ppy/osu/releases?per_page=1")"
+
+# Check if GitHub returned an API error (e.g., rate limit exceeded)
+if echo "$api_response" | jq -e '.message?' >/dev/null 2>&1; then
+    echo "Error from GitHub API: $(echo "$api_response" | jq -r '.message')" >&2
+    exit 1
+fi
+
+# Extract version name safely from array or object
+new_version="$(echo "$api_response" | jq -r 'if type == "array" then .[0].name else .name // empty end')"
+
+if [[ -z "$new_version" || "$new_version" == "null" ]]; then
+    echo "Error: Could not extract version name from GitHub API response." >&2
+    exit 1
+fi
+
 old_version="$(sed -nE 's/\s*version = "(.*)".*/\1/p' ./osu-lazer-bin.nix)"
-echo $new_version
+
+echo "Latest version: $new_version"
 if [[ "$new_version" == "$old_version" ]]; then
     echo "Already up to date."
     exit 0
@@ -27,6 +41,7 @@ for pair in \
     set -- $pair
     echo "Prefetching binary for $1..."
     prefetch_output=$(nix --extra-experimental-features nix-command store prefetch-file --json --hash-type sha256 "https://github.com/ppy/osu/releases/download/$new_version/$2")
+    
     if [[ "$1" == *"darwin"* ]]; then
         store_path=$(jq -r '.storePath' <<<"$prefetch_output")
         tmpdir=$(mktemp -d)
@@ -36,6 +51,7 @@ for pair in \
     else
         hash=$(jq -r '.hash' <<<"$prefetch_output")
     fi
+    
     echo "$1 ($2): hash = $hash"
     sed -Ei.bak '/ *'"$1"' = /{N;N; s@("sha256-)[^;"]+@"'"$hash"'@}' "$bin_file"
     rm "$bin_file.bak"
