@@ -14,7 +14,8 @@
     "npm:@firstpick/pi-extension-nixos-wiki-local",
     "npm:@plannotator/pi-extension",
     "npm:pi-caveman",
-    "npm:@juicesharp/rpiv-advisor"
+    "npm:@juicesharp/rpiv-advisor",
+    "npm:@agent-sh/computer-use-linux"
   ],
   "hideThinkingBlock": false,
   "theme": "dark"

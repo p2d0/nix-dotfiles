@@ -793,7 +793,7 @@
     # deluge
     usbutils
     pmbootstrap
-    # unstable.davinci-resolve
+    davinci-resolve
     # unstable.firefox
     # unstable.librewolf
     xcompmgr

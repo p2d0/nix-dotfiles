@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "computer-use-linux": {
+      "command": "/home/andrew/.pi/agent/npm/node_modules/@agent-sh/computer-use-linux/npm/bin/computer-use-linux-linux-x64",
+      "args": [
+        "mcp"
+      ]
+    }
+  }
+}
