@@ -1,0 +1,11 @@
+{
+  "enabled": true,
+  "cliCommand": "codex",
+  "clis": {
+    "codex": {},
+    "claude": {}
+  },
+  "timeoutMs": 300000,
+  "maxUsesPerRun": 3,
+  "maxContextMessages": 320
+}

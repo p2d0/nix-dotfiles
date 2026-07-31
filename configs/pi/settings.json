@@ -14,8 +14,9 @@
     "npm:@firstpick/pi-extension-nixos-wiki-local",
     "npm:@plannotator/pi-extension",
     "npm:pi-caveman",
-    "npm:@juicesharp/rpiv-advisor",
-    "npm:@agent-sh/computer-use-linux"
+    "npm:@agent-sh/computer-use-linux",
+    "git:github.com/DietrichGebert/ponytail",
+    "npm:pi-advisor-flow"
   ],
   "hideThinkingBlock": false,
   "theme": "dark"

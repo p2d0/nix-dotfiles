@@ -1,5 +1,12 @@
 {
   "providers": {
+    "openrouter": {
+      "models": [
+        {
+          "id": "deepseek/deepseek-v4-flash-0731"
+        }
+      ]
+    },
     "antigravity-manager": {
       "baseUrl": "http://127.0.0.1:8045/v1",
       "apiKey": "sk-94e046219d02457486e1910271961a17",

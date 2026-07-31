@@ -1,11 +1,25 @@
 {
-  "enabled": true,
-  "cliCommand": "codex",
-  "clis": {
-    "codex": {},
-    "claude": {}
-  },
-  "timeoutMs": 300000,
-  "maxUsesPerRun": 3,
-  "maxContextMessages": 320
+  "advisor": "openrouter/deepseek/deepseek-v4-flash-0731",
+  "advisorAutoLoopGate": true,
+  "advisorBlockOnBlocked": true,
+  "advisorCollapseResponses": false,
+  "advisorCompletionGate": true,
+  "advisorFailureGate": true,
+  "advisorLoopThreshold": 3,
+  "advisorPlanGate": true,
+  "contextMaxChars": 9007199254740991,
+  "executor": "qwen3.6-local/qwen3.6-27b-autoround",
+  "advisorGitContext": "summary",
+  "advisorGitContextMaxChars": 20000,
+  "advisorHerdrIntegration": true,
+  "advisorRedactSecrets": false,
+  "advisorSessionSummary": false,
+  "advisorToolPolicies": {},
+  "advisorToolResultMaxBytes": 51200,
+  "advisorToolResultMaxLines": 2000,
+  "advisorUntrackedContent": false,
+  "alwaysOn": true,
+  "gateFailureMode": "block-session",
+  "simpleMode": false,
+  "advisorOutcomeLogging": false
 }
