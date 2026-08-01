@@ -1,13 +1,8 @@
 {
   "lastChangelogVersion": "0.80.2",
-  "defaultProvider": "qwen3.6-local",
-  "defaultModel": "qwen3.6-27b-autoround",
+  "defaultProvider": "opencode",
+  "defaultModel": "deepseek-v4-flash-free",
   "defaultThinkingLevel": "high",
-  "compaction": {
-    "enabled": true,
-    "reserveTokens": 8192,
-    "keepRecentTokens": 8192
-  },
   "packages": [
     "npm:pi-ask-user",
     "npm:pi-mcp-adapter",

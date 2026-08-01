@@ -8,7 +8,7 @@
   "advisorLoopThreshold": 3,
   "advisorPlanGate": true,
   "contextMaxChars": 9007199254740991,
-  "executor": "qwen3.6-local/qwen3.6-27b-autoround",
+  "executor": "opencode/deepseek-v4-flash-free",
   "advisorGitContext": "summary",
   "advisorGitContextMaxChars": 20000,
   "advisorHerdrIntegration": true,
@@ -18,7 +18,7 @@
   "advisorToolResultMaxBytes": 51200,
   "advisorToolResultMaxLines": 2000,
   "advisorUntrackedContent": false,
-  "alwaysOn": true,
+  "alwaysOn": false,
   "gateFailureMode": "block-session",
   "simpleMode": false,
   "advisorOutcomeLogging": false

@@ -1,9 +1,19 @@
 {
   "providers": {
+      "opencode": {
+          "models":[
+              {
+                  "id": "deepseek-v4-flash-free",
+                  "contextWindow": 1048576
+              }
+          ]
+      },
     "openrouter": {
       "models": [
         {
-          "id": "deepseek/deepseek-v4-flash-0731"
+          "id": "deepseek/deepseek-v4-flash-0731",
+          "contextWindow": 1048576,
+          "maxTokens": 65536
         }
       ]
     },
