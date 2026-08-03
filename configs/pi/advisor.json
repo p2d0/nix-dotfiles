@@ -8,7 +8,7 @@
   "advisorLoopThreshold": 3,
   "advisorPlanGate": true,
   "contextMaxChars": 9007199254740991,
-  "executor": "opencode/deepseek-v4-flash-free",
+  "executor": "opencode-go/deepseek-v4-flash",
   "advisorGitContext": "summary",
   "advisorGitContextMaxChars": 20000,
   "advisorHerdrIntegration": true,

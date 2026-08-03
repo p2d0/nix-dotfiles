@@ -1,7 +1,7 @@
 {
   "lastChangelogVersion": "0.80.2",
-  "defaultProvider": "opencode",
-  "defaultModel": "deepseek-v4-flash-free",
+  "defaultProvider": "opencode-go",
+  "defaultModel": "deepseek-v4-flash",
   "defaultThinkingLevel": "high",
   "packages": [
     "npm:pi-ask-user",
@@ -11,7 +11,8 @@
     "npm:pi-caveman",
     "npm:@agent-sh/computer-use-linux",
     "git:github.com/DietrichGebert/ponytail",
-    "npm:pi-advisor-flow"
+    "npm:pi-advisor-flow",
+    "https://github.com/monotykamary/pi-opencode-go-provider"
   ],
   "hideThinkingBlock": false,
   "theme": "dark"
