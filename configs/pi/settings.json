@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.80.2",
+  "lastChangelogVersion": "0.83.0",
   "defaultProvider": "opencode-go",
   "defaultModel": "deepseek-v4-flash",
   "defaultThinkingLevel": "high",
@@ -12,7 +12,8 @@
     "npm:@agent-sh/computer-use-linux",
     "git:github.com/DietrichGebert/ponytail",
     "npm:pi-advisor-flow",
-    "https://github.com/monotykamary/pi-opencode-go-provider"
+    "git:github.com/okiess/pi-opencode-go-provider@fix/context-window-merge",
+    "npm:pi-free"
   ],
   "hideThinkingBlock": false,
   "theme": "dark"

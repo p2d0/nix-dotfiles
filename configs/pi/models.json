@@ -1,80 +1,89 @@
 {
-  "providers": {
-      "opencode": {
-          "models":[
-              {
-                  "id": "deepseek-v4-flash-free",
-                  "contextWindow": 1048576
-              }
-          ]
-      },
-    "openrouter": {
-      "models": [
-        {
-          "id": "deepseek/deepseek-v4-flash-0731",
-          "contextWindow": 1048576,
-          "maxTokens": 65536
-        }
-      ]
-    },
-    "antigravity-manager": {
-      "baseUrl": "http://127.0.0.1:8045/v1",
-      "apiKey": "sk-94e046219d02457486e1910271961a17",
-      "api": "openai-completions",
-      "authHeader": true,
-      "models": [
-        {
-          "id": "gemini-3-flash",
-          "name": "Gemini 3 Flash",
-          "reasoning": true,
-          "input": ["text", "image"],
-          "contextWindow": 1048576,
-          "maxTokens": 65536
+    "providers": {
+        "opencode": {
+            "models":[
+                {
+                    "id": "deepseek-v4-flash-free",
+                    "contextWindow": 1048576
+                }
+            ]
         },
-        {
-          "id": "claude-opus-4-6-thinking",
-          "name": "Claude Opus 4.6",
-          "reasoning": true,
-          "input": ["text", "image"],
-          "contextWindow": 1048576,
-          "maxTokens": 65536
+        "opencode-go":{
+
+            "models":[
+                {
+                    "id": "gpt-5.6-luna",
+                    "contextWindow": 1048576
+                }
+            ]
         },
-        {
-          "id": "claude-sonnet-4-6",
-          "name": "Claude Sonnet 4.6",
-          "reasoning": true,
-          "input": ["text", "image"],
-          "contextWindow": 1048576,
-          "maxTokens": 65536
+        "openrouter": {
+            "models": [
+                {
+                    "id": "deepseek/deepseek-v4-flash-0731",
+                    "contextWindow": 1048576,
+                    "maxTokens": 65536
+                }
+            ]
         },
-        {
-          "id": "gemini-3.1-pro-high",
-          "name": "Gemini 3.1 Pro High",
-          "reasoning": true,
-          "input": ["text", "image"],
-          "contextWindow": 1048576,
-          "maxTokens": 65535
+        "antigravity-manager": {
+            "baseUrl": "http://127.0.0.1:8045/v1",
+            "apiKey": "sk-94e046219d02457486e1910271961a17",
+            "api": "openai-completions",
+            "authHeader": true,
+            "models": [
+                {
+                    "id": "gemini-3-flash",
+                    "name": "Gemini 3 Flash",
+                    "reasoning": true,
+                    "input": ["text", "image"],
+                    "contextWindow": 1048576,
+                    "maxTokens": 65536
+                },
+                {
+                    "id": "claude-opus-4-6-thinking",
+                    "name": "Claude Opus 4.6",
+                    "reasoning": true,
+                    "input": ["text", "image"],
+                    "contextWindow": 1048576,
+                    "maxTokens": 65536
+                },
+                {
+                    "id": "claude-sonnet-4-6",
+                    "name": "Claude Sonnet 4.6",
+                    "reasoning": true,
+                    "input": ["text", "image"],
+                    "contextWindow": 1048576,
+                    "maxTokens": 65536
+                },
+                {
+                    "id": "gemini-3.1-pro-high",
+                    "name": "Gemini 3.1 Pro High",
+                    "reasoning": true,
+                    "input": ["text", "image"],
+                    "contextWindow": 1048576,
+                    "maxTokens": 65535
+                }
+            ]
+        },
+        "qwen3.6-local": {
+            "baseUrl": "http://127.0.0.1:8060/v1",
+            "apiKey": "ignored",
+            "api": "openai-completions",
+            "authHeader": true,
+            "compat": {
+                "supportsDeveloperRole": false
+            },
+            "models": [
+                {
+                    "id": "qwen3.6-27b-autoround",
+                    "name": "Qwen 3.6 27B (Local)",
+                    "reasoning": true,
+                    "input": ["text", "image"],
+                    "contextWindow": 200000,
+                    "maxTokens": 55000
+                }
+            ]
         }
-      ]
-    },
-    "qwen3.6-local": {
-      "baseUrl": "http://127.0.0.1:8060/v1",
-      "apiKey": "ignored",
-      "api": "openai-completions",
-      "authHeader": true,
-      "compat": {
-        "supportsDeveloperRole": false
-      },
-      "models": [
-        {
-          "id": "qwen3.6-27b-autoround",
-          "name": "Qwen 3.6 27B (Local)",
-          "reasoning": true,
-          "input": ["text", "image"],
-          "contextWindow": 200000,
-          "maxTokens": 55000
-        }
-      ]
     }
-  }
 }

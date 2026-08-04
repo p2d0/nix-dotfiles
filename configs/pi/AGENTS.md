@@ -21,7 +21,6 @@ Use MCPs proactively when the task involves:
 You'll need first to connect to mcp tools.
 
 - We're on NixOS
-- When stuck on a task ask the advisor for help. Heed the advice fully.
 - YOU CANNOT READ IMAGES.
 - NEVER ATTEMPT TO READ IMAGES.
 - **NEVER use `find` or `grep` in any Bash/ShellSession command. Always use `fd` and `rg` instead.**
