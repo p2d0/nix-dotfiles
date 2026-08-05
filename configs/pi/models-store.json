@@ -318,7 +318,7 @@
       },
       {
         "id": "deepseek-v4-flash",
-        "name": "DeepSeek V4 Flash 0731",
+        "name": "DeepSeek V4 Flash (New)",
         "api": "openai-completions",
         "provider": "opencode",
         "baseUrl": "https://opencode.ai/zen/v1",
@@ -1491,6 +1491,30 @@
         }
       },
       {
+        "id": "longcat-2.0-free",
+        "name": "LongCat-2.0 Free",
+        "api": "openai-completions",
+        "provider": "opencode",
+        "baseUrl": "https://opencode.ai/zen/v1",
+        "reasoning": true,
+        "input": [
+          "text"
+        ],
+        "cost": {
+          "input": 0,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0
+        },
+        "compat": {
+          "supportsStore": false,
+          "supportsDeveloperRole": false,
+          "maxTokensField": "max_tokens"
+        },
+        "contextWindow": 1000000,
+        "maxTokens": 131072
+      },
+      {
         "id": "mimo-v2.5-free",
         "name": "MiMo V2.5 Free",
         "api": "openai-completions",
@@ -1687,9 +1711,9 @@
         "maxTokens": 65536
       }
     ],
-    "checkedAt": 1785845617817,
-    "lastModified": 1785841809000,
-    "etag": "W/\"6a8d635c1854e90dcd972ee55d3ba535\""
+    "checkedAt": 1785938362106,
+    "lastModified": 1785917085000,
+    "etag": "W/\"eb53c016e608c41c0c79b534e7b1c40a\""
   },
   "openai-codex": {
     "models": [
@@ -1936,7 +1960,7 @@
         }
       }
     ],
-    "checkedAt": 1785845617828,
+    "checkedAt": 1785938362109,
     "lastModified": 1785841808000,
     "etag": "W/\"400cac2d73673d9fff4c7d0ed22691b0\""
   },
@@ -2433,7 +2457,7 @@
         "maxTokens": 131072
       }
     ],
-    "checkedAt": 1785845617865,
+    "checkedAt": 1785938362107,
     "lastModified": 1785841810000,
     "etag": "W/\"9acd354f1fe084eec04a65a7ad727beb\""
   },
@@ -4569,12 +4593,12 @@
           "text"
         ],
         "cost": {
-          "input": 0.25,
-          "output": 1,
-          "cacheRead": 0.05,
+          "input": 0.27,
+          "output": 1.08,
+          "cacheRead": 0.054,
           "cacheWrite": 0
         },
-        "contextWindow": 196608,
+        "contextWindow": 204800,
         "maxTokens": 131072,
         "compat": {
           "supportsDeveloperRole": false,
@@ -4924,12 +4948,12 @@
           "image"
         ],
         "cost": {
-          "input": 0.075,
-          "output": 0.2,
+          "input": 0.09375,
+          "output": 0.25,
           "cacheRead": 0,
           "cacheWrite": 0
         },
-        "contextWindow": 128000,
+        "contextWindow": 256000,
         "maxTokens": 16384,
         "compat": {
           "supportsDeveloperRole": false,
@@ -8293,7 +8317,7 @@
       },
       {
         "id": "x-ai/grok-4.20",
-        "name": "xAI: Grok 4.20",
+        "name": "SpaceXAI: Grok 4.20",
         "api": "openai-completions",
         "baseUrl": "https://openrouter.ai/api/v1",
         "provider": "openrouter",
@@ -8317,7 +8341,7 @@
       },
       {
         "id": "x-ai/grok-4.3",
-        "name": "xAI: Grok 4.3",
+        "name": "SpaceXAI: Grok 4.3",
         "api": "openai-completions",
         "baseUrl": "https://openrouter.ai/api/v1",
         "provider": "openrouter",
@@ -8341,7 +8365,7 @@
       },
       {
         "id": "x-ai/grok-4.5",
-        "name": "xAI: Grok 4.5",
+        "name": "SpaceXAI: Grok 4.5",
         "api": "openai-completions",
         "baseUrl": "https://openrouter.ai/api/v1",
         "provider": "openrouter",
@@ -8365,7 +8389,7 @@
       },
       {
         "id": "x-ai/grok-build-0.1",
-        "name": "xAI: Grok Build 0.1",
+        "name": "SpaceXAI: Grok Build 0.1",
         "api": "openai-completions",
         "baseUrl": "https://openrouter.ai/api/v1",
         "provider": "openrouter",
@@ -8993,9 +9017,9 @@
         }
       }
     ],
-    "checkedAt": 1785845618148,
-    "lastModified": 1785841811000,
-    "etag": "W/\"7a43c94f218e342fb2d5cb959dbe1c51\""
+    "checkedAt": 1785938362108,
+    "lastModified": 1785917088000,
+    "etag": "W/\"96fa16c25540c2700d4f834baec68246\""
   },
   "llm7": {
     "models": [
@@ -9057,7 +9081,7 @@
         "baseUrl": "https://api.llm7.io/v1"
       }
     ],
-    "checkedAt": 1785859301458
+    "checkedAt": 1785946804011
   },
   "cline": {
     "models": [
@@ -10315,7 +10339,7 @@
           "image"
         ],
         "cost": {
-          "input": 0.73,
+          "input": 0.7,
           "output": 3.5,
           "cacheRead": 0.15,
           "cacheWrite": 0
@@ -11872,13 +11896,13 @@
           "text"
         ],
         "cost": {
-          "input": 0.966,
-          "output": 3.036,
-          "cacheRead": 0.1794,
+          "input": 0.952,
+          "output": 2.992,
+          "cacheRead": 0.17679999999999998,
           "cacheWrite": 0
         },
         "contextWindow": 204800,
-        "maxTokens": 128000,
+        "maxTokens": 131072,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "z-ai/glm-5.1",
@@ -12241,9 +12265,9 @@
           "text"
         ],
         "cost": {
-          "input": 0.25,
-          "output": 1,
-          "cacheRead": 0.049999999999999996,
+          "input": 0.27,
+          "output": 1.08,
+          "cacheRead": 0.054,
           "cacheWrite": 0
         },
         "contextWindow": 204800,
@@ -13064,7 +13088,7 @@
           "text"
         ],
         "cost": {
-          "input": 0.15,
+          "input": 0.22,
           "output": 0.8999999999999999,
           "cacheRead": 0.049999999999999996,
           "cacheWrite": 0
@@ -13291,8 +13315,8 @@
           "cacheRead": 0.015,
           "cacheWrite": 0
         },
-        "contextWindow": 128000,
-        "maxTokens": 0,
+        "contextWindow": 131072,
+        "maxTokens": 131072,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "upstage/solar-pro-3",
@@ -14848,8 +14872,8 @@
           "image"
         ],
         "cost": {
-          "input": 0.98,
-          "output": 3.95,
+          "input": 0.39999999999999997,
+          "output": 4,
           "cacheRead": 0,
           "cacheWrite": 0
         },
@@ -15981,8 +16005,8 @@
           "image"
         ],
         "cost": {
-          "input": 0.075,
-          "output": 0.19999999999999998,
+          "input": 0.09375,
+          "output": 0.25,
           "cacheRead": 0,
           "cacheWrite": 0
         },
@@ -18659,7 +18683,7 @@
         "baseUrl": "https://api.cline.bot/api/v1"
       }
     ],
-    "checkedAt": 1785859302527
+    "checkedAt": 1785946808104
   },
   "fastrouter": {
     "models": [
@@ -21825,6 +21849,6 @@
         "baseUrl": "https://api.fastrouter.ai/api/v1"
       }
     ],
-    "checkedAt": 1785859302536
+    "checkedAt": 1785946805481
   }
 }

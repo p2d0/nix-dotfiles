@@ -97,8 +97,8 @@ async function handleReview(req: IncomingMessage, res: ServerResponse, ctx: Para
 
 		const message = lines.join("\n");
 
-		// Send as user message
-		pi.sendUserMessage(message);
+		// Queue as steering message so it delivers after current turn, lets reviews queue
+		pi.sendUserMessage(message, { deliverAs: "steer" });
 
 		res.writeHead(200, { "Content-Type": "application/json" });
 		res.end(JSON.stringify({ ok: true, count: data.comments.length }));

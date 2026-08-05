@@ -630,8 +630,8 @@
       }
     ];
   };
-  zramSwap.enable = false;
-  zramSwap.memoryPercent = 80;
+  zramSwap.enable = true;
+  # zramSwap.memoryPercent = 80;
   # zramSwap.writebackDevice = "/dev/sdb1";
 
   #  environment.extraInit = ''

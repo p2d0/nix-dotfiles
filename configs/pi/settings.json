@@ -11,7 +11,6 @@
     "npm:pi-caveman",
     "npm:@agent-sh/computer-use-linux",
     "git:github.com/DietrichGebert/ponytail",
-    "npm:pi-advisor-flow",
     "git:github.com/okiess/pi-opencode-go-provider@fix/context-window-merge",
     "npm:pi-free"
   ],
