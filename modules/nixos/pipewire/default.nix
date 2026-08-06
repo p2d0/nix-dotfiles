@@ -40,6 +40,7 @@ lib.my.withHome
     #          ]
     # '';
     #     };
+
     services.pipewire = {
       enable = true;
       alsa.enable = true;
@@ -48,6 +49,9 @@ lib.my.withHome
       extraLadspaPackages = [
         pkgs.rnnoise-plugin.ladspa
       ];
+      # NB: stream.rules cannot force quanta on pulse-stream nodes in WirePlumber 0.5
+      # (state-stream.lua never applies update-props). OBS's 1200-quantum request is
+      # capped via default.clock.quantum-limit in "10-quantum" above instead.
       extraConfig.pipewire = {
 
         # context.modules = [
@@ -82,6 +86,17 @@ lib.my.withHome
         #            }
         # }
         # ];
+        # osu!lazer's BASS audio uses a hardcoded 10ms device buffer (~480 samples @48k).
+        # OBS audio-capture streams request quantum 1200 (25ms), which starves that
+        # buffer -> skipped audio in recordings. default.clock.quantum is only a floor,
+        # so quantum-limit is what actually caps OBS's request at 512 (~10.7ms).
+        # (wireplumber stream.rules cannot force pulse-stream quanta in WP 0.5.)
+        "10-quantum" = {
+          "context.properties" = {
+            "default.clock.quantum" = 512;
+            "default.clock.quantum-limit" = 512;
+          };
+        };
         "10-noise" = {
           "context.modules" = [
             {

@@ -1711,7 +1711,7 @@
         "maxTokens": 65536
       }
     ],
-    "checkedAt": 1785938362106,
+    "checkedAt": 1786020935062,
     "lastModified": 1785917085000,
     "etag": "W/\"eb53c016e608c41c0c79b534e7b1c40a\""
   },
@@ -1960,7 +1960,7 @@
         }
       }
     ],
-    "checkedAt": 1785938362109,
+    "checkedAt": 1786020935059,
     "lastModified": 1785841808000,
     "etag": "W/\"400cac2d73673d9fff4c7d0ed22691b0\""
   },
@@ -2457,7 +2457,7 @@
         "maxTokens": 131072
       }
     ],
-    "checkedAt": 1785938362107,
+    "checkedAt": 1786020935060,
     "lastModified": 1785841810000,
     "etag": "W/\"9acd354f1fe084eec04a65a7ad727beb\""
   },
@@ -3551,13 +3551,13 @@
           "text"
         ],
         "cost": {
-          "input": 0.14,
-          "output": 0.28,
-          "cacheRead": 0.028,
+          "input": 0.0882,
+          "output": 0.1764,
+          "cacheRead": 0.01764,
           "cacheWrite": 0
         },
         "contextWindow": 1048576,
-        "maxTokens": 393216,
+        "maxTokens": 131072,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter",
@@ -4212,6 +4212,29 @@
         }
       },
       {
+        "id": "inclusionai/ling-3.0-flash",
+        "name": "Ling-3.0-flash",
+        "api": "openai-completions",
+        "baseUrl": "https://openrouter.ai/api/v1",
+        "provider": "openrouter",
+        "reasoning": true,
+        "input": [
+          "text"
+        ],
+        "cost": {
+          "input": 0.075,
+          "output": 0.22,
+          "cacheRead": 0.015,
+          "cacheWrite": 0
+        },
+        "contextWindow": 131072,
+        "maxTokens": 16384,
+        "compat": {
+          "supportsDeveloperRole": false,
+          "thinkingFormat": "openrouter"
+        }
+      },
+      {
         "id": "inclusionai/ling-3.0-flash:free",
         "name": "Ling-3.0-flash (free)",
         "api": "openai-completions",
@@ -4491,6 +4514,30 @@
         }
       },
       {
+        "id": "meta/muse-spark-1.2",
+        "name": "Meta: Muse Spark 1.2",
+        "api": "openai-completions",
+        "baseUrl": "https://openrouter.ai/api/v1",
+        "provider": "openrouter",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 1.25,
+          "output": 4.25,
+          "cacheRead": 0.15,
+          "cacheWrite": 0
+        },
+        "contextWindow": 1048576,
+        "maxTokens": 4096,
+        "compat": {
+          "supportsDeveloperRole": false,
+          "thinkingFormat": "openrouter"
+        }
+      },
+      {
         "id": "minimax/minimax-m1",
         "name": "MiniMax: MiniMax M1",
         "api": "openai-completions",
@@ -4570,7 +4617,7 @@
           "text"
         ],
         "cost": {
-          "input": 0.15,
+          "input": 0.22,
           "output": 0.9,
           "cacheRead": 0.05,
           "cacheWrite": 0
@@ -5136,7 +5183,7 @@
           "image"
         ],
         "cost": {
-          "input": 0.73,
+          "input": 0.7,
           "output": 3.5,
           "cacheRead": 0.15,
           "cacheWrite": 0
@@ -7103,13 +7150,13 @@
           "text"
         ],
         "cost": {
-          "input": 0.1495,
-          "output": 0.598,
+          "input": 0.09,
+          "output": 0.55,
           "cacheRead": 0,
           "cacheWrite": 0
         },
-        "contextWindow": 131072,
-        "maxTokens": 32768,
+        "contextWindow": 262144,
+        "maxTokens": 16384,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -7832,13 +7879,13 @@
           "image"
         ],
         "cost": {
-          "input": 0.289,
-          "output": 2.4,
-          "cacheRead": 0,
+          "input": 0.6,
+          "output": 3.6,
+          "cacheRead": 0.12,
           "cacheWrite": 0
         },
-        "contextWindow": 131072,
-        "maxTokens": 131072,
+        "contextWindow": 262144,
+        "maxTokens": 262144,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -8308,8 +8355,8 @@
           "cacheRead": 0.015,
           "cacheWrite": 0
         },
-        "contextWindow": 128000,
-        "maxTokens": 4096,
+        "contextWindow": 131072,
+        "maxTokens": 131072,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -8678,13 +8725,13 @@
           "text"
         ],
         "cost": {
-          "input": 0.966,
-          "output": 3.036,
-          "cacheRead": 0.1794,
+          "input": 0.952,
+          "output": 2.992,
+          "cacheRead": 0.1768,
           "cacheWrite": 0
         },
-        "contextWindow": 200000,
-        "maxTokens": 128000,
+        "contextWindow": 202752,
+        "maxTokens": 131072,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -9017,9 +9064,9 @@
         }
       }
     ],
-    "checkedAt": 1785938362108,
-    "lastModified": 1785917088000,
-    "etag": "W/\"96fa16c25540c2700d4f834baec68246\""
+    "checkedAt": 1786020935529,
+    "lastModified": 1786008955000,
+    "etag": "W/\"750ff56800c6899d35ecdabb499b54d3\""
   },
   "llm7": {
     "models": [
@@ -9081,10 +9128,44 @@
         "baseUrl": "https://api.llm7.io/v1"
       }
     ],
-    "checkedAt": 1785946804011
+    "checkedAt": 1786032242846
   },
   "cline": {
     "models": [
+      {
+        "id": "meta/muse-spark-1.2",
+        "name": "Muse Spark 1.2 (Cline) 💰 [CI: 58.6]",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 1.25,
+          "output": 4.25,
+          "cacheRead": 0.15,
+          "cacheWrite": 0
+        },
+        "contextWindow": 1048576,
+        "maxTokens": 0,
+        "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": "minimal",
+          "low": "low",
+          "medium": "medium",
+          "high": "high",
+          "xhigh": "xhigh"
+        },
+        "modelsDev": {
+          "id": "meta/muse-spark-1.2",
+          "name": "Muse Spark 1.2",
+          "family": "muse"
+        },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
       {
         "id": "qwen/qwen3.8-max",
         "name": "Qwen3.8 Max (Cline) 💰",
@@ -9103,7 +9184,7 @@
         "maxTokens": 131072,
         "_pricingKnown": true,
         "modelsDev": {
-          "id": "Qwen/Qwen3.8-Max",
+          "id": "qwen/qwen3.8-max",
           "name": "Qwen3.8 Max",
           "family": "qwen"
         },
@@ -9135,7 +9216,7 @@
         },
         "_pricingKnown": true,
         "thinkingLevelMap": {
-          "off": null,
+          "off": "none",
           "minimal": null,
           "low": "low",
           "medium": null,
@@ -9175,7 +9256,7 @@
         },
         "_pricingKnown": true,
         "thinkingLevelMap": {
-          "off": null,
+          "off": "none",
           "minimal": null,
           "low": "low",
           "medium": null,
@@ -9208,8 +9289,16 @@
         "contextWindow": 524288,
         "maxTokens": 0,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": "minimal",
+          "low": "low",
+          "medium": "medium",
+          "high": "high",
+          "xhigh": "max"
+        },
         "modelsDev": {
-          "id": "thinkingmachines/Inkling-Small",
+          "id": "thinkingmachines/inkling-small",
           "name": "Inkling Small",
           "family": "ling"
         },
@@ -9252,7 +9341,7 @@
       },
       {
         "id": "anthropic/claude-opus-5-fast",
-        "name": "Claude Opus 5 (Fast) (Cline) 💰",
+        "name": "Claude Opus 5 (Fast) (Cline) 💰 [CI: 78.0]",
         "reasoning": true,
         "input": [
           "text",
@@ -9268,7 +9357,7 @@
         "maxTokens": 128000,
         "_pricingKnown": true,
         "thinkingLevelMap": {
-          "off": null,
+          "off": "none",
           "minimal": null,
           "low": "low",
           "medium": "medium",
@@ -9277,7 +9366,7 @@
         },
         "modelsDev": {
           "id": "anthropic/claude-opus-5-fast",
-          "name": "Claude Opus 5 (Fast)",
+          "name": "Claude Opus 5",
           "family": "claude-opus"
         },
         "api": "cline-xml-tools",
@@ -9319,32 +9408,53 @@
         "baseUrl": "https://api.cline.bot/api/v1"
       },
       {
-        "id": "inclusionai/ling-3.0-flash:free",
-        "name": "Ling-3.0-flash (free) (Cline)",
+        "id": "anthropic/claude-opus-5:batch",
+        "name": "Claude Opus 5 (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 2.5,
+          "output": 12.5,
+          "cacheRead": 0.25,
+          "cacheWrite": 0
+        },
+        "contextWindow": 1000000,
+        "maxTokens": 128000,
+        "_pricingKnown": true,
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "inclusionai/ling-3.0-flash",
+        "name": "Ling-3.0-flash (Cline) 💰",
         "reasoning": true,
         "input": [
           "text"
         ],
         "cost": {
-          "input": 0,
-          "output": 0,
-          "cacheRead": 0,
+          "input": 0.075,
+          "output": 0.22,
+          "cacheRead": 0.015,
           "cacheWrite": 0
         },
-        "contextWindow": 262144,
+        "contextWindow": 131072,
         "maxTokens": 32768,
         "_pricingKnown": true,
         "thinkingLevelMap": {
-          "off": null,
+          "off": "none",
           "minimal": null,
-          "low": "low",
-          "medium": "medium",
+          "low": null,
+          "medium": null,
           "high": "high",
           "xhigh": null
         },
         "modelsDev": {
-          "id": "inclusionai/ling-3.0-flash:free",
-          "name": "Ling-3.0-flash (free)",
+          "id": "inclusionai/ling-3.0-flash",
+          "name": "Ling-3.0-flash",
           "family": "ling"
         },
         "api": "cline-xml-tools",
@@ -9367,10 +9477,18 @@
         "contextWindow": 1048576,
         "maxTokens": 131072,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": "low",
+          "medium": "medium",
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
-          "id": "poolside/laguna-s-2.1:free",
-          "name": "Laguna S 2.1 (free)",
-          "family": "laguna-s"
+          "id": "poolside/laguna-s-2.1",
+          "name": "Laguna S 2.1",
+          "family": "laguna"
         },
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -9392,10 +9510,18 @@
         "contextWindow": 262144,
         "maxTokens": 32768,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": "low",
+          "medium": "medium",
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
-          "id": "poolside/laguna-s-2.1:free",
-          "name": "Laguna S 2.1 (free)",
-          "family": "laguna-s"
+          "id": "poolside/laguna-s-2.1",
+          "name": "Laguna S 2.1",
+          "family": "laguna"
         },
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -9436,6 +9562,27 @@
         "baseUrl": "https://api.cline.bot/api/v1"
       },
       {
+        "id": "google/gemini-3.6-flash:batch",
+        "name": "Gemini 3.6 Flash (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 0.75,
+          "output": 3.75,
+          "cacheRead": 0.075,
+          "cacheWrite": 0
+        },
+        "contextWindow": 1048576,
+        "maxTokens": 65536,
+        "_pricingKnown": true,
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
         "id": "google/gemini-3.5-flash-lite",
         "name": "Gemini 3.5 Flash Lite (Cline) 💰 [CI: 49.3]",
         "reasoning": true,
@@ -9470,6 +9617,27 @@
         "baseUrl": "https://api.cline.bot/api/v1"
       },
       {
+        "id": "google/gemini-3.5-flash-lite:batch",
+        "name": "Gemini 3.5 Flash Lite (batch) (Cline) 💰 [CI: 49.3]",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 0.15,
+          "output": 1.25,
+          "cacheRead": 0.015,
+          "cacheWrite": 0
+        },
+        "contextWindow": 1048576,
+        "maxTokens": 65536,
+        "_pricingKnown": true,
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
         "id": "meituan/longcat-2.0",
         "name": "LongCat 2.0 (Cline) 💰 [CI: 45.3]",
         "reasoning": true,
@@ -9485,9 +9653,17 @@
         "contextWindow": 1048756,
         "maxTokens": 262144,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "meituan/longcat-2.0",
-          "name": "LongCat 2.0",
+          "name": "Meituan: LongCat 2.0",
           "family": "longcat"
         },
         "api": "cline-xml-tools",
@@ -9511,11 +9687,40 @@
         "contextWindow": 1048576,
         "maxTokens": 0,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": "minimal",
+          "low": "low",
+          "medium": "medium",
+          "high": "high",
+          "xhigh": "max"
+        },
         "modelsDev": {
-          "id": "thinkingmachines/Inkling",
+          "id": "thinkingmachines/inkling",
           "name": "Inkling",
           "family": "ling"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "thinkingmachines/inkling:batch",
+        "name": "Inkling (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 0.5,
+          "output": 2.025,
+          "cacheRead": 0.08499999999999999,
+          "cacheWrite": 0
+        },
+        "contextWindow": 524288,
+        "maxTokens": 0,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -9568,12 +9773,12 @@
           "off": null,
           "minimal": null,
           "low": "low",
-          "medium": null,
+          "medium": "medium",
           "high": "high",
-          "xhigh": "max"
+          "xhigh": null
         },
         "modelsDev": {
-          "id": "kimi-k3",
+          "id": "moonshotai/Kimi-K3",
           "name": "Kimi K3",
           "family": "kimi-k3"
         },
@@ -9600,11 +9805,11 @@
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": null,
-          "minimal": "minimal",
+          "minimal": null,
           "low": "low",
           "medium": "medium",
           "high": "high",
-          "xhigh": "xhigh"
+          "xhigh": null
         },
         "modelsDev": {
           "id": "meta/muse-spark-1.1",
@@ -9633,7 +9838,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "kwaipilot/kat-coder-air-v2.5",
-          "name": "KAT-Coder-Air V2.5",
+          "name": "Kwaipilot: KAT-Coder-Air V2.5",
           "family": "kat-coder"
         },
         "api": "cline-xml-tools",
@@ -9658,7 +9863,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "kwaipilot/kat-coder-pro-v2.5",
-          "name": "KAT-Coder-Pro V2.5",
+          "name": "Kwaipilot: KAT-Coder-Pro V2.5",
           "family": "kat-coder"
         },
         "api": "cline-xml-tools",
@@ -9667,7 +9872,7 @@
       },
       {
         "id": "openai/gpt-5.6-luna-pro",
-        "name": "GPT-5.6 Luna Pro (Cline) 💰",
+        "name": "GPT-5.6 Luna Pro (Cline) 💰 [CI: 68.6]",
         "reasoning": true,
         "input": [
           "text",
@@ -9692,9 +9897,30 @@
         },
         "modelsDev": {
           "id": "openai/gpt-5.6-luna-pro",
-          "name": "GPT-5.6 Luna Pro",
+          "name": "GPT-5.6 Luna",
           "family": "gpt-luna"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "openai/gpt-5.6-luna-pro:batch",
+        "name": "GPT-5.6 Luna Pro (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 0.09999999999999999,
+          "output": 0.6,
+          "cacheRead": 0.01,
+          "cacheWrite": 0
+        },
+        "contextWindow": 1050000,
+        "maxTokens": 128000,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -9725,17 +9951,42 @@
           "xhigh": "xhigh"
         },
         "modelsDev": {
-          "id": "gpt-5.6-luna",
+          "id": "openai/gpt-5.6-luna",
           "name": "GPT-5.6 Luna",
-          "family": "gpt-luna"
+          "family": "gpt-luna",
+          "provider": {
+            "npm": "@ai-sdk/openai",
+            "api": "https://api.ofox.ai/v1"
+          }
         },
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
       },
       {
+        "id": "openai/gpt-5.6-luna:batch",
+        "name": "GPT-5.6 Luna (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 0.09999999999999999,
+          "output": 0.6,
+          "cacheRead": 0.01,
+          "cacheWrite": 0
+        },
+        "contextWindow": 1050000,
+        "maxTokens": 128000,
+        "_pricingKnown": true,
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
         "id": "openai/gpt-5.6-terra-pro",
-        "name": "GPT-5.6 Terra Pro (Cline) 💰",
+        "name": "GPT-5.6 Terra Pro (Cline) 💰 [CI: 70.6]",
         "reasoning": true,
         "input": [
           "text",
@@ -9760,9 +10011,30 @@
         },
         "modelsDev": {
           "id": "openai/gpt-5.6-terra-pro",
-          "name": "GPT-5.6 Terra Pro",
+          "name": "GPT-5.6 Terra",
           "family": "gpt-terra"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "openai/gpt-5.6-terra-pro:batch",
+        "name": "GPT-5.6 Terra Pro (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 1,
+          "output": 6,
+          "cacheRead": 0.09999999999999999,
+          "cacheWrite": 0
+        },
+        "contextWindow": 1050000,
+        "maxTokens": 128000,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -9793,17 +10065,42 @@
           "xhigh": "xhigh"
         },
         "modelsDev": {
-          "id": "gpt-5.6-terra",
+          "id": "openai/gpt-5.6-terra",
           "name": "GPT-5.6 Terra",
-          "family": "gpt-terra"
+          "family": "gpt-terra",
+          "provider": {
+            "npm": "@ai-sdk/openai",
+            "api": "https://api.ofox.ai/v1"
+          }
         },
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
       },
       {
+        "id": "openai/gpt-5.6-terra:batch",
+        "name": "GPT-5.6 Terra (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 1,
+          "output": 6,
+          "cacheRead": 0.09999999999999999,
+          "cacheWrite": 0
+        },
+        "contextWindow": 1050000,
+        "maxTokens": 128000,
+        "_pricingKnown": true,
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
         "id": "openai/gpt-5.6-sol-pro",
-        "name": "GPT-5.6 Sol Pro (Cline) 💰",
+        "name": "GPT-5.6 Sol Pro (Cline) 💰 [CI: 78.3]",
         "reasoning": true,
         "input": [
           "text",
@@ -9828,9 +10125,30 @@
         },
         "modelsDev": {
           "id": "openai/gpt-5.6-sol-pro",
-          "name": "GPT-5.6 Sol Pro",
+          "name": "GPT-5.6 Sol",
           "family": "gpt-sol"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "openai/gpt-5.6-sol-pro:batch",
+        "name": "GPT-5.6 Sol Pro (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 2.5,
+          "output": 15,
+          "cacheRead": 0.25,
+          "cacheWrite": 0
+        },
+        "contextWindow": 1050000,
+        "maxTokens": 128000,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -9861,10 +10179,35 @@
           "xhigh": "xhigh"
         },
         "modelsDev": {
-          "id": "gpt-5.6-sol",
+          "id": "openai/gpt-5.6-sol",
           "name": "GPT-5.6 Sol",
-          "family": "gpt-sol"
+          "family": "gpt-sol",
+          "provider": {
+            "npm": "@ai-sdk/openai",
+            "api": "https://api.ofox.ai/v1"
+          }
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "openai/gpt-5.6-sol:batch",
+        "name": "GPT-5.6 Sol (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 2.5,
+          "output": 15,
+          "cacheRead": 0.25,
+          "cacheWrite": 0
+        },
+        "contextWindow": 1050000,
+        "maxTokens": 128000,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -9930,7 +10273,7 @@
         },
         "modelsDev": {
           "id": "~x-ai/grok-latest",
-          "name": "Grok Latest",
+          "name": "xAI: Grok Latest",
           "family": "grok"
         },
         "api": "cline-xml-tools",
@@ -9953,9 +10296,17 @@
         "contextWindow": 131072,
         "maxTokens": 32768,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "aion-labs/aion-3.0-mini",
-          "name": "Aion-3.0-Mini"
+          "name": "AionLabs: Aion-3.0-Mini"
         },
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -9977,9 +10328,17 @@
         "contextWindow": 131072,
         "maxTokens": 32768,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "aion-labs/aion-3.0",
-          "name": "Aion-3.0"
+          "name": "AionLabs: Aion-3.0"
         },
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -10001,8 +10360,16 @@
         "contextWindow": 262144,
         "maxTokens": 128000,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": "low",
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
-          "id": "tencent/Hy3",
+          "id": "tencent/hy3",
           "name": "Hy3",
           "family": "Hy"
         },
@@ -10026,9 +10393,17 @@
         "contextWindow": 262144,
         "maxTokens": 32768,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
-          "id": "poolside/laguna-xs-2.1:free",
-          "name": "Laguna XS 2.1 (free)",
+          "id": "poolside/laguna-xs-2.1",
+          "name": "Poolside: Laguna XS 2.1",
           "family": "laguna"
         },
         "api": "cline-xml-tools",
@@ -10051,9 +10426,17 @@
         "contextWindow": 262144,
         "maxTokens": 32768,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
-          "id": "poolside/laguna-xs-2.1:free",
-          "name": "Laguna XS 2.1 (free)",
+          "id": "poolside/laguna-xs-2.1",
+          "name": "Poolside: Laguna XS 2.1",
           "family": "laguna"
         },
         "api": "cline-xml-tools",
@@ -10088,8 +10471,33 @@
         "modelsDev": {
           "id": "anthropic/claude-sonnet-5",
           "name": "Claude Sonnet 5",
-          "family": "claude-sonnet"
+          "family": "claude-sonnet",
+          "provider": {
+            "npm": "@ai-sdk/anthropic",
+            "api": "https://api.ofox.ai/anthropic/v1"
+          }
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "anthropic/claude-sonnet-5:batch",
+        "name": "Claude Sonnet 5 (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 1,
+          "output": 5,
+          "cacheRead": 0.09999999999999999,
+          "cacheWrite": 0
+        },
+        "contextWindow": 1000000,
+        "maxTokens": 128000,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -10112,7 +10520,7 @@
         "maxTokens": 65536,
         "_pricingKnown": true,
         "thinkingLevelMap": {
-          "off": null,
+          "off": "none",
           "minimal": "minimal",
           "low": null,
           "medium": null,
@@ -10145,9 +10553,17 @@
         "contextWindow": 262144,
         "maxTokens": 262144,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "nex-agi/nex-n2-mini",
-          "name": "Nex-N2-Mini",
+          "name": "Nex AGI: Nex-N2-Mini",
           "family": "agi"
         },
         "api": "cline-xml-tools",
@@ -10174,10 +10590,10 @@
         "thinkingLevelMap": {
           "off": null,
           "minimal": null,
-          "low": null,
-          "medium": null,
+          "low": "low",
+          "medium": "medium",
           "high": "high",
-          "xhigh": "xhigh"
+          "xhigh": null
         },
         "modelsDev": {
           "id": "sakana/fugu-ultra",
@@ -10206,7 +10622,7 @@
         "maxTokens": 32768,
         "_pricingKnown": true,
         "thinkingLevelMap": {
-          "off": null,
+          "off": "none",
           "minimal": "minimal",
           "low": null,
           "medium": null,
@@ -10239,6 +10655,14 @@
         "contextWindow": 131072,
         "maxTokens": 32768,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "google/gemini-3-pro-image",
           "name": "Nano Banana Pro",
@@ -10264,9 +10688,17 @@
         "contextWindow": 256000,
         "maxTokens": 64000,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "cohere/north-mini-code:free",
-          "name": "North Mini Code (free)",
+          "name": "Cohere: North Mini Code (free)",
           "family": "north"
         },
         "api": "cline-xml-tools",
@@ -10281,13 +10713,13 @@
           "text"
         ],
         "cost": {
-          "input": 0.76,
-          "output": 2.42,
-          "cacheRead": 0.14,
+          "input": 0.546,
+          "output": 1.716,
+          "cacheRead": 0.10139999999999999,
           "cacheWrite": 0
         },
         "contextWindow": 1048576,
-        "maxTokens": 262144,
+        "maxTokens": 131072,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": null,
@@ -10295,13 +10727,33 @@
           "low": null,
           "medium": null,
           "high": "high",
-          "xhigh": "xhigh"
+          "xhigh": "max"
         },
         "modelsDev": {
           "id": "z-ai/glm-5.2",
           "name": "GLM-5.2",
           "family": "glm"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "z-ai/glm-5.2:batch",
+        "name": "GLM 5.2 (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text"
+        ],
+        "cost": {
+          "input": 0.7,
+          "output": 2.2,
+          "cacheRead": 0.13,
+          "cacheWrite": 0
+        },
+        "contextWindow": 512000,
+        "maxTokens": 0,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -10353,11 +10805,46 @@
           "requiresReasoningContentOnAssistantMessages": true
         },
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": "low",
+          "medium": "medium",
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
-          "id": "moonshotai/kimi-k2.7-code",
+          "id": "moonshotai/Kimi-K2.7-Code",
           "name": "Kimi K2.7 Code",
           "family": "kimi-k2"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "moonshotai/kimi-k2.7-code:batch",
+        "name": "Kimi K2.7 Code (batch) (Cline) 💰 [CI: 60.8]",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 0.475,
+          "output": 2,
+          "cacheRead": 0.095,
+          "cacheWrite": 0
+        },
+        "contextWindow": 262144,
+        "maxTokens": 0,
+        "compat": {
+          "supportsStore": false,
+          "supportsDeveloperRole": false,
+          "supportsReasoningEffort": true,
+          "requiresReasoningContentOnAssistantMessages": true
+        },
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -10389,7 +10876,7 @@
         },
         "modelsDev": {
           "id": "~anthropic/claude-fable-latest",
-          "name": "Claude Fable Latest",
+          "name": "Anthropic: Claude Fable Latest ($$$$)",
           "family": "claude-fable"
         },
         "api": "cline-xml-tools",
@@ -10419,13 +10906,38 @@
           "low": "low",
           "medium": "medium",
           "high": "high",
-          "xhigh": null
+          "xhigh": "xhigh"
         },
         "modelsDev": {
           "id": "anthropic/claude-fable-5",
           "name": "Claude Fable 5",
-          "family": "claude-fable"
+          "family": "claude-fable",
+          "provider": {
+            "npm": "@ai-sdk/anthropic",
+            "api": "https://api.ofox.ai/anthropic/v1"
+          }
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "anthropic/claude-fable-5:batch",
+        "name": "Claude Fable 5 (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 5,
+          "output": 25,
+          "cacheRead": 0.5,
+          "cacheWrite": 0
+        },
+        "contextWindow": 1000000,
+        "maxTokens": 128000,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -10447,9 +10959,17 @@
         "contextWindow": 262144,
         "maxTokens": 262144,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "nex-agi/nex-n2-pro",
-          "name": "Nex-N2-Pro",
+          "name": "Nex AGI: Nex-N2-Pro",
           "family": "agi"
         },
         "api": "cline-xml-tools",
@@ -10473,9 +10993,17 @@
         "contextWindow": 128000,
         "maxTokens": 8192,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "nvidia/nemotron-3.5-content-safety:free",
-          "name": "Nemotron 3.5 Content Safety (free)",
+          "name": "NVIDIA: Nemotron 3.5 Content Safety (free)",
           "family": "nemotron"
         },
         "api": "cline-xml-tools",
@@ -10499,7 +11027,7 @@
         "maxTokens": 0,
         "_pricingKnown": true,
         "thinkingLevelMap": {
-          "off": null,
+          "off": "none",
           "minimal": null,
           "low": null,
           "medium": "medium",
@@ -10507,10 +11035,30 @@
           "xhigh": null
         },
         "modelsDev": {
-          "id": "nvidia/nemotron-3-ultra-550b-a55b",
-          "name": "Nemotron 3 Ultra 550B A55B",
+          "id": "nvidia/nemotron-3-ultra-550b-a55b:free",
+          "name": "NVIDIA: Nemotron 3 Ultra (free)",
           "family": "nemotron"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "nvidia/nemotron-3-ultra-550b-a55b:batch",
+        "name": "Nemotron 3 Ultra (batch) (Cline) 💰 [CI: 37.7]",
+        "reasoning": true,
+        "input": [
+          "text"
+        ],
+        "cost": {
+          "input": 0.3,
+          "output": 1.7999999999999998,
+          "cacheRead": 0.09999999999999999,
+          "cacheWrite": 0
+        },
+        "contextWindow": 512288,
+        "maxTokens": 0,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -10532,7 +11080,7 @@
         "maxTokens": 65536,
         "_pricingKnown": true,
         "thinkingLevelMap": {
-          "off": null,
+          "off": "none",
           "minimal": null,
           "low": null,
           "medium": "medium",
@@ -10540,8 +11088,8 @@
           "xhigh": null
         },
         "modelsDev": {
-          "id": "nvidia/nemotron-3-ultra-550b-a55b",
-          "name": "Nemotron 3 Ultra 550B A55B",
+          "id": "nvidia/nemotron-3-ultra-550b-a55b:free",
+          "name": "NVIDIA: Nemotron 3 Ultra (free)",
           "family": "nemotron"
         },
         "api": "cline-xml-tools",
@@ -10608,6 +11156,27 @@
         "baseUrl": "https://api.cline.bot/api/v1"
       },
       {
+        "id": "minimax/minimax-m3:batch",
+        "name": "MiniMax M3 (batch) (Cline) 💰 [CI: 58.6]",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 0.15,
+          "output": 0.6,
+          "cacheRead": 0.03,
+          "cacheWrite": 0
+        },
+        "contextWindow": 524288,
+        "maxTokens": 0,
+        "_pricingKnown": true,
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
         "id": "stepfun/step-3.7-flash",
         "name": "Step 3.7 Flash (Cline) [CI: 39.6]",
         "reasoning": true,
@@ -10658,7 +11227,7 @@
         "maxTokens": 128000,
         "_pricingKnown": true,
         "thinkingLevelMap": {
-          "off": null,
+          "off": "none",
           "minimal": null,
           "low": "low",
           "medium": "medium",
@@ -10667,7 +11236,7 @@
         },
         "modelsDev": {
           "id": "anthropic/claude-opus-4.8-fast",
-          "name": "Claude Opus 4.8 (Fast)",
+          "name": "Claude Opus 4.8",
           "family": "claude-opus"
         },
         "api": "cline-xml-tools",
@@ -10702,8 +11271,33 @@
         "modelsDev": {
           "id": "anthropic/claude-opus-4.8",
           "name": "Claude Opus 4.8",
-          "family": "claude-opus"
+          "family": "claude-opus",
+          "provider": {
+            "npm": "@ai-sdk/anthropic",
+            "api": "https://api.ofox.ai/anthropic/v1"
+          }
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "anthropic/claude-opus-4.8:batch",
+        "name": "Claude Opus 4.8 (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 2.5,
+          "output": 12.5,
+          "cacheRead": 0.25,
+          "cacheWrite": 0
+        },
+        "contextWindow": 1000000,
+        "maxTokens": 128000,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -10783,19 +11377,32 @@
         "contextWindow": 1048576,
         "maxTokens": 65536,
         "_pricingKnown": true,
-        "thinkingLevelMap": {
-          "off": null,
-          "minimal": "minimal",
-          "low": "low",
-          "medium": "medium",
-          "high": "high",
-          "xhigh": null
-        },
         "modelsDev": {
           "id": "google/gemini-3.5-flash",
           "name": "Gemini 3.5 Flash",
           "family": "gemini-flash"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "google/gemini-3.5-flash:batch",
+        "name": "Gemini 3.5 Flash (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 0.75,
+          "output": 4.5,
+          "cacheRead": 0.075,
+          "cacheWrite": 0
+        },
+        "contextWindow": 1048576,
+        "maxTokens": 65536,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -10818,7 +11425,7 @@
         "maxTokens": 128000,
         "_pricingKnown": true,
         "thinkingLevelMap": {
-          "off": null,
+          "off": "none",
           "minimal": null,
           "low": "low",
           "medium": "medium",
@@ -10827,7 +11434,7 @@
         },
         "modelsDev": {
           "id": "anthropic/claude-opus-4.7-fast",
-          "name": "Claude Opus 4.7 (Fast)",
+          "name": "Claude Opus 4.7",
           "family": "claude-opus"
         },
         "api": "cline-xml-tools",
@@ -10851,9 +11458,17 @@
         "contextWindow": 32768,
         "maxTokens": 8192,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "perceptron/perceptron-mk1",
-          "name": "Perceptron Mk1"
+          "name": "Perceptron: Perceptron Mk1"
         },
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -10885,7 +11500,7 @@
         },
         "modelsDev": {
           "id": "inclusionai/ring-2.6-1t",
-          "name": "Ring-2.6-1T",
+          "name": "inclusionAI: Ring-2.6-1T",
           "family": "ring"
         },
         "api": "cline-xml-tools",
@@ -10909,19 +11524,32 @@
         "contextWindow": 1048576,
         "maxTokens": 65536,
         "_pricingKnown": true,
-        "thinkingLevelMap": {
-          "off": null,
-          "minimal": "minimal",
-          "low": "low",
-          "medium": "medium",
-          "high": "high",
-          "xhigh": null
-        },
         "modelsDev": {
           "id": "google/gemini-3.1-flash-lite",
           "name": "Gemini 3.1 Flash Lite",
           "family": "gemini-flash-lite"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "google/gemini-3.1-flash-lite:batch",
+        "name": "Gemini 3.1 Flash Lite (batch) (Cline) 💰 [CI: 34.7]",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 0.125,
+          "output": 0.75,
+          "cacheRead": 0.012499999999999999,
+          "cacheWrite": 0
+        },
+        "contextWindow": 1048576,
+        "maxTokens": 65536,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -10945,7 +11573,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "openai/gpt-chat-latest",
-          "name": "GPT Chat Latest",
+          "name": "OpenAI: GPT Chat Latest",
           "family": "gpt"
         },
         "api": "cline-xml-tools",
@@ -11004,7 +11632,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "ibm-granite/granite-4.1-8b",
-          "name": "Granite 4.1 8B",
+          "name": "IBM: Granite 4.1 8B",
           "family": "granite"
         },
         "api": "cline-xml-tools",
@@ -11038,7 +11666,7 @@
         },
         "modelsDev": {
           "id": "mistralai/mistral-medium-3-5",
-          "name": "Mistral Medium 3.5",
+          "name": "Mistral: Mistral Medium 3.5",
           "family": "mistral-medium"
         },
         "api": "cline-xml-tools",
@@ -11062,9 +11690,17 @@
         "contextWindow": 256000,
         "maxTokens": 65536,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
-          "id": "nvidia/Nemotron-3-Nano-Omni-30B-A3B-Reasoning",
-          "name": "Nemotron 3 Nano Omni 30B A3B Reasoning",
+          "id": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+          "name": "NVIDIA: Nemotron 3 Nano Omni (free)",
           "family": "nemotron"
         },
         "api": "cline-xml-tools",
@@ -11088,6 +11724,14 @@
         "contextWindow": 200000,
         "maxTokens": 64000,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "~anthropic/claude-haiku-latest",
           "name": "Anthropic Claude Haiku Latest",
@@ -11189,7 +11833,7 @@
         },
         "_pricingKnown": true,
         "thinkingLevelMap": {
-          "off": null,
+          "off": "none",
           "minimal": null,
           "low": "low",
           "medium": null,
@@ -11257,7 +11901,7 @@
         "maxTokens": 128000,
         "_pricingKnown": true,
         "thinkingLevelMap": {
-          "off": null,
+          "off": "none",
           "minimal": null,
           "low": "low",
           "medium": "medium",
@@ -11324,9 +11968,17 @@
         "contextWindow": 1000000,
         "maxTokens": 65536,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "qwen/qwen3.5-plus-20260420",
-          "name": "Qwen3.5 Plus 2026-04-20",
+          "name": "Qwen: Qwen3.5 Plus 2026-04-20",
           "family": "qwen3.5"
         },
         "api": "cline-xml-tools",
@@ -11376,9 +12028,17 @@
         "contextWindow": 262144,
         "maxTokens": 262144,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": "low",
+          "medium": "medium",
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "Qwen/Qwen3.6-35B-A3B",
-          "name": "Qwen3.6 35B A3B",
+          "name": "Qwen3.6 35B-A3B",
           "family": "qwen"
         },
         "api": "cline-xml-tools",
@@ -11401,6 +12061,14 @@
         "contextWindow": 262144,
         "maxTokens": 65536,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "qwen/qwen3.6-max-preview",
           "name": "Qwen3.6 Max Preview",
@@ -11419,14 +12087,22 @@
           "image"
         ],
         "cost": {
-          "input": 0.28900000000000003,
-          "output": 2.4,
-          "cacheRead": 0,
+          "input": 0.6,
+          "output": 3.5999999999999996,
+          "cacheRead": 0.12,
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 131072,
+        "maxTokens": 262144,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": "low",
+          "medium": "medium",
+          "high": "high",
+          "xhigh": "xhigh"
+        },
         "modelsDev": {
           "id": "Qwen/Qwen3.6-27B",
           "name": "Qwen3.6 27B",
@@ -11462,10 +12138,31 @@
           "xhigh": "xhigh"
         },
         "modelsDev": {
-          "id": "gpt-5.5-pro",
+          "id": "openai/gpt-5.5-pro",
           "name": "GPT-5.5 Pro",
           "family": "gpt-pro"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "openai/gpt-5.5-pro:batch",
+        "name": "GPT-5.5 Pro (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 15,
+          "output": 90,
+          "cacheRead": 0,
+          "cacheWrite": 0
+        },
+        "contextWindow": 1050000,
+        "maxTokens": 128000,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -11488,18 +12185,39 @@
         "maxTokens": 128000,
         "_pricingKnown": true,
         "thinkingLevelMap": {
-          "off": "none",
+          "off": null,
           "minimal": null,
           "low": "low",
           "medium": "medium",
           "high": "high",
-          "xhigh": null
+          "xhigh": "xhigh"
         },
         "modelsDev": {
           "id": "openai/gpt-5.5",
           "name": "GPT-5.5",
           "family": "gpt"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "openai/gpt-5.5:batch",
+        "name": "GPT-5.5 (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 2.5,
+          "output": 15,
+          "cacheRead": 0.25,
+          "cacheWrite": 0
+        },
+        "contextWindow": 1050000,
+        "maxTokens": 128000,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -11558,7 +12276,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 1048576,
-        "maxTokens": 393216,
+        "maxTokens": 131072,
         "compat": {
           "supportsStore": false,
           "supportsDeveloperRole": false,
@@ -11573,7 +12291,7 @@
           "low": null,
           "medium": null,
           "high": "high",
-          "xhigh": "max"
+          "xhigh": "xhigh"
         },
         "modelsDev": {
           "id": "deepseek/deepseek-v4-flash",
@@ -11602,7 +12320,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "inclusionai/ling-2.6-1t",
-          "name": "Ling-2.6-1T",
+          "name": "inclusionAI: Ling-2.6-1T",
           "family": "ling"
         },
         "api": "cline-xml-tools",
@@ -11665,7 +12383,7 @@
         },
         "_pricingKnown": true,
         "modelsDev": {
-          "id": "mimo-v2.5-pro",
+          "id": "xiaomi/mimo-v2.5-pro",
           "name": "MiMo-V2.5-Pro",
           "family": "mimo"
         },
@@ -11697,7 +12415,7 @@
         },
         "_pricingKnown": true,
         "modelsDev": {
-          "id": "mimo-v2.5",
+          "id": "xiaomi/mimo-v2.5",
           "name": "MiMo-V2.5",
           "family": "mimo"
         },
@@ -11732,7 +12450,7 @@
         },
         "modelsDev": {
           "id": "openai/gpt-5.4-image-2",
-          "name": "GPT-5.4 Image 2",
+          "name": "OpenAI: GPT-5.4 Image 2",
           "family": "gpt"
         },
         "api": "cline-xml-tools",
@@ -11757,7 +12475,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "inclusionai/ling-2.6-flash",
-          "name": "Ling-2.6-flash",
+          "name": "inclusionAI: Ling-2.6-flash",
           "family": "ling"
         },
         "api": "cline-xml-tools",
@@ -11782,7 +12500,7 @@
         "maxTokens": 128000,
         "_pricingKnown": true,
         "thinkingLevelMap": {
-          "off": null,
+          "off": "none",
           "minimal": null,
           "low": "low",
           "medium": "medium",
@@ -11791,7 +12509,7 @@
         },
         "modelsDev": {
           "id": "~anthropic/claude-opus-latest",
-          "name": "Claude Opus Latest",
+          "name": "Anthropic: Claude Opus Latest",
           "family": "claude-opus"
         },
         "api": "cline-xml-tools",
@@ -11831,9 +12549,9 @@
           "image"
         ],
         "cost": {
-          "input": 0.589,
-          "output": 2.48,
-          "cacheRead": 0.0992,
+          "input": 0.5700000000000001,
+          "output": 2.4,
+          "cacheRead": 0.096,
           "cacheWrite": 0
         },
         "contextWindow": 262144,
@@ -11846,7 +12564,7 @@
         },
         "_pricingKnown": true,
         "modelsDev": {
-          "id": "kimi-k2.6",
+          "id": "moonshotai/kimi-k2.6",
           "name": "Kimi K2.6",
           "family": "kimi-k2"
         },
@@ -11877,13 +12595,34 @@
           "low": "low",
           "medium": "medium",
           "high": "high",
-          "xhigh": null
+          "xhigh": "xhigh"
         },
         "modelsDev": {
           "id": "anthropic/claude-opus-4.7",
           "name": "Claude Opus 4.7",
           "family": "claude-opus"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "anthropic/claude-opus-4.7:batch",
+        "name": "Claude Opus 4.7 (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 2.5,
+          "output": 12.5,
+          "cacheRead": 0.25,
+          "cacheWrite": 0
+        },
+        "contextWindow": 1000000,
+        "maxTokens": 128000,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -11928,10 +12667,18 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 32768,
+        "maxTokens": 16384,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
-          "id": "google/gemma-4-26B-A4B-it",
+          "id": "google/gemma-4-26b-a4b-it",
           "name": "Gemma 4 26B A4B IT",
           "family": "gemma"
         },
@@ -11956,8 +12703,16 @@
         "contextWindow": 262144,
         "maxTokens": 32768,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
-          "id": "google/gemma-4-26B-A4B-it",
+          "id": "google/gemma-4-26b-a4b-it",
           "name": "Gemma 4 26B A4B IT",
           "family": "gemma"
         },
@@ -12060,6 +12815,14 @@
         "contextWindow": 202752,
         "maxTokens": 131072,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "z-ai/glm-5v-turbo",
           "name": "GLM-5V-Turbo",
@@ -12085,9 +12848,17 @@
         "contextWindow": 262144,
         "maxTokens": 262144,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "arcee-ai/trinity-large-thinking",
-          "name": "Trinity Large Thinking",
+          "name": "Arcee AI: Trinity Large Thinking",
           "family": "trinity"
         },
         "api": "cline-xml-tools",
@@ -12121,7 +12892,7 @@
         },
         "modelsDev": {
           "id": "x-ai/grok-4.20-multi-agent",
-          "name": "Grok 4.20 Multi-Agent",
+          "name": "SpaceXAI: Grok 4.20 Multi-Agent",
           "family": "grok"
         },
         "api": "cline-xml-tools",
@@ -12145,9 +12916,17 @@
         "contextWindow": 2000000,
         "maxTokens": 0,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "x-ai/grok-4.20",
-          "name": "Grok 4.20",
+          "name": "SpaceXAI: Grok 4.20",
           "family": "grok"
         },
         "api": "cline-xml-tools",
@@ -12224,7 +13003,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "kwaipilot/kat-coder-pro-v2",
-          "name": "KAT-Coder-Pro V2",
+          "name": "Kwaipilot: KAT-Coder-Pro V2",
           "family": "kat-coder"
         },
         "api": "cline-xml-tools",
@@ -12308,10 +13087,31 @@
           "xhigh": "xhigh"
         },
         "modelsDev": {
-          "id": "gpt-5.4-nano",
+          "id": "openai/gpt-5.4-nano",
           "name": "GPT-5.4 nano",
           "family": "gpt-nano"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "openai/gpt-5.4-nano:batch",
+        "name": "GPT-5.4 Nano (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 0.09999999999999999,
+          "output": 0.625,
+          "cacheRead": 0.01,
+          "cacheWrite": 0
+        },
+        "contextWindow": 400000,
+        "maxTokens": 128000,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -12342,10 +13142,31 @@
           "xhigh": "xhigh"
         },
         "modelsDev": {
-          "id": "gpt-5.4-mini",
+          "id": "openai/gpt-5.4-mini",
           "name": "GPT-5.4 mini",
           "family": "gpt-mini"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "openai/gpt-5.4-mini:batch",
+        "name": "GPT-5.4 Mini (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 0.375,
+          "output": 2.25,
+          "cacheRead": 0.0375,
+          "cacheWrite": 0
+        },
+        "contextWindow": 400000,
+        "maxTokens": 128000,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -12493,7 +13314,7 @@
         "maxTokens": 131072,
         "_pricingKnown": true,
         "thinkingLevelMap": {
-          "off": null,
+          "off": "none",
           "minimal": "minimal",
           "low": "low",
           "medium": "medium",
@@ -12502,7 +13323,7 @@
         },
         "modelsDev": {
           "id": "bytedance-seed/seed-2.0-lite",
-          "name": "Seed-2.0-Lite",
+          "name": "ByteDance Seed: Seed-2.0-Lite",
           "family": "seed"
         },
         "api": "cline-xml-tools",
@@ -12526,6 +13347,14 @@
         "contextWindow": 262144,
         "maxTokens": 262144,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": "low",
+          "medium": "medium",
+          "high": "high",
+          "xhigh": "xhigh"
+        },
         "modelsDev": {
           "id": "Qwen/Qwen3.5-9B",
           "name": "Qwen3.5 9B",
@@ -12561,10 +13390,31 @@
           "xhigh": "xhigh"
         },
         "modelsDev": {
-          "id": "gpt-5.4-pro",
+          "id": "openai/gpt-5.4-pro",
           "name": "GPT-5.4 Pro",
           "family": "gpt-pro"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "openai/gpt-5.4-pro:batch",
+        "name": "GPT-5.4 Pro (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 15,
+          "output": 90,
+          "cacheRead": 0,
+          "cacheWrite": 0
+        },
+        "contextWindow": 1050000,
+        "maxTokens": 128000,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -12587,7 +13437,7 @@
         "maxTokens": 128000,
         "_pricingKnown": true,
         "thinkingLevelMap": {
-          "off": "none",
+          "off": null,
           "minimal": null,
           "low": "low",
           "medium": "medium",
@@ -12595,10 +13445,31 @@
           "xhigh": "xhigh"
         },
         "modelsDev": {
-          "id": "gpt-5.4",
+          "id": "openai/gpt-5.4",
           "name": "GPT-5.4",
           "family": "gpt"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "openai/gpt-5.4:batch",
+        "name": "GPT-5.4 (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 1.25,
+          "output": 7.5,
+          "cacheRead": 0.125,
+          "cacheWrite": 0
+        },
+        "contextWindow": 1050000,
+        "maxTokens": 128000,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -12629,7 +13500,7 @@
         },
         "modelsDev": {
           "id": "inception/mercury-2",
-          "name": "Mercury 2",
+          "name": "Inception: Mercury 2",
           "family": "mercury"
         },
         "api": "cline-xml-tools",
@@ -12655,7 +13526,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "openai/gpt-5.3-chat",
-          "name": "GPT-5.3 Chat",
+          "name": "OpenAI: GPT-5.3 Chat (retires Aug 10)",
           "family": "gpt"
         },
         "api": "cline-xml-tools",
@@ -12680,7 +13551,7 @@
         "maxTokens": 65536,
         "_pricingKnown": true,
         "thinkingLevelMap": {
-          "off": null,
+          "off": "none",
           "minimal": "minimal",
           "low": "low",
           "medium": "medium",
@@ -12714,7 +13585,7 @@
         "maxTokens": 131072,
         "_pricingKnown": true,
         "thinkingLevelMap": {
-          "off": null,
+          "off": "none",
           "minimal": "minimal",
           "low": "low",
           "medium": "medium",
@@ -12723,7 +13594,7 @@
         },
         "modelsDev": {
           "id": "bytedance-seed/seed-2.0-mini",
-          "name": "Seed-2.0-Mini",
+          "name": "ByteDance Seed: Seed-2.0-Mini",
           "family": "seed"
         },
         "api": "cline-xml-tools",
@@ -12748,7 +13619,7 @@
         "maxTokens": 65536,
         "_pricingKnown": true,
         "thinkingLevelMap": {
-          "off": null,
+          "off": "none",
           "minimal": "minimal",
           "low": null,
           "medium": null,
@@ -12782,8 +13653,8 @@
         "maxTokens": 262144,
         "_pricingKnown": true,
         "modelsDev": {
-          "id": "Qwen/Qwen3.5-35B-A3B",
-          "name": "Qwen 3.5 35B A3B",
+          "id": "qwen/qwen3.5-35b-a3b",
+          "name": "Qwen3.5 35B A3B",
           "family": "qwen"
         },
         "api": "cline-xml-tools",
@@ -12808,7 +13679,7 @@
         "maxTokens": 65536,
         "_pricingKnown": true,
         "modelsDev": {
-          "id": "Qwen/Qwen3.5-27B",
+          "id": "qwen/qwen3.5-27b",
           "name": "Qwen3.5 27B",
           "family": "qwen"
         },
@@ -12859,10 +13730,18 @@
         "contextWindow": 1000000,
         "maxTokens": 65536,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "qwen/qwen3.5-flash-02-23",
-          "name": "Qwen3.5-Flash",
-          "family": "qwen"
+          "name": "Qwen: Qwen3.5-Flash",
+          "family": "qwen3.5"
         },
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -12928,7 +13807,7 @@
           "xhigh": "xhigh"
         },
         "modelsDev": {
-          "id": "gpt-5.3-codex",
+          "id": "openai/gpt-5.3-codex",
           "name": "GPT-5.3 Codex",
           "family": "gpt-codex"
         },
@@ -12952,9 +13831,17 @@
         "contextWindow": 131072,
         "maxTokens": 32768,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "aion-labs/aion-2.0",
-          "name": "Aion-2.0"
+          "name": "AionLabs: Aion-2.0"
         },
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -12995,6 +13882,27 @@
         "baseUrl": "https://api.cline.bot/api/v1"
       },
       {
+        "id": "google/gemini-3.1-pro-preview:batch",
+        "name": "Gemini 3.1 Pro Preview (batch) (Cline) 💰 [CI: 68.8]",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 1,
+          "output": 6,
+          "cacheRead": 0,
+          "cacheWrite": 0
+        },
+        "contextWindow": 1048576,
+        "maxTokens": 65536,
+        "_pricingKnown": true,
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
         "id": "anthropic/claude-sonnet-4.6",
         "name": "Claude Sonnet 4.6 (Cline) 💰 [CI: 37.6]",
         "reasoning": true,
@@ -13011,19 +13919,32 @@
         "contextWindow": 1000000,
         "maxTokens": 128000,
         "_pricingKnown": true,
-        "thinkingLevelMap": {
-          "off": null,
-          "minimal": null,
-          "low": "low",
-          "medium": "medium",
-          "high": "high",
-          "xhigh": "max"
-        },
         "modelsDev": {
           "id": "anthropic/claude-sonnet-4.6",
           "name": "Claude Sonnet 4.6",
           "family": "claude-sonnet"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "anthropic/claude-sonnet-4.6:batch",
+        "name": "Claude Sonnet 4.6 (batch) (Cline) 💰 [CI: 37.6]",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 1.5,
+          "output": 7.5,
+          "cacheRead": 0.15,
+          "cacheWrite": 0
+        },
+        "contextWindow": 1000000,
+        "maxTokens": 128000,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -13045,10 +13966,18 @@
         "contextWindow": 1000000,
         "maxTokens": 65536,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "qwen/qwen3.5-plus-02-15",
-          "name": "Qwen3.5 Plus 2026-02-15",
-          "family": "qwen"
+          "name": "Qwen: Qwen3.5 Plus 2026-02-15",
+          "family": "qwen3.5"
         },
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -13072,8 +14001,8 @@
         "maxTokens": 65536,
         "_pricingKnown": true,
         "modelsDev": {
-          "id": "Qwen/Qwen3.5-397B-A17B",
-          "name": "Qwen 3.5 397B A17B",
+          "id": "qwen/qwen3.5-397b-a17b",
+          "name": "Qwen3.5 397B A17B",
           "family": "qwen"
         },
         "api": "cline-xml-tools",
@@ -13096,6 +14025,14 @@
         "contextWindow": 204800,
         "maxTokens": 196608,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "minimax/minimax-m2.5",
           "name": "MiniMax-M2.5",
@@ -13123,7 +14060,8 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "z-ai/glm-5",
-          "name": "Z-Ai/GLM 5"
+          "name": "GLM-5",
+          "family": "glm"
         },
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -13145,9 +14083,17 @@
         "contextWindow": 262144,
         "maxTokens": 65536,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "qwen/qwen3-max-thinking",
-          "name": "Qwen3 Max Thinking",
+          "name": "Qwen: Qwen3 Max Thinking",
           "family": "qwen"
         },
         "api": "cline-xml-tools",
@@ -13171,19 +14117,32 @@
         "contextWindow": 1000000,
         "maxTokens": 128000,
         "_pricingKnown": true,
-        "thinkingLevelMap": {
-          "off": null,
-          "minimal": null,
-          "low": "low",
-          "medium": "medium",
-          "high": "high",
-          "xhigh": "max"
-        },
         "modelsDev": {
           "id": "anthropic/claude-opus-4.6",
           "name": "Claude Opus 4.6",
           "family": "claude-opus"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "anthropic/claude-opus-4.6:batch",
+        "name": "Claude Opus 4.6 (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 2.5,
+          "output": 12.5,
+          "cacheRead": 0.25,
+          "cacheWrite": 0
+        },
+        "contextWindow": 1000000,
+        "maxTokens": 128000,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -13206,7 +14165,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "qwen/qwen3-coder-next",
-          "name": "qwen/qwen3-coder-next",
+          "name": "Qwen: Qwen3 Coder Next",
           "family": "qwen"
         },
         "api": "cline-xml-tools",
@@ -13232,7 +14191,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "openrouter/free",
-          "name": "Free Models Router"
+          "name": "OpenRouter Free Models Router"
         },
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -13293,6 +14252,14 @@
           "requiresReasoningContentOnAssistantMessages": true
         },
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "moonshotai/kimi-k2.5",
           "name": "Kimi K2.5",
@@ -13318,9 +14285,17 @@
         "contextWindow": 131072,
         "maxTokens": 131072,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "upstage/solar-pro-3",
-          "name": "Solar Pro 3",
+          "name": "Upstage: Solar Pro 3",
           "family": "solar-pro"
         },
         "api": "cline-xml-tools",
@@ -13345,7 +14320,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "minimax/minimax-m2-her",
-          "name": "MiniMax M2-her",
+          "name": "MiniMax: MiniMax M2-her",
           "family": "minimax"
         },
         "api": "cline-xml-tools",
@@ -13370,7 +14345,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "writer/palmyra-x5",
-          "name": "Palmyra X5",
+          "name": "Writer: Palmyra X5",
           "family": "palmyra"
         },
         "api": "cline-xml-tools",
@@ -13395,7 +14370,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "openai/gpt-audio",
-          "name": "GPT Audio",
+          "name": "OpenAI: GPT Audio",
           "family": "gpt"
         },
         "api": "cline-xml-tools",
@@ -13420,8 +14395,8 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "openai/gpt-audio-mini",
-          "name": "GPT Audio Mini",
-          "family": "o-mini"
+          "name": "OpenAI: GPT Audio Mini",
+          "family": "gpt"
         },
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -13443,6 +14418,14 @@
         "contextWindow": 202752,
         "maxTokens": 16384,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "z-ai/glm-4.7-flash",
           "name": "GLM-4.7-Flash",
@@ -13480,10 +14463,7 @@
         "modelsDev": {
           "id": "openai/gpt-5.2-codex",
           "name": "GPT-5.2 Codex",
-          "family": "gpt-codex",
-          "provider": {
-            "npm": "ai-gateway-provider"
-          }
+          "family": "gpt-codex"
         },
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -13506,9 +14486,17 @@
         "contextWindow": 262144,
         "maxTokens": 32768,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "bytedance-seed/seed-1.6-flash",
-          "name": "Seed 1.6 Flash",
+          "name": "ByteDance Seed: Seed 1.6 Flash",
           "family": "seed"
         },
         "api": "cline-xml-tools",
@@ -13532,9 +14520,17 @@
         "contextWindow": 262144,
         "maxTokens": 32768,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "bytedance-seed/seed-1.6",
-          "name": "Seed 1.6",
+          "name": "ByteDance Seed: Seed 1.6",
           "family": "seed"
         },
         "api": "cline-xml-tools",
@@ -13557,9 +14553,17 @@
         "contextWindow": 204800,
         "maxTokens": 131072,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "minimax/minimax-m2.1",
-          "name": "Minimax M2.1",
+          "name": "MiniMax-M2.1",
           "family": "minimax"
         },
         "api": "cline-xml-tools",
@@ -13584,7 +14588,8 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "z-ai/glm-4.7",
-          "name": "Z-Ai/GLM 4.7"
+          "name": "GLM-4.7",
+          "family": "glm"
         },
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -13625,6 +14630,27 @@
         "baseUrl": "https://api.cline.bot/api/v1"
       },
       {
+        "id": "google/gemini-3-flash-preview:batch",
+        "name": "Gemini 3 Flash Preview (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 0.25,
+          "output": 1.5,
+          "cacheRead": 0,
+          "cacheWrite": 0
+        },
+        "contextWindow": 1048576,
+        "maxTokens": 65535,
+        "_pricingKnown": true,
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
         "id": "nvidia/nemotron-3-nano-30b-a3b",
         "name": "Nemotron 3 Nano 30B A3B (Cline) 💰 [CI: 37.7]",
         "reasoning": true,
@@ -13640,8 +14666,16 @@
         "contextWindow": 262144,
         "maxTokens": 262144,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
-          "id": "nvidia/Nemotron-3-Nano-30B-A3B",
+          "id": "nvidia/nemotron-3-nano-30b-a3b",
           "name": "Nemotron 3 Nano 30B A3B",
           "family": "nemotron"
         },
@@ -13665,8 +14699,16 @@
         "contextWindow": 256000,
         "maxTokens": 0,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
-          "id": "nvidia/Nemotron-3-Nano-30B-A3B",
+          "id": "nvidia/nemotron-3-nano-30b-a3b",
           "name": "Nemotron 3 Nano 30B A3B",
           "family": "nemotron"
         },
@@ -13693,8 +14735,8 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "openai/gpt-5.2-chat",
-          "name": "GPT-5.2 Chat",
-          "family": "gpt-codex"
+          "name": "OpenAI: GPT-5.2 Chat (retires Aug 10)",
+          "family": "gpt"
         },
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -13726,10 +14768,31 @@
           "xhigh": "xhigh"
         },
         "modelsDev": {
-          "id": "gpt-5.2-pro",
+          "id": "openai/gpt-5.2-pro",
           "name": "GPT-5.2 Pro",
           "family": "gpt-pro"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "openai/gpt-5.2-pro:batch",
+        "name": "GPT-5.2 Pro (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 10.5,
+          "output": 84,
+          "cacheRead": 0,
+          "cacheWrite": 0
+        },
+        "contextWindow": 400000,
+        "maxTokens": 128000,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -13752,7 +14815,7 @@
         "maxTokens": 128000,
         "_pricingKnown": true,
         "thinkingLevelMap": {
-          "off": "none",
+          "off": null,
           "minimal": null,
           "low": "low",
           "medium": "medium",
@@ -13760,10 +14823,31 @@
           "xhigh": "xhigh"
         },
         "modelsDev": {
-          "id": "gpt-5.2",
+          "id": "openai/gpt-5.2",
           "name": "GPT-5.2",
           "family": "gpt"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "openai/gpt-5.2:batch",
+        "name": "GPT-5.2 (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 0.875,
+          "output": 7,
+          "cacheRead": 0.0875,
+          "cacheWrite": 0
+        },
+        "contextWindow": 400000,
+        "maxTokens": 128000,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -13786,7 +14870,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "relace/relace-search",
-          "name": "Relace Search"
+          "name": "Relace: Relace Search"
         },
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -13809,6 +14893,14 @@
         "contextWindow": 131072,
         "maxTokens": 32768,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "z-ai/glm-4.6v",
           "name": "GLM-4.6V",
@@ -13893,9 +14985,17 @@
         "contextWindow": 1000000,
         "maxTokens": 65535,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "amazon/nova-2-lite-v1",
-          "name": "Nova 2 Lite",
+          "name": "Amazon: Nova 2 Lite",
           "family": "nova"
         },
         "api": "cline-xml-tools",
@@ -13904,7 +15004,7 @@
       },
       {
         "id": "mistralai/ministral-14b-2512",
-        "name": "Ministral 3 14B 2512 (Cline) 💰 [CI: 14.4]",
+        "name": "Ministral 3 14B 2512 (Cline) 💰",
         "reasoning": false,
         "input": [
           "text",
@@ -13921,7 +15021,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "mistralai/ministral-14b-2512",
-          "name": "Ministral 3 14B 2512",
+          "name": "Mistral: Ministral 3 14B 2512",
           "family": "ministral"
         },
         "api": "cline-xml-tools",
@@ -13930,7 +15030,7 @@
       },
       {
         "id": "mistralai/ministral-8b-2512",
-        "name": "Ministral 3 8B 2512 (Cline) 💰 [CI: 9.7]",
+        "name": "Ministral 3 8B 2512 (Cline) 💰",
         "reasoning": false,
         "input": [
           "text",
@@ -13947,7 +15047,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "mistralai/ministral-8b-2512",
-          "name": "Ministral 3 8B 2512",
+          "name": "Mistral: Ministral 3 8B 2512",
           "family": "ministral"
         },
         "api": "cline-xml-tools",
@@ -13956,7 +15056,7 @@
       },
       {
         "id": "mistralai/ministral-3b-2512",
-        "name": "Ministral 3 3B 2512 (Cline) 💰 [CI: 4.8]",
+        "name": "Ministral 3 3B 2512 (Cline) 💰",
         "reasoning": false,
         "input": [
           "text",
@@ -13973,7 +15073,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "mistralai/ministral-3b-2512",
-          "name": "Ministral 3 3B 2512",
+          "name": "Mistral: Ministral 3 3B 2512",
           "family": "ministral"
         },
         "api": "cline-xml-tools",
@@ -14029,9 +15129,17 @@
           "thinkingFormat": "deepseek"
         },
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "deepseek/deepseek-v3.2",
-          "name": "DeepSeek V3.2",
+          "name": "DeepSeek: DeepSeek V3.2",
           "family": "deepseek"
         },
         "api": "cline-xml-tools",
@@ -14056,10 +15164,10 @@
         "maxTokens": 64000,
         "_pricingKnown": true,
         "thinkingLevelMap": {
-          "off": null,
+          "off": "none",
           "minimal": null,
-          "low": "low",
-          "medium": "medium",
+          "low": null,
+          "medium": null,
           "high": "high",
           "xhigh": null
         },
@@ -14068,6 +15176,27 @@
           "name": "Claude Opus 4.5 (latest)",
           "family": "claude-opus"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "anthropic/claude-opus-4.5:batch",
+        "name": "Claude Opus 4.5 (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 2.5,
+          "output": 12.5,
+          "cacheRead": 0.25,
+          "cacheWrite": 0
+        },
+        "contextWindow": 200000,
+        "maxTokens": 64000,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -14088,9 +15217,17 @@
         "contextWindow": 65536,
         "maxTokens": 65536,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "allenai/olmo-3-32b-think",
-          "name": "Olmo 3 32B Think",
+          "name": "AllenAI: Olmo 3 32B Think",
           "family": "allenai"
         },
         "api": "cline-xml-tools",
@@ -14114,6 +15251,14 @@
         "contextWindow": 65536,
         "maxTokens": 32768,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "google/gemini-3-pro-image-preview",
           "name": "Nano Banana Pro",
@@ -14139,9 +15284,17 @@
         "contextWindow": 128000,
         "maxTokens": 0,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "deepcogito/cogito-v2.1-671b",
-          "name": "Cogito v2.1 671B",
+          "name": "Deep Cogito: Cogito v2.1 671B",
           "family": "cogito"
         },
         "api": "cline-xml-tools",
@@ -14166,18 +15319,39 @@
         "maxTokens": 128000,
         "_pricingKnown": true,
         "thinkingLevelMap": {
-          "off": "none",
+          "off": null,
           "minimal": null,
           "low": "low",
           "medium": "medium",
           "high": "high",
-          "xhigh": null
+          "xhigh": "xhigh"
         },
         "modelsDev": {
-          "id": "gpt-5.1",
+          "id": "openai/gpt-5.1",
           "name": "GPT-5.1",
           "family": "gpt"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "openai/gpt-5.1:batch",
+        "name": "GPT-5.1 (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 0.625,
+          "output": 5,
+          "cacheRead": 0.0625,
+          "cacheWrite": 0
+        },
+        "contextWindow": 400000,
+        "maxTokens": 128000,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -14234,7 +15408,7 @@
         "maxTokens": 128000,
         "_pricingKnown": true,
         "thinkingLevelMap": {
-          "off": null,
+          "off": "none",
           "minimal": null,
           "low": "low",
           "medium": "medium",
@@ -14272,8 +15446,16 @@
           "requiresReasoningContentOnAssistantMessages": true
         },
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
-          "id": "moonshotai/Kimi-K2-Thinking",
+          "id": "moonshotai/kimi-k2-thinking",
           "name": "Kimi K2 Thinking",
           "family": "kimi-thinking"
         },
@@ -14300,7 +15482,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "amazon/nova-premier-v1",
-          "name": "Nova Premier 1.0",
+          "name": "Amazon: Nova Premier 1.0",
           "family": "nova"
         },
         "api": "cline-xml-tools",
@@ -14324,9 +15506,17 @@
         "contextWindow": 200000,
         "maxTokens": 8000,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "perplexity/sonar-pro-search",
-          "name": "Sonar Pro Search",
+          "name": "Perplexity: Sonar Pro Search",
           "family": "sonar-pro"
         },
         "api": "cline-xml-tools",
@@ -14351,7 +15541,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "mistralai/voxtral-small-24b-2507",
-          "name": "Voxtral Small 24B 2507",
+          "name": "Mistral: Voxtral Small 24B 2507",
           "family": "mistral"
         },
         "api": "cline-xml-tools",
@@ -14377,14 +15567,14 @@
         "thinkingLevelMap": {
           "off": null,
           "minimal": null,
-          "low": "low",
-          "medium": "medium",
+          "low": null,
+          "medium": null,
           "high": "high",
           "xhigh": null
         },
         "modelsDev": {
           "id": "openai/gpt-oss-safeguard-20b",
-          "name": "gpt-oss-safeguard-20b",
+          "name": "OpenAI: gpt-oss-safeguard-20b",
           "family": "gpt-oss"
         },
         "api": "cline-xml-tools",
@@ -14409,8 +15599,8 @@
         "maxTokens": 128000,
         "_pricingKnown": true,
         "modelsDev": {
-          "id": "nvidia/nemotron-nano-12b-v2-vl:free",
-          "name": "Nemotron Nano 12B 2 VL (free)",
+          "id": "nvidia/nemotron-nano-12b-v2-vl",
+          "name": "Nemotron Nano 12B v2 VL",
           "family": "nemotron"
         },
         "api": "cline-xml-tools",
@@ -14433,9 +15623,18 @@
         "contextWindow": 204800,
         "maxTokens": 131072,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "minimax/minimax-m2",
-          "name": "Minimax/Minimax-M2"
+          "name": "MiniMax-M2",
+          "family": "minimax"
         },
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -14459,8 +15658,8 @@
         "maxTokens": 32768,
         "_pricingKnown": true,
         "modelsDev": {
-          "id": "Qwen/Qwen3-VL-32B-Instruct",
-          "name": "Qwen/Qwen3-VL-32B-Instruct",
+          "id": "qwen/qwen3-vl-32b-instruct",
+          "name": "Qwen: Qwen3 VL 32B Instruct",
           "family": "qwen"
         },
         "api": "cline-xml-tools",
@@ -14485,7 +15684,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "ibm-granite/granite-4.0-h-micro",
-          "name": "Granite 4.0 Micro",
+          "name": "IBM: Granite 4.0 Micro",
           "family": "granite"
         },
         "api": "cline-xml-tools",
@@ -14509,9 +15708,17 @@
         "contextWindow": 400000,
         "maxTokens": 128000,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "openai/gpt-5-image-mini",
-          "name": "GPT-5 Image Mini",
+          "name": "OpenAI: GPT-5 Image Mini",
           "family": "gpt"
         },
         "api": "cline-xml-tools",
@@ -14535,11 +15742,40 @@
         "contextWindow": 200000,
         "maxTokens": 64000,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "anthropic/claude-haiku-4.5",
           "name": "Claude Haiku 4.5 (latest)",
           "family": "claude-haiku"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "anthropic/claude-haiku-4.5:batch",
+        "name": "Claude Haiku 4.5 (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 0.5,
+          "output": 2.5,
+          "cacheRead": 0.049999999999999996,
+          "cacheWrite": 0
+        },
+        "contextWindow": 200000,
+        "maxTokens": 64000,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -14561,9 +15797,17 @@
         "contextWindow": 131072,
         "maxTokens": 32768,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "qwen/qwen3-vl-8b-thinking",
-          "name": "Qwen3 VL 8B Thinking",
+          "name": "Qwen: Qwen3 VL 8B Thinking",
           "family": "qwen"
         },
         "api": "cline-xml-tools",
@@ -14588,8 +15832,8 @@
         "maxTokens": 32768,
         "_pricingKnown": true,
         "modelsDev": {
-          "id": "Qwen/Qwen3-VL-8B-Instruct",
-          "name": "Qwen/Qwen3-VL-8B-Instruct",
+          "id": "qwen/qwen3-vl-8b-instruct",
+          "name": "Qwen: Qwen3 VL 8B Instruct",
           "family": "qwen"
         },
         "api": "cline-xml-tools",
@@ -14613,9 +15857,17 @@
         "contextWindow": 400000,
         "maxTokens": 128000,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "openai/gpt-5-image",
-          "name": "GPT-5 Image",
+          "name": "OpenAI: GPT-5 Image ($$$$)",
           "family": "gpt"
         },
         "api": "cline-xml-tools",
@@ -14665,9 +15917,17 @@
         "contextWindow": 262144,
         "maxTokens": 32768,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
-          "id": "Qwen/Qwen3-VL-30B-A3B-Thinking",
-          "name": "Qwen/Qwen3-VL-30B-A3B-Thinking",
+          "id": "qwen/qwen3-vl-30b-a3b-thinking",
+          "name": "Qwen: Qwen3 VL 30B A3B Thinking",
           "family": "qwen"
         },
         "api": "cline-xml-tools",
@@ -14689,11 +15949,11 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 262000,
+        "maxTokens": 32768,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "Qwen/Qwen3-VL-30B-A3B-Instruct",
-          "name": "Qwen/Qwen3-VL-30B-A3B-Instruct",
+          "name": "Qwen3-VL 30B-A3B Instruct",
           "family": "qwen"
         },
         "api": "cline-xml-tools",
@@ -14726,10 +15986,31 @@
           "xhigh": null
         },
         "modelsDev": {
-          "id": "gpt-5-pro",
+          "id": "openai/gpt-5-pro",
           "name": "GPT-5 Pro",
           "family": "gpt-pro"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "openai/gpt-5-pro:batch",
+        "name": "GPT-5 Pro (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 7.5,
+          "output": 60,
+          "cacheRead": 0,
+          "cacheWrite": 0
+        },
+        "contextWindow": 400000,
+        "maxTokens": 128000,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -14750,9 +16031,18 @@
         "contextWindow": 204800,
         "maxTokens": 131072,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "z-ai/glm-4.6",
-          "name": "Z-AI/GLM 4.6"
+          "name": "GLM-4.6",
+          "family": "glm"
         },
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -14775,11 +16065,40 @@
         "contextWindow": 1000000,
         "maxTokens": 64000,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "anthropic/claude-sonnet-4.5",
           "name": "Claude Sonnet 4.5 (latest)",
           "family": "claude-sonnet"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "anthropic/claude-sonnet-4.5:batch",
+        "name": "Claude Sonnet 4.5 (batch) (Cline) 💰 [CI: 52.1]",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 1.5,
+          "output": 7.5,
+          "cacheRead": 0.15,
+          "cacheWrite": 0
+        },
+        "contextWindow": 1000000,
+        "maxTokens": 64000,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -14807,9 +16126,18 @@
           "thinkingFormat": "deepseek"
         },
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "deepseek/deepseek-v3.2-exp",
-          "name": "DeepSeek/DeepSeek-V3.2-Exp"
+          "name": "DeepSeek: DeepSeek V3.2 Exp",
+          "family": "deepseek"
         },
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -14833,7 +16161,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "thedrummer/cydonia-24b-v4.1",
-          "name": "Cydonia 24B V4.1"
+          "name": "TheDrummer: Cydonia 24B V4.1"
         },
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -14857,7 +16185,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "relace/relace-apply-3",
-          "name": "Relace Apply 3"
+          "name": "Relace: Relace Apply 3"
         },
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -14872,17 +16200,25 @@
           "image"
         ],
         "cost": {
-          "input": 0.39999999999999997,
-          "output": 4,
+          "input": 0.98,
+          "output": 3.95,
           "cacheRead": 0,
           "cacheWrite": 0
         },
         "contextWindow": 131072,
         "maxTokens": 32768,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
-          "id": "Qwen/Qwen3-VL-235B-A22B-Thinking",
-          "name": "Qwen/Qwen3-VL-235B-A22B-Thinking",
+          "id": "qwen/qwen3-vl-235b-a22b-thinking",
+          "name": "Qwen: Qwen3 VL 235B A22B Thinking",
           "family": "qwen"
         },
         "api": "cline-xml-tools",
@@ -14907,8 +16243,8 @@
         "maxTokens": 32768,
         "_pricingKnown": true,
         "modelsDev": {
-          "id": "Qwen/Qwen3-VL-235B-A22B-Instruct",
-          "name": "Qwen/Qwen3-VL-235B-A22B-Instruct",
+          "id": "qwen/qwen3-vl-235b-a22b-instruct",
+          "name": "Qwen: Qwen3 VL 235B A22B Instruct",
           "family": "qwen"
         },
         "api": "cline-xml-tools",
@@ -14932,7 +16268,7 @@
         "maxTokens": 65536,
         "_pricingKnown": true,
         "modelsDev": {
-          "id": "Qwen/Qwen3-Max",
+          "id": "qwen/qwen3-max",
           "name": "Qwen3 Max",
           "family": "qwen"
         },
@@ -14966,6 +16302,27 @@
         "baseUrl": "https://api.cline.bot/api/v1"
       },
       {
+        "id": "openai/gpt-5-codex:batch",
+        "name": "GPT-5 Codex (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 0.625,
+          "output": 5,
+          "cacheRead": 0.0625,
+          "cacheWrite": 0
+        },
+        "contextWindow": 400000,
+        "maxTokens": 128000,
+        "_pricingKnown": true,
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
         "id": "deepseek/deepseek-v3.1-terminus",
         "name": "DeepSeek V3.1 Terminus (Cline) 💰",
         "reasoning": true,
@@ -14988,9 +16345,18 @@
           "thinkingFormat": "deepseek"
         },
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "deepseek/deepseek-v3.1-terminus",
-          "name": "DeepSeek/DeepSeek-V3.1-Terminus"
+          "name": "DeepSeek: DeepSeek V3.1 Terminus",
+          "family": "deepseek"
         },
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -15037,9 +16403,17 @@
         "contextWindow": 262144,
         "maxTokens": 0,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "qwen/qwen3-next-80b-a3b-thinking",
-          "name": "Qwen3 Next 80B A3B Thinking",
+          "name": "Qwen3-Next 80B-A3B (Thinking)",
           "family": "qwen"
         },
         "api": "cline-xml-tools",
@@ -15060,11 +16434,11 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 65536,
+        "maxTokens": 16384,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "qwen/qwen3-next-80b-a3b-instruct",
-          "name": "Qwen3 Next 80B A3B Instruct",
+          "name": "Qwen3-Next 80B-A3B Instruct",
           "family": "qwen"
         },
         "api": "cline-xml-tools",
@@ -15089,7 +16463,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "qwen/qwen-plus-2025-07-28",
-          "name": "Qwen Plus 0728",
+          "name": "Qwen: Qwen Plus 0728",
           "family": "qwen"
         },
         "api": "cline-xml-tools",
@@ -15112,9 +16486,17 @@
         "contextWindow": 1000000,
         "maxTokens": 32768,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "qwen/qwen-plus-2025-07-28:thinking",
-          "name": "Qwen Plus 0728 (thinking)",
+          "name": "Qwen: Qwen Plus 0728 (thinking)",
           "family": "qwen"
         },
         "api": "cline-xml-tools",
@@ -15170,7 +16552,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "moonshotai/kimi-k2-0905",
-          "name": "Kimi K2 0905",
+          "name": "MoonshotAI: Kimi K2 0905",
           "family": "kimi-k2"
         },
         "api": "cline-xml-tools",
@@ -15194,7 +16576,7 @@
         "maxTokens": 32768,
         "_pricingKnown": true,
         "modelsDev": {
-          "id": "qwen/qwen3-30b-a3b-thinking-2507",
+          "id": "Qwen/Qwen3-30B-A3B-Thinking-2507",
           "name": "Qwen3 30B A3B Thinking 2507",
           "family": "qwen"
         },
@@ -15218,10 +16600,18 @@
         "contextWindow": 131072,
         "maxTokens": 0,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "nousresearch/hermes-4-70b",
-          "name": "Hermes 4 70B",
-          "family": "hermes"
+          "name": "Nous: Hermes 4 70B",
+          "family": "nousresearch"
         },
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -15243,10 +16633,18 @@
         "contextWindow": 131072,
         "maxTokens": 0,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "nousresearch/hermes-4-405b",
-          "name": "Hermes 4 405B",
-          "family": "hermes"
+          "name": "Nous: Hermes 4 405B",
+          "family": "nousresearch"
         },
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -15275,9 +16673,17 @@
           "thinkingFormat": "deepseek"
         },
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "deepseek/deepseek-chat-v3.1",
-          "name": "DeepSeek V3.1",
+          "name": "DeepSeek: DeepSeek V3.1",
           "family": "deepseek"
         },
         "api": "cline-xml-tools",
@@ -15303,7 +16709,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "mistralai/mistral-medium-3.1",
-          "name": "Mistral Medium 3.1",
+          "name": "Mistral: Mistral Medium 3.1",
           "family": "mistral-medium"
         },
         "api": "cline-xml-tools",
@@ -15327,6 +16733,14 @@
         "contextWindow": 65536,
         "maxTokens": 16384,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "z-ai/glm-4.5v",
           "name": "GLM-4.5V",
@@ -15354,7 +16768,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "ai21/jamba-large-1.7",
-          "name": "Jamba Large 1.7",
+          "name": "AI21: Jamba Large 1.7",
           "family": "jamba"
         },
         "api": "cline-xml-tools",
@@ -15387,10 +16801,31 @@
           "xhigh": null
         },
         "modelsDev": {
-          "id": "gpt-5",
+          "id": "openai/gpt-5",
           "name": "GPT-5",
           "family": "gpt"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "openai/gpt-5:batch",
+        "name": "GPT-5 (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 0.625,
+          "output": 5,
+          "cacheRead": 0.0625,
+          "cacheWrite": 0
+        },
+        "contextWindow": 400000,
+        "maxTokens": 128000,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -15414,17 +16849,38 @@
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": null,
-          "minimal": "minimal",
+          "minimal": null,
           "low": "low",
           "medium": "medium",
           "high": "high",
-          "xhigh": null
+          "xhigh": "xhigh"
         },
         "modelsDev": {
-          "id": "gpt-5-mini",
+          "id": "openai/gpt-5-mini",
           "name": "GPT-5 Mini",
           "family": "gpt-mini"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "openai/gpt-5-mini:batch",
+        "name": "GPT-5 Mini (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 0.125,
+          "output": 1,
+          "cacheRead": 0.012499999999999999,
+          "cacheWrite": 0
+        },
+        "contextWindow": 400000,
+        "maxTokens": 128000,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -15455,10 +16911,31 @@
           "xhigh": null
         },
         "modelsDev": {
-          "id": "gpt-5-nano",
+          "id": "openai/gpt-5-nano",
           "name": "GPT-5 Nano",
           "family": "gpt-nano"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "openai/gpt-5-nano:batch",
+        "name": "GPT-5 Nano (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 0.024999999999999998,
+          "output": 0.19999999999999998,
+          "cacheRead": 0.0025,
+          "cacheWrite": 0
+        },
+        "contextWindow": 400000,
+        "maxTokens": 128000,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -15489,7 +16966,7 @@
         },
         "modelsDev": {
           "id": "openai/gpt-oss-120b",
-          "name": "GPT OSS 120B",
+          "name": "GPT-OSS 120B",
           "family": "gpt-oss"
         },
         "api": "cline-xml-tools",
@@ -15518,7 +16995,7 @@
           "low": "low",
           "medium": "medium",
           "high": "high",
-          "xhigh": null
+          "xhigh": "xhigh"
         },
         "modelsDev": {
           "id": "openai/gpt-oss-20b",
@@ -15551,7 +17028,7 @@
           "low": "low",
           "medium": "medium",
           "high": "high",
-          "xhigh": null
+          "xhigh": "xhigh"
         },
         "modelsDev": {
           "id": "openai/gpt-oss-20b",
@@ -15579,11 +17056,40 @@
         "contextWindow": 200000,
         "maxTokens": 32000,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "anthropic/claude-opus-4.1",
           "name": "Claude Opus 4.1 (latest)",
           "family": "claude-opus"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "anthropic/claude-opus-4.1:batch",
+        "name": "Claude Opus 4.1 (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 7.5,
+          "output": 37.5,
+          "cacheRead": 0.75,
+          "cacheWrite": 0
+        },
+        "contextWindow": 200000,
+        "maxTokens": 32000,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -15606,7 +17112,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "mistralai/codestral-2508",
-          "name": "Codestral 2508",
+          "name": "Mistral: Codestral 2508",
           "family": "codestral"
         },
         "api": "cline-xml-tools",
@@ -15631,7 +17137,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "Qwen/Qwen3-Coder-30B-A3B-Instruct",
-          "name": "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+          "name": "Qwen3 Coder 30B A3B Instruct",
           "family": "qwen"
         },
         "api": "cline-xml-tools",
@@ -15656,7 +17162,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-          "name": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "name": "Qwen3 30B-A3B Instruct 2507",
           "family": "qwen"
         },
         "api": "cline-xml-tools",
@@ -15679,6 +17185,14 @@
         "contextWindow": 131072,
         "maxTokens": 98304,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "z-ai/glm-4.5",
           "name": "GLM-4.5",
@@ -15704,6 +17218,14 @@
         "contextWindow": 131072,
         "maxTokens": 98304,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "z-ai/glm-4.5-air",
           "name": "GLM-4.5-Air",
@@ -15730,8 +17252,8 @@
         "maxTokens": 0,
         "_pricingKnown": true,
         "modelsDev": {
-          "id": "qwen/qwen3-235b-a22b-thinking-2507",
-          "name": "Qwen3 235B A22b Thinking 2507",
+          "id": "Qwen/Qwen3-235B-A22B-Thinking-2507",
+          "name": "Qwen3 235B A22B Thinking 2507",
           "family": "qwen"
         },
         "api": "cline-xml-tools",
@@ -15756,7 +17278,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "qwen/qwen3-coder",
-          "name": "Qwen3 Coder 480B A35B",
+          "name": "Qwen: Qwen3 Coder 480B A35B",
           "family": "qwen"
         },
         "api": "cline-xml-tools",
@@ -15782,7 +17304,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "bytedance/ui-tars-1.5-7b",
-          "name": "UI-TARS 7B "
+          "name": "ByteDance: UI-TARS 7B "
         },
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -15815,6 +17337,27 @@
         "baseUrl": "https://api.cline.bot/api/v1"
       },
       {
+        "id": "google/gemini-2.5-flash-lite:batch",
+        "name": "Gemini 2.5 Flash Lite (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 0.049999999999999996,
+          "output": 0.19999999999999998,
+          "cacheRead": 0.01,
+          "cacheWrite": 0
+        },
+        "contextWindow": 1048576,
+        "maxTokens": 65535,
+        "_pricingKnown": true,
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
         "id": "qwen/qwen3-235b-a22b-2507",
         "name": "Qwen3 235B A22B Instruct 2507 (Cline) 💰 [CI: 22.1]",
         "reasoning": false,
@@ -15822,17 +17365,17 @@
           "text"
         ],
         "cost": {
-          "input": 0.14950000000000002,
-          "output": 0.5980000000000001,
+          "input": 0.09,
+          "output": 0.55,
           "cacheRead": 0,
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 32768,
+        "maxTokens": 16384,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "qwen/qwen3-235b-a22b-2507",
-          "name": "Qwen3 235B A22B Instruct 2507",
+          "name": "Qwen: Qwen3 235B A22B Instruct 2507",
           "family": "qwen"
         },
         "api": "cline-xml-tools",
@@ -15863,7 +17406,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "moonshotai/kimi-k2",
-          "name": "Kimi K2 0711",
+          "name": "MoonshotAI: Kimi K2 0711",
           "family": "kimi-k2"
         },
         "api": "cline-xml-tools",
@@ -15888,7 +17431,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "cognitivecomputations/dolphin-mistral-24b-venice-edition",
-          "name": "Uncensored",
+          "name": "Venice: Uncensored",
           "family": "mistral"
         },
         "api": "cline-xml-tools",
@@ -15911,9 +17454,17 @@
         "contextWindow": 131072,
         "maxTokens": 131072,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
-          "id": "tencent/Hunyuan-A13B-Instruct",
-          "name": "tencent/Hunyuan-A13B-Instruct",
+          "id": "tencent/hunyuan-a13b-instruct",
+          "name": "Tencent: Hunyuan A13B Instruct",
           "family": "hunyuan"
         },
         "api": "cline-xml-tools",
@@ -15938,7 +17489,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "morph/morph-v3-large",
-          "name": "Morph V3 Large",
+          "name": "Morph: Morph V3 Large",
           "family": "morph"
         },
         "api": "cline-xml-tools",
@@ -15963,7 +17514,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "morph/morph-v3-fast",
-          "name": "Morph V3 Fast",
+          "name": "Morph: Morph V3 Fast",
           "family": "morph"
         },
         "api": "cline-xml-tools",
@@ -15987,9 +17538,17 @@
         "contextWindow": 123000,
         "maxTokens": 16000,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "baidu/ernie-4.5-vl-424b-a47b",
-          "name": "ERNIE 4.5 VL 424B A47B",
+          "name": "Baidu: ERNIE 4.5 VL 424B A47B ",
           "family": "ernie"
         },
         "api": "cline-xml-tools",
@@ -16015,7 +17574,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "mistralai/mistral-small-3.2-24b-instruct",
-          "name": "Mistral Small 3.2 24B",
+          "name": "Mistral: Mistral Small 3.2 24B",
           "family": "mistral-small"
         },
         "api": "cline-xml-tools",
@@ -16038,9 +17597,17 @@
         "contextWindow": 1000000,
         "maxTokens": 40000,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "minimax/minimax-m1",
-          "name": "MiniMax M1",
+          "name": "MiniMax: MiniMax M1",
           "family": "minimax"
         },
         "api": "cline-xml-tools",
@@ -16082,6 +17649,27 @@
         "baseUrl": "https://api.cline.bot/api/v1"
       },
       {
+        "id": "google/gemini-2.5-flash:batch",
+        "name": "Gemini 2.5 Flash (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 0.15,
+          "output": 1.25,
+          "cacheRead": 0.03,
+          "cacheWrite": 0
+        },
+        "contextWindow": 1048576,
+        "maxTokens": 65535,
+        "_pricingKnown": true,
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
         "id": "google/gemini-2.5-pro",
         "name": "Gemini 2.5 Pro (Cline) 💰 [CI: 33.3]",
         "reasoning": true,
@@ -16116,6 +17704,27 @@
         "baseUrl": "https://api.cline.bot/api/v1"
       },
       {
+        "id": "google/gemini-2.5-pro:batch",
+        "name": "Gemini 2.5 Pro (batch) (Cline) 💰 [CI: 33.3]",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 0.625,
+          "output": 5,
+          "cacheRead": 0.125,
+          "cacheWrite": 0
+        },
+        "contextWindow": 1048576,
+        "maxTokens": 65536,
+        "_pricingKnown": true,
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
         "id": "openai/o3-pro",
         "name": "o3 Pro (Cline) 💰",
         "reasoning": true,
@@ -16133,18 +17742,39 @@
         "maxTokens": 100000,
         "_pricingKnown": true,
         "thinkingLevelMap": {
-          "off": null,
+          "off": "none",
           "minimal": null,
-          "low": "low",
-          "medium": "medium",
+          "low": null,
+          "medium": null,
           "high": "high",
           "xhigh": null
         },
         "modelsDev": {
-          "id": "o3-pro",
+          "id": "openai/o3-pro",
           "name": "o3-pro",
           "family": "o-pro"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "openai/o3-pro:batch",
+        "name": "o3 Pro (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 10,
+          "output": 40,
+          "cacheRead": 0,
+          "cacheWrite": 0
+        },
+        "contextWindow": 200000,
+        "maxTokens": 100000,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -16166,9 +17796,17 @@
         "contextWindow": 1048576,
         "maxTokens": 65536,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "google/gemini-2.5-pro-preview",
-          "name": "Gemini 2.5 Pro Preview 06-05",
+          "name": "Google: Gemini 2.5 Pro Preview 06-05",
           "family": "gemini"
         },
         "api": "cline-xml-tools",
@@ -16198,10 +17836,18 @@
           "thinkingFormat": "deepseek"
         },
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "deepseek/deepseek-r1-0528",
-          "name": "DeepSeek R1 0528",
-          "family": "deepseek-thinking"
+          "name": "DeepSeek: R1 0528",
+          "family": "deepseek"
         },
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -16225,16 +17871,16 @@
         "maxTokens": 32000,
         "_pricingKnown": true,
         "thinkingLevelMap": {
-          "off": null,
+          "off": "none",
           "minimal": null,
-          "low": "low",
-          "medium": "medium",
+          "low": null,
+          "medium": null,
           "high": "high",
           "xhigh": null
         },
         "modelsDev": {
           "id": "anthropic/claude-opus-4",
-          "name": "Claude Opus 4 (latest)",
+          "name": "Anthropic: Claude Opus 4 ($$$$)",
           "family": "claude-opus"
         },
         "api": "cline-xml-tools",
@@ -16259,16 +17905,16 @@
         "maxTokens": 64000,
         "_pricingKnown": true,
         "thinkingLevelMap": {
-          "off": null,
+          "off": "none",
           "minimal": null,
-          "low": "low",
-          "medium": "medium",
+          "low": null,
+          "medium": null,
           "high": "high",
           "xhigh": null
         },
         "modelsDev": {
           "id": "anthropic/claude-sonnet-4",
-          "name": "Claude Sonnet 4 (latest)",
+          "name": "Anthropic: Claude Sonnet 4",
           "family": "claude-sonnet"
         },
         "api": "cline-xml-tools",
@@ -16293,7 +17939,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "google/gemma-3n-e4b-it",
-          "name": "Gemma 3n 4B",
+          "name": "Google: Gemma 3n 4B",
           "family": "gemma"
         },
         "api": "cline-xml-tools",
@@ -16319,7 +17965,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "mistralai/mistral-medium-3",
-          "name": "Mistral Medium 3",
+          "name": "Mistral: Mistral Medium 3",
           "family": "mistral-medium"
         },
         "api": "cline-xml-tools",
@@ -16343,10 +17989,18 @@
         "contextWindow": 1048576,
         "maxTokens": 65535,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "google/gemini-2.5-pro-preview-05-06",
-          "name": "Gemini 2.5 Pro Preview 05-06",
-          "family": "gemini-pro"
+          "name": "Google: Gemini 2.5 Pro Preview 05-06",
+          "family": "gemini"
         },
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -16370,7 +18024,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "arcee-ai/virtuoso-large",
-          "name": "Virtuoso Large"
+          "name": "Arcee AI: Virtuoso Large"
         },
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -16395,7 +18049,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "meta-llama/llama-guard-4-12b",
-          "name": "Llama Guard 4 12B",
+          "name": "Meta: Llama Guard 4 12B",
           "family": "llama"
         },
         "api": "cline-xml-tools",
@@ -16418,9 +18072,17 @@
         "contextWindow": 131072,
         "maxTokens": 16384,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "qwen/qwen3-30b-a3b",
-          "name": "Qwen3 30B A3B",
+          "name": "Qwen: Qwen3 30B A3B",
           "family": "qwen"
         },
         "api": "cline-xml-tools",
@@ -16443,9 +18105,17 @@
         "contextWindow": 131072,
         "maxTokens": 8192,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": "low",
+          "medium": "medium",
+          "high": "high",
+          "xhigh": "xhigh"
+        },
         "modelsDev": {
           "id": "Qwen/Qwen3-8B",
-          "name": "Qwen/Qwen3-8B",
+          "name": "Qwen3 8B",
           "family": "qwen"
         },
         "api": "cline-xml-tools",
@@ -16468,9 +18138,17 @@
         "contextWindow": 131072,
         "maxTokens": 8192,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
-          "id": "Qwen/Qwen3-14B",
-          "name": "Qwen/Qwen3-14B",
+          "id": "qwen/qwen3-14b",
+          "name": "Qwen: Qwen3 14B",
           "family": "qwen"
         },
         "api": "cline-xml-tools",
@@ -16493,6 +18171,14 @@
         "contextWindow": 131072,
         "maxTokens": 16384,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": "low",
+          "medium": "medium",
+          "high": "high",
+          "xhigh": "xhigh"
+        },
         "modelsDev": {
           "id": "Qwen/Qwen3-32B",
           "name": "Qwen3 32B",
@@ -16518,8 +18204,16 @@
         "contextWindow": 131072,
         "maxTokens": 8192,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
-          "id": "Qwen/Qwen3-235B-A22B",
+          "id": "qwen/qwen3-235b-a22b",
           "name": "Qwen3 235B-A22B",
           "family": "qwen"
         },
@@ -16554,9 +18248,30 @@
         },
         "modelsDev": {
           "id": "openai/o4-mini-high",
-          "name": "o4 Mini High",
+          "name": "OpenAI: o4 Mini High",
           "family": "o"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "openai/o4-mini-high:batch",
+        "name": "o4 Mini High (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 0.55,
+          "output": 2.2,
+          "cacheRead": 0.1375,
+          "cacheWrite": 0
+        },
+        "contextWindow": 200000,
+        "maxTokens": 100000,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -16587,10 +18302,31 @@
           "xhigh": null
         },
         "modelsDev": {
-          "id": "o3",
+          "id": "openai/o3",
           "name": "o3",
           "family": "o"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "openai/o3:batch",
+        "name": "o3 (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 1,
+          "output": 4,
+          "cacheRead": 0.25,
+          "cacheWrite": 0
+        },
+        "contextWindow": 200000,
+        "maxTokens": 100000,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -16621,10 +18357,31 @@
           "xhigh": null
         },
         "modelsDev": {
-          "id": "o4-mini",
+          "id": "openai/o4-mini",
           "name": "o4-mini",
           "family": "o-mini"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "openai/o4-mini:batch",
+        "name": "o4 Mini (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 0.55,
+          "output": 2.2,
+          "cacheRead": 0.1375,
+          "cacheWrite": 0
+        },
+        "contextWindow": 200000,
+        "maxTokens": 100000,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -16647,10 +18404,31 @@
         "maxTokens": 32768,
         "_pricingKnown": true,
         "modelsDev": {
-          "id": "gpt-4.1",
+          "id": "openai/gpt-4.1",
           "name": "GPT-4.1",
           "family": "gpt"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "openai/gpt-4.1:batch",
+        "name": "GPT-4.1 (batch) (Cline) 💰 [CI: 13.1]",
+        "reasoning": false,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 1,
+          "output": 4,
+          "cacheRead": 0.25,
+          "cacheWrite": 0
+        },
+        "contextWindow": 1047576,
+        "maxTokens": 32768,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -16673,10 +18451,31 @@
         "maxTokens": 32768,
         "_pricingKnown": true,
         "modelsDev": {
-          "id": "gpt-4.1-mini",
+          "id": "openai/gpt-4.1-mini",
           "name": "GPT-4.1 mini",
           "family": "gpt-mini"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "openai/gpt-4.1-mini:batch",
+        "name": "GPT-4.1 Mini (batch) (Cline) 💰 [CI: 13.1]",
+        "reasoning": false,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 0.19999999999999998,
+          "output": 0.7999999999999999,
+          "cacheRead": 0.049999999999999996,
+          "cacheWrite": 0
+        },
+        "contextWindow": 1047576,
+        "maxTokens": 32768,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -16699,10 +18498,31 @@
         "maxTokens": 32768,
         "_pricingKnown": true,
         "modelsDev": {
-          "id": "gpt-4.1-nano",
+          "id": "openai/gpt-4.1-nano",
           "name": "GPT-4.1 nano",
           "family": "gpt-nano"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "openai/gpt-4.1-nano:batch",
+        "name": "GPT-4.1 Nano (batch) (Cline) 💰 [CI: 13.1]",
+        "reasoning": false,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 0.049999999999999996,
+          "output": 0.19999999999999998,
+          "cacheRead": 0.012499999999999999,
+          "cacheWrite": 0
+        },
+        "contextWindow": 1047576,
+        "maxTokens": 32768,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -16726,7 +18546,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "meta-llama/llama-4-maverick",
-          "name": "Llama 4 Maverick",
+          "name": "Meta: Llama 4 Maverick",
           "family": "llama"
         },
         "api": "cline-xml-tools",
@@ -16752,7 +18572,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "meta-llama/llama-4-scout",
-          "name": "Llama 4 Scout",
+          "name": "Meta: Llama 4 Scout",
           "family": "llama"
         },
         "api": "cline-xml-tools",
@@ -16784,7 +18604,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "deepseek/deepseek-chat-v3-0324",
-          "name": "DeepSeek V3 0324",
+          "name": "DeepSeek: DeepSeek V3 0324",
           "family": "deepseek"
         },
         "api": "cline-xml-tools",
@@ -16809,18 +18629,39 @@
         "maxTokens": 100000,
         "_pricingKnown": true,
         "thinkingLevelMap": {
-          "off": null,
+          "off": "none",
           "minimal": null,
-          "low": "low",
-          "medium": "medium",
+          "low": null,
+          "medium": null,
           "high": "high",
           "xhigh": null
         },
         "modelsDev": {
-          "id": "o1-pro",
+          "id": "openai/o1-pro",
           "name": "o1-pro",
           "family": "o-pro"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "openai/o1-pro:batch",
+        "name": "o1-pro (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 75,
+          "output": 300,
+          "cacheRead": 0,
+          "cacheWrite": 0
+        },
+        "contextWindow": 200000,
+        "maxTokens": 100000,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -16844,7 +18685,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "mistralai/mistral-small-3.1-24b-instruct",
-          "name": "Mistral Small 3.1 24B",
+          "name": "Mistral: Mistral Small 3.1 24B",
           "family": "mistral-small"
         },
         "api": "cline-xml-tools",
@@ -16870,7 +18711,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "google/gemma-3-4b-it",
-          "name": "Gemma 3 4B",
+          "name": "Google: Gemma 3 4B",
           "family": "gemma"
         },
         "api": "cline-xml-tools",
@@ -16896,7 +18737,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "google/gemma-3-12b-it",
-          "name": "Gemma 3 12B",
+          "name": "Google: Gemma 3 12B",
           "family": "gemma"
         },
         "api": "cline-xml-tools",
@@ -16921,7 +18762,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "cohere/command-a",
-          "name": "Command A",
+          "name": "Cohere: Command A",
           "family": "command-a"
         },
         "api": "cline-xml-tools",
@@ -16944,6 +18785,14 @@
         "contextWindow": 65536,
         "maxTokens": 65536,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "rekaai/reka-flash-3",
           "name": "Reka Flash 3",
@@ -16972,7 +18821,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "google/gemma-3-27b-it",
-          "name": "Gemma 3 27B",
+          "name": "Google: Gemma 3 27B",
           "family": "gemma"
         },
         "api": "cline-xml-tools",
@@ -16997,7 +18846,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "thedrummer/skyfall-36b-v2",
-          "name": "Skyfall 36B V2"
+          "name": "TheDrummer: Skyfall 36B V2"
         },
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -17021,16 +18870,16 @@
         "maxTokens": 0,
         "_pricingKnown": true,
         "thinkingLevelMap": {
-          "off": null,
-          "minimal": "minimal",
-          "low": "low",
-          "medium": "medium",
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
           "high": "high",
           "xhigh": null
         },
         "modelsDev": {
-          "id": "sonar-reasoning-pro",
-          "name": "Sonar Reasoning Pro",
+          "id": "perplexity/sonar-reasoning-pro",
+          "name": "Perplexity: Sonar Reasoning Pro",
           "family": "sonar-reasoning"
         },
         "api": "cline-xml-tools",
@@ -17055,8 +18904,8 @@
         "maxTokens": 8000,
         "_pricingKnown": true,
         "modelsDev": {
-          "id": "sonar-pro",
-          "name": "Sonar Pro",
+          "id": "perplexity/sonar-pro",
+          "name": "Perplexity: Sonar Pro",
           "family": "sonar-pro"
         },
         "api": "cline-xml-tools",
@@ -17080,16 +18929,17 @@
         "maxTokens": 0,
         "_pricingKnown": true,
         "thinkingLevelMap": {
-          "off": null,
-          "minimal": "minimal",
-          "low": "low",
-          "medium": "medium",
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
           "high": "high",
           "xhigh": null
         },
         "modelsDev": {
-          "id": "sonar-deep-research",
-          "name": "Perplexity Sonar Deep Research"
+          "id": "perplexity/sonar-deep-research",
+          "name": "Perplexity: Sonar Deep Research",
+          "family": "sonar-deep-research"
         },
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -17113,7 +18963,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "mistralai/mistral-saba",
-          "name": "Saba",
+          "name": "Mistral: Saba",
           "family": "mistral"
         },
         "api": "cline-xml-tools",
@@ -17146,9 +18996,29 @@
         },
         "modelsDev": {
           "id": "openai/o3-mini-high",
-          "name": "o3 Mini High",
+          "name": "OpenAI: o3 Mini High",
           "family": "o"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "openai/o3-mini-high:batch",
+        "name": "o3 Mini High (batch) (Cline) 💰 [CI: 16.3]",
+        "reasoning": true,
+        "input": [
+          "text"
+        ],
+        "cost": {
+          "input": 0.55,
+          "output": 2.2,
+          "cacheRead": 0.275,
+          "cacheWrite": 0
+        },
+        "contextWindow": 200000,
+        "maxTokens": 100000,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -17171,7 +19041,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "aion-labs/aion-rp-llama-3.1-8b",
-          "name": "Aion-RP 1.0 (8B)",
+          "name": "AionLabs: Aion-RP 1.0 (8B)",
           "family": "llama"
         },
         "api": "cline-xml-tools",
@@ -17192,12 +19062,12 @@
           "cacheRead": 0,
           "cacheWrite": 0
         },
-        "contextWindow": 128000,
+        "contextWindow": 32000,
         "maxTokens": 0,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "qwen/qwen2.5-vl-72b-instruct",
-          "name": "Qwen2.5 VL 72B Instruct",
+          "name": "Qwen: Qwen2.5 VL 72B Instruct",
           "family": "qwen"
         },
         "api": "cline-xml-tools",
@@ -17254,10 +19124,30 @@
           "xhigh": null
         },
         "modelsDev": {
-          "id": "o3-mini",
+          "id": "openai/o3-mini",
           "name": "o3-mini",
           "family": "o-mini"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "openai/o3-mini:batch",
+        "name": "o3 Mini (batch) (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text"
+        ],
+        "cost": {
+          "input": 0.55,
+          "output": 2.2,
+          "cacheRead": 0.275,
+          "cacheWrite": 0
+        },
+        "contextWindow": 200000,
+        "maxTokens": 100000,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -17280,7 +19170,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "mistralai/mistral-small-24b-instruct-2501",
-          "name": "Mistral Small 3",
+          "name": "Mistral: Mistral Small 3",
           "family": "mistral-small"
         },
         "api": "cline-xml-tools",
@@ -17336,10 +19226,18 @@
           "thinkingFormat": "deepseek"
         },
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "deepseek/deepseek-r1-distill-llama-70b",
-          "name": "R1 Distill Llama 70B",
-          "family": "deepseek-thinking"
+          "name": "DeepSeek: R1 Distill Llama 70B",
+          "family": "deepseek"
         },
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -17368,6 +19266,14 @@
           "thinkingFormat": "deepseek"
         },
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
           "id": "deepseek/deepseek-r1",
           "name": "DeepSeek-R1",
@@ -17396,7 +19302,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "minimax/minimax-01",
-          "name": "MiniMax-01",
+          "name": "MiniMax: MiniMax-01",
           "family": "minimax"
         },
         "api": "cline-xml-tools",
@@ -17421,7 +19327,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "microsoft/phi-4",
-          "name": "Phi 4",
+          "name": "Microsoft: Phi 4",
           "family": "phi"
         },
         "api": "cline-xml-tools",
@@ -17478,7 +19384,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "sao10k/l3.3-euryale-70b",
-          "name": "Llama 3.3 Euryale 70B",
+          "name": "Sao10K: Llama 3.3 Euryale 70B",
           "family": "llama"
         },
         "api": "cline-xml-tools",
@@ -17503,18 +19409,39 @@
         "maxTokens": 100000,
         "_pricingKnown": true,
         "thinkingLevelMap": {
-          "off": null,
+          "off": "none",
           "minimal": null,
-          "low": "low",
-          "medium": "medium",
+          "low": null,
+          "medium": null,
           "high": "high",
           "xhigh": null
         },
         "modelsDev": {
-          "id": "o1",
+          "id": "openai/o1",
           "name": "o1",
           "family": "o"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "openai/o1:batch",
+        "name": "o1 (batch) (Cline) 💰 [CI: 39.7]",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 7.5,
+          "output": 30,
+          "cacheRead": 3.75,
+          "cacheWrite": 0
+        },
+        "contextWindow": 200000,
+        "maxTokens": 100000,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -17536,7 +19463,7 @@
         "maxTokens": 4000,
         "_pricingKnown": true,
         "modelsDev": {
-          "id": "cohere/command-r7b-12-2024",
+          "id": "command-r7b-12-2024",
           "name": "Command R7B",
           "family": "command-r"
         },
@@ -17558,11 +19485,11 @@
           "cacheWrite": 0
         },
         "contextWindow": 131072,
-        "maxTokens": 16384,
+        "maxTokens": 131072,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "meta-llama/Llama-3.3-70B-Instruct",
-          "name": "Llama 3.3 70B Instruct",
+          "name": "Llama-3.3-70B-Instruct",
           "family": "llama"
         },
         "api": "cline-xml-tools",
@@ -17588,7 +19515,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "amazon/nova-lite-v1",
-          "name": "Nova Lite 1.0",
+          "name": "Amazon: Nova Lite 1.0",
           "family": "nova-lite"
         },
         "api": "cline-xml-tools",
@@ -17613,7 +19540,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "amazon/nova-micro-v1",
-          "name": "Nova Micro 1.0",
+          "name": "Amazon: Nova Micro 1.0",
           "family": "nova-micro"
         },
         "api": "cline-xml-tools",
@@ -17639,7 +19566,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "amazon/nova-pro-v1",
-          "name": "Nova Pro 1.0",
+          "name": "Amazon: Nova Pro 1.0",
           "family": "nova-pro"
         },
         "api": "cline-xml-tools",
@@ -17664,7 +19591,7 @@
         "maxTokens": 16384,
         "_pricingKnown": true,
         "modelsDev": {
-          "id": "gpt-4o-2024-11-20",
+          "id": "openai/gpt-4o-2024-11-20",
           "name": "GPT-4o (2024-11-20)",
           "family": "gpt"
         },
@@ -17740,7 +19667,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "thedrummer/unslopnemo-12b",
-          "name": "UnslopNemo 12B"
+          "name": "TheDrummer: UnslopNemo 12B"
         },
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -17788,7 +19715,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "qwen/qwen-2.5-7b-instruct",
-          "name": "Qwen2.5 7B Instruct",
+          "name": "Qwen: Qwen2.5 7B Instruct",
           "family": "qwen"
         },
         "api": "cline-xml-tools",
@@ -17813,7 +19740,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "thedrummer/rocinante-12b",
-          "name": "Rocinante 12B"
+          "name": "TheDrummer: Rocinante 12B"
         },
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -17822,7 +19749,7 @@
       {
         "id": "meta-llama/llama-3.2-1b-instruct",
         "name": "Llama 3.2 1B Instruct (Cline) 💰",
-        "reasoning": false,
+        "reasoning": true,
         "input": [
           "text"
         ],
@@ -17835,8 +19762,16 @@
         "contextWindow": 60000,
         "maxTokens": 60000,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": "low",
+          "medium": "medium",
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
-          "id": "meta-llama/llama-3.2-1b-instruct",
+          "id": "meta-llama/Llama-3.2-1B-Instruct",
           "name": "Llama 3.2 1B Instruct",
           "family": "llama"
         },
@@ -17847,7 +19782,7 @@
       {
         "id": "meta-llama/llama-3.2-3b-instruct",
         "name": "Llama 3.2 3B Instruct (Cline) 💰",
-        "reasoning": false,
+        "reasoning": true,
         "input": [
           "text"
         ],
@@ -17860,8 +19795,16 @@
         "contextWindow": 131072,
         "maxTokens": 131072,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": "low",
+          "medium": "medium",
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
-          "id": "meta-llama/llama-3.2-3b-instruct",
+          "id": "meta-llama/Llama-3.2-3B-Instruct",
           "name": "Llama 3.2 3B Instruct",
           "family": "llama"
         },
@@ -17911,7 +19854,7 @@
         "maxTokens": 4000,
         "_pricingKnown": true,
         "modelsDev": {
-          "id": "cohere/command-r-08-2024",
+          "id": "command-r-08-2024",
           "name": "Command R",
           "family": "command-r"
         },
@@ -17936,7 +19879,7 @@
         "maxTokens": 4000,
         "_pricingKnown": true,
         "modelsDev": {
-          "id": "cohere/command-r-plus-08-2024",
+          "id": "command-r-plus-08-2024",
           "name": "Command R+",
           "family": "command-r"
         },
@@ -17962,7 +19905,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "sao10k/l3.1-euryale-70b",
-          "name": "Llama 3.1 Euryale 70B v2.2",
+          "name": "Sao10K: Llama 3.1 Euryale 70B v2.2",
           "family": "llama"
         },
         "api": "cline-xml-tools",
@@ -17987,7 +19930,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "nousresearch/hermes-3-llama-3.1-70b",
-          "name": "Hermes 3 70B Instruct",
+          "name": "Nous: Hermes 3 70B Instruct",
           "family": "nousresearch"
         },
         "api": "cline-xml-tools",
@@ -18012,7 +19955,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "nousresearch/hermes-3-llama-3.1-405b",
-          "name": "Hermes 3 405B Instruct",
+          "name": "Nous: Hermes 3 405B Instruct",
           "family": "nousresearch"
         },
         "api": "cline-xml-tools",
@@ -18037,7 +19980,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "sao10k/l3-lunaris-8b",
-          "name": "Llama 3 8B Lunaris",
+          "name": "Sao10K: Llama 3 8B Lunaris",
           "family": "llama"
         },
         "api": "cline-xml-tools",
@@ -18062,7 +20005,7 @@
         "maxTokens": 16384,
         "_pricingKnown": true,
         "modelsDev": {
-          "id": "gpt-4o-2024-08-06",
+          "id": "openai/gpt-4o-2024-08-06",
           "name": "GPT-4o (2024-08-06)",
           "family": "gpt"
         },
@@ -18088,7 +20031,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "meta-llama/llama-3.1-70b-instruct",
-          "name": "Llama 3.1 70B Instruct",
+          "name": "Meta: Llama 3.1 70B Instruct",
           "family": "llama"
         },
         "api": "cline-xml-tools",
@@ -18098,7 +20041,7 @@
       {
         "id": "meta-llama/llama-3.1-8b-instruct",
         "name": "Llama 3.1 8B Instruct (Cline) 💰 [CI: 5.4]",
-        "reasoning": false,
+        "reasoning": true,
         "input": [
           "text"
         ],
@@ -18111,8 +20054,16 @@
         "contextWindow": 131072,
         "maxTokens": 131072,
         "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": "low",
+          "medium": "medium",
+          "high": "high",
+          "xhigh": null
+        },
         "modelsDev": {
-          "id": "meta-llama/llama-3.1-8b-instruct",
+          "id": "meta-llama/Llama-3.1-8B-Instruct",
           "name": "Llama 3.1 8B Instruct",
           "family": "llama"
         },
@@ -18163,7 +20114,7 @@
         "maxTokens": 16384,
         "_pricingKnown": true,
         "modelsDev": {
-          "id": "gpt-4o-mini",
+          "id": "openai/gpt-4o-mini",
           "name": "GPT-4o mini",
           "family": "gpt-mini"
         },
@@ -18190,9 +20141,30 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "openai/gpt-4o-mini-2024-07-18",
-          "name": "GPT-4o-mini (2024-07-18)",
-          "family": "o-mini"
+          "name": "OpenAI: GPT-4o-mini (2024-07-18)",
+          "family": "gpt"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "openai/gpt-4o-mini:batch",
+        "name": "GPT-4o-mini (batch) (Cline) 💰",
+        "reasoning": false,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 0.075,
+          "output": 0.3,
+          "cacheRead": 0.0375,
+          "cacheWrite": 0
+        },
+        "contextWindow": 128000,
+        "maxTokens": 16384,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -18215,7 +20187,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "google/gemma-2-27b-it",
-          "name": "Gemma 2 27B",
+          "name": "Google: Gemma 2 27B",
           "family": "gemma"
         },
         "api": "cline-xml-tools",
@@ -18240,7 +20212,7 @@
         "maxTokens": 16384,
         "_pricingKnown": true,
         "modelsDev": {
-          "id": "gpt-4o",
+          "id": "openai/gpt-4o",
           "name": "GPT-4o",
           "family": "gpt"
         },
@@ -18266,10 +20238,31 @@
         "maxTokens": 4096,
         "_pricingKnown": true,
         "modelsDev": {
-          "id": "gpt-4o-2024-05-13",
+          "id": "openai/gpt-4o-2024-05-13",
           "name": "GPT-4o (2024-05-13)",
           "family": "gpt"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "openai/gpt-4o:batch",
+        "name": "GPT-4o (batch) (Cline) 💰",
+        "reasoning": false,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 1.25,
+          "output": 5,
+          "cacheRead": 0.625,
+          "cacheWrite": 0
+        },
+        "contextWindow": 128000,
+        "maxTokens": 16384,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -18292,7 +20285,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "mistralai/mixtral-8x22b-instruct",
-          "name": "Mixtral 8x22B Instruct",
+          "name": "Mistral: Mixtral 8x22B Instruct",
           "family": "mistral"
         },
         "api": "cline-xml-tools",
@@ -18341,10 +20334,31 @@
         "maxTokens": 4096,
         "_pricingKnown": true,
         "modelsDev": {
-          "id": "gpt-4-turbo",
+          "id": "openai/gpt-4-turbo",
           "name": "GPT-4 Turbo",
           "family": "gpt"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "openai/gpt-4-turbo:batch",
+        "name": "GPT-4 Turbo (batch) (Cline) 💰 [CI: 13.1]",
+        "reasoning": false,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 5,
+          "output": 15,
+          "cacheRead": 0,
+          "cacheWrite": 0
+        },
+        "contextWindow": 128000,
+        "maxTokens": 4096,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -18368,8 +20382,8 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "anthropic/claude-3-haiku",
-          "name": "Claude Haiku 3",
-          "family": "claude-haiku"
+          "name": "Anthropic: Claude 3 Haiku",
+          "family": "claude"
         },
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -18418,7 +20432,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "openai/gpt-3.5-turbo-0613",
-          "name": "GPT-3.5 Turbo (older v0613)",
+          "name": "OpenAI: GPT-3.5 Turbo (older v0613)",
           "family": "gpt"
         },
         "api": "cline-xml-tools",
@@ -18443,7 +20457,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "openai/gpt-4-turbo-preview",
-          "name": "GPT-4 Turbo Preview",
+          "name": "OpenAI: GPT-4 Turbo Preview ($$$$)",
           "family": "gpt"
         },
         "api": "cline-xml-tools",
@@ -18469,8 +20483,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "openrouter/auto",
-          "name": "Auto Router",
-          "family": "auto"
+          "name": "Auto Router"
         },
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -18494,7 +20507,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "openai/gpt-3.5-turbo-instruct",
-          "name": "GPT-3.5 Turbo Instruct",
+          "name": "OpenAI: GPT-3.5 Turbo Instruct",
           "family": "gpt"
         },
         "api": "cline-xml-tools",
@@ -18519,7 +20532,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "openai/gpt-3.5-turbo-16k",
-          "name": "GPT-3.5 Turbo 16k",
+          "name": "OpenAI: GPT-3.5 Turbo 16k",
           "family": "gpt"
         },
         "api": "cline-xml-tools",
@@ -18544,7 +20557,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "mancer/weaver",
-          "name": "Weaver (alpha)",
+          "name": "Mancer: Weaver (alpha)",
           "family": "alpha"
         },
         "api": "cline-xml-tools",
@@ -18616,10 +20629,30 @@
         "maxTokens": 4096,
         "_pricingKnown": true,
         "modelsDev": {
-          "id": "gpt-3.5-turbo",
+          "id": "openai/gpt-3.5-turbo",
           "name": "GPT-3.5-turbo",
           "family": "gpt"
         },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "openai/gpt-3.5-turbo:batch",
+        "name": "GPT-3.5 Turbo (batch) (Cline) 💰 [CI: 10.7]",
+        "reasoning": false,
+        "input": [
+          "text"
+        ],
+        "cost": {
+          "input": 0.25,
+          "output": 0.75,
+          "cacheRead": 0,
+          "cacheWrite": 0
+        },
+        "contextWindow": 16385,
+        "maxTokens": 4096,
+        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -18638,52 +20671,19 @@
           "cacheWrite": 0
         },
         "contextWindow": 8191,
-        "maxTokens": 8192,
+        "maxTokens": 4096,
         "_pricingKnown": true,
         "modelsDev": {
-          "id": "gpt-4",
+          "id": "openai/gpt-4",
           "name": "GPT-4",
           "family": "gpt"
         },
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
-      },
-      {
-        "id": "cline-free/glm-5.2",
-        "name": "glm-5.2 (Cline)",
-        "reasoning": true,
-        "input": [
-          "text"
-        ],
-        "cost": {
-          "input": 0,
-          "output": 0,
-          "cacheRead": 0,
-          "cacheWrite": 0
-        },
-        "contextWindow": 1000000,
-        "maxTokens": 65536,
-        "_pricingKnown": true,
-        "thinkingLevelMap": {
-          "off": null,
-          "minimal": null,
-          "low": null,
-          "medium": null,
-          "high": "high",
-          "xhigh": "max"
-        },
-        "modelsDev": {
-          "id": "zai-org/glm-5.2",
-          "name": "GLM-5.2",
-          "family": "glm"
-        },
-        "api": "cline-xml-tools",
-        "provider": "cline",
-        "baseUrl": "https://api.cline.bot/api/v1"
       }
     ],
-    "checkedAt": 1785946808104
+    "checkedAt": 1786032244654
   },
   "fastrouter": {
     "models": [
@@ -19185,7 +21185,7 @@
         "cost": {
           "input": 2.5e-7,
           "output": 0.0000015,
-          "cacheRead": null,
+          "cacheRead": 2.5e-8,
           "cacheWrite": null
         },
         "contextWindow": 65536,
@@ -19394,7 +21394,7 @@
         "cost": {
           "input": 0.00000174,
           "output": 0.00000348,
-          "cacheRead": 1.5e-7,
+          "cacheRead": 1.45e-7,
           "cacheWrite": null
         },
         "contextWindow": 1048576,
@@ -20097,8 +22097,8 @@
         "cost": {
           "input": 6e-7,
           "output": 0.0000024,
-          "cacheRead": 3e-8,
-          "cacheWrite": null
+          "cacheRead": 6e-8,
+          "cacheWrite": 3.75e-7
         },
         "contextWindow": 204800,
         "maxTokens": 131072,
@@ -20602,7 +22602,7 @@
         "cost": {
           "input": 0.00000125,
           "output": 0.00001,
-          "cacheRead": 1.25e-7,
+          "cacheRead": 1.3e-7,
           "cacheWrite": null
         },
         "contextWindow": 400000,
@@ -21020,7 +23020,7 @@
         "cost": {
           "input": 0.000004,
           "output": 0.000016,
-          "cacheRead": 5e-7,
+          "cacheRead": 4e-7,
           "cacheWrite": null
         },
         "contextWindow": 32000,
@@ -21849,6 +23849,6 @@
         "baseUrl": "https://api.fastrouter.ai/api/v1"
       }
     ],
-    "checkedAt": 1785946805481
+    "checkedAt": 1786032244623
   }
 }
