@@ -1680,7 +1680,7 @@
         "maxTokens": 65536
       }
     ],
-    "checkedAt": 1786284161249,
+    "checkedAt": 1786358783410,
     "lastModified": 1786098937000,
     "etag": "W/\"6a3d869f61e07364aa91690663bac71e\""
   },
@@ -1849,6 +1849,7 @@
         },
         "compat": {
           "supportsOpenAIGrammarTools": true,
+          "supportsAdditionalTools": true,
           "supportsToolSearch": true
         }
       },
@@ -1887,6 +1888,7 @@
         },
         "compat": {
           "supportsOpenAIGrammarTools": true,
+          "supportsAdditionalTools": true,
           "supportsToolSearch": true
         }
       },
@@ -1925,13 +1927,14 @@
         },
         "compat": {
           "supportsOpenAIGrammarTools": true,
+          "supportsAdditionalTools": true,
           "supportsToolSearch": true
         }
       }
     ],
-    "checkedAt": 1786284161170,
-    "lastModified": 1785841808000,
-    "etag": "W/\"400cac2d73673d9fff4c7d0ed22691b0\""
+    "checkedAt": 1786358783409,
+    "lastModified": 1786351890000,
+    "etag": "W/\"7572a78e60b78526600ed2a9b74b579d\""
   },
   "opencode-go": {
     "models": [
@@ -2426,7 +2429,7 @@
         "maxTokens": 131072
       }
     ],
-    "checkedAt": 1786284161171,
+    "checkedAt": 1786358783338,
     "lastModified": 1786098938000,
     "etag": "W/\"fc45c5903aaf73b9f2cdfd74cc3f77f9\""
   },
@@ -3811,13 +3814,13 @@
           "text"
         ],
         "cost": {
-          "input": 0.0882,
-          "output": 0.1764,
-          "cacheRead": 0.01764,
+          "input": 0.14,
+          "output": 0.28,
+          "cacheRead": 0.028,
           "cacheWrite": 0
         },
         "contextWindow": 1048576,
-        "maxTokens": 131072,
+        "maxTokens": 393216,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter",
@@ -3843,13 +3846,13 @@
           "text"
         ],
         "cost": {
-          "input": 0.09,
+          "input": 0.08,
           "output": 0.18,
-          "cacheRead": 0.018,
+          "cacheRead": 0.016,
           "cacheWrite": 0
         },
         "contextWindow": 1048576,
-        "maxTokens": 65536,
+        "maxTokens": 384000,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter",
@@ -4508,13 +4511,13 @@
           "image"
         ],
         "cost": {
-          "input": 0.07,
-          "output": 0.34,
-          "cacheRead": 0,
+          "input": 0.12,
+          "output": 0.4,
+          "cacheRead": 0.05,
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 16384,
+        "maxTokens": 262144,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -4930,12 +4933,12 @@
         ],
         "cost": {
           "input": 0.2,
-          "output": 0.8,
+          "output": 0.696,
           "cacheRead": 0,
           "cacheWrite": 0
         },
-        "contextWindow": 1048576,
-        "maxTokens": 16384,
+        "contextWindow": 128000,
+        "maxTokens": 4096,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -5116,9 +5119,9 @@
           "text"
         ],
         "cost": {
-          "input": 0.27,
-          "output": 1.08,
-          "cacheRead": 0.054,
+          "input": 0.3,
+          "output": 1.2,
+          "cacheRead": 0.06,
           "cacheWrite": 0
         },
         "contextWindow": 204800,
@@ -5658,9 +5661,9 @@
           "image"
         ],
         "cost": {
-          "input": 0.589,
-          "output": 2.48,
-          "cacheRead": 0.0992,
+          "input": 0.95,
+          "output": 4,
+          "cacheRead": 0.16,
           "cacheWrite": 0
         },
         "contextWindow": 262144,
@@ -5804,11 +5807,11 @@
         "cost": {
           "input": 0.05,
           "output": 0.2,
-          "cacheRead": 0.03,
+          "cacheRead": 0.025,
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 262144,
+        "maxTokens": 228000,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -5872,13 +5875,13 @@
           "text"
         ],
         "cost": {
-          "input": 0.3,
-          "output": 0.9,
+          "input": 0.085,
+          "output": 0.4,
           "cacheRead": 0,
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 4096,
+        "maxTokens": 16384,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -8478,13 +8481,13 @@
           "text"
         ],
         "cost": {
-          "input": 0.2275,
-          "output": 0.91,
+          "input": 0.12,
+          "output": 0.24,
           "cacheRead": 0,
           "cacheWrite": 0
         },
-        "contextWindow": 131072,
-        "maxTokens": 8192,
+        "contextWindow": 40960,
+        "maxTokens": 16384,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -8874,8 +8877,8 @@
           "cacheRead": 0,
           "cacheWrite": 0
         },
-        "contextWindow": 128000,
-        "maxTokens": 4096,
+        "contextWindow": 131072,
+        "maxTokens": 32768,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -9277,7 +9280,7 @@
           "image"
         ],
         "cost": {
-          "input": 0.14,
+          "input": 0.15,
           "output": 1,
           "cacheRead": 0.05,
           "cacheWrite": 0
@@ -9677,13 +9680,13 @@
           "image"
         ],
         "cost": {
-          "input": 1,
+          "input": 0.95,
           "output": 4.05,
-          "cacheRead": 0.17,
+          "cacheRead": 0.16,
           "cacheWrite": 0
         },
         "contextWindow": 524288,
-        "maxTokens": 4096,
+        "maxTokens": 262144,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -10123,9 +10126,9 @@
           "text"
         ],
         "cost": {
-          "input": 0.952,
-          "output": 2.992,
-          "cacheRead": 0.1768,
+          "input": 1.4,
+          "output": 4.4,
+          "cacheRead": 0.26,
           "cacheWrite": 0
         },
         "contextWindow": 202752,
@@ -10319,13 +10322,13 @@
           "text"
         ],
         "cost": {
-          "input": 0.09,
-          "output": 0.18,
-          "cacheRead": 0.018,
+          "input": 0.079996,
+          "output": 0.252,
+          "cacheRead": 0.0252,
           "cacheWrite": 0
         },
         "contextWindow": 1048576,
-        "maxTokens": 65536,
+        "maxTokens": 4096,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter",
@@ -10400,7 +10403,7 @@
           "image"
         ],
         "cost": {
-          "input": 2.5,
+          "input": 2.8,
           "output": 14,
           "cacheRead": 0.29,
           "cacheWrite": 0
@@ -10485,9 +10488,9 @@
         }
       }
     ],
-    "checkedAt": 1786284161182,
-    "lastModified": 1786098940000,
-    "etag": "W/\"302637aba18cf37f73bab0a075c7b804\""
+    "checkedAt": 1786358783385,
+    "lastModified": 1786351895000,
+    "etag": "W/\"9f18b9fa2776bbd69443a1da7e00323b\""
   },
   "llm7": {
     "models": [
@@ -10549,7 +10552,7 @@
         "baseUrl": "https://api.llm7.io/v1"
       }
     ],
-    "checkedAt": 1786283996028
+    "checkedAt": 1786358794130
   },
   "cline": {
     "models": [
@@ -12031,13 +12034,13 @@
           "text"
         ],
         "cost": {
-          "input": 0.07,
-          "output": 0.22,
-          "cacheRead": 0.013000000000000001,
+          "input": 0.76,
+          "output": 2.42,
+          "cacheRead": 0.14,
           "cacheWrite": 0
         },
         "contextWindow": 1048576,
-        "maxTokens": 128000,
+        "maxTokens": 262144,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": null,
@@ -13795,9 +13798,9 @@
           "image"
         ],
         "cost": {
-          "input": 0.5795,
-          "output": 2.44,
-          "cacheRead": 0.0976,
+          "input": 0.95,
+          "output": 4,
+          "cacheRead": 0.16,
           "cacheWrite": 0
         },
         "contextWindow": 262144,
@@ -13881,9 +13884,9 @@
           "text"
         ],
         "cost": {
-          "input": 0.952,
-          "output": 2.992,
-          "cacheRead": 0.17679999999999998,
+          "input": 1.4,
+          "output": 4.4,
+          "cacheRead": 0.26,
           "cacheWrite": 0
         },
         "contextWindow": 204800,
@@ -13907,13 +13910,13 @@
           "image"
         ],
         "cost": {
-          "input": 0.07,
-          "output": 0.33999999999999997,
-          "cacheRead": 0,
+          "input": 0.12,
+          "output": 0.39999999999999997,
+          "cacheRead": 0.049999999999999996,
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 32768,
+        "maxTokens": 262144,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "google/gemma-4-26B-A4B-it",
@@ -14444,13 +14447,13 @@
           "text"
         ],
         "cost": {
-          "input": 0.3,
-          "output": 0.8999999999999999,
+          "input": 0.08499999999999999,
+          "output": 0.39999999999999997,
           "cacheRead": 0,
           "cacheWrite": 0
         },
         "contextWindow": 1000000,
-        "maxTokens": 0,
+        "maxTokens": 32000,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": null,
@@ -15787,11 +15790,11 @@
         "cost": {
           "input": 0.049999999999999996,
           "output": 0.19999999999999998,
-          "cacheRead": 0.03,
+          "cacheRead": 0.024999999999999998,
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 262144,
+        "maxTokens": 228000,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "nvidia/Nemotron-3-Nano-30B-A3B",
@@ -17356,7 +17359,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 262144,
+        "maxTokens": 32768,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "qwen/qwen3-next-80b-a3b-thinking",
@@ -18949,13 +18952,13 @@
           "text"
         ],
         "cost": {
-          "input": 0.22749999999999998,
-          "output": 0.9099999999999999,
+          "input": 0.12,
+          "output": 0.24,
           "cacheRead": 0,
           "cacheWrite": 0
         },
         "contextWindow": 131072,
-        "maxTokens": 8192,
+        "maxTokens": 131000,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "Qwen/Qwen3-14B",
@@ -19332,12 +19335,12 @@
         ],
         "cost": {
           "input": 0.19999999999999998,
-          "output": 0.7999999999999999,
+          "output": 0.696,
           "cacheRead": 0,
           "cacheWrite": 0
         },
         "contextWindow": 1048576,
-        "maxTokens": 16384,
+        "maxTokens": 0,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "meta-llama/llama-4-maverick",
@@ -21430,7 +21433,7 @@
         "baseUrl": "https://api.cline.bot/api/v1"
       }
     ],
-    "checkedAt": 1786284002451
+    "checkedAt": 1786358796006
   },
   "fastrouter": {
     "models": [
@@ -24596,6 +24599,6 @@
         "baseUrl": "https://api.fastrouter.ai/api/v1"
       }
     ],
-    "checkedAt": 1786283997843
+    "checkedAt": 1786358795802
   }
 }
