@@ -1680,7 +1680,7 @@
         "maxTokens": 65536
       }
     ],
-    "checkedAt": 1786358783410,
+    "checkedAt": 1786420249445,
     "lastModified": 1786098937000,
     "etag": "W/\"6a3d869f61e07364aa91690663bac71e\""
   },
@@ -1932,7 +1932,7 @@
         }
       }
     ],
-    "checkedAt": 1786358783409,
+    "checkedAt": 1786420250419,
     "lastModified": 1786351890000,
     "etag": "W/\"7572a78e60b78526600ed2a9b74b579d\""
   },
@@ -2429,7 +2429,7 @@
         "maxTokens": 131072
       }
     ],
-    "checkedAt": 1786358783338,
+    "checkedAt": 1786420249463,
     "lastModified": 1786098938000,
     "etag": "W/\"fc45c5903aaf73b9f2cdfd74cc3f77f9\""
   },
@@ -10488,7 +10488,7 @@
         }
       }
     ],
-    "checkedAt": 1786358783385,
+    "checkedAt": 1786420249446,
     "lastModified": 1786351895000,
     "etag": "W/\"9f18b9fa2776bbd69443a1da7e00323b\""
   },
@@ -10552,10 +10552,102 @@
         "baseUrl": "https://api.llm7.io/v1"
       }
     ],
-    "checkedAt": 1786358794130
+    "checkedAt": 1786429503902
   },
   "cline": {
     "models": [
+      {
+        "id": "sakana/sakana-namazu",
+        "name": "Sakana Namazu (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 0.95,
+          "output": 4,
+          "cacheRead": 0.15,
+          "cacheWrite": 0
+        },
+        "contextWindow": 262144,
+        "maxTokens": 65536,
+        "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
+        "modelsDev": {
+          "id": "sakana/sakana-namazu",
+          "name": "Sakana Namazu"
+        },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "upstage/solar-pro4",
+        "name": "Solar Pro 4 (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text"
+        ],
+        "cost": {
+          "input": 0.03,
+          "output": 0.12,
+          "cacheRead": 0.006,
+          "cacheWrite": 0
+        },
+        "contextWindow": 524288,
+        "maxTokens": 131072,
+        "_pricingKnown": true,
+        "modelsDev": {
+          "id": "upstage/solar-pro4",
+          "name": "Solar Pro 4",
+          "family": "solar"
+        },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
+      {
+        "id": "meta/muse-glimmer-30b",
+        "name": "Muse Glimmer 30B (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 0.35,
+          "output": 1.5,
+          "cacheRead": 0.04,
+          "cacheWrite": 0
+        },
+        "contextWindow": 131072,
+        "maxTokens": 0,
+        "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": "low",
+          "medium": "medium",
+          "high": "high",
+          "xhigh": "xhigh"
+        },
+        "modelsDev": {
+          "id": "meta/muse-glimmer-30b",
+          "name": "Muse Glimmer 30B",
+          "family": "muse"
+        },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
       {
         "id": "inclusionai/ling-3.0-tiny:free",
         "name": "Ling 3.0 Tiny (free) (Cline)",
@@ -13479,13 +13571,13 @@
           "text"
         ],
         "cost": {
-          "input": 0.435,
-          "output": 0.87,
-          "cacheRead": 0.003625,
+          "input": 0.6414399999999999,
+          "output": 1.2828799999999998,
+          "cacheRead": 0.054121499999999996,
           "cacheWrite": 0
         },
         "contextWindow": 1048576,
-        "maxTokens": 384000,
+        "maxTokens": 393216,
         "compat": {
           "supportsStore": false,
           "supportsDeveloperRole": false,
@@ -14709,32 +14801,6 @@
         "baseUrl": "https://api.cline.bot/api/v1"
       },
       {
-        "id": "openai/gpt-5.3-chat",
-        "name": "GPT-5.3 Chat (Cline) 💰",
-        "reasoning": false,
-        "input": [
-          "text",
-          "image"
-        ],
-        "cost": {
-          "input": 1.75,
-          "output": 14,
-          "cacheRead": 0.175,
-          "cacheWrite": 0
-        },
-        "contextWindow": 128000,
-        "maxTokens": 16384,
-        "_pricingKnown": true,
-        "modelsDev": {
-          "id": "openai/gpt-5.3-chat",
-          "name": "GPT-5.3 Chat",
-          "family": "gpt"
-        },
-        "api": "cline-xml-tools",
-        "provider": "cline",
-        "baseUrl": "https://api.cline.bot/api/v1"
-      },
-      {
         "id": "google/gemini-3.1-flash-lite-preview",
         "name": "Gemini 3.1 Flash Lite Preview (Cline) 💰 [CI: 34.7]",
         "reasoning": true,
@@ -15177,13 +15243,13 @@
           "image"
         ],
         "cost": {
-          "input": 0.39,
-          "output": 2.34,
-          "cacheRead": 0,
+          "input": 0.5,
+          "output": 3.5999999999999996,
+          "cacheRead": 0.3,
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 65536,
+        "maxTokens": 262144,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "Qwen/Qwen3.5-397B-A17B",
@@ -15845,7 +15911,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 128000,
-        "maxTokens": 16384,
+        "maxTokens": 32000,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "openai/gpt-5.2-chat",
@@ -17359,7 +17425,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 32768,
+        "maxTokens": 262144,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "qwen/qwen3-next-80b-a3b-thinking",
@@ -18030,12 +18096,12 @@
         ],
         "cost": {
           "input": 0.07,
-          "output": 0.27,
+          "output": 0.28,
           "cacheRead": 0,
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 32768,
+        "maxTokens": 262144,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "Qwen/Qwen3-Coder-30B-A3B-Instruct",
@@ -21433,7 +21499,7 @@
         "baseUrl": "https://api.cline.bot/api/v1"
       }
     ],
-    "checkedAt": 1786358796006
+    "checkedAt": 1786429507915
   },
   "fastrouter": {
     "models": [
@@ -23439,7 +23505,7 @@
         "cost": {
           "input": 0.00000125,
           "output": 0.00001,
-          "cacheRead": 1.25e-7,
+          "cacheRead": 1.3e-7,
           "cacheWrite": null
         },
         "contextWindow": 400000,
@@ -24216,34 +24282,6 @@
         "baseUrl": "https://api.fastrouter.ai/api/v1"
       },
       {
-        "id": "sarvam/sarvam-30b",
-        "name": "Sarvam 30B",
-        "reasoning": true,
-        "thinkingLevelMap": {
-          "off": "none"
-        },
-        "input": [
-          "text"
-        ],
-        "cost": {
-          "input": 2.5e-8,
-          "output": 1e-7,
-          "cacheRead": 1.5e-8,
-          "cacheWrite": null
-        },
-        "contextWindow": 128000,
-        "maxTokens": 128000,
-        "_pricingKnown": true,
-        "modelsDev": {
-          "id": "sarvam/sarvam-30b",
-          "name": "Sarvam 30B",
-          "family": "sarvam"
-        },
-        "api": "openai-completions",
-        "provider": "fastrouter",
-        "baseUrl": "https://api.fastrouter.ai/api/v1"
-      },
-      {
         "id": "x-ai/grok-3-beta",
         "name": "Grok 3 Beta",
         "reasoning": false,
@@ -24599,6 +24637,6 @@
         "baseUrl": "https://api.fastrouter.ai/api/v1"
       }
     ],
-    "checkedAt": 1786358795802
+    "checkedAt": 1786429505317
   }
 }

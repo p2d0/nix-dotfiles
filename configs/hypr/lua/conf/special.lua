@@ -44,4 +44,4 @@ hl.workspace_rule({ workspace = "special:emacs", gaps_out = { top = 25, right = 
 hl.workspace_rule({ workspace = "special:speedcrunch", gaps_out = { top = 200, right = 50, bottom = 300, left = 1500 }, on_created_empty = "speedcrunch" })
 hl.workspace_rule({ workspace = "m[" .. monitor_1 .. "]s[true]n[e:speedcrunch]", gaps_out = { top = 250, right = 25, bottom = 250, left = 2090 } })
 hl.workspace_rule({ workspace = "m[" .. monitor_2 .. "]s[true]n[e:speedcrunch]", gaps_out = { top = 250, right = 25, bottom = 250, left = 1450 } })
-hl.workspace_rule({ workspace = "special:music", gaps_out = 25, gaps_in = 10, on_created_empty = "firefox-pwa https://music.youtube.com/" })
+hl.workspace_rule({ workspace = "special:music", gaps_out = 25, gaps_in = 10, on_created_empty = "firefox-pwa https://open.spotify.com/" })
