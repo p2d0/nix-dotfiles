@@ -87,10 +87,12 @@
                     "items": {
                       "type": "string",
                       "format": "uri"
-                    }
+                    },
+                    "minItems": 1,
+                    "maxItems": 5
                   }
                 ],
-                "description": "The complete URL of the webpage or PDF file to read and convert (e.g., 'https://example.com/article'). Can be a single URL string or an array of URLs for parallel reading."
+                "description": "The complete URL of the webpage or PDF file to read and convert (e.g., 'https://example.com/article'). Can be a single URL string or an array of up to 5 URLs for parallel reading."
               },
               "withAllLinks": {
                 "type": "boolean",
@@ -123,13 +125,17 @@
                     "type": "array",
                     "items": {
                       "type": "string"
-                    }
+                    },
+                    "minItems": 1,
+                    "maxItems": 5
                   }
                 ],
-                "description": "Search terms or keywords to find relevant web content (e.g., 'climate change news 2024', 'best pizza recipe'). Can be a single query string or an array of queries for parallel search."
+                "description": "Search terms or keywords to find relevant web content (e.g., 'climate change news 2024', 'best pizza recipe'). Can be a single query string or an array of up to 5 queries for parallel search."
               },
               "num": {
-                "type": "number",
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 100,
                 "default": 30,
                 "description": "Maximum number of search results to return, between 1-100"
               },
@@ -190,13 +196,17 @@
                     "type": "array",
                     "items": {
                       "type": "string"
-                    }
+                    },
+                    "minItems": 1,
+                    "maxItems": 5
                   }
                 ],
-                "description": "Academic search terms, author names, or research topics (e.g., 'transformer neural networks', 'Einstein relativity', 'machine learning optimization'). Can be a single query string or an array of queries for parallel search."
+                "description": "Academic search terms, author names, or research topics (e.g., 'transformer neural networks', 'Einstein relativity', 'machine learning optimization'). Can be a single query string or an array of up to 5 queries for parallel search."
               },
               "num": {
-                "type": "number",
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 100,
                 "default": 30,
                 "description": "Maximum number of academic papers to return, between 1-100"
               },
@@ -227,13 +237,17 @@
                     "type": "array",
                     "items": {
                       "type": "string"
-                    }
+                    },
+                    "minItems": 1,
+                    "maxItems": 5
                   }
                 ],
-                "description": "Academic search terms, author names, or research topics (e.g., 'corporate governance', 'behavioral finance', 'contract law'). Can be a single query string or an array of queries for parallel search."
+                "description": "Academic search terms, author names, or research topics (e.g., 'corporate governance', 'behavioral finance', 'contract law'). Can be a single query string or an array of up to 5 queries for parallel search."
               },
               "num": {
-                "type": "number",
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 100,
                 "default": 30,
                 "description": "Maximum number of academic papers to return, between 1-100"
               },
@@ -264,13 +278,17 @@
                     "type": "array",
                     "items": {
                       "type": "string"
-                    }
+                    },
+                    "minItems": 1,
+                    "maxItems": 5
                   }
                 ],
-                "description": "Search terms to find relevant Jina blog posts (e.g., 'embeddings', 'reranker', 'ColBERT'). Can be a single query string or an array of queries for parallel search."
+                "description": "Search terms to find relevant Jina blog posts (e.g., 'embeddings', 'reranker', 'ColBERT'). Can be a single query string or an array of up to 5 queries for parallel search."
               },
               "num": {
-                "type": "number",
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 100,
                 "default": 30,
                 "description": "Maximum number of blog posts to return, between 1-100"
               },
@@ -295,6 +313,13 @@
               "query": {
                 "type": "string",
                 "description": "Image search terms describing what you want to find (e.g., 'sunset over mountains', 'vintage car illustration', 'data visualization chart')"
+              },
+              "num": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 30,
+                "default": 10,
+                "description": "Maximum number of images to return (1-30, default: 10)"
               },
               "return_url": {
                 "type": "boolean",
@@ -341,7 +366,9 @@
                       "description": "Search terms or keywords to find relevant web content"
                     },
                     "num": {
-                      "type": "number",
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 100,
                       "default": 30,
                       "description": "Maximum number of search results to return, between 1-100"
                     },
@@ -399,7 +426,9 @@
                       "description": "Academic search terms, author names, or research topics"
                     },
                     "num": {
-                      "type": "number",
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 100,
                       "default": 30,
                       "description": "Maximum number of academic papers to return, between 1-100"
                     },
@@ -445,7 +474,9 @@
                       "description": "Academic search terms, author names, or research topics"
                     },
                     "num": {
-                      "type": "number",
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 100,
                       "default": 30,
                       "description": "Maximum number of academic papers to return, between 1-100"
                     },
@@ -534,13 +565,17 @@
                 "items": {
                   "type": "string"
                 },
-                "description": "Array of text strings to classify (e.g., ['I love this product', 'terrible experience'])"
+                "minItems": 1,
+                "maxItems": 1024,
+                "description": "Array of text strings to classify, up to 1024 (e.g., ['I love this product', 'terrible experience'])"
               },
               "labels": {
                 "type": "array",
                 "items": {
                   "type": "string"
                 },
+                "minItems": 2,
+                "maxItems": 256,
                 "description": "Array of classification labels (e.g., ['positive', 'negative', 'neutral'])"
               },
               "model": {
@@ -572,10 +607,13 @@
                 "items": {
                   "type": "string"
                 },
-                "description": "Array of document texts to rerank by relevance"
+                "minItems": 1,
+                "maxItems": 1024,
+                "description": "Array of document texts to rerank by relevance, up to 1024"
               },
               "top_n": {
-                "type": "number",
+                "type": "integer",
+                "minimum": 1,
                 "description": "Maximum number of top results to return"
               }
             },
@@ -598,10 +636,13 @@
                 "items": {
                   "type": "string"
                 },
-                "description": "Array of strings to deduplicate"
+                "minItems": 1,
+                "maxItems": 1000,
+                "description": "Array of strings to deduplicate, up to 1000"
               },
               "k": {
-                "type": "number",
+                "type": "integer",
+                "minimum": 1,
                 "description": "Number of unique strings to return. If not provided, automatically finds optimal k by looking at diminishing return"
               }
             },
@@ -623,10 +664,13 @@
                 "items": {
                   "type": "string"
                 },
-                "description": "Array of image inputs to deduplicate. Each item can be either an HTTP(S) URL or a raw base64-encoded image string (without data URI prefix)."
+                "minItems": 1,
+                "maxItems": 200,
+                "description": "Array of image inputs to deduplicate, up to 200. Each item can be either an HTTP(S) URL or a raw base64-encoded image string (without data URI prefix)."
               },
               "k": {
-                "type": "number",
+                "type": "integer",
+                "minimum": 1,
                 "description": "Number of unique images to return. If not provided, automatically finds optimal k by looking at diminishing return"
               }
             },
@@ -703,7 +747,7 @@
       "resources": [],
       "prompts": [],
       "instructions": "Web access and online content retrieval server.\n\nWHEN TO USE THIS SERVER:\n\nWeb Search (use when user wants to find something ONLINE, not local files):\n- \"search the web for...\", \"google...\", \"look up online...\", \"find on the internet...\"\n- \"what's the latest news on...\", \"current events about...\", \"recent updates on...\"\n- Any query needing real-time or up-to-date information from the internet\n\nURL/Webpage Reading (use when user provides a URL or link):\n- \"read this URL: https://...\", \"what does this webpage say...\", \"summarize this link...\"\n- \"fetch the content from...\", \"extract text from this website...\"\n- Any task involving a specific URL, http link, or webpage\n\nAcademic Paper Search (use for scholarly/research queries):\n- \"search arXiv for...\", \"find papers on arXiv about...\"\n- \"search SSRN for...\", \"find economics/finance/law papers...\"\n- \"find academic papers about...\", \"what research exists on...\"\n\nBibTeX Citations (use when user needs citation/bibliography entries):\n- \"get bibtex for...\", \"find citation for this paper...\"\n- \"search for bibtex entries...\", \"get bibliography entry for...\"\n- Any request for LaTeX citations or academic references in BibTeX format\n\nImage Search (use when user wants to find images online):\n- \"search for images of...\", \"find pictures of...\", \"find photos of...\"\n\nScreenshot Capture (use when user wants to SEE a webpage):\n- \"take a screenshot of this URL...\", \"capture this webpage visually...\"\n- \"show me what this website looks like...\"\n\nText Classification:\n- \"classify this text as...\", \"categorize these texts into...\", \"is this text positive or negative...\"\n- \"label these documents...\", \"sentiment analysis of...\"\n\nSemantic Reranking/Deduplication:\n- \"rerank these results by relevance to...\", \"sort by semantic similarity...\"\n- \"deduplicate these texts/images...\", \"find unique items from...\"\n\nPDF Extraction:\n- \"extract figures from this PDF...\", \"get tables from PDF...\", \"extract equations from PDF...\"\n\nNOT FOR: local file operations, code execution, database queries, non-web APIs.",
-      "cachedAt": 1786103618173
+      "cachedAt": 1786539604941
     },
     "exa": {
       "configHash": "5270fd7f178df6dd9af6d73de92518afe33f061a6e1f34bccb9530d092216b10",
