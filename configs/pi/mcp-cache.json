@@ -2,7 +2,7 @@
   "version": 1,
   "servers": {
     "jina-mcp-server": {
-      "configHash": "6a57f177947c792348d5d63c87c751c7b51dd36643cb27dcc27fb9534ffbabac",
+      "configHash": "cf6b16fa863b2904795632fc2b3bb00cf1c3468459f54c5e729f9568b8b7b021",
       "tools": [
         {
           "name": "show_api_key",
@@ -154,6 +154,40 @@
               "hl": {
                 "type": "string",
                 "description": "Language code, e.g., 'zh-cn' for Simplified Chinese"
+              }
+            },
+            "required": [
+              "query"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "search_web_deep",
+          "description": "Search the web, then read the result pages and return the passage from each that best answers the query, re-ranked by relevance. Regular search_web returns only the search engine's snippet, which is often a page fragment that does not answer the question; this reads the page itself and extracts a paragraph-length passage (~100 words). Best for questions whose answer is buried in page content rather than in titles or descriptions. Slower than search_web (typically 2-20s). Each result carries a snippet_source field: 'content' when the snippet came from the page body, 'serp' when the search engine's own snippet scored higher and was kept instead.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "query": {
+                "type": "string",
+                "description": "Search terms or question to answer (e.g., 'how does TCP slow start work', 'what causes memory fragmentation')"
+              },
+              "num": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 10,
+                "default": 5,
+                "description": "Number of results to return (1-10). Each result is drawn from a fully-read page; higher numbers take longer."
+              },
+              "snippet_source": {
+                "type": "string",
+                "enum": [
+                  "auto",
+                  "content"
+                ],
+                "default": "auto",
+                "description": "'auto' (recommended) lets the extracted passage compete with the search engine's snippet and keeps whichever is more relevant, so some results may be short SERP snippets. 'content' returns only extracted page passages, omitting pages that could not be read — use it when you need full passages for grounding and can accept fewer than num results (occasionally zero)."
               }
             },
             "required": [
@@ -746,8 +780,8 @@
       ],
       "resources": [],
       "prompts": [],
-      "instructions": "Web access and online content retrieval server.\n\nWHEN TO USE THIS SERVER:\n\nWeb Search (use when user wants to find something ONLINE, not local files):\n- \"search the web for...\", \"google...\", \"look up online...\", \"find on the internet...\"\n- \"what's the latest news on...\", \"current events about...\", \"recent updates on...\"\n- Any query needing real-time or up-to-date information from the internet\n\nURL/Webpage Reading (use when user provides a URL or link):\n- \"read this URL: https://...\", \"what does this webpage say...\", \"summarize this link...\"\n- \"fetch the content from...\", \"extract text from this website...\"\n- Any task involving a specific URL, http link, or webpage\n\nAcademic Paper Search (use for scholarly/research queries):\n- \"search arXiv for...\", \"find papers on arXiv about...\"\n- \"search SSRN for...\", \"find economics/finance/law papers...\"\n- \"find academic papers about...\", \"what research exists on...\"\n\nBibTeX Citations (use when user needs citation/bibliography entries):\n- \"get bibtex for...\", \"find citation for this paper...\"\n- \"search for bibtex entries...\", \"get bibliography entry for...\"\n- Any request for LaTeX citations or academic references in BibTeX format\n\nImage Search (use when user wants to find images online):\n- \"search for images of...\", \"find pictures of...\", \"find photos of...\"\n\nScreenshot Capture (use when user wants to SEE a webpage):\n- \"take a screenshot of this URL...\", \"capture this webpage visually...\"\n- \"show me what this website looks like...\"\n\nText Classification:\n- \"classify this text as...\", \"categorize these texts into...\", \"is this text positive or negative...\"\n- \"label these documents...\", \"sentiment analysis of...\"\n\nSemantic Reranking/Deduplication:\n- \"rerank these results by relevance to...\", \"sort by semantic similarity...\"\n- \"deduplicate these texts/images...\", \"find unique items from...\"\n\nPDF Extraction:\n- \"extract figures from this PDF...\", \"get tables from PDF...\", \"extract equations from PDF...\"\n\nNOT FOR: local file operations, code execution, database queries, non-web APIs.",
-      "cachedAt": 1786539604941
+      "instructions": "Web access and online content retrieval server.\n\nWHEN TO USE THIS SERVER:\n\nWeb Search (use when user wants to find something ONLINE, not local files):\n- \"search the web for...\", \"google...\", \"look up online...\", \"find on the internet...\"\n- \"what's the latest news on...\", \"current events about...\", \"recent updates on...\"\n- Any query needing real-time or up-to-date information from the internet\n\nDeep Web Search (use when the answer lives in page text, not in titles/descriptions):\n- \"deep search for...\", \"find detailed information about...\", \"search and read pages about...\"\n- Any question where the answer is likely inside a page, not just the headline\n- Returns a paragraph-length passage read from each page instead of a search-engine\n  snippet fragment. Prefer over search_web when passage-level answers matter; slower\n  (typically 2-20s)\n\nURL/Webpage Reading (use when user provides a URL or link):\n- \"read this URL: https://...\", \"what does this webpage say...\", \"summarize this link...\"\n- \"fetch the content from...\", \"extract text from this website...\"\n- Any task involving a specific URL, http link, or webpage\n\nAcademic Paper Search (use for scholarly/research queries):\n- \"search arXiv for...\", \"find papers on arXiv about...\"\n- \"search SSRN for...\", \"find economics/finance/law papers...\"\n- \"find academic papers about...\", \"what research exists on...\"\n\nBibTeX Citations (use when user needs citation/bibliography entries):\n- \"get bibtex for...\", \"find citation for this paper...\"\n- \"search for bibtex entries...\", \"get bibliography entry for...\"\n- Any request for LaTeX citations or academic references in BibTeX format\n\nImage Search (use when user wants to find images online):\n- \"search for images of...\", \"find pictures of...\", \"find photos of...\"\n\nScreenshot Capture (use when user wants to SEE a webpage):\n- \"take a screenshot of this URL...\", \"capture this webpage visually...\"\n- \"show me what this website looks like...\"\n\nText Classification:\n- \"classify this text as...\", \"categorize these texts into...\", \"is this text positive or negative...\"\n- \"label these documents...\", \"sentiment analysis of...\"\n\nSemantic Reranking/Deduplication:\n- \"rerank these results by relevance to...\", \"sort by semantic similarity...\"\n- \"deduplicate these texts/images...\", \"find unique items from...\"\n\nPDF Extraction:\n- \"extract figures from this PDF...\", \"get tables from PDF...\", \"extract equations from PDF...\"\n\nNOT FOR: local file operations, code execution, database queries, non-web APIs.",
+      "cachedAt": 1786622032286
     },
     "exa": {
       "configHash": "5270fd7f178df6dd9af6d73de92518afe33f061a6e1f34bccb9530d092216b10",
@@ -812,7 +846,7 @@
       "cachedAt": 1784199718647
     },
     "computer-use-linux": {
-      "configHash": "9c3b638a67d628eb54a394be0ce6a738451162e95fc82655997ec79ada72be6d",
+      "configHash": "4ce84334e528bdd52f942756d9493027409e3a1a803fe8aa8f38e5d23dffc9ce",
       "tools": [
         {
           "name": "activate_window",
@@ -1113,6 +1147,7 @@
               },
               "max_depth": {
                 "default": null,
+                "description": "Maximum AT-SPI traversal depth (default 32, hard max 64).",
                 "minimum": 0,
                 "type": [
                   "integer",
@@ -1130,6 +1165,7 @@
               },
               "max_nodes": {
                 "default": null,
+                "description": "Maximum raw AT-SPI nodes to inspect before compaction (default 1000, hard max 2000).",
                 "minimum": 0,
                 "type": [
                   "integer",
@@ -1975,7 +2011,7 @@
       "resources": [],
       "prompts": [],
       "instructions": "Begin every turn that uses Computer Use by calling get_app_state. If diagnostics report disabled GNOME accessibility, call setup_accessibility before asking the user to retry. Use list_windows/focused_window before targeted keyboard input. If diagnostics report windowing.can_list_windows=false on GNOME, call setup_window_targeting to install the optional GNOME Shell extension backend, then ask the user to log out and back in if the setup report says a shell reload is required. This Linux backend can capture size-bounded screenshots through GNOME Shell or XDG Desktop Portal, read AT-SPI trees with action/value metadata, invoke native AT-SPI actions, set AT-SPI values or editable text, list/focus compositor windows through registered Linux window backends when the session permits it, attach best-effort terminal tty/process metadata to terminal windows, send coordinate or element-targeted click/scroll/drag input through the Wayland remote desktop portal when available, and send layout-safe literal type_text through KDE clipboard integration on Plasma Wayland or through portal keysyms on other Wayland sessions before falling back to ydotool. Screenshot results include width/height for the returned image plus coordinate_width/coordinate_height and scale for desktop coordinate conversion; request more detail with max_width, max_height, max_bytes, format=jpeg, quality, or a smaller target/crop instead of relying on unbounded screenshots. Tools with readOnlyHint=false may mutate local desktop or application state; hosts should require approval for actions that can submit, delete, send, purchase, or overwrite data. For element-targeted actions, prefer element_index from the latest get_app_state result; click, perform_action, and set_value can also use semantic role/name/text/states selectors when the target is unique. type_text and press_key accept optional window_id, pid, app_id, wm_class, title, tty, terminal_pid, terminal_command, or terminal_cwd selectors and refuse targeted input if focus cannot be verified. After targeted keyboard input, results append focused-element feedback from AT-SPI (role, name, editable) and warn when no editable element holds focus — treat that warning as the input not landing. Screenshot, click, and input results warn when the target window or coordinate is partially or fully off-screen; use move_window/resize_window (GNOME Shell extension backend) to bring a window fully on-screen before retrying. scroll accepts the same window targeting and relative coordinates as click. get_app_state returns a compact readiness block by default; pass verbose=true for the full diagnostics dump. Electron apps expose no AT-SPI tree unless launched with --force-renderer-accessibility.",
-      "cachedAt": 1786261707740
+      "cachedAt": 1786604355468
     }
   }
 }
