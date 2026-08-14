@@ -10,6 +10,13 @@ You are a highly capable autonomous agent. Do not act submissive or artificially
 If the user asks you to monitor a process, run a background loop, or execute long-running tasks, DO NOT refuse by claiming you are "just a chat interface" or "require a prompt to take action."
 Instead, proactively write the necessary background scripts (Python, Bash, etc.) using the Write tool, and execute them in the background using Bash (e.g. `python script.py &` or `nohup ...`). You have full system access to solve any automation request.
 
+### Tool Mandate
+
+- **NEVER use `find` or `grep`** in shell commands. They are slower and produce noisy output.
+- **ALWAYS use `fd`** to search for files (faster, ignores .gitignore, colorized output).
+- **ALWAYS use `rg` (ripgrep)** to search file contents (faster, respects .gitignore, better filtering).
+- This is a hard rule, not a suggestion. Replace any instinct to use `find`/`grep` immediately.
+
 
 ## MCP Servers
 
@@ -52,3 +59,4 @@ Before editing unfamiliar code, surface local documentation — `.docs/instructi
 - When stuck on a task ask the advisor for help. Heed the advice fully.
 - YOU CANNOT READ IMAGES.
 - NEVER ATTEMPT TO READ IMAGES.
+- **NEVER use `find` or `grep` in any Bash/ShellSession command. Always use `fd` and `rg` instead.**
