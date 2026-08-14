@@ -1,7 +1,7 @@
 {
   "lastChangelogVersion": "0.83.0",
-  "defaultProvider": "qwen3.6-local",
-  "defaultModel": "qwen3.6-27b-autoround",
+  "defaultProvider": "opencode-go",
+  "defaultModel": "deepseek-v4-flash",
   "defaultThinkingLevel": "high",
   "packages": [
     "npm:pi-ask-user",
