@@ -30,7 +30,6 @@
   };
   services.nanobanana.enable = true;
   pomotasker.enable = true;
-  services.torrentio.enable = true;
   systemd.sleep.extraConfig = ''
     AllowSuspend=no
     AllowHibernation=no
