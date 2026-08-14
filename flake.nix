@@ -52,6 +52,7 @@
     spl3g-config.url = "github:spl3g/nixfiles";
     pomotasker.url = "github:p2d0/todolist";
     todolist-web.url = "github:p2d0/todolist-web";
+    torrentio.url = "github:p2d0/torrentio-scraper";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     nixpkgs-amnezia.url = "github:averyanalex/nixpkgs/amneziawg";
     # hy3 = {
@@ -63,7 +64,7 @@
   outputs = inputs@{ self, nixpkgs, poetry2nix, tdesktop, playwright-cli
     , zen-browser, compfy, nixos-unstable, void-editor, hyprland,
     nixpkgs-amnezia, nanobanana, ai-shell, home-manager, appblocker
-    , spl3g-config, pomotasker, todolist-web, ... }:
+    , spl3g-config, pomotasker, todolist-web, torrentio, ... }:
     let
       lib = nixpkgs.lib.extend
         (self: super: { my = import ./lib/util.nix { lib = nixpkgs.lib; }; });
@@ -208,6 +209,7 @@
             appblocker.nixosModules.default
             nanobanana.nixosModules.default
             todolist-web.nixosModules.pomotasker
+            torrentio.nixosModules.torrentio
             # hyprland.nixosModules.default
             ./home-laptop.nix
             ./hosts/laptop/configuration.nix
