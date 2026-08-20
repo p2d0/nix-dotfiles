@@ -474,24 +474,6 @@
     "maxTokens": 0
   },
   {
-    "id": "muse-spark-1.2",
-    "name": "muse-spark-1.2",
-    "api": "openai-completions",
-    "baseUrl": "https://opencode.ai/zen/go/v1",
-    "reasoning": false,
-    "input": [
-      "text"
-    ],
-    "cost": {
-      "input": 0,
-      "output": 0,
-      "cacheRead": 0,
-      "cacheWrite": 0
-    },
-    "contextWindow": 131072,
-    "maxTokens": 0
-  },
-  {
     "id": "muse-spark-1.2-contributor",
     "name": "muse-spark-1.2-contributor",
     "api": "openai-completions",

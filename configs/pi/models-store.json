@@ -1186,7 +1186,7 @@
       },
       {
         "id": "gpt-5.6-sol",
-        "name": "GPT-5.6 Sol",
+        "name": "GPT-5.6 Sol (50% Off)",
         "api": "openai-responses",
         "provider": "opencode",
         "baseUrl": "https://opencode.ai/zen/v1",
@@ -1196,10 +1196,10 @@
           "image"
         ],
         "cost": {
-          "input": 5,
-          "output": 30,
-          "cacheRead": 0.5,
-          "cacheWrite": 6.25
+          "input": 2.5,
+          "output": 15,
+          "cacheRead": 0.25,
+          "cacheWrite": 3.125
         },
         "compat": {
           "sessionAffinityFormat": "openai-nosession",
@@ -1491,39 +1491,6 @@
         }
       },
       {
-        "id": "laguna-s-2.1-free",
-        "name": "Laguna S 2.1 Free",
-        "api": "openai-completions",
-        "provider": "opencode",
-        "baseUrl": "https://opencode.ai/zen/v1",
-        "reasoning": true,
-        "input": [
-          "text"
-        ],
-        "cost": {
-          "input": 0,
-          "output": 0,
-          "cacheRead": 0,
-          "cacheWrite": 0
-        },
-        "compat": {
-          "supportsStore": false,
-          "supportsDeveloperRole": false,
-          "maxTokensField": "max_tokens"
-        },
-        "contextWindow": 256000,
-        "maxTokens": 32000,
-        "thinkingLevelMap": {
-          "off": null,
-          "minimal": null,
-          "low": "low",
-          "medium": "medium",
-          "high": "high",
-          "xhigh": null,
-          "max": null
-        }
-      },
-      {
         "id": "mimo-v2.5-free",
         "name": "MiMo V2.5 Free",
         "api": "openai-completions",
@@ -1655,6 +1622,38 @@
         }
       },
       {
+        "id": "muse-spark-1.2-contributor-free",
+        "name": "Muse Spark 1.2 Free",
+        "api": "openai-responses",
+        "provider": "opencode",
+        "baseUrl": "https://opencode.ai/zen/v1",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 0,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0
+        },
+        "compat": {
+          "sessionAffinityFormat": "openai-nosession"
+        },
+        "contextWindow": 1048576,
+        "maxTokens": 131072,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": "minimal",
+          "low": "low",
+          "medium": "medium",
+          "high": "high",
+          "xhigh": "xhigh",
+          "max": null
+        }
+      },
+      {
         "id": "nemotron-3-ultra-free",
         "name": "Nemotron 3 Ultra Free",
         "api": "openai-completions",
@@ -1743,9 +1742,9 @@
         "maxTokens": 65536
       }
     ],
-    "checkedAt": 1787141787937,
-    "lastModified": 1787139231000,
-    "etag": "W/\"7afecd8a671cceba723b105cd8700d48\""
+    "checkedAt": 1787217923139,
+    "lastModified": 1787216321000,
+    "etag": "W/\"ab43b614aef87bdfb721f2ca72ceaa5d\""
   },
   "openai-codex": {
     "models": [
@@ -1995,7 +1994,7 @@
         }
       }
     ],
-    "checkedAt": 1787141787915,
+    "checkedAt": 1787217923059,
     "lastModified": 1786351890000,
     "etag": "W/\"7572a78e60b78526600ed2a9b74b579d\""
   },
@@ -2223,7 +2222,7 @@
       },
       {
         "id": "hy3",
-        "name": "Hy3",
+        "name": "Hy3 (8x usage)",
         "api": "openai-completions",
         "provider": "opencode-go",
         "baseUrl": "https://opencode.ai/zen/go/v1",
@@ -2232,9 +2231,9 @@
           "text"
         ],
         "cost": {
-          "input": 0.14,
-          "output": 0.58,
-          "cacheRead": 0.035,
+          "input": 0.0175,
+          "output": 0.0725,
+          "cacheRead": 0.004375,
           "cacheWrite": 0
         },
         "compat": {
@@ -2572,35 +2571,12 @@
         "maxTokens": 131072
       }
     ],
-    "checkedAt": 1787141787845,
-    "lastModified": 1787139232000,
-    "etag": "W/\"950e75e56bfc7ba09d176a9c86e363f7\""
+    "checkedAt": 1787217923140,
+    "lastModified": 1787216322000,
+    "etag": "W/\"74f5fa7b296425daebf1f74d1fcd25ad\""
   },
   "openrouter": {
     "models": [
-      {
-        "id": "ai21/jamba-large-1.7",
-        "name": "AI21: Jamba Large 1.7",
-        "api": "openai-completions",
-        "baseUrl": "https://openrouter.ai/api/v1",
-        "provider": "openrouter",
-        "reasoning": false,
-        "input": [
-          "text"
-        ],
-        "cost": {
-          "input": 2,
-          "output": 8,
-          "cacheRead": 0,
-          "cacheWrite": 0
-        },
-        "contextWindow": 256000,
-        "maxTokens": 4096,
-        "compat": {
-          "supportsDeveloperRole": false,
-          "thinkingFormat": "openrouter"
-        }
-      },
       {
         "id": "aion-labs/aion-2.0",
         "name": "AionLabs: Aion-2.0",
@@ -3844,13 +3820,13 @@
           "text"
         ],
         "cost": {
-          "input": 0.27,
-          "output": 1.12,
-          "cacheRead": 0.135,
+          "input": 0.25,
+          "output": 1,
+          "cacheRead": 0,
           "cacheWrite": 0
         },
         "contextWindow": 163840,
-        "maxTokens": 65536,
+        "maxTokens": 163840,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -4005,9 +3981,9 @@
           "text"
         ],
         "cost": {
-          "input": 0.0826,
-          "output": 0.1652,
-          "cacheRead": 0.01652,
+          "input": 0.088606,
+          "output": 0.177212,
+          "cacheRead": 0.017721,
           "cacheWrite": 0
         },
         "contextWindow": 1024000,
@@ -4069,9 +4045,9 @@
           "text"
         ],
         "cost": {
-          "input": 1.44,
-          "output": 2.88,
-          "cacheRead": 0.1215,
+          "input": 1.6,
+          "output": 3.2,
+          "cacheRead": 0.135,
           "cacheWrite": 0
         },
         "contextWindow": 1048576,
@@ -4101,13 +4077,13 @@
           "text"
         ],
         "cost": {
-          "input": 0.66,
-          "output": 1.98,
-          "cacheRead": 0.022,
+          "input": 1.188,
+          "output": 3.564,
+          "cacheRead": 0.0396,
           "cacheWrite": 0
         },
-        "contextWindow": 1048576,
-        "maxTokens": 384000,
+        "contextWindow": 1048575,
+        "maxTokens": 4096,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter",
@@ -5415,13 +5391,13 @@
           "text"
         ],
         "cost": {
-          "input": 0.22,
+          "input": 0.225,
           "output": 0.9,
-          "cacheRead": 0.05,
+          "cacheRead": 0.06,
           "cacheWrite": 0
         },
-        "contextWindow": 196608,
-        "maxTokens": 196608,
+        "contextWindow": 65536,
+        "maxTokens": 4096,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -9451,13 +9427,13 @@
           "image"
         ],
         "cost": {
-          "input": 0.225,
-          "output": 1.8,
-          "cacheRead": 0.225,
+          "input": 0.25,
+          "output": 1.25,
+          "cacheRead": 0.25,
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 65536,
+        "maxTokens": 262144,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -9595,13 +9571,13 @@
           "image"
         ],
         "cost": {
-          "input": 0.3,
-          "output": 2,
-          "cacheRead": 0.03,
+          "input": 0.6,
+          "output": 3.6,
+          "cacheRead": 0.12,
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 65536,
+        "maxTokens": 262144,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -10825,9 +10801,9 @@
           "text"
         ],
         "cost": {
-          "input": 0.0765,
-          "output": 0.153,
-          "cacheRead": 0.0153,
+          "input": 0.065,
+          "output": 0.14,
+          "cacheRead": 0.014,
           "cacheWrite": 0
         },
         "contextWindow": 262144,
@@ -10989,11 +10965,34 @@
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
         }
+      },
+      {
+        "id": "~z-ai/glm-latest",
+        "name": "Z.ai: GLM Latest",
+        "api": "openai-completions",
+        "baseUrl": "https://openrouter.ai/api/v1",
+        "provider": "openrouter",
+        "reasoning": true,
+        "input": [
+          "text"
+        ],
+        "cost": {
+          "input": 1.4,
+          "output": 4.4,
+          "cacheRead": 0.26,
+          "cacheWrite": 0
+        },
+        "contextWindow": 1048576,
+        "maxTokens": 131072,
+        "compat": {
+          "supportsDeveloperRole": false,
+          "thinkingFormat": "openrouter"
+        }
       }
     ],
-    "checkedAt": 1787141787924,
-    "lastModified": 1787139233000,
-    "etag": "W/\"84e99543b0e3b8c888d46e01e151beb8\""
+    "checkedAt": 1787217923141,
+    "lastModified": 1787216323000,
+    "etag": "W/\"e314a171441081cba84437ce6bb58260\""
   },
   "llm7": {
     "models": [
@@ -11055,10 +11054,43 @@
         "baseUrl": "https://api.llm7.io/v1"
       }
     ],
-    "checkedAt": 1787141787661
+    "checkedAt": 1787228325340
   },
   "cline": {
     "models": [
+      {
+        "id": "~z-ai/glm-latest",
+        "name": "GLM Latest (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text"
+        ],
+        "cost": {
+          "input": 1.4,
+          "output": 4.4,
+          "cacheRead": 0.26,
+          "cacheWrite": 0
+        },
+        "contextWindow": 1048576,
+        "maxTokens": 131072,
+        "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": "low",
+          "medium": null,
+          "high": "high",
+          "xhigh": "max"
+        },
+        "modelsDev": {
+          "id": "~z-ai/glm-latest",
+          "name": "Z.ai: GLM Latest",
+          "family": "glm"
+        },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
       {
         "id": "z-ai/glm-5.3",
         "name": "GLM 5.3 (Cline) 💰",
@@ -11106,7 +11138,7 @@
           "cacheRead": 0.049999999999999996,
           "cacheWrite": 0
         },
-        "contextWindow": 262144,
+        "contextWindow": 1000000,
         "maxTokens": 131072,
         "_pricingKnown": true,
         "modelsDev": {
@@ -11315,13 +11347,13 @@
           "text"
         ],
         "cost": {
-          "input": 0.66,
-          "output": 1.9800000000000002,
-          "cacheRead": 0.022,
+          "input": 1.1880000000000002,
+          "output": 3.564,
+          "cacheRead": 0.039599999999999996,
           "cacheWrite": 0
         },
         "contextWindow": 1048576,
-        "maxTokens": 384000,
+        "maxTokens": 0,
         "compat": {
           "supportsStore": false,
           "supportsDeveloperRole": false,
@@ -11657,9 +11689,9 @@
           "text"
         ],
         "cost": {
-          "input": 0.0765,
-          "output": 0.153,
-          "cacheRead": 0.015300000000000001,
+          "input": 0.065,
+          "output": 0.14,
+          "cacheRead": 0.014,
           "cacheWrite": 0
         },
         "contextWindow": 1310720,
@@ -12950,7 +12982,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 65536,
-        "maxTokens": 66000,
+        "maxTokens": 65536,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": "none",
@@ -13982,7 +14014,7 @@
         },
         "modelsDev": {
           "id": "inclusionai/ring-2.6-1t",
-          "name": "inclusionAI: Ring-2.6-1T",
+          "name": "inclusionAI: Ring-2.6-1T (retires Aug 24)",
           "family": "ring"
         },
         "api": "cline-xml-tools",
@@ -14577,13 +14609,13 @@
           "image"
         ],
         "cost": {
-          "input": 0.3,
-          "output": 2,
-          "cacheRead": 0.03,
+          "input": 0.6,
+          "output": 3.5999999999999996,
+          "cacheRead": 0.12,
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 65536,
+        "maxTokens": 262144,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "Qwen/Qwen3.6-27B",
@@ -14712,9 +14744,9 @@
           "text"
         ],
         "cost": {
-          "input": 1.44,
-          "output": 2.88,
-          "cacheRead": 0.1215,
+          "input": 1.5999999999999999,
+          "output": 3.1999999999999997,
+          "cacheRead": 0.135,
           "cacheWrite": 0
         },
         "contextWindow": 1048576,
@@ -14802,7 +14834,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "inclusionai/ling-2.6-1t",
-          "name": "inclusionAI: Ling-2.6-1T",
+          "name": "inclusionAI: Ling-2.6-1T (retires Aug 24)",
           "family": "ling"
         },
         "api": "cline-xml-tools",
@@ -14973,7 +15005,7 @@
         "_pricingKnown": true,
         "modelsDev": {
           "id": "inclusionai/ling-2.6-flash",
-          "name": "inclusionAI: Ling-2.6-flash",
+          "name": "inclusionAI: Ling-2.6-flash (retires Aug 24)",
           "family": "ling"
         },
         "api": "cline-xml-tools",
@@ -16537,13 +16569,13 @@
           "text"
         ],
         "cost": {
-          "input": 0.22,
+          "input": 0.22499999999999998,
           "output": 0.8999999999999999,
-          "cacheRead": 0.049999999999999996,
+          "cacheRead": 0.06,
           "cacheWrite": 0
         },
         "contextWindow": 204800,
-        "maxTokens": 196608,
+        "maxTokens": 0,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "MiniMax-M2.5",
@@ -19279,31 +19311,6 @@
         "baseUrl": "https://api.cline.bot/api/v1"
       },
       {
-        "id": "ai21/jamba-large-1.7",
-        "name": "Jamba Large 1.7 (Cline) 💰",
-        "reasoning": false,
-        "input": [
-          "text"
-        ],
-        "cost": {
-          "input": 2,
-          "output": 8,
-          "cacheRead": 0,
-          "cacheWrite": 0
-        },
-        "contextWindow": 256000,
-        "maxTokens": 4096,
-        "_pricingKnown": true,
-        "modelsDev": {
-          "id": "ai21/jamba-large-1.7",
-          "name": "AI21: Jamba Large 1.7",
-          "family": "jamba"
-        },
-        "api": "cline-xml-tools",
-        "provider": "cline",
-        "baseUrl": "https://api.cline.bot/api/v1"
-      },
-      {
         "id": "openai/gpt-5",
         "name": "GPT-5 (Cline) 💰 [CI: 37.8]",
         "reasoning": true,
@@ -20631,7 +20638,7 @@
           "low": "low",
           "medium": "medium",
           "high": "high",
-          "xhigh": "xhigh"
+          "xhigh": null
         },
         "modelsDev": {
           "id": "Qwen/Qwen3-8B",
@@ -23044,31 +23051,6 @@
         "baseUrl": "https://api.cline.bot/api/v1"
       },
       {
-        "id": "mancer/weaver",
-        "name": "Weaver (alpha) (Cline) 💰",
-        "reasoning": false,
-        "input": [
-          "text"
-        ],
-        "cost": {
-          "input": 0.5,
-          "output": 0.75,
-          "cacheRead": 0,
-          "cacheWrite": 0
-        },
-        "contextWindow": 8000,
-        "maxTokens": 6000,
-        "_pricingKnown": true,
-        "modelsDev": {
-          "id": "mancer/weaver",
-          "name": "Mancer: Weaver (alpha)",
-          "family": "alpha"
-        },
-        "api": "cline-xml-tools",
-        "provider": "cline",
-        "baseUrl": "https://api.cline.bot/api/v1"
-      },
-      {
         "id": "undi95/remm-slerp-l2-13b",
         "name": "ReMM SLERP 13B (Cline) 💰",
         "reasoning": false,
@@ -23187,7 +23169,7 @@
         "baseUrl": "https://api.cline.bot/api/v1"
       }
     ],
-    "checkedAt": 1787141788768
+    "checkedAt": 1787228326614
   },
   "fastrouter": {
     "models": [
@@ -23718,7 +23700,7 @@
         "cost": {
           "input": 2.5e-7,
           "output": 0.0000015,
-          "cacheRead": null,
+          "cacheRead": 2.5e-8,
           "cacheWrite": null
         },
         "contextWindow": 65536,
@@ -24419,8 +24401,8 @@
           "image"
         ],
         "cost": {
-          "input": 1e-7,
-          "output": 3e-7,
+          "input": 1.3e-7,
+          "output": 3.8e-7,
           "cacheRead": null,
           "cacheWrite": null
         },
@@ -26412,8 +26394,31 @@
         "api": "openai-completions",
         "provider": "fastrouter",
         "baseUrl": "https://api.fastrouter.ai/api/v1"
+      },
+      {
+        "id": "z-ai/glm-5.3",
+        "name": "GLM-5.3",
+        "reasoning": true,
+        "thinkingLevelMap": {
+          "off": "none"
+        },
+        "input": [
+          "text"
+        ],
+        "cost": {
+          "input": 0.0000014,
+          "output": 0.0000044,
+          "cacheRead": 2.6e-7,
+          "cacheWrite": null
+        },
+        "contextWindow": 1048576,
+        "maxTokens": 131072,
+        "_pricingKnown": true,
+        "api": "openai-completions",
+        "provider": "fastrouter",
+        "baseUrl": "https://api.fastrouter.ai/api/v1"
       }
     ],
-    "checkedAt": 1787141788775
+    "checkedAt": 1787228326620
   }
 }

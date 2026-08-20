@@ -641,6 +641,9 @@
   # environment.sessionVariables.NAUTILUS_EXTENSION_DIR = "${config.system.path}/lib/nautilus/extensions-4";
   modules.taffybar.enable = false;
   environment.systemPackages = with pkgs; [
+    # omnisharp-roslyn
+    # roslyn-ls
+    # unstable.csharp-ls
     (pkgs.python3.withPackages (ps: [
       ps.python-lsp-server
       ps.python-telegram-bot
