@@ -165,6 +165,24 @@
     "maxTokens": 0
   },
   {
+    "id": "ox-alpha-free",
+    "name": "ox-alpha-free",
+    "api": "openai-completions",
+    "baseUrl": "https://opencode.ai/zen/go/v1",
+    "reasoning": false,
+    "input": [
+      "text"
+    ],
+    "cost": {
+      "input": 0,
+      "output": 0,
+      "cacheRead": 0,
+      "cacheWrite": 0
+    },
+    "contextWindow": 131072,
+    "maxTokens": 0
+  },
+  {
     "id": "glm-5.1",
     "name": "GLM-5.1",
     "api": "openai-completions",
