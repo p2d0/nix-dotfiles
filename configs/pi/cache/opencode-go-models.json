@@ -255,6 +255,24 @@
     "maxTokens": 384000
   },
   {
+    "id": "deepseek-v4-flash-vision-exp",
+    "name": "deepseek-v4-flash-vision-exp",
+    "api": "openai-completions",
+    "baseUrl": "https://opencode.ai/zen/go/v1",
+    "reasoning": false,
+    "input": [
+      "text"
+    ],
+    "cost": {
+      "input": 0,
+      "output": 0,
+      "cacheRead": 0,
+      "cacheWrite": 0
+    },
+    "contextWindow": 131072,
+    "maxTokens": 0
+  },
+  {
     "id": "qwen3.7-max",
     "name": "Qwen3.7 Max",
     "api": "anthropic-messages",
