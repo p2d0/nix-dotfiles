@@ -66,6 +66,26 @@
                 }
             ]
         },
+        "qwen38-huge": {
+            "baseUrl": "http://127.0.0.1:18020/v1",
+            "apiKey": "d66d0857cd417e146448659f477a0ef6f369adf08d964cdd",
+            "api": "openai-completions",
+            "authHeader": true,
+            "compat": {
+                "supportsDeveloperRole": false,
+                "thinkingFormat": "qwen-chat-template"
+            },
+            "models": [
+                {
+                    "id": "qwen3.8-27b",
+                    "name": "Qwen 3.8 27B (CTX=huge)",
+                    "reasoning": true,
+                    "input": ["text"],
+                    "contextWindow": 245760,
+                    "maxTokens": 32768
+                }
+            ]
+        },
         "qwen3.6-local": {
             "baseUrl": "http://127.0.0.1:8060/v1",
             "apiKey": "ignored",
