@@ -1230,7 +1230,7 @@
         "cost": {
           "input": 2,
           "output": 6,
-          "cacheRead": 0.5,
+          "cacheRead": 0.3,
           "cacheWrite": 0
         },
         "compat": {
@@ -1742,9 +1742,9 @@
         }
       }
     ],
-    "checkedAt": 1787658519032,
-    "lastModified": 1787571274000,
-    "etag": "W/\"1052bf128b901359d7742f3501bea490\""
+    "checkedAt": 1787762206828,
+    "lastModified": 1787740210000,
+    "etag": "W/\"ec213660a0260188f450add4e66ef54e\""
   },
   "openai-codex": {
     "models": [
@@ -1994,7 +1994,7 @@
         }
       }
     ],
-    "checkedAt": 1787658518986,
+    "checkedAt": 1787762206940,
     "lastModified": 1786351890000,
     "etag": "W/\"7572a78e60b78526600ed2a9b74b579d\""
   },
@@ -2223,8 +2223,8 @@
         }
       },
       {
-        "id": "grok-4.5",
-        "name": "Grok 4.5",
+        "id": "grok-4.6",
+        "name": "Grok 4.6",
         "api": "openai-responses",
         "provider": "opencode-go",
         "baseUrl": "https://opencode.ai/zen/go/v1",
@@ -2250,7 +2250,7 @@
           "low": "low",
           "medium": "medium",
           "high": "high",
-          "xhigh": null,
+          "xhigh": "xhigh",
           "max": null
         }
       },
@@ -2663,9 +2663,9 @@
         "maxTokens": 131072
       }
     ],
-    "checkedAt": 1787658519074,
-    "lastModified": 1787571275000,
-    "etag": "W/\"5b05133dff9e8c4b6b73a2000e9cbc6a\""
+    "checkedAt": 1787762206818,
+    "lastModified": 1787740211000,
+    "etag": "W/\"30a10572fb95efd8d75992ce8c1019e2\""
   },
   "openrouter": {
     "models": [
@@ -3711,7 +3711,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 262144,
+        "maxTokens": 235929,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -3830,7 +3830,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 262144,
+        "maxTokens": 235929,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -4044,7 +4044,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 163840,
-        "maxTokens": 163840,
+        "maxTokens": 147456,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -4067,7 +4067,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 161000,
-        "maxTokens": 161000,
+        "maxTokens": 144900,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -4165,7 +4165,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 163840,
-        "maxTokens": 163840,
+        "maxTokens": 147456,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -4214,9 +4214,9 @@
           "text"
         ],
         "cost": {
-          "input": 0.0854,
-          "output": 0.1708,
-          "cacheRead": 0.01708,
+          "input": 0.0826,
+          "output": 0.1652,
+          "cacheRead": 0.01652,
           "cacheWrite": 0
         },
         "contextWindow": 1024000,
@@ -4247,13 +4247,13 @@
           "text"
         ],
         "cost": {
-          "input": 0.14,
-          "output": 0.28,
-          "cacheRead": 0.028,
+          "input": 0.06,
+          "output": 0.12,
+          "cacheRead": 0.012,
           "cacheWrite": 0
         },
         "contextWindow": 1048576,
-        "maxTokens": 131072,
+        "maxTokens": 943718,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter",
@@ -4314,9 +4314,9 @@
           "text"
         ],
         "cost": {
-          "input": 0.579072,
-          "output": 1.158144,
-          "cacheRead": 0.048256,
+          "input": 0.87,
+          "output": 1.74,
+          "cacheRead": 0.0725,
           "cacheWrite": 0
         },
         "contextWindow": 1024000,
@@ -4353,7 +4353,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 1048575,
-        "maxTokens": 4096,
+        "maxTokens": 943717,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter",
@@ -4378,7 +4378,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 512000,
-        "maxTokens": 512000,
+        "maxTokens": 460800,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -4674,7 +4674,7 @@
           "cacheRead": 0.2,
           "cacheWrite": 0.375
         },
-        "contextWindow": 65536,
+        "contextWindow": 131072,
         "maxTokens": 32768,
         "compat": {
           "supportsDeveloperRole": false,
@@ -5185,7 +5185,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 131072,
-        "maxTokens": 131072,
+        "maxTokens": 117964,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -5251,13 +5251,13 @@
           "image"
         ],
         "cost": {
-          "input": 0.1,
+          "input": 0.09,
           "output": 0.34,
-          "cacheRead": 0.1,
+          "cacheRead": 0.05,
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 262144,
+        "maxTokens": 16384,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -5304,7 +5304,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 131072,
-        "maxTokens": 131072,
+        "maxTokens": 117964,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -5523,7 +5523,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 131072,
-        "maxTokens": 131072,
+        "maxTokens": 117964,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -5540,13 +5540,13 @@
           "text"
         ],
         "cost": {
-          "input": 0.1,
-          "output": 0.32,
-          "cacheRead": 0,
+          "input": 0.71,
+          "output": 0.71,
+          "cacheRead": 0.71,
           "cacheWrite": 0
         },
-        "contextWindow": 131072,
-        "maxTokens": 16384,
+        "contextWindow": 128000,
+        "maxTokens": 115200,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -5588,13 +5588,13 @@
           "image"
         ],
         "cost": {
-          "input": 0.1,
-          "output": 0.3,
-          "cacheRead": 0,
+          "input": 0.11,
+          "output": 0.34,
+          "cacheRead": 0.055,
           "cacheWrite": 0
         },
-        "contextWindow": 327680,
-        "maxTokens": 16384,
+        "contextWindow": 131072,
+        "maxTokens": 8192,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -5627,7 +5627,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 131072,
-        "maxTokens": 4096,
+        "maxTokens": 117964,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -5660,7 +5660,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 1048576,
-        "maxTokens": 4096,
+        "maxTokens": 943718,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -5693,7 +5693,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 1048576,
-        "maxTokens": 4096,
+        "maxTokens": 943718,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -5726,7 +5726,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 1048576,
-        "maxTokens": 4096,
+        "maxTokens": 943718,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -5852,8 +5852,8 @@
           "cacheRead": 0.06,
           "cacheWrite": 0
         },
-        "contextWindow": 196608,
-        "maxTokens": 4096,
+        "contextWindow": 204800,
+        "maxTokens": 131072,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -5879,7 +5879,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 196608,
-        "maxTokens": 4096,
+        "maxTokens": 176947,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -5927,7 +5927,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 524288,
-        "maxTokens": 4096,
+        "maxTokens": 471859,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -5951,7 +5951,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 1048576,
-        "maxTokens": 4096,
+        "maxTokens": 943718,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -5974,7 +5974,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 256000,
-        "maxTokens": 4096,
+        "maxTokens": 204800,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -5997,7 +5997,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 4096,
+        "maxTokens": 209715,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -6021,7 +6021,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 4096,
+        "maxTokens": 209715,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -6045,7 +6045,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 131072,
-        "maxTokens": 4096,
+        "maxTokens": 104857,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -6069,7 +6069,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 4096,
+        "maxTokens": 209715,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -6092,7 +6092,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 128000,
-        "maxTokens": 4096,
+        "maxTokens": 102400,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -6115,7 +6115,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 131072,
-        "maxTokens": 4096,
+        "maxTokens": 104857,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -6139,7 +6139,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 4096,
+        "maxTokens": 209715,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -6163,7 +6163,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 131072,
-        "maxTokens": 4096,
+        "maxTokens": 104857,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -6196,7 +6196,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 4096,
+        "maxTokens": 209715,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -6220,7 +6220,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 131072,
-        "maxTokens": 4096,
+        "maxTokens": 104857,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -6266,7 +6266,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 32768,
-        "maxTokens": 4096,
+        "maxTokens": 26214,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -6299,7 +6299,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 4096,
+        "maxTokens": 209715,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -6346,7 +6346,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 65536,
-        "maxTokens": 4096,
+        "maxTokens": 52428,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -6369,7 +6369,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 32000,
-        "maxTokens": 4096,
+        "maxTokens": 25600,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -6489,7 +6489,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 4096,
+        "maxTokens": 235929,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter",
@@ -6517,7 +6517,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 262144,
+        "maxTokens": 235929,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -6544,7 +6544,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 4096,
+        "maxTokens": 235929,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -6601,7 +6601,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 262144,
+        "maxTokens": 235929,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -6625,7 +6625,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 262144,
+        "maxTokens": 235929,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -6648,7 +6648,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 262144,
+        "maxTokens": 235929,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -6736,7 +6736,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 262144,
+        "maxTokens": 235929,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -6768,7 +6768,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 512288,
-        "maxTokens": 4096,
+        "maxTokens": 461059,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -6800,7 +6800,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 512288,
-        "maxTokens": 4096,
+        "maxTokens": 461059,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -6923,7 +6923,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 4095,
-        "maxTokens": 4096,
+        "maxTokens": 3685,
         "compat": {
           "thinkingFormat": "openrouter"
         }
@@ -8905,7 +8905,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 131072,
-        "maxTokens": 131072,
+        "maxTokens": 117964,
         "compat": {
           "thinkingFormat": "openrouter"
         }
@@ -8936,7 +8936,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 131072,
-        "maxTokens": 131072,
+        "maxTokens": 117964,
         "compat": {
           "thinkingFormat": "openrouter"
         }
@@ -9547,7 +9547,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 32768,
-        "maxTokens": 32768,
+        "maxTokens": 29491,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -9583,29 +9583,6 @@
         "baseUrl": "https://openrouter.ai/api/v1",
         "provider": "openrouter",
         "reasoning": false,
-        "input": [
-          "text"
-        ],
-        "cost": {
-          "input": 0.26,
-          "output": 0.78,
-          "cacheRead": 0,
-          "cacheWrite": 0
-        },
-        "contextWindow": 1000000,
-        "maxTokens": 32768,
-        "compat": {
-          "supportsDeveloperRole": false,
-          "thinkingFormat": "openrouter"
-        }
-      },
-      {
-        "id": "qwen/qwen-plus-2025-07-28:thinking",
-        "name": "Qwen: Qwen Plus 0728 (thinking)",
-        "api": "openai-completions",
-        "baseUrl": "https://openrouter.ai/api/v1",
-        "provider": "openrouter",
-        "reasoning": true,
         "input": [
           "text"
         ],
@@ -9711,7 +9688,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 131072,
-        "maxTokens": 4096,
+        "maxTokens": 117964,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -9875,7 +9852,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 262144,
+        "maxTokens": 235929,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -9921,7 +9898,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 262144,
+        "maxTokens": 235929,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -10013,7 +9990,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 262144,
+        "maxTokens": 235929,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -10240,7 +10217,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 262144,
+        "maxTokens": 235929,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -10288,7 +10265,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 262144,
+        "maxTokens": 235929,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -10306,13 +10283,13 @@
           "image"
         ],
         "cost": {
-          "input": 0.5,
-          "output": 3.6,
-          "cacheRead": 0.3,
+          "input": 0.39,
+          "output": 2.34,
+          "cacheRead": 0,
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 262144,
+        "maxTokens": 65536,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -10336,7 +10313,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 262144,
+        "maxTokens": 235929,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -10426,13 +10403,13 @@
           "image"
         ],
         "cost": {
-          "input": 0.32,
-          "output": 3.2,
-          "cacheRead": 0,
+          "input": 0.6,
+          "output": 3.6,
+          "cacheRead": 0.12,
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 81920,
+        "maxTokens": 235929,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -10456,7 +10433,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 262144,
+        "maxTokens": 235929,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -10716,11 +10693,11 @@
         "cost": {
           "input": 0.1,
           "output": 0.1,
-          "cacheRead": 0.1,
+          "cacheRead": 0,
           "cacheWrite": 0
         },
         "contextWindow": 16384,
-        "maxTokens": 16384,
+        "maxTokens": 14745,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -10924,7 +10901,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 256000,
-        "maxTokens": 256000,
+        "maxTokens": 230400,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -10988,7 +10965,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 4096,
+        "maxTokens": 235929,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -11011,7 +10988,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 32768,
-        "maxTokens": 32768,
+        "maxTokens": 26214,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -11143,7 +11120,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 524288,
-        "maxTokens": 4096,
+        "maxTokens": 471859,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -11199,7 +11176,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 131072,
-        "maxTokens": 131072,
+        "maxTokens": 117964,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -11246,7 +11223,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 2000000,
-        "maxTokens": 4096,
+        "maxTokens": 1800000,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -11279,7 +11256,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 1000000,
-        "maxTokens": 4096,
+        "maxTokens": 900000,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -11312,7 +11289,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 500000,
-        "maxTokens": 4096,
+        "maxTokens": 450000,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -11345,7 +11322,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 500000,
-        "maxTokens": 4096,
+        "maxTokens": 450000,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -11372,7 +11349,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 256000,
-        "maxTokens": 4096,
+        "maxTokens": 230400,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -11651,7 +11628,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 202752,
-        "maxTokens": 202752,
+        "maxTokens": 182476,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -11715,7 +11692,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 1048575,
-        "maxTokens": 4096,
+        "maxTokens": 943717,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -11747,7 +11724,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 256000,
-        "maxTokens": 256000,
+        "maxTokens": 230400,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -11956,13 +11933,13 @@
           "text"
         ],
         "cost": {
-          "input": 0.035,
-          "output": 0.1,
-          "cacheRead": 0.008,
+          "input": 0.03,
+          "output": 0.075,
+          "cacheRead": 0.007,
           "cacheWrite": 0
         },
         "contextWindow": 1048576,
-        "maxTokens": 1048576,
+        "maxTokens": 131072,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter",
@@ -12056,9 +12033,9 @@
           "image"
         ],
         "cost": {
-          "input": 2.8,
-          "output": 14,
-          "cacheRead": 0.29,
+          "input": 2.55,
+          "output": 12.75,
+          "cacheRead": 0.256,
           "cacheWrite": 0
         },
         "contextWindow": 1048576,
@@ -12161,7 +12138,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 500000,
-        "maxTokens": 4096,
+        "maxTokens": 450000,
         "compat": {
           "supportsDeveloperRole": false,
           "thinkingFormat": "openrouter"
@@ -12200,9 +12177,9 @@
         }
       }
     ],
-    "checkedAt": 1787658518972,
-    "lastModified": 1787657803000,
-    "etag": "W/\"8284a4b4eead0b87761c14da81a22967\""
+    "checkedAt": 1787762206985,
+    "lastModified": 1787740212000,
+    "etag": "W/\"8bda1d48d49f67ae85dd1944f45bd96c\""
   },
   "llm7": {
     "models": [
@@ -12264,10 +12241,44 @@
         "baseUrl": "https://api.llm7.io/v1"
       }
     ],
-    "checkedAt": 1787658518789
+    "checkedAt": 1787762220521
   },
   "cline": {
     "models": [
+      {
+        "id": "z-ai/glm-5.3-flash",
+        "name": "GLM 5.3 Flash (Cline)",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 0,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0
+        },
+        "contextWindow": 1048576,
+        "maxTokens": 131072,
+        "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": "low",
+          "medium": null,
+          "high": "high",
+          "xhigh": "max"
+        },
+        "modelsDev": {
+          "id": "z-ai/glm-5.3-flash",
+          "name": "GLM-5.3-Flash",
+          "family": "glm"
+        },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
       {
         "id": "meta/muse-spark-1.2-contributor",
         "name": "Muse Spark 1.2 Contributor (Cline) 💰 [CI: 58.6]",
@@ -12283,7 +12294,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 1048576,
-        "maxTokens": 0,
+        "maxTokens": 943718,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": null,
@@ -12338,40 +12349,6 @@
           "id": "deepseek/deepseek-v4-flash-vision-exp",
           "name": "DeepSeek V4 Flash Vision Exp",
           "family": "deepseek-flash"
-        },
-        "api": "cline-xml-tools",
-        "provider": "cline",
-        "baseUrl": "https://api.cline.bot/api/v1"
-      },
-      {
-        "id": "stealth/ox-alpha",
-        "name": "Ox Alpha (Cline)",
-        "reasoning": true,
-        "input": [
-          "text",
-          "image"
-        ],
-        "cost": {
-          "input": 0,
-          "output": 0,
-          "cacheRead": 0,
-          "cacheWrite": 0
-        },
-        "contextWindow": 1048576,
-        "maxTokens": 131072,
-        "_pricingKnown": true,
-        "thinkingLevelMap": {
-          "off": null,
-          "minimal": null,
-          "low": "low",
-          "medium": null,
-          "high": "high",
-          "xhigh": "max"
-        },
-        "modelsDev": {
-          "id": "stealth/ox-alpha",
-          "name": "Ox Alpha",
-          "family": "alpha"
         },
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -12559,7 +12536,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 512000,
-        "maxTokens": 512000,
+        "maxTokens": 460800,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": "none",
@@ -12647,7 +12624,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 262144,
+        "maxTokens": 235929,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": "none",
@@ -12741,13 +12718,13 @@
           "text"
         ],
         "cost": {
-          "input": 1.122,
-          "output": 3.366,
-          "cacheRead": 0.037399999999999996,
+          "input": 1.32,
+          "output": 3.9600000000000004,
+          "cacheRead": 0.044,
           "cacheWrite": 0
         },
         "contextWindow": 1048576,
-        "maxTokens": 0,
+        "maxTokens": 943717,
         "compat": {
           "supportsStore": false,
           "supportsDeveloperRole": false,
@@ -12788,7 +12765,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 500000,
-        "maxTokens": 0,
+        "maxTokens": 450000,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": null,
@@ -12988,7 +12965,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 131072,
-        "maxTokens": 0,
+        "maxTokens": 117964,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": null,
@@ -13022,7 +12999,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 1048576,
-        "maxTokens": 0,
+        "maxTokens": 943718,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": null,
@@ -13083,13 +13060,13 @@
           "text"
         ],
         "cost": {
-          "input": 0.035,
-          "output": 0.09999999999999999,
-          "cacheRead": 0.008,
+          "input": 0.03,
+          "output": 0.075,
+          "cacheRead": 0.007,
           "cacheWrite": 0
         },
         "contextWindow": 1310720,
-        "maxTokens": 1048576,
+        "maxTokens": 131072,
         "compat": {
           "supportsStore": false,
           "supportsDeveloperRole": false,
@@ -13129,7 +13106,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 1310720,
-        "maxTokens": 131072,
+        "maxTokens": 943718,
         "compat": {
           "supportsStore": false,
           "supportsDeveloperRole": false,
@@ -13636,7 +13613,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 524288,
-        "maxTokens": 0,
+        "maxTokens": 471859,
         "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -13704,7 +13681,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 1048576,
-        "maxTokens": 1048576,
+        "maxTokens": 943718,
         "compat": {
           "supportsStore": false,
           "supportsDeveloperRole": false,
@@ -13736,7 +13713,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 1048576,
-        "maxTokens": 0,
+        "maxTokens": 943718,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": null,
@@ -14150,7 +14127,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 500000,
-        "maxTokens": 0,
+        "maxTokens": 450000,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": null,
@@ -14184,7 +14161,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 500000,
-        "maxTokens": 0,
+        "maxTokens": 450000,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": null,
@@ -14275,9 +14252,9 @@
           "text"
         ],
         "cost": {
-          "input": 0.13199999999999998,
-          "output": 0.5279999999999999,
-          "cacheRead": 0.032999999999999995,
+          "input": 0.0825,
+          "output": 0.33,
+          "cacheRead": 0.020625,
           "cacheWrite": 0
         },
         "contextWindow": 262144,
@@ -14436,7 +14413,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 65536,
-        "maxTokens": 65536,
+        "maxTokens": 58982,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": "none",
@@ -14470,7 +14447,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 262144,
+        "maxTokens": 235929,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": "none",
@@ -14671,7 +14648,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 1048575,
-        "maxTokens": 0,
+        "maxTokens": 943717,
         "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -14691,7 +14668,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 256000,
-        "maxTokens": 256000,
+        "maxTokens": 230400,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": "none",
@@ -14749,7 +14726,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 262144,
+        "maxTokens": 235929,
         "compat": {
           "supportsStore": false,
           "supportsDeveloperRole": false,
@@ -14781,7 +14758,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 0,
+        "maxTokens": 235929,
         "compat": {
           "supportsStore": false,
           "supportsDeveloperRole": false,
@@ -14897,7 +14874,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 262144,
+        "maxTokens": 235929,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": "none",
@@ -14964,7 +14941,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 512288,
-        "maxTokens": 0,
+        "maxTokens": 461059,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": "none",
@@ -14997,7 +14974,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 512288,
-        "maxTokens": 0,
+        "maxTokens": 461059,
         "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -15118,7 +15095,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 524288,
-        "maxTokens": 0,
+        "maxTokens": 471859,
         "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
@@ -15139,7 +15116,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 1048576,
-        "maxTokens": 0,
+        "maxTokens": 943718,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "MiniMax-M3",
@@ -15165,7 +15142,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 256000,
+        "maxTokens": 230400,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": null,
@@ -15327,7 +15304,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 256000,
-        "maxTokens": 0,
+        "maxTokens": 230400,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": null,
@@ -15564,7 +15541,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 1000000,
-        "maxTokens": 0,
+        "maxTokens": 900000,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": "none",
@@ -15597,7 +15574,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 131072,
-        "maxTokens": 131072,
+        "maxTokens": 117964,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "ibm-granite/granite-4.1-8b",
@@ -15623,7 +15600,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 0,
+        "maxTokens": 209715,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": "none",
@@ -15787,13 +15764,13 @@
           "image"
         ],
         "cost": {
-          "input": 2.8,
-          "output": 14,
-          "cacheRead": 0.29,
+          "input": 2.5500000000000003,
+          "output": 12.75,
+          "cacheRead": 0.25599998999999996,
           "cacheWrite": 0
         },
         "contextWindow": 1048576,
-        "maxTokens": 1048576,
+        "maxTokens": 943718,
         "compat": {
           "supportsStore": false,
           "supportsDeveloperRole": false,
@@ -16003,7 +15980,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 262144,
+        "maxTokens": 235929,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "Qwen/Qwen3.6-35B-A3B",
@@ -16191,9 +16168,9 @@
           "text"
         ],
         "cost": {
-          "input": 0.5790719999999999,
-          "output": 1.1581439999999998,
-          "cacheRead": 0.048256,
+          "input": 0.87,
+          "output": 1.74,
+          "cacheRead": 0.0725,
           "cacheWrite": 0
         },
         "contextWindow": 1048576,
@@ -16277,7 +16254,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 0,
+        "maxTokens": 235929,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": "none",
@@ -16482,7 +16459,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 0,
+        "maxTokens": 235929,
         "compat": {
           "supportsStore": false,
           "supportsDeveloperRole": false,
@@ -16568,7 +16545,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 204800,
-        "maxTokens": 202752,
+        "maxTokens": 182476,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": "none",
@@ -16664,13 +16641,13 @@
           "image"
         ],
         "cost": {
-          "input": 0.09999999999999999,
+          "input": 0.09,
           "output": 0.33999999999999997,
-          "cacheRead": 0.09999999999999999,
+          "cacheRead": 0.049999999999999996,
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 262144,
+        "maxTokens": 131072,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "google/gemma-4-31b-it",
@@ -16789,7 +16766,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 262144,
+        "maxTokens": 235929,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": null,
@@ -16823,7 +16800,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 2000000,
-        "maxTokens": 0,
+        "maxTokens": 1800000,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": null,
@@ -16857,7 +16834,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 2000000,
-        "maxTokens": 0,
+        "maxTokens": 1800000,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": "none",
@@ -16964,11 +16941,11 @@
         "cost": {
           "input": 0.09999999999999999,
           "output": 0.09999999999999999,
-          "cacheRead": 0.09999999999999999,
+          "cacheRead": 0,
           "cacheWrite": 0
         },
         "contextWindow": 16384,
-        "maxTokens": 16384,
+        "maxTokens": 14745,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "rekaai/reka-edge",
@@ -16993,7 +16970,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 204800,
-        "maxTokens": 0,
+        "maxTokens": 131072,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "MiniMax-M2.7",
@@ -17018,7 +16995,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 196608,
-        "maxTokens": 0,
+        "maxTokens": 176947,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "MiniMax-M2.7",
@@ -17154,7 +17131,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 0,
+        "maxTokens": 209715,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": "none",
@@ -17253,7 +17230,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 262144,
+        "maxTokens": 235929,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": "none",
@@ -17321,7 +17298,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 262144,
+        "maxTokens": 235929,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": null,
@@ -17566,7 +17543,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 65536,
-        "maxTokens": 65536,
+        "maxTokens": 58982,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": "none",
@@ -17600,7 +17577,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 262144,
+        "maxTokens": 235929,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "Qwen/Qwen3.5-35B-A3B",
@@ -17660,7 +17637,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 262144,
+        "maxTokens": 235929,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": "none",
@@ -17966,13 +17943,13 @@
           "image"
         ],
         "cost": {
-          "input": 0.5,
-          "output": 3.5999999999999996,
-          "cacheRead": 0.3,
+          "input": 0.39,
+          "output": 2.34,
+          "cacheRead": 0,
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 262144,
+        "maxTokens": 65536,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "Qwen/Qwen3.5-397B-A17B",
@@ -18143,7 +18120,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 262144,
+        "maxTokens": 235929,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "qwen/qwen3-coder-next",
@@ -18226,7 +18203,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 0,
+        "maxTokens": 235929,
         "compat": {
           "supportsStore": false,
           "supportsDeveloperRole": false,
@@ -18265,7 +18242,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 131072,
-        "maxTokens": 131072,
+        "maxTokens": 117964,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": "none",
@@ -18646,7 +18623,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 262144,
+        "maxTokens": 235929,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": "none",
@@ -18815,7 +18792,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 0,
+        "maxTokens": 209715,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "mistralai/devstral-2512",
@@ -18991,7 +18968,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 0,
+        "maxTokens": 209715,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "mistralai/ministral-14b-2512",
@@ -19017,7 +18994,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 0,
+        "maxTokens": 209715,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "mistralai/ministral-8b-2512",
@@ -19043,7 +19020,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 131072,
-        "maxTokens": 0,
+        "maxTokens": 104857,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "mistralai/ministral-3b-2512",
@@ -19069,7 +19046,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 0,
+        "maxTokens": 209715,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "mistralai/mistral-large-2512",
@@ -19094,7 +19071,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 163840,
-        "maxTokens": 163840,
+        "maxTokens": 147456,
         "compat": {
           "supportsStore": false,
           "supportsDeveloperRole": false,
@@ -19189,7 +19166,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 65536,
-        "maxTokens": 65536,
+        "maxTokens": 58982,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": null,
@@ -19478,7 +19455,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 32000,
-        "maxTokens": 0,
+        "maxTokens": 25600,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "mistralai/voxtral-small-24b-2507",
@@ -19587,7 +19564,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 131000,
-        "maxTokens": 131000,
+        "maxTokens": 117900,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "ibm-granite/granite-4.0-h-micro",
@@ -20064,7 +20041,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 131072,
-        "maxTokens": 131072,
+        "maxTokens": 117964,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "thedrummer/cydonia-24b-v4.1",
@@ -20341,7 +20318,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 262144,
+        "maxTokens": 235929,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "qwen/qwen3-next-80b-a3b-instruct",
@@ -20371,39 +20348,6 @@
         "modelsDev": {
           "id": "qwen/qwen-plus-2025-07-28",
           "name": "Qwen: Qwen Plus 0728",
-          "family": "qwen"
-        },
-        "api": "cline-xml-tools",
-        "provider": "cline",
-        "baseUrl": "https://api.cline.bot/api/v1"
-      },
-      {
-        "id": "qwen/qwen-plus-2025-07-28:thinking",
-        "name": "Qwen Plus 0728 (thinking) (Cline) 💰",
-        "reasoning": true,
-        "input": [
-          "text"
-        ],
-        "cost": {
-          "input": 0.26,
-          "output": 0.78,
-          "cacheRead": 0,
-          "cacheWrite": 0
-        },
-        "contextWindow": 1000000,
-        "maxTokens": 32768,
-        "_pricingKnown": true,
-        "thinkingLevelMap": {
-          "off": "none",
-          "minimal": null,
-          "low": null,
-          "medium": null,
-          "high": "high",
-          "xhigh": null
-        },
-        "modelsDev": {
-          "id": "qwen/qwen-plus-2025-07-28:thinking",
-          "name": "Qwen: Qwen Plus 0728 (thinking)",
           "family": "qwen"
         },
         "api": "cline-xml-tools",
@@ -20488,7 +20432,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 131072,
-        "maxTokens": 0,
+        "maxTokens": 117964,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": "none",
@@ -20521,7 +20465,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 131072,
-        "maxTokens": 0,
+        "maxTokens": 117964,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": "none",
@@ -20554,7 +20498,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 163840,
-        "maxTokens": 161000,
+        "maxTokens": 144900,
         "compat": {
           "supportsStore": false,
           "supportsDeveloperRole": false,
@@ -20595,7 +20539,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 131072,
-        "maxTokens": 0,
+        "maxTokens": 104857,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "mistralai/mistral-medium-3.1",
@@ -20819,7 +20763,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 131072,
-        "maxTokens": 131072,
+        "maxTokens": 117964,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "openai/gpt-oss-120b",
@@ -20844,7 +20788,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 131072,
-        "maxTokens": 131072,
+        "maxTokens": 117964,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "openai/gpt-oss-20b",
@@ -20924,7 +20868,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 256000,
-        "maxTokens": 0,
+        "maxTokens": 204800,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "mistralai/codestral-2508",
@@ -20949,7 +20893,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 262144,
+        "maxTokens": 235929,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "qwen/qwen3-coder-30b-a3b-instruct",
@@ -21065,7 +21009,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 131072,
-        "maxTokens": 0,
+        "maxTokens": 117964,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": null,
@@ -21284,7 +21228,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 131072,
-        "maxTokens": 131072,
+        "maxTokens": 117964,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": "none",
@@ -21754,31 +21698,6 @@
         "baseUrl": "https://api.cline.bot/api/v1"
       },
       {
-        "id": "google/gemma-3n-e4b-it",
-        "name": "Gemma 3n 4B (Cline) 💰 [CI: 3.2]",
-        "reasoning": false,
-        "input": [
-          "text"
-        ],
-        "cost": {
-          "input": 0.06,
-          "output": 0.12,
-          "cacheRead": 0,
-          "cacheWrite": 0
-        },
-        "contextWindow": 32768,
-        "maxTokens": 0,
-        "_pricingKnown": true,
-        "modelsDev": {
-          "id": "google/gemma-3n-e4b-it",
-          "name": "Google: Gemma 3n 4B",
-          "family": "gemma"
-        },
-        "api": "cline-xml-tools",
-        "provider": "cline",
-        "baseUrl": "https://api.cline.bot/api/v1"
-      },
-      {
         "id": "mistralai/mistral-medium-3",
         "name": "Mistral Medium 3 (Cline) 💰",
         "reasoning": false,
@@ -21793,7 +21712,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 131072,
-        "maxTokens": 0,
+        "maxTokens": 104857,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "mistralai/mistral-medium-3",
@@ -21876,7 +21795,7 @@
           "cacheRead": 0,
           "cacheWrite": 0
         },
-        "contextWindow": 1048576,
+        "contextWindow": 163840,
         "maxTokens": 16384,
         "_pricingKnown": true,
         "modelsDev": {
@@ -22386,13 +22305,13 @@
           "image"
         ],
         "cost": {
-          "input": 0.09999999999999999,
-          "output": 0.3,
-          "cacheRead": 0,
+          "input": 0.11,
+          "output": 0.33999999999999997,
+          "cacheRead": 0.055,
           "cacheWrite": 0
         },
         "contextWindow": 1310720,
-        "maxTokens": 16384,
+        "maxTokens": 8192,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "meta-llama/llama-4-scout",
@@ -22417,7 +22336,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 163840,
-        "maxTokens": 163840,
+        "maxTokens": 147456,
         "compat": {
           "supportsStore": false,
           "supportsDeveloperRole": false,
@@ -22505,7 +22424,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 128000,
-        "maxTokens": 128000,
+        "maxTokens": 102400,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "mistralai/mistral-small-3.1-24b-instruct",
@@ -22603,11 +22522,11 @@
         "cost": {
           "input": 0.09999999999999999,
           "output": 0.19999999999999998,
-          "cacheRead": 0.09999999999999999,
+          "cacheRead": 0,
           "cacheWrite": 0
         },
         "contextWindow": 65536,
-        "maxTokens": 65536,
+        "maxTokens": 58982,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": null,
@@ -22641,7 +22560,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 131072,
+        "maxTokens": 117964,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "google/gemma-3-27b-it",
@@ -22666,7 +22585,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 32768,
-        "maxTokens": 32768,
+        "maxTokens": 29491,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "thedrummer/skyfall-36b-v2",
@@ -22691,7 +22610,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 128000,
-        "maxTokens": 0,
+        "maxTokens": 115200,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": "none",
@@ -22750,7 +22669,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 128000,
-        "maxTokens": 0,
+        "maxTokens": 115200,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": "none",
@@ -22783,7 +22702,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 32768,
-        "maxTokens": 0,
+        "maxTokens": 26214,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "mistralai/mistral-saba",
@@ -22861,7 +22780,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 32768,
-        "maxTokens": 32768,
+        "maxTokens": 29491,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "aion-labs/aion-rp-llama-3.1-8b",
@@ -22881,13 +22800,13 @@
           "image"
         ],
         "cost": {
-          "input": 0.7999999999999999,
-          "output": 1,
-          "cacheRead": 0.39999999999999997,
+          "input": 0.25,
+          "output": 0.75,
+          "cacheRead": 0,
           "cacheWrite": 0
         },
-        "contextWindow": 128000,
-        "maxTokens": 128000,
+        "contextWindow": 32000,
+        "maxTokens": 28800,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "qwen/qwen2.5-vl-72b-instruct",
@@ -23016,7 +22935,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 127072,
-        "maxTokens": 0,
+        "maxTokens": 114364,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "perplexity/sonar",
@@ -23041,7 +22960,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 8192,
-        "maxTokens": 8192,
+        "maxTokens": 7372,
         "compat": {
           "supportsStore": false,
           "supportsDeveloperRole": false,
@@ -23122,7 +23041,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 1000192,
-        "maxTokens": 1000192,
+        "maxTokens": 900172,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "minimax/minimax-01",
@@ -23147,7 +23066,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 16384,
-        "maxTokens": 16384,
+        "maxTokens": 14745,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "microsoft/phi-4",
@@ -23303,13 +23222,13 @@
           "text"
         ],
         "cost": {
-          "input": 0.09999999999999999,
-          "output": 0.32,
-          "cacheRead": 0,
+          "input": 0.71,
+          "output": 0.71,
+          "cacheRead": 0.71,
           "cacheWrite": 0
         },
         "contextWindow": 131072,
-        "maxTokens": 128000,
+        "maxTokens": 115200,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "meta-llama/Llama-3.3-70B-Instruct",
@@ -23437,7 +23356,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 131072,
-        "maxTokens": 0,
+        "maxTokens": 104857,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "mistralai/mistral-large-2407",
@@ -23462,7 +23381,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 32768,
-        "maxTokens": 32768,
+        "maxTokens": 29491,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "qwen/qwen-2.5-coder-32b-instruct",
@@ -23487,7 +23406,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 1024000,
-        "maxTokens": 32768,
+        "maxTokens": 26214,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "thedrummer/unslopnemo-12b",
@@ -23535,7 +23454,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 128000,
-        "maxTokens": 0,
+        "maxTokens": 102400,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "mistralai/ministral-8b",
@@ -23560,7 +23479,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 32768,
-        "maxTokens": 32768,
+        "maxTokens": 29491,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "qwen/qwen-2.5-7b-instruct",
@@ -23585,7 +23504,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 65536,
-        "maxTokens": 65536,
+        "maxTokens": 58982,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "thedrummer/rocinante-12b",
@@ -23609,7 +23528,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 60000,
-        "maxTokens": 60000,
+        "maxTokens": 54000,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": null,
@@ -23642,7 +23561,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 131072,
-        "maxTokens": 131072,
+        "maxTokens": 117964,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": null,
@@ -23825,7 +23744,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 8192,
-        "maxTokens": 16384,
+        "maxTokens": 7372,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "sao10k/l3-lunaris-8b",
@@ -23901,7 +23820,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 131072,
-        "maxTokens": 131072,
+        "maxTokens": 117964,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "meta-llama/Llama-3.1-8B-Instruct",
@@ -24122,7 +24041,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 65536,
-        "maxTokens": 0,
+        "maxTokens": 52428,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "mistralai/mixtral-8x22b-instruct",
@@ -24244,7 +24163,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 128000,
-        "maxTokens": 0,
+        "maxTokens": 102400,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "mistralai/mistral-large",
@@ -24269,7 +24188,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 4095,
-        "maxTokens": 4096,
+        "maxTokens": 3685,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "openai/gpt-3.5-turbo-0613",
@@ -24344,7 +24263,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 4095,
-        "maxTokens": 4096,
+        "maxTokens": 3685,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "openai/gpt-3.5-turbo-instruct",
@@ -24443,7 +24362,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 8192,
-        "maxTokens": 4096,
+        "maxTokens": 3686,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "gryphe/mythomax-l2-13b",
@@ -24524,7 +24443,7 @@
         "baseUrl": "https://api.cline.bot/api/v1"
       }
     ],
-    "checkedAt": 1787658520141
+    "checkedAt": 1787762221333
   },
   "fastrouter": {
     "models": [
@@ -24797,30 +24716,6 @@
         "baseUrl": "https://api.fastrouter.ai/api/v1"
       },
       {
-        "id": "openai/gpt-5.6-luna",
-        "name": "GPT-5.6 Luna [CI: 68.6]",
-        "reasoning": true,
-        "thinkingLevelMap": {
-          "off": "none"
-        },
-        "input": [
-          "text",
-          "image"
-        ],
-        "cost": {
-          "input": 2e-7,
-          "output": 0.0000012,
-          "cacheRead": 2e-8,
-          "cacheWrite": 2.5e-7
-        },
-        "contextWindow": 1050000,
-        "maxTokens": 128000,
-        "_pricingKnown": true,
-        "api": "openai-completions",
-        "provider": "fastrouter",
-        "baseUrl": "https://api.fastrouter.ai/api/v1"
-      },
-      {
         "id": "openai/gpt-oss-20b:free",
         "name": "gpt-oss-20b (Free) [CI: 20.7]",
         "reasoning": true,
@@ -24844,6 +24739,30 @@
           "name": "GPT OSS 20B",
           "family": "gpt-oss"
         },
+        "api": "openai-completions",
+        "provider": "fastrouter",
+        "baseUrl": "https://api.fastrouter.ai/api/v1"
+      },
+      {
+        "id": "openai/gpt-5.6-luna",
+        "name": "GPT-5.6 Luna [CI: 68.6]",
+        "reasoning": true,
+        "thinkingLevelMap": {
+          "off": "none"
+        },
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 2e-7,
+          "output": 0.0000012,
+          "cacheRead": 2e-8,
+          "cacheWrite": 2.5e-7
+        },
+        "contextWindow": 1050000,
+        "maxTokens": 128000,
+        "_pricingKnown": true,
         "api": "openai-completions",
         "provider": "fastrouter",
         "baseUrl": "https://api.fastrouter.ai/api/v1"
@@ -25055,7 +24974,7 @@
         "cost": {
           "input": 2.5e-7,
           "output": 0.0000015,
-          "cacheRead": null,
+          "cacheRead": 2.5e-8,
           "cacheWrite": null
         },
         "contextWindow": 65536,
@@ -25211,7 +25130,7 @@
         "cost": {
           "input": 0.00000174,
           "output": 0.00000348,
-          "cacheRead": 1.45e-7,
+          "cacheRead": 2e-7,
           "cacheWrite": null
         },
         "contextWindow": 1048576,
@@ -26546,7 +26465,7 @@
         "cost": {
           "input": 0.00000125,
           "output": 0.00001,
-          "cacheRead": 1.3e-7,
+          "cacheRead": 1.25e-7,
           "cacheWrite": null
         },
         "contextWindow": 400000,
@@ -26633,7 +26552,7 @@
         "cost": {
           "input": 0.00000125,
           "output": 0.00001,
-          "cacheRead": 1.3e-7,
+          "cacheRead": 1.25e-7,
           "cacheWrite": null
         },
         "contextWindow": 400000,
@@ -27842,6 +27761,6 @@
         "baseUrl": "https://api.fastrouter.ai/api/v1"
       }
     ],
-    "checkedAt": 1787658520142
+    "checkedAt": 1787762221367
   }
 }
