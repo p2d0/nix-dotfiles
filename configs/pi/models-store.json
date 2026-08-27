@@ -1742,7 +1742,7 @@
         }
       }
     ],
-    "checkedAt": 1787762206828,
+    "checkedAt": 1787819945753,
     "lastModified": 1787740210000,
     "etag": "W/\"ec213660a0260188f450add4e66ef54e\""
   },
@@ -1994,7 +1994,7 @@
         }
       }
     ],
-    "checkedAt": 1787762206940,
+    "checkedAt": 1787819945653,
     "lastModified": 1786351890000,
     "etag": "W/\"7572a78e60b78526600ed2a9b74b579d\""
   },
@@ -2663,7 +2663,7 @@
         "maxTokens": 131072
       }
     ],
-    "checkedAt": 1787762206818,
+    "checkedAt": 1787819945663,
     "lastModified": 1787740211000,
     "etag": "W/\"30a10572fb95efd8d75992ce8c1019e2\""
   },
@@ -12177,7 +12177,7 @@
         }
       }
     ],
-    "checkedAt": 1787762206985,
+    "checkedAt": 1787819945748,
     "lastModified": 1787740212000,
     "etag": "W/\"8bda1d48d49f67ae85dd1944f45bd96c\""
   },
@@ -12241,10 +12241,44 @@
         "baseUrl": "https://api.llm7.io/v1"
       }
     ],
-    "checkedAt": 1787762220521
+    "checkedAt": 1787821688904
   },
   "cline": {
     "models": [
+      {
+        "id": "qwen/qwen3.8-flash",
+        "name": "Qwen3.8 Flash (Cline) 💰",
+        "reasoning": true,
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 0.15,
+          "output": 0.47,
+          "cacheRead": 0.016,
+          "cacheWrite": 0
+        },
+        "contextWindow": 1000000,
+        "maxTokens": 131072,
+        "_pricingKnown": true,
+        "thinkingLevelMap": {
+          "off": "none",
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": null
+        },
+        "modelsDev": {
+          "id": "qwen/qwen3.8-flash",
+          "name": "Qwen3.8 Flash",
+          "family": "qwen"
+        },
+        "api": "cline-xml-tools",
+        "provider": "cline",
+        "baseUrl": "https://api.cline.bot/api/v1"
+      },
       {
         "id": "z-ai/glm-5.3-flash",
         "name": "GLM 5.3 Flash (Cline)",
@@ -12259,7 +12293,7 @@
           "cacheRead": 0,
           "cacheWrite": 0
         },
-        "contextWindow": 1048576,
+        "contextWindow": 1310720,
         "maxTokens": 131072,
         "_pricingKnown": true,
         "thinkingLevelMap": {
@@ -12322,9 +12356,9 @@
           "image"
         ],
         "cost": {
-          "input": 0.22,
-          "output": 0.66,
-          "cacheRead": 0.007,
+          "input": 0.44,
+          "output": 1.32,
+          "cacheRead": 0.014,
           "cacheWrite": 0
         },
         "contextWindow": 1048576,
@@ -12718,9 +12752,9 @@
           "text"
         ],
         "cost": {
-          "input": 1.32,
-          "output": 3.9600000000000004,
-          "cacheRead": 0.044,
+          "input": 1.122,
+          "output": 3.366,
+          "cacheRead": 0.037399999999999996,
           "cacheWrite": 0
         },
         "contextWindow": 1048576,
@@ -13061,7 +13095,7 @@
         ],
         "cost": {
           "input": 0.03,
-          "output": 0.075,
+          "output": 0.09999999999999999,
           "cacheRead": 0.007,
           "cacheWrite": 0
         },
@@ -14252,9 +14286,9 @@
           "text"
         ],
         "cost": {
-          "input": 0.0825,
-          "output": 0.33,
-          "cacheRead": 0.020625,
+          "input": 0.13199999999999998,
+          "output": 0.5279999999999999,
+          "cacheRead": 0.032999999999999995,
           "cacheWrite": 0
         },
         "contextWindow": 262144,
@@ -14630,26 +14664,6 @@
           "name": "GLM-5.2",
           "family": "glm"
         },
-        "api": "cline-xml-tools",
-        "provider": "cline",
-        "baseUrl": "https://api.cline.bot/api/v1"
-      },
-      {
-        "id": "z-ai/glm-5.2:batch",
-        "name": "GLM 5.2 (batch) (Cline) 💰",
-        "reasoning": true,
-        "input": [
-          "text"
-        ],
-        "cost": {
-          "input": 1.4,
-          "output": 4.4,
-          "cacheRead": 0.26,
-          "cacheWrite": 0
-        },
-        "contextWindow": 1048575,
-        "maxTokens": 943717,
-        "_pricingKnown": true,
         "api": "cline-xml-tools",
         "provider": "cline",
         "baseUrl": "https://api.cline.bot/api/v1"
@@ -15974,8 +15988,8 @@
           "image"
         ],
         "cost": {
-          "input": 0.14,
-          "output": 1,
+          "input": 0.09999999999999999,
+          "output": 0.8999999999999999,
           "cacheRead": 0.049999999999999996,
           "cacheWrite": 0
         },
@@ -18619,11 +18633,11 @@
         "cost": {
           "input": 0.049999999999999996,
           "output": 0.19999999999999998,
-          "cacheRead": 0.03,
+          "cacheRead": 0.024999999999999998,
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 235929,
+        "maxTokens": 228000,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": "none",
@@ -19907,13 +19921,13 @@
           "text"
         ],
         "cost": {
-          "input": 0.5,
-          "output": 2,
-          "cacheRead": 0.09999999999999999,
+          "input": 0.43,
+          "output": 1.75,
+          "cacheRead": 0.08,
           "cacheWrite": 0
         },
         "contextWindow": 204800,
-        "maxTokens": 131072,
+        "maxTokens": 16384,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": "none",
@@ -21141,13 +21155,13 @@
           "text"
         ],
         "cost": {
-          "input": 0.09,
-          "output": 0.55,
-          "cacheRead": 0,
+          "input": 0.0875,
+          "output": 0.35,
+          "cacheRead": 0.0175,
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 16384,
+        "maxTokens": 235929,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "qwen/qwen3-235b-a22b-2507",
@@ -23795,7 +23809,7 @@
           "cacheWrite": 0
         },
         "contextWindow": 131072,
-        "maxTokens": 128000,
+        "maxTokens": 131072,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "meta-llama/Llama-3.1-70B-Instruct",
@@ -24443,7 +24457,7 @@
         "baseUrl": "https://api.cline.bot/api/v1"
       }
     ],
-    "checkedAt": 1787762221333
+    "checkedAt": 1787821690107
   },
   "fastrouter": {
     "models": [
@@ -24493,8 +24507,8 @@
         "baseUrl": "https://api.fastrouter.ai/api/v1"
       },
       {
-        "id": "openai/gpt-oss-120b:free",
-        "name": "gpt-oss-120b (Free) [CI: 30.4]",
+        "id": "openai/gpt-oss-20b:free",
+        "name": "gpt-oss-20b (Free) [CI: 20.7]",
         "reasoning": true,
         "thinkingLevelMap": {
           "off": "none"
@@ -24512,8 +24526,8 @@
         "maxTokens": 32768,
         "_pricingKnown": true,
         "modelsDev": {
-          "id": "openai/gpt-oss-120b",
-          "name": "GPT OSS 120B",
+          "id": "openai/gpt-oss-20b",
+          "name": "GPT OSS 20B",
           "family": "gpt-oss"
         },
         "api": "openai-completions",
@@ -24716,8 +24730,8 @@
         "baseUrl": "https://api.fastrouter.ai/api/v1"
       },
       {
-        "id": "openai/gpt-oss-20b:free",
-        "name": "gpt-oss-20b (Free) [CI: 20.7]",
+        "id": "openai/gpt-oss-120b:free",
+        "name": "gpt-oss-120b (Free) [CI: 30.4]",
         "reasoning": true,
         "thinkingLevelMap": {
           "off": "none"
@@ -24735,8 +24749,8 @@
         "maxTokens": 32768,
         "_pricingKnown": true,
         "modelsDev": {
-          "id": "openai/gpt-oss-20b",
-          "name": "GPT OSS 20B",
+          "id": "openai/gpt-oss-120b",
+          "name": "GPT OSS 120B",
           "family": "gpt-oss"
         },
         "api": "openai-completions",
@@ -24974,7 +24988,7 @@
         "cost": {
           "input": 2.5e-7,
           "output": 0.0000015,
-          "cacheRead": 2.5e-8,
+          "cacheRead": null,
           "cacheWrite": null
         },
         "contextWindow": 65536,
@@ -27761,6 +27775,6 @@
         "baseUrl": "https://api.fastrouter.ai/api/v1"
       }
     ],
-    "checkedAt": 1787762221367
+    "checkedAt": 1787821690114
   }
 }
