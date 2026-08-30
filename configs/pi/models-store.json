@@ -1708,7 +1708,7 @@
         "maxTokens": 65536
       }
     ],
-    "checkedAt": 1788014616756,
+    "checkedAt": 1788096733345,
     "lastModified": 1787917533000,
     "etag": "W/\"5bfd649f95f953f04630db24a450e15b\""
   },
@@ -1960,7 +1960,7 @@
         }
       }
     ],
-    "checkedAt": 1788014616733,
+    "checkedAt": 1788096733376,
     "lastModified": 1786351890000,
     "etag": "W/\"7572a78e60b78526600ed2a9b74b579d\""
   },
@@ -2649,7 +2649,7 @@
         "maxTokens": 131072
       }
     ],
-    "checkedAt": 1788014616745,
+    "checkedAt": 1788096733310,
     "lastModified": 1787917534000,
     "etag": "W/\"72c3d5266c220fd5d81b089fb89b8d50\""
   },
@@ -11373,7 +11373,7 @@
         }
       }
     ],
-    "checkedAt": 1788014616758,
+    "checkedAt": 1788096733324,
     "lastModified": 1787917535000,
     "etag": "W/\"f1ba24ebd90251e0fe468eb57782d684\""
   },
@@ -11437,7 +11437,7 @@
         "baseUrl": "https://api.llm7.io/v1"
       }
     ],
-    "checkedAt": 1788014616373
+    "checkedAt": 1788096733035
   },
   "cline": {
     "models": [
@@ -12446,12 +12446,12 @@
         ],
         "cost": {
           "input": 0.03,
-          "output": 0.09999999999999999,
-          "cacheRead": 0.007,
+          "output": 0.16,
+          "cacheRead": 0.01,
           "cacheWrite": 0
         },
         "contextWindow": 1310720,
-        "maxTokens": 131072,
+        "maxTokens": 393216,
         "compat": {
           "supportsStore": false,
           "supportsDeveloperRole": false,
@@ -13014,13 +13014,13 @@
           "image"
         ],
         "cost": {
-          "input": 0.95,
+          "input": 1,
           "output": 4.05,
-          "cacheRead": 0.16,
+          "cacheRead": 0.16999999999999998,
           "cacheWrite": 0
         },
         "contextWindow": 1048576,
-        "maxTokens": 262144,
+        "maxTokens": 471859,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "thinkingmachines/Inkling",
@@ -15434,9 +15434,9 @@
           "text"
         ],
         "cost": {
-          "input": 0.599778,
-          "output": 1.199556,
-          "cacheRead": 0.049981500000000005,
+          "input": 0.417252,
+          "output": 0.834504,
+          "cacheRead": 0.034771,
           "cacheWrite": 0
         },
         "contextWindow": 1048576,
@@ -15805,13 +15805,13 @@
           "text"
         ],
         "cost": {
-          "input": 1.26,
-          "output": 3.9600000000000004,
-          "cacheRead": 0.234,
+          "input": 0.966,
+          "output": 3.036,
+          "cacheRead": 0.1794,
           "cacheWrite": 0
         },
         "contextWindow": 204800,
-        "maxTokens": 182476,
+        "maxTokens": 128000,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": "none",
@@ -16047,13 +16047,13 @@
           "text"
         ],
         "cost": {
-          "input": 0.22,
-          "output": 0.85,
+          "input": 0.25,
+          "output": 0.7999999999999999,
           "cacheRead": 0.06,
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 235929,
+        "maxTokens": 80000,
         "_pricingKnown": true,
         "thinkingLevelMap": {
           "off": null,
@@ -17989,9 +17989,9 @@
           "text"
         ],
         "cost": {
-          "input": 0.44,
-          "output": 2.2,
-          "cacheRead": 0.044,
+          "input": 0.39999999999999997,
+          "output": 2,
+          "cacheRead": 0.04,
           "cacheWrite": 0
         },
         "contextWindow": 262144,
@@ -19461,13 +19461,13 @@
           "text"
         ],
         "cost": {
-          "input": 0.09999999999999999,
+          "input": 0.09,
           "output": 1.1,
-          "cacheRead": 0.07,
+          "cacheRead": 0,
           "cacheWrite": 0
         },
         "contextWindow": 262144,
-        "maxTokens": 235929,
+        "maxTokens": 16384,
         "_pricingKnown": true,
         "modelsDev": {
           "id": "qwen/qwen3-next-80b-a3b-instruct",
@@ -23258,7 +23258,7 @@
         "baseUrl": "https://api.cline.bot/api/v1"
       }
     ],
-    "checkedAt": 1788014617840
+    "checkedAt": 1788096734192
   },
   "fastrouter": {
     "models": [
@@ -23527,34 +23527,6 @@
         "baseUrl": "https://api.fastrouter.ai/api/v1"
       },
       {
-        "id": "openai/gpt-oss-120b:free",
-        "name": "gpt-oss-120b (Free) [CI: 30.4]",
-        "reasoning": true,
-        "thinkingLevelMap": {
-          "off": "none"
-        },
-        "input": [
-          "text"
-        ],
-        "cost": {
-          "input": 0,
-          "output": 0,
-          "cacheRead": 0,
-          "cacheWrite": 0
-        },
-        "contextWindow": 131072,
-        "maxTokens": 32768,
-        "_pricingKnown": true,
-        "modelsDev": {
-          "id": "openai/gpt-oss-120b",
-          "name": "GPT OSS 120B",
-          "family": "gpt-oss"
-        },
-        "api": "openai-completions",
-        "provider": "fastrouter",
-        "baseUrl": "https://api.fastrouter.ai/api/v1"
-      },
-      {
         "id": "openai/gpt-oss-20b:free",
         "name": "gpt-oss-20b (Free) [CI: 20.7]",
         "reasoning": true,
@@ -23576,6 +23548,34 @@
         "modelsDev": {
           "id": "openai/gpt-oss-20b",
           "name": "GPT OSS 20B",
+          "family": "gpt-oss"
+        },
+        "api": "openai-completions",
+        "provider": "fastrouter",
+        "baseUrl": "https://api.fastrouter.ai/api/v1"
+      },
+      {
+        "id": "openai/gpt-oss-120b:free",
+        "name": "gpt-oss-120b (Free) [CI: 30.4]",
+        "reasoning": true,
+        "thinkingLevelMap": {
+          "off": "none"
+        },
+        "input": [
+          "text"
+        ],
+        "cost": {
+          "input": 0,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0
+        },
+        "contextWindow": 131072,
+        "maxTokens": 32768,
+        "_pricingKnown": true,
+        "modelsDev": {
+          "id": "openai/gpt-oss-120b",
+          "name": "GPT OSS 120B",
           "family": "gpt-oss"
         },
         "api": "openai-completions",
@@ -23789,7 +23789,7 @@
         "cost": {
           "input": 2.5e-7,
           "output": 0.0000015,
-          "cacheRead": 2.5e-8,
+          "cacheRead": null,
           "cacheWrite": null
         },
         "contextWindow": 65536,
@@ -23945,7 +23945,7 @@
         "cost": {
           "input": 0.00000174,
           "output": 0.00000348,
-          "cacheRead": 1.45e-7,
+          "cacheRead": 2e-7,
           "cacheWrite": null
         },
         "contextWindow": 1048576,
@@ -26220,6 +26220,6 @@
         "baseUrl": "https://api.fastrouter.ai/api/v1"
       }
     ],
-    "checkedAt": 1788014617847
+    "checkedAt": 1788096734210
   }
 }
