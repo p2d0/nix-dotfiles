@@ -6,7 +6,7 @@
       "tools": [
         {
           "name": "show_api_key",
-          "description": "Return the bearer token from the Authorization header of the MCP settings, which is used to debug.",
+          "description": "Return the bearer token from MCP settings. For debugging.",
           "inputSchema": {
             "type": "object",
             "properties": {},
@@ -15,7 +15,7 @@
         },
         {
           "name": "primer",
-          "description": "Get up-to-date contextual information of the current session to provide localized, time-aware responses. Use this when you need to know the current time, user's location, or network environment to give more relevant and personalized information.",
+          "description": "Current time, user location and network environment for the session. Use before answering anything time- or location-dependent.",
           "inputSchema": {
             "type": "object",
             "properties": {},
@@ -24,14 +24,13 @@
         },
         {
           "name": "guess_datetime_url",
-          "description": "Guess the last updated or published datetime of a web page. This tool examines HTTP headers, HTML metadata, Schema.org data, visible dates, JavaScript timestamps, HTML comments, Git information, RSS/Atom feeds, sitemaps, and international date formats to provide the most accurate update time with confidence scores. Returns the best guess timestamp and confidence level.",
+          "description": "Guess when a page was published or last updated, with a confidence score. Checks HTTP headers, metadata, Schema.org, visible dates, feeds and sitemaps.",
           "inputSchema": {
             "type": "object",
             "properties": {
               "url": {
                 "type": "string",
-                "format": "uri",
-                "description": "The complete HTTP/HTTPS URL of the webpage to guess datetime information"
+                "format": "uri"
               }
             },
             "required": [
@@ -43,24 +42,23 @@
         },
         {
           "name": "capture_screenshot_url",
-          "description": "Capture high-quality screenshots of web pages in base64 encoded JPEG format. Use this tool when you need to visually inspect a website, take a snapshot for analysis, or show users what a webpage looks like.",
+          "description": "Screenshot a page as base64 JPEG. Use when the page must be seen rather than read.",
           "inputSchema": {
             "type": "object",
             "properties": {
               "url": {
                 "type": "string",
-                "format": "uri",
-                "description": "The complete HTTP/HTTPS URL of the webpage to capture (e.g., 'https://example.com')"
+                "format": "uri"
               },
               "firstScreenOnly": {
                 "type": "boolean",
                 "default": false,
-                "description": "Set to true for a single screen capture (faster), false for full page capture including content below the fold"
+                "description": "Capture only the first screen instead of the full page. Faster."
               },
               "return_url": {
                 "type": "boolean",
                 "default": false,
-                "description": "Set to true to return screenshot URLs instead of downloading images as base64"
+                "description": "Return URLs instead of base64 images."
               }
             },
             "required": [
@@ -72,7 +70,7 @@
         },
         {
           "name": "read_url",
-          "description": "Extract and convert web page content to clean, readable markdown format. Perfect for reading articles, documentation, blog posts, or any web content. Use this when you need to analyze text content from websites, bypass paywalls, or get structured data. Pass `question` to read the page with a specific question in mind: the body is split into passages and only the best-matching ones are returned, which is far cheaper than pulling a whole page into context.",
+          "description": "Fetch a URL (page or PDF) as clean markdown. Pass `question` to get only the passages answering it instead of the whole page - far cheaper than reading the full body into context.",
           "inputSchema": {
             "type": "object",
             "properties": {
@@ -92,31 +90,31 @@
                     "maxItems": 5
                   }
                 ],
-                "description": "The complete URL of the webpage or PDF file to read and convert (e.g., 'https://example.com/article'). Can be a single URL string or an array of up to 5 URLs for parallel reading."
+                "description": "Page or PDF URL, or up to 5 URLs to read in parallel."
               },
               "withAllLinks": {
                 "type": "boolean",
-                "description": "Set to true to extract and return all hyperlinks found on the page as structured data"
+                "description": "Also return every link on the page."
               },
               "withAllImages": {
                 "type": "boolean",
-                "description": "Set to true to extract and return all images found on the page as structured data"
+                "description": "Also return every image on the page."
               },
               "question": {
                 "type": "string",
-                "description": "Read the page with this question in mind. The page is split into passages and scored with jina-reranker-v3.5, and only the top-ranked passages are returned instead of the full body — the same extraction search_web_deep applies to its result pages. Omit (default) to return the full content unchanged."
+                "description": "Return only the passages answering this question, instead of the full body. Omit for the whole page."
               },
               "chunk_size": {
                 "type": "integer",
                 "minimum": 1,
                 "maximum": 4096,
-                "description": "Target passage size when `question` is set (default 100), counted in words, or in characters for CJK text. Not a token count: 100 words is roughly 130-150 tokens of English. Passages split only at sentence boundaries, so this is a target rather than a hard cut. Larger values return more surrounding context per passage; smaller values pinpoint the answer more tightly. Ignored without `question`."
+                "description": "Passage size in words, default 100. Larger gives more surrounding context, smaller pinpoints the answer. Comparable across scripts. Needs `question`."
               },
               "topk": {
                 "type": "integer",
                 "minimum": 1,
                 "maximum": 50,
-                "description": "How many top-ranked passages to return when `question` is set (default 1). Ignored without `question`."
+                "description": "Passages to return, default 1. Needs `question`."
               }
             },
             "required": [
@@ -128,7 +126,7 @@
         },
         {
           "name": "search_web",
-          "description": "Search the entire web for current information, news, articles, and websites. Use this when you need up-to-date information, want to find specific websites, research topics, or get the latest news. Ideal for answering questions about recent events, finding resources, or discovering relevant content.",
+          "description": "Search the web. Returns titles, URLs and search-engine snippets.",
           "inputSchema": {
             "type": "object",
             "properties": {
@@ -145,31 +143,28 @@
                     "minItems": 1,
                     "maxItems": 5
                   }
-                ],
-                "description": "Search terms or keywords to find relevant web content (e.g., 'climate change news 2024', 'best pizza recipe'). Can be a single query string or an array of up to 5 queries for parallel search."
+                ]
               },
               "num": {
                 "type": "integer",
                 "minimum": 1,
                 "maximum": 100,
-                "default": 30,
-                "description": "Maximum number of search results to return, between 1-100"
+                "default": 30
               },
               "tbs": {
                 "type": "string",
-                "description": "Time-based search parameter, e.g., 'qdr:h' for past hour, can be qdr:h, qdr:d, qdr:w, qdr:m, qdr:y"
+                "description": "Age limit: qdr:h, qdr:d, qdr:w, qdr:m, qdr:y (hour to year)."
               },
               "location": {
-                "type": "string",
-                "description": "Location for search results, e.g., 'London', 'New York', 'Tokyo'"
+                "type": "string"
               },
               "gl": {
                 "type": "string",
-                "description": "Country code, e.g., 'dz' for Algeria"
+                "description": "Country code, e.g. 'de'."
               },
               "hl": {
                 "type": "string",
-                "description": "Language code, e.g., 'zh-cn' for Simplified Chinese"
+                "description": "Language code, e.g. 'zh-cn'."
               }
             },
             "required": [
@@ -181,20 +176,19 @@
         },
         {
           "name": "search_web_deep",
-          "description": "Search the web, then read the result pages and return the passage from each that best answers the query, re-ranked by relevance. Regular search_web returns only the search engine's snippet, which is often a page fragment that does not answer the question; this reads the page itself and extracts a paragraph-length passage (~100 words). Best for questions whose answer is buried in page content rather than in titles or descriptions. Slower than search_web (typically 2-20s). Each result carries a snippet_source field: 'content' when the snippet came from the page body, 'serp' when the search engine's own snippet scored higher and was kept instead.",
+          "description": "Search the web, then read each result page and return the passage that best answers the query. Use when the answer is in page text rather than in titles or snippets. Slower than search_web (2-20s).",
           "inputSchema": {
             "type": "object",
             "properties": {
               "query": {
-                "type": "string",
-                "description": "Search terms or question to answer (e.g., 'how does TCP slow start work', 'what causes memory fragmentation')"
+                "type": "string"
               },
               "num": {
                 "type": "integer",
                 "minimum": 1,
                 "maximum": 10,
                 "default": 5,
-                "description": "Number of results to return (1-10). Each result is drawn from a fully-read page; higher numbers take longer."
+                "description": "Results to return, 1-10. Each is a fully-read page, so higher is slower."
               },
               "snippet_source": {
                 "type": "string",
@@ -203,7 +197,7 @@
                   "content"
                 ],
                 "default": "auto",
-                "description": "'auto' (recommended) lets the extracted passage compete with the search engine's snippet and keeps whichever is more relevant, so some results may be short SERP snippets. 'content' returns only extracted page passages, omitting pages that could not be read — use it when you need full passages for grounding and can accept fewer than num results (occasionally zero)."
+                "description": "'auto' keeps whichever is better, the page passage or the engine snippet. 'content' returns only page passages and omits unreadable pages, so you may get fewer than num."
               }
             },
             "required": [
@@ -215,13 +209,12 @@
         },
         {
           "name": "expand_query",
-          "description": "Expand and rewrite search queries based on an up-to-date query expansion model. This tool takes an initial query and returns multiple expanded queries that can be used for more diversed and deeper searches. Useful for improving deep research results by searching broader and deeper.",
+          "description": "Rewrite one query into several diverse queries, for broader search coverage.",
           "inputSchema": {
             "type": "object",
             "properties": {
               "query": {
-                "type": "string",
-                "description": "The search query to expand (e.g., 'machine learning', 'climate change')"
+                "type": "string"
               }
             },
             "required": [
@@ -233,7 +226,7 @@
         },
         {
           "name": "search_arxiv",
-          "description": "Search academic papers and preprints on arXiv repository. Perfect for finding research papers, scientific studies, technical papers, and academic literature. Use this when researching scientific topics, looking for papers by specific authors, or finding the latest research in fields like AI, physics, mathematics, computer science, etc.",
+          "description": "Search arXiv preprints (physics, maths, CS, quantitative biology and finance).",
           "inputSchema": {
             "type": "object",
             "properties": {
@@ -250,19 +243,17 @@
                     "minItems": 1,
                     "maxItems": 5
                   }
-                ],
-                "description": "Academic search terms, author names, or research topics (e.g., 'transformer neural networks', 'Einstein relativity', 'machine learning optimization'). Can be a single query string or an array of up to 5 queries for parallel search."
+                ]
               },
               "num": {
                 "type": "integer",
                 "minimum": 1,
                 "maximum": 100,
-                "default": 30,
-                "description": "Maximum number of academic papers to return, between 1-100"
+                "default": 30
               },
               "tbs": {
                 "type": "string",
-                "description": "Time-based search parameter, e.g., 'qdr:h' for past hour, can be qdr:h, qdr:d, qdr:w, qdr:m, qdr:y"
+                "description": "Age limit: qdr:h, qdr:d, qdr:w, qdr:m, qdr:y (hour to year)."
               }
             },
             "required": [
@@ -274,7 +265,7 @@
         },
         {
           "name": "search_ssrn",
-          "description": "Search academic papers and preprints on SSRN (Social Science Research Network). Perfect for finding research papers in social sciences, economics, law, finance, accounting, management, and humanities. Use this when researching social science topics, looking for working papers, or finding the latest research in business and economics fields.",
+          "description": "Search SSRN working papers (social science, economics, law, finance, management).",
           "inputSchema": {
             "type": "object",
             "properties": {
@@ -291,19 +282,17 @@
                     "minItems": 1,
                     "maxItems": 5
                   }
-                ],
-                "description": "Academic search terms, author names, or research topics (e.g., 'corporate governance', 'behavioral finance', 'contract law'). Can be a single query string or an array of up to 5 queries for parallel search."
+                ]
               },
               "num": {
                 "type": "integer",
                 "minimum": 1,
                 "maximum": 100,
-                "default": 30,
-                "description": "Maximum number of academic papers to return, between 1-100"
+                "default": 30
               },
               "tbs": {
                 "type": "string",
-                "description": "Time-based search parameter, e.g., 'qdr:h' for past hour, can be qdr:h, qdr:d, qdr:w, qdr:m, qdr:y"
+                "description": "Age limit: qdr:h, qdr:d, qdr:w, qdr:m, qdr:y (hour to year)."
               }
             },
             "required": [
@@ -315,7 +304,7 @@
         },
         {
           "name": "search_jina_blog",
-          "description": "Search Jina AI news and blog posts at jina.ai/news for articles about AI, machine learning, neural search, embeddings, and Jina products. Use this to find official Jina documentation, tutorials, product announcements, and technical deep-dives.",
+          "description": "Search Jina AI's news and blog at jina.ai/news: product announcements, model releases, technical write-ups.",
           "inputSchema": {
             "type": "object",
             "properties": {
@@ -332,19 +321,17 @@
                     "minItems": 1,
                     "maxItems": 5
                   }
-                ],
-                "description": "Search terms to find relevant Jina blog posts (e.g., 'embeddings', 'reranker', 'ColBERT'). Can be a single query string or an array of up to 5 queries for parallel search."
+                ]
               },
               "num": {
                 "type": "integer",
                 "minimum": 1,
                 "maximum": 100,
-                "default": 30,
-                "description": "Maximum number of blog posts to return, between 1-100"
+                "default": 30
               },
               "tbs": {
                 "type": "string",
-                "description": "Time-based search parameter, e.g., 'qdr:h' for past hour, can be qdr:h, qdr:d, qdr:w, qdr:m, qdr:y"
+                "description": "Age limit: qdr:h, qdr:d, qdr:w, qdr:m, qdr:y (hour to year)."
               }
             },
             "required": [
@@ -356,41 +343,38 @@
         },
         {
           "name": "search_images",
-          "description": "Search for images across the web, similar to Google Images. Use this when you need to find photos, illustrations, diagrams, charts, logos, or any visual content. Perfect for finding images to illustrate concepts, locating specific pictures, or discovering visual resources. Images are returned by default as small base64-encoded JPEG images.",
+          "description": "Search the web for images. Returns base64 JPEGs by default.",
           "inputSchema": {
             "type": "object",
             "properties": {
               "query": {
-                "type": "string",
-                "description": "Image search terms describing what you want to find (e.g., 'sunset over mountains', 'vintage car illustration', 'data visualization chart')"
+                "type": "string"
               },
               "num": {
                 "type": "integer",
                 "minimum": 1,
                 "maximum": 30,
-                "default": 10,
-                "description": "Maximum number of images to return (1-30, default: 10)"
+                "default": 10
               },
               "return_url": {
                 "type": "boolean",
                 "default": false,
-                "description": "Set to true to return image URLs, title, shapes, and other metadata. By default, images are downloaded as base64 and returned as rendered images."
+                "description": "Return URLs and metadata instead of base64 images."
               },
               "tbs": {
                 "type": "string",
-                "description": "Time-based search parameter, e.g., 'qdr:h' for past hour, can be qdr:h, qdr:d, qdr:w, qdr:m, qdr:y"
+                "description": "Age limit: qdr:h, qdr:d, qdr:w, qdr:m, qdr:y (hour to year)."
               },
               "location": {
-                "type": "string",
-                "description": "Location for search results, e.g., 'London', 'New York', 'Tokyo'"
+                "type": "string"
               },
               "gl": {
                 "type": "string",
-                "description": "Country code, e.g., 'dz' for Algeria"
+                "description": "Country code, e.g. 'de'."
               },
               "hl": {
                 "type": "string",
-                "description": "Language code, e.g., 'zh-cn' for Simplified Chinese"
+                "description": "Language code, e.g. 'zh-cn'."
               }
             },
             "required": [
@@ -402,7 +386,7 @@
         },
         {
           "name": "parallel_search_web",
-          "description": "Run multiple web searches in parallel for comprehensive topic coverage and diverse perspectives. For best results, provide multiple search queries that explore different aspects of your topic. You can use expand_query to help generate diverse queries, or create them yourself.",
+          "description": "Run several web searches at once. Give queries covering different angles of the topic; expand_query can generate them.",
           "inputSchema": {
             "type": "object",
             "properties": {
@@ -412,31 +396,28 @@
                   "type": "object",
                   "properties": {
                     "query": {
-                      "type": "string",
-                      "description": "Search terms or keywords to find relevant web content"
+                      "type": "string"
                     },
                     "num": {
                       "type": "integer",
                       "minimum": 1,
                       "maximum": 100,
-                      "default": 30,
-                      "description": "Maximum number of search results to return, between 1-100"
+                      "default": 30
                     },
                     "tbs": {
                       "type": "string",
-                      "description": "Time-based search parameter, e.g., 'qdr:h' for past hour"
+                      "description": "Age limit: qdr:h, qdr:d, qdr:w, qdr:m, qdr:y (hour to year)."
                     },
                     "location": {
-                      "type": "string",
-                      "description": "Location for search results, e.g., 'London', 'New York', 'Tokyo'"
+                      "type": "string"
                     },
                     "gl": {
                       "type": "string",
-                      "description": "Country code, e.g., 'dz' for Algeria"
+                      "description": "Country code, e.g. 'de'."
                     },
                     "hl": {
                       "type": "string",
-                      "description": "Language code, e.g., 'zh-cn' for Simplified Chinese"
+                      "description": "Language code, e.g. 'zh-cn'."
                     }
                   },
                   "required": [
@@ -445,12 +426,7 @@
                   "additionalProperties": false
                 },
                 "maxItems": 5,
-                "description": "Array of search configurations to execute in parallel (maximum 5 searches for optimal performance)"
-              },
-              "timeout": {
-                "type": "number",
-                "default": 30000,
-                "description": "Timeout in milliseconds for all searches"
+                "description": "Searches to run, up to 5."
               }
             },
             "required": [
@@ -462,7 +438,7 @@
         },
         {
           "name": "parallel_search_arxiv",
-          "description": "Run multiple arXiv searches in parallel for comprehensive research coverage and diverse academic angles. For best results, provide multiple search queries that explore different research angles and methodologies. You can use expand_query to help generate diverse queries, or create them yourself.",
+          "description": "Run several arXiv searches at once. Give queries covering different research angles.",
           "inputSchema": {
             "type": "object",
             "properties": {
@@ -472,19 +448,17 @@
                   "type": "object",
                   "properties": {
                     "query": {
-                      "type": "string",
-                      "description": "Academic search terms, author names, or research topics"
+                      "type": "string"
                     },
                     "num": {
                       "type": "integer",
                       "minimum": 1,
                       "maximum": 100,
-                      "default": 30,
-                      "description": "Maximum number of academic papers to return, between 1-100"
+                      "default": 30
                     },
                     "tbs": {
                       "type": "string",
-                      "description": "Time-based search parameter, e.g., 'qdr:h' for past hour"
+                      "description": "Age limit: qdr:h, qdr:d, qdr:w, qdr:m, qdr:y (hour to year)."
                     }
                   },
                   "required": [
@@ -493,12 +467,7 @@
                   "additionalProperties": false
                 },
                 "maxItems": 5,
-                "description": "Array of arXiv search configurations to execute in parallel (maximum 5 searches for optimal performance)"
-              },
-              "timeout": {
-                "type": "number",
-                "default": 30000,
-                "description": "Timeout in milliseconds for all searches"
+                "description": "Searches to run, up to 5."
               }
             },
             "required": [
@@ -510,7 +479,7 @@
         },
         {
           "name": "parallel_search_ssrn",
-          "description": "Run multiple SSRN searches in parallel for comprehensive social science research coverage and diverse academic angles. For best results, provide multiple search queries that explore different research angles and methodologies. You can use expand_query to help generate diverse queries, or create them yourself.",
+          "description": "Run several SSRN searches at once. Give queries covering different research angles.",
           "inputSchema": {
             "type": "object",
             "properties": {
@@ -520,19 +489,17 @@
                   "type": "object",
                   "properties": {
                     "query": {
-                      "type": "string",
-                      "description": "Academic search terms, author names, or research topics"
+                      "type": "string"
                     },
                     "num": {
                       "type": "integer",
                       "minimum": 1,
                       "maximum": 100,
-                      "default": 30,
-                      "description": "Maximum number of academic papers to return, between 1-100"
+                      "default": 30
                     },
                     "tbs": {
                       "type": "string",
-                      "description": "Time-based search parameter, e.g., 'qdr:h' for past hour"
+                      "description": "Age limit: qdr:h, qdr:d, qdr:w, qdr:m, qdr:y (hour to year)."
                     }
                   },
                   "required": [
@@ -541,12 +508,7 @@
                   "additionalProperties": false
                 },
                 "maxItems": 5,
-                "description": "Array of SSRN search configurations to execute in parallel (maximum 5 searches for optimal performance)"
-              },
-              "timeout": {
-                "type": "number",
-                "default": 30000,
-                "description": "Timeout in milliseconds for all searches"
+                "description": "Searches to run, up to 5."
               }
             },
             "required": [
@@ -558,7 +520,7 @@
         },
         {
           "name": "parallel_read_url",
-          "description": "Read multiple web pages in parallel to extract clean content efficiently. For best results, provide multiple URLs that you need to extract simultaneously. This is useful for comparing content across multiple sources or gathering information from multiple pages at once.",
+          "description": "Read several URLs at once.",
           "inputSchema": {
             "type": "object",
             "properties": {
@@ -569,34 +531,33 @@
                   "properties": {
                     "url": {
                       "type": "string",
-                      "format": "uri",
-                      "description": "The complete URL of the webpage or PDF file to read and convert"
+                      "format": "uri"
                     },
                     "withAllLinks": {
                       "type": "boolean",
                       "default": false,
-                      "description": "Set to true to extract and return all hyperlinks found on the page as structured data"
+                      "description": "Also return every link on the page."
                     },
                     "withAllImages": {
                       "type": "boolean",
                       "default": false,
-                      "description": "Set to true to extract and return all images found on the page as structured data"
+                      "description": "Also return every image on the page."
                     },
                     "question": {
                       "type": "string",
-                      "description": "Read this page with this question in mind and return only the top-ranked passages instead of the full body. Omit to return full content."
+                      "description": "Return only the passages answering this question, instead of the full body."
                     },
                     "chunk_size": {
                       "type": "integer",
                       "minimum": 1,
                       "maximum": 4096,
-                      "description": "Target passage size when `question` is set (default 100), in words (characters for CJK). Not a token count."
+                      "description": "Passage size in words, default 100. Needs `question`."
                     },
                     "topk": {
                       "type": "integer",
                       "minimum": 1,
                       "maximum": 50,
-                      "description": "How many top-ranked passages to return when `question` is set (default 1)"
+                      "description": "Passages to return, default 1. Needs `question`."
                     }
                   },
                   "required": [
@@ -605,12 +566,7 @@
                   "additionalProperties": false
                 },
                 "maxItems": 5,
-                "description": "Array of URL configurations to read in parallel (maximum 5 URLs for optimal performance)"
-              },
-              "timeout": {
-                "type": "number",
-                "default": 30000,
-                "description": "Timeout in milliseconds for all URL reads. Question-grounded reads add a chunking and reranking pass after the fetch, so the effective floor is raised to 60000ms for those."
+                "description": "URLs to read, up to 5."
               }
             },
             "required": [
@@ -622,7 +578,7 @@
         },
         {
           "name": "classify_text",
-          "description": "Classify texts into user-defined labels using Jina embeddings. Use this when you need to categorize, tag, or sort text content into predefined categories. Perfect for sentiment analysis, topic classification, content moderation, or any text categorization task.",
+          "description": "Classify texts into labels you supply, using Jina embeddings. Zero-shot: no training data needed.",
           "inputSchema": {
             "type": "object",
             "properties": {
@@ -633,7 +589,7 @@
                 },
                 "minItems": 1,
                 "maxItems": 1024,
-                "description": "Array of text strings to classify, up to 1024 (e.g., ['I love this product', 'terrible experience'])"
+                "description": "Texts to classify, up to 1024."
               },
               "labels": {
                 "type": "array",
@@ -642,12 +598,7 @@
                 },
                 "minItems": 2,
                 "maxItems": 256,
-                "description": "Array of classification labels (e.g., ['positive', 'negative', 'neutral'])"
-              },
-              "model": {
-                "type": "string",
-                "default": "jina-embeddings-v5-text-small",
-                "description": "Model to use for classification (default: jina-embeddings-v5-text-small)"
+                "description": "Labels to classify into, e.g. ['positive','negative']."
               }
             },
             "required": [
@@ -660,13 +611,12 @@
         },
         {
           "name": "sort_by_relevance",
-          "description": "Rerank a list of documents by relevance to a query using Jina Reranker API. Use this when you have multiple documents and want to sort them by how well they match a specific query or topic. Perfect for document retrieval, content filtering, or finding the most relevant information from a collection.",
+          "description": "Rerank documents by relevance to a query, using Jina Reranker.",
           "inputSchema": {
             "type": "object",
             "properties": {
               "query": {
-                "type": "string",
-                "description": "The query or topic to rank documents against (e.g., 'machine learning algorithms', 'climate change solutions')"
+                "type": "string"
               },
               "documents": {
                 "type": "array",
@@ -675,12 +625,11 @@
                 },
                 "minItems": 1,
                 "maxItems": 1024,
-                "description": "Array of document texts to rerank by relevance, up to 1024"
+                "description": "Documents to rank, up to 1024."
               },
               "top_n": {
                 "type": "integer",
-                "minimum": 1,
-                "description": "Maximum number of top results to return"
+                "minimum": 1
               }
             },
             "required": [
@@ -693,7 +642,7 @@
         },
         {
           "name": "deduplicate_strings",
-          "description": "Get top-k semantically unique strings from a list using Jina embeddings and submodular optimization. Use this when you have many similar strings and want to select the most diverse subset that covers the semantic space. Perfect for removing duplicates, selecting representative samples, or finding diverse content.",
+          "description": "Select the top-k semantically distinct strings from a list, dropping near-duplicates.",
           "inputSchema": {
             "type": "object",
             "properties": {
@@ -704,12 +653,12 @@
                 },
                 "minItems": 1,
                 "maxItems": 1000,
-                "description": "Array of strings to deduplicate, up to 1000"
+                "description": "Strings to deduplicate, up to 1000."
               },
               "k": {
                 "type": "integer",
                 "minimum": 1,
-                "description": "Number of unique strings to return. If not provided, automatically finds optimal k by looking at diminishing return"
+                "description": "How many to keep. Omit to pick k automatically from diminishing returns."
               }
             },
             "required": [
@@ -721,7 +670,7 @@
         },
         {
           "name": "deduplicate_images",
-          "description": "Get top-k semantically unique images (URLs or base64-encoded) using Jina CLIP v2 embeddings and submodular optimization. Use this when you have many visually similar images and want the most diverse subset.",
+          "description": "Select the top-k visually distinct images (URLs or base64) from a list, dropping near-duplicates.",
           "inputSchema": {
             "type": "object",
             "properties": {
@@ -732,12 +681,12 @@
                 },
                 "minItems": 1,
                 "maxItems": 200,
-                "description": "Array of image inputs to deduplicate, up to 200. Each item can be either an HTTP(S) URL or a raw base64-encoded image string (without data URI prefix)."
+                "description": "Images to deduplicate, up to 200. Each is an http(s) URL or raw base64."
               },
               "k": {
                 "type": "integer",
                 "minimum": 1,
-                "description": "Number of unique images to return. If not provided, automatically finds optimal k by looking at diminishing return"
+                "description": "How many to keep. Omit to pick k automatically from diminishing returns."
               }
             },
             "required": [
@@ -749,28 +698,26 @@
         },
         {
           "name": "search_bibtex",
-          "description": "Search for academic papers and return BibTeX citations. Searches DBLP (computer science) and Semantic Scholar (broad academic coverage) for comprehensive results. Returns formatted BibTeX entries ready to use in LaTeX documents.",
+          "description": "Find papers and return ready-to-use BibTeX entries. Searches DBLP and Semantic Scholar.",
           "inputSchema": {
             "type": "object",
             "properties": {
               "query": {
-                "type": "string",
-                "description": "Search query - paper title, topic, or keywords (e.g., 'attention is all you need', 'transformer neural networks', 'deep learning optimization')"
+                "type": "string"
               },
               "num": {
                 "type": "number",
                 "minimum": 1,
                 "maximum": 50,
-                "default": 10,
-                "description": "Maximum number of results to return (1-50, default: 10)"
+                "default": 10
               },
               "year": {
                 "type": "number",
-                "description": "Filter by minimum publication year (e.g., 2020 for papers from 2020 onwards)"
+                "description": "Earliest publication year."
               },
               "author": {
                 "type": "string",
-                "description": "Filter by author name (e.g., 'Vaswani', 'Hinton')"
+                "description": "Author surname."
               }
             },
             "required": [
@@ -782,27 +729,27 @@
         },
         {
           "name": "extract_pdf",
-          "description": "Extract figures, tables, and equations from PDF documents using layout detection. Perfect for extracting visual elements from academic papers on arXiv or any PDF URL. Returns base64-encoded images of detected elements with metadata.",
+          "description": "Extract figures, tables and equations from a PDF as images, by arXiv id or URL.",
           "inputSchema": {
             "type": "object",
             "properties": {
               "id": {
                 "type": "string",
-                "description": "arXiv paper ID (e.g., '2301.12345' or 'hep-th/9901001'). Either id or url is required."
+                "description": "arXiv id, e.g. '2301.12345'. Give id or url."
               },
               "url": {
                 "type": "string",
                 "format": "uri",
-                "description": "Direct PDF URL. Either id or url is required."
+                "description": "PDF URL. Give id or url."
               },
               "max_edge": {
                 "type": "number",
                 "default": 1024,
-                "description": "Maximum edge size for extracted images in pixels (default: 1024)"
+                "description": "Longest image edge in pixels, default 1024."
               },
               "type": {
                 "type": "string",
-                "description": "Filter by float types (comma-separated): figure, table, equation. If not specified, returns all types."
+                "description": "Comma-separated types to keep: figure, table, equation. Default all."
               }
             },
             "additionalProperties": false,
@@ -812,8 +759,8 @@
       ],
       "resources": [],
       "prompts": [],
-      "instructions": "Web access and online content retrieval server.\n\nWHEN TO USE THIS SERVER:\n\nWeb Search (use when user wants to find something ONLINE, not local files):\n- \"search the web for...\", \"google...\", \"look up online...\", \"find on the internet...\"\n- \"what's the latest news on...\", \"current events about...\", \"recent updates on...\"\n- Any query needing real-time or up-to-date information from the internet\n\nDeep Web Search (use when the answer lives in page text, not in titles/descriptions):\n- \"deep search for...\", \"find detailed information about...\", \"search and read pages about...\"\n- Any question where the answer is likely inside a page, not just the headline\n- Returns a paragraph-length passage read from each page instead of a search-engine\n  snippet fragment. Prefer over search_web when passage-level answers matter; slower\n  (typically 2-20s)\n\nURL/Webpage Reading (use when user provides a URL or link):\n- \"read this URL: https://...\", \"what does this webpage say...\", \"summarize this link...\"\n- \"fetch the content from...\", \"extract text from this website...\"\n- Any task involving a specific URL, http link, or webpage\n\nAcademic Paper Search (use for scholarly/research queries):\n- \"search arXiv for...\", \"find papers on arXiv about...\"\n- \"search SSRN for...\", \"find economics/finance/law papers...\"\n- \"find academic papers about...\", \"what research exists on...\"\n\nBibTeX Citations (use when user needs citation/bibliography entries):\n- \"get bibtex for...\", \"find citation for this paper...\"\n- \"search for bibtex entries...\", \"get bibliography entry for...\"\n- Any request for LaTeX citations or academic references in BibTeX format\n\nImage Search (use when user wants to find images online):\n- \"search for images of...\", \"find pictures of...\", \"find photos of...\"\n\nScreenshot Capture (use when user wants to SEE a webpage):\n- \"take a screenshot of this URL...\", \"capture this webpage visually...\"\n- \"show me what this website looks like...\"\n\nText Classification:\n- \"classify this text as...\", \"categorize these texts into...\", \"is this text positive or negative...\"\n- \"label these documents...\", \"sentiment analysis of...\"\n\nSemantic Reranking/Deduplication:\n- \"rerank these results by relevance to...\", \"sort by semantic similarity...\"\n- \"deduplicate these texts/images...\", \"find unique items from...\"\n\nPDF Extraction:\n- \"extract figures from this PDF...\", \"get tables from PDF...\", \"extract equations from PDF...\"\n\nNOT FOR: local file operations, code execution, database queries, non-web APIs.",
-      "cachedAt": 1787382923632
+      "instructions": "Web access: search the live web, read URLs, search academic papers, and run Jina embedding/reranker utilities.\n\nUse for anything online - current events, a URL the user pasted, a claim needing a source. Not for local files, code execution, or databases.\n\nPicking a tool:\n- search_web returns engine snippets. search_web_deep reads each result page and returns the passage that answers the query - slower, use when the answer is inside a page rather than in its title.\n- read_url fetches one page as markdown. Pass its `question` to get only the answering passages instead of the whole body; this is much cheaper than reading a full page into context.\n- Prefer the parallel_* variants over repeated single calls.\n- search_arxiv for preprints, search_ssrn for social science and finance, search_bibtex for citations, search_jina_blog for Jina's own models and releases.\n- primer supplies the current time and user location; call it before answering anything time- or location-dependent.",
+      "cachedAt": 1788160748523
     },
     "exa": {
       "configHash": "5270fd7f178df6dd9af6d73de92518afe33f061a6e1f34bccb9530d092216b10",

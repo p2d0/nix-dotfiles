@@ -1,7 +1,7 @@
 {
   "lastChangelogVersion": "0.83.0",
   "defaultProvider": "opencode-go",
-  "defaultModel": "glm-5.3-flash",
+  "defaultModel": "deepseek-v4-flash",
   "defaultThinkingLevel": "high",
   "packages": [
     "npm:pi-ask-user",
