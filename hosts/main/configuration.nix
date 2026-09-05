@@ -934,7 +934,7 @@
     playwright-test
     open-webui
     ddcutil
-    telegram-desktop
+    unstable.telegram-desktop
     # tdesktop_p2d0
     nil
     jpegoptim
