@@ -834,6 +834,7 @@ ACTION=="add|change", KERNEL=="event[0-9]*", SUBSYSTEM=="input", ATTRS{name}=="T
     compfy
     picom
     my.photocraft
+    my.vectorcraft
     playwright-mcp
     blender
     claude-desktop
