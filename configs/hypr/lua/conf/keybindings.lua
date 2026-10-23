@@ -80,6 +80,7 @@ hl.bind(mainMod .. " + mouse:275", hl.dsp.focus({ workspace = "e-1" }))
 hl.bind(mainMod .. " + mouse:276", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mainMod .. " + right", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mainMod .. " + left", hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(mainMod .. " + apostrophe", hl.dsp.layout("orientationcenter"))
 
 -- Resize + center + move
 -- hl.bind(mainMod .. " + bracketleft", function()
